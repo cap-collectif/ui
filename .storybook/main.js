@@ -53,6 +53,13 @@ const EXLUDED_DOCGEN_PROPS = [
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
 
 module.exports = {
+  babel: async options => ({
+    ...options,
+    plugins: [
+      ...options.plugins,
+      ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+    ],
+  }),
   webpackFinal: async config => {
     return {
       ...config,
