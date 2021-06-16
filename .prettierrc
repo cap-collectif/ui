@@ -1,0 +1,12 @@
+{
+  "semi": false,
+  "trailingComma": "all",
+  "endOfLine": "auto",
+  "arrowParens": "avoid",
+  "parser": "typescript",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "importOrder": ["^~/(.*)$", "^[./]"],
+  "importOrderSeparation": true
+}

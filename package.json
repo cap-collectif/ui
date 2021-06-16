@@ -1,0 +1,88 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "dev": "tsdx watch",
+    "build": "tsdx build",
+    "ts:check": "tsc --noEmit",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint src",
+    "prepare": "run-s husky:install build",
+    "size-limit:build": "yarn install --ignore-scripts && yarn run build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "husky:install": "husky install"
+  },
+  "peerDependencies": {
+    "@styled-system/css": "^5.0.0",
+    "framer-motion": ">=4.0.0",
+    "react": ">=16",
+    "styled-components": "^5.0.0"
+  },
+  "name": "@cap-collectif/ui",
+  "author": "Cap Collectif <tech@cap-collectif.com>",
+  "module": "dist/ui.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/ui.cjs.production.min.js",
+      "limit": "200 KB"
+    },
+    {
+      "path": "dist/ui.esm.js",
+      "limit": "200 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@size-limit/preset-small-lib": "^4.12.0",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@styled-system/css": "^5.1.5",
+    "@trivago/prettier-plugin-sort-imports": "^2.0.2",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "babel-loader": "^8.2.2",
+    "framer-motion": "^4.1.17",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "run-s": "^0.0.0",
+    "size-limit": "^4.12.0",
+    "styled-components": "^5.3.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.2"
+  },
+  "lint-staged": {
+    "*.md": [
+      "npx prettier --parser markdown --write"
+    ],
+    "*.css": [
+      "npx prettier --parser css --write"
+    ],
+    "*.{js,ts,jsx,tsx}": [
+      "npx tsdx lint src --fix"
+    ]
+  }
+}
