@@ -1,10 +1,5 @@
-export {
-  CapUIBorder,
-  CapUIRadius,
-  CapUIShadow,
-  extendTheme,
-  CapUITheme,
-} from './theme'
+export { CapUIBorder, CapUIRadius, CapUIShadow, extendTheme } from './theme'
+export type { CapUITheme } from './theme'
 export {
   CapUIFontFamily,
   CapUIFontWeight,

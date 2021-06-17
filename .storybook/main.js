@@ -1,3 +1,5 @@
+const path = require('path')
+
 const EXLUDED_DOCGEN_PROPS = [
   'as',
   'gap',
@@ -61,6 +63,25 @@ module.exports = {
     ],
   }),
   webpackFinal: async config => {
+    const fileLoaderRule = config.module.rules.find(rule => {
+      return !Array.isArray(rule.test) && rule.test.test('.svg')
+    })
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = path.resolve(__dirname, '../src/assets')
+    }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            icon: true,
+            titleProp: true,
+          },
+        },
+      ],
+    })
     return {
       ...config,
       resolve: {
