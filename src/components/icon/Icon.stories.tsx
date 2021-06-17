@@ -5,14 +5,14 @@ import * as Icons from '../../assets/icons'
 import { Flex, Grid } from '../layout'
 import { Text } from '../typography'
 import { Icon } from './'
-import { IconName, IconSize } from './enums'
+import { CapUIIcon, CapUIIconSize } from './enums'
 
 type Args = {
   color: string
 }
 
-const listIconName = Object.keys(Icons).sort() as IconName[]
-const listIconSize = Object.values(IconSize).reverse()
+const listIconName = Object.keys(Icons).sort() as CapUIIcon[]
+const listIconSize = Object.values(CapUIIconSize).reverse()
 
 const meta: Meta<Args> = {
   title: 'Library/Icon',
@@ -41,7 +41,7 @@ export const Default: Story<Args> = ({ color }) => (
   <Grid gridGap={6} autoFit>
     {listIconName.map(icon => (
       <Flex key={icon} direction="column" align="center">
-        <Icon name={icon} size={IconSize.Lg} color={color} />
+        <Icon name={icon} size={CapUIIconSize.Lg} color={color} />
         <Text>{icon}</Text>
       </Flex>
     ))}

@@ -5,27 +5,27 @@ import { variant } from 'styled-system'
 
 import * as Icons from '../../assets/icons'
 import { Box, BoxProps, BoxPropsOf } from '../box'
-import { IconName, IconSize } from './enums'
+import { CapUIIcon, CapUIIconSize } from './enums'
 
 export interface IconProps extends Omit<BoxPropsOf<'svg'>, 'size' | 'ref'> {
-  name: IconName
-  size?: IconSize
+  name: CapUIIcon
+  size?: CapUIIconSize
 }
 
-const getSize = (size: IconProps['size'] = IconSize.Md): number => {
+const getSize = (size: IconProps['size'] = CapUIIconSize.Md): number => {
   switch (size) {
-    case IconSize.Xs:
+    case CapUIIconSize.Xs:
       return 3
-    case IconSize.Sm:
+    case CapUIIconSize.Sm:
       return 4
-    case IconSize.Md:
+    case CapUIIconSize.Md:
     default:
       return 6
-    case IconSize.Lg:
+    case CapUIIconSize.Lg:
       return 8
-    case IconSize.Xl:
+    case CapUIIconSize.Xl:
       return 10
-    case IconSize.Xxl:
+    case CapUIIconSize.Xxl:
       return 12
   }
 }
@@ -68,7 +68,7 @@ const IconInner = styled(Box).attrs<BoxProps & { variant: IconProps['size'] }>(
 
 const Icon = React.forwardRef<HTMLOrSVGElement, IconProps>(
   (
-    { name, size = IconSize.Md, color = 'inherit', className, ...props },
+    { name, size = CapUIIconSize.Md, color = 'inherit', className, ...props },
     ref,
   ) => {
     const IconSvg = Icons[name]

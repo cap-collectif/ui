@@ -1,4 +1,4 @@
-export enum IconName {
+export enum CapUIIcon {
   Trash = 'TRASH',
   Pencil = 'PENCIL',
   PencilO = 'PENCIL_O',
@@ -55,7 +55,7 @@ export enum IconName {
   Lock = 'LOCK',
 }
 
-export enum IconSize {
+export enum CapUIIconSize {
   Xs = 'xs', // 12px
   Sm = 'sm', // 16px
   Md = 'md', // 24px
