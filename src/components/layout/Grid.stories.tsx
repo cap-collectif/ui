@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import * as React from 'react'
 
 import { Text } from '../typography'
 import Grid from './Grid'
