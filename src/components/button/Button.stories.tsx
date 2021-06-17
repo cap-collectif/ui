@@ -1,8 +1,10 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import Button from './Button'
-import { ButtonProps } from './Button'
+import { CapUIIcon } from '../icon'
+import Button, { ButtonProps } from './Button'
+
+const ICONS = Object.values(CapUIIcon).sort()
 
 const meta: Meta = {
   title: 'Library/Button',
@@ -10,8 +12,15 @@ const meta: Meta = {
   args: {
     children: 'Action',
   },
+  argTypes: {
+    leftIcon: {
+      options: ICONS,
+    },
+    rightIcon: {
+      options: ICONS,
+    },
+  },
   parameters: {
-    layout: 'centered',
     controls: { expanded: true },
   },
 }
@@ -31,3 +40,6 @@ Tertiary.args = { variant: 'tertiary' }
 
 export const Link = Template.bind({})
 Link.args = { variant: 'link' }
+
+export const WithIcon = Template.bind({})
+WithIcon.args = { leftIcon: CapUIIcon.Add }

@@ -1,16 +1,20 @@
 import * as React from 'react'
-import { FC, forwardRef } from 'react'
+import { FC, forwardRef, ReactElement } from 'react'
 import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
 import { Box, BoxPropsOf, PolymorphicComponent } from '../box'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
+import { Spinner } from '../spinner'
 import S from './Button.style'
 
 export interface ButtonProps extends BoxPropsOf<'button'> {
   readonly variantSize?: 'small' | 'medium' | 'big'
   readonly alternative?: boolean
   readonly isLoading?: boolean
+  readonly leftIcon?: CapUIIcon | ReactElement
+  readonly rightIcon?: CapUIIcon | ReactElement
   readonly variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
   readonly variantColor?: 'primary' | 'danger' | 'hierarchy'
 }
@@ -60,6 +64,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'primary',
       variantColor = 'primary',
       children,
+      leftIcon,
+      rightIcon,
       disabled,
       alternative,
       isLoading,
@@ -90,7 +96,40 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         isLoading={isLoading}
         {...props}
       >
-        {isLoading ? <>{children}</> : <>{children}</>}
+        {isLoading ? (
+          <>
+            <Spinner mr={1} />
+            {children}
+          </>
+        ) : (
+          <>
+            {leftIcon &&
+              (typeof leftIcon === 'string' ? (
+                <Icon
+                  color="inherit"
+                  name={leftIcon}
+                  size={CapUIIconSize.Md}
+                  mr={1}
+                />
+              ) : (
+                React.cloneElement(leftIcon, { mr: 1 })
+              ))}
+
+            {children}
+
+            {rightIcon &&
+              (typeof rightIcon === 'string' ? (
+                <Icon
+                  color="inherit"
+                  name={rightIcon}
+                  size={CapUIIconSize.Md}
+                  ml={1}
+                />
+              ) : (
+                React.cloneElement(rightIcon, { ml: 1 })
+              ))}
+          </>
+        )}
       </ButtonInner>
     )
   },
