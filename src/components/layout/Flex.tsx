@@ -1,5 +1,6 @@
 import { themeGet } from '@styled-system/theme-get'
-import React, { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
+import * as React from 'react'
+import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
 import { FlexboxProps } from 'styled-system'
 
 import { useTheme } from '../../hooks'

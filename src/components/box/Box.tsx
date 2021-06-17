@@ -5,7 +5,7 @@ import * as CSS from 'csstype'
 import merge from 'deepmerge'
 import type { ElementType, HTMLAttributes, RefAttributes } from 'react'
 import * as React from 'react'
-import styled, { DefaultTheme } from 'styled-components'
+import styled from 'styled-components'
 import {
   border,
   BorderProps,
@@ -276,10 +276,7 @@ type ModifiedStyledSystemProps = AppSizeProps &
 interface CustomBoxProps {
   readonly uppercase?: boolean
   readonly disableFocusStyles?: boolean
-  readonly css?:
-    | ((theme: DefaultTheme) => any)
-    | ReturnType<typeof css>
-    | Record<string, unknown>
+  readonly css?: any
   readonly ref?: any
 }
 

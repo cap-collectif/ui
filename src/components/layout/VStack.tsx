@@ -1,4 +1,5 @@
-import React, { FC, forwardRef } from 'react'
+import * as React from 'react'
+import { FC, forwardRef } from 'react'
 
 import { PolymorphicComponent } from '../box'
 import Flex, { FlexProps } from './Flex'
