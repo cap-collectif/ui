@@ -16,7 +16,7 @@ export const useInfoMessageContext = (): Context => {
   const context = React.useContext(InfoMessageContext)
   if (!context) {
     throw new Error(
-      `You can't use the InfoMessageContext outsides a InfoMessage.Provider component.`,
+      `You can't use the InfoMessageContext outside a InfoMessage.Provider component.`,
     )
   }
   return context
