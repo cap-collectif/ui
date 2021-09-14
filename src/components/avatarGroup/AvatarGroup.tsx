@@ -82,4 +82,6 @@ export const AvatarGroup = ({
   )
 }
 
+AvatarGroup.displayName = 'AvatarGroup'
+
 export default AvatarGroup

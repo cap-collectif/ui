@@ -147,4 +147,6 @@ export const Avatar = ({
   )
 }
 
+Avatar.displayName = 'Avatar'
+
 export default Avatar as React.FC<AvatarProps>
