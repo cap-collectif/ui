@@ -58,6 +58,7 @@ export const AvatarGroup = ({
     <Flex
       pr={Math.abs(getMarginForSize(size))}
       className={cn('cap-avatar-group', className)}
+      role="group"
       {...rest}
     >
       {renderAvatarChildren}
