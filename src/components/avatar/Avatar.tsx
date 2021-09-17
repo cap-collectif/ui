@@ -1,10 +1,8 @@
 import cn from 'classnames'
-import ColorHash from 'color-hash'
 import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import colorContrast from '../../utils/colorContrast'
 import { Box, BoxProps } from '../box'
 import { Flex } from '../layout'
 
@@ -21,7 +19,7 @@ export interface AvatarProps extends BoxProps {
 export const variants = {
   xs: {
     fontSize: 1,
-    lineHeight: 's',
+    lineHeight: 'sm',
     size: 4,
     minWidth: 4,
     minHeight: 4,
@@ -29,8 +27,8 @@ export const variants = {
     maxHeight: 4,
   },
   sm: {
-    fontSize: 3,
-    lineHeight: 'base',
+    fontSize: 1,
+    lineHeight: 'sm',
     size: 6,
     minWidth: 6,
     minHeight: 6,
@@ -38,7 +36,7 @@ export const variants = {
     maxHeight: 6,
   },
   md: {
-    fontSize: 4,
+    fontSize: 3,
     lineHeight: 'base',
     size: 8,
     minWidth: 8,
@@ -65,6 +63,7 @@ export const variants = {
     maxHeight: 13,
   },
 }
+
 export const avatarStyles = {
   borderRadius: '100%',
   overflow: 'hidden',
@@ -110,24 +109,14 @@ export const Avatar = ({
   ...props
 }: AvatarProps) => {
   const shouldDisplayName = src === null || src === undefined || src === ''
-  const hash = new ColorHash()
-  const background = hash.hex(name)
-  const computedColor = colorContrast(background)
 
   return (
     <AvatarInner
-      style={{
-        background: !bg && !backgroundColor ? background : undefined,
-        color: !color ? computedColor : undefined,
-      }}
+      bg="blue.500"
+      color="aqua.100"
       className={cn('cap-avatar', className)}
-      {...{
-        title: shouldDisplayName ? alt : name,
-        bg: bg ?? backgroundColor ?? undefined,
-        backgroundColor: bg ?? backgroundColor ?? undefined,
-        color: color ?? undefined,
-        ...props,
-      }}
+      title={shouldDisplayName ? alt : name}
+      {...props}
       variant={size}
     >
       {shouldDisplayName && children}
