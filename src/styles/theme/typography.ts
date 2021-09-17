@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { pxToRem } from '../modules/mixins'
 
 export const LETTER_SPACINGS = {
   tighter: '-0.05em',
@@ -24,12 +25,12 @@ export type ThemeLetterSpacingsValues =
   | (number & {})
 
 export const LINE_HEIGHTS = {
-  xl: '4rem',
-  l: '3rem',
-  m: '2rem',
-  base: '1.5rem',
-  s: '1.125rem',
-  sm: '1rem',
+  xl: pxToRem(64),
+  l: pxToRem(48),
+  m: pxToRem(32),
+  base: pxToRem(24),
+  s: pxToRem(18),
+  sm: pxToRem(16),
 } as const
 
 export enum CapUILineHeight {
@@ -98,14 +99,14 @@ export enum CapUIFontFamily {
 export type ThemeFontFamiliesValue = keyof typeof FONT_FAMILIES | (string & {})
 
 export const FONT_SIZES = {
-  0: 0, // #0
-  1: '0.687rem', // #1
-  2: '0.812rem', // #2
-  3: '0.875rem', // #3
-  4: '1.125rem', // #4
-  5: '1.5rem', // #5
-  6: '2.062rem', // #6
-  7: '2.75rem', // #7
+  0: 0,
+  1: pxToRem(11),
+  2: pxToRem(13),
+  3: pxToRem(14),
+  4: pxToRem(18),
+  5: pxToRem(24),
+  6: pxToRem(33),
+  7: pxToRem(44),
 } as const
 
 export type ThemeFontSizesValues =

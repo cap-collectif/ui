@@ -2,6 +2,7 @@ import merge from 'deepmerge'
 import type { DefaultTheme } from 'styled-components'
 
 import colors from '../modules/colors'
+import { pxToRem } from '../modules/mixins'
 import typography, {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -61,22 +62,22 @@ export const breakpoints: Breakpoints = {
 export const SPACING = {
   px: '1px',
   0: 0,
-  1: '0.25rem',
-  2: '0.5rem',
-  3: '0.75rem',
-  4: '1rem',
-  5: '1.25rem',
-  6: '1.5rem',
-  7: '1.75rem',
-  8: '2rem',
-  9: '2.5rem',
-  10: '3rem',
-  11: '3.5rem',
-  12: '4rem',
-  13: '4.5rem',
-  14: '8rem',
-  15: '16rem',
-  16: '32rem',
+  1: pxToRem(4),
+  2: pxToRem(8),
+  3: pxToRem(12),
+  4: pxToRem(16),
+  5: pxToRem(20),
+  6: pxToRem(24),
+  7: pxToRem(28),
+  8: pxToRem(32),
+  9: pxToRem(40),
+  10: pxToRem(48),
+  11: pxToRem(56),
+  12: pxToRem(64),
+  13: pxToRem(72),
+  14: pxToRem(128),
+  15: pxToRem(256),
+  16: pxToRem(512),
 } as const
 
 export type ThemeSpacingValues =
