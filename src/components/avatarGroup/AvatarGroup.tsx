@@ -65,16 +65,12 @@ export const AvatarGroup = ({
       {count > 0 && (
         <Flex
           {...avatarStyles}
+          {...variantsAvatarSize[size]}
           mr={getMarginForSize(size)}
           bg="blue.500"
           color="white"
           borderColor="white"
           border="avatar"
-          size={variantsAvatarSize[size]}
-          minWidth={variantsAvatarSize[size]}
-          minHeight={variantsAvatarSize[size]}
-          maxWidth={variantsAvatarSize[size]}
-          maxHeight={variantsAvatarSize[size]}
         >
           +{count}
         </Flex>
