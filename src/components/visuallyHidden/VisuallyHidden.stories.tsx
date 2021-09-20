@@ -9,9 +9,7 @@ import { VisuallyHidden } from './'
 const meta: Meta<VisuallyHiddenProps> = {
   title: 'Library/Spinner',
   component: VisuallyHidden,
-  args: {
-    color: 'black',
-  },
+  args: {},
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
