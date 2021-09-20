@@ -1,13 +1,12 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
-import { Box } from '../box'
-import { Text } from '../typography'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import type { VisuallyHiddenProps } from './'
 import { VisuallyHidden } from './'
 
 const meta: Meta<VisuallyHiddenProps> = {
-  title: 'Library/Spinner',
+  title: 'Library/VisuallyHidden',
   component: VisuallyHidden,
   args: {},
   parameters: {
@@ -19,11 +18,8 @@ const meta: Meta<VisuallyHiddenProps> = {
 export default meta
 
 export const Default: Story<VisuallyHiddenProps> = args => (
-  <Box>
-    <Text>There is some text only readable by a screen reader</Text>
-
-    <VisuallyHidden {...args} tabIndex={0}>
-      Ceci est du contenu caché
-    </VisuallyHidden>
-  </Box>
+  <button type="button">
+    <VisuallyHidden {...args}>I'm hidden</VisuallyHidden>
+    <Icon name={CapUIIcon.PinO} size={CapUIIconSize.Xxl} />
+  </button>
 )
