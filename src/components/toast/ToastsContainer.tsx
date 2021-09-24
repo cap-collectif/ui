@@ -1,4 +1,3 @@
-// @flow
 import { SystemCssProperties } from '@styled-system/css'
 import { motion } from 'framer-motion'
 import * as React from 'react'
