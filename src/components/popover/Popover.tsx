@@ -55,9 +55,10 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   disclosure,
   children,
   className,
+  placement = 'right',
   ...props
 }: PopoverProps) => {
-  const popover = usePopoverState({ animated: 300 })
+  const popover = usePopoverState({ animated: 300, placement })
 
   return (
     <>
