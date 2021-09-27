@@ -73,10 +73,10 @@ const getGutter = (placement: PopoverProps['placement']): number => {
 const getOriginPosition = (
   placement: PopoverProps['placement'],
 ): OriginPosition => {
-  if (placement && placement.includes('left')) return { x: '20%' }
-  else if (placement && placement.includes('right')) return { x: '-20%' }
-  else if (placement && placement.includes('top')) return { y: '20%' }
-  else if (placement && placement.includes('bottom')) return { y: '-20%' }
+  if (placement && placement.includes('left')) return { x: '10%' }
+  else if (placement && placement.includes('right')) return { x: '-10%' }
+  else if (placement && placement.includes('top')) return { y: '10%' }
+  else if (placement && placement.includes('bottom')) return { y: '-10%' }
 
   return {}
 }
@@ -89,7 +89,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   ...props
 }: PopoverProps) => {
   const popover = usePopoverState({
-    animated: 300,
+    animated: 150,
     placement,
     unstable_offset: [getGutter(placement), 20],
   })
@@ -118,12 +118,12 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
               maxWidth="350px"
               initial={{
                 opacity: 0,
-                scale: 0.8,
+                scale: 0.9,
                 ...getOriginPosition(placement),
               }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, ...getOriginPosition(placement) }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              exit={{ opacity: 0, scale: 0.9, ...getOriginPosition(placement) }}
+              transition={{ duration: 0.15, ease: 'easeInOut' }}
               className={cn('cap-popover', className)}
               {...props}
             >
