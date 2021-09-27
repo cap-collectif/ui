@@ -17,4 +17,6 @@ const TagLeftIcon = React.forwardRef<HTMLOrSVGElement, TagLeftIcon>(
   ),
 )
 
+TagLeftIcon.displayName = 'Tag.LeftIcon'
+
 export default TagLeftIcon
