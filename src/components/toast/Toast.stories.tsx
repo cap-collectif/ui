@@ -103,7 +103,7 @@ export const WithLink: Story<ToastProps> = () => (
           variant: 'success',
           content: (
             <Text>
-              Je suis un toast <a href="#">de type success</a>
+              Je suis un toast <a href="https://google.com">de type success</a>
             </Text>
           ),
         })
@@ -119,7 +119,7 @@ export const WithLink: Story<ToastProps> = () => (
           variant: 'info',
           content: (
             <Text>
-              Je suis un toast <a href="#">de type info</a>
+              Je suis un toast <a href="https://google.com">de type info</a>
             </Text>
           ),
         })
@@ -135,7 +135,7 @@ export const WithLink: Story<ToastProps> = () => (
           variant: 'warning',
           content: (
             <Text>
-              Je suis un toast <a href="#">de type warning</a>
+              Je suis un toast <a href="https://google.com">de type warning</a>
             </Text>
           ),
         })
@@ -152,7 +152,7 @@ export const WithLink: Story<ToastProps> = () => (
           variant: 'danger',
           content: (
             <Text>
-              Je suis un toast <a href="#">de type danger</a>
+              Je suis un toast <a href="https://google.com">de type danger</a>
             </Text>
           ),
         })
