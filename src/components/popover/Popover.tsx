@@ -32,6 +32,8 @@ type SubComponents = {
   Footer: typeof PopoverFooter
 }
 
+type OriginPosition = { x: string } | { y: string } | {}
+
 export interface PopoverProps
   extends FlexProps,
     Partial<Pick<PopoverState, 'placement'>> {
@@ -46,10 +48,38 @@ type ContainerAnimate = React.FC<
 const ContainerAnimate = motion(Flex) as ContainerAnimate
 
 const Arrow = styled(PopoverArrow)`
-  svg {
-    fill: white;
+  .stroke {
+    fill: transparent;
+  }
+
+  .fill {
+    fill: #fff;
   }
 `
+
+const getGutter = (placement: PopoverProps['placement']): number => {
+  switch (placement) {
+    case 'left-start':
+    case 'right-start':
+      return -15
+    case 'left-end':
+    case 'right-end':
+      return 15
+    default:
+      return 0
+  }
+}
+
+const getOriginPosition = (
+  placement: PopoverProps['placement'],
+): OriginPosition => {
+  if (placement && placement.includes('left')) return { x: '20%' }
+  else if (placement && placement.includes('right')) return { x: '-20%' }
+  else if (placement && placement.includes('top')) return { y: '20%' }
+  else if (placement && placement.includes('bottom')) return { y: '-20%' }
+
+  return {}
+}
 
 export const Popover: React.FC<PopoverProps> & SubComponents = ({
   disclosure,
@@ -58,7 +88,11 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   placement = 'right',
   ...props
 }: PopoverProps) => {
-  const popover = usePopoverState({ animated: 300, placement })
+  const popover = usePopoverState({
+    animated: 300,
+    placement,
+    unstable_offset: [getGutter(placement), 20],
+  })
 
   return (
     <>
@@ -82,9 +116,13 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
               boxShadow="medium"
               width="350px"
               maxWidth="350px"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
+              initial={{
+                opacity: 0,
+                scale: 0.8,
+                ...getOriginPosition(placement),
+              }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, ...getOriginPosition(placement) }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className={cn('cap-popover', className)}
               {...props}
