@@ -84,7 +84,6 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       className={cn('cap-tag', className)}
       initial="initial"
       whileHover="hover"
-      exit="initial"
       _hover={{
         '.cap-tag__label': hasCloseButton
           ? {

@@ -21,7 +21,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
     variants={{
       initial: {
         opacity: 0,
-        right: `-${SPACING['1']}`,
+        right: '0rem',
         transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] },
       },
       hover: {
