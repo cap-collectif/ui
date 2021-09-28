@@ -16,6 +16,7 @@ import {
 import styled from 'styled-components'
 
 import { Flex, FlexProps } from '../layout/Flex'
+import { PopoverContext } from './Popover.context'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
 import PopoverHeader from './header/PopoverHeader'
@@ -94,8 +95,16 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
     unstable_offset: [getGutter(placement), 20],
   })
 
+  const context = React.useMemo(
+    () => ({
+      hide: popover.hide,
+      visible: popover.visible,
+    }),
+    [popover],
+  )
+
   return (
-    <>
+    <PopoverContext.Provider value={context}>
       <PopoverDisclosure
         {...popover}
         ref={disclosure.ref}
@@ -135,7 +144,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
           )}
         </AnimatePresence>
       </ReakitPopover>
-    </>
+    </PopoverContext.Provider>
   )
 }
 

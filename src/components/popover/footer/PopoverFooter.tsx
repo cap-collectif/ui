@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Flex, FlexProps } from '../../layout/Flex'
 
 type PopoverFooterProps = FlexProps & {
-  children: string | React.ReactNode
+  children: React.ReactNode
 }
 
 const PopoverFooter = ({
@@ -16,6 +16,7 @@ const PopoverFooter = ({
     direction="row"
     justify="flex-end"
     className={cn('cap-popover__footer', className)}
+    mt={6}
     {...props}
   >
     {children}

@@ -21,8 +21,21 @@ export default meta
 
 export const Default: Story<PopoverProps> = args => (
   <Popover {...args} disclosure={<button type="button">Open popover</button>}>
-    <Popover.Header>This is the header</Popover.Header>
-    <Popover.Body>This is the content</Popover.Body>
-    <Popover.Footer>This is the footer</Popover.Footer>
+    <Popover.Header>Lorem ipsum</Popover.Header>
+    <Popover.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+      facilisis ligula non nibh egestas efficitur.
+    </Popover.Body>
+  </Popover>
+)
+
+export const WithFooter: Story<PopoverProps> = args => (
+  <Popover {...args} disclosure={<button type="button">Open popover</button>}>
+    <Popover.Header>Lorem ipsum</Popover.Header>
+    <Popover.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+      facilisis ligula non nibh egestas efficitur.
+    </Popover.Body>
+    <Popover.Footer>Lorem ipsum</Popover.Footer>
   </Popover>
 )
