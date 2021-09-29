@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
 import { Popover, PopoverProps } from './'
+import mdx from './Popover.mdx'
 
 const meta: Meta<PopoverProps> = {
   title: 'Library/Popover',
@@ -14,6 +15,9 @@ const meta: Meta<PopoverProps> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
+    docs: {
+      page: mdx,
+    },
   },
 }
 
