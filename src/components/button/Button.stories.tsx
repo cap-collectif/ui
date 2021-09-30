@@ -43,3 +43,6 @@ Link.args = { variant: 'link' }
 
 export const WithIcon = Template.bind({})
 WithIcon.args = { leftIcon: CapUIIcon.Add }
+
+export const Loading = Template.bind({})
+Loading.args = { isLoading: true }
