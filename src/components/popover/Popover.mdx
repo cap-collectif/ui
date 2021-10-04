@@ -1,3 +1,49 @@
 # Popover
 
-TODO
+Un Popover est une fenêtre qui donne à l'utilisateur des informations contextuelles. 
+Il se supperpose au contenu de la page sans le masquer ni le bloquer et disparaît lorsque l’utilisateur le ferme.
+
+Il en existe 2 types:
+- la version classique informative
+- le popover data (contextual editing)
+
+Les popover doivent être utilisé avec prudence et parcimonie.
+
+# Comportements
+Les popovers sont initiés par l’utilisateur, par exemple en cliquant sur un info i. Il permettents d’afficher des informations contextuelles pour aider l’utilisateur à compléter ces tâches en toutes autonomie. 
+
+Le popover apparaît lorsqu'il est déclenché par un clic.
+Le popover peut être fermer en cliquant en dehors du composant ou sur la croix. 
+
+### Quand utiliser un popover
+- Pour afficher des informations contextuelles simple et non-disruptif Pour donner des tips sur l’utilisation d’une fonctionnalitées complexe
+- Pour afficher l’ensemble d’une liste tronquée
+- Pour éditer une information simple sans perdre le contexte
+- Pour guider l’utilisateur
+
+### Quand ne pas utiliser un popover
+- Lorsque les tips nécessite un tutoriel pas à pas dans l’aide en ligne
+- Pour afficher des informations complexe ou très longues
+- Lorsque le contenu doit être affiché sans qu’il soit initié par l’utilisateur
+- Ne pas utiliser sans lien de fermeture
+- Ne pas utiliser avec un backdrop
+
+# Anatomie d'un popover
+Ensemble des éléments qu’un popover peut contenir.
+- 1- Etapes (Facultatif)
+- 2- L’en-tête comprend un titre qui doit être bref et décrire clairement le contenu du popover + un icône “cross” qui permet de fermer le popover. (Facultatif)
+- 3- Le contenu contient les informations susceptible d’aider l’utilisateurs à réaliser ça tâche. Il peut inclure du texte et des composants (des listes numérotées, des puces, champs de texte, des boutons, des cases à cocher, etc.).
+- 4- Un CTA
+- 5- Container
+- 6- Pointeur
+
+# Taille
+Pour définir la largeur d’un popover, nous utilisons la largeur d’un bloc medium + 8 pixel pour la taille du pointeur.
+
+# Types de popover
+- Informatif
+- Liste d'utilisateur (à venir)
+- Edition d'un lien (à venir)
+
+### popover informatif
+Il est utilisé pour les descriptions, les informations complémentaires et les tips
