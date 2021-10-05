@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import {
   motion,
   AnimatePresence,
@@ -18,7 +19,7 @@ import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
 import { Box, BoxProps } from '../box'
 import Text from '../typography/Text'
 
-export interface TooltipProps {
+export interface TooltipProps extends BoxProps {
   children: React.FunctionComponentElement<any>
   label: React.ReactNode
 }
@@ -38,6 +39,7 @@ const Arrow = styled(TooltipArrow)`
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
   label,
+  className,
   ...props
 }) => {
   const tooltip = useTooltipState({ animated: 300, gutter: 4 })
@@ -72,7 +74,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={LAYOUT_TRANSITION_SPRING}
-              className="cap-tooltip"
+              className={cn('cap-tooltip', className)}
               {...props}
             >
               <Arrow {...tooltip} />
