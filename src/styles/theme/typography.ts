@@ -78,11 +78,11 @@ export type ThemeFontWeightsValues =
 
 export const FONT_FAMILIES = {
   roboto: `Roboto, Helvetica, Arial, sans-serif`,
-  openSans: `OpenSans, Helvetica, Arial, sans-serif`,
-  heading: `OpenSans, Helvetica, Arial, sans-serif`,
-  label: `OpenSans, Helvetica, Arial, sans-serif`,
-  body: `OpenSans, Helvetica, Arial, sans-serif`,
-  content: `OpenSans, Helvetica, Arial, sans-serif`,
+  openSans: `Open Sans, Helvetica, Arial, sans-serif`,
+  heading: `Open Sans, Helvetica, Arial, sans-serif`,
+  label: `Open Sans, Helvetica, Arial, sans-serif`,
+  body: `Open Sans, Helvetica, Arial, sans-serif`,
+  content: `Open Sans, Helvetica, Arial, sans-serif`,
   input: `Roboto, Helvetica, Arial, sans-serif`,
 } as const
 
