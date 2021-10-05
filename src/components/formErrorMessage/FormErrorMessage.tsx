@@ -7,13 +7,14 @@ import { Box, BoxProps } from '../box'
 import { useFormControlContext } from '../formControl'
 
 export interface FormErrorMessageProps extends BoxProps {
+  readonly isInvalid?: boolean
   readonly children?: React.ReactNode
 }
 
-export const FormErrorMessage = forwardRef<FormErrorMessageProps, BoxProps>(
-  ({ children, className, ...props }, ref) => {
+export const FormErrorMessage = forwardRef<HTMLElement, FormErrorMessageProps>(
+  ({ children, className, isInvalid, ...props }, ref) => {
     const field = useFormControlContext()
-    if (!field?.isInvalid || field.isDisabled) return null
+    if ((!field?.isInvalid && !isInvalid) || field.isDisabled) return null
 
     return (
       <Box

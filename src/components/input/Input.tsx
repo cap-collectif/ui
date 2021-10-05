@@ -13,7 +13,7 @@ export interface InputProps extends BoxProps {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ size = 'md', className, width, ...props }, ref) => {
+  ({ className, width, ...props }, ref) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
     return (
       <Box

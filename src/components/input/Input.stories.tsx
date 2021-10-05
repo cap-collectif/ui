@@ -53,7 +53,7 @@ export const WithFixedWidthAndLabel: Story<Args> = ({
   placeholder,
   ...args
 }) => (
-  <FormControl {...args} width="300px">
+  <FormControl {...args}>
     <FormLabel htmlFor="name">
       <>Label</>
       {!args.isRequired && (
@@ -62,10 +62,14 @@ export const WithFixedWidthAndLabel: Story<Args> = ({
         </Box>
       )}
     </FormLabel>
-    <Input placeholder={placeholder} id="name" />
+    <Input width="300px" placeholder={placeholder} id="name" />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
+
+WithFixedWidthAndLabel.args = {
+  errorMessage: 'Error info. ceci est une erreur aïe alors bon ! La width !',
+}
 
 export const WithGuideline: Story<Args> = ({
   errorMessage,
@@ -77,7 +81,28 @@ export const WithGuideline: Story<Args> = ({
       <>Label</>
     </FormLabel>
     <FormGuideline>Guidelines</FormGuideline>
-    <Input placeholder={placeholder} id="name" />
+    <Input aria-describedby="Accessible" placeholder={placeholder} id="name" />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
+
+export const WithSimpleFormErrorHandling: Story<Args> = ({
+  placeholder,
+  ...args
+}) => {
+  const [isValid, setIsValid] = React.useState(true)
+  return (
+    <FormControl {...args} isInvalid={!isValid} width="300px">
+      <FormLabel htmlFor="name">
+        <>Validité</>
+      </FormLabel>
+      <FormGuideline>Entrez le mot "valide" :</FormGuideline>
+      <Input
+        placeholder={placeholder}
+        id="name"
+        onBlur={e => setIsValid(e.target.value === 'valide')}
+      />
+      <FormErrorMessage>Mauvais mot :(</FormErrorMessage>
+    </FormControl>
+  )
+}

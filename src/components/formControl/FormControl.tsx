@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 
 import { useBoolean } from '../../hooks/useBoolean'
 import { Flex, FlexProps } from '../layout/Flex'
-import { createContext } from './createContext'
+import { createContext } from './FormControl.context'
 
 export interface FormControlProps extends FlexProps {
   readonly isDisabled?: boolean
@@ -72,6 +72,7 @@ export const FormControl = forwardRef<FormControlProps, FlexProps>(
     return (
       <FormControlProvider value={contextValue}>
         <Flex
+          width={props.width || '100%'}
           direction="column"
           spacing={1}
           {...getRootProps({}, ref)}
