@@ -7,6 +7,7 @@ export type Context = {
 
 export const InlineSelectContext = React.createContext<Context>({
   value: null,
+  onChange: () => {},
 })
 
 export const useInlineSelect = (): Context => {

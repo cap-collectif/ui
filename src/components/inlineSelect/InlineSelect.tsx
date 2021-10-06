@@ -18,7 +18,7 @@ export const InlineSelect: React.FC<InlineSelectProps> & SubComponents = ({
   children,
   value,
   onChange,
-  ...props
+  ...rest
 }) => {
   const contextValue = React.useMemo(() => ({ value, onChange }), [
     value,
@@ -33,7 +33,7 @@ export const InlineSelect: React.FC<InlineSelectProps> & SubComponents = ({
         align="flex-start"
         spacing={6}
         sx={{ listStyle: 'none' }}
-        {...props}
+        {...rest}
       >
         {children}
       </Flex>
