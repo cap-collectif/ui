@@ -1,6 +1,8 @@
 import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
+import styled from 'styled-components'
+import { variant } from 'styled-system'
 
 import { Box, BoxProps } from '../box'
 import { useFormControl } from '../formControl'
@@ -10,20 +12,36 @@ export interface InputProps extends BoxProps {
   readonly placeholder?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
+  readonly size?: 'sm' | 'md'
 }
+const InputInner = styled(Box)(
+  variant({
+    variants: {
+      sm: {
+        px: 3,
+        py: 1,
+      },
+      md: {
+        px: 3,
+        py: 2,
+      },
+    },
+  }),
+)
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, width, ...props }, ref) => {
+  ({ size = 'sm', className, ...props }, ref) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
     return (
-      <Box
+      <InputInner
         {...inputProps}
         sx={S}
+        variant={size}
         disableFocusStyles
         ref={ref}
         as="input"
         className={cn('cap-input', className)}
-        width={width || '100%'}
+        width="100%"
         {...props}
       />
     )

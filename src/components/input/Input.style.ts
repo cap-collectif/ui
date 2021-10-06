@@ -6,8 +6,7 @@ const styles: SystemStyleObject = {
   border: 'normal',
   borderRadius: 'normal',
   borderColor: 'gray.300',
-  px: 3,
-  py: 1,
+
   fontFamily: CapUIFontFamily.Roboto,
   lineHeight: CapUILineHeight.Base,
   color: 'gray.900',
