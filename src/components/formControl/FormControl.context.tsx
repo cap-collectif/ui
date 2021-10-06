@@ -19,7 +19,7 @@ export function createContext<ContextType>(options: CreateContextOptions = {}) {
 
     if (!context && strict) {
       const error = new Error(
-        'useContext: `context` is undefined. Seems you forgot to wrap component within the Provider',
+        `You can't use 'useContext' outside the Provider component.`,
       )
       error.name = 'ContextError'
       Error.captureStackTrace?.(error, useContext)
