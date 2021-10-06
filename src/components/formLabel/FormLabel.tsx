@@ -14,6 +14,7 @@ export const FormLabel = forwardRef<FormLabelProps, FlexProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <Flex
+        align="center"
         spacing={1}
         ref={ref}
         color="gray.900"

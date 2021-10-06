@@ -6,6 +6,8 @@ import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
+import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
+import { Tooltip } from '../tooltip'
 import Input, { InputProps } from './Input'
 
 type Args = {
@@ -76,9 +78,18 @@ export const WithGuideline: Story<Args> = ({
   placeholder,
   ...args
 }) => (
-  <FormControl {...args} width="300px">
+  <FormControl {...args} width="300px" mt="100px">
     <FormLabel htmlFor="name">
       <>Label</>
+      <Tooltip label="Une aide en plus">
+        <div>
+          <Icon
+            name={CapUIIcon.CircleInfo}
+            size={CapUIIconSize.Sm}
+            color="blue.500"
+          />
+        </div>
+      </Tooltip>
     </FormLabel>
     <FormGuideline>Guidelines</FormGuideline>
     <Input aria-describedby="Accessible" placeholder={placeholder} id="name" />
