@@ -5,11 +5,11 @@ import { CapUIFontFamily, CapUILineHeight } from '../../styles'
 import { jsxInnerText } from '../../utils/jsx'
 import { BoxOwnProps, PolymorphicComponent, Box } from '../box'
 
-type Props = BoxOwnProps & {
+export type TextProps = BoxOwnProps & {
   readonly truncate?: number
 }
 
-const Text = forwardRef<HTMLElement, Props>(
+export const Text = forwardRef<HTMLElement, TextProps>(
   ({ children, truncate, ...props }, ref) => {
     let content = children
     const innerText = jsxInnerText(content)
@@ -33,4 +33,4 @@ const Text = forwardRef<HTMLElement, Props>(
 
 Text.displayName = 'Text'
 
-export default Text as PolymorphicComponent<Props>
+export default Text as PolymorphicComponent<TextProps>

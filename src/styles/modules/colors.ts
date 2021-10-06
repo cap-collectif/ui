@@ -1,5 +1,34 @@
 /* eslint-disable @typescript-eslint/ban-types */
-const colors = {
+
+export type BaseColorsName =
+  | 'gray'
+  | 'neutral-gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'blue'
+  | 'aqua'
+
+type RootThemeColorsValues =
+  | 'transparent'
+  | 'current'
+  | 'dark'
+  | 'black'
+  | 'white'
+
+type BaseColors = {
+  [key in BaseColorsName]: {
+    [tint: string]: string
+  }
+}
+
+type RootColors = {
+  [key in RootThemeColorsValues]: string
+}
+export type Colors = BaseColors & RootColors
+
+const colors: Colors = {
   transparent: 'transparent',
   current: 'currentColor',
   dark: '#30363D',
@@ -206,13 +235,6 @@ type NestedThemeColorsValues =
   | 'aqua.700'
   | 'aqua.800'
   | 'aqua.900'
-
-type RootThemeColorsValues =
-  | 'transparent'
-  | 'current'
-  | 'dark'
-  | 'black'
-  | 'white'
 
 export type ThemeColorsValues =
   | NestedThemeColorsValues
