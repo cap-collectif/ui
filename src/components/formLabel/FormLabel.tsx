@@ -10,7 +10,7 @@ export interface FormLabelProps extends FlexProps {
   readonly children?: React.ReactNode
 }
 
-export const FormLabel = forwardRef<HTMLDivElement, FormLabelProps>(
+export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <Flex
