@@ -46,13 +46,8 @@ function useFormControlProps<T extends HTMLElement>(
     ...rest
   } = props
 
-  const labelIds: string[] = props['aria-describedby']
-    ? [props['aria-describedby']]
-    : []
-
   return {
     ...rest,
-    'aria-describedby': labelIds.join(' ') || undefined,
     id: id ?? undefined,
     isDisabled: disabled ?? isDisabled ?? field?.isDisabled,
     isRequired: required ?? isRequired ?? field?.isRequired,
