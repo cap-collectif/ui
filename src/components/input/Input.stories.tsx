@@ -82,13 +82,11 @@ export const WithGuideline: Story<Args> = ({
     <FormLabel htmlFor="name">
       <>Label</>
       <Tooltip label="Une aide en plus">
-        <div>
-          <Icon
-            name={CapUIIcon.CircleInfo}
-            size={CapUIIconSize.Sm}
-            color="blue.500"
-          />
-        </div>
+        <Icon
+          name={CapUIIcon.CircleInfo}
+          size={CapUIIconSize.Sm}
+          color="blue.500"
+        />
       </Tooltip>
     </FormLabel>
     <FormGuideline>Guidelines</FormGuideline>
