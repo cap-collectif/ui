@@ -5,7 +5,7 @@ import { FlexboxProps } from 'styled-system'
 
 import { useTheme } from '../../hooks'
 import { cleanChildren, hasProps } from '../../utils/jsx'
-import { BoxProps, PolymorphicComponent, Box } from '../box'
+import { PolymorphicComponent, BoxOwnProps, Box } from '../box'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']
@@ -19,7 +19,7 @@ export interface FlexOptions {
 }
 
 export type FlexProps = Omit<
-  BoxProps,
+  BoxOwnProps,
   | 'flexDirection'
   | 'alignItems'
   | 'justifyContent'
@@ -110,6 +110,10 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
                   }),
                 },
               )),
+            '&:first-child': {
+              marginLeft: 0,
+              marginTop: 0,
+            },
           },
         }
       : {}),
