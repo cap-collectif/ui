@@ -77,10 +77,9 @@ const Icon = React.forwardRef<HTMLOrSVGElement, IconProps>(
       <IconInner
         as={IconSvg}
         variant={size}
-        className={cn('icon', className)}
+        className={cn('cap-icon', className)}
         color={color}
         ref={ref}
-        css={{ overflow: 'visible !important' }}
         {...props}
       />
     )
