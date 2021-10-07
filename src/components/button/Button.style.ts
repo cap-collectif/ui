@@ -1,8 +1,7 @@
 import colors from '../../styles/modules/colors'
-import typography from '../../styles/theme/typography'
-import { styles as stylesLink } from '../link/Link'
+import typography, { CapUIFontWeight } from '../../styles/theme/typography'
 
-const styles = (isLoading?: boolean, alternative?: boolean) => ({
+const styles = (alternative?: boolean) => ({
   common: {
     outline: 'none',
   },
@@ -11,41 +10,19 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       bg: 'blue.500',
       color: 'blue.100',
 
-      '.icon': {
-        color: 'white',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
       '&:hover': {
         bg: 'blue.700',
         color: 'blue.100',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-        },
-      },
-
-      '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
       '&:disabled': {
         bg: 'blue.150',
         color: 'blue.300',
-
-        '.icon': {
-          color: 'blue.300',
-        },
       },
-
-      ...(isLoading && {
-        bg: 'blue.150',
-        color: 'blue.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'blue.300',
-        },
-      }),
     },
     secondary: {
       bg: 'white',
@@ -53,45 +30,19 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       border: 'button',
       borderColor: 'blue.500',
 
-      '.icon': {
-        color: 'blue.500',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
       '&:hover': {
         color: 'blue.700',
         borderColor: 'blue.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-        },
-
-        '.icon': {
-          color: 'blue.700',
-        },
-      },
-
-      '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
       '&:disabled': {
         color: 'blue.300',
         borderColor: 'blue.300',
-
-        '.icon': {
-          color: 'blue.300',
-        },
       },
-
-      ...(isLoading && {
-        color: 'blue.300',
-        borderColor: 'blue.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'blue.300',
-        },
-      }),
     },
     tertiary: {
       bg: 'transparent',
@@ -100,50 +51,33 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
 
-      '.icon': {
-        color: 'blue.500',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
       '&:hover': {
         color: 'blue.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-        },
-
-        '.icon': {
-          color: 'blue.700',
-        },
       },
+
+      '&:disabled': {
+        color: 'blue.300',
+      },
+    },
+    link: {
+      textDecoration: 'underline',
+      color: 'blue.500',
+      fontWeight: CapUIFontWeight.Normal,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
       },
 
-      '&:disabled': {
-        color: 'blue.300',
-
-        '.icon': {
-          color: 'blue.300',
-        },
+      '&:hover': {
+        color: 'blue.700',
       },
 
-      ...(isLoading && {
-        color: 'blue.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'blue.300',
-        },
-      }),
-    },
-    link: {
-      ...stylesLink.primary,
-      fontWeight: 'Normal',
-
       '&:disabled': {
         color: 'blue.300',
-        cursor: 'default',
       },
     },
   },
@@ -152,35 +86,17 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       bg: 'red.500',
       color: 'red.100',
 
-      '&:hover': {
-        bg: 'red.700',
-        color: 'red.100',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.red['300']}`,
-        },
-      },
-
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+      },
+
+      '&:hover': {
+        bg: 'red.700',
       },
 
       '&:disabled': {
         bg: 'red.300',
       },
-
-      '.icon': {
-        color: 'white',
-      },
-
-      ...(isLoading && {
-        bg: 'red.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'red.100',
-        },
-      }),
     },
     secondary: {
       bg: 'white',
@@ -188,45 +104,18 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       border: 'button',
       borderColor: 'red.500',
 
-      '&:hover': {
-        color: 'red.700',
-        borderColor: 'red.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.red['300']}`,
-        },
-
-        '.icon': {
-          color: 'red.700',
-        },
-      },
-
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+      },
+
+      '&:hover': {
+        borderColor: 'red.700',
       },
 
       '&:disabled': {
         color: 'red.300',
         borderColor: 'red.300',
-
-        '.icon': {
-          color: 'red.300',
-        },
       },
-
-      '.icon': {
-        color: 'red.500',
-      },
-
-      ...(isLoading && {
-        color: 'red.300',
-        borderColor: 'red.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'red.300',
-        },
-      }),
     },
     tertiary: {
       bg: 'transparent',
@@ -235,50 +124,33 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
 
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+      },
+
       '&:hover': {
         color: 'red.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.red['300']}`,
-        },
-
-        '.icon': {
-          color: 'red.700',
-        },
       },
+
+      '&:disabled': {
+        color: 'red.300',
+      },
+    },
+    link: {
+      textDecoration: 'underline',
+      color: 'red.500',
+      fontWeight: CapUIFontWeight.Normal,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.red['300']}`,
       },
 
-      '&:disabled': {
-        color: 'red.300',
-
-        '.icon': {
-          color: 'red.300',
-        },
+      '&:hover': {
+        color: 'red.700',
       },
-
-      '.icon': {
-        color: 'red.500',
-      },
-
-      ...(isLoading && {
-        color: 'red.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'red.300',
-        },
-      }),
-    },
-    link: {
-      ...stylesLink.danger,
-      fontWeight: 'Normal',
 
       '&:disabled': {
         color: 'red.300',
-        cursor: 'default',
       },
     },
   },
@@ -287,41 +159,18 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       bg: 'gray.500',
       color: 'gray.100',
 
-      '.icon': {
-        color: 'gray.100',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
       '&:hover': {
         bg: 'gray.700',
-        color: 'gray.100',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
-        },
-      },
-
-      '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
       '&:disabled': {
         bg: 'gray.150',
         color: 'gray.300',
-
-        '.icon': {
-          color: 'gray.300',
-        },
       },
-
-      ...(isLoading && {
-        bg: 'gray.150',
-        color: 'gray.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'gray.300',
-        },
-      }),
     },
     secondary: {
       bg: 'white',
@@ -329,91 +178,49 @@ const styles = (isLoading?: boolean, alternative?: boolean) => ({
       border: 'button',
       borderColor: 'gray.500',
 
-      '.icon': {
-        color: 'gray.500',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
       '&:hover': {
         color: 'gray.700',
         borderColor: 'gray.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
-        },
-
-        '.icon': {
-          color: 'gray.700',
-        },
-      },
-
-      '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
       '&:disabled': {
         color: 'gray.300',
         borderColor: 'gray.300',
-
-        '.icon': {
-          color: 'gray.300',
-        },
       },
-
-      ...(isLoading && {
-        color: 'gray.300',
-        borderColor: 'gray.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'gray.300',
-        },
-      }),
     },
     tertiary: {
       bg: 'transparent',
       color: 'gray.500',
       p: 0,
 
-      '.icon': {
-        color: 'gray.500',
+      '&:focus': {
+        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
       '&:hover': {
         color: 'gray.700',
-
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
-        },
-
-        '.icon': {
-          color: 'gray.700',
-        },
       },
+
+      '&:disabled': {
+        color: 'gray.300',
+      },
+    },
+    link: {
+      textDecoration: 'underline',
+      color: 'gray.500',
+      fontWeight: CapUIFontWeight.Normal,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
       },
 
-      '&:disabled': {
-        color: 'gray.300',
-
-        '.icon': {
-          color: 'gray.300',
-        },
+      '&:hover': {
+        color: 'gray.700',
       },
-
-      ...(isLoading && {
-        color: 'gray.300',
-        'pointer-events': 'none',
-
-        '.icon': {
-          color: 'gray.300',
-        },
-      }),
-    },
-    link: {
-      ...stylesLink.hierarchy,
-      fontWeight: 'Normal',
 
       '&:disabled': {
         color: 'gray.300',

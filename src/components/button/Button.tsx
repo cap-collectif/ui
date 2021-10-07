@@ -1,23 +1,31 @@
+import cn from 'classnames'
 import * as React from 'react'
-import { FC, forwardRef, ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
-import { Box, BoxPropsOf, PolymorphicComponent } from '../box'
+import { Box } from '../box'
+import { PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Spinner } from '../spinner'
 import S from './Button.style'
 
-export interface ButtonProps extends BoxPropsOf<'button'> {
-  readonly variantSize?: 'small' | 'medium' | 'big'
-  readonly alternative?: boolean
-  readonly isLoading?: boolean
-  readonly leftIcon?: CapUIIcon | ReactElement
-  readonly rightIcon?: CapUIIcon | ReactElement
-  readonly variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
-  readonly variantColor?: 'primary' | 'danger' | 'hierarchy'
-}
+// @TODO Should be type restrained to button or anchor
+export type ButtonProps<
+  T extends React.ElementType = React.ElementType
+> = PolymorphicComponentProps<
+  T,
+  Readonly<{
+    variantSize?: 'small' | 'medium' | 'big'
+    alternative?: boolean
+    isLoading?: boolean
+    leftIcon?: CapUIIcon | ReactElement
+    rightIcon?: CapUIIcon | ReactElement
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
+    variantColor?: 'primary' | 'danger' | 'hierarchy'
+  }>
+>
 
 const SIZE = {
   small: {
@@ -35,40 +43,41 @@ const SIZE = {
 }
 
 const ButtonInner = styled(Box)(
-  {
-    ...S().common,
-  },
+  S().common,
   ({
     variantColor = 'primary',
-    isLoading,
     alternative,
   }: {
     variantColor: ButtonProps['variantColor']
-    isLoading: boolean
     alternative: boolean
   }) =>
     variantStyled({
       variants: {
-        primary: S(isLoading)[variantColor].primary,
-        secondary: S(isLoading)[variantColor].secondary,
-        tertiary: S(isLoading, alternative)[variantColor].tertiary,
-        link: S(isLoading)[variantColor].link,
+        primary: S()[variantColor].primary,
+        secondary: S()[variantColor].secondary,
+        tertiary: S(alternative)[variantColor].tertiary,
+        link: S()[variantColor].link,
       },
     }),
-) as PolymorphicComponent<ButtonProps>
+)
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
   (
     {
+      as = 'button',
       variantSize = 'small',
       variant = 'primary',
       variantColor = 'primary',
       children,
       leftIcon,
       rightIcon,
-      disabled,
       alternative,
       isLoading,
+      className,
+      disabled,
       ...props
     },
     ref,
@@ -76,9 +85,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <ButtonInner
         ref={ref}
-        as="button"
-        type="button"
-        display="flex"
+        as={as}
+        type={as === 'button' ? 'button' : undefined}
+        display="inline-flex"
         alignItems="center"
         fontFamily="body"
         fontSize={3}
@@ -87,13 +96,23 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         border="none"
         borderRadius="button"
         bg="transparent"
-        disabled={disabled}
         px={variantSize ? SIZE[variantSize].px : 0}
         py={variantSize ? SIZE[variantSize].py : 0}
         variantColor={variantColor}
         variant={variant}
         alternative={alternative}
         isLoading={isLoading}
+        disabled={isLoading || disabled}
+        sx={{
+          'pointer-events': isLoading ? 'none' : 'auto',
+        }}
+        className={cn(
+          {
+            'cap-button': as === 'button',
+            'cap-link': as === 'a',
+          },
+          className,
+        )}
         {...props}
       >
         {isLoading ? (
@@ -108,7 +127,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 <Icon
                   color="inherit"
                   name={leftIcon}
-                  size={CapUIIconSize.Md}
+                  size={
+                    variant === 'link' ? CapUIIconSize.Sm : CapUIIconSize.Md
+                  }
                   mr={1}
                 />
               ) : (
