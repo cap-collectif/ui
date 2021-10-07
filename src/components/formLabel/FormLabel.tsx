@@ -10,10 +10,11 @@ export interface FormLabelProps extends FlexProps {
   readonly children?: React.ReactNode
 }
 
-export const FormLabel = forwardRef<FormLabelProps, FlexProps>(
+export const FormLabel = forwardRef<HTMLDivElement, FormLabelProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <Flex
+        as="label"
         align="center"
         spacing={1}
         ref={ref}

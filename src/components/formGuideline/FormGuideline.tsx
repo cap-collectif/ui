@@ -5,7 +5,11 @@ import { forwardRef } from 'react'
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
 import { Box, BoxProps } from '../box'
 
-export const FormGuideline = forwardRef<{}, BoxProps>(
+export interface FormGuidelineProps extends BoxProps {
+  readonly children?: React.ReactNode
+}
+
+export const FormGuideline = forwardRef<HTMLSpanElement, FormGuidelineProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <Box
@@ -26,4 +30,4 @@ export const FormGuideline = forwardRef<{}, BoxProps>(
 
 FormGuideline.displayName = 'FormGuideline'
 
-export default FormGuideline as React.FC<{}>
+export default FormGuideline as React.FC<FormGuidelineProps>
