@@ -91,4 +91,6 @@ export const InfoMessage: InfoMessageComponent = ({
 InfoMessage.Title = InfoMessageTitle
 InfoMessage.Content = InfoMessageContent
 
+InfoMessage.displayName = 'InfoMessage'
+
 export default InfoMessage
