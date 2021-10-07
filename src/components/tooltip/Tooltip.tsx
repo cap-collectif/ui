@@ -31,7 +31,11 @@ type ContainerAnimate = React.FC<
 const ContainerAnimate = motion(Box) as ContainerAnimate
 
 const Arrow = styled(TooltipArrow)`
-  svg {
+  .stroke {
+    fill: transparent;
+  }
+
+  .fill {
     fill: ${colors.gray['900']};
   }
 `
