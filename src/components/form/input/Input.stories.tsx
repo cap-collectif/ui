@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Box } from '../box/Box'
+import { Box } from '../../box/Box'
+import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
+import { Tooltip } from '../../tooltip'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
-import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
-import { Tooltip } from '../tooltip'
 import Input, { InputProps } from './Input'
 
 type Args = {
@@ -15,6 +15,7 @@ type Args = {
   placeholder: string
   isInvalid: boolean
   isRequired: boolean
+  variantSize: 'md' | 'sm'
 }
 
 const meta: Meta = {
@@ -25,6 +26,12 @@ const meta: Meta = {
     errorMessage: 'Error info.',
     isRequired: true,
     isInvalid: false,
+  },
+  argTypes: {
+    variantSize: {
+      options: ['sm', 'md'],
+      control: { type: 'select' },
+    },
   },
   parameters: {
     controls: { expanded: true },
@@ -53,18 +60,23 @@ WithAnErrorMessage.args = {
 export const WithFixedWidthAndLabel: Story<Args> = ({
   errorMessage,
   placeholder,
+  variantSize,
   ...args
 }) => (
   <FormControl {...args}>
-    <FormLabel htmlFor="name">
-      <>Label</>
+    <FormLabel htmlFor="name" label="Label">
       {!args.isRequired && (
         <Box as="span" color="gray.500">
           facultatif
         </Box>
       )}
     </FormLabel>
-    <Input width="300px" placeholder={placeholder} id="name" />
+    <Input
+      width="300px"
+      placeholder={placeholder}
+      id="name"
+      variantSize={variantSize}
+    />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
@@ -78,7 +90,7 @@ export const WithGuideline: Story<Args> = ({
   placeholder,
   ...args
 }) => (
-  <FormControl {...args} width="300px" mt="100px">
+  <FormControl {...args} width="300px" mt="20px">
     <FormLabel htmlFor="name">
       <>Label</>
       <Tooltip label="Une aide en plus">
