@@ -11,10 +11,10 @@ const styles = {
       '.cap-icon': {
         color: 'blue.500',
       },
-    },
 
-    ':focus': {
-      boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+      ':focus': {
+        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
+      },
     },
   },
   danger: {
@@ -27,10 +27,10 @@ const styles = {
       '.cap-icon': {
         color: 'red.500',
       },
-    },
 
-    ':focus': {
-      boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+      ':focus': {
+        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+      },
     },
   },
 }
