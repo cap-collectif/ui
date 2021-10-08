@@ -24,7 +24,6 @@ export interface UseFormControlProps<T extends HTMLElement>
   id?: string
   onFocus?: FocusEventHandler<T>
   onBlur?: FocusEventHandler<T>
-  onChange?: FocusEventHandler<T>
   disabled?: boolean
   required?: boolean
   variantSize?: 'sm' | 'md'
