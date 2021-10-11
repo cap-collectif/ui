@@ -45,19 +45,8 @@ const styles: SystemStyleObject = {
   '&[aria-invalid="true"]': {
     bg: 'red.150',
     borderColor: 'red.500',
-    '&:focus': {
+    '&:focus,&[aria-selected="true"],&:active': {
       bg: 'white',
-      borderColor: 'red.500',
-    },
-
-    '&[aria-selected="true"]': {
-      bg: 'white',
-      borderColor: 'red.500',
-    },
-
-    '&:active': {
-      bg: 'white',
-      borderColor: 'red.500',
     },
   },
 
