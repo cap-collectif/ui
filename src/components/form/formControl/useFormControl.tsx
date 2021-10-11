@@ -1,5 +1,6 @@
 import { FocusEventHandler } from 'react'
 
+import { CapInputSize } from '../enums'
 import { FormControlContext, useFormControlContext } from './FormControl'
 
 export type FunctionArguments<T extends Function> = T extends (
@@ -26,6 +27,7 @@ export interface UseFormControlProps<T extends HTMLElement>
   onBlur?: FocusEventHandler<T>
   disabled?: boolean
   required?: boolean
+  variantSize?: CapInputSize
   'aria-describedby'?: string
 }
 
@@ -33,7 +35,6 @@ function useFormControlProps<T extends HTMLElement>(
   props: UseFormControlProps<T>,
 ) {
   const field = useFormControlContext()
-
   const {
     id,
     disabled,
@@ -43,11 +44,12 @@ function useFormControlProps<T extends HTMLElement>(
     isDisabled,
     onFocus,
     onBlur,
+    variantSize,
     ...rest
   } = props
-
   return {
     ...rest,
+    variantSize: variantSize || field?.variantSize,
     id: id ?? undefined,
     isDisabled: disabled ?? isDisabled ?? field?.isDisabled,
     isRequired: required ?? isRequired ?? field?.isRequired,
@@ -60,12 +62,16 @@ function useFormControlProps<T extends HTMLElement>(
 export function useFormControl<T extends HTMLElement>(
   props: UseFormControlProps<T>,
 ) {
-  const { isDisabled, isInvalid, isRequired, ...rest } = useFormControlProps(
-    props,
-  )
-
+  const {
+    isDisabled,
+    isInvalid,
+    isRequired,
+    variantSize,
+    ...rest
+  } = useFormControlProps(props)
   return {
     ...rest,
+    variantSize: variantSize || CapInputSize.Sm,
     disabled: isDisabled,
     required: isRequired,
     'aria-invalid': isInvalid || undefined,

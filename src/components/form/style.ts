@@ -1,6 +1,24 @@
 import { SystemStyleObject } from '@styled-system/css'
+import styled from 'styled-components'
+import { variant } from 'styled-system'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
+import { Box } from '../box'
+
+export const InputInner = styled(Box)(
+  variant({
+    variants: {
+      sm: {
+        px: 3,
+        py: 1,
+      },
+      md: {
+        px: 3,
+        py: 2,
+      },
+    },
+  }),
+)
 
 const styles: SystemStyleObject = {
   border: 'normal',
@@ -12,21 +30,15 @@ const styles: SystemStyleObject = {
   color: 'gray.900',
   bg: 'white',
 
+  '&[type=number]': { paddingRight: 24 },
+
   '&::placeholder': {
     color: 'gray.500',
     fontFamily: CapUIFontFamily.Roboto,
     lineHeight: CapUILineHeight.Base,
   },
 
-  '&:focus': {
-    borderColor: 'blue.500',
-  },
-
-  '&[aria-selected="true"]': {
-    borderColor: 'blue.500',
-  },
-
-  '&:active': {
+  '&:hover,&.hover,&:focus,&[aria-selected="true"],&:active': {
     borderColor: 'blue.500',
   },
 

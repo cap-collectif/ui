@@ -2,25 +2,28 @@ import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
 
-import { useBoolean } from '../../hooks/useBoolean'
-import { Flex, FlexProps } from '../layout/Flex'
+import { useBoolean } from '../../../hooks/useBoolean'
+import { Flex, FlexProps } from '../../layout/Flex'
+import { CapInputSize } from '../enums'
 import { createContext } from './FormControl.context'
 
 export interface FormControlProps extends FlexProps {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
+  readonly variantSize?: CapInputSize
 }
 
 export interface FormControlContext {
   isRequired?: boolean
   isDisabled?: boolean
   isInvalid?: boolean
+  variantSize?: CapInputSize
   id?: string
 }
 
 export function useFormControlProvider(props: FormControlContext) {
-  const { isRequired, isInvalid, isDisabled, ...htmlProps } = props
+  const { isRequired, isInvalid, isDisabled, variantSize, ...htmlProps } = props
 
   const [isFocused, setFocus] = useBoolean()
 
@@ -35,6 +38,7 @@ export function useFormControlProvider(props: FormControlContext) {
   )
 
   return {
+    variantSize,
     isRequired: !!isRequired,
     isInvalid: !!isInvalid,
     isDisabled: !!isDisabled,
@@ -66,7 +70,6 @@ export const FormControl = forwardRef<FormControlProps, FlexProps>(
     const { getRootProps, htmlProps: _, ...context } = useFormControlProvider(
       props,
     )
-
     const contextValue = React.useMemo(() => context, [context])
 
     return (

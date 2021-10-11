@@ -2,8 +2,8 @@ import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
 
-import { CapUIFontFamily, CapUILineHeight } from '../../styles'
-import { Box, BoxProps } from '../box'
+import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
+import { Box, BoxProps } from '../../box'
 import { useFormControlContext } from '../formControl'
 
 export interface FormErrorMessageProps extends BoxProps {

@@ -1,13 +1,14 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Box } from '../box/Box'
+import { Box } from '../../box/Box'
+import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
+import { Tooltip } from '../../tooltip'
+import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
-import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
-import { Tooltip } from '../tooltip'
 import Input, { InputProps } from './Input'
 
 type Args = {
@@ -15,6 +16,7 @@ type Args = {
   placeholder: string
   isInvalid: boolean
   isRequired: boolean
+  variantSize: CapInputSize
 }
 
 const meta: Meta = {
@@ -53,18 +55,23 @@ WithAnErrorMessage.args = {
 export const WithFixedWidthAndLabel: Story<Args> = ({
   errorMessage,
   placeholder,
+  variantSize,
   ...args
 }) => (
   <FormControl {...args}>
-    <FormLabel htmlFor="name">
-      <>Label</>
+    <FormLabel htmlFor="name" label="Label">
       {!args.isRequired && (
         <Box as="span" color="gray.500">
           facultatif
         </Box>
       )}
     </FormLabel>
-    <Input width="300px" placeholder={placeholder} id="name" />
+    <Input
+      width="300px"
+      placeholder={placeholder}
+      id="name"
+      variantSize={variantSize}
+    />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
@@ -78,9 +85,8 @@ export const WithGuideline: Story<Args> = ({
   placeholder,
   ...args
 }) => (
-  <FormControl {...args} width="300px" mt="100px">
-    <FormLabel htmlFor="name">
-      <>Label</>
+  <FormControl {...args} width="300px" mt="20px">
+    <FormLabel htmlFor="name" label="Label">
       <Tooltip label="Une aide en plus">
         <Icon
           name={CapUIIcon.CircleInfo}
@@ -102,9 +108,7 @@ export const WithSimpleFormErrorHandling: Story<Args> = ({
   const [isValid, setIsValid] = React.useState(true)
   return (
     <FormControl {...args} isInvalid={!isValid} width="300px">
-      <FormLabel htmlFor="name">
-        <>Validité</>
-      </FormLabel>
+      <FormLabel htmlFor="name" label="Validité" />
       <FormGuideline>Entrez le mot "valide" :</FormGuideline>
       <Input
         placeholder={placeholder}
