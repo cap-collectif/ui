@@ -71,7 +71,7 @@ export function useFormControl<T extends HTMLElement>(
   } = useFormControlProps(props)
   return {
     ...rest,
-    variantSize: variantSize || 'sm',
+    variantSize: variantSize || CapInputSize.Sm,
     disabled: isDisabled,
     required: isRequired,
     'aria-invalid': isInvalid || undefined,
