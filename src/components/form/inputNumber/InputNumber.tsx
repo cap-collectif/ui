@@ -1,28 +1,26 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { Box, BoxProps } from '../../box'
+import { Box, BoxPropsOf } from '../../box'
 import { Button } from '../../button'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
+import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { InputInner } from '../style'
 
-export interface NumberProps extends BoxProps {
+export interface InputNumberProps extends BoxPropsOf<'input'> {
   readonly placeholder?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
-  readonly variantSize?: 'sm' | 'md'
-  readonly min?: number
-  readonly max?: number
-  readonly step?: number
+  readonly variantSize?: CapInputSize
 }
 
-export const Number = ({
+export const InputNumber = ({
   className,
   width,
   onChange,
   ...props
-}: NumberProps) => {
+}: InputNumberProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const inputProps = useFormControl<HTMLInputElement>(props)
   const [isHover, setIsHover] = React.useState(false)
@@ -36,7 +34,7 @@ export const Number = ({
         backgroundColor="unset"
         position="absolute"
         right={3}
-        bottom={variantSize === 'sm' ? 1 : 2}
+        bottom={variantSize === CapInputSize.Sm ? 1 : 2}
         onClick={() => {
           inputRef.current?.focus()
           inputRef.current?.setAttribute(
@@ -62,7 +60,7 @@ export const Number = ({
       <InputInner
         {...inputProps}
         sx={S}
-        variant={variantSize || 'sm'}
+        variant={variantSize}
         disableFocusStyles
         ref={inputRef}
         as="input"
@@ -79,7 +77,7 @@ export const Number = ({
         bg="none"
         position="absolute"
         right={3}
-        top={variantSize === 'sm' ? 1 : 2}
+        top={variantSize === CapInputSize.Sm ? 1 : 2}
         onClick={() => {
           inputRef.current?.focus()
           inputRef.current?.setAttribute(
@@ -105,6 +103,6 @@ export const Number = ({
     </Box>
   )
 }
-Number.displayName = 'Number'
+InputNumber.displayName = 'InputNumber'
 
-export default Number as React.FC<NumberProps>
+export default InputNumber as React.FC<InputNumberProps>

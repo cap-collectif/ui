@@ -2,15 +2,15 @@ import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
 
-import { BoxProps } from '../../box'
+import { BoxPropsOf } from '../../box'
+import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { InputInner } from '../style'
 
-export interface InputProps extends BoxProps {
-  readonly placeholder?: string
+export interface InputProps extends BoxPropsOf<'input'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
-  readonly variantSize?: 'sm' | 'md'
+  readonly variantSize?: CapInputSize
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -20,7 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <InputInner
         {...inputProps}
         sx={S}
-        variant={inputProps.variantSize || 'sm'}
+        variant={inputProps.variantSize}
         disableFocusStyles
         ref={ref}
         as="input"

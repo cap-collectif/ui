@@ -1,5 +1,6 @@
 import { FocusEventHandler } from 'react'
 
+import { CapInputSize } from '../enums'
 import { FormControlContext, useFormControlContext } from './FormControl'
 
 export type FunctionArguments<T extends Function> = T extends (
@@ -26,7 +27,7 @@ export interface UseFormControlProps<T extends HTMLElement>
   onBlur?: FocusEventHandler<T>
   disabled?: boolean
   required?: boolean
-  variantSize?: 'sm' | 'md'
+  variantSize?: CapInputSize
   'aria-describedby'?: string
 }
 

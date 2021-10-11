@@ -8,7 +8,7 @@ import { Text } from '../../typography'
 
 export interface FormLabelProps extends FlexProps {
   readonly htmlFor?: string
-  readonly label?: string
+  readonly label: string
   readonly children?: React.ReactNode
 }
 

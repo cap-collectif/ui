@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 
 import { useBoolean } from '../../../hooks/useBoolean'
 import { Flex, FlexProps } from '../../layout/Flex'
+import { CapInputSize } from '../enums'
 import { createContext } from './FormControl.context'
 
 export interface FormControlProps extends FlexProps {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
-  readonly variantSize?: 'sm' | 'md'
+  readonly variantSize?: CapInputSize
 }
 
 export interface FormControlContext {
   isRequired?: boolean
   isDisabled?: boolean
   isInvalid?: boolean
-  variantSize?: 'sm' | 'md'
+  variantSize?: CapInputSize
   id?: string
 }
 
