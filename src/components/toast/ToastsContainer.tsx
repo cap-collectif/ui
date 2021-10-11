@@ -23,14 +23,12 @@ const common: SystemCssProperties = {
 
 const ToastsContainer = () => {
   const [toasts, setToasts] = useState<ToastProps[]>([])
-  console.log('toast', toasts)
   const visible = toasts.length > 0
   const clearToast = (id: string) => {
     setToasts(v => v.filter(toast => toast.id !== id))
   }
   useEffect(() => {
     Emitter.on(UIEvents.ToastShow, (toast: ToastProps) => {
-      console.log('toast', toast)
       setToasts(n => [...n, toast])
     })
     Emitter.on(UIEvents.ToastClear, () => {
