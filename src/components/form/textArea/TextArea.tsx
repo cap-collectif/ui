@@ -26,7 +26,7 @@ export interface TextAreaProps extends BoxPropsOf<'textarea'> {
     | 'unset'
 }
 
-export const TextArea = forwardRef<HTMLInputElement, TextAreaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ className, maxLength, value, width, resize = 'none', ...props }, ref) => {
     const inputProps = useFormControl<HTMLTextAreaElement>(props)
     return (
