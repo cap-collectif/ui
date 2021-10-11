@@ -38,7 +38,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disableFocusStyles
           ref={ref}
           as="textarea"
-          className={cn('cap-input', className)}
+          className={cn('cap-textarea', className)}
           width="100%"
           rows={3}
           value={value}
