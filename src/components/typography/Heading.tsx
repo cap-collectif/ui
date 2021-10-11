@@ -52,7 +52,7 @@ export const headingStyles: HeadingStyles = {
   },
 }
 
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ children, truncate, className, as = 'h2', ...rest }, ref) => {
     let content = children
     const innerText = jsxInnerText(content)
