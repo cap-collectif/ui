@@ -38,14 +38,14 @@ export const AvatarGroup = ({
   className,
   ...rest
 }: AvatarGroupProps) => {
-  const validChildren = cleanChildren(children)
+  const validChildren = cleanChildren<AvatarProps>(children)
   const computedMax = max ?? validChildren.length
   const count = validChildren.length - computedMax
   const renderAvatarChildren = validChildren
     .slice(0, computedMax)
     .map((c, i) => (
       <Box mr={getMarginForSize(size)} key={i}>
-        {React.cloneElement(c as React.ReactElement<AvatarProps>, {
+        {React.cloneElement(c, {
           size,
           color: 'white',
           borderColor: 'white',

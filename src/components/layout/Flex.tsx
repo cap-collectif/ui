@@ -40,8 +40,8 @@ const getChildren = (children: ReactNode) => {
   }
 
   if (Array.isArray(children)) {
-    return cleanChildren(children).map((c, i) =>
-      cloneElement(c as ReactElement, {
+    return cleanChildren<any>(children).map((c, i) =>
+      cloneElement(c, {
         ...(i === 0 ? { style } : {}),
       }),
     )
