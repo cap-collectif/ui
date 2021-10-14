@@ -53,7 +53,7 @@ const EXLUDED_DOCGEN_PROPS = [
   'size',
 ]
 
-const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
+const ALLOWED_DOCGEN_NODE_MODULES = []
 
 module.exports = {
   babel: async options => ({
