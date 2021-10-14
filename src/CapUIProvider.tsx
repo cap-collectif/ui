@@ -18,8 +18,8 @@ export const CapUIProvider: FC<Props> = ({
 }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Fonts />
       {resetCSS && <CSSReset />}
+      <Fonts />
       <ToastsContainer />
 
       {children}
