@@ -102,7 +102,6 @@ export type ThemeShadowsValues = keyof typeof SHADOWS | (string & {})
 export const RADII = {
   normal: 4,
   button: 4,
-  buttonQuickAction: 50,
   card: 4,
   modal: 5,
   tags: 4,
@@ -117,7 +116,6 @@ export const RADII = {
 export enum CapUIRadius {
   Normal = 'normal',
   Button = 'button',
-  ButtonQuickAction = 'buttonQuickAction',
   Card = 'card',
   Modal = 'modal',
   Tags = 'tags',
