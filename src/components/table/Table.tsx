@@ -40,6 +40,7 @@ export const Table = ({
             width="100%"
             borderRadius="normal"
             overflow="hidden"
+            fontFamily="openSans"
           >
             <ActionBar>{actionBar}</ActionBar>
 
@@ -52,7 +53,7 @@ export const Table = ({
             </Box>
           </Flex>
         ) : (
-          <Box width="100%">
+          <Box width="100%" fontFamily="openSans">
             <Box
               as="table"
               borderTopLeftRadius="normal"

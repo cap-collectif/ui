@@ -79,6 +79,9 @@ const Template: Story<TableProps> = args => (
           <Box as="a" href="https://apple.com">
             Apple
           </Box>
+          <Box as="a" display="block" href="https://apple.com" color="gray.500">
+            Apple pen
+          </Box>
         </Table.Td>
         <Table.Td>Developer</Table.Td>
         <Table.Td>France</Table.Td>

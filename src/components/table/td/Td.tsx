@@ -15,8 +15,6 @@ export interface TdProps extends BoxPropsOf<'td'> {
 
 const styles = {
   a: {
-    color: 'gray.900',
-
     '&:hover': {
       color: 'blue.500',
     },
@@ -43,6 +41,7 @@ export const Td: React.FC<TdProps> = ({
       className={cn('cap-table__td', { 'visible-on-hover': visibleOnHover })}
       sx={styles}
       lineHeight="base"
+      color="gray.900"
       {...props}
     >
       {isEmpty && !visibleOnHover && '-'}
