@@ -78,8 +78,6 @@ const TableProvider = ({
     }
   }, [state.rows, selectable, isLoading])
 
-  console.log('state', state)
-
   return (
     <TableContext.Provider value={context}>{children}</TableContext.Provider>
   )
