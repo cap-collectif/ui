@@ -10,8 +10,11 @@
 - [ ] Subtask 2
 -->
 
-#### :art: Chromatic link
-<!-- Insert the chromatic link linked to this PR -->
+#### :art: Chromatic links
+<!--
+[Chromatic PR]()
+[Storybook](https://<branch>--60ca00d41db7ba003be931d8.chromatic.com) 
+-->
 
 #### :camera_flash: Screenshots
 <!-- Screenshots if appropriate -->
