@@ -10,12 +10,7 @@ export type BaseColorsName =
   | 'blue'
   | 'aqua'
 
-type RootThemeColorsValues =
-  | 'transparent'
-  | 'current'
-  | 'dark'
-  | 'black'
-  | 'white'
+type RootThemeColorsValues = 'transparent' | 'current' | 'black' | 'white'
 
 type BaseColors = {
   [key in BaseColorsName]: {
@@ -31,7 +26,6 @@ export type Colors = BaseColors & RootColors
 const colors: Colors = {
   transparent: 'transparent',
   current: 'currentColor',
-  dark: '#30363D',
 
   black: '#000',
   white: '#fff',
@@ -49,9 +43,10 @@ const colors: Colors = {
     '900': '#272B30',
   },
   'neutral-gray': {
-    '100': '#F8F8F8',
+    '50': '#FAFAFA',
+    '100': '#F7F7F7',
     '150': '#EBEBEB',
-    '200': '#DEDEDE',
+    '200': '#DDDDDD',
     '300': '#C4C4C4',
     '400': '#ABABAB',
     '500': '#919191',
@@ -111,7 +106,7 @@ const colors: Colors = {
   blue: {
     '100': '#FAFCFF',
     '150': '#E0EFFF',
-    '200': '#C2E0FF',
+    '200': '#C2DFFF',
     '300': '#8AC2FF',
     '400': '#52A5FF',
     '500': '#1A88FF',
@@ -165,6 +160,7 @@ type NestedThemeColorsValues =
   | 'gray.700'
   | 'gray.800'
   | 'gray.900'
+  | 'neutral-gray.50'
   | 'neutral-gray.100'
   | 'neutral-gray.150'
   | 'neutral-gray.200'
