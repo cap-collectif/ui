@@ -13,17 +13,6 @@ const listIconSize = Object.values(CapUISpotIconSize).reverse()
 const meta: Meta = {
   title: 'Library/SpotIcon',
   component: SpotIcon,
-  args: {},
-  argTypes: {
-    name: {
-      controls: { disable: true },
-      table: { disable: true },
-    },
-    size: {
-      controls: { disable: true },
-      table: { disable: true },
-    },
-  },
   parameters: {
     controls: { expanded: true },
   },
