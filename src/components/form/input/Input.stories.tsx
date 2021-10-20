@@ -88,11 +88,7 @@ export const WithGuideline: Story<Args> = ({
   <FormControl {...args} width="300px" mt="20px">
     <FormLabel htmlFor="name" label="Label">
       <Tooltip label="Une aide en plus">
-        <Icon
-          name={CapUIIcon.CircleInfo}
-          size={CapUIIconSize.Sm}
-          color="blue.500"
-        />
+        <Icon name={CapUIIcon.Info} size={CapUIIconSize.Sm} color="blue.500" />
       </Tooltip>
     </FormLabel>
     <FormGuideline>Guidelines</FormGuideline>

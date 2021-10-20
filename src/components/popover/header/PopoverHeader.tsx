@@ -46,7 +46,7 @@ const PopoverHeader = ({
           color="gray.500"
           onClick={hide}
         >
-          <Icon name={CapUIIcon.Cross} size={CapUIIconSize.Md} />
+          <Icon name={CapUIIcon.CrossO} size={CapUIIconSize.Md} />
         </Box>
       )}
     </Box>
