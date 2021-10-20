@@ -97,12 +97,12 @@ const Template: Story<TableProps> = args => (
         <Table.Td visibleOnHover>
           <Flex direction="row">
             <ButtonQuickAction
-              variantColor="primary"
+              variantColor="blue"
               icon={CapUIIcon.Pencil}
               label="Edit"
             />
             <ButtonQuickAction
-              variantColor="danger"
+              variantColor="red"
               icon={CapUIIcon.Trash}
               label="Delete"
             />
@@ -130,12 +130,12 @@ const Template: Story<TableProps> = args => (
         <Table.Td visibleOnHover>
           <Flex direction="row">
             <ButtonQuickAction
-              variantColor="primary"
+              variantColor="blue"
               icon={CapUIIcon.Pencil}
               label="Edit"
             />
             <ButtonQuickAction
-              variantColor="danger"
+              variantColor="red"
               icon={CapUIIcon.Trash}
               label="Delete"
             />
@@ -163,12 +163,12 @@ const Template: Story<TableProps> = args => (
         <Table.Td visibleOnHover>
           <Flex direction="row">
             <ButtonQuickAction
-              variantColor="primary"
+              variantColor="blue"
               icon={CapUIIcon.Pencil}
               label="Edit"
             />
             <ButtonQuickAction
-              variantColor="danger"
+              variantColor="red"
               icon={CapUIIcon.Trash}
               label="Delete"
             />
