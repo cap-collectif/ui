@@ -27,6 +27,7 @@ export enum CapUIIcon {
   Newspaper = 'NEWSPAPER',
   Spinner = 'SPINNER',
   Bell = 'BELL',
+  BellO = 'BELL_O',
   ThumbUp = 'THUMB_UP',
   ThumbUpO = 'THUMB_UP_O',
   ThumbDown = 'THUMB_DOWN',
