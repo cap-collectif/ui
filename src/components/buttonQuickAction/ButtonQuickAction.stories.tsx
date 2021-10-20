@@ -15,22 +15,12 @@ const meta: Meta = {
 
 export default meta
 
-export const Primary: Story<ButtonQuickActionProps> = args => (
+export const Default: Story<ButtonQuickActionProps> = args => (
   <ButtonQuickAction {...args} />
 )
 
-Primary.args = {
-  variantColor: 'primary',
+Default.args = {
+  variantColor: 'blue',
   label: 'Edit',
   icon: CapUIIcon.Pencil,
-}
-
-export const Danger: Story<ButtonQuickActionProps> = args => (
-  <ButtonQuickAction {...args} />
-)
-
-Danger.args = {
-  variantColor: 'danger',
-  label: 'Delete',
-  icon: CapUIIcon.Trash,
 }
