@@ -21,6 +21,7 @@ import Text from '../typography/Text'
 
 export interface TooltipProps extends BoxProps {
   children: React.FunctionComponentElement<any>
+  visible?: boolean
   label: React.ReactNode
 }
 
@@ -43,10 +44,11 @@ const Arrow = styled(TooltipArrow)`
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
   label,
+  visible,
   className,
   ...props
 }) => {
-  const tooltip = useTooltipState({ animated: 300, gutter: 4 })
+  const tooltip = useTooltipState({ visible, animated: 300, gutter: 4 })
 
   const showDelayed = () => {
     setTimeout(() => {
