@@ -67,6 +67,7 @@ const styles = (alternative?: boolean) => ({
       textDecoration: 'underline',
       color: 'blue.500',
       fontWeight: CapUIFontWeight.Normal,
+      p: 0,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
@@ -140,6 +141,7 @@ const styles = (alternative?: boolean) => ({
       textDecoration: 'underline',
       color: 'red.500',
       fontWeight: CapUIFontWeight.Normal,
+      p: 0,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.red['300']}`,
@@ -213,6 +215,7 @@ const styles = (alternative?: boolean) => ({
       textDecoration: 'underline',
       color: 'gray.500',
       fontWeight: CapUIFontWeight.Normal,
+      p: 0,
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors.gray['300']}`,

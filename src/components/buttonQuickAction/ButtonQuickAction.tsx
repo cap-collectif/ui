@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import colors from '../../styles/modules/colors'
+import colors, { BaseColorsName } from '../../styles/modules/colors'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, BoxProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize } from '../icon'
@@ -9,11 +9,9 @@ import Icon from '../icon/Icon'
 import { Tooltip, TooltipProps } from '../tooltip'
 import S from './ButtonQuickAction.style'
 
-type VariantColor = 'primary' | 'danger'
-
 export type ButtonQuickActionProps = BoxProps & {
   readonly size?: CapUIIconSize
-  readonly variantColor: VariantColor
+  readonly variantColor: BaseColorsName
   readonly icon: CapUIIcon
   readonly label: TooltipProps['label']
 }
@@ -42,7 +40,7 @@ export const ButtonQuickAction = React.forwardRef<
           bg="transparent"
           ref={ref}
           borderRadius="50px"
-          sx={S[variantColor]}
+          sx={S(variantColor)}
           _focus={{
             boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
           }}

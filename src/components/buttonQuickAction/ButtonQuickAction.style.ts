@@ -1,38 +1,20 @@
-import colors from '../../styles/modules/colors'
+import colors, { BaseColorsName } from '../../styles/modules/colors'
 
-const styles = {
-  primary: {
-    outline: 'none',
-    backgroundColor: 'transparent',
+const styles = (variantColor: BaseColorsName) => ({
+  outline: 'none',
+  backgroundColor: 'transparent',
 
-    ':hover': {
-      backgroundColor: 'blue.150',
+  ':hover': {
+    backgroundColor: colors[variantColor]['150'],
 
-      '.cap-icon': {
-        color: 'blue.500',
-      },
+    '.cap-icon': {
+      color: colors[variantColor]['500'],
+    },
 
-      ':focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-      },
+    ':focus': {
+      boxShadow: `0 0 2px 2px ${colors[variantColor]['300']}`,
     },
   },
-  danger: {
-    outline: 'none',
-    backgroundColor: 'transparent',
-
-    ':hover': {
-      backgroundColor: 'red.150',
-
-      '.cap-icon': {
-        color: 'red.500',
-      },
-
-      ':focus': {
-        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
-      },
-    },
-  },
-}
+})
 
 export default styles
