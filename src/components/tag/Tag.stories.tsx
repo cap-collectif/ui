@@ -31,14 +31,14 @@ export const Default: Story<TagProps> = args => (
 
 export const WithIcon: Story<TagProps> = args => (
   <Tag {...args}>
-    <Tag.LeftIcon name={CapUIIcon.CircleCheck} />
+    <Tag.LeftIcon name={CapUIIcon.Check} />
     <Tag.Label>Bonjour</Tag.Label>
   </Tag>
 )
 
 export const WithCloseButton: Story<TagProps> = args => (
   <Tag {...args}>
-    <Tag.LeftIcon name={CapUIIcon.CircleCheck} />
+    <Tag.LeftIcon name={CapUIIcon.Check} />
     <Tag.Label>Bonjour</Tag.Label>
   </Tag>
 )

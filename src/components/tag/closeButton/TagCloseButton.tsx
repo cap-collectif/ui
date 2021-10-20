@@ -37,7 +37,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
     className={cn('cap-tag__closeButton', className)}
     aria-label="close"
   >
-    <Icon name={CapUIIcon.Cross} color="inherit" size={CapUIIconSize.Xs} />
+    <Icon name={CapUIIcon.CrossO} color="inherit" size={CapUIIconSize.Xs} />
   </IconContainer>
 )
 

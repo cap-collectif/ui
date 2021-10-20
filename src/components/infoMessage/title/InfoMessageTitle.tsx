@@ -23,23 +23,23 @@ type InfoMessageTitleProps = FlexProps & {
 const getIcon = (variant: Variant) => {
   const variantIcon: VariantIcon = {
     info: {
-      name: CapUIIcon.CircleInfo,
+      name: CapUIIcon.Info,
       color: 'blue.500',
     },
     infoGray: {
-      name: CapUIIcon.CircleInfo,
+      name: CapUIIcon.Info,
       color: 'gray.500',
     },
     danger: {
-      name: CapUIIcon.CircleInfo,
+      name: CapUIIcon.Info,
       color: 'red.500',
     },
     success: {
-      name: CapUIIcon.CircleInfo,
+      name: CapUIIcon.Info,
       color: 'green.500',
     },
     warning: {
-      name: CapUIIcon.CircleInfo,
+      name: CapUIIcon.Info,
       color: 'orange.500',
     },
   }

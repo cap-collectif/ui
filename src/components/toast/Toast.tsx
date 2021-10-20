@@ -106,35 +106,20 @@ const getIcon = (
   switch (variant) {
     case 'info':
       return (
-        <Icon
-          name={CapUIIcon.CircleInfo}
-          color="blue.500"
-          {...common}
-          {...props}
-        />
+        <Icon name={CapUIIcon.Info} color="blue.500" {...common} {...props} />
       )
     case 'success':
       return (
-        <Icon
-          name={CapUIIcon.CircleCheck}
-          color="green.500"
-          {...common}
-          {...props}
-        />
+        <Icon name={CapUIIcon.Check} color="green.500" {...common} {...props} />
       )
     case 'danger':
       return (
-        <Icon
-          name={CapUIIcon.CircleCross}
-          color="red.500"
-          {...common}
-          {...props}
-        />
+        <Icon name={CapUIIcon.Cross} color="red.500" {...common} {...props} />
       )
     case 'warning':
       return (
         <Icon
-          name={CapUIIcon.CircleAlert}
+          name={CapUIIcon.Alert}
           color="yellow.500"
           {...common}
           {...props}
@@ -232,7 +217,7 @@ export const Toast: React.FC<ToastProps> = ({
       </Flex>
       {closable && (
         <Icon
-          name={CapUIIcon.Cross}
+          name={CapUIIcon.CrossO}
           position="absolute"
           size={CapUIIconSize.Sm}
           top={0}
