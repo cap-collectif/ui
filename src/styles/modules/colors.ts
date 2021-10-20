@@ -10,12 +10,7 @@ export type BaseColorsName =
   | 'blue'
   | 'aqua'
 
-type RootThemeColorsValues =
-  | 'transparent'
-  | 'current'
-  | 'dark'
-  | 'black'
-  | 'white'
+type RootThemeColorsValues = 'transparent' | 'current' | 'black' | 'white'
 
 type BaseColors = {
   [key in BaseColorsName]: {
@@ -31,7 +26,6 @@ export type Colors = BaseColors & RootColors
 const colors: Colors = {
   transparent: 'transparent',
   current: 'currentColor',
-  dark: '#30363D',
 
   black: '#000',
   white: '#fff',
