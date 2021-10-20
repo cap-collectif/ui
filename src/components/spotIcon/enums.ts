@@ -7,6 +7,7 @@ export enum CapUISpotIcon {
   USER_DISCUSS = 'USER_DISCUSS',
   BULB_SKETCH = 'BULB_SKETCH',
   UPLOAD = 'UPLOAD',
+  PAPER_PLANE = 'PAPER_PLANE',
   PAPER_PLANE_1 = 'PAPER_PLANE_1',
   PAPER_PLANE_2 = 'PAPER_PLANE_2',
   ERROR = 'ERROR',
@@ -20,6 +21,7 @@ export enum CapUISpotIcon {
   CALENDAR = 'CALENDAR',
   PROJECT = 'PROJECT',
   SHEET = 'SHEET',
+  ADD_CONTACT = 'ADD_CONTACT',
 }
 
 export enum CapUISpotIconSize {
