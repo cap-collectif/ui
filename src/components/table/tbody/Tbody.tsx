@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import isEqual from 'lodash/isEqual'
 import * as React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 
@@ -58,8 +57,10 @@ const Tbody: React.FC<TbodyProps> = ({
       const rowIds = cleanRows
         .filter(c => c.props && c.props.rowId)
         .map(c => (c.props ? String(c.props.rowId) : ''))
+      const hasRowsEquals =
+        JSON.stringify(rowIds) == JSON.stringify(Object.keys(rows))
 
-      if (!isEqual(rowIds, Object.keys(rows))) {
+      if (!hasRowsEquals) {
         dispatch({ type: 'INITIALIZE_ROWS', payload: { rowIds, selectedRows } })
       }
     }
