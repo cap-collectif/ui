@@ -6,9 +6,9 @@ import colors from './colors';
 # Colors
 
 <ColorPalette>
-  {Object.entries(colors).map(([colorName, colors]) => typeof colors === "string" ? (
-    <ColorItem title={colorName} subtitle="" colors={[colors]} />
+  {Object.entries(colors).map(([colorName, colors], idx) => typeof colors === "string" ? (
+    <ColorItem title={colorName} subtitle="" colors={[colors]} key={idx} />
   ) : (
-    <ColorItem title={colorName} subtitle="" colors={colors} />
+    <ColorItem title={colorName} subtitle="" colors={colors} key={idx} />
   ))}
 </ColorPalette>
