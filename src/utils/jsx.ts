@@ -30,7 +30,9 @@ export const jsxInnerText = (jsx: ReactNode): string => {
   return ''
 }
 
-export const cleanChildren = (children?: ReactNode) => {
+export const cleanChildren = <T>(children?: ReactNode): ReactElement<T>[] => {
   if (!children) return []
-  return Children.toArray(children).filter(child => isValidElement(child))
+  return Children.toArray(children).filter(child =>
+    isValidElement<T>(child),
+  ) as ReactElement<T>[]
 }
