@@ -15,6 +15,7 @@ To better understand the changelog, here are some legends we use:
 
 `2021-10-21`
 
+- 🆕 Add `Table` component [#89](https://github.com/cap-collectif/ui/pull/89)
 - 🐛 Fix export `Skeleton` [#92](https://github.com/cap-collectif/ui/pull/92)
 - 💄 Fix padding `Button` variant link [#92](https://github.com/cap-collectif/ui/pull/92)
 - 🆕 Add new icons [#91](https://github.com/cap-collectif/ui/pull/91)
