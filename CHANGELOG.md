@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.1.1
+
+`2021-10-22`
+
+🐛 Switch dependencies needed in the project from dev dependencies to dependencies 
+
 ## 0.1.0
 
 `2021-10-21`
