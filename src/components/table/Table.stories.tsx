@@ -63,10 +63,10 @@ const Template: Story<TableProps> = args => (
         <Table.Th>Country</Table.Th>
         <Table.Th isNumeric>Number</Table.Th>
         <Table.Th>
-          <Menu label="Publication">
-            <Menu.Item>Recent</Menu.Item>
-            <Menu.Item>Older</Menu.Item>
-          </Menu>
+          <Table.Menu label="Publication">
+            <Table.Menu.Item>Recent</Table.Menu.Item>
+            <Table.Menu.Item>Older</Table.Menu.Item>
+          </Table.Menu>
         </Table.Th>
         <Table.Th>Description</Table.Th>
         <Table.Th>Gender</Table.Th>
