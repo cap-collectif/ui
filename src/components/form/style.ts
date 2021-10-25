@@ -1,9 +1,14 @@
 import { SystemStyleObject } from '@styled-system/css'
+import type { CSSObjectWithLabel, GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
+import colors from '../../styles/modules/colors'
+import { SPACING } from '../../styles/theme'
+import { FONT_FAMILIES, LINE_HEIGHTS } from '../../styles/theme/typography'
 import { Box } from '../box'
+import { CapInputSize } from './enums'
 
 export const InputInner = styled(Box)(
   variant({
@@ -55,6 +60,110 @@ const styles: SystemStyleObject = {
     borderColor: 'gray.200',
     color: 'gray.500',
   },
+}
+
+export function reactSelectStyle<
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  isInvalid: boolean | undefined,
+  isDisabled: boolean | undefined,
+  variantSize: CapInputSize,
+): StylesConfig<Option, IsMulti, Group> {
+  const disabledStyles = isDisabled
+    ? {
+        background: colors.gray['100'],
+        borderColor: colors.gray['200'],
+        color: colors.gray['500'],
+      }
+    : {}
+  return {
+    control: (
+      base: CSSObjectWithLabel,
+      { isFocused }: { isFocused: boolean },
+    ) => ({
+      ...base,
+      minHeight: 'unset',
+      boxShadow: 'none',
+      background: isInvalid && !isFocused ? colors.red['150'] : 'white',
+      borderColor: isInvalid
+        ? colors.red['500']
+        : isFocused
+        ? colors.blue['500']
+        : colors.gray['300'],
+      '&:hover': {
+        borderColor: isInvalid ? colors.red['500'] : colors.blue['500'],
+      },
+      ...disabledStyles,
+    }),
+    valueContainer: (
+      base: CSSObjectWithLabel,
+      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
+    ) => ({
+      ...base,
+      paddingLeft: SPACING[3],
+      paddingRight: SPACING[3],
+      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
+      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
+      marginTop: isMulti && hasValue ? '-4px' : 0,
+    }),
+    placeholder: (base: CSSObjectWithLabel) => ({
+      ...base,
+      color: colors.gray['500'],
+      fontFamily: FONT_FAMILIES.roboto,
+      lineHeight: LINE_HEIGHTS.base,
+    }),
+    input: (
+      base: CSSObjectWithLabel,
+      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
+    ) => ({
+      ...base,
+      padding: 0,
+      margin: 0,
+      marginTop: isMulti && hasValue ? SPACING[1] : 0,
+    }),
+    option: (base: CSSObjectWithLabel) => ({
+      ...base,
+      color: colors.gray['900'],
+      '&[class*="is-selected"]': { backgroundColor: 'white' },
+      '&:hover,&[class*="is-focused"]': {
+        backgroundColor: colors.gray['100'],
+      },
+      borderBottom: `1px solid ${colors.gray['200']}`,
+      '&:last-child': { borderBottom: 'none' },
+      fontFamily: FONT_FAMILIES.roboto,
+      lineHeight: LINE_HEIGHTS.base,
+    }),
+    singleValue: (base: CSSObjectWithLabel) => ({
+      ...base,
+      color: colors.gray['900'],
+      fontFamily: FONT_FAMILIES.roboto,
+      lineHeight: LINE_HEIGHTS.base,
+    }),
+    indicatorSeparator: (base: CSSObjectWithLabel) => ({
+      ...base,
+      display: 'none',
+    }),
+    clearIndicator: (base: CSSObjectWithLabel) => ({
+      ...base,
+      display: 'none',
+    }),
+    indicatorsContainer: (base: CSSObjectWithLabel) => ({
+      ...base,
+      paddingLeft: SPACING[3],
+      paddingRight: SPACING[3],
+      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
+      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
+      color: colors.gray['700'],
+    }),
+    dropdownIndicator: (base: CSSObjectWithLabel) => ({
+      ...base,
+      padding: 0,
+      margin: 0,
+      color: colors.gray[isDisabled ? '500' : '700'],
+    }),
+  }
 }
 
 export default styles

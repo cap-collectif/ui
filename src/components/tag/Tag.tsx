@@ -34,7 +34,9 @@ export interface TagProps
     Pick<HoverHandlers, 'whileHover'> {
   readonly variantColor: BaseColorsName
   readonly variantType?: VariantType
-  readonly onRemove?: () => void
+  readonly onRemove?:
+    | React.MouseEventHandler<HTMLElement | SVGElement>
+    | undefined
 }
 
 const TagInner = styled(motion(Box)).attrs({
