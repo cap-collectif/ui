@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 import colors from './colors'
 
-export const pxToRem = (px: number) => `${(1 / 16) * px}rem`
+export const pxToRem = (px: number) => `${(1 / 14) * px}rem`
 
 export const linearGradient = (
   direction: 'vertical' | 'horizontal',
