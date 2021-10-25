@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef, useCallback } from 'react'
 import { MenuItem as ReakitMenuItem } from 'reakit/Menu'
@@ -67,6 +68,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         borderColor="gray.200"
         {...menu}
         {...props}
+        className={cn('cap-menu__item', props.className)}
         sx={{
           ...props.sx,
           '&:last-child': {

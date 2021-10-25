@@ -23,7 +23,7 @@ export const VisuallyHidden = ({
     overflow="hidden"
     position="absolute"
     style={{ clip: 'rect(0px, 0px, 0px, 0px)', whiteSpace: 'nowrap' }}
-    className={cn('cap-visually-hidden', className)}
+    className={cn('cap-visuallyHidden', className)}
     {...props}
   >
     {children}
