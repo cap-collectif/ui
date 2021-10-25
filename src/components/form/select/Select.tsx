@@ -50,6 +50,7 @@ export function Select<
 
   return (
     <Box width={width || '100%'}>
+      {/* @ts-ignore:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/49673 */}
       <ReactSelect
         styles={reactSelectStyle(
           inputProps['aria-invalid'],

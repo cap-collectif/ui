@@ -1,36 +1,47 @@
 import cn from 'classnames'
 import * as React from 'react'
 import type { GroupBase } from 'react-select'
-import Select from 'react-select/creatable'
+import type { AsyncProps } from 'react-select/async'
+import AsyncCreatable from 'react-select/async-creatable'
 
 import { Box } from '../../box'
+import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
-import { SelectProps } from './'
 import { MultiValue } from './Select'
 
-export interface CreatableSelectProps extends SelectProps {
-  readonly formatCreateLabel?: (userInput: string) => React.ReactNode
-}
-
-export function CreatableSelect<
+export interface AsyncCreatableSelectProps<
   Option,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
->({ className, width, ...props }: CreatableSelectProps) {
+> extends AsyncProps<Option, IsMulti, Group> {
+  readonly isDisabled?: boolean
+  readonly variantSize?: CapInputSize
+  readonly width?: string | number
+  readonly formatCreateLabel?: (userInput: string) => React.ReactNode
+}
+
+export function AsyncCreatableSelect<
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
+  className,
+  width,
+  ...props
+}: AsyncCreatableSelectProps<Option, IsMulti, Group>) {
   const inputProps = useFormControl<HTMLInputElement>(props)
 
   return (
     <Box width={width || '100%'}>
-      {/* @ts-ignore:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/49673 */}
-      <Select
+      <AsyncCreatable<Option, IsMulti, Group>
         styles={reactSelectStyle(
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize,
         )}
-        className={cn('cap-creatable-select', className)}
-        classNamePrefix="cap-creatable-select"
+        className={cn('cap-select', className)}
+        classNamePrefix="cap-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue }}
@@ -40,6 +51,6 @@ export function CreatableSelect<
   )
 }
 
-CreatableSelect.displayName = 'CreatableSelect'
+AsyncCreatableSelect.displayName = 'AsyncCreatableSelect'
 
-export default CreatableSelect as React.FC<CreatableSelectProps>
+export default AsyncCreatableSelect

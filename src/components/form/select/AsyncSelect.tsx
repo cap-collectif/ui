@@ -48,4 +48,4 @@ export function AsyncSelect<
 
 AsyncSelect.displayName = 'AsyncSelect'
 
-export default AsyncSelect as React.FC<AsyncSelectProps<any>>
+export default AsyncSelect

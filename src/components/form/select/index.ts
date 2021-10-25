@@ -1,4 +1,5 @@
 export { Select } from './Select'
 export { CreatableSelect } from './CreatableSelect'
 export { AsyncSelect } from './AsyncSelect'
+export { AsyncCreatableSelect } from './AsyncCreatableSelect'
 export type { SelectProps } from './Select'

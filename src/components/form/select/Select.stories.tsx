@@ -8,6 +8,7 @@ import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormLabel from '../formLabel/FormLabel'
+import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
 import Select from './Select'
@@ -155,6 +156,25 @@ export const Async: Story<Args> = ({ errorMessage, placeholder, ...args }) => (
       defaultOptions
       cacheOptions
       inputId="color"
+    />
+    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+  </FormControl>
+)
+
+export const AsyncCreatable: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  ...args
+}) => (
+  <FormControl {...args} width="300px">
+    <FormLabel label="Async et creatable :" />
+    <AsyncCreatableSelect
+      placeholder={placeholder}
+      loadOptions={promiseOptions}
+      defaultOptions
+      cacheOptions
+      inputId="color"
+      formatCreateLabel={formatCreateLabel}
     />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
