@@ -6,6 +6,7 @@ import { Button } from '../button'
 import { ButtonQuickAction } from '../buttonQuickAction'
 import { CapUIIcon } from '../icon'
 import { Flex } from '../layout'
+import { Link } from '../link'
 import { Text } from '../typography'
 import { headingStyles } from '../typography/Heading'
 import { Table, TableProps } from './Table'
@@ -76,12 +77,14 @@ const Template: Story<TableProps> = args => (
     <Table.Tbody>
       <Table.Tr rowId="123" checkboxLabel="Apple">
         <Table.Td>
-          <Box as="a" href="https://apple.com">
-            Apple
-          </Box>
-          <Box as="a" display="block" href="https://apple.com" color="gray.500">
+          <Link href="https://apple.com" truncate={20}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+            aspernatur commodi dolores, illum laborum modi porro provident quasi
+            quo sequi temporibus voluptate voluptates. A ea excepturi hic ipsa.
+          </Link>
+          <Link display="block" href="https://apple.com" color="gray.500">
             Apple pen
-          </Box>
+          </Link>
         </Table.Td>
         <Table.Td>Developer</Table.Td>
         <Table.Td>France</Table.Td>
