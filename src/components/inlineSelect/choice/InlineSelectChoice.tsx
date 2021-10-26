@@ -2,7 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 
-import { CapUILineHeight } from '../../../styles'
+import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box, BoxProps } from '../../box/Box'
 import { Tag } from '../../tag'
 import { useInlineSelect } from '../InlineSelect.context'
@@ -48,7 +48,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           px={2}
           py={1}
           borderRadius="normal"
-          fontFamily="roboto"
+          fontFamily={CapUIFontFamily.Input}
           fontSize={2}
           lineHeight={CapUILineHeight.Sm}
           _hover={{ bg: 'blue.150' }}
