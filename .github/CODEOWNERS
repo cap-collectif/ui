@@ -2,44 +2,13 @@
 # Each line is a file pattern followed by one or more owners.
 # https://help.github.com/articles/about-codeowners/
 
-# Owners for infrastructure, deps and CI.
-infrastructure/ @cap-collectif/infrastructure
-*git*/* @cap-collectif/infrastructure
-.dockerignore @cap-collectif/infrastructure
-.circleci/ @cap-collectif/infrastructure
-package.json @cap-collectif/infrastructure
-
-# Owners for API design.
-*.graphql @cap-collectif/api
-*.types.yml @cap-collectif/api
-
-# Owners for testing.
-*.feature @cap-collectif/testing
-behat.yml @cap-collectif/testing
-.blackfire.yml @cap-collectif/testing
-spec/* @cap-collectif/testing
-src/Capco/AppBundle/Behat/* @cap-collectif/testing
-*.snap @cap-collectif/testing
-features/* @cap-collectif/testing
-
-# Owners for backend.
-*.php @cap-collectif/backend
-*.yml @cap-collectif/backend
-
-# Owners for frontend.
-*.js @cap-collectif/frontend
-*.twig @cap-collectif/frontend
-
-# Owners for Webpack configuration.
-webpack/ @mrpandat
-
-# Owners for UI and styleguide.
-*.scss @cap-collectif/ui
-frontend/js/stories/ @cap-collectif/ui
+# Owners for UI.
+*.tsx @cap-collectif/ui
+*.ts @cap-collectif/ui
+*.mdx @cap-collectif/ui
+*.js @cap-collectif/ui
 
 # Don't set any reviewers for these,
 # configure by package through Dependabot
 **/package.json
 **/yarn.lock
-composer.lock
-composer.json
