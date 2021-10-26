@@ -81,4 +81,6 @@ Table.Th = Th
 Table.Menu = Menu
 Table.Td = Td
 
+Table.displayName = 'Table'
+
 export default Table
