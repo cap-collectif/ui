@@ -63,7 +63,7 @@ const TagInner = styled(motion(Box)).attrs({
         fontSize: 1,
         py: 2,
         fontWeight: 600,
-        fontFamily: 'openSans',
+        fontFamily: CapUIFontFamily.Body,
         textTransform: 'uppercase',
       },
     },
