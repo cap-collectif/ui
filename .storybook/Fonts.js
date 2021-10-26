@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
-import OpenSansBold from './assets/fonts/OpenSans-Bold.ttf'
-import OpenSansRegular from './assets/fonts/OpenSans-Regular.ttf'
-import OpenSansSemiBold from './assets/fonts/OpenSans-SemiBold.ttf'
-import RobotoBold from './assets/fonts/Roboto-Bold.ttf'
-import RobotoMedium from './assets/fonts/Roboto-Medium.ttf'
-import RobotoRegular from './assets/fonts/Roboto-Regular.ttf'
+import OpenSansBold from '../src/assets/fonts/OpenSans-Bold.ttf'
+import OpenSansRegular from '../src/assets/fonts/OpenSans-Regular.ttf'
+import OpenSansSemiBold from '../src/assets/fonts/OpenSans-SemiBold.ttf'
+import RobotoBold from '../src/assets/fonts/Roboto-Bold.ttf'
+import RobotoMedium from '../src/assets/fonts/Roboto-Medium.ttf'
+import RobotoRegular from '../src/assets/fonts/Roboto-Regular.ttf'
 
 const Fonts = createGlobalStyle`
   @font-face {
