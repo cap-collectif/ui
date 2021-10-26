@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
 
@@ -10,7 +11,7 @@ export type TextProps = BoxOwnProps & {
 }
 
 export const Text = forwardRef<HTMLElement, TextProps>(
-  ({ children, truncate, ...props }, ref) => {
+  ({ children, className, truncate, ...props }, ref) => {
     let content = children
     const innerText = jsxInnerText(content)
     if (truncate && innerText.length > truncate) {
@@ -22,6 +23,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
         fontFamily={CapUIFontFamily.Body}
         lineHeight={CapUILineHeight.Base}
         as="p"
+        className={cn('cap-text', className)}
         {...(truncate ? { title: innerText } : {})}
         {...props}
       >
