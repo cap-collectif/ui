@@ -40,8 +40,8 @@ export function AsyncCreatableSelect<
           inputProps.disabled,
           inputProps.variantSize,
         )}
-        className={cn('cap-select', className)}
-        classNamePrefix="cap-select"
+        className={cn('cap-async-creatable-select', className)}
+        classNamePrefix="cap-async-creatable-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue }}

@@ -35,8 +35,8 @@ export function AsyncSelect<
           inputProps.disabled,
           inputProps.variantSize,
         )}
-        className={cn('cap-select', className)}
-        classNamePrefix="cap-select"
+        className={cn('cap-async-select', className)}
+        classNamePrefix="cap-async-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue }}
