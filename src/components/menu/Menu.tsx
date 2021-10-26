@@ -72,4 +72,6 @@ Menu.Item = MenuItem
 Menu.OptionGroup = MenuOptionGroup
 Menu.OptionItem = MenuOptionItem
 
+Menu.displayName = 'Menu'
+
 export default Menu

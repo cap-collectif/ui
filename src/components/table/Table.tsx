@@ -4,6 +4,7 @@ import { Box, BoxPropsOf } from '../box'
 import { Flex } from '../layout/Flex'
 import { TableProvider, TableContext } from './Table.context'
 import ActionBar from './actionBar/ActionBar'
+import Menu from './menu/Menu'
 import Tbody from './tbody/Tbody'
 import Td from './td/Td'
 import Th from './th/Th'
@@ -77,6 +78,9 @@ Table.Thead = Thead
 Table.Tbody = Tbody
 Table.Tr = Tr
 Table.Th = Th
+Table.Menu = Menu
 Table.Td = Td
+
+Table.displayName = 'Table'
 
 export default Table

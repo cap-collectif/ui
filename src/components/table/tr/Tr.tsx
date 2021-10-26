@@ -39,6 +39,8 @@ export const Tr = React.forwardRef<HTMLTableRowElement, TrProps>(
         id={rowId}
         sx={styles(isLoading, verticalAlign)}
         className={cn('cap-table__tr', className)}
+        borderBottom={inHead ? 'none' : 'normal'}
+        borderColor="gray.150"
         ref={ref}
         {...rest}
       >

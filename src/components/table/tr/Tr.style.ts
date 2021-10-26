@@ -1,6 +1,10 @@
 export type VerticalAlign = 'top' | 'middle' | 'bottom'
 
 export const styles = (isLoading: boolean, verticalAlign: VerticalAlign) => ({
+  '&:last-child': {
+    border: 'none',
+  },
+
   ':hover': isLoading
     ? {}
     : {
