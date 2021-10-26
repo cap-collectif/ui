@@ -7,7 +7,7 @@ import { Box } from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon, IconProps } from '../../icon'
 
 export type TagCloseButtonProps = Omit<IconProps, 'name' | 'color' | 'size'> & {
-  onClick: () => void
+  onClick: React.MouseEventHandler<HTMLDivElement> | undefined
 }
 
 const IconContainer = motion(Box)
