@@ -1,0 +1,14 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# https://help.github.com/articles/about-codeowners/
+
+# Owners for UI.
+*.tsx @cap-collectif/ui
+*.ts @cap-collectif/ui
+*.mdx @cap-collectif/ui
+*.js @cap-collectif/ui
+
+# Don't set any reviewers for these,
+# configure by package through Dependabot
+**/package.json
+**/yarn.lock
