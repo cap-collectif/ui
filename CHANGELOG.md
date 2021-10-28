@@ -11,11 +11,32 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.2.0
+
+`2021-10-28`
+
+- 🆕 Remove fonts from build project [#101](https://github.com/cap-collectif/ui/pull/101)
+- 💄 Fix border on `Table` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 🆕 Add export of heading styles [#102](https://github.com/cap-collectif/ui/pull/102)
+- 🐛 Add subcomponent `Menu` on `Table` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 💄 Fix className on `VisuallyHidden` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 💄 Add className on `Text` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 💄 Add className on `MenuItem` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 🐛 Fix displayName of `Table` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 🐛 Fix displayName of `Menu` [#102](https://github.com/cap-collectif/ui/pull/102)
+- 🆕 Add basic `Link` component [#100](https://github.com/cap-collectif/ui/pull/100)
+- 🆕 Add `AsyncCreatableSelect` component [#98](https://github.com/cap-collectif/ui/pull/98)
+- 🆕 Add `AsyncSelect` component [#98](https://github.com/cap-collectif/ui/pull/98)
+- 🆕 Add `CreatableSelect` component [#98](https://github.com/cap-collectif/ui/pull/98)
+- 🆕 Add `Select` component [#98](https://github.com/cap-collectif/ui/pull/98)
+- 🆕 Update base px from 16 to 14 [#97](https://github.com/cap-collectif/ui/pull/97)
+- 🆕 Update storybook dependencies [#96](https://github.com/cap-collectif/ui/pull/96)
+
 ## 0.1.1
 
 `2021-10-22`
 
-🐛 Switch dependencies needed in the project from dev dependencies to dependencies 
+🐛 Switch dependencies needed in the project from dev dependencies to dependencies [#94](https://github.com/cap-collectif/ui/pull/94)
 
 ## 0.1.0
 
