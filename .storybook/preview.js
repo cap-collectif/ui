@@ -1,5 +1,6 @@
 import { CapUIProvider } from '../src'
 import Fonts from './Fonts'
+import GlobalCSS from './GlobalCSS'
 
 export const parameters = {
   // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
@@ -15,6 +16,7 @@ export const parameters = {
 export const decorators = [
   Story => (
     <CapUIProvider>
+      <GlobalCSS />
       <Fonts />
       <Story />
     </CapUIProvider>
