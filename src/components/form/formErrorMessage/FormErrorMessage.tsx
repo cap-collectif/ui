@@ -20,7 +20,7 @@ export const FormErrorMessage = forwardRef<HTMLElement, FormErrorMessageProps>(
       <Box
         ref={ref}
         color="red.500"
-        fontFamily={CapUIFontFamily.OpenSans}
+        fontFamily={CapUIFontFamily.Body}
         lineHeight={CapUILineHeight.S}
         fontSize={3}
         className={cn('cap-form-error-message', className)}

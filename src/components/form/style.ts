@@ -1,4 +1,4 @@
-import { SystemStyleObject } from '@styled-system/css'
+import type { SystemStyleObject } from '@styled-system/css'
 import type { CSSObjectWithLabel, GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -30,7 +30,7 @@ const styles: SystemStyleObject = {
   borderRadius: 'normal',
   borderColor: 'gray.300',
 
-  fontFamily: CapUIFontFamily.Roboto,
+  fontFamily: CapUIFontFamily.Input,
   lineHeight: CapUILineHeight.Base,
   color: 'gray.900',
   bg: 'white',
@@ -39,7 +39,7 @@ const styles: SystemStyleObject = {
 
   '&::placeholder': {
     color: 'gray.500',
-    fontFamily: CapUIFontFamily.Roboto,
+    fontFamily: CapUIFontFamily.Input,
     lineHeight: CapUILineHeight.Base,
   },
 
@@ -111,7 +111,7 @@ export function reactSelectStyle<
     placeholder: (base: CSSObjectWithLabel) => ({
       ...base,
       color: colors.gray['500'],
-      fontFamily: FONT_FAMILIES.roboto,
+      fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
     }),
     input: (
@@ -132,13 +132,13 @@ export function reactSelectStyle<
       },
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
-      fontFamily: FONT_FAMILIES.roboto,
+      fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
     }),
     singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       color: colors.gray['900'],
-      fontFamily: FONT_FAMILIES.roboto,
+      fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
     }),
     indicatorSeparator: (base: CSSObjectWithLabel) => ({

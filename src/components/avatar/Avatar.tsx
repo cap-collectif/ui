@@ -3,6 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
+import { CapUIFontFamily } from '../../styles'
 import { Box, BoxProps } from '../box'
 import { Flex } from '../layout'
 
@@ -69,7 +70,7 @@ export const avatarStyles = {
   overflow: 'hidden',
   align: 'center',
   justify: 'center',
-  fontFamily: 'openSans',
+  fontFamily: CapUIFontFamily.Body,
   fontWeight: 600,
 }
 

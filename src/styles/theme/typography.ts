@@ -77,22 +77,16 @@ export type ThemeFontWeightsValues =
   | (number & {})
 
 export const FONT_FAMILIES = {
-  roboto: `Roboto, system-ui, sans-serif`,
-  openSans: `Open Sans, system-ui, sans-serif`,
   heading: `Open Sans, system-ui, sans-serif`,
   label: `Open Sans, system-ui, sans-serif`,
   body: `Open Sans, system-ui, sans-serif`,
-  content: `Open Sans, system-ui, sans-serif`,
   input: `Roboto, system-ui, sans-serif`,
 } as const
 
 export enum CapUIFontFamily {
-  Roboto = 'roboto',
-  OpenSans = 'openSans',
   Heading = 'heading',
   Label = 'label',
   Body = 'body',
-  Content = 'content',
   Input = 'input',
 }
 

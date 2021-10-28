@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { CapUIFontFamily } from '../../styles'
 import { Box, BoxPropsOf } from '../box'
 import { Flex } from '../layout/Flex'
 import { TableProvider, TableContext } from './Table.context'
@@ -41,7 +42,7 @@ export const Table = ({
             width="100%"
             borderRadius="normal"
             overflow="hidden"
-            fontFamily="openSans"
+            fontFamily={CapUIFontFamily.Body}
           >
             <ActionBar>{actionBar}</ActionBar>
 
@@ -54,7 +55,7 @@ export const Table = ({
             </Box>
           </Flex>
         ) : (
-          <Box width="100%" fontFamily="openSans">
+          <Box width="100%" fontFamily={CapUIFontFamily.Body}>
             <Box
               as="table"
               borderTopLeftRadius="normal"

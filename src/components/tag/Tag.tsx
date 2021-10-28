@@ -9,6 +9,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
+import { CapUIFontFamily } from '../../styles'
 import { BaseColorsName } from '../../styles/modules/colors'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
@@ -54,7 +55,7 @@ const TagInner = styled(motion(Box)).attrs({
         fontSize: 2,
         py: 1,
         fontWeight: 400,
-        fontFamily: 'roboto',
+        fontFamily: CapUIFontFamily.Input,
         maxWidth: '150px',
       },
       badge: {
@@ -62,7 +63,7 @@ const TagInner = styled(motion(Box)).attrs({
         fontSize: 1,
         py: 2,
         fontWeight: 600,
-        fontFamily: 'openSans',
+        fontFamily: CapUIFontFamily.Body,
         textTransform: 'uppercase',
       },
     },
