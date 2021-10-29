@@ -7,55 +7,51 @@ import 'react-dates/lib/css/_datepicker.css'
 
 import { CapUIRadius } from '../../../styles'
 import { BoxPropsOf } from '../../box'
-import { Box } from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
+import { Flex } from '../../layout/Flex'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
+import { NavNext, NavPrev } from './Nav'
 import styles, { StyledWrapper } from './dateRange.style'
+
+type DateRangeValue = {
+  readonly startDate: Moment | null
+  readonly endDate: Moment | null
+}
 
 export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
-  readonly value: {
-    startDate: Moment | null
-    endDate: Moment | null
-  }
-  onChange(value: { startDate: Moment | null; endDate: Moment | null }): void
+  readonly value: DateRangeValue
+  readonly onChange: (value: DateRangeValue) => void
   readonly startDatePlaceholderText?: string
   readonly endDatePlaceholderText?: string
+  readonly startDateId: string
+  readonly endDateId: string
+  readonly className: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
+  readonly displayFormat?: string | (() => string) | undefined
 }
-
-type Props = DateRangeProps
 
 const CustomDayContent = (day: moment.Moment): React.ReactNode => {
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      borderRadius={CapUIRadius.Poppin}
-    >
-      <Box
-        as="span"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        borderRadius={CapUIRadius.Poppin}
-      >
-        {day.format('D')}
-      </Box>
-    </Box>
+    <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
+      {day.format('D')}
+    </Flex>
   )
 }
-const DateRange: FunctionComponent<Props> = ({
+const DateRange: FunctionComponent<DateRangeProps> = ({
   startDatePlaceholderText = 'jj/mm/aaaa',
   endDatePlaceholderText = 'jj/mm/aaaa',
   value,
   onChange,
+  startDateId,
+  endDateId,
+  displayFormat,
+  className = 'cap-dateRange',
   ...props
 }) => {
   const [
@@ -75,51 +71,24 @@ const DateRange: FunctionComponent<Props> = ({
         startDatePlaceholderText={startDatePlaceholderText}
         endDatePlaceholderText={endDatePlaceholderText}
         startDate={value.startDate}
-        startDateId="your_unique_start_date_id"
+        startDateId={startDateId}
         endDate={value.endDate}
-        endDateId="your_unique_end_date_id"
+        endDateId={endDateId}
         onDatesChange={({ startDate, endDate }) => {
-          onChange({ startDate: startDate, endDate: endDate })
+          onChange({ startDate, endDate })
         }}
         focusedInput={focusedInput}
         onFocusChange={focusedInput => setFocusedInput(focusedInput)}
         inputIconPosition="after"
-        displayFormat={() => 'DD/MM/YYYY'}
+        displayFormat={displayFormat}
         hideKeyboardShortcutsPanel
         renderDayContents={CustomDayContent}
         verticalSpacing={8}
         horizontalMargin={0}
         daySize={32}
         keepOpenOnDateSelect
-        navPrev={
-          <div
-            role="button"
-            tabIndex={0}
-            className="DayPickerNavigation_button__horizontalDefault DayPickerNavigation_leftButton__horizontalDefault"
-            aria-label="Move backward to switch to the previous month."
-          >
-            <Icon
-              className="DayPickerNavigation_button"
-              color="gray.700"
-              name={CapUIIcon.ArrowLeftO}
-              size={CapUIIconSize.Sm}
-            />
-          </div>
-        }
-        navNext={
-          <div
-            role="button"
-            tabIndex={0}
-            className=" DayPickerNavigation_button__horizontalDefault DayPickerNavigation_rightButton__horizontalDefault"
-            aria-label="Move forward to switch to the next month."
-          >
-            <Icon
-              color="gray.700"
-              name={CapUIIcon.ArrowRightO}
-              size={CapUIIconSize.Sm}
-            />
-          </div>
-        }
+        navPrev={<NavPrev />}
+        navNext={<NavNext />}
         customInputIcon={
           <Icon
             color="gray.700"

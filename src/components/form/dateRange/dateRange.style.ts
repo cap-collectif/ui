@@ -44,7 +44,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       borderRadius: 'normal',
       borderColor: isInvalid ? 'red.500' : 'gray.300',
 
-      fontFamily: CapUIFontFamily.Roboto,
+      fontFamily: CapUIFontFamily.Input,
       lineHeight: CapUILineHeight.Base,
       bg: 'white',
       '&:hover,&.hover': {
@@ -79,20 +79,19 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       background: 'transparent',
     },
     '.DateInput_input': {
-      fontWeight: 'normal',
+      fontWeight: CapUIFontWeight.Normal,
       fontSize: '3',
-      fontFamily: CapUIFontFamily.Roboto,
+      fontFamily: CapUIFontFamily.Input,
       lineHeight: CapUILineHeight.Base,
       color: 'gray.900',
       bg: 'transparent',
       borderBottom: 'none',
-      px: 0,
-      py: 0,
+      p: 0,
       width: '90px',
 
       '&::placeholder': {
         color: 'gray.500',
-        fontFamily: CapUIFontFamily.Roboto,
+        fontFamily: CapUIFontFamily.Input,
         lineHeight: CapUILineHeight.Base,
       },
       '&:disabled': {
@@ -107,17 +106,13 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       '& div': {
         width: '100%',
         height: '100%',
-        '& span': {
-          width: '100%',
-          height: '100%',
-        },
       },
     },
 
     '.CalendarDay__default': {
       fontWeight: 'normal',
       fontSize: '3',
-      fontFamily: CapUIFontFamily.Roboto,
+      fontFamily: CapUIFontFamily.Input,
       lineHeight: CapUILineHeight.Base,
       color: 'gray.900',
       border: 'none',
@@ -176,7 +171,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
     '.DateRangePickerInput_calendarIcon': {
       m: 0,
       py: 2,
-      px: 3,
+      pr: 3,
       pl: 1,
     },
     '.DayPickerNavigation_button__default': {
@@ -204,7 +199,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       color: 'gray.500',
     },
     '.CalendarDay__hovered_span': {
-      '&;hover': {
+      '&:hover': {
         bg: 'blue.150',
       },
       bg: 'blue.150',
