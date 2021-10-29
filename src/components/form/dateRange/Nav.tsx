@@ -4,7 +4,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 
 export const NavPrev: FunctionComponent = () => {
   return (
-    <div
+    <button
       role="button"
       tabIndex={0}
       className="DayPickerNavigation_button__horizontalDefault DayPickerNavigation_leftButton__horizontalDefault"
@@ -16,13 +16,13 @@ export const NavPrev: FunctionComponent = () => {
         name={CapUIIcon.ArrowLeftO}
         size={CapUIIconSize.Sm}
       />
-    </div>
+    </button>
   )
 }
 
 export const NavNext: FunctionComponent = () => {
   return (
-    <div
+    <button
       role="button"
       tabIndex={0}
       className=" DayPickerNavigation_button__horizontalDefault DayPickerNavigation_rightButton__horizontalDefault"
@@ -33,6 +33,6 @@ export const NavNext: FunctionComponent = () => {
         name={CapUIIcon.ArrowRightO}
         size={CapUIIconSize.Sm}
       />
-    </div>
+    </button>
   )
 }

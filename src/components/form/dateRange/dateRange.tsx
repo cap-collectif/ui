@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
 import moment from 'moment/moment'
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { DateRangePicker, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
@@ -14,15 +14,15 @@ import { useFormControl } from '../formControl'
 import { NavNext, NavPrev } from './Nav'
 import styles, { StyledWrapper } from './dateRange.style'
 
-type DateRangeValue = {
+export type DateRangeValueType = {
   readonly startDate: Moment | null
   readonly endDate: Moment | null
 }
 
 export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
-  readonly value: DateRangeValue
-  readonly onChange: (value: DateRangeValue) => void
+  readonly value: DateRangeValueType
+  readonly onChange: (value: DateRangeValueType) => void
   readonly startDatePlaceholderText?: string
   readonly endDatePlaceholderText?: string
   readonly startDateId: string
@@ -33,7 +33,7 @@ export interface DateRangeProps
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
-  readonly displayFormat?: string | (() => string) | undefined
+  readonly displayFormat: string | (() => string) | undefined
 }
 
 const CustomDayContent = (day: moment.Moment): React.ReactNode => {
@@ -43,7 +43,7 @@ const CustomDayContent = (day: moment.Moment): React.ReactNode => {
     </Flex>
   )
 }
-const DateRange: FunctionComponent<DateRangeProps> = ({
+const DateRange: FC<DateRangeProps> = ({
   startDatePlaceholderText = 'jj/mm/aaaa',
   endDatePlaceholderText = 'jj/mm/aaaa',
   value,
@@ -62,6 +62,7 @@ const DateRange: FunctionComponent<DateRangeProps> = ({
   const inputProps = useFormControl<HTMLInputElement>(props)
   return (
     <StyledWrapper
+      className={className}
       sx={styles(inputProps['aria-invalid'])}
       variant={inputProps.variantSize}
       {...inputProps}

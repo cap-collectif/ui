@@ -132,7 +132,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
         bg: 'blue.500',
         color: 'blue.100',
         borderRadius: CapUIRadius.Poppin,
-        borderWidth: '0px !important',
+        border: 0,
       },
     },
     '.CalendarDay__selected_start': {

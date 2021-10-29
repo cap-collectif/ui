@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react'
-import { Moment } from 'moment'
 import moment from 'moment/moment'
 import * as React from 'react'
 
@@ -12,6 +11,7 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './dateRange'
+import type { DateRangeValueType } from './dateRange'
 
 const meta: Meta = {
   title: 'Library/Form/DateRange',
@@ -43,10 +43,10 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<DateRangeProps> = args => {
-  const [value, onChange] = React.useState<{
-    startDate: Moment | null
-    endDate: Moment | null
-  }>({ startDate: null, endDate: null })
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: null,
+    endDate: null,
+  })
   return (
     <DateRange
       className={args.className}
@@ -59,6 +59,28 @@ export const Default: Story<DateRangeProps> = args => {
       }
     />
   )
+}
+export const Disabled: Story<DateRangeProps> = args => {
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: null,
+    endDate: null,
+  })
+  return (
+    <DateRange
+      isDisabled={args.isDisabled}
+      className={args.className}
+      startDateId={args.startDateId}
+      endDateId={args.endDateId}
+      displayFormat={args.displayFormat}
+      value={value}
+      onChange={elem =>
+        onChange({ startDate: elem.startDate, endDate: elem.endDate })
+      }
+    />
+  )
+}
+Disabled.args = {
+  isDisabled: true,
 }
 
 export const WithAnErrorMessage: Story<DateRangeProps> = ({
@@ -119,10 +141,10 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
   value,
   ...args
 }) => {
-  const [dates, setDates] = React.useState<{
-    startDate: Moment | null
-    endDate: Moment | null
-  }>({ startDate: moment().subtract(8, 'days'), endDate: null })
+  const [dates, setDates] = React.useState<DateRangeValueType>({
+    startDate: moment().subtract(8, 'days'),
+    endDate: null,
+  })
   return (
     <FormControl {...args}>
       <FormLabel htmlFor="Date" label="Label">
