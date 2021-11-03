@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { Moment } from 'moment'
 import moment from 'moment/moment'
 import React, { FC } from 'react'
@@ -11,8 +12,8 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
+import styles, { StyledWrapper } from './DateRange.style'
 import { NavNext, NavPrev } from './Nav'
-import styles, { StyledWrapper } from './dateRange.style'
 
 export type DateRangeValueType = {
   readonly startDate: Moment | null
@@ -27,7 +28,7 @@ export interface DateRangeProps
   readonly endDatePlaceholderText?: string
   readonly startDateId: string
   readonly endDateId: string
-  readonly className: string
+  readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
   readonly isDisabled?: boolean
@@ -51,7 +52,7 @@ const DateRange: FC<DateRangeProps> = ({
   startDateId,
   endDateId,
   displayFormat,
-  className = 'cap-dateRange',
+  className,
   ...props
 }) => {
   const [
@@ -62,7 +63,7 @@ const DateRange: FC<DateRangeProps> = ({
   const inputProps = useFormControl<HTMLInputElement>(props)
   return (
     <StyledWrapper
-      className={className}
+      className={cn('cap-dateRange', className)}
       sx={styles(inputProps['aria-invalid'])}
       variant={inputProps.variantSize}
       {...inputProps}

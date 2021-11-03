@@ -1,2 +1,2 @@
-export { default as DateRange } from './dateRange'
-export type { DateRangeProps } from './dateRange'
+export { default as DateRange } from './DateRange'
+export type { DateRangeProps } from './DateRange'

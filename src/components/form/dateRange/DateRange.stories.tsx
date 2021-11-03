@@ -10,8 +10,8 @@ import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
-import DateRange, { DateRangeProps } from './dateRange'
-import type { DateRangeValueType } from './dateRange'
+import DateRange, { DateRangeProps } from './DateRange'
+import type { DateRangeValueType } from './DateRange'
 
 const meta: Meta = {
   title: 'Library/Form/DateRange',

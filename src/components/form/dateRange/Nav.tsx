@@ -6,7 +6,6 @@ export const NavPrev: FunctionComponent = () => {
   return (
     <button
       role="button"
-      tabIndex={0}
       className="DayPickerNavigation_button__horizontalDefault DayPickerNavigation_leftButton__horizontalDefault"
       aria-label="Move backward to switch to the previous month."
     >
@@ -24,7 +23,6 @@ export const NavNext: FunctionComponent = () => {
   return (
     <button
       role="button"
-      tabIndex={0}
       className=" DayPickerNavigation_button__horizontalDefault DayPickerNavigation_rightButton__horizontalDefault"
       aria-label="Move forward to switch to the next month."
     >
