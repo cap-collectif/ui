@@ -17,7 +17,7 @@ export const FormGuideline = forwardRef<HTMLSpanElement, FormGuidelineProps>(
         as="span"
         color="gray.700"
         fontFamily={CapUIFontFamily.Label}
-        lineHeight={CapUILineHeight.S}
+        lineHeight={CapUILineHeight.Sm}
         fontSize={2}
         className={cn('cap-form-guideline', className)}
         {...props}

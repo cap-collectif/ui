@@ -21,14 +21,14 @@ export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
         spacing={1}
         ref={ref}
         fontFamily={CapUIFontFamily.Label}
-        lineHeight={CapUILineHeight.S}
+        lineHeight={CapUILineHeight.Sm}
         fontSize={2}
         className={cn('cap-form-label', className)}
         {...props}
       >
         <Text
           fontFamily={CapUIFontFamily.Label}
-          lineHeight={CapUILineHeight.S}
+          lineHeight={CapUILineHeight.Sm}
           fontSize={2}
           color="gray.900"
         >
