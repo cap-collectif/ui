@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import { breakpoints } from '../styles/theme'
+import { useMatchMedia } from './useMatchMedia'
+
 const useDeviceDetect = () => {
   const [isMobile, setMobile] = useState(false)
 
@@ -18,3 +21,18 @@ const useDeviceDetect = () => {
 }
 
 export default useDeviceDetect
+
+export const useIsMobile = (): boolean =>
+  useMatchMedia(`screen and (max-width: ${breakpoints.tablet})`)
+export const useIsTablet = (): boolean =>
+  useMatchMedia(
+    `screen and (max-width: ${breakpoints.desktop}) and (min-width: ${breakpoints.tablet})`,
+  )
+export const useIsDesktop = (): boolean =>
+  useMatchMedia(
+    `screen and (max-width: ${breakpoints.wide}) and (min-width: ${breakpoints.desktop})`,
+  )
+export const useIsDesktopWide = (): boolean =>
+  useMatchMedia(
+    `screen and (max-width: ${breakpoints.ultraWide}) and (min-width: ${breakpoints.wide})`,
+  )

@@ -1,15 +1,15 @@
 import cn from 'classnames'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
 import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog'
 import styled from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
-import useDeviceDetect from '../../hooks/useDeviceDetect'
+import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
 import { BoxProps } from '../box'
 import { Box } from '../box/Box'
-import { Flex } from '../layout/Flex'
+import { Flex, FlexProps } from '../layout/Flex'
 import type { Context } from './Modal.context'
 import { Provider } from './Modal.context'
 import { ModalBody } from './body/ModalBody'
@@ -17,7 +17,7 @@ import { CapUIModalSize } from './enums'
 import ModalFooter from './footer/ModalFooter'
 import ModalHeader from './header/ModalHeader'
 
-type RenderProps = (props: Context) => React.ReactNode
+export type RenderProps = (props: Context) => React.ReactNode
 
 export interface ModalProps extends BoxProps {
   readonly size: CapUIModalSize
@@ -27,6 +27,7 @@ export interface ModalProps extends BoxProps {
   readonly scrollBehavior?: 'inside' | 'outside'
   readonly hideOnEsc?: boolean
   readonly preventBodyScroll?: boolean
+  readonly fullSizeOnMobile?: boolean
   readonly disclosure?: any
   readonly show?: boolean
   readonly children: RenderProps | React.ReactNode
@@ -41,7 +42,7 @@ type SubComponents = {
   Footer: typeof ModalFooter
 }
 
-const TRANSITION_DURATION = 0.2
+const TRANSITION_DURATION = 0.35
 
 const Overlay = styled(motion(Box)).attrs({
   position: 'fixed',
@@ -55,21 +56,51 @@ const Overlay = styled(motion(Box)).attrs({
   alignItems: 'center',
 })`` as any
 
-const ModalInner = styled(motion(Flex))(
+const ModalInner = styled(motion(Flex)).attrs(
+  ({
+    fullSizeOnMobile,
+    isMobile,
+    ...rest
+  }: FlexProps &
+    MotionProps & { fullSizeOnMobile: boolean; isMobile: boolean }) =>
+    isMobile && {
+      position: 'absolute',
+      bottom: 0,
+      height: fullSizeOnMobile ? '100% !important' : '30% !important',
+      width: '100% !important',
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      borderTopLeftRadius: fullSizeOnMobile && 0,
+      borderTopRightRadius: fullSizeOnMobile && 0,
+      boxShadow: 'medium',
+      maxHeight: fullSizeOnMobile && '100% !important',
+      mt: '0 !important',
+      ...rest,
+    },
+)(
   variantStyle({
     prop: 'size',
     variants: {
       sm: {
         width: '25%',
+        maxHeight: '68%',
+        mt: '16vh',
       },
       md: {
         width: '40%',
+        maxHeight: '68%',
+        mt: '16vh',
       },
       lg: {
         width: '50%',
+        maxHeight: '68%',
+        mt: '16vh',
       },
       xl: {
         width: '50%',
+        height: '92%',
+        maxHeight: '92%',
+        mt: '4vh',
       },
     },
   }),
@@ -90,6 +121,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   preventBodyScroll = true,
   className,
   size,
+  fullSizeOnMobile = false,
   ...props
 }: ModalProps) => {
   const dialog = useDialogState({
@@ -98,7 +130,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   })
   const containerRef = React.useRef<HTMLElement>(null)
 
-  const { isMobile } = useDeviceDetect()
+  const isMobile = useIsMobile()
 
   const context = React.useMemo(
     () => ({
@@ -106,6 +138,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
       show: dialog.show,
       toggle: dialog.toggle,
       visible: dialog.visible,
+      fullSizeOnMobile,
       hideCloseButton,
     }),
     [dialog, hideCloseButton],
@@ -123,6 +156,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
       )}
 
       <Dialog
+        aria-label={ariaLabel}
         {...dialog}
         hideOnClickOutside={hideOnClickOutside}
         hideOnEsc={hideOnEsc}
@@ -150,6 +184,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
             >
               <ModalInner
                 direction="column"
+                justify="space-between"
                 overflow={scrollBehavior === 'inside' ? 'overlay' : undefined}
                 initial={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -163,8 +198,8 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
                 exit={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 className={cn('cap-modal', className)}
                 size={size}
-                maxHeight="68%"
-                mt="16vh"
+                isMobile={isMobile}
+                fullSizeOnMobile={fullSizeOnMobile}
                 bg="white"
                 borderRadius="modal"
                 {...props}
@@ -184,3 +219,10 @@ Modal.Body = ModalBody
 Modal.Footer = ModalFooter
 
 export default Modal
+// const fullMobile = {
+//   width: 100%;
+//   height: 100%;
+//   max-height: 100%;
+// margin-top: 0;
+// border-radius: 0;
+// }

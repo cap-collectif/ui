@@ -5,6 +5,7 @@ export type Context = Readonly<{
   show: () => void
   toggle: () => void
   hideCloseButton?: boolean
+  fullSizeOnMobile?: boolean
   visible: boolean
 }>
 
@@ -14,6 +15,7 @@ const ModalContext = React.createContext<Context>({
   toggle: () => {},
   visible: false,
   hideCloseButton: false,
+  fullSizeOnMobile: false,
 })
 
 export const useModal = (): Context => {

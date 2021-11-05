@@ -1,7 +1,8 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUIFontWeight } from '../../../styles'
+import { useIsMobile } from '../../../hooks/useDeviceDetect'
+import { CapUIFontFamily, CapUIFontWeight, CapUIRadius } from '../../../styles'
 import { Box } from '../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex, FlexProps } from '../../layout'
@@ -24,22 +25,30 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   className,
   ...rest
 }) => {
-  const { hide, hideCloseButton } = useModal()
+  const { hide, hideCloseButton, fullSizeOnMobile } = useModal()
   const ref = React.useRef<HTMLButtonElement | null>(null)
   React.useEffect(() => {
     if (ref.current) ref.current.focus()
   }, [])
+  const isMobile = useIsMobile()
 
   return (
     <Flex
       as="header"
-      px={6}
+      px={isMobile ? 4 : 6}
       py={4}
       align="center"
       justify="space-between"
       borderBottom="normal"
-      borderColor="gray.200"
+      boxShadow={isMobile && fullSizeOnMobile ? 'small' : 'none'}
+      borderColor={isMobile ? 'transparent' : 'gray.200'}
       className={cn('cap-modal__header', className)}
+      borderBottomLeftRadius={
+        isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
+      }
+      borderBottomRightRadius={
+        isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
+      }
       {...rest}
     >
       <Flex

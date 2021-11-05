@@ -10,7 +10,7 @@ const meta: Meta<ModalProps> = {
   component: Modal,
   args: {
     disclosure: <Button>Click me</Button>,
-    size: CapUIModalSize.Md,
+    size: CapUIModalSize.Xl,
   },
   argTypes: {
     disclosure: {
@@ -18,6 +18,7 @@ const meta: Meta<ModalProps> = {
         disable: true,
       },
     },
+    size: { control: 'select', options: Object.values(CapUIModalSize) },
   },
   parameters: {
     layout: 'centered',
@@ -36,6 +37,37 @@ export const Default: Story<ModalProps> = args => (
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
         <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+export const Mobile: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Modal.Header.Label>Label</Modal.Header.Label>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
           <Button variant="secondary" variantColor="primary" onClick={hide}>
             Cancel
           </Button>
@@ -47,7 +79,43 @@ export const Default: Story<ModalProps> = args => (
     )}
   </Modal>
 )
-
+Mobile.args = {
+  fullSizeOnMobile: false,
+}
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+}
+export const MobileFullPage: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Modal.Header.Label>Label</Modal.Header.Label>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" variantColor="primary" onClick={hide}>
+            Cancel
+          </Button>
+          <Button variant="primary" variantColor="primary" onClick={hide}>
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+MobileFullPage.args = {
+  fullSizeOnMobile: true,
+}
+MobileFullPage.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+}
 export const WithLabel: Story<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
@@ -126,3 +194,135 @@ export const WithLotOfContent: Story<ModalProps> = args => (
     )}
   </Modal>
 )
+
+export const withoutBackdrop: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+withoutBackdrop.storyName = 'without backdrop'
+withoutBackdrop.args = { noBackdrop: true }
+
+export const allowBodyScroll: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+allowBodyScroll.storyName = 'allow body scroll'
+allowBodyScroll.args = { preventBodyScroll: false }
+
+export const keepOnClickOutside: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+keepOnClickOutside.storyName = 'keep on click outside'
+keepOnClickOutside.args = { hideOnClickOutside: false }
+
+export const DoNotHideOnEsc: Story<ModalProps> = args => (
+  <Modal {...args}>
+    {({ hide }) => (
+      <>
+        <Modal.Header>
+          <Heading>Title</Heading>
+        </Modal.Header>
+        <Modal.Body>Content</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+DoNotHideOnEsc.storyName = 'do not hide on ESC'
+DoNotHideOnEsc.args = { hideOnEsc: false }
