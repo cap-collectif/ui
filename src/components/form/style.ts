@@ -103,7 +103,7 @@ export function reactSelectStyle<
       { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
     ) => ({
       ...base,
-      paddingLeft: SPACING[3],
+      paddingLeft: SPACING[isSearch ? 1 : 3],
       paddingRight: SPACING[3],
       paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
       paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],

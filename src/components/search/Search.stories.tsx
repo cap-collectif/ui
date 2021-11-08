@@ -60,9 +60,22 @@ export const Default: Story<Args> = ({
 }) => (
   <Search
     placeholder={placeholder}
-    //loadOptions={promiseOptions}
-    // defaultOptions
-    // cacheOptions
+    onChange={e => console.log(e)}
     inputId="color"
+    {...args}
+  />
+)
+
+export const Loading: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  ...args
+}) => (
+  <Search
+    defaultInputValue="Chargement"
+    isLoading
+    inputId="color"
+    onChange={e => console.log(e)}
+    {...args}
   />
 )
