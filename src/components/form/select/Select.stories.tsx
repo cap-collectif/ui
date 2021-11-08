@@ -20,6 +20,7 @@ type Args = {
   isDisabled: boolean
   isRequired: boolean
   variantSize: CapInputSize
+  menuIsOpen: boolean
 }
 
 const meta: Meta = {
@@ -31,6 +32,12 @@ const meta: Meta = {
     isRequired: true,
     isInvalid: false,
     isMulti: false,
+  },
+  argTypes: {
+    menuIsOpen: {
+      options: [undefined, true, false],
+      control: { type: 'radio' },
+    },
   },
   parameters: {
     controls: { expanded: true },
@@ -55,11 +62,13 @@ const colourOptions = [
 export const Default: Story<Args> = ({
   errorMessage,
   placeholder,
+  menuIsOpen,
   ...args
 }) => (
   <FormControl {...args} width="500px">
     <FormLabel label="Choisissez une couleur :" />
     <Select
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       width="250px"
       options={colourOptions}
@@ -70,10 +79,16 @@ export const Default: Story<Args> = ({
   </FormControl>
 )
 
-export const Multi: Story<Args> = ({ errorMessage, placeholder, ...args }) => (
+export const Multi: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  menuIsOpen,
+  ...args
+}) => (
   <FormControl {...args} width="500px">
     <FormLabel label="Choisissez DES couleurs :" />
     <Select
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       width="250px"
       options={colourOptions}
@@ -103,11 +118,13 @@ const mailOptions = [
 export const Creatable: Story<Args> = ({
   errorMessage,
   placeholder,
+  menuIsOpen,
   ...args
 }) => (
   <FormControl {...args} width="500px">
     <FormLabel label="Choisissez ou créez une adresse mail :" />
     <CreatableSelect
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       options={mailOptions}
       inputId="color"
@@ -120,11 +137,13 @@ export const Creatable: Story<Args> = ({
 export const CreatableMulti: Story<Args> = ({
   errorMessage,
   placeholder,
+  menuIsOpen,
   ...args
 }) => (
   <FormControl {...args} width="500px">
     <FormLabel label="Choisissez ou créez des adresses mail :" />
     <CreatableSelect
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       options={mailOptions}
       defaultValue={mailOptions[0]}
@@ -147,10 +166,16 @@ const promiseOptions = (inputValue: string) =>
     }, 1000)
   })
 
-export const Async: Story<Args> = ({ errorMessage, placeholder, ...args }) => (
+export const Async: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  menuIsOpen,
+  ...args
+}) => (
   <FormControl {...args} width="300px">
     <FormLabel label="Async quoi :" />
     <AsyncSelect
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       loadOptions={promiseOptions}
       defaultOptions
@@ -164,11 +189,13 @@ export const Async: Story<Args> = ({ errorMessage, placeholder, ...args }) => (
 export const AsyncCreatable: Story<Args> = ({
   errorMessage,
   placeholder,
+  menuIsOpen,
   ...args
 }) => (
   <FormControl {...args} width="300px">
     <FormLabel label="Async et creatable :" />
     <AsyncCreatableSelect
+      menuIsOpen={menuIsOpen}
       placeholder={placeholder}
       loadOptions={promiseOptions}
       defaultOptions
