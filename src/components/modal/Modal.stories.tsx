@@ -2,6 +2,12 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
+import { FormControl } from '../form/formControl/index'
+import { FormErrorMessage } from '../form/formErrorMessage'
+import { FormLabel } from '../form/formLabel'
+import { Input } from '../form/input'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
+import { Tooltip } from '../tooltip/Tooltip'
 import { Heading } from '../typography'
 import { CapUIModalSize, Modal, ModalProps } from './'
 
@@ -66,7 +72,33 @@ export const Mobile: Story<ModalProps> = args => (
           <Modal.Header.Label>Label</Modal.Header.Label>
           <Heading>Title</Heading>
         </Modal.Header>
-        <Modal.Body>Content</Modal.Body>
+        <Modal.Body>
+          <FormControl {...args} width="300px" mt="20px">
+            <FormLabel htmlFor="name" label="Label" />
+            <Input
+              aria-describedby="Accessible"
+              placeholder="Placeholder..."
+              id="name"
+            />
+          </FormControl>
+          <FormControl {...args} width="300px" mt="20px">
+            <FormLabel htmlFor="name" label="Label">
+              <Tooltip label="Une aide en plus">
+                <Icon
+                  name={CapUIIcon.Info}
+                  size={CapUIIconSize.Sm}
+                  color="blue.500"
+                />
+              </Tooltip>
+            </FormLabel>
+            <Input
+              aria-describedby="Accessible"
+              placeholder="Placeholder..."
+              id="name"
+            />
+            <FormErrorMessage>Error info.</FormErrorMessage>
+          </FormControl>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" variantColor="primary" onClick={hide}>
             Cancel
