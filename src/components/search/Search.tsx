@@ -28,7 +28,7 @@ const Control = ({ children, ...props }: ControlProps) => {
         name={CapUIIcon.Search}
         size={CapUIIconSize.Md}
         color="gray.700"
-        ml={2}
+        ml={1}
       />
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={1} color="blue.500" />}
