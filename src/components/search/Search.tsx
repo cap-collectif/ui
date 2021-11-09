@@ -10,7 +10,8 @@ import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
 
-export interface SearchProps extends Omit<Props, 'onChange' | 'defaultValue'> {
+export interface SearchProps
+  extends Omit<Props, 'onChange' | 'defaultValue' | 'isMulti'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
