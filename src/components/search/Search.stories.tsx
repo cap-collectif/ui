@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { CapInputSize } from '../form'
+import { CapInputSize, FormLabel } from '../form'
 import Search from './Search'
 
 type Args = {
@@ -24,19 +24,28 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<Args> = ({ ...args }) => (
-  <Search onChange={() => {}} inputId="color" {...args} />
+  <>
+    <FormLabel label="Label" mb={1} />
+    <Search onChange={() => {}} inputId="color" {...args} />
+  </>
 )
 
 export const Loading: Story<Args> = ({ ...args }) => (
-  <Search
-    defaultValue="Budget participatif"
-    isLoading
-    inputId="color"
-    onChange={() => {}}
-    {...args}
-  />
+  <>
+    <FormLabel label="Label" mb={1} />
+    <Search
+      defaultValue="Budget participatif"
+      isLoading
+      inputId="color"
+      onChange={() => {}}
+      {...args}
+    />
+  </>
 )
 
 export const Disabled: Story<Args> = ({ ...args }) => (
-  <Search inputId="color" onChange={() => {}} {...args} isDisabled />
+  <>
+    <FormLabel label="Label" mb={1} />
+    <Search inputId="color" onChange={() => {}} {...args} isDisabled />
+  </>
 )
