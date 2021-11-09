@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { components, ControlProps, LoadingIndicatorProps } from 'react-select'
+import { components, ControlProps } from 'react-select'
 import type { Props } from 'react-select'
 import ReactSelect from 'react-select/async'
 
@@ -10,12 +10,13 @@ import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
 
-export interface SearchProps extends Omit<Props, 'onChange'> {
+export interface SearchProps extends Omit<Props, 'onChange' | 'defaultValue'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange: (value: string) => void
+  readonly defaultValue?: string
 }
 
 const Control = ({ children, ...props }: ControlProps) => {
@@ -51,10 +52,11 @@ export const Search = ({
   variantSize,
   isInvalid,
   onChange,
+  defaultValue,
   ...props
 }: SearchProps) => {
   const asyncRef = React.useRef(null)
-  const [input, setInput] = React.useState('')
+  const [input, setInput] = React.useState(defaultValue || '')
 
   return (
     <Box width={width || '280px'}>
