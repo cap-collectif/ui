@@ -23,21 +23,20 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<Args> = ({ placeholder, ...args }) => (
-  <Search
-    placeholder={placeholder}
-    onChange={() => {}}
-    inputId="color"
-    {...args}
-  />
+export const Default: Story<Args> = ({ ...args }) => (
+  <Search onChange={() => {}} inputId="color" {...args} />
 )
 
-export const Loading: Story<Args> = ({ placeholder, ...args }) => (
+export const Loading: Story<Args> = ({ ...args }) => (
   <Search
-    defaultValue="Chargement"
+    defaultValue="Budget participatif"
     isLoading
     inputId="color"
     onChange={() => {}}
     {...args}
   />
+)
+
+export const Disabled: Story<Args> = ({ ...args }) => (
+  <Search inputId="color" onChange={() => {}} {...args} isDisabled />
 )
