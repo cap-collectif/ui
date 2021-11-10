@@ -8,7 +8,7 @@ import { Box } from '../../box'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
-import { MultiValue } from './Select'
+import { MultiValue, Control } from './Select'
 
 export interface AsyncSelectProps<
   Option,
@@ -18,6 +18,7 @@ export interface AsyncSelectProps<
   readonly isDisabled?: boolean
   readonly variantSize?: CapInputSize
   readonly width?: string | number
+  readonly onChange?: (newValue: any) => void
 }
 
 export function AsyncSelect<
@@ -39,7 +40,7 @@ export function AsyncSelect<
         classNamePrefix="cap-async-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
-        components={{ MultiValue }}
+        components={{ MultiValue, Control }}
         {...props}
       />
     </Box>

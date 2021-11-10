@@ -115,45 +115,71 @@ const mailOptions = [
   { value: 'tous', label: 'tous@cap-collectif.com' },
 ]
 
+type SelectValue = {
+  value: string
+  label: string
+}
+
 export const Creatable: Story<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
   ...args
-}) => (
-  <FormControl {...args} width="500px">
-    <FormLabel label="Choisissez ou créez une adresse mail :" />
-    <CreatableSelect
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      options={mailOptions}
-      inputId="color"
-      formatCreateLabel={formatCreateLabel}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
+}) => {
+  const [value, setValue] = React.useState<SelectValue | null>(null)
+  return (
+    <FormControl {...args} width="500px">
+      <FormLabel label="Choisissez ou créez une adresse mail :" />
+      <CreatableSelect
+        menuIsOpen={menuIsOpen}
+        placeholder={placeholder}
+        options={mailOptions}
+        inputId="color"
+        formatCreateLabel={formatCreateLabel}
+        value={value}
+        onChange={(newValue: { value: string; label: string }) =>
+          setValue(newValue)
+        }
+        onCreateOption={(newValue: string) => {
+          mailOptions.push({ value: newValue, label: newValue })
+          setValue({ value: newValue, label: newValue })
+        }}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}
 
 export const CreatableMulti: Story<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
   ...args
-}) => (
-  <FormControl {...args} width="500px">
-    <FormLabel label="Choisissez ou créez des adresses mail :" />
-    <CreatableSelect
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      options={mailOptions}
-      defaultValue={mailOptions[0]}
-      inputId="color"
-      isMulti
-      formatCreateLabel={formatCreateLabel}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
+}) => {
+  const [value, setValue] = React.useState<Array<SelectValue> | null>(null)
+  return (
+    <FormControl {...args} width="500px">
+      <FormLabel label="Choisissez ou créez des adresses mail :" />
+      <CreatableSelect
+        menuIsOpen={menuIsOpen}
+        placeholder={placeholder}
+        options={mailOptions}
+        inputId="color"
+        isMulti
+        value={value}
+        onChange={newValue => setValue(newValue)}
+        onCreateOption={(newValue: string) => {
+          const newOption = { value: newValue, label: newValue }
+          mailOptions.push(newOption)
+          if (value && newOption) setValue([...value, newOption])
+          else setValue([newOption])
+        }}
+        formatCreateLabel={formatCreateLabel}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}
 
 const promiseOptions = (inputValue: string) =>
   new Promise(resolve => {
@@ -191,18 +217,28 @@ export const AsyncCreatable: Story<Args> = ({
   placeholder,
   menuIsOpen,
   ...args
-}) => (
-  <FormControl {...args} width="300px">
-    <FormLabel label="Async et creatable :" />
-    <AsyncCreatableSelect
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      loadOptions={promiseOptions}
-      defaultOptions
-      cacheOptions
-      inputId="color"
-      formatCreateLabel={formatCreateLabel}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
+}) => {
+  const [value, setValue] = React.useState<SelectValue | null>(null)
+  return (
+    <FormControl {...args} width="300px">
+      <FormLabel label="Async et creatable :" />
+      <AsyncCreatableSelect
+        menuIsOpen={menuIsOpen}
+        placeholder={placeholder}
+        loadOptions={promiseOptions}
+        defaultOptions
+        inputId="color"
+        formatCreateLabel={formatCreateLabel}
+        value={value}
+        onChange={(newValue: { value: string; label: string }) =>
+          setValue(newValue)
+        }
+        onCreateOption={(newValue: string) => {
+          colourOptions.push({ value: newValue, label: newValue })
+          setValue({ value: newValue, label: newValue })
+        }}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}

@@ -93,7 +93,7 @@ export function reactSelectStyle<
         ? colors.blue['500']
         : colors.gray['300'],
       '&:hover': {
-        borderColor: isInvalid ? colors.red['500'] : colors.blue['500'],
+        borderColor: isInvalid ? colors.red['500'] : '',
       },
       ...disabledStyles,
     }),
@@ -110,6 +110,7 @@ export function reactSelectStyle<
     }),
     placeholder: (base: CSSObjectWithLabel) => ({
       ...base,
+      margin: 0,
       color: colors.gray['500'],
       fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
@@ -119,6 +120,8 @@ export function reactSelectStyle<
       { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
     ) => ({
       ...base,
+      lineHeight: LINE_HEIGHTS.base,
+      fontFamily: FONT_FAMILIES.input,
       padding: 0,
       margin: 0,
       marginTop: isMulti && hasValue ? SPACING[1] : 0,
@@ -137,6 +140,7 @@ export function reactSelectStyle<
     }),
     singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
+      margin: 0,
       color: colors.gray['900'],
       fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
