@@ -47,6 +47,7 @@ export function AsyncCreatableSelect<
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue, Control }}
+        maxMenuHeight={210}
         {...props}
       />
     </Box>
