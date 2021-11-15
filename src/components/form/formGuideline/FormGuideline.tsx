@@ -20,6 +20,7 @@ export const FormGuideline = forwardRef<HTMLSpanElement, FormGuidelineProps>(
         lineHeight={CapUILineHeight.Sm}
         fontSize={2}
         className={cn('cap-form-guideline', className)}
+        mb={1}
         {...props}
       >
         {children}
