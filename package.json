@@ -104,7 +104,7 @@
     "@styled-system/theme-get": "^5.1.2",
     "classnames": "^2.3.1",
     "deepmerge": "^4.2.2",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^5.3.0",
     "react-hotkeys-hook": "^3.4.4",
     "react-infinite-scroller": "^1.2.4",
     "reakit": "^1.3.10",
