@@ -8,7 +8,7 @@ import { Box } from '../../box'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
-import { MultiValue } from './Select'
+import { MultiValue, Control } from './Select'
 
 export interface AsyncCreatableSelectProps<
   Option,
@@ -19,6 +19,8 @@ export interface AsyncCreatableSelectProps<
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly formatCreateLabel?: (userInput: string) => React.ReactNode
+  readonly onCreateOption?: (userInput: string) => void
+  readonly onChange?: (newValue: any) => void
 }
 
 export function AsyncCreatableSelect<
@@ -44,7 +46,8 @@ export function AsyncCreatableSelect<
         classNamePrefix="cap-async-creatable-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
-        components={{ MultiValue }}
+        components={{ MultiValue, Control }}
+        maxMenuHeight={210}
         {...props}
       />
     </Box>

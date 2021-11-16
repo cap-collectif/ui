@@ -7,10 +7,11 @@ import { Box } from '../../box'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { SelectProps } from './'
-import { MultiValue } from './Select'
+import { MultiValue, Control } from './Select'
 
 export interface CreatableSelectProps extends SelectProps {
   readonly formatCreateLabel?: (userInput: string) => React.ReactNode
+  readonly onCreateOption?: (userInput: string) => void
 }
 
 export function CreatableSelect<
@@ -33,7 +34,8 @@ export function CreatableSelect<
         classNamePrefix="cap-creatable-select"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
-        components={{ MultiValue }}
+        components={{ MultiValue, Control }}
+        maxMenuHeight={210}
         {...props}
       />
     </Box>
