@@ -47,7 +47,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       fontFamily: CapUIFontFamily.Input,
       lineHeight: CapUILineHeight.Base,
       bg: 'white',
-      '&:hover,&.hover': {
+      '&:focus-within': {
         borderColor: 'blue.500',
       },
       ...(isInvalid && {
@@ -65,6 +65,7 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       color: 'gray.900',
       '&__disabled': {
         bg: 'gray.100',
+        borderColor: 'gray.200',
         '&:hover,&.hover': {
           borderColor: 'gray.200',
         },
@@ -103,6 +104,9 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       color: 'gray.500',
     },
     '.CalendarDay': {
+      '&:hover div': {
+        bg: 'blue.200',
+      },
       '& div': {
         width: '100%',
         height: '100%',
@@ -198,9 +202,12 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
       fontWeight: CapUIFontWeight.Semibold,
       color: 'gray.500',
     },
+
     '.CalendarDay__hovered_span': {
       '&:hover': {
         bg: 'blue.150',
+        borderTopRightRadius: CapUIRadius.Poppin,
+        borderBottomRightRadius: CapUIRadius.Poppin,
       },
       bg: 'blue.150',
     },
@@ -214,6 +221,9 @@ const styles = (isInvalid?: boolean): SystemStyleObject => {
     },
     'tr .CalendarDay__hovered_span:only-child': {
       borderRadius: CapUIRadius.Poppin,
+    },
+    'tr .CalendarDay__after_hovered_start': {
+      bg: 'transparent ',
     },
     '.CalendarDay__blocked_out_of_range': {
       '& div': {

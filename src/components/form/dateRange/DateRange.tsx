@@ -2,7 +2,11 @@ import cn from 'classnames'
 import { Moment } from 'moment'
 import moment from 'moment/moment'
 import React, { FC } from 'react'
-import { DateRangePicker, FocusedInputShape } from 'react-dates'
+import {
+  DateRangePicker,
+  DateRangePickerInputShape,
+  FocusedInputShape,
+} from 'react-dates'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 
@@ -21,7 +25,8 @@ export type DateRangeValueType = {
 }
 
 export interface DateRangeProps
-  extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
+  extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'>,
+    DateRangePickerInputShape {
   readonly value: DateRangeValueType
   readonly onChange: (value: DateRangeValueType) => void
   readonly startDatePlaceholderText?: string
@@ -60,7 +65,10 @@ const DateRange: FC<DateRangeProps> = ({
     setFocusedInput,
   ] = React.useState<FocusedInputShape | null>(null)
 
-  const inputProps = useFormControl<HTMLInputElement>(props)
+  const inputProps = useFormControl<HTMLInputElement>({
+    ...props,
+    disabled: typeof props.disabled === 'string' ? undefined : props.disabled,
+  })
   return (
     <StyledWrapper
       className={cn('cap-dateRange', className)}
@@ -69,7 +77,7 @@ const DateRange: FC<DateRangeProps> = ({
       {...inputProps}
     >
       <DateRangePicker
-        disabled={inputProps.disabled}
+        disabled={inputProps.disabled || props.disabled}
         startDatePlaceholderText={startDatePlaceholderText}
         endDatePlaceholderText={endDatePlaceholderText}
         startDate={value.startDate}

@@ -17,7 +17,7 @@ const meta: Meta = {
   title: 'Library/Form/DateRange',
   component: DateRange,
   argTypes: {
-    variantSize: { type: 'select', options: Object.keys(CapInputSize) },
+    variantSize: { type: 'select', options: Object.values(CapInputSize) },
     onChange: {
       action: 'clicked',
       description:
@@ -85,22 +85,34 @@ Disabled.args = {
 
 export const WithAnErrorMessage: Story<DateRangeProps> = ({
   errorMessage,
-  onChange,
-  value,
+  onChange: storybookOnChange,
+  value: storybookValue,
   ...args
-}) => (
-  <FormControl {...args}>
-    <DateRange
-      className={args.className}
-      startDateId={args.startDateId}
-      endDateId={args.endDateId}
-      displayFormat={args.displayFormat}
-      onChange={onChange}
-      value={value}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
+}) => {
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: null,
+    endDate: null,
+  })
+  return (
+    <FormControl {...args}>
+      <DateRange
+        className={args.className}
+        startDateId={args.startDateId}
+        endDateId={args.endDateId}
+        displayFormat={args.displayFormat}
+        onChange={elem => {
+          onChange({ startDate: elem.startDate, endDate: elem.endDate })
+          storybookOnChange({
+            startDate: elem.startDate,
+            endDate: elem.endDate,
+          })
+        }}
+        value={value}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}
 
 WithAnErrorMessage.args = {
   isInvalid: true,
@@ -109,40 +121,12 @@ WithAnErrorMessage.args = {
 export const WithLabel: Story<DateRangeProps> = ({
   errorMessage,
   variantSize,
-  onChange,
-  value,
-  ...args
-}) => (
-  <FormControl {...args}>
-    <FormLabel htmlFor="Date" label="Label">
-      {!args.isRequired && (
-        <Box as="span" color="gray.500">
-          facultatif
-        </Box>
-      )}
-    </FormLabel>
-    <DateRange
-      className={args.className}
-      startDateId={args.startDateId}
-      endDateId={args.endDateId}
-      displayFormat={args.displayFormat}
-      id="Date"
-      onChange={onChange}
-      value={value}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
-
-export const WithStartDateInThePast: Story<DateRangeProps> = ({
-  errorMessage,
-  variantSize,
-  onChange,
-  value,
+  onChange: storybookOnChange,
+  value: storybookValue,
   ...args
 }) => {
-  const [dates, setDates] = React.useState<DateRangeValueType>({
-    startDate: moment().subtract(8, 'days'),
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: null,
     endDate: null,
   })
   return (
@@ -160,8 +144,55 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
         endDateId={args.endDateId}
         displayFormat={args.displayFormat}
         id="Date"
-        onChange={setDates}
-        value={dates}
+        onChange={elem => {
+          onChange({ startDate: elem.startDate, endDate: elem.endDate })
+          storybookOnChange({
+            startDate: elem.startDate,
+            endDate: elem.endDate,
+          })
+        }}
+        value={value}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithStartDateInThePast: Story<DateRangeProps> = ({
+  errorMessage,
+  variantSize,
+  onChange: storybookOnChange,
+  value: storybookValue,
+  ...args
+}) => {
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: moment().subtract(8, 'days'),
+    endDate: null,
+  })
+  return (
+    <FormControl {...args}>
+      <FormLabel htmlFor="Date" label="Label">
+        {!args.isRequired && (
+          <Box as="span" color="gray.500">
+            facultatif
+          </Box>
+        )}
+      </FormLabel>
+      <DateRange
+        disabled={'startDate'}
+        className={args.className}
+        startDateId={args.startDateId}
+        endDateId={args.endDateId}
+        displayFormat={args.displayFormat}
+        id="Date"
+        onChange={elem => {
+          onChange({ startDate: elem.startDate, endDate: elem.endDate })
+          storybookOnChange({
+            startDate: elem.startDate,
+            endDate: elem.endDate,
+          })
+        }}
+        value={value}
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -171,26 +202,42 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
 export const WithGuideline: Story<DateRangeProps> = ({
   errorMessage,
   placeholder,
-  onChange,
-  value,
+  onChange: storybookOnChange,
+  value: storybookValue,
   ...args
-}) => (
-  <FormControl {...args}>
-    <FormLabel htmlFor="name" label="Label">
-      <Tooltip label="Une aide en plus">
-        <Icon name={CapUIIcon.Info} size={CapUIIconSize.Sm} color="blue.500" />
-      </Tooltip>
-    </FormLabel>
-    <FormGuideline>Guidelines</FormGuideline>
-    <DateRange
-      className={args.className}
-      startDateId={args.startDateId}
-      endDateId={args.endDateId}
-      displayFormat={args.displayFormat}
-      id="Date"
-      onChange={onChange}
-      value={value}
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
+}) => {
+  const [value, onChange] = React.useState<DateRangeValueType>({
+    startDate: moment().subtract(8, 'days'),
+    endDate: null,
+  })
+  return (
+    <FormControl {...args}>
+      <FormLabel htmlFor="name" label="Label">
+        <Tooltip label="Une aide en plus">
+          <Icon
+            name={CapUIIcon.Info}
+            size={CapUIIconSize.Sm}
+            color="blue.500"
+          />
+        </Tooltip>
+      </FormLabel>
+      <FormGuideline>Guidelines</FormGuideline>
+      <DateRange
+        className={args.className}
+        startDateId={args.startDateId}
+        endDateId={args.endDateId}
+        displayFormat={args.displayFormat}
+        id="Date"
+        onChange={elem => {
+          onChange({ startDate: elem.startDate, endDate: elem.endDate })
+          storybookOnChange({
+            startDate: elem.startDate,
+            endDate: elem.endDate,
+          })
+        }}
+        value={value}
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+  )
+}
