@@ -2,10 +2,10 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
-import { FormControl } from '../form/formControl/index'
-import { FormErrorMessage } from '../form/formErrorMessage'
-import { FormLabel } from '../form/formLabel'
-import { Input } from '../form/input'
+import { FormControl } from '../form'
+import { FormErrorMessage } from '../form'
+import { FormLabel } from '../form'
+import { Input } from '../form'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Tooltip } from '../tooltip/Tooltip'
 import { Heading } from '../typography'
@@ -42,7 +42,7 @@ export const Default: Story<ModalProps> = args => (
           <Heading>Title</Heading>
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer infoUrl="https://geoffgraham.me/how-im-dealing-with-font-sizes/">
           <Button
             variant="secondary"
             variantColor="primary"
@@ -112,6 +112,7 @@ export const Mobile: Story<ModalProps> = args => (
   </Modal>
 )
 Mobile.args = {
+  size: undefined,
   fullSizeOnMobile: false,
 }
 Mobile.parameters = {
@@ -142,6 +143,7 @@ export const MobileFullPage: Story<ModalProps> = args => (
 )
 MobileFullPage.args = {
   fullSizeOnMobile: true,
+  size: undefined,
 }
 MobileFullPage.parameters = {
   viewport: {

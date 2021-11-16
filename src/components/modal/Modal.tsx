@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
 import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
@@ -20,7 +20,7 @@ import ModalHeader from './header/ModalHeader'
 export type RenderProps = (props: Context) => React.ReactNode
 
 export interface ModalProps extends BoxProps {
-  readonly size: CapUIModalSize
+  readonly size?: CapUIModalSize
   readonly hideOnClickOutside?: boolean
   readonly noBackdrop?: boolean
   readonly hideCloseButton?: boolean
@@ -54,7 +54,7 @@ const Overlay = styled(motion(Box)).attrs({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-})`` as any
+})`` as StyledComponent<any, any>
 
 const ModalInner = styled(motion(Flex)).attrs(
   ({
@@ -66,15 +66,15 @@ const ModalInner = styled(motion(Flex)).attrs(
     isMobile && {
       position: 'absolute',
       bottom: 0,
-      height: fullSizeOnMobile ? '100% !important' : 'auto !important',
-      width: '100% !important',
+      height: fullSizeOnMobile ? '100% ' : 'auto',
+      width: '100% ',
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
       borderTopLeftRadius: fullSizeOnMobile && 0,
       borderTopRightRadius: fullSizeOnMobile && 0,
       boxShadow: 'medium',
-      maxHeight: fullSizeOnMobile ? '100% !important' : '55% !important',
-      mt: '0 !important',
+      maxHeight: fullSizeOnMobile ? '100% ' : '55% ',
+      mt: '0 ',
       ...rest,
     },
 )(
@@ -104,7 +104,7 @@ const ModalInner = styled(motion(Flex)).attrs(
       },
     },
   }),
-) as any
+) as StyledComponent<any, any>
 
 export const Modal: React.FC<ModalProps> & SubComponents = ({
   children,
@@ -131,7 +131,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const containerRef = React.useRef<HTMLElement>(null)
 
   const isMobile = useIsMobile()
-
+  console.log(isMobile)
   const context = React.useMemo(
     () => ({
       hide: dialog.hide,
@@ -219,10 +219,3 @@ Modal.Body = ModalBody
 Modal.Footer = ModalFooter
 
 export default Modal
-// const fullMobile = {
-//   width: 100%;
-//   height: 100%;
-//   max-height: 100%;
-// margin-top: 0;
-// border-radius: 0;
-// }

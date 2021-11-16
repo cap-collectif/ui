@@ -3,6 +3,8 @@ import * as React from 'react'
 
 import { useIsMobile } from '../../../hooks/useDeviceDetect'
 import { CapUIRadius } from '../../../styles'
+import { Button } from '../../button'
+import { CapUIIcon } from '../../icon'
 import { FlexProps, Flex } from '../../layout'
 import { useModal } from '../Modal.context'
 
@@ -23,6 +25,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   return (
     <Flex
       as="footer"
+      position="relative"
       px={isMobile ? 4 : 6}
       py={4}
       sx={
@@ -50,6 +53,23 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       className={cn('cap-modal__footer', className)}
       {...rest}
     >
+      {!isMobile && infoUrl && (
+        <Button
+          position="absolute"
+          left={6}
+          as="a"
+          onClick={e => {
+            e.preventDefault()
+            window.open(infoUrl, '_blank')?.focus()
+          }}
+          href={infoUrl}
+          variantSize="small"
+          variant="link"
+          leftIcon={CapUIIcon.Info}
+        >
+          Information
+        </Button>
+      )}
       {children}
     </Flex>
   )
