@@ -11,6 +11,17 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.2.1
+
+`2021-11-16`
+
+- 💄 Fix styles of `Select` / `AsyncSelect` / `CreatableSelect` / `AsyncCreatableSelect` [#118](https://github.com/cap-collectif/ui/pull/118)
+- 💄 Fix styles of `FormGuideline` [#116](https://github.com/cap-collectif/ui/pull/116) [#118](https://github.com/cap-collectif/ui/pull/118)
+- 🆕 Remove src from published build folder [#120](https://github.com/cap-collectif/ui/pull/120)
+- 🆕 Update dependencies (react-select/styled-components/react-hotkeys-hook) [#120](https://github.com/cap-collectif/ui/pull/120)
+- 💄 Fix lineHeight of `FormLabel` [#116](https://github.com/cap-collectif/ui/pull/116)
+- 💄 Fix lineHeight of `FormErrorMessage` [#116](https://github.com/cap-collectif/ui/pull/116)
+
 ## 0.2.0
 
 `2021-10-28`
