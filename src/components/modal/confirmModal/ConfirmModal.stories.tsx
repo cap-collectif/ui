@@ -6,10 +6,10 @@ import { CapUIIcon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { toast } from '../../toast'
 import { Heading, Text } from '../../typography'
-import { CapUIModalSize, Modal, ModalProps } from '../index'
-import ConfirmModal from './ConfirmModal'
+import { CapUIModalSize, Modal } from '../index'
+import ConfirmModal, { ConfirmModalProps } from './ConfirmModal'
 
-const meta: Meta<ModalProps> = {
+const meta: Meta<ConfirmModalProps> = {
   title: 'Library/Modal/ConfirmModal',
   component: ConfirmModal,
   args: {
@@ -32,9 +32,9 @@ const meta: Meta<ModalProps> = {
 }
 export default meta
 
-export const main: Story<ModalProps> = args => (
+export const Default: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal {...args}>
+    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
       {({ hide }) => (
         <>
           <Modal.Header>
@@ -56,7 +56,7 @@ export const main: Story<ModalProps> = args => (
           </Modal.Body>
           <Modal.Footer>
             <ConfirmModal
-              size={CapUIModalSize.Md}
+              size={args.size}
               onConfirm={() => {
                 toast({
                   variant: 'success',
@@ -103,12 +103,10 @@ export const main: Story<ModalProps> = args => (
     </Modal>
   </Flex>
 )
-main.storyName = 'Default'
-main.args = {}
 
-export const withPromisesCallbacks: Story<ModalProps> = args => (
+export const withPromisesCallbacks: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal {...args}>
+    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
       {({ hide }) => (
         <>
           <Modal.Header>
@@ -130,7 +128,7 @@ export const withPromisesCallbacks: Story<ModalProps> = args => (
           </Modal.Body>
           <Modal.Footer>
             <ConfirmModal
-              size={CapUIModalSize.Md}
+              size={args.size}
               onConfirm={async () => {
                 await new Promise<void>(resolve =>
                   setTimeout(() => {
@@ -177,9 +175,9 @@ export const withPromisesCallbacks: Story<ModalProps> = args => (
   </Flex>
 )
 
-export const Mobile: Story<ModalProps> = args => (
+export const Mobile: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal {...args}>
+    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
       {({ hide }) => (
         <>
           <Modal.Header>
@@ -201,7 +199,7 @@ export const Mobile: Story<ModalProps> = args => (
           </Modal.Body>
           <Modal.Footer>
             <ConfirmModal
-              size={CapUIModalSize.Md}
+              size={args.size}
               onConfirm={async () => {
                 await new Promise<void>(resolve =>
                   setTimeout(() => {

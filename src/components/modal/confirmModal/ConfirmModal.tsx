@@ -21,7 +21,7 @@ export interface ConfirmModalProps
       props?: ButtonProps
     }
   }
-  readonly title: React.ReactNode
+  readonly title: React.ReactNode | string
   readonly body?: React.ReactNode
   readonly onConfirm?: () => void | Promise<void>
   readonly onCancel?: () => void | Promise<void>
@@ -42,20 +42,21 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
       hideOnClickOutside={false}
       hideOnEsc={false}
       hideCloseButton
+      className="cap-confirmModal"
       {...props}
     >
       {({ hide }) => (
         <>
-          <Modal.Header p={4} className="confirm-modal-header">
+          <Modal.Header p={4} className="cap-confirmModal__header">
             <Heading>{title}</Heading>
           </Modal.Header>
           {body && (
-            <Modal.Body className="confirm-modal-body" px={4}>
+            <Modal.Body className="cap-confirmModal__body" px={4}>
               {body}
             </Modal.Body>
           )}
           <Modal.Footer
-            className="confirm-modal-footer"
+            className="cap-confirmModal__footer"
             spacing={4}
             p={4}
             pt={4}
@@ -88,7 +89,6 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
               {options.cancelButton.content}
             </Button>
             <Button
-              disabled={isLoading}
               isLoading={isLoading}
               justifyContent={['center', 'flex-start']}
               variant="primary"
@@ -119,5 +119,5 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     </Modal>
   )
 }
-
+ConfirmModal.displayName = 'ConfirmModal'
 export default ConfirmModal

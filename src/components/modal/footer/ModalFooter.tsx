@@ -11,12 +11,14 @@ import { useModal } from '../Modal.context'
 type ModalFooterProps = FlexProps & {
   readonly children: React.ReactNode
   readonly infoUrl?: string
+  readonly infoUrlLabel?: string
 }
 
 export const ModalFooter: React.FC<ModalFooterProps> = ({
   children,
   className,
   infoUrl,
+  infoUrlLabel,
   ...rest
 }) => {
   const { fullSizeOnMobile } = useModal()
@@ -40,8 +42,8 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       }
       align="center"
       justify={isMobile ? 'space-around' : 'flex-end'}
-      borderTop="normal"
-      borderColor={isMobile ? 'transparent' : 'gray.200'}
+      borderTop={isMobile ? 'none' : 'normal'}
+      borderColor="gray.200"
       boxShadow={isMobile && fullSizeOnMobile ? 'small' : 'none'}
       borderTopLeftRadius={
         isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
@@ -58,16 +60,13 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
           position="absolute"
           left={6}
           as="a"
-          onClick={e => {
-            e.preventDefault()
-            window.open(infoUrl, '_blank')?.focus()
-          }}
+          target="_blank"
           href={infoUrl}
           variantSize="small"
           variant="link"
           leftIcon={CapUIIcon.Info}
         >
-          Information
+          {infoUrlLabel}
         </Button>
       )}
       {children}

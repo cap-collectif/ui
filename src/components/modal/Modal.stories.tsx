@@ -42,7 +42,10 @@ export const Default: Story<ModalProps> = args => (
           <Heading>Title</Heading>
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
-        <Modal.Footer infoUrl="https://geoffgraham.me/how-im-dealing-with-font-sizes/">
+        <Modal.Footer
+          infoUrl="https://geoffgraham.me/how-im-dealing-with-font-sizes/"
+          infoUrlLabel="information"
+        >
           <Button
             variant="secondary"
             variantColor="primary"

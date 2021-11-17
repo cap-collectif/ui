@@ -7,7 +7,6 @@ import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
-import { BoxProps } from '../box'
 import { Box } from '../box/Box'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { Context } from './Modal.context'
@@ -19,7 +18,7 @@ import ModalHeader from './header/ModalHeader'
 
 export type RenderProps = (props: Context) => React.ReactNode
 
-export interface ModalProps extends BoxProps {
+export interface ModalProps extends FlexProps {
   readonly size?: CapUIModalSize
   readonly hideOnClickOutside?: boolean
   readonly noBackdrop?: boolean
@@ -131,7 +130,6 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const containerRef = React.useRef<HTMLElement>(null)
 
   const isMobile = useIsMobile()
-  console.log(isMobile)
   const context = React.useMemo(
     () => ({
       hide: dialog.hide,
@@ -213,6 +211,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     </Provider>
   )
 }
+Modal.displayName = 'Modal'
 
 Modal.Header = ModalHeader
 Modal.Body = ModalBody
