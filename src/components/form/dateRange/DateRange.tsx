@@ -84,11 +84,9 @@ const DateRange: FC<DateRangeProps> = ({
         startDateId={startDateId}
         endDate={value.endDate}
         endDateId={endDateId}
-        onDatesChange={({ startDate, endDate }) => {
-          onChange({ startDate, endDate })
-        }}
+        onDatesChange={onChange}
         focusedInput={focusedInput}
-        onFocusChange={focusedInput => setFocusedInput(focusedInput)}
+        onFocusChange={setFocusedInput}
         inputIconPosition="after"
         displayFormat={displayFormat}
         hideKeyboardShortcutsPanel
