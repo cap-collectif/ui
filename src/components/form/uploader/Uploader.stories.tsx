@@ -3,7 +3,7 @@ import * as React from 'react'
 import { DropEvent, ErrorCode, FileRejection } from 'react-dropzone'
 
 import { CapUIFontWeight } from '../../../styles'
-import fileSizeConvert from '../../../utils/fileSizeConvert'
+import { btomg, mgtob } from '../../../utils/fileSizeConvert'
 import { Box } from '../../box/Box'
 import { InfoMessage } from '../../infoMessage/InfoMessage'
 import { Flex } from '../../layout'
@@ -13,11 +13,7 @@ import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
 import FilesList from './FileList'
-import Uploader, {
-  MAX_SIZE_FOR_IMAGES,
-  UPLOADER_SIZE,
-  UploaderProps,
-} from './Uploader'
+import Uploader, { UPLOADER_SIZE, UploaderProps } from './Uploader'
 import mdx from './Uploader.mdx'
 
 const meta: Meta = {
@@ -106,7 +102,7 @@ export const Default: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -178,7 +174,7 @@ export const Medium: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -253,7 +249,7 @@ export const Small: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -328,7 +324,7 @@ export const Avatar: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -405,7 +401,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -486,7 +482,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -567,7 +563,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -648,7 +644,7 @@ export const AvatarWithValue: Story<UploaderProps> = ({
         >
           Poids max:
           <Text lineHeight="sm" color="gray.700" ml={1}>
-            {fileSizeConvert.btomg(args.maxSize)}mo
+            {btomg(args.maxSize)}mo
           </Text>
         </Flex>
         {args.minResolution && (
@@ -707,7 +703,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
     if (args.maxSize && mainError.code === ErrorCode.FileTooLarge) {
       setErrors([
         ...errors,
-        `- “${fileName}” est trop lourd (${fileSizeConvert.btomg(
+        `- “${fileName}” est trop lourd (${btomg(
           fileRejections[0].file.size,
         )}).`,
       ])
@@ -757,7 +753,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
           >
             Poids max:
             <Text lineHeight="sm" color="gray.700" ml={1}>
-              {fileSizeConvert.btomg(args.maxSize)}mo
+              {btomg(args.maxSize)}mo
             </Text>
           </Flex>
           {args.minResolution && (
@@ -863,7 +859,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
     const fileExtension = fileRejections[0].file.type.split('/')[1]
     if (args.maxSize && mainError.code === ErrorCode.FileTooLarge) {
       setError(
-        `⛔️  Le fichier est trop lourd (${fileSizeConvert.btomg(
+        `⛔️  Le fichier est trop lourd (${btomg(
           fileRejections[0].file.size,
         )}).`,
       )
@@ -911,7 +907,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
           >
             Poids max:
             <Text lineHeight="sm" color="gray.700" ml={1}>
-              {fileSizeConvert.btomg(args.maxSize)}mo
+              {btomg(args.maxSize)}mo
             </Text>
           </Flex>
           {args.minResolution && (
@@ -984,7 +980,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
     if (args.maxSize && mainError.code === ErrorCode.FileTooLarge) {
       setErrors([
         ...errors,
-        `- “${fileName}” est trop lourd (${fileSizeConvert.btomg(
+        `- “${fileName}” est trop lourd (${btomg(
           fileRejections[0].file.size,
         )}).`,
       ])
@@ -1035,7 +1031,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
           >
             Poids max:
             <Text lineHeight="sm" color="gray.700" ml={1}>
-              {fileSizeConvert.btomg(args.maxSize)}mo
+              {btomg(args.maxSize)}mo
             </Text>
           </Flex>
           {args.minResolution && (
@@ -1123,7 +1119,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
       }
       img.src = URL.createObjectURL(acceptedFiles[0])
     }
-    if (acceptedFiles[0].size > fileSizeConvert.mgtob(MAX_SIZE_FOR_IMAGES)) {
+    if (acceptedFiles[0].size > mgtob(1.5)) {
       setWarning(
         '🐌  Cette image est très grande et risque de ralentir votre site.',
       )
@@ -1169,7 +1165,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
             >
               Poids max:
               <Text lineHeight="sm" color="gray.700" ml={1}>
-                {fileSizeConvert.btomg(args.maxSize)}mo
+                {btomg(args.maxSize)}mo
               </Text>
             </Flex>
             {minResolution && (
@@ -1241,7 +1237,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
             >
               Poids max:
               <Text lineHeight="sm" color="gray.700" ml={1}>
-                {fileSizeConvert.btomg(args.maxSize)}mo
+                {btomg(args.maxSize)}mo
               </Text>
             </Flex>
             {minResolution && (

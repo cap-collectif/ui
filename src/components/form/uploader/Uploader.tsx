@@ -36,7 +36,6 @@ export type Size = {
   width: number
   height: number
 }
-export const MAX_SIZE_FOR_IMAGES = 1.5
 
 export type FileInfo = {
   id: string
@@ -61,7 +60,7 @@ export interface UploaderProps
   readonly circle?: boolean
   readonly isImageUploader: boolean
   readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[] // https://react-dropzone.js.org/#section-accepting-specific-file-types
-  readonly maxSize: number
+  readonly maxSize?: number
   readonly minResolution?: Size
   readonly multiple?: boolean
   readonly showThumbnail?: boolean
@@ -122,6 +121,7 @@ const Uploader: React.FC<UploaderProps> = ({
       onExternalDrop(acceptedFiles, fileRejections, event)
       if (acceptedFiles.length === 0) {
         setDrag(false)
+        setLoading(false)
         return
       }
       if (showThumbnail && !multiple) {
@@ -237,7 +237,7 @@ const Uploader: React.FC<UploaderProps> = ({
               </Flex>
             ) : (
               <Icon
-                name={drag ? CapUIIcon.AddDrag : CapUIIcon.Add}
+                name={drag ? CapUIIcon.UploadArrow : CapUIIcon.Add}
                 size={CapUIIconSize.Lg}
                 color={drag ? 'blue.500' : 'gray.500'}
               />

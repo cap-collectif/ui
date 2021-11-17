@@ -100,7 +100,6 @@ export enum CapUIIcon {
   ShareO = 'SHARE_O',
   Shield = 'SHIELD',
   ShieldO = 'SHIELD_O',
-  AddDrag = 'ADD_DRAG',
 }
 
 export enum CapUIIconSize {

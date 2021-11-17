@@ -17,34 +17,32 @@ const FilesList = ({
   onRemove,
   deleteFileLabel,
 }: FilesListProps) => {
-  if (droppedFiles) {
-    if (droppedFiles.length > 0) {
-      return (
-        <FileListContainer>
-          {droppedFiles.map(file => (
-            <FileItem key={file.name}>
-              <Flex direction="row" align="center" justify="flex-start">
-                <Icon
-                  size={CapUIIconSize.Md}
-                  name={CapUIIcon.FileO}
-                  color="gray.300"
-                />
-                <Text fontSize={2} lineHeight="sm">
-                  {!!file.name && file?.name}
-                </Text>
-              </Flex>
-              <ButtonQuickAction
-                label={deleteFileLabel}
-                onClick={() => onRemove(file)}
-                icon={CapUIIcon.Trash}
+  if (!!droppedFiles && droppedFiles.length > 0) {
+    return (
+      <FileListContainer>
+        {droppedFiles.map(file => (
+          <FileItem key={file.name}>
+            <Flex direction="row" align="center" justify="flex-start">
+              <Icon
                 size={CapUIIconSize.Md}
-                variantColor="red"
+                name={CapUIIcon.FileO}
+                color="gray.300"
               />
-            </FileItem>
-          ))}
-        </FileListContainer>
-      )
-    }
+              <Text fontSize={2} lineHeight="sm">
+                {!!file.name && file?.name}
+              </Text>
+            </Flex>
+            <ButtonQuickAction
+              label={deleteFileLabel}
+              onClick={() => onRemove(file)}
+              icon={CapUIIcon.Trash}
+              size={CapUIIconSize.Md}
+              variantColor="red"
+            />
+          </FileItem>
+        ))}
+      </FileListContainer>
+    )
   }
 
   return null
