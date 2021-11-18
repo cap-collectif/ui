@@ -70,7 +70,8 @@ const DateRange: FC<DateRangeProps> = ({
     ...props,
     disabled: typeof props.disabled === 'string' ? undefined : props.disabled,
   })
-
+  // The library doesn't handle closing the calendar after Tabbing out of the input
+  // https://github.com/airbnb/react-dates/issues/1809
   useHotkeys('esc', () => setFocusedInput(null))
 
   return (
