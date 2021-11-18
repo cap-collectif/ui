@@ -9,6 +9,7 @@ import {
 } from 'react-dates'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 import { CapUIRadius } from '../../../styles'
 import { BoxPropsOf } from '../../box'
@@ -69,6 +70,9 @@ const DateRange: FC<DateRangeProps> = ({
     ...props,
     disabled: typeof props.disabled === 'string' ? undefined : props.disabled,
   })
+
+  useHotkeys('esc', () => setFocusedInput(null))
+
   return (
     <StyledWrapper
       className={cn('cap-dateRange', className)}
