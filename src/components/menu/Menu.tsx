@@ -3,7 +3,7 @@ import * as React from 'react'
 import type { PopoverInitialState, MenuBarInitialState } from 'reakit'
 import { useMenuState, MenuButton } from 'reakit/Menu'
 
-import { MenuContext, Context } from './Menu.context'
+import { MenuContext, Context, MenuValue } from './Menu.context'
 import MenuItem from './item/MenuItem'
 import MenuList from './list/MenuList'
 import MenuOptionGroup from './optionGroup/MenuOptionGroup'
@@ -14,6 +14,8 @@ export interface MenuProps {
   readonly disclosure: React.FunctionComponentElement<any>
   readonly hideOnClickOutside?: boolean
   readonly closeOnSelect?: boolean
+  readonly onChange?: (value: MenuValue) => void
+  readonly value?: MenuValue
   readonly loop?: MenuBarInitialState['loop']
   readonly placement?: PopoverInitialState['placement']
   readonly gutter?: PopoverInitialState['gutter']
@@ -39,14 +41,22 @@ export const Menu = React.forwardRef<HTMLElement, MenuProps>(
       loop = false,
       placement = 'bottom-end',
       gutter = 8,
+      onChange,
+      value,
       ...props
     },
     ref,
   ) => {
     const menu = useMenuState({ loop, placement, gutter })
     const context = React.useMemo<Context>(
-      () => ({ menu, closeOnSelect, hideOnClickOutside }),
-      [menu, closeOnSelect, hideOnClickOutside],
+      () => ({
+        menu,
+        closeOnSelect,
+        hideOnClickOutside,
+        onChange,
+        value,
+      }),
+      [menu, closeOnSelect, hideOnClickOutside, onChange, value],
     )
 
     return (
@@ -58,7 +68,13 @@ export const Menu = React.forwardRef<HTMLElement, MenuProps>(
           {...disclosure.props}
           className={cn('cap-menu__disclosure', disclosure.props.className)}
         >
-          {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
+          {disclosureProps =>
+            React.cloneElement(
+              disclosure,
+              disclosureProps,
+              value ? value.label : disclosure.props.children,
+            )
+          }
         </MenuButton>
 
         {children}
