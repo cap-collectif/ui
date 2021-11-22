@@ -6,6 +6,7 @@ import Button from '../button/Button'
 import { CapUIIcon, Icon } from '../icon'
 import { Text } from '../typography'
 import Menu, { MenuProps } from './Menu'
+import { MenuValue } from './Menu.context'
 
 const meta: Meta = {
   title: 'Library/Menu',
@@ -105,4 +106,42 @@ export const WithOptionGroup: Story<MenuProps> = args => {
       </Menu.List>
     </Menu>
   )
+}
+
+export const WithSelectOption: Story<MenuProps> = args => {
+  const languages = [
+    {
+      value: 'fr-FR',
+      label: 'French',
+    },
+    {
+      value: 'en-EN',
+      label: 'English',
+    },
+    {
+      value: 'es-ES',
+      label: 'Spanish',
+    },
+  ]
+
+  const [languageSelected, setLanguageSelected] = React.useState<MenuValue>(
+    languages[0],
+  )
+
+  return (
+    <Menu {...args} onChange={setLanguageSelected} value={languageSelected}>
+      <Menu.List>
+        {languages
+          .filter(language => language.value !== languageSelected.value)
+          .map(language => (
+            <Menu.Item value={language}>{language.label}</Menu.Item>
+          ))}
+      </Menu.List>
+    </Menu>
+  )
+}
+WithSelectOption.args = {
+  disclosure: (
+    <Button variant="primary" variantColor="primary" variantSize="small" />
+  ),
 }

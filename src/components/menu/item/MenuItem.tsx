@@ -5,17 +5,18 @@ import { MenuItem as ReakitMenuItem } from 'reakit/Menu'
 
 import { jsxInnerText } from '../../../utils/jsx'
 import { Box, BoxPropsOf } from '../../box'
-import { Text } from '../../typography/Text'
-import { useMenu } from '../Menu.context'
+import { Text } from '../../typography'
+import { MenuValue, useMenu } from '../Menu.context'
 
-export interface MenuItemProps extends BoxPropsOf<'button'> {
-  closeOnSelect?: boolean
-  children: React.ReactNode
+export interface MenuItemProps extends Omit<BoxPropsOf<'button'>, 'value'> {
+  readonly children: React.ReactNode
+  readonly closeOnSelect?: boolean
+  readonly value?: MenuValue
 }
 
 const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  ({ children, onClick, closeOnSelect, ...props }, ref) => {
-    const { menu, closeOnSelect: menuCloseOnSelect } = useMenu()
+  ({ children, onClick, closeOnSelect, value, ...props }, ref) => {
+    const { menu, closeOnSelect: menuCloseOnSelect, onChange } = useMenu()
     const textRef = React.useRef<HTMLElement>(null)
 
     const hasTruncateItem = React.useMemo(() => {
@@ -32,6 +33,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
     const onClickHandler = useCallback(
       e => {
         if (onClick) onClick(e)
+        if (onChange && value) onChange(value)
 
         const shouldHide = (() => {
           if (closeOnSelect !== undefined && closeOnSelect) {
@@ -46,7 +48,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
 
         if (shouldHide) menu.hide()
       },
-      [closeOnSelect, menuCloseOnSelect, onClick, menu],
+      [closeOnSelect, menuCloseOnSelect, onClick, menu, onChange, value],
     )
 
     return (

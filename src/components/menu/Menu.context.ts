@@ -1,10 +1,17 @@
 import * as React from 'react'
 import type { MenuStateReturn } from 'reakit/src/Menu/MenuState'
 
+export type MenuValue = {
+  value: string
+  label: string
+}
+
 export type Context = {
   menu: MenuStateReturn
   hideOnClickOutside: boolean
   closeOnSelect: boolean
+  onChange?: (value: MenuValue) => void
+  value?: MenuValue
 }
 
 export const MenuContext = React.createContext<Context | undefined>(undefined)
