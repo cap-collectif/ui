@@ -5,7 +5,7 @@ import { Box } from '../../box'
 import MenuItem, { MenuItemProps } from '../item/MenuItem'
 import { useMenuOptionGroup } from '../optionGroup/MenuOptionGroup.context'
 
-export interface MenuOptionItemProps extends MenuItemProps {
+export interface MenuOptionItemProps extends Omit<MenuItemProps, 'value'> {
   readonly value: string
 }
 
