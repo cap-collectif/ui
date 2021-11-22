@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.3.0
+
+`2021-11-22`
+
+- 🆕 Add select behavior on `Menu` [#126](https://github.com/cap-collectif/ui/pull/126)
+- 🆕 Add `DateRange` component [#113](https://github.com/cap-collectif/ui/pull/113)
+
 ## 0.2.1
 
 `2021-11-16`
