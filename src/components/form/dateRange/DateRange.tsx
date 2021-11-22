@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import { Moment } from 'moment'
-import moment from 'moment/moment'
 import React, { FC } from 'react'
 import {
   DateRangePicker,
@@ -43,7 +42,7 @@ export interface DateRangeProps
   readonly displayFormat: string | (() => string) | undefined
 }
 
-const CustomDayContent = (day: moment.Moment): React.ReactNode => {
+const CustomDayContent = (day: Moment): React.ReactNode => {
   return (
     <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
       {day.format('D')}
