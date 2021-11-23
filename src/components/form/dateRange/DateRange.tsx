@@ -1,11 +1,8 @@
 import cn from 'classnames'
 import { Moment } from 'moment'
 import React, { FC } from 'react'
-import {
-  DateRangePicker,
-  DateRangePickerInputShape,
-  FocusedInputShape,
-} from 'react-dates'
+import { DateRangePickerInputShape, FocusedInputShape } from 'react-dates'
+import DateRangePicker from 'react-dates/esm/components/DateRangePicker'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 import { useHotkeys } from 'react-hotkeys-hook'

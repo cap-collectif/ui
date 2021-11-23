@@ -12,15 +12,9 @@ import FormLabel from '../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './DateRange'
 import type { DateRangeValueType } from './DateRange'
 
-const moment = require('moment/min/moment')
-require('moment/locale/fr')
-require('moment/locale/en-gb')
-require('moment/locale/es')
-require('moment/locale/de')
-require('moment/locale/nl')
-require('moment/locale/sv')
-require('moment/locale/oc-lnc')
-require('moment/locale/eu')
+const moment = require('moment/min/moment-with-locales')
+require('moment/dist/locale/fr')
+moment.locale('fr')
 
 const meta: Meta = {
   title: 'Library/Form/DateRange',
