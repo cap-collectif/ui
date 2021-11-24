@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 
 import colors from '../../../styles/modules/colors'
-import { Box } from '../../box'
+import { Flex } from '../../layout'
 import { UPLOADER_SIZE } from './Uploader'
 
-export const Container = styled.div<{
+export const Container = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
   readonly drag: boolean
@@ -22,7 +22,6 @@ export const Container = styled.div<{
     }
   }};
   background-color: transparent;
-  display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
@@ -47,10 +46,9 @@ export const Container = styled.div<{
     border: 1.5px dashed ${colors.blue[300]};
   `}
 `
-export const Content = styled.div`
+export const Content = styled(Flex)`
   width: 100%;
   height: 100%;
-  display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -82,10 +80,9 @@ export const Content = styled.div`
     transform: scale(0.95);
   }
 `
-export const UploaderContainer = styled.div<{
+export const UploaderContainer = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
 }>`
-  display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
@@ -103,12 +100,11 @@ export const UploaderContainer = styled.div<{
   }};
   width: 100%;
 `
-export const ThumbContainer = styled.div`
+export const ThumbContainer = styled(Flex)`
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: #fff;
-  display: flex;
   justify-content: center;
 `
 export const Thumbnail = styled.img<{
@@ -130,7 +126,7 @@ export const Thumbnail = styled.img<{
   overflow: hidden;
   object-fit: contain;
 `
-export const FileThumbnail = styled.div<{
+export const FileThumbnail = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
@@ -148,12 +144,11 @@ export const FileThumbnail = styled.div<{
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
   overflow: hidden;
   background: ${colors.gray[100]};
-  display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 `
-export const FileThumbnailControls = styled.div<{
+export const FileThumbnailControls = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
@@ -172,7 +167,6 @@ export const FileThumbnailControls = styled.div<{
   background: transparent;
   position: absolute;
   top: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
   & > button {
@@ -192,7 +186,7 @@ export const FileThumbnailControls = styled.div<{
     }
   }
 `
-export const ThumbnailControls = styled.div<{
+export const ThumbnailControls = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
@@ -211,11 +205,10 @@ export const ThumbnailControls = styled.div<{
   background: transparent;
   position: absolute;
   top: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
   & > button {
-    opacity: 0 !important;
+    opacity: 0;
   }
   &:hover {
     background: linear-gradient(
@@ -227,7 +220,7 @@ export const ThumbnailControls = styled.div<{
       color: ${colors.white};
     }
     & > button {
-      opacity: 1 !important;
+      opacity: 1;
     }
   }
 `
@@ -258,26 +251,4 @@ export const FileItem = styled.li`
       opacity: 1 !important;
     }
   }
-`
-export const ErrorList = styled(Box).attrs({
-  mt: 2,
-  p: 4,
-})`
-  width: 100%;
-  background-color: ${colors.red[100]};
-  border: 1px solid ${colors.red[200]};
-  border-radius: 4px;
-  display: flex;
-  flex-flow: column;
-`
-export const WarningList = styled(Box).attrs({
-  mt: 2,
-  p: 4,
-})`
-  width: 100%;
-  background-color: ${colors.orange[100]};
-  border: 1px solid ${colors.orange[200]};
-  border-radius: 4px;
-  display: flex;
-  flex-flow: column;
 `

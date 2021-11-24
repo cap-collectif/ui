@@ -43,6 +43,12 @@ export type FileInfo = {
   size: string
   url: string
 }
+export type Wording = {
+  readonly uploaderPrompt: string
+  readonly uploaderLoadingPrompt: string
+  readonly fileDeleteLabel: string
+}
+
 export interface UploaderProps
   extends Omit<DropzoneProps, 'minSize' | 'ref' | 'children'>,
     Omit<
@@ -69,10 +75,7 @@ export interface UploaderProps
     fileRejections: FileRejection[],
     event: DropEvent,
   ) => void
-  readonly uploaderPrompt: string
-  readonly uploaderLoadingPrompt: string
-  readonly fileDeleteLabel: string
-  readonly errorMessage: string
+  readonly wording: Wording
   readonly placeholder: string
   readonly isInvalid: boolean
   readonly isRequired: boolean
@@ -89,9 +92,7 @@ const Uploader: React.FC<UploaderProps> = ({
   value,
   disabled,
   onDrop: onExternalDrop,
-  uploaderPrompt,
-  uploaderLoadingPrompt,
-  fileDeleteLabel,
+  wording,
   isImageUploader,
   minSize,
   className,
@@ -171,13 +172,13 @@ const Uploader: React.FC<UploaderProps> = ({
                 fontSize={4}
                 color="blue.800"
               >
-                {uploaderPrompt}
+                {wording.uploaderPrompt}
               </Text>
             ) : loading ? (
               <Flex direction="column" align="center">
                 <Spinner size={CapUIIconSize.Lg} />
                 <Text color="gray.800" mt={3}>
-                  {uploaderLoadingPrompt}
+                  {wording.uploaderLoadingPrompt}
                 </Text>
               </Flex>
             ) : (
@@ -190,7 +191,7 @@ const Uploader: React.FC<UploaderProps> = ({
                   lineHeight="base"
                   color="gray.500"
                 >
-                  {uploaderPrompt}
+                  {wording.uploaderPrompt}
                 </Text>
               </>
             )}
@@ -206,13 +207,13 @@ const Uploader: React.FC<UploaderProps> = ({
                 fontSize={4}
                 color="blue.800"
               >
-                {uploaderPrompt}
+                {wording.uploaderPrompt}
               </Text>
             ) : loading ? (
               <Flex direction="column" align="center">
                 <Spinner size={CapUIIconSize.Lg} />
                 <Text color="gray.800" mt={3}>
-                  {uploaderLoadingPrompt}
+                  {wording.uploaderLoadingPrompt}
                 </Text>
               </Flex>
             ) : (
@@ -223,7 +224,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 lineHeight="base"
                 color="gray.500"
               >
-                {uploaderPrompt}
+                {wording.uploaderPrompt}
               </Text>
             )}
           </Content>
@@ -271,7 +272,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
             <FileThumbnailControls size={size} circle={circle}>
               <ButtonQuickAction
-                label={fileDeleteLabel}
+                label={wording.fileDeleteLabel}
                 onClick={e => {
                   e.stopPropagation()
                   removeFile()
@@ -288,7 +289,7 @@ const Uploader: React.FC<UploaderProps> = ({
             <Thumbnail size={size} circle={circle} src={thumb} alt="" />
             <ThumbnailControls size={size} circle={circle}>
               <ButtonQuickAction
-                label={fileDeleteLabel}
+                label={wording.fileDeleteLabel}
                 onClick={e => {
                   e.stopPropagation()
                   removeFile()
@@ -304,5 +305,5 @@ const Uploader: React.FC<UploaderProps> = ({
     </UploaderContainer>
   )
 }
-
+Uploader.displayName = 'Uploader'
 export default Uploader

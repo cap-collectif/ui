@@ -29,9 +29,11 @@ const meta: Meta = {
     isInvalid: false,
     size: UPLOADER_SIZE.LG,
     circle: false,
-    uploaderPrompt: 'Déposer ou sélectionner des fichiers',
-    uploaderLoadingPrompt: 'Importation en cours...',
-    fileDeleteLabel: 'Supprimer',
+    Wording: {
+      uploaderPrompt: 'Déposer ou sélectionner des fichiers',
+      uploaderLoadingPrompt: 'Importation en cours...',
+      fileDeleteLabel: 'Supprimer',
+    },
     format: 'image/*',
     minResolution: { width: 170, height: 170 },
     showFiles: true,
@@ -949,7 +951,6 @@ export const UniqueWithError: Story<UploaderProps> = ({
   )
 }
 UniqueWithError.args = {
-  errorMessage: 'Custom error Message',
   isInvalid: true,
   required: false,
   minResolution: undefined,
@@ -1076,7 +1077,6 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
   )
 }
 MultipleWithErrors.args = {
-  errorMessage: 'Custom error Message',
   isInvalid: true,
   required: false,
   minResolution: undefined,
