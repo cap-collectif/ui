@@ -7,7 +7,6 @@ import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
-import { Box } from '../box/Box'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { Context } from './Modal.context'
 import { Provider } from './Modal.context'
@@ -43,14 +42,13 @@ type SubComponents = {
 
 const TRANSITION_DURATION = 0.35
 
-const Overlay = styled(motion(Box)).attrs({
+const Overlay = styled(motion(Flex)).attrs({
   position: 'fixed',
   left: 0,
   right: 0,
   bottom: 0,
   top: 0,
   zIndex: 1030,
-  display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
 })`` as StyledComponent<any, any>

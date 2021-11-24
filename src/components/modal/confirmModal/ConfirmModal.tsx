@@ -26,8 +26,7 @@ export interface ConfirmModalProps
   readonly onConfirm?: () => void | Promise<void>
   readonly onCancel?: () => void | Promise<void>
 }
-
-export const ConfirmModal: React.FC<ConfirmModalProps> = ({
+const ConfirmModal: React.FC<ConfirmModalProps> = ({
   children,
   title,
   body,

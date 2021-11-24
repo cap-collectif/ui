@@ -10,15 +10,16 @@ import { useModal } from '../Modal.context'
 
 type ModalFooterProps = FlexProps & {
   readonly children: React.ReactNode
-  readonly infoUrl?: string
-  readonly infoUrlLabel?: string
+  readonly info?: {
+    url: string
+    label: string
+  }
 }
 
 export const ModalFooter: React.FC<ModalFooterProps> = ({
   children,
   className,
-  infoUrl,
-  infoUrlLabel,
+  info,
   ...rest
 }) => {
   const { fullSizeOnMobile } = useModal()
@@ -55,18 +56,18 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       className={cn('cap-modal__footer', className)}
       {...rest}
     >
-      {!isMobile && infoUrl && (
+      {!isMobile && info && (
         <Button
           position="absolute"
           left={6}
           as="a"
           target="_blank"
-          href={infoUrl}
+          href={info.url}
           variantSize="small"
           variant="link"
           leftIcon={CapUIIcon.Info}
         >
-          {infoUrlLabel}
+          {info.label}
         </Button>
       )}
       {children}
