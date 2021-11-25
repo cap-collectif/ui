@@ -103,10 +103,20 @@ export const Mobile: Story<ModalProps> = args => (
           </FormControl>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" variantColor="primary" onClick={hide}>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="medium"
+            onClick={hide}
+          >
             Cancel
           </Button>
-          <Button variant="primary" variantColor="primary" onClick={hide}>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="medium"
+            onClick={hide}
+          >
             Validate
           </Button>
         </Modal.Footer>
@@ -133,10 +143,20 @@ export const MobileFullPage: Story<ModalProps> = args => (
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" variantColor="primary" onClick={hide}>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="medium"
+            onClick={hide}
+          >
             Cancel
           </Button>
-          <Button variant="primary" variantColor="primary" onClick={hide}>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="medium"
+            onClick={hide}
+          >
             Validate
           </Button>
         </Modal.Footer>
@@ -231,39 +251,6 @@ export const WithLotOfContent: Story<ModalProps> = args => (
     )}
   </Modal>
 )
-
-export const withoutBackdrop: Story<ModalProps> = args => (
-  <Modal {...args}>
-    {({ hide }) => (
-      <>
-        <Modal.Header>
-          <Heading>Title</Heading>
-        </Modal.Header>
-        <Modal.Body>Content</Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            variantColor="primary"
-            variantSize="big"
-            onClick={hide}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            variantColor="primary"
-            variantSize="big"
-            onClick={hide}
-          >
-            Validate
-          </Button>
-        </Modal.Footer>
-      </>
-    )}
-  </Modal>
-)
-withoutBackdrop.storyName = 'without backdrop'
-withoutBackdrop.args = { noBackdrop: true }
 
 export const allowBodyScroll: Story<ModalProps> = args => (
   <Flex width="60%" direction="column" margin="0px auto">

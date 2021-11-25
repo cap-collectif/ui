@@ -39,6 +39,8 @@ type SubComponents = {
   Body: typeof ModalBody
   Footer: typeof ModalFooter
 }
+type ModalInnerShape = FlexProps &
+  MotionProps & { fullSizeOnMobile: boolean; isMobile: boolean }
 
 const TRANSITION_DURATION = 0.35
 
@@ -54,12 +56,7 @@ const Overlay = styled(motion(Flex)).attrs({
 })`` as StyledComponent<any, any>
 
 const ModalInner = styled(motion(Flex)).attrs(
-  ({
-    fullSizeOnMobile,
-    isMobile,
-    ...rest
-  }: FlexProps &
-    MotionProps & { fullSizeOnMobile: boolean; isMobile: boolean }) =>
+  ({ fullSizeOnMobile, isMobile, ...rest }: ModalInnerShape) =>
     isMobile && {
       position: 'absolute',
       bottom: 0,
@@ -71,7 +68,6 @@ const ModalInner = styled(motion(Flex)).attrs(
       borderTopRightRadius: fullSizeOnMobile && 0,
       boxShadow: 'medium',
       maxHeight: fullSizeOnMobile ? '100% ' : '55% ',
-      mt: '0 ',
       ...rest,
     },
 )(
@@ -193,7 +189,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
                 }}
                 exit={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 className={cn('cap-modal', className)}
-                size={size}
+                size={isMobile ? null : size}
                 isMobile={isMobile}
                 fullSizeOnMobile={fullSizeOnMobile}
                 bg="white"
