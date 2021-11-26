@@ -103,7 +103,7 @@ export const RADII = {
   normal: 4,
   button: 4,
   card: 4,
-  modal: 5,
+  modal: 8,
   tags: 4,
   tooltip: 4,
   notifications: 4,
