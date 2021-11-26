@@ -952,10 +952,16 @@ export const UniqueWithError: Story<UploaderProps> = ({
 }
 UniqueWithError.args = {
   isInvalid: true,
+  value: {
+    id: 'ID1',
+    name: 'Storybook Image',
+    size: '1048576',
+    url: 'https://unsplash.it/500/500',
+  },
   required: false,
   minResolution: undefined,
-  showThumbnail: false,
-  isImageUploader: false,
+  showThumbnail: true,
+  isImageUploader: true,
   multiple: false,
   maxSize: 1048576,
 }
