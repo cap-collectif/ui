@@ -43,7 +43,7 @@ export type FileInfo = {
   size: string
   url: string
 }
-export type Wording = {
+export type WordingType = {
   readonly uploaderPrompt: string
   readonly uploaderLoadingPrompt: string
   readonly fileDeleteLabel: string
@@ -75,7 +75,7 @@ export interface UploaderProps
     fileRejections: FileRejection[],
     event: DropEvent,
   ) => void
-  readonly wording: Wording
+  readonly wording: WordingType
   readonly placeholder: string
   readonly isInvalid: boolean
   readonly isRequired: boolean

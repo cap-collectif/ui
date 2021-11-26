@@ -29,7 +29,7 @@ const meta: Meta = {
     isInvalid: false,
     size: UPLOADER_SIZE.LG,
     circle: false,
-    Wording: {
+    wording: {
       uploaderPrompt: 'Déposer ou sélectionner des fichiers',
       uploaderLoadingPrompt: 'Importation en cours...',
       fileDeleteLabel: 'Supprimer',
