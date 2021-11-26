@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react'
-import moment from 'moment/moment'
 import * as React from 'react'
 
 import { Box } from '../../box/Box'
@@ -12,6 +11,10 @@ import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './DateRange'
 import type { DateRangeValueType } from './DateRange'
+
+const moment = require('moment/min/moment-with-locales')
+require('moment/dist/locale/fr')
+moment.locale('fr')
 
 const meta: Meta = {
   title: 'Library/Form/DateRange',

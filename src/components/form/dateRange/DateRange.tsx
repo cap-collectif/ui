@@ -1,13 +1,9 @@
 import cn from 'classnames'
 import { Moment } from 'moment'
-import moment from 'moment/moment'
 import React, { FC } from 'react'
-import {
-  DateRangePicker,
-  DateRangePickerInputShape,
-  FocusedInputShape,
-} from 'react-dates'
+import { DateRangePickerInputShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
+import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 import 'react-dates/lib/css/_datepicker.css'
 import { useHotkeys } from 'react-hotkeys-hook'
 
@@ -43,7 +39,7 @@ export interface DateRangeProps
   readonly displayFormat: string | (() => string) | undefined
 }
 
-const CustomDayContent = (day: moment.Moment): React.ReactNode => {
+const CustomDayContent = (day: Moment): React.ReactNode => {
   return (
     <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
       {day.format('D')}
