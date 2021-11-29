@@ -39,6 +39,7 @@ const Control = ({ children, ...props }: ControlProps) => {
           name={CapUIIcon.Cross}
           size={CapUIIconSize.Md}
           color="gray.700"
+          _hover={{ color: 'red.500' }}
           onClick={() => props.clearValue()}
         />
       )}
