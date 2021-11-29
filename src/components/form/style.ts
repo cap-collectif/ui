@@ -70,6 +70,7 @@ export function reactSelectStyle<
   isInvalid: boolean | undefined,
   isDisabled: boolean | undefined,
   variantSize: CapInputSize,
+  isSearch?: boolean,
 ): StylesConfig<Option, IsMulti, Group> {
   const disabledStyles = isDisabled
     ? {
@@ -102,7 +103,7 @@ export function reactSelectStyle<
       { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
     ) => ({
       ...base,
-      paddingLeft: SPACING[3],
+      paddingLeft: SPACING[isSearch ? 1 : 3],
       paddingRight: SPACING[3],
       paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
       paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
@@ -151,7 +152,9 @@ export function reactSelectStyle<
     }),
     clearIndicator: (base: CSSObjectWithLabel) => ({
       ...base,
-      display: 'none',
+      padding: 0,
+      margin: 0,
+      display: !isSearch ? 'none' : 'flex',
     }),
     indicatorsContainer: (base: CSSObjectWithLabel) => ({
       ...base,
@@ -166,6 +169,7 @@ export function reactSelectStyle<
       padding: 0,
       margin: 0,
       color: colors.gray[isDisabled ? '500' : '700'],
+      display: isSearch ? 'none' : 'flex',
     }),
   }
 }
