@@ -205,6 +205,7 @@ export const ThumbnailControls = styled(Flex)<{
   background: transparent;
   position: absolute;
   top: 0;
+  left: 0;
   align-items: center;
   justify-content: center;
   & > button {
