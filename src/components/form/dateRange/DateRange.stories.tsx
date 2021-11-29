@@ -12,7 +12,7 @@ import FormLabel from '../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './DateRange'
 import type { DateRangeValueType } from './DateRange'
 
-const moment = require('moment/min/moment-with-locales')
+const moment = require('moment')
 require('moment/dist/locale/fr')
 moment.locale('fr')
 
