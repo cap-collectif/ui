@@ -40,7 +40,7 @@ const Control = ({ children, ...props }: ControlProps) => {
           size={CapUIIconSize.Md}
           color="gray.700"
           _hover={{ color: 'red.500' }}
-          onClick={() => props.clearValue()}
+          onClick={props.clearValue}
         />
       )}
     </components.Control>
@@ -71,10 +71,10 @@ export const Search = ({
           true,
         )}
         inputValue={input}
-        onInputChange={(e, action) => {
+        onInputChange={(newValue, action) => {
           if (action.action === 'input-change') {
-            setInput(e)
-            if (onChange) onChange(e)
+            setInput(newValue)
+            if (onChange) onChange(newValue)
           }
         }}
         onChange={() => {
