@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.4.0
+
+`2021-11-29`
+
+- 🆕 Add `ButtonGroup` component [#117](https://github.com/cap-collectif/ui/pull/117)
+- 🆕 Add `ConfirmModal` component [#117](https://github.com/cap-collectif/ui/pull/117)
+- 🆕 Add `Modal` component [#117](https://github.com/cap-collectif/ui/pull/117)
+- 🆕 Improve bundle size in externalize peerDependencies with rollup [#130](https://github.com/cap-collectif/ui/pull/130)
+
 ## 0.3.0
 
 `2021-11-22`
