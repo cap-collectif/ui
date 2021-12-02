@@ -52,10 +52,7 @@ export const Default: Story<DateRangeProps> = args => {
   })
   return (
     <DateRange
-      className={args.className}
-      startDateId={args.startDateId}
-      endDateId={args.endDateId}
-      displayFormat={args.displayFormat}
+      {...args}
       value={value}
       onChange={elem =>
         onChange({ startDate: elem.startDate, endDate: elem.endDate })
@@ -71,11 +68,7 @@ export const Disabled: Story<DateRangeProps> = args => {
   })
   return (
     <DateRange
-      isDisabled={args.isDisabled}
-      className={args.className}
-      startDateId={args.startDateId}
-      endDateId={args.endDateId}
-      displayFormat={args.displayFormat}
+      {...args}
       value={value}
       onChange={elem =>
         onChange({ startDate: elem.startDate, endDate: elem.endDate })
@@ -211,7 +204,7 @@ export const WithGuideline: Story<DateRangeProps> = ({
   ...args
 }) => {
   const [value, onChange] = React.useState<DateRangeValueType>({
-    startDate: moment().subtract(8, 'days'),
+    startDate: null,
     endDate: null,
   })
   return (

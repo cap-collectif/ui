@@ -12,7 +12,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import { DateRangeBox } from './DateRange.module'
+import { DateRangeBox } from './DateRange.style'
 import { NavNext, NavPrev } from './Nav'
 
 export type DateRangeValueType = {
@@ -73,7 +73,6 @@ const DateRange: FC<DateRangeProps> = ({
       className={cn('cap-dateRange', className)}
       isInvalid={inputProps['aria-invalid']}
       variant={inputProps.variantSize}
-      {...inputProps}
     >
       <DateRangePicker
         disabled={inputProps.disabled || props.disabled}
