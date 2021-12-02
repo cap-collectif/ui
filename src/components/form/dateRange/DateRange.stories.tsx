@@ -60,6 +60,7 @@ export const Default: Story<DateRangeProps> = args => {
       onChange={elem =>
         onChange({ startDate: elem.startDate, endDate: elem.endDate })
       }
+      variantSize={args.variantSize}
     />
   )
 }

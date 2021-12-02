@@ -4,7 +4,6 @@ import React, { FC } from 'react'
 import { DateRangePickerInputShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
-import 'react-dates/lib/css/_datepicker.css'
 import { useHotkeys } from 'react-hotkeys-hook'
 
 import { CapUIRadius } from '../../../styles'
@@ -13,7 +12,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import styles, { StyledWrapper } from './DateRange.style'
+import { DateRangeBox } from './DateRange.module'
 import { NavNext, NavPrev } from './Nav'
 
 export type DateRangeValueType = {
@@ -69,11 +68,10 @@ const DateRange: FC<DateRangeProps> = ({
   // The library doesn't handle closing the calendar after Tabbing out of the input
   // https://github.com/airbnb/react-dates/issues/1809
   useHotkeys('esc', () => setFocusedInput(null))
-
   return (
-    <StyledWrapper
+    <DateRangeBox
       className={cn('cap-dateRange', className)}
-      sx={styles(inputProps['aria-invalid'])}
+      isInvalid={inputProps['aria-invalid']}
       variant={inputProps.variantSize}
       {...inputProps}
     >
@@ -113,7 +111,7 @@ const DateRange: FC<DateRangeProps> = ({
           />
         }
       />
-    </StyledWrapper>
+    </DateRangeBox>
   )
 }
 
