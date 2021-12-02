@@ -1,10 +1,19 @@
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
 
 import { CapUILineHeight } from '../../../styles'
-import { Box, PolymorphicBox } from '../../box'
+import { Box } from '../../box'
 import { CapInputSize } from '../enums'
 
-const variantDateRange = {
+type variantDateRangeType = {
+  [key in CapInputSize]: FlattenInterpolation<ThemeProps<DefaultTheme>>
+}
+
+const variantDateRange: variantDateRangeType = {
   [CapInputSize.Sm]: css`
     .DateInput:first-child {
       padding-left: ${props => props.theme.sizes['3']};
@@ -23,19 +32,13 @@ const variantDateRange = {
       padding-right: ${props => props.theme.sizes['3']};
     }
     .DateInput {
-      padding-top: ${props => props.theme.sizes['2']};
-      padding-bottom: ${props => props.theme.sizes['2']};
-      padding-left: ${props => props.theme.sizes['2']};
-      padding-right: ${props => props.theme.sizes['2']};
+      padding: ${props => props.theme.sizes['2']};
     }
   `,
 }
+type DateRangeBoxProps = { variant: CapInputSize; isInvalid: boolean }
 
-export const DateRangeBox: StyledComponent<
-  PolymorphicBox,
-  any,
-  { variant: CapInputSize }
-> = styled(Box)`
+export const DateRangeBox = styled(Box)<DateRangeBoxProps>`
   .PresetDateRangePicker_panel {
     padding: 0 22px 11px;
   }
