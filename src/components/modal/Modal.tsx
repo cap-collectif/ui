@@ -122,7 +122,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     visible: show,
   })
   const containerRef = React.useRef<HTMLElement>(null)
-
+  const firstMount = React.useRef(true)
   const isMobile = useIsMobile()
   const context = React.useMemo(
     () => ({
@@ -135,6 +135,18 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     }),
     [dialog, hideCloseButton],
   )
+  React.useEffect(() => {
+    if (dialog.visible && firstMount.current) {
+      if (onOpen) {
+        onOpen()
+      }
+      firstMount.current = false
+    } else if (!dialog.visible && !firstMount.current) {
+      if (onClose) {
+        onClose()
+      }
+    }
+  }, [onOpen, onClose, dialog.visible])
 
   return (
     <Provider context={context}>

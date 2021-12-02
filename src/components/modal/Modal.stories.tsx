@@ -33,7 +33,15 @@ const meta: Meta<ModalProps> = {
 export default meta
 
 export const Default: Story<ModalProps> = args => (
-  <Modal {...args}>
+  <Modal
+    {...args}
+    onOpen={() => {
+      console.log('OPENED')
+    }}
+    onClose={() => {
+      console.log('CLOSED')
+    }}
+  >
     {({ hide }) => (
       <>
         <Modal.Header>
