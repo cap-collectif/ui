@@ -27,8 +27,8 @@ export interface DateRangeProps
   readonly onChange: (value: DateRangeValueType) => void
   readonly startDatePlaceholderText?: string
   readonly endDatePlaceholderText?: string
-  readonly startDateId: string
-  readonly endDateId: string
+  readonly startDateId?: string
+  readonly endDateId?: string
   readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
@@ -50,8 +50,8 @@ const DateRange: FC<DateRangeProps> = ({
   endDatePlaceholderText = 'jj/mm/aaaa',
   value,
   onChange,
-  startDateId,
-  endDateId,
+  startDateId = 'cap-dateRange-startDate',
+  endDateId = 'cap-dateRange-endDate',
   displayFormat,
   className,
   ...props

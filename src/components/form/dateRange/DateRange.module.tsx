@@ -392,18 +392,6 @@ export const DateRangeBox: StyledComponent<
     cursor: default;
   }
 
-  .CalendarDay__default {
-    border: 1px solid #e4e7e7;
-    color: #484848;
-    background: #fff;
-  }
-
-  .CalendarDay__default:hover {
-    background: #e4e7e7;
-    border: 1px solid #e4e7e7;
-    color: inherit;
-  }
-
   .CalendarDay__hovered_offset {
     background: #f4f5f5;
     border: 1px double #e4e7e7;
@@ -423,12 +411,6 @@ export const DateRangeBox: StyledComponent<
   .CalendarDay__blocked_minimum_nights {
     background: #fff;
     border: 1px solid #eceeee;
-    color: #cacccd;
-  }
-
-  .CalendarDay__blocked_minimum_nights:active,
-  .CalendarDay__blocked_minimum_nights:hover {
-    background: #fff;
     color: #cacccd;
   }
 
@@ -1164,10 +1146,6 @@ export const DateRangeBox: StyledComponent<
     color: ${props => props.theme.colors.gray['900']};
     border: none;
     background-color: white;
-    &:hover {
-      background-color: ${props => props.theme.colors.blue['150']};
-      border: none;
-    }
   }
 
   .CalendarDay__today {
