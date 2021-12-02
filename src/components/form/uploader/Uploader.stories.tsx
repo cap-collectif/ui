@@ -13,8 +13,9 @@ import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
 import FilesList from './FileList'
-import Uploader, { UPLOADER_SIZE, UploaderProps } from './Uploader'
+import Uploader, { UploaderProps } from './Uploader'
 import mdx from './Uploader.mdx'
+import { UPLOADER_SIZE } from './Uploader.style'
 
 const meta: Meta = {
   title: 'Library/Form/Uploader',
@@ -784,15 +785,13 @@ export const MultipleWithValue: Story<UploaderProps> = ({
       />
       <FormErrorMessage>
         <InfoMessage variant="danger">
-          <InfoMessage.Title
-            as="h5"
-            color="red.900"
-            fontWeight={CapUIFontWeight.Semibold}
-          >
+          <InfoMessage.Title>
             ⛔️ Les fichiers suivants n’ont pas pu être importés :
           </InfoMessage.Title>
           {errors.map(error => (
-            <InfoMessage.Content key={error}>{error}</InfoMessage.Content>
+            <InfoMessage.Content color="red.900" key={error}>
+              {error}
+            </InfoMessage.Content>
           ))}
         </InfoMessage>
       </FormErrorMessage>
@@ -1067,15 +1066,13 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
       />
       <FormErrorMessage>
         <InfoMessage variant="danger">
-          <InfoMessage.Title
-            as="h5"
-            color="red.900"
-            fontWeight={CapUIFontWeight.Semibold}
-          >
+          <InfoMessage.Title>
             ⛔️ Les fichiers suivants n’ont pas pu être importés :
           </InfoMessage.Title>
           {errors.map(error => (
-            <InfoMessage.Content key={error}>{error}</InfoMessage.Content>
+            <InfoMessage.Content color="red.900" key={error}>
+              {error}
+            </InfoMessage.Content>
           ))}
         </InfoMessage>
       </FormErrorMessage>

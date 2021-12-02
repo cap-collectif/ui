@@ -25,7 +25,7 @@ const FilesList = ({
           <Flex direction="row" align="center" justify="flex-start">
             <Icon
               size={CapUIIconSize.Md}
-              name={CapUIIcon.FileO}
+              name={CapUIIcon.File}
               color="gray.300"
             />
             <Text fontSize={2} lineHeight="sm">
@@ -36,7 +36,7 @@ const FilesList = ({
             label={deleteFileLabel}
             onClick={() => onRemove(file)}
             icon={CapUIIcon.Trash}
-            size={CapUIIconSize.Md}
+            size={CapUIIconSize.Sm}
             variantColor="red"
           />
         </FileItem>

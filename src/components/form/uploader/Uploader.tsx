@@ -23,14 +23,9 @@ import {
   ThumbContainer,
   Thumbnail,
   ThumbnailControls,
+  UPLOADER_SIZE,
   UploaderContainer,
 } from './Uploader.style'
-
-export enum UPLOADER_SIZE {
-  SM = 'sm', // 184px
-  MD = 'md', // 240px
-  LG = 'lg', // 488px
-}
 
 export type Size = {
   width: number
@@ -289,6 +284,7 @@ const Uploader: React.FC<UploaderProps> = ({
             <Thumbnail size={size} circle={circle} src={thumb} alt="" />
             <ThumbnailControls size={size} circle={circle}>
               <ButtonQuickAction
+                color="white"
                 label={wording.fileDeleteLabel}
                 onClick={e => {
                   e.stopPropagation()

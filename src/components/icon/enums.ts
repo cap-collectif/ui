@@ -69,6 +69,7 @@ export enum CapUIIcon {
   YoutubeColored = 'YOUTUBE_COLORED',
   Drag = 'DRAG',
   FileO = 'FILE_O',
+  File = 'FILE',
   Cog = 'COG',
   EnvelopeO = 'ENVELOPE_O',
   Lock = 'LOCK',

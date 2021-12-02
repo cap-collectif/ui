@@ -3,7 +3,12 @@ import { ResponsiveValue } from 'styled-system'
 
 import colors from '../../../styles/modules/colors'
 import { Flex } from '../../layout'
-import { UPLOADER_SIZE } from './Uploader'
+
+export enum UPLOADER_SIZE {
+  SM = 'sm', // 184px
+  MD = 'md', // 240px
+  LG = 'lg', // 488px
+}
 
 export const Container = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
@@ -77,7 +82,7 @@ export const Content = styled(Flex)`
     transform: translate(5px, -5px) rotate(-2deg);
   }
   &:hover .all {
-    transform: scale(0.95);
+    transform: scale(0.95, 0.95);
   }
 `
 export const UploaderContainer = styled(Flex)<{
@@ -217,7 +222,7 @@ export const ThumbnailControls = styled(Flex)<{
       rgba(39, 43, 48, 0.32),
       rgba(39, 43, 48, 0.32)
     );
-    & > div > svg {
+    & > button > svg {
       color: ${colors.white};
     }
     & > button {
