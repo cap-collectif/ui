@@ -43,7 +43,7 @@ const styles: SystemStyleObject = {
     lineHeight: CapUILineHeight.Base,
   },
 
-  '&:hover,&.hover,&:focus,&[aria-selected="true"],&:active': {
+  '&:focus,&[aria-selected="true"],&:active': {
     borderColor: 'blue.500',
   },
 

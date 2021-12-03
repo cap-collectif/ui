@@ -4,6 +4,7 @@ import * as React from 'react'
 import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
+import FormGuideline from '../formGuideline/FormGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import TextArea, { TextAreaProps } from './TextArea'
 import mdx from './TextArea.mdx'
@@ -62,7 +63,7 @@ WithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const WithFixedWidth: Story<Args> = ({
+export const WithFixedWidthAndMaxLength: Story<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -70,11 +71,11 @@ export const WithFixedWidth: Story<Args> = ({
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} width="500px">
-      <FormLabel label="Soyez concis !" />
       <TextArea
         placeholder={placeholder}
         width="280px"
         maxLength={25}
+        maxLengthMessage="Vous avez atteint le nombre maximum de caractères"
         value={value}
         onChange={e => setValue(e.target.value)}
       />
@@ -82,6 +83,119 @@ export const WithFixedWidth: Story<Args> = ({
     </FormControl>
   )
 }
-WithFixedWidth.args = {
+WithFixedWidthAndMaxLength.args = {
   errorMessage: "Je suis un message d'erreur somme toute assez long",
+}
+
+export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} isDisabled width="500px">
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithLabel: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} width="500px">
+      <FormLabel label="Label" />
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithLabelDisabled: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} isDisabled width="500px">
+      <FormLabel label="Label" />
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithLabelErrorState: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} isInvalid width="500px">
+      <FormLabel label="Label" />
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithGuideline: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} width="500px">
+      <FormLabel label="Label" />
+      <FormGuideline>Guideline</FormGuideline>
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithGuidelineDisabled: Story<Args> = ({
+  placeholder,
+  ...args
+}) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} isDisabled width="500px">
+      <FormLabel label="Label" />
+      <FormGuideline>Guideline</FormGuideline>
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
+}
+
+export const WithGuidelineErrorState: Story<Args> = ({
+  placeholder,
+  ...args
+}) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} isInvalid width="500px">
+      <FormLabel label="Label" />
+      <FormGuideline>Guideline</FormGuideline>
+      <TextArea
+        placeholder={placeholder}
+        width="280px"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </FormControl>
+  )
 }

@@ -8,12 +8,14 @@ import { Flex } from '../../layout'
 import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
+import FormGuideline from '../formGuideline/FormGuideline'
 import S, { InputInner } from '../style'
 
 export interface TextAreaProps extends BoxPropsOf<'textarea'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
+  readonly maxLengthMessage?: string
   readonly resize?:
     | 'none'
     | 'both'
@@ -27,8 +29,21 @@ export interface TextAreaProps extends BoxPropsOf<'textarea'> {
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ className, maxLength, value, width, resize = 'none', ...props }, ref) => {
+  (
+    {
+      className,
+      maxLength,
+      value,
+      width,
+      resize = 'none',
+      maxLengthMessage,
+      ...props
+    },
+    ref,
+  ) => {
     const inputProps = useFormControl<HTMLTextAreaElement>(props)
+    const valueLength =
+      (value && typeof value === 'string' && value.length) || 0
     return (
       <Flex direction="column" width={width || '100%'}>
         <InputInner
@@ -45,20 +60,28 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           maxLength={maxLength}
           {...props}
         />
-        {maxLength && !inputProps['aria-invalid'] && (
-          <Text
-            width="100%"
-            textAlign="end"
-            color="gray.500"
-            fontSize={1}
-            mt={1}
-            lineHeight={CapUILineHeight.Sm}
-            bg="inherit"
-          >
-            {(value && typeof value === 'string' && value.length) || 0} /{' '}
-            {maxLength}
-          </Text>
-        )}
+        {maxLength &&
+          !inputProps['aria-invalid'] &&
+          (valueLength < maxLength || !maxLengthMessage) && (
+            <Text
+              width="100%"
+              textAlign="end"
+              color="gray.500"
+              fontSize={1}
+              mt={1}
+              lineHeight={CapUILineHeight.Sm}
+              bg="inherit"
+            >
+              {(value && typeof value === 'string' && value.length) || 0} /{' '}
+              {maxLength}
+            </Text>
+          )}
+        {maxLength &&
+          valueLength === maxLength &&
+          maxLengthMessage &&
+          !inputProps['aria-invalid'] && (
+            <FormGuideline mt={1}>{maxLengthMessage}</FormGuideline>
+          )}
       </Flex>
     )
   },
