@@ -4,6 +4,7 @@ import * as React from 'react'
 import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
+import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import InputNumber, { InputNumberProps } from './InputNumber'
 import mdx from './InputNumber.mdx'
@@ -38,6 +39,73 @@ export default meta
 export const Default: Story<InputNumberProps> = args => (
   <InputNumber {...args} />
 )
+
+export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} isInvalid width="300px">
+      <InputNumber placeholder="6" />
+      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithLabel: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} width="300px">
+      <FormLabel label="Label" />
+      <InputNumber placeholder="6" />
+      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithLabelError: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} isInvalid width="300px">
+      <FormLabel label="Label" />
+      <InputNumber placeholder="6" />
+      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithGuideline: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} width="300px">
+      <FormLabel label="Label" />
+      <FormGuideline>Guideline</FormGuideline>
+      <InputNumber placeholder="6" />
+      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithGuidelineError: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} isInvalid width="300px">
+      <FormLabel label="Label" />
+      <FormGuideline>Guideline</FormGuideline>
+      <InputNumber placeholder="6" />
+      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const Disabled: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} isDisabled width="300px">
+      <InputNumber placeholder="6" />
+    </FormControl>
+  )
+}
+
+export const MediumSize: Story<Args> = ({ errorMessage, ...args }) => {
+  return (
+    <FormControl {...args} variantSize={CapInputSize.Md} width="300px">
+      <InputNumber placeholder="6" />
+    </FormControl>
+  )
+}
 
 export const WithInputNumberProperties: Story<Args> = ({
   errorMessage,

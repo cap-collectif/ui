@@ -53,6 +53,7 @@ export const InputNumber = ({
       >
         <Icon
           color="gray.500"
+          _hover={{ color: 'gray.900' }}
           name={CapUIIcon.ArrowDown}
           size={CapUIIconSize.Xs}
         />
@@ -96,6 +97,7 @@ export const InputNumber = ({
       >
         <Icon
           color="gray.500"
+          _hover={{ color: 'gray.900' }}
           name={CapUIIcon.ArrowUp}
           size={CapUIIconSize.Xs}
         />

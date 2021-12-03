@@ -35,7 +35,7 @@ const styles: SystemStyleObject = {
   color: 'gray.900',
   bg: 'white',
 
-  '&[type=number]': { paddingRight: 24 },
+  '&[type=number]': { paddingRight: 32 },
 
   '&::placeholder': {
     color: 'gray.500',
