@@ -5,8 +5,7 @@ import isAsync from '../../../utils/isAsync'
 import { ButtonProps } from '../../button'
 import Button from '../../button/Button'
 import Heading from '../../typography/Heading'
-import { RenderProps } from '../Modal'
-import { Modal, ModalProps } from '../index'
+import { Modal, ModalProps, RenderProps } from '../Modal'
 
 export interface ConfirmModalProps
   extends Omit<ModalProps, 'children' | 'title'> {
@@ -26,7 +25,8 @@ export interface ConfirmModalProps
   readonly onConfirm?: () => void | Promise<void>
   readonly onCancel?: () => void | Promise<void>
 }
-const ConfirmModal: React.FC<ConfirmModalProps> = ({
+
+export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   children,
   title,
   body,
@@ -36,6 +36,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   ...props
 }: ConfirmModalProps) => {
   const { isLoading, startLoading, stopLoading } = useLoadingMachine()
+
   return (
     <Modal
       hideOnClickOutside={false}
@@ -118,5 +119,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     </Modal>
   )
 }
+
 ConfirmModal.displayName = 'ConfirmModal'
+
 export default ConfirmModal
