@@ -4,7 +4,6 @@ import React, { FC } from 'react'
 import { DateRangePickerInputShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
-import 'react-dates/lib/css/_datepicker.css'
 import { useHotkeys } from 'react-hotkeys-hook'
 
 import { CapUIRadius } from '../../../styles'
@@ -13,7 +12,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import styles, { StyledWrapper } from './DateRange.style'
+import { DateRangeBox } from './DateRange.style'
 import { NavNext, NavPrev } from './Nav'
 
 export type DateRangeValueType = {
@@ -28,8 +27,8 @@ export interface DateRangeProps
   readonly onChange: (value: DateRangeValueType) => void
   readonly startDatePlaceholderText?: string
   readonly endDatePlaceholderText?: string
-  readonly startDateId: string
-  readonly endDateId: string
+  readonly startDateId?: string
+  readonly endDateId?: string
   readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
@@ -51,8 +50,8 @@ const DateRange: FC<DateRangeProps> = ({
   endDatePlaceholderText = 'jj/mm/aaaa',
   value,
   onChange,
-  startDateId,
-  endDateId,
+  startDateId = 'cap-dateRange-startDate',
+  endDateId = 'cap-dateRange-endDate',
   displayFormat,
   className,
   ...props
@@ -69,13 +68,11 @@ const DateRange: FC<DateRangeProps> = ({
   // The library doesn't handle closing the calendar after Tabbing out of the input
   // https://github.com/airbnb/react-dates/issues/1809
   useHotkeys('esc', () => setFocusedInput(null))
-
   return (
-    <StyledWrapper
+    <DateRangeBox
       className={cn('cap-dateRange', className)}
-      sx={styles(inputProps['aria-invalid'])}
+      isInvalid={inputProps['aria-invalid']}
       variant={inputProps.variantSize}
-      {...inputProps}
     >
       <DateRangePicker
         disabled={inputProps.disabled || props.disabled}
@@ -113,7 +110,7 @@ const DateRange: FC<DateRangeProps> = ({
           />
         }
       />
-    </StyledWrapper>
+    </DateRangeBox>
   )
 }
 
