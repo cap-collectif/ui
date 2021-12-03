@@ -11,6 +11,16 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.4.1
+
+`2021-12-03`
+
+- 🐛 Fix circular dependencies [#139](https://github.com/cap-collectif/ui/pull/139)
+- 🆕 Add new spot icons [#138](https://github.com/cap-collectif/ui/pull/138)
+- 🐛 Fix CSS import of DateRange [#136](https://github.com/cap-collectif/ui/pull/136)
+- 🐛 Fix `onClose` and `onOpen` on Modal [#135](https://github.com/cap-collectif/ui/pull/135)
+
+
 ## 0.4.0
 
 `2021-11-29`
