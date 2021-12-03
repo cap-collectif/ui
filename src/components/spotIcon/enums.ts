@@ -1,5 +1,3 @@
-import { CODES } from '../../assets/spotIcons'
-
 export enum CapUISpotIcon {
   PENCIL_SOFTWARE = 'PENCIL_SOFTWARE',
   EMAIL_TIMEOUT = 'EMAIL_TIMEOUT',
