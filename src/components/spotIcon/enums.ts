@@ -1,3 +1,5 @@
+import { CODES } from '../../assets/spotIcons'
+
 export enum CapUISpotIcon {
   PENCIL_SOFTWARE = 'PENCIL_SOFTWARE',
   EMAIL_TIMEOUT = 'EMAIL_TIMEOUT',
@@ -22,6 +24,8 @@ export enum CapUISpotIcon {
   PROJECT = 'PROJECT',
   SHEET = 'SHEET',
   ADD_CONTACT = 'ADD_CONTACT',
+  MAIL = 'MAIL',
+  CODES = 'CODES',
 }
 
 export enum CapUISpotIconSize {
