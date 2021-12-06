@@ -147,6 +147,13 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
       }
     }
   }, [onOpen, onClose, dialog.visible])
+  React.useEffect(() => {
+    if (show === true) {
+      dialog.show()
+    } else if (show === false) {
+      dialog.hide()
+    }
+  }, [dialog, show])
 
   return (
     <Provider context={context}>

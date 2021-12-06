@@ -430,3 +430,53 @@ export const DoNotHideOnEsc: Story<ModalProps> = args => (
 )
 DoNotHideOnEsc.storyName = 'do not hide on ESC'
 DoNotHideOnEsc.args = { hideOnEsc: false }
+
+export const ControlledModal: Story<ModalProps> = args => {
+  const [show, setShow] = React.useState(false)
+  const [modalState, setModalState] = React.useState<'NORMAL' | 'LEAVE'>(
+    'NORMAL',
+  )
+
+  const onClose = () => {
+    if (modalState === 'LEAVE') {
+      setModalState('NORMAL')
+      setShow(false)
+    } else setModalState('LEAVE')
+  }
+
+  return (
+    <>
+      <Button onClick={() => setShow(true)}>Open Me</Button>
+      {show && (
+        <Modal {...args} onClose={onClose} show={show}>
+          <Modal.Header>
+            <Heading>Title</Heading>
+          </Modal.Header>
+          <Modal.Body>
+            {modalState === 'NORMAL' ? 'Content' : 'Leave'}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              variantColor="primary"
+              variantSize="big"
+              onClick={onClose}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              variantColor="primary"
+              variantSize="big"
+              onClick={onClose}
+            >
+              Validate
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+    </>
+  )
+}
+ControlledModal.args = { disclosure: undefined }
+ControlledModal.storyName = 'Controlled Modal'
