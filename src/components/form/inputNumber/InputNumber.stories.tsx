@@ -44,7 +44,7 @@ export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} isInvalid width="300px">
       <InputNumber placeholder="6" />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
@@ -54,7 +54,7 @@ export const WithLabel: Story<Args> = ({ errorMessage, ...args }) => {
     <FormControl {...args} width="300px">
       <FormLabel label="Label" />
       <InputNumber placeholder="6" />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
@@ -64,7 +64,7 @@ export const WithLabelError: Story<Args> = ({ errorMessage, ...args }) => {
     <FormControl {...args} isInvalid width="300px">
       <FormLabel label="Label" />
       <InputNumber placeholder="6" />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
@@ -75,7 +75,7 @@ export const WithGuideline: Story<Args> = ({ errorMessage, ...args }) => {
       <FormLabel label="Label" />
       <FormGuideline>Guideline</FormGuideline>
       <InputNumber placeholder="6" />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
@@ -86,7 +86,7 @@ export const WithGuidelineError: Story<Args> = ({ errorMessage, ...args }) => {
       <FormLabel label="Label" />
       <FormGuideline>Guideline</FormGuideline>
       <InputNumber placeholder="6" />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
@@ -126,7 +126,7 @@ export const WithInputNumberProperties: Story<Args> = ({
           )
         }}
       />
-      <FormErrorMessage>Ca va pas ça... c'est pas bon</FormErrorMessage>
+      <FormErrorMessage>Error Info</FormErrorMessage>
     </FormControl>
   )
 }
