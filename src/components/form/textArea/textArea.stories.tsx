@@ -68,7 +68,7 @@ export const WithFixedWidthAndMaxLength: Story<Args> = ({
   placeholder,
   ...args
 }) => {
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState('Beaucoup de caracteres et')
   return (
     <FormControl {...args} width="500px">
       <TextArea
