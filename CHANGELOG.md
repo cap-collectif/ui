@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.4.2
+
+`2021-12-06`
+
+- 🆕 Add show controls on modal [#143](https://github.com/cap-collectif/ui/pull/143)
+
 ## 0.4.1
 
 `2021-12-03`
