@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { Icon, CapUIIcon } from '../../icon'
 import { Flex } from '../../layout/Flex'
-import { Text } from '../../typography/Text'
+import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
@@ -13,6 +13,7 @@ import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
 import Select from './Select'
+import mdx from './Select.mdx'
 
 type Args = {
   errorMessage: string
@@ -42,6 +43,9 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
+    docs: {
+      page: mdx,
+    },
   },
 }
 

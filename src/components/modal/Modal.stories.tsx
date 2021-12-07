@@ -8,6 +8,7 @@ import { Flex } from '../layout'
 import { Tooltip } from '../tooltip/Tooltip'
 import { Heading, Text } from '../typography'
 import { CapUIModalSize, Modal, ModalProps } from './'
+import mdx from './Modal.mdx'
 
 const meta: Meta<ModalProps> = {
   title: 'Library/Modal',
@@ -27,6 +28,9 @@ const meta: Meta<ModalProps> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
+    docs: {
+      page: mdx,
+    },
   },
 }
 

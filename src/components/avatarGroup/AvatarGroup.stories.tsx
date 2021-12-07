@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import Avatar from '../avatar/Avatar'
 import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
+import mdx from './AvatarGroup.mdx'
 
 const meta: Meta = {
   title: 'Library/AvatarGroup',
@@ -12,6 +13,9 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
+    docs: {
+      page: mdx,
+    },
   },
 }
 

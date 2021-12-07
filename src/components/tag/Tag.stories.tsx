@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import { Tag, TagProps } from './'
+import mdx from './Tag.mdx'
 
 const meta: Meta<TagProps> = {
   title: 'Library/Tag',
@@ -17,6 +18,9 @@ const meta: Meta<TagProps> = {
       matchers: {
         color: null,
       },
+    },
+    docs: {
+      page: mdx,
     },
   },
 }
