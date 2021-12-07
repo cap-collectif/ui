@@ -48,7 +48,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   className,
   ...props
 }) => {
-  const tooltip = useTooltipState({ visible, animated: 300, gutter: 4 })
+  const tooltip = useTooltipState({ visible, animated: 300, gutter: 8 })
 
   const showDelayed = () => {
     setTimeout(() => {

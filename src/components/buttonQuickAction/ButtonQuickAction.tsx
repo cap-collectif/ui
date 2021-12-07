@@ -34,7 +34,7 @@ export const ButtonQuickAction = React.forwardRef<
     ref,
   ) => {
     return (
-      <Tooltip label={label}>
+      <Tooltip label={label} visible>
         <Box
           as="button"
           bg="transparent"
