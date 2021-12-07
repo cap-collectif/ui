@@ -10,6 +10,7 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import Input, { InputProps } from './Input'
+import mdx from './Input.mdx'
 
 type Args = {
   errorMessage: string
@@ -30,6 +31,9 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
+    docs: {
+      page: mdx,
+    },
   },
 }
 
