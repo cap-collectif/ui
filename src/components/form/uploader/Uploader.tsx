@@ -8,6 +8,7 @@ import {
 } from 'react-dropzone'
 import { ResponsiveValue } from 'styled-system'
 
+import fileType from '../../../utils/fileType'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -37,6 +38,7 @@ export type FileInfo = {
   name: string
   size: string
   url: string
+  type: string
 }
 export type WordingType = {
   readonly uploaderPrompt: string
@@ -59,7 +61,6 @@ export interface UploaderProps
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly value?: FileInfo | Array<FileInfo>
   readonly circle?: boolean
-  readonly isImageUploader: boolean
   readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[] // https://react-dropzone.js.org/#section-accepting-specific-file-types
   readonly maxSize?: number
   readonly minResolution?: Size
@@ -71,9 +72,9 @@ export interface UploaderProps
     event: DropEvent,
   ) => void
   readonly wording: WordingType
-  readonly placeholder: string
   readonly isInvalid: boolean
   readonly isRequired: boolean
+  readonly onRemove?: (file?: FileInfo) => void
 }
 
 const Uploader: React.FC<UploaderProps> = ({
@@ -88,18 +89,20 @@ const Uploader: React.FC<UploaderProps> = ({
   disabled,
   onDrop: onExternalDrop,
   wording,
-  isImageUploader,
   minSize,
   className,
   onDropRejected,
+  onRemove,
   ...props
 }) => {
   const [thumb, setThumb] = React.useState<string | null>(null)
   const [drag, setDrag] = React.useState<boolean>(false)
   const [loading, setLoading] = React.useState<boolean>(false)
+  const [isImageUploader, setIsImageUploader] = React.useState<boolean>(false)
   React.useEffect(() => {
     if (!multiple && value && !Array.isArray(value)) {
       setThumb(value.url)
+      setIsImageUploader(fileType(value.type) === 'image')
     }
     return () => {
       if (thumb) {
@@ -107,6 +110,7 @@ const Uploader: React.FC<UploaderProps> = ({
       }
     }
   }, [thumb, value, setThumb])
+
   const onDrop = React.useCallback(
     async <T extends File>(
       acceptedFiles: T[],
@@ -114,15 +118,19 @@ const Uploader: React.FC<UploaderProps> = ({
       event: DropEvent,
     ) => {
       setLoading(true)
+
       onExternalDrop(acceptedFiles, fileRejections, event)
+
       if (acceptedFiles.length === 0) {
         setDrag(false)
         setLoading(false)
         return
       }
+
       if (showThumbnail && !multiple) {
         setThumb(URL.createObjectURL(acceptedFiles[0]))
       }
+
       setDrag(false)
       setLoading(false)
     },
@@ -131,7 +139,11 @@ const Uploader: React.FC<UploaderProps> = ({
 
   const removeFile = () => {
     setThumb(null)
+    if (onRemove && !multiple && !Array.isArray(value)) {
+      onRemove(value)
+    }
   }
+
   const {
     getRootProps,
     getInputProps,
@@ -252,7 +264,7 @@ const Uploader: React.FC<UploaderProps> = ({
       >
         <input {...getInputProps()} />
         {getContent()}
-        {showThumbnail && !isImageUploader && thumb && (
+        {!multiple && showThumbnail && !isImageUploader && thumb && (
           <ThumbContainer>
             <FileThumbnail size={size} circle={circle}>
               <Icon
@@ -279,7 +291,7 @@ const Uploader: React.FC<UploaderProps> = ({
             </FileThumbnailControls>
           </ThumbContainer>
         )}
-        {showThumbnail && isImageUploader && thumb && (
+        {!multiple && showThumbnail && isImageUploader && thumb && (
           <ThumbContainer>
             <Thumbnail size={size} circle={circle} src={thumb} alt="" />
             <ThumbnailControls size={size} circle={circle}>

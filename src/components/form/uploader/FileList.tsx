@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import * as React from 'react'
 
 import { ButtonQuickAction } from '../../buttonQuickAction'
@@ -11,15 +12,17 @@ export type FilesListProps = {
   readonly droppedFiles: FileInfo[]
   readonly onRemove: (file: FileInfo) => void
   readonly deleteFileLabel: string
+  readonly className?: string
 }
 const FilesList = ({
   droppedFiles,
   onRemove,
   deleteFileLabel,
+  className,
 }: FilesListProps) => {
   if (droppedFiles.length === 0) return null
   return (
-    <FileListContainer>
+    <FileListContainer className={cn('cap-uploader__fileList', className)}>
       {droppedFiles.map(file => (
         <FileItem key={file.name}>
           <Flex direction="row" align="center" justify="flex-start">

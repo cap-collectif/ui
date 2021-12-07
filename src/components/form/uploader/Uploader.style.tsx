@@ -246,7 +246,7 @@ export const FileItem = styled.li`
   padding: 8px;
   border-radius: 4px;
   & > button {
-    opacity: 0 !important;
+    opacity: 0;
   }
   &:hover {
     background-color: ${colors.gray[100]};
@@ -254,7 +254,7 @@ export const FileItem = styled.li`
       color: ${colors.gray[700]};
     }
     & > button {
-      opacity: 1 !important;
+      opacity: 1;
     }
   }
 `

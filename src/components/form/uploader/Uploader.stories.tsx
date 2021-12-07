@@ -4,6 +4,7 @@ import { DropEvent, ErrorCode, FileRejection } from 'react-dropzone'
 
 import { CapUIFontWeight } from '../../../styles'
 import { btomg, mgtob } from '../../../utils/fileSizeConvert'
+import fileType from '../../../utils/fileType'
 import { Box } from '../../box/Box'
 import { InfoMessage } from '../../infoMessage/InfoMessage'
 import { Flex } from '../../layout'
@@ -41,7 +42,6 @@ const meta: Meta = {
     maxSize: 8388608,
     multiple: false,
     showThumbnail: true,
-    isImageUploader: true,
     onDrop: (
       acceptedFiles: File[],
       fileRejections: FileRejection[],
@@ -283,7 +283,7 @@ export const Small: Story<UploaderProps> = ({
 Small.args = {
   size: UPLOADER_SIZE.SM,
 }
-export const Avatar: Story<UploaderProps> = ({
+export const Circle: Story<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -355,7 +355,7 @@ export const Avatar: Story<UploaderProps> = ({
     />
   </FormControl>
 )
-Avatar.args = {
+Circle.args = {
   size: UPLOADER_SIZE.SM,
   circle: true,
 }
@@ -428,6 +428,9 @@ export const DefaultWithValue: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      onRemove={() => {
+        console.log('removed')
+      }}
       {...args}
     />
   </FormControl>
@@ -439,6 +442,7 @@ DefaultWithValue.args = {
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/500/500',
+    type: 'image/jpeg',
   },
 }
 export const MediumWithValue: Story<UploaderProps> = ({
@@ -509,6 +513,9 @@ export const MediumWithValue: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      onRemove={() => {
+        console.log('removed')
+      }}
       {...args}
     />
   </FormControl>
@@ -520,6 +527,7 @@ MediumWithValue.args = {
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/500/500',
+    type: 'image/jpeg',
   },
 }
 export const SmallWithValue: Story<UploaderProps> = ({
@@ -590,6 +598,9 @@ export const SmallWithValue: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      onRemove={() => {
+        console.log('removed')
+      }}
       {...args}
     />
   </FormControl>
@@ -601,9 +612,10 @@ SmallWithValue.args = {
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/500/500',
+    type: 'image/jpeg',
   },
 }
-export const AvatarWithValue: Story<UploaderProps> = ({
+export const CircleWithValue: Story<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -671,11 +683,14 @@ export const AvatarWithValue: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      onRemove={() => {
+        console.log('removed')
+      }}
       {...args}
     />
   </FormControl>
 )
-AvatarWithValue.args = {
+CircleWithValue.args = {
   size: UPLOADER_SIZE.SM,
   circle: true,
   value: {
@@ -683,6 +698,7 @@ AvatarWithValue.args = {
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/500/500',
+    type: 'image/jpeg',
   },
 }
 export const MultipleWithValue: Story<UploaderProps> = ({
@@ -819,24 +835,28 @@ MultipleWithValue.args = {
       name: 'Storybook Image 1',
       size: '1048576',
       url: 'https://unsplash.it/500/500',
+      type: 'image/jpeg',
     },
     {
       id: 'ID2',
       name: 'Storybook Image 2',
       size: '1048576',
       url: 'https://unsplash.it/500/500',
+      type: 'image/jpeg',
     },
     {
       id: 'ID3',
       name: 'Storybook Image 3',
       size: '1048576',
       url: 'https://unsplash.it/500/500',
+      type: 'image/jpeg',
     },
     {
       id: 'ID4',
       name: 'Storybook Image 4',
       size: '1048576',
       url: 'https://unsplash.it/500/500',
+      type: 'image/jpeg',
     },
   ],
 }
@@ -933,6 +953,9 @@ export const UniqueWithError: Story<UploaderProps> = ({
         className={className}
         ref={ref}
         onDrop={onDrop}
+        onRemove={() => {
+          console.log('removed')
+        }}
         onDropRejected={onDropRejected}
       />
       <FormErrorMessage>
@@ -956,11 +979,11 @@ UniqueWithError.args = {
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/500/500',
+    type: 'image/jpeg',
   },
   required: false,
   minResolution: undefined,
   showThumbnail: true,
-  isImageUploader: true,
   multiple: false,
   maxSize: 1048576,
 }
@@ -1084,7 +1107,6 @@ MultipleWithErrors.args = {
   required: false,
   minResolution: undefined,
   showThumbnail: false,
-  isImageUploader: false,
   multiple: true,
   maxSize: 1048576,
 }
@@ -1103,7 +1125,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
     '⚠️ La qualité de cette image est très faible.',
   )
   const onDrop = (acceptedFiles: File[]) => {
-    if (!!minResolution && args.isImageUploader) {
+    if (!!minResolution && fileType(acceptedFiles[0].type)) {
       const img = new Image()
 
       img.onload = function () {
@@ -1196,6 +1218,9 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
           onDropAccepted={onDropAccepted}
           onFileDialogCancel={onFileDialogCancel}
           onDropRejected={onDropRejectedFunction}
+          onRemove={() => {
+            console.log('removed')
+          }}
         />
         {warning && (
           <InfoMessage variant="warning">
@@ -1265,8 +1290,12 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
             name: 'Storybook Image',
             size: '1048576',
             url: 'https://unsplash.it/2500/2000',
+            type: 'image/jpeg',
           }}
           {...args}
+          onRemove={() => {
+            console.log('removed')
+          }}
           className={className}
           ref={ref}
           onDrop={onDrop}
@@ -1290,12 +1319,12 @@ UniqueWithWarning.args = {
   required: false,
   minResolution: { width: 170, height: 170 },
   showThumbnail: true,
-  isImageUploader: true,
   multiple: false,
   value: {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
     url: 'https://unsplash.it/170/100',
+    type: 'image/jpeg',
   },
 }
