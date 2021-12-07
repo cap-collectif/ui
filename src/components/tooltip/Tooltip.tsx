@@ -32,6 +32,9 @@ type ContainerAnimate = React.FC<
 const ContainerAnimate = motion(Box) as ContainerAnimate
 
 const Arrow = styled(TooltipArrow)`
+  svg {
+    transform: rotateZ(180deg) scale(1.1) !important;
+  }
   .stroke {
     fill: transparent;
   }
