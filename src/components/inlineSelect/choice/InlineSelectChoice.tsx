@@ -53,6 +53,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           lineHeight={CapUILineHeight.Sm}
           _hover={{ bg: 'blue.150' }}
           _focus={{ bg: 'blue.150' }}
+          style={{ transition: 'background-color 0.1s ease' }}
         >
           {children}
         </Box>
