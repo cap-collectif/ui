@@ -31,15 +31,15 @@ const getIcon = (variant: Variant) => {
       color: 'gray.500',
     },
     danger: {
-      name: CapUIIcon.Info,
+      name: CapUIIcon.Cross,
       color: 'red.500',
     },
     success: {
-      name: CapUIIcon.Info,
+      name: CapUIIcon.Check,
       color: 'green.500',
     },
     warning: {
-      name: CapUIIcon.Info,
+      name: CapUIIcon.Alert,
       color: 'orange.500',
     },
   }
