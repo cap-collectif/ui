@@ -17,7 +17,7 @@ export interface SearchProps
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange: (value: string) => void
-  readonly defaultValue?: string
+  readonly value?: string
 }
 
 const Control = ({ children, ...props }: ControlProps) => {
@@ -54,11 +54,15 @@ export const Search = ({
   variantSize,
   isInvalid,
   onChange,
-  defaultValue,
+  value,
   ...props
 }: SearchProps) => {
   const asyncRef = React.useRef(null)
-  const [input, setInput] = React.useState(defaultValue || '')
+  const [input, setInput] = React.useState(value || '')
+
+  React.useEffect(() => {
+    setInput(value || '')
+  }, [value])
 
   return (
     <Box width={width || '280px'}>
