@@ -42,6 +42,7 @@ export interface CapUITheme extends Typography {
   radii: typeof RADII
   shadows: typeof SHADOWS
   borders: typeof BORDERS
+  zIndices: typeof ZINDEX
 }
 
 export const theme = <Props extends { theme: CapUITheme }>(props: Props) =>
@@ -140,6 +141,20 @@ export const BORDERS = {
   avatar: '2px solid',
 } as const
 
+export const ZINDEX = {
+  hide: -1,
+  auto: 'auto',
+  base: 0,
+  dropdown: 1000,
+  overlay: 1300,
+  modal: 1400,
+  popover: 1500,
+  tooltip: 1700,
+  toast: 1800,
+} as const
+
+export type ThemeZIndicesValues = keyof typeof ZINDEX | (number & {})
+
 export enum CapUIBorder {
   None = 'none',
   Normal = 'normal',
@@ -170,6 +185,7 @@ export const capuiTheme: DefaultTheme = {
   radii: RADII,
   borders: BORDERS,
   shadows: SHADOWS,
+  zIndices: ZINDEX,
 }
 
 export const extendTheme = <T extends Record<any, any>>(

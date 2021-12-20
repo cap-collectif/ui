@@ -134,6 +134,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
               exit={{ opacity: 0, scale: 0.9, ...getOriginPosition(placement) }}
               transition={{ duration: 0.15, ease: 'easeInOut' }}
               className={cn('cap-popover', className)}
+              zIndex="popover"
               {...props}
             >
               <Arrow {...popover} />

@@ -43,6 +43,7 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(
         initial="hidden"
         animate={menu.visible ? 'visible' : 'hidden'}
         transition={LAYOUT_TRANSITION_SPRING}
+        zIndex="dropdown"
         {...rest}
         className={cn('cap-menu__list', className)}
       >
