@@ -2,7 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 import { forwardRef } from 'react'
 
-import { CapUILineHeight } from '../../../styles'
+import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box, BoxPropsOf } from '../../box'
 import { Flex } from '../../layout'
 import { CapInputSize } from '../enums'
@@ -33,6 +33,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           htmlFor={props.id}
           lineHeight={CapUILineHeight.Base}
           color={inputProps.disabled ? 'gray.500' : ''}
+          fontFamily={CapUIFontFamily.Label}
         >
           {label ? <Box ml={1}>{label}</Box> : ''}
         </Flex>

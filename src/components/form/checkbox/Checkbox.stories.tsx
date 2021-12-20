@@ -1,11 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Flex } from '../..'
-import { Box } from '../../box/Box'
-import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
-import { Tooltip } from '../../tooltip'
-import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
