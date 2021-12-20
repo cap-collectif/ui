@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import colors from '../../../styles/modules/colors'
 import { Box } from '../../box'
 
 export const CheckboxContainer = styled(Box)`
@@ -21,7 +22,7 @@ export const CheckboxContainer = styled(Box)`
     display: block;
     padding-left: 24px;
     ::before {
-      border: 1px solid #85919d;
+      border: 1px solid ${colors.gray[500]};
       border-radius: 4px;
       content: '';
       height: 14px;
@@ -50,33 +51,33 @@ export const CheckboxContainer = styled(Box)`
     opacity: 1;
   }
   input:checked + label::before {
-    background: #1a88ff;
-    border: 1px solid #1a88ff;
+    background: ${colors.blue[500]};
+    border: 1px solid ${colors.blue[500]};
   }
   input:focus + label::before {
-    box-shadow: 0px 0px 2px 2px #8ac2ff;
+    box-shadow: 0px 0px 2px 2px ${colors.blue[300]};
   }
 
   input[aria-invalid='true'] + label::before {
-    background: #fae5e7;
-    border: 1px solid #dd3c4c;
+    background: ${colors.red[150]};
+    border: 1px solid ${colors.red[500]};
   }
   input[aria-invalid='true'] + label::after {
-    color: #dd3c4c;
+    color: ${colors.red[500]};
   }
 
   input:disabled {
     cursor: normal;
   }
   input:disabled + label::before {
-    background: #e8ebed;
-    border: 1px solid #bec4cb;
+    background: ${colors.gray[150]};
+    border: 1px solid ${colors.gray[300]};
   }
   input:disabled:checked + label::before {
-    background: #f7f7f8;
-    border: 1px solid #bec4cb;
+    background: ${colors.gray[100]};
+    border: 1px solid ${colors.gray[300]};
   }
   input:disabled:checked + label::after {
-    color: #bec4cb;
+    color: ${colors.gray[300]};
   }
 `
