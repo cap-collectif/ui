@@ -59,7 +59,7 @@ export const WithGuideline: Story<Args> = args => (
 export const WithAnErrorMessage: Story<Args> = ({ errorMessage, ...args }) => (
   <FormControl {...args}>
     <Checkbox id="checkbox1" label="Checkbox1" />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    <FormErrorMessage ml={7}>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
 
@@ -73,7 +73,7 @@ export const WithAnErrorMessageChecked: Story<Args> = ({
 }) => (
   <FormControl {...args}>
     <Checkbox id="checkbox1" label="Checkbox1" checked />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    <FormErrorMessage ml={7}>{errorMessage}</FormErrorMessage>
   </FormControl>
 )
 
