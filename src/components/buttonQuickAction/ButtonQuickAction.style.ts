@@ -15,6 +15,10 @@ const styles = (variantColor: BaseColorsName) => ({
       boxShadow: `0 0 2px 2px ${colors[variantColor]['300']}`,
     },
   },
+  ':focus': {
+    backgroundColor: colors[variantColor]['150'],
+    boxShadow: `0 0 2px 2px ${colors[variantColor]['300']}`,
+  },
 })
 
 export default styles

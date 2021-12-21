@@ -32,6 +32,9 @@ type ContainerAnimate = React.FC<
 const ContainerAnimate = motion(Box) as ContainerAnimate
 
 const Arrow = styled(TooltipArrow)`
+  svg {
+    transform: rotateZ(180deg) scale(1.1) !important;
+  }
   .stroke {
     fill: transparent;
   }
@@ -48,7 +51,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   className,
   ...props
 }) => {
-  const tooltip = useTooltipState({ visible, animated: 300, gutter: 4 })
+  const tooltip = useTooltipState({ visible, animated: 300, gutter: 8 })
 
   const showDelayed = () => {
     setTimeout(() => {
