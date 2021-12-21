@@ -11,6 +11,23 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.5.0
+
+`2021-12-21`
+
+- 💄 Fix height on `Modal` [#160](https://github.com/cap-collectif/ui/pull/160)
+- 🆕 Add `zIndex` in theme [#160](https://github.com/cap-collectif/ui/pull/160)
+- 🆕 Add default font-family on `Flex` [#160](https://github.com/cap-collectif/ui/pull/160)
+- 🆕 Add `menu-arrow` icon [#160](https://github.com/cap-collectif/ui/pull/160)
+- 💄 Fix cursor apparence of `Button` [#160](https://github.com/cap-collectif/ui/pull/160)
+- 🆕 Add `Checkbox` component [#159](https://github.com/cap-collectif/ui/pull/159)
+- 💄 Several fix for `ButtonQuickAction` [#148](https://github.com/cap-collectif/ui/pull/148)
+- 🆕 Add `Uploader` component [#122](https://github.com/cap-collectif/ui/pull/122)
+- 💄 Several fix for `TextArea` [#141](https://github.com/cap-collectif/ui/pull/141)
+- 💄 Several fix for `InputNumber` [#142](https://github.com/cap-collectif/ui/pull/142)
+- 💄 Fix animation of `InlineSelect` [#149](https://github.com/cap-collectif/ui/pull/149)
+- 💄 Several fix for `InfoMessage` [#150](https://github.com/cap-collectif/ui/pull/150) [#160](https://github.com/cap-collectif/ui/pull/160)
+
 ## 0.4.2
 
 `2021-12-06`
