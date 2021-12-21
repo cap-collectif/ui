@@ -65,7 +65,7 @@ const [
 
 export { useFormControlContext }
 
-export const FormControl = forwardRef<FormControlProps, FlexProps>(
+export const FormControl = forwardRef<FlexProps, FormControlProps>(
   (props, ref) => {
     const { getRootProps, htmlProps: _, ...context } = useFormControlProvider(
       props,

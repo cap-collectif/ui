@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
+import { Button } from '../button'
 import { CapInputSize, FormLabel } from '../form'
 import Search from './Search'
 import mdx from './Search.mdx'
@@ -38,7 +39,7 @@ export const Loading: Story<Args> = ({ ...args }) => (
   <>
     <FormLabel label="Label" mb={1} />
     <Search
-      defaultValue="Budget participatif"
+      value="Budget participatif"
       isLoading
       inputId="color"
       onChange={() => {}}
@@ -53,3 +54,16 @@ export const Disabled: Story<Args> = ({ ...args }) => (
     <Search inputId="color" onChange={() => {}} {...args} isDisabled />
   </>
 )
+
+export const Controlled: Story<Args> = () => {
+  const [value, setValue] = React.useState('')
+  return (
+    <>
+      <FormLabel label="Label" mb={1} />
+      <Search inputId="color" onChange={setValue} value={value} />
+      <Button mt={4} onClick={() => setValue('')}>
+        Controlled Clear
+      </Button>
+    </>
+  )
+}
