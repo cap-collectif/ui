@@ -50,7 +50,7 @@ const Overlay = styled(motion(Flex)).attrs({
   right: 0,
   bottom: 0,
   top: 0,
-  zIndex: 1030,
+  zIndex: 'overlay',
   flexDirection: 'column',
   alignItems: 'center',
 })`` as StyledComponent<any, any>
@@ -76,16 +76,19 @@ const ModalInner = styled(motion(Flex)).attrs(
     variants: {
       sm: {
         width: '25%',
+        height: '68%',
         maxHeight: '68%',
         mt: '16vh',
       },
       md: {
         width: '40%',
+        height: '68%',
         maxHeight: '68%',
         mt: '16vh',
       },
       lg: {
         width: '50%',
+        height: '68%',
         maxHeight: '68%',
         mt: '16vh',
       },
@@ -213,6 +216,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
                 fullSizeOnMobile={fullSizeOnMobile}
                 bg="white"
                 borderRadius="modal"
+                zIndex="modal"
                 {...props}
               >
                 {typeof children === 'function' ? children(context) : children}

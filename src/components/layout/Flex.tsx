@@ -4,6 +4,7 @@ import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
 import { FlexboxProps } from 'styled-system'
 
 import { useTheme } from '../../hooks'
+import { CapUIFontFamily } from '../../styles'
 import { cleanChildren, hasProps } from '../../utils/jsx'
 import { PolymorphicComponent, BoxOwnProps, Box } from '../box'
 
@@ -129,6 +130,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       flexBasis={basis}
       flexGrow={grow}
       ref={ref}
+      fontFamily={CapUIFontFamily.Body}
       sx={{
         ...styles,
         ...sx,

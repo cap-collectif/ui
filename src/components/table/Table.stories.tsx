@@ -7,6 +7,7 @@ import { ButtonQuickAction } from '../buttonQuickAction'
 import { CapUIIcon } from '../icon'
 import { Flex } from '../layout'
 import { Link } from '../link'
+import { Tag } from '../tag'
 import { Text } from '../typography'
 import { headingStyles } from '../typography/Heading'
 import { Table, TableProps } from './Table'
@@ -91,9 +92,15 @@ const Template: Story<TableProps> = args => (
           </Link>
         </Table.Td>
         <Table.Td>Developer</Table.Td>
-        <Table.Td>France</Table.Td>
+        <Table.Td>
+          <Box zIndex={12}>Coucou</Box>
+        </Table.Td>
         <Table.Td isNumeric>123456789</Table.Td>
-        <Table.Td>12/01/2030</Table.Td>
+        <Table.Td>
+          <Tag variantColor="aqua">
+            <Tag.Label>Coucou</Tag.Label>
+          </Tag>
+        </Table.Td>
         <Table.Td>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad
           atque, consectetur cumque eaque eum exercitationem in laudantium,

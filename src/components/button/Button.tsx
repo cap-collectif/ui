@@ -104,7 +104,9 @@ const Button = React.forwardRef<
         isLoading={isLoading}
         disabled={isLoading || disabled}
         sx={{
-          'pointer-events': isLoading ? 'none' : 'auto',
+          '&:disabled': {
+            cursor: 'not-allowed',
+          },
         }}
         className={cn(
           {

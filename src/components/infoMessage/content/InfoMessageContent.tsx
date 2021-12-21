@@ -4,9 +4,7 @@ import * as React from 'react'
 import { CapUIFontFamily } from '../../../styles'
 import { Box, BoxProps } from '../../box'
 
-type InfoMessageContentProps = BoxProps & {
-  readonly children: string | React.ReactElement
-}
+type InfoMessageContentProps = BoxProps
 
 export const InfoMessageContent = ({
   children,

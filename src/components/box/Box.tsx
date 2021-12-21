@@ -28,6 +28,7 @@ import {
   typography,
   TypographyProps,
   variant,
+  zIndex,
 } from 'styled-system'
 
 import {
@@ -42,6 +43,7 @@ import {
   ThemeRadiiValues,
   ThemeShadowsValues,
   ThemeSpacingValues,
+  ThemeZIndicesValues,
 } from '../../styles/theme'
 import type {
   ThemeFontFamiliesValue,
@@ -73,6 +75,10 @@ interface AppLetterSpacing {
   letterSpacing?: ResponsiveValue<
     CapUILetterSpacing | ThemeLetterSpacingsValues
   >
+}
+
+interface AppZIndex {
+  zIndex?: ResponsiveValue<ThemeZIndicesValues>
 }
 
 type AppTypographyProps = Omit<
@@ -271,7 +277,8 @@ type ModifiedStyledSystemProps = AppSizeProps &
   AppLetterSpacing &
   AppFontWeight &
   AppFontFamily &
-  AppLineHeight
+  AppLineHeight &
+  AppZIndex
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
@@ -385,6 +392,7 @@ export const Box = styled('div').withConfig({
     border,
     typography,
     position,
+    zIndex,
   ),
 )
 

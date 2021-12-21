@@ -202,6 +202,7 @@ export const Toast: React.FC<ToastProps> = ({
       ref={container}
       animation={show ? getAnimation(position) : fadeOut}
       className="cap-toast"
+      zIndex="toast"
     >
       <Flex align="center" css={{ '& > *:last-child': { flex: 1 } }}>
         {variant === 'loading' ? (

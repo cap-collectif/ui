@@ -84,6 +84,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               exit={{ opacity: 0 }}
               transition={LAYOUT_TRANSITION_SPRING}
               className={cn('cap-tooltip', className)}
+              zIndex="tooltip"
               {...props}
             >
               <Arrow {...tooltip} />
