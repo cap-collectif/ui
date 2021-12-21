@@ -32,7 +32,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           as="label"
           htmlFor={props.id}
           lineHeight={CapUILineHeight.Base}
-          color={inputProps.disabled ? 'gray.500' : ''}
+          color={inputProps.disabled ? 'gray.500' : 'gray.900'}
           fontFamily={CapUIFontFamily.Label}
         >
           {label ? <Box ml={1}>{label}</Box> : ''}
