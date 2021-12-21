@@ -47,10 +47,6 @@ const meta: Meta<TableProps> = {
   },
 }
 
-// (
-//   (ThemeZIndicesValues | (ThemeZIndicesValues | null)[] | { [x: string]: ThemeZIndicesValues | undefined; [x: number]: ThemeZIndicesValues | undefined; }) &
-// (ZIndex | ... 1 more ... | { ...; })) | null | undefined'.
-
 export default meta
 
 const Template: Story<TableProps> = args => (
