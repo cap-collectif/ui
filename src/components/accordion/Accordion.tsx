@@ -1,9 +1,10 @@
 import * as React from 'react'
 
 import { Flex, FlexProps } from '../layout/Flex'
-import { AccordionContext } from './Accordion.context'
+import { AccordionContext, AccordionContextType } from './Accordion.context'
 import { getAccordion, getDefaultAccordion } from './Accordion.utils'
 import AccordionButton from './button/AccordionButton'
+import { CapUIAccordionColor, CapUIAccordionSize } from './enums'
 import AccordionItem from './item/AccordionItem'
 import AccordionPanel from './panel/AccordionPanel'
 
@@ -15,14 +16,18 @@ type SubComponents = {
 
 export interface AccordionProps extends FlexProps {
   readonly children: React.ReactNodeArray
-  readonly allowMultiple?: boolean
-  readonly defaultAccordion?: string | string[]
+  readonly allowMultiple?: AccordionContextType['allowMultiple']
+  readonly defaultAccordion?: AccordionContextType['defaultAccordion']
+  readonly size?: AccordionContextType['size']
+  readonly color?: AccordionContextType['color']
 }
 
 export const Accordion: React.FC<AccordionProps> & SubComponents = ({
   children,
   allowMultiple,
   defaultAccordion,
+  size = CapUIAccordionSize.Md,
+  color = CapUIAccordionColor.White,
   ...props
 }) => {
   const [accordions, updateAccordions] = React.useState(
@@ -36,8 +41,17 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
       accordions,
       updateAccordions: (id: string) =>
         updateAccordions(getAccordion(id, accordions, allowMultiple)),
+      size,
+      color,
     }),
-    [defaultAccordion, allowMultiple, accordions, updateAccordions],
+    [
+      defaultAccordion,
+      allowMultiple,
+      accordions,
+      updateAccordions,
+      size,
+      color,
+    ],
   )
 
   return (

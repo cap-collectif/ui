@@ -4,6 +4,7 @@ import * as React from 'react'
 import { BoxProps } from '../../box'
 import { Box } from '../../box/Box'
 import { useAccordion } from '../Accordion.context'
+import { CapUIAccordionColor } from '../enums'
 import { AccordionItemContext } from './AccordionItem.context'
 
 export type AccordionItemProps = BoxProps & {
@@ -17,7 +18,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   className,
   ...props
 }) => {
-  const { updateAccordions, accordions } = useAccordion()
+  const { updateAccordions, accordions, color } = useAccordion()
   const isOpen = accordions[id]
 
   const context = React.useMemo(
@@ -33,10 +34,16 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     <AccordionItemContext.Provider value={context}>
       <Box
         id={id}
-        bg={isOpen ? 'blue.100' : 'gray.100'}
+        bg={
+          color === CapUIAccordionColor.White
+            ? 'white'
+            : isOpen
+            ? 'blue.100'
+            : 'gray.100'
+        }
         className={cn('cap-accordion__item', className)}
         borderRadius="accordion"
-        border="normal"
+        border={color === CapUIAccordionColor.Gray ? 'normal' : 'none'}
         borderColor={isOpen ? 'blue.500' : 'gray.200'}
         _hover={{
           borderColor: 'gray.300',

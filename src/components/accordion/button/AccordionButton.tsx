@@ -2,10 +2,13 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../../styles'
-import { Box, PolymorphicBoxProps } from '../../box/Box'
-import { Icon } from '../../icon'
-import { CapUIIcon, CapUIIconSize } from '../../icon'
+import { PolymorphicBoxProps } from '../../box/Box'
+import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
+import { Flex } from '../../layout'
+import { headingStyles } from '../../typography'
 import Text from '../../typography/Text'
+import { useAccordion } from '../Accordion.context'
+import { CapUIAccordionColor, CapUIAccordionSize } from '../enums'
 import { useAccordionItem } from '../item/AccordionItem.context'
 
 type AccordionButtonProps = PolymorphicBoxProps<'button'> & {
@@ -19,6 +22,8 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   ...props
 }) => {
   const { toggleOpen, open, id } = useAccordionItem()
+  const { color, size } = useAccordion()
+
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
   const toggle = React.useCallback(() => {
@@ -28,14 +33,13 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   }, [disabled, toggleOpen])
 
   return (
-    <Box
+    <Flex
       as="button"
       ref={buttonRef}
       disabled={disabled}
       onClick={toggle}
-      display="flex"
-      alignItems="center"
-      p={6}
+      align="center"
+      p={size === CapUIAccordionSize.Sm ? 4 : 6}
       width="100%"
       fontWeight={CapUIFontWeight.Normal}
       className={cn('cap-accordion__button', className)}
@@ -53,11 +57,22 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       />
 
       {typeof children === 'string' ? (
-        <Text color="gray.900">{children}</Text>
+        <Text
+          color={color === CapUIAccordionColor.Gray ? 'gray.900' : 'blue.800'}
+          fontSize={3}
+          {...(size === CapUIAccordionSize.Sm ? {} : headingStyles.h4)}
+          fontWeight={
+            color === CapUIAccordionColor.White
+              ? CapUIFontWeight.Bold
+              : CapUIFontWeight.Normal
+          }
+        >
+          {children}
+        </Text>
       ) : (
         <>{children}</>
       )}
-    </Box>
+    </Flex>
   )
 }
 
