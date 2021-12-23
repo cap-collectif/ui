@@ -15,7 +15,7 @@ const meta: Meta<ModalProps> = {
   component: Modal,
   args: {
     disclosure: <Button>Click me</Button>,
-    size: CapUIModalSize.Xl,
+    size: CapUIModalSize.Md,
   },
   argTypes: {
     disclosure: {
@@ -23,7 +23,6 @@ const meta: Meta<ModalProps> = {
         disable: true,
       },
     },
-    size: { control: 'select', options: Object.values(CapUIModalSize) },
   },
   parameters: {
     layout: 'centered',
