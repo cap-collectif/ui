@@ -11,6 +11,16 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.6.0
+
+`2021-12-24`
+
+- 🆕 Add `Accordion` component [#67](https://github.com/cap-collectif/ui/pull/67)
+- 💄 Delete `Xl` size on `Modal` [#167](https://github.com/cap-collectif/ui/pull/167)
+- 💄 Fix height on `Modal` [#167](https://github.com/cap-collectif/ui/pull/167)
+- 💄 Export `CheckboxGroup` [#164](https://github.com/cap-collectif/ui/pull/164)
+- 🎄 Merry Christmas [That annoying Mariah Carey song](https://www.youtube.com/watch?v=aAkMkVFwAoo)
+
 ## 0.5.0
 
 `2021-12-21`
