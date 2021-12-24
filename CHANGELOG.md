@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.5.1
+
+`2021-12-24`
+
+- 💄 Export `CheckboxGroup` [#164](https://github.com/cap-collectif/ui/pull/164)
+
 ## 0.5.0
 
 `2021-12-21`
