@@ -9,12 +9,10 @@ export interface SwitchProps extends BoxPropsOf<'input'> {
   readonly id: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
-  readonly label?: React.ReactNode
 }
 
 export const Switch: React.FC<SwitchProps> = ({
   className,
-  label,
   ...props
 }: SwitchProps) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
