@@ -24,6 +24,11 @@ export const CSSReset = createGlobalStyle`
         border-style: solid;
         box-sizing: border-box;
       }
+      
+      *::before,
+      *::after {
+          content: ""
+      }
 
       main {
         display: block;
