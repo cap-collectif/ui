@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.7.0
+
+`2021-12-30`
+
+- 🆕 Add `Switch` component [#171](https://github.com/cap-collectif/ui/pull/171)
+- 💄 Fix padding `AccordionButton` [#171](https://github.com/cap-collectif/ui/pull/171)
+
 ## 0.6.0
 
 `2021-12-24`
