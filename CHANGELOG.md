@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.7.1
+
+`2021-12-30`
+
+- 💄 Fix pseudo element [#173](https://github.com/cap-collectif/ui/pull/173)
+
 ## 0.7.0
 
 `2021-12-30`
