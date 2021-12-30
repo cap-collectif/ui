@@ -13,7 +13,7 @@ export const sliderStyles: SystemStyleObject = {
 
   '&:before': {
     position: 'absolute',
-    content: '',
+    content: '""',
     height: 3,
     width: 3,
     left: '2px',
