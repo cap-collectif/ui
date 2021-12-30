@@ -53,7 +53,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       <Icon
         name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
         size={CapUIIconSize.Md}
-        mr={1}
+        mr={2}
         color={open ? 'blue.500' : 'gray.500'}
       />
 
