@@ -39,7 +39,8 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       disabled={disabled}
       onClick={toggle}
       align="center"
-      p={size === CapUIAccordionSize.Sm ? 4 : 6}
+      p={6}
+      pb={open && size === CapUIAccordionSize.Sm ? 4 : 6}
       width="100%"
       fontWeight={CapUIFontWeight.Normal}
       className={cn('cap-accordion__button', className)}
