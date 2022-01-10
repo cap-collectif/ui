@@ -6,6 +6,7 @@ import { Box } from '../../box'
 export const CheckboxContainer = styled(Box)`
   position: relative;
   min-height: 24px;
+
   input {
     position: absolute;
     opacity: 0;
@@ -47,37 +48,43 @@ export const CheckboxContainer = styled(Box)`
     }
   }
 
-  input:checked + label::after {
+  .cap-checkbox:checked + label::after {
     opacity: 1;
   }
-  input:checked + label::before {
+
+  .cap-checkbox:checked + label::before {
     background: ${colors.blue[500]};
     border: 1px solid ${colors.blue[500]};
   }
-  input:focus + label::before {
-    box-shadow: 0px 0px 2px 2px ${colors.blue[300]};
+
+  .cap-checkbox:focus + label::before {
+    box-shadow: 0 0 2px 2px ${colors.blue[300]};
   }
 
-  input[aria-invalid='true'] + label::before {
+  .cap-checkbox[aria-invalid='true'] + label::before {
     background: ${colors.red[150]};
     border: 1px solid ${colors.red[500]};
   }
-  input[aria-invalid='true'] + label::after {
+
+  .cap-checkbox[aria-invalid='true'] + label::after {
     color: ${colors.red[500]};
   }
 
-  input:disabled {
-    cursor: normal;
+  .cap-checkbox:disabled {
+    cursor: auto;
   }
-  input:disabled + label::before {
+
+  .cap-checkbox:disabled + label::before {
     background: ${colors.gray[150]};
     border: 1px solid ${colors.gray[300]};
   }
-  input:disabled:checked + label::before {
+
+  .cap-checkbox:disabled:checked + label::before {
     background: ${colors.gray[100]};
     border: 1px solid ${colors.gray[300]};
   }
-  input:disabled:checked + label::after {
+
+  .cap-checkbox:disabled:checked + label::after {
     color: ${colors.gray[300]};
   }
 `
