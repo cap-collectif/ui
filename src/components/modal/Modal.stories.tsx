@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { Button } from '../button'
 import { FormControl, FormErrorMessage, FormLabel, Input } from '../form'
+import Select from '../form/select/Select'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout'
 import { Tooltip } from '../tooltip/Tooltip'
@@ -433,6 +434,51 @@ export const DoNotHideOnEsc: Story<ModalProps> = args => (
 )
 DoNotHideOnEsc.storyName = 'do not hide on ESC'
 DoNotHideOnEsc.args = { hideOnEsc: false }
+
+const options = [
+  { value: 'mail1', label: 'mail1@cap-collectif.com' },
+  { value: 'mail2', label: 'mail2@cap-collectif.com' },
+  { value: 'mail3', label: 'mail3@cap-collectif.com' },
+  { value: 'mail4', label: 'mail4@cap-collectif.com' },
+  { value: 'mail5', label: 'mail5@cap-collectif.com' },
+  { value: 'mail6', label: 'mail6@cap-collectif.com' },
+]
+
+export const WithSelectOverflow: Story<ModalProps> = args => (
+  <>
+    <Modal {...args}>
+      {({ hide }) => (
+        <>
+          <Modal.Header>
+            <Heading>Title</Heading>
+          </Modal.Header>
+          <Modal.Body>
+            <Select options={options} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              variantColor="primary"
+              variantSize="big"
+              onClick={hide}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              variantColor="primary"
+              variantSize="big"
+              onClick={hide}
+            >
+              Validate
+            </Button>
+          </Modal.Footer>
+        </>
+      )}
+    </Modal>
+  </>
+)
+WithSelectOverflow.storyName = 'With Select Overflow'
 
 export const ControlledModal: Story<ModalProps> = args => {
   const [show, setShow] = React.useState(false)

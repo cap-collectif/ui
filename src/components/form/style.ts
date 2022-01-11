@@ -5,7 +5,7 @@ import { variant } from 'styled-system'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
 import colors from '../../styles/modules/colors'
-import { SPACING } from '../../styles/theme'
+import { SPACING, ZINDEX } from '../../styles/theme'
 import { FONT_FAMILIES, LINE_HEIGHTS } from '../../styles/theme/typography'
 import { Box } from '../box'
 import { CapInputSize } from './enums'
@@ -170,6 +170,10 @@ export function reactSelectStyle<
       margin: 0,
       color: colors.gray[isDisabled ? '500' : '700'],
       display: isSearch ? 'none' : 'flex',
+    }),
+    menuPortal: (base: CSSObjectWithLabel) => ({
+      ...base,
+      zIndex: ZINDEX.select,
     }),
   }
 }
