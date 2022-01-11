@@ -77,7 +77,7 @@ const Tbody: React.FC<TbodyProps> = ({
       getScrollParent={
         scrollParentRef?.current ? () => scrollParentRef?.current : undefined
       }
-      useWindow={!scrollParentRef?.current}
+      useWindow={!Boolean(scrollParentRef?.current)}
     >
       {children}
     </InfiniteScroll>
