@@ -94,6 +94,7 @@ export function Select<
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
+        menuPortalTarget={document?.body}
         {...props}
       />
     </Box>

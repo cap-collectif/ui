@@ -148,6 +148,7 @@ export const ZINDEX = {
   dropdown: 1000,
   overlay: 1300,
   modal: 1400,
+  select: 1500,
   popover: 1500,
   tooltip: 1700,
   toast: 1800,
