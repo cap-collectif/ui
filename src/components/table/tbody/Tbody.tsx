@@ -20,7 +20,7 @@ export interface TbodyProps extends BoxProps {
 const TableLoader = (): React.ReactElement => (
   <Box as="tr">
     <Box as="td" colSpan={100} textAlign="center" py={3}>
-      <Spinner size={CapUIIconSize.Md} />
+      <Spinner size={CapUIIconSize.Md} margin="auto" />
     </Box>
   </Box>
 )
