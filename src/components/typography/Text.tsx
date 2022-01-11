@@ -4,9 +4,9 @@ import { forwardRef } from 'react'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
 import { jsxInnerText } from '../../utils/jsx'
-import { BoxOwnProps, PolymorphicComponent, Box } from '../box'
+import { Box, PolymorphicBoxProps } from '../box/Box'
 
-export type TextProps = BoxOwnProps & {
+export type TextProps = PolymorphicBoxProps<React.ElementType> & {
   readonly truncate?: number
 }
 
@@ -35,4 +35,4 @@ export const Text = forwardRef<HTMLElement, TextProps>(
 
 Text.displayName = 'Text'
 
-export default Text as PolymorphicComponent<TextProps>
+export default Text

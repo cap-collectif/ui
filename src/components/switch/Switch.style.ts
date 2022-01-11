@@ -24,15 +24,15 @@ export const sliderStyles: SystemStyleObject = {
     boxShadow: 'medium',
   },
 
-  'input:checked + &': {
+  '.cap-switch__input:checked + & ': {
     bg: 'blue.500',
   },
 
-  'input:disabled + &': {
+  '.cap-switch__input:disabled + &': {
     opacity: 0.3,
   },
 
-  'input:checked + &:before': {
+  '.cap-switch__input:checked + &:before': {
     transform: 'translateX(16px)',
   },
 }
