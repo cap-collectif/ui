@@ -21,11 +21,9 @@ export const Text = forwardRef<HTMLElement, TextProps>(
       <Box
         ref={ref}
         fontFamily={CapUIFontFamily.Body}
-        fontSize={3}
         lineHeight={CapUILineHeight.Base}
         as="p"
         className={cn('cap-text', className)}
-        color="gray.900"
         {...(truncate ? { title: innerText } : {})}
         {...props}
       >
