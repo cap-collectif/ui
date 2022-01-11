@@ -15,12 +15,13 @@ export interface TbodyProps extends BoxProps {
   readonly useInfiniteScroll?: boolean
   readonly hasMore?: boolean
   readonly loader?: React.ReactElement
+  readonly scrollParentRef?: { current: null | HTMLElement }
 }
 
 const TableLoader = (): React.ReactElement => (
   <Box as="tr">
     <Box as="td" colSpan={100} textAlign="center" py={3}>
-      <Spinner size={CapUIIconSize.Md} />
+      <Spinner size={CapUIIconSize.Md} margin="auto" />
     </Box>
   </Box>
 )
@@ -47,6 +48,7 @@ const Tbody: React.FC<TbodyProps> = ({
   onScrollToBottom = () => {},
   hasMore = false,
   loader = <TableLoader key="table-loader" />,
+  scrollParentRef,
   ...rest
 }) => {
   const { rows, selectedRows, dispatch } = useTable()
@@ -65,7 +67,6 @@ const Tbody: React.FC<TbodyProps> = ({
       }
     }
   }, [children, selectedRows, rows, dispatch])
-
   return useInfiniteScroll ? (
     <InfiniteScroll
       initialLoad={false}
@@ -73,6 +74,10 @@ const Tbody: React.FC<TbodyProps> = ({
       hasMore={hasMore}
       loader={loader}
       element={TableBody as any}
+      getScrollParent={
+        scrollParentRef?.current ? () => scrollParentRef?.current : undefined
+      }
+      useWindow={!Boolean(scrollParentRef?.current)}
     >
       {children}
     </InfiniteScroll>
