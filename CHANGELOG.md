@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.7.2
+
+`2022-01-12`
+
+- 💄 Fix switch [#179](https://github.com/cap-collectif/ui/pull/179)
+- 🐛 InfiniteScroll on Array : adds ref [#180](https://github.com/cap-collectif/ui/pull/180)
+- 💄 Set react-select menu on a portal [#178](https://github.com/cap-collectif/ui/pull/178)
+
 ## 0.7.1
 
 `2021-12-30`
