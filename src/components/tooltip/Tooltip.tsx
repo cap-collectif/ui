@@ -23,6 +23,7 @@ export interface TooltipProps extends BoxProps {
   children: React.FunctionComponentElement<any>
   visible?: boolean
   label: React.ReactNode
+  baseId?: string
 }
 
 type ContainerAnimate = React.FC<
@@ -49,6 +50,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   label,
   visible,
   className,
+  baseId,
   ...props
 }) => {
   const tooltip = useTooltipState({ visible, animated: 300, gutter: 8 })
@@ -70,7 +72,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {referenceProps => React.cloneElement(children, referenceProps)}
       </TooltipReference>
 
-      <ReakitTooltip {...tooltip} className="cap-tooltip">
+      <ReakitTooltip {...tooltip} className="cap-tooltip" baseId={baseId}>
         <AnimatePresence>
           {tooltip.visible && (
             <ContainerAnimate

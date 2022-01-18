@@ -32,6 +32,7 @@ export interface ModalProps extends FlexProps {
   readonly ariaLabel: string
   readonly onOpen?: () => void
   readonly onClose?: () => void
+  readonly baseId?: string
 }
 
 type SubComponents = {
@@ -109,6 +110,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   className,
   size,
   fullSizeOnMobile = false,
+  baseId,
   ...props
 }: ModalProps) => {
   const dialog = useDialogState({
@@ -166,6 +168,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         hideOnClickOutside={hideOnClickOutside}
         hideOnEsc={hideOnEsc}
         preventBodyScroll={preventBodyScroll}
+        baseId={baseId}
       >
         <AnimatePresence>
           {dialog.visible && (
