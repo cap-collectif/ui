@@ -61,6 +61,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
     }, 400)
   }
 
+  const isValidLabel = typeof label === 'number' || !!label;
+
   return (
     <>
       <TooltipReference
@@ -72,34 +74,38 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {referenceProps => React.cloneElement(children, referenceProps)}
       </TooltipReference>
 
-      <ReakitTooltip {...tooltip} className="cap-tooltip" baseId={baseId}>
-        <AnimatePresence>
-          {tooltip.visible && (
-            <ContainerAnimate
-              p={1}
-              bg="gray.900"
-              color="white"
-              borderRadius="tooltip"
-              maxWidth="270px"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={LAYOUT_TRANSITION_SPRING}
-              className={cn('cap-tooltip', className)}
-              zIndex="tooltip"
-              {...props}
-            >
-              <Arrow {...tooltip} />
-              {typeof label === 'string' && (
-                <Text textAlign="center" lineHeight="sm" fontSize={1}>
-                  {label}
-                </Text>
+      {
+        isValidLabel && (
+          <ReakitTooltip {...tooltip} className="cap-tooltip" baseId={baseId}>
+            <AnimatePresence>
+              {tooltip.visible && (
+                <ContainerAnimate
+                  p={1}
+                  bg="gray.900"
+                  color="white"
+                  borderRadius="tooltip"
+                  maxWidth="270px"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={LAYOUT_TRANSITION_SPRING}
+                  className={cn('cap-tooltip', className)}
+                  zIndex="tooltip"
+                  {...props}
+                >
+                  <Arrow {...tooltip} />
+                  {(typeof label === 'string') && (
+                    <Text textAlign="center" lineHeight="sm" fontSize={1}>
+                      {label}
+                    </Text>
+                  )}
+                  {typeof label !== 'string' && label}
+                </ContainerAnimate>
               )}
-              {typeof label !== 'string' && label}
-            </ContainerAnimate>
-          )}
-        </AnimatePresence>
-      </ReakitTooltip>
+            </AnimatePresence>
+          </ReakitTooltip>
+        )
+      }
     </>
   )
 }
