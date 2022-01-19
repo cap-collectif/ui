@@ -73,6 +73,7 @@ export enum CapUIIcon {
   Cog = 'COG',
   EnvelopeO = 'ENVELOPE_O',
   Lock = 'LOCK',
+  LockOpen = 'LOCK_OPEN',
   Minus = 'MINUS',
   ExportO = 'EXPORT_O',
   Export = 'EXPORT',
