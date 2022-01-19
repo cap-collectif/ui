@@ -40,6 +40,7 @@ export interface PopoverProps
     Partial<Pick<PopoverState, 'placement'>> {
   disclosure: React.FunctionComponentElement<any>
   children: React.ReactNode | RenderChildren
+  baseId?: string
 }
 
 type ContainerAnimate = React.FC<
@@ -87,6 +88,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   children,
   className,
   placement = 'right',
+  baseId,
   ...props
 }: PopoverProps) => {
   const popover = usePopoverState({
@@ -110,10 +112,11 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
         ref={disclosure.ref}
         {...disclosure.props}
         className={cn('cap-popover__disclosure', disclosure.props.className)}
+        baseId={baseId}
       >
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
-      <ReakitPopover tabIndex={0} {...popover}>
+      <ReakitPopover tabIndex={0} {...popover} baseId={baseId}>
         <AnimatePresence>
           {popover.visible && (
             <ContainerAnimate
