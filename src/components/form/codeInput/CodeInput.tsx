@@ -2,6 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { Box, BoxPropsOf } from '../../box'
+import { Flex } from '../../layout'
 import { useFormControl } from '../formControl'
 import S from './CodeInput.styles'
 
@@ -14,20 +15,22 @@ export interface CodeInputProps extends BoxPropsOf<'input'> {
   readonly onComplete: (input: string) => void
   readonly isVerified?: boolean
   readonly value?: string
+  readonly id?: string
 }
 
-const CodeInput = ({
+const CodeInput: React.FC<CodeInputProps> = ({
   length = 6,
   className,
   onComplete,
   isVerified,
   value,
+  id = 'code__input',
   ...props
 }: CodeInputProps) => {
   const [code, setCode] = React.useState(
-    value ? value.split('') : [...Array(length)].map(() => ''),
+    value ? value.split('') : [...Array(length).fill('')],
   )
-  const inputs = React.useRef<(HTMLInputElement | null)[]>([])
+  const inputs = React.useRef<HTMLInputElement[]>([])
   const inputProps = useFormControl<HTMLInputElement>(props)
 
   const processInput = (
@@ -40,10 +43,7 @@ const CodeInput = ({
     newCode[slot] = num
     setCode(newCode)
     if (slot !== length - 1) {
-      if (!!inputs && !!inputs.current && !!inputs.current[slot + 1]) {
-        // @ts-ignore
-        inputs.current[slot + 1].focus()
-      }
+      inputs.current[slot + 1].focus()
     }
     if (newCode.every(num => num !== '')) {
       onComplete(newCode.join(''))
@@ -55,16 +55,12 @@ const CodeInput = ({
       const newCode = [...code]
       newCode[slot - 1] = ''
       setCode(newCode)
-      // @ts-ignore
       inputs.current[slot - 1].focus()
     }
   }
 
   return (
-    <div
-      className={cn('cap-code-input', className)}
-      style={{ display: 'flex', flexFlow: 'row nowrap' }}
-    >
+    <Flex className={cn('cap-code-input', className)} direction="row" id={id}>
       {code.map((num, idx) => {
         return (
           <Box
@@ -73,7 +69,7 @@ const CodeInput = ({
             disableFocusStyles
             as="input"
             key={idx}
-            type="text"
+            type="number"
             placeholder="-"
             inputMode="numeric"
             maxLength={1}
@@ -86,12 +82,12 @@ const CodeInput = ({
             onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
               onKeyUp(e, idx)
             }
-            ref={(ref: HTMLInputElement | null) => inputs.current.push(ref)}
+            ref={(ref: HTMLInputElement) => inputs.current.push(ref)}
           />
         )
       })}
-    </div>
+    </Flex>
   )
 }
 
-export default CodeInput as React.FC<CodeInputProps>
+export default CodeInput

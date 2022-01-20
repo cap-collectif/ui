@@ -59,9 +59,7 @@ export const WithLabel: Story<Args> = ({
     </FormControl>
   )
 }
-WithLabel.args = {
-  errorMessage: 'ERROR',
-}
+
 export const Disabled: Story<Args> = ({
   errorMessage,
   value: storybookValue,
@@ -89,7 +87,6 @@ export const Disabled: Story<Args> = ({
   )
 }
 Disabled.args = {
-  errorMessage: 'ERROR',
   isDisabled: true,
 }
 export const WithError: Story<Args> = ({
@@ -192,7 +189,6 @@ export const Mobile: Story<Args> = ({
     </Flex>
   )
 }
-Mobile.args = {}
 Mobile.parameters = {
   viewport: {
     defaultViewport: 'mobile1',
