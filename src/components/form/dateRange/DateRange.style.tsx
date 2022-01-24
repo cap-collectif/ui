@@ -719,7 +719,8 @@ export const DateRangeBox = styled(Box)<DateRangeBoxProps>`
 
   .DateRangePickerInput {
     background-color: #fff;
-    display: inline-block;
+    display: flex;
+    align-items: center;
   }
 
   .DateRangePickerInput__disabled {
