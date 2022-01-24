@@ -16,55 +16,53 @@ export interface SwitchProps
   readonly isInvalid?: boolean
 }
 
-export const Switch: React.FC<SwitchProps> = ({
-  className,
-  children,
-  id,
-  ...props
-}: SwitchProps) => {
-  const inputProps = useFormControl<HTMLInputElement>(props)
+export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
+  ({ className, children, id, ...props }, ref) => {
+    const inputProps = useFormControl<HTMLInputElement>(props)
 
-  return (
-    <Flex
-      display="inline-flex"
-      as="label"
-      direction="row"
-      spacing={2}
-      align="center"
-      htmlFor={id}
-      {...props}
-    >
-      <Box
-        className={cn('cap-switch', className)}
-        position="relative"
-        width={8}
-        height={4}
+    return (
+      <Flex
+        display="inline-flex"
+        as="label"
+        direction="row"
+        spacing={2}
+        align="center"
+        htmlFor={id}
+        {...props}
       >
         <Box
-          as="input"
-          {...inputProps}
-          type="checkbox"
-          className="cap-switch__input"
-          width={0}
-          height={0}
-          opacity={0}
-          id={id}
-        />
+          className={cn('cap-switch', className)}
+          position="relative"
+          width={8}
+          height={4}
+        >
+          <Box
+            as="input"
+            {...inputProps}
+            type="checkbox"
+            className="cap-switch__input"
+            width={0}
+            height={0}
+            opacity={0}
+            id={id}
+            ref={ref}
+          />
 
-        <Box as="div" className="cap-switch__slider" sx={sliderStyles} />
-      </Box>
+          <Box as="div" className="cap-switch__slider" sx={sliderStyles} />
+        </Box>
 
-      {typeof children === 'string' ? (
-        <Text as="span" fontSize={3} lineHeight={CapUILineHeight.Base}>
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
-    </Flex>
-  )
-}
+        {typeof children === 'string' ? (
+          <Text as="span" fontSize={3} lineHeight={CapUILineHeight.Base}>
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </Flex>
+    )
+  },
+)
 
 Switch.displayName = 'Switch'
 
-export default Switch
+export default Switch as React.FC<SwitchProps>
