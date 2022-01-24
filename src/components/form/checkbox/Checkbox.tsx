@@ -5,39 +5,68 @@ import { forwardRef } from 'react'
 import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box, BoxPropsOf } from '../../box'
 import { Flex } from '../../layout'
+import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import { CheckboxContainer } from './Checkbox.style'
+import { boxStyles } from './Checkbox.style'
 
 export interface CheckboxProps extends BoxPropsOf<'input'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
-  readonly label?: React.ReactNode
+  readonly id: string
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, ...props }, ref) => {
+  ({ className, id, children, ...props }, ref) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
+
     return (
-      <CheckboxContainer>
-        <input
-          {...inputProps}
-          ref={ref}
-          type="checkbox"
+      <Flex
+        display="inline-flex"
+        as="label"
+        direction="row"
+        spacing={1}
+        align="flexStart"
+        htmlFor={id}
+        fontFamily={CapUIFontFamily.Label}
+        {...props}
+      >
+        <Box
           className={cn('cap-checkbox', className)}
-          {...props}
-        />
-        <Flex
-          as="label"
-          htmlFor={props.id}
-          lineHeight={CapUILineHeight.Base}
-          color={inputProps.disabled ? 'gray.500' : 'gray.900'}
-          fontFamily={CapUIFontFamily.Label}
+          position="relative"
+          width="24px"
+          height="24px"
+          flexShrink={0}
         >
-          {label ? <Box ml={1}>{label}</Box> : ''}
-        </Flex>
-      </CheckboxContainer>
+          <Box
+            as="input"
+            {...inputProps}
+            type="checkbox"
+            className="cap-checkbox__input"
+            width={0}
+            height={0}
+            opacity={0}
+            id={id}
+            ref={ref}
+          />
+
+          <Box as="div" className="cap-checkbox__box" sx={boxStyles} />
+        </Box>
+
+        {typeof children === 'string' ? (
+          <Text
+            as="span"
+            fontSize={3}
+            color={inputProps.disabled ? 'gray.500' : 'gray.900'}
+            lineHeight={CapUILineHeight.Base}
+          >
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </Flex>
     )
   },
 )
