@@ -81,7 +81,11 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
             ...(typeof direction === 'string' &&
               direction === 'row' && { marginLeft: spacing }),
             ...(typeof direction === 'string' &&
+              direction === 'row-reverse' && { marginRight: spacing }),
+            ...(typeof direction === 'string' &&
               direction === 'column' && { marginTop: spacing }),
+            ...(typeof direction === 'string' &&
+              direction === 'column-reverse' && { marginBottom: spacing }),
             // While `gap` for flex is not supported by a mojority of browser,
             // we prefer this approach to have a broader compatibility, and also to support
             // responsive values 🔥🥵🔥
