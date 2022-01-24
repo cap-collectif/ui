@@ -4,7 +4,7 @@ import type { Accordions } from './Accordion.context'
 import { AccordionItemProps } from './item/AccordionItem'
 
 export const getDefaultAccordion = (
-  children: React.ReactNodeArray,
+  children: React.ReactNodeArray | React.ReactNode,
   defaultAccordion?: string | string[],
 ) =>
   React.Children.toArray(children).reduce<Accordions>((acc, child) => {

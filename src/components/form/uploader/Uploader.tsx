@@ -40,6 +40,7 @@ export type FileInfo = {
   url: string
   type: string
 }
+
 export type WordingType = {
   readonly uploaderPrompt: string
   readonly uploaderLoadingPrompt: string
@@ -95,21 +96,21 @@ const Uploader: React.FC<UploaderProps> = ({
   onRemove,
   ...props
 }) => {
-  const [thumb, setThumb] = React.useState<string | null>(null)
-  const [drag, setDrag] = React.useState<boolean>(false)
-  const [loading, setLoading] = React.useState<boolean>(false)
-  const [isImageUploader, setIsImageUploader] = React.useState<boolean>(false)
+  const [thumb, setThumb] = React.useState<string | null>(
+    !multiple && value && !Array.isArray(value) ? value.url : null,
+  )
+  const [loading, setLoading] = React.useState(false)
+
+  const isImageUploader =
+    !multiple && value && !Array.isArray(value)
+      ? fileType(value.type) === 'image'
+      : false
+
   React.useEffect(() => {
-    if (!multiple && value && !Array.isArray(value)) {
-      setThumb(value.url)
-      setIsImageUploader(fileType(value.type) === 'image')
-    }
     return () => {
-      if (thumb) {
-        URL.revokeObjectURL(thumb)
-      }
+      if (thumb) URL.revokeObjectURL(thumb)
     }
-  }, [thumb, value, setThumb])
+  }, [thumb])
 
   const onDrop = React.useCallback(
     async <T extends File>(
@@ -122,7 +123,6 @@ const Uploader: React.FC<UploaderProps> = ({
       onExternalDrop(acceptedFiles, fileRejections, event)
 
       if (acceptedFiles.length === 0) {
-        setDrag(false)
         setLoading(false)
         return
       }
@@ -131,7 +131,6 @@ const Uploader: React.FC<UploaderProps> = ({
         setThumb(URL.createObjectURL(acceptedFiles[0]))
       }
 
-      setDrag(false)
       setLoading(false)
     },
     [multiple, showThumbnail],
@@ -159,12 +158,6 @@ const Uploader: React.FC<UploaderProps> = ({
     accept: format,
     onDropRejected: onDropRejected,
     onDrop,
-    onDragEnter: () => {
-      setDrag(true)
-    },
-    onDragLeave: () => {
-      setDrag(false)
-    },
   })
 
   const getContent = () => {
@@ -172,7 +165,7 @@ const Uploader: React.FC<UploaderProps> = ({
       case UPLOADER_SIZE.LG:
         return (
           <Content>
-            {drag ? (
+            {isDragActive ? (
               <Text
                 textAlign="center"
                 fontWeight="semibold"
@@ -207,7 +200,7 @@ const Uploader: React.FC<UploaderProps> = ({
       case UPLOADER_SIZE.MD:
         return (
           <Content>
-            {drag ? (
+            {isDragActive ? (
               <Text
                 textAlign="center"
                 fontWeight="semibold"
@@ -245,9 +238,9 @@ const Uploader: React.FC<UploaderProps> = ({
               </Flex>
             ) : (
               <Icon
-                name={drag ? CapUIIcon.UploadArrow : CapUIIcon.Add}
+                name={isDragActive ? CapUIIcon.UploadArrow : CapUIIcon.Add}
                 size={CapUIIconSize.Lg}
-                color={drag ? 'blue.500' : 'gray.500'}
+                color={isDragActive ? 'blue.500' : 'gray.500'}
               />
             )}
           </Content>
@@ -257,7 +250,7 @@ const Uploader: React.FC<UploaderProps> = ({
   return (
     <UploaderContainer className={cn('cap-uploader', className)} size={size}>
       <Container
-        drag={drag}
+        drag={isDragActive}
         circle={circle}
         size={size}
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}

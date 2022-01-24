@@ -15,7 +15,7 @@ type SubComponents = {
 }
 
 export interface AccordionProps extends FlexProps {
-  readonly children: React.ReactNodeArray
+  readonly children: React.ReactNodeArray | React.ReactNode
   readonly allowMultiple?: AccordionContextType['allowMultiple']
   readonly defaultAccordion?: AccordionContextType['defaultAccordion']
   readonly size?: AccordionContextType['size']
