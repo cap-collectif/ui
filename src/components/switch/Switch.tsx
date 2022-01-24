@@ -1,11 +1,16 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUILineHeight } from '../../styles'
 import { Box, BoxPropsOf } from '../box'
 import { useFormControl } from '../form'
+import { Flex, FlexProps } from '../layout'
+import { Text } from '../typography'
 import { sliderStyles } from './Switch.style'
 
-export interface SwitchProps extends BoxPropsOf<'input'> {
+export interface SwitchProps
+  extends Omit<BoxPropsOf<'input'>, keyof FlexProps>,
+    FlexProps {
   readonly id: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
@@ -13,33 +18,50 @@ export interface SwitchProps extends BoxPropsOf<'input'> {
 
 export const Switch: React.FC<SwitchProps> = ({
   className,
+  children,
+  id,
   ...props
 }: SwitchProps) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
 
   return (
-    <Box
+    <Flex
+      display="inline-flex"
       as="label"
-      htmlFor={props.id}
-      className={cn('cap-switch', className)}
-      display="inline-block"
-      position="relative"
-      width={8}
-      height={4}
+      direction="row"
+      spacing={2}
+      align="center"
+      htmlFor={id}
+      {...props}
     >
       <Box
-        as="input"
-        {...inputProps}
-        type="checkbox"
-        className="cap-switch__input"
-        width={0}
-        height={0}
-        opacity={0}
-        {...props}
-      />
+        className={cn('cap-switch', className)}
+        position="relative"
+        width={8}
+        height={4}
+      >
+        <Box
+          as="input"
+          {...inputProps}
+          type="checkbox"
+          className="cap-switch__input"
+          width={0}
+          height={0}
+          opacity={0}
+          id={id}
+        />
 
-      <Box as="div" className="cap-switch__slider" sx={sliderStyles} />
-    </Box>
+        <Box as="div" className="cap-switch__slider" sx={sliderStyles} />
+      </Box>
+
+      {typeof children === 'string' ? (
+        <Text as="span" fontSize={3} lineHeight={CapUILineHeight.Base}>
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
+    </Flex>
   )
 }
 
