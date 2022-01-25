@@ -73,8 +73,6 @@ export interface UploaderProps
     event: DropEvent,
   ) => void
   readonly wording: WordingType
-  readonly isInvalid: boolean
-  readonly isRequired: boolean
   readonly onRemove?: (file?: FileInfo) => void
 }
 
@@ -306,5 +304,7 @@ const Uploader: React.FC<UploaderProps> = ({
     </UploaderContainer>
   )
 }
+
 Uploader.displayName = 'Uploader'
+
 export default Uploader
