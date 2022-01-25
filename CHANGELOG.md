@@ -11,6 +11,27 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.8.0
+
+`2022-01-25`
+
+- 🐛 Export enum's `Accordion` [#186](https://github.com/cap-collectif/ui/pull/186)
+- 🐛 Fix type of children's `Accordion` to accept only one child [#186](https://github.com/cap-collectif/ui/pull/186)
+- 🆕 Export type MenuValue of `Menu` component [#186](https://github.com/cap-collectif/ui/pull/186)
+- 🆕 Add icon lock open [#186](https://github.com/cap-collectif/ui/pull/186)
+- 🆕 Add baseId prop on Modal, Tooltip and Popover [#184](https://github.com/cap-collectif/ui/pull/184)
+
+### BREAKING CHANGES
+- [#190](https://github.com/cap-collectif/ui/pull/190) We changed the way we pass label to `Checkbox`. It used to be passed only as a prop, now it can be passed as children, so: 
+```jsx
+// Before
+<Checkbox id="checkbox-id" label="Hello world" />
+
+// After
+<Checkbox id="checkbox-id">Hello world</Checkbox>
+```
+
+
 ## 0.7.2
 
 `2022-01-12`
