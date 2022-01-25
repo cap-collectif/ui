@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.9.0
+
+`2022-01-25`
+
+- 🆕 Add `CodeInput` component [#187](https://github.com/cap-collectif/ui/pull/187)
+- 🆕 Add `InputGroup` component [#189](https://github.com/cap-collectif/ui/pull/189)
+
 ## 0.8.0
 
 `2022-01-25`
