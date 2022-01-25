@@ -54,6 +54,34 @@ export const Default: Story<InputGroupProps> = args => {
         </InputGroup>
         <FormErrorMessage>ERROR</FormErrorMessage>
       </FormControl>
+      <FormControl {...args}>
+        <InputGroup {...args}>
+          <Input placeholder="Placeholder..." />
+          <Select
+            placeholder="Placeholder..."
+            width="280px"
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+          <Button variant="primary">Action</Button>
+        </InputGroup>
+        <FormErrorMessage>ERROR</FormErrorMessage>
+      </FormControl>
+      <FormControl {...args}>
+        <InputGroup {...args}>
+          <Button variant="primary">Action</Button>
+          <Select
+            placeholder="Placeholder..."
+            width="280px"
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+          <Input placeholder="Placeholder..." />
+        </InputGroup>
+        <FormErrorMessage>ERROR</FormErrorMessage>
+      </FormControl>
 
       <InputGroup {...args}>
         <InputNumber placeholder="6" />
