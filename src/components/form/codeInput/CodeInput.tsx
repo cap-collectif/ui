@@ -11,7 +11,6 @@ export interface CodeInputProps extends BoxPropsOf<'input'> {
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
   readonly length?: number
-  readonly loading?: boolean
   readonly onComplete: (input: string) => void
   readonly isVerified?: boolean
   readonly value?: string

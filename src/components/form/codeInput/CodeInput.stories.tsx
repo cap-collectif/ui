@@ -43,7 +43,7 @@ export const WithLabel: Story<Args> = ({
 }) => {
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel htmlFor="Code_Input" label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -51,6 +51,7 @@ export const WithLabel: Story<Args> = ({
         )}
       </FormLabel>
       <CodeInput
+        id="Code_Input"
         length={length}
         onComplete={onComplete}
         isVerified={isVerified}
@@ -70,7 +71,7 @@ export const Disabled: Story<Args> = ({
 }) => {
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel htmlFor="Code_Input" label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -78,6 +79,7 @@ export const Disabled: Story<Args> = ({
         )}
       </FormLabel>
       <CodeInput
+        id="Code_Input"
         length={length}
         onComplete={onComplete}
         isVerified={isVerified}
@@ -99,7 +101,7 @@ export const WithError: Story<Args> = ({
 }) => {
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel htmlFor="Code_Input" label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -107,6 +109,7 @@ export const WithError: Story<Args> = ({
         )}
       </FormLabel>
       <CodeInput
+        id="Code_Input"
         length={length}
         onComplete={onComplete}
         isVerified={isVerified}
@@ -130,7 +133,7 @@ export const Verified: Story<Args> = ({
   return (
     <Flex width="280px">
       <FormControl {...args}>
-        <FormLabel htmlFor="Date" label="Label">
+        <FormLabel htmlFor="Code_Input" label="Label">
           {!args.isRequired && (
             <Box as="span" color="gray.500">
               facultatif
@@ -138,6 +141,7 @@ export const Verified: Story<Args> = ({
           )}
         </FormLabel>
         <CodeInput
+          id="Code_Input"
           value={value}
           length={length}
           onComplete={onComplete}
@@ -171,7 +175,7 @@ export const Mobile: Story<Args> = ({
   return (
     <Flex width="100%">
       <FormControl {...args}>
-        <FormLabel htmlFor="Date" label="Label">
+        <FormLabel htmlFor="Code_Input" label="Label">
           {!args.isRequired && (
             <Box as="span" color="gray.500">
               facultatif
@@ -179,6 +183,7 @@ export const Mobile: Story<Args> = ({
           )}
         </FormLabel>
         <CodeInput
+          id="Code_Input"
           value={value}
           length={length}
           onComplete={onComplete}
