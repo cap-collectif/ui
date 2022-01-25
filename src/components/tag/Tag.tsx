@@ -76,13 +76,17 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   variantColor,
   className,
   onRemove,
+  sx,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
 
   return (
     <TagInner
-      sx={getTagStyle(variantColor)}
+      sx={{
+        ...getTagStyle(variantColor),
+        ...sx,
+      }}
       title={jsxInnerText(children)}
       className={cn('cap-tag', className)}
       initial="initial"

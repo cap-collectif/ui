@@ -27,8 +27,6 @@ const meta: Meta = {
   args: {
     className: 'cap-uploader',
     errorMessage: 'Error info.',
-    isRequired: true,
-    isInvalid: false,
     size: UPLOADER_SIZE.LG,
     circle: false,
     wording: {
@@ -735,7 +733,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
     }
   }
   return (
-    <FormControl {...args}>
+    <FormControl isInvalid>
       <FormLabel htmlFor="name" label="Label">
         {!args.required && (
           <Box as="span" color="gray.500">
@@ -828,7 +826,6 @@ MultipleWithValue.args = {
   size: UPLOADER_SIZE.LG,
   showThumbnail: false,
   multiple: true,
-  isInvalid: true,
   value: [
     {
       id: 'ID1',
@@ -891,7 +888,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
   }
 
   return (
-    <FormControl {...args}>
+    <FormControl isInvalid>
       <FormLabel htmlFor="name" label="Label">
         {!args.required && (
           <Box as="span" color="gray.500">
@@ -973,7 +970,6 @@ export const UniqueWithError: Story<UploaderProps> = ({
   )
 }
 UniqueWithError.args = {
-  isInvalid: true,
   value: {
     id: 'ID1',
     name: 'Storybook Image',
@@ -1023,7 +1019,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
   }
 
   return (
-    <FormControl {...args}>
+    <FormControl isInvalid>
       <FormLabel htmlFor="name" label="Label">
         {!args.required && (
           <Box as="span" color="gray.500">
@@ -1103,7 +1099,6 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
   )
 }
 MultipleWithErrors.args = {
-  isInvalid: true,
   required: false,
   minResolution: undefined,
   showThumbnail: false,
@@ -1153,7 +1148,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
 
   return (
     <Flex direction="row" gap={2}>
-      <FormControl {...args}>
+      <FormControl isInvalid={false}>
         <FormLabel htmlFor="name" label="Label">
           {!args.required && (
             <Box as="span" color="gray.500">
@@ -1228,7 +1223,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
           </InfoMessage>
         )}
       </FormControl>
-      <FormControl {...args}>
+      <FormControl isInvalid={false}>
         <FormLabel htmlFor="name" label="Label">
           {!args.required && (
             <Box as="span" color="gray.500">
@@ -1315,7 +1310,6 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
   )
 }
 UniqueWithWarning.args = {
-  isInvalid: false,
   required: false,
   minResolution: { width: 170, height: 170 },
   showThumbnail: true,
