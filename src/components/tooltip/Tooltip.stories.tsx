@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import Text from '../typography/Text'
 import { Tooltip, TooltipProps } from './'
-import mdx from './Tooltip.mdx'
 
 const meta: Meta<TooltipProps> = {
   title: 'Library/Tooltip',
@@ -14,9 +13,6 @@ const meta: Meta<TooltipProps> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

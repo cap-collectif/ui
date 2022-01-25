@@ -4,7 +4,6 @@ import * as React from 'react'
 import Button from '../button/Button'
 import { Flex } from '../layout/Flex'
 import { Text } from '../typography/Text'
-import mdx from './Toast.mdx'
 import { toast, Toast, ToastProps, clearToasts } from './index'
 
 const meta: Meta = {
@@ -22,9 +21,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

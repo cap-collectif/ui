@@ -8,7 +8,6 @@ import { toast } from '../../toast'
 import { Heading, Text } from '../../typography'
 import { CapUIModalSize, Modal } from '../index'
 import ConfirmModal, { ConfirmModalProps } from './ConfirmModal'
-import mdx from './ConfirmModal.mdx'
 
 const meta: Meta<ConfirmModalProps> = {
   title: 'Library/Modal/ConfirmModal',
@@ -29,9 +28,6 @@ const meta: Meta<ConfirmModalProps> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 export default meta
