@@ -37,7 +37,7 @@ export const Default: Story<CheckboxProps> = args => (
 )
 
 export const WithText: Story<CheckboxProps> = args => (
-  <Checkbox id="checkbox" {...args}>
+  <Checkbox {...args} id="checkbox">
     Check me
   </Checkbox>
 )
