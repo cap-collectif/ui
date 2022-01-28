@@ -23,7 +23,7 @@ const FileList = ({
   if (files.length === 0) return null
 
   return (
-    <FileListContainer className={cn('cap-files-list', className)}>
+    <FileListContainer className={cn('cap-file-list', className)}>
       {files.map(file => (
         <FileItem key={file.name}>
           <Flex direction="row" align="center" justify="flex-start">
