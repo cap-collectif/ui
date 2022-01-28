@@ -90,6 +90,11 @@ const ModalInner = styled(motion(Flex)).attrs(
         maxHeight: '68%',
         mt: '16vh',
       },
+      xl: {
+        width: '50%',
+        maxHeight: '92%',
+        mt: '4vh',
+      },
     },
   }),
 ) as StyledComponent<any, any>
