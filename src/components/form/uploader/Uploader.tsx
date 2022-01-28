@@ -7,7 +7,6 @@ import {
   useDropzone,
 } from 'react-dropzone'
 
-import fileType from '../../../utils/fileType'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -37,6 +36,7 @@ export type FileInfo = {
   name: string
   size: string
   url: string
+  type: string
 }
 
 export type WordingType = {
@@ -91,7 +91,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
   const isImageUploader =
     !multiple && value && !Array.isArray(value)
-      ? fileType(value.type) === 'image'
+      ? value.type.includes('image')
       : false
 
   React.useEffect(() => {
