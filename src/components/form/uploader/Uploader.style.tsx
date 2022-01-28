@@ -11,7 +11,7 @@ export enum UPLOADER_SIZE {
 }
 
 export const Container = styled(Flex)<{
-  readonly size?: ResponsiveValue<UPLOADER_SIZE>
+  readonly size: UPLOADER_SIZE
   readonly circle?: boolean
   readonly drag: boolean
 }>`
