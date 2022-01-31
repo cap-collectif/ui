@@ -811,7 +811,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
       </FormErrorMessage>
       {value && Array.isArray(value) && (
         <FilesList
-          droppedFiles={value}
+          files={value}
           deleteFileLabel="Supprimer"
           onRemove={() => {
             console.log('deleted')

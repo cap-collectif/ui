@@ -15,7 +15,6 @@ type SubComponents = {
 }
 
 export type ModalHeaderProps = FlexProps & {
-  readonly children: React.ReactNode
   readonly closeLabel?: string
 }
 

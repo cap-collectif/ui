@@ -8,22 +8,23 @@ import { Text } from '../../typography'
 import { FileInfo } from './Uploader'
 import { FileItem, FileList as FileListContainer } from './Uploader.style'
 
-export type FilesListProps = {
-  readonly droppedFiles: FileInfo[]
+export type FileListProps = {
+  readonly files: FileInfo[]
   readonly onRemove: (file: FileInfo) => void
   readonly deleteFileLabel: string
   readonly className?: string
 }
-const FilesList = ({
-  droppedFiles,
+const FileList = ({
+  files,
   onRemove,
   deleteFileLabel,
   className,
-}: FilesListProps) => {
-  if (droppedFiles.length === 0) return null
+}: FileListProps) => {
+  if (files.length === 0) return null
+
   return (
-    <FileListContainer className={cn('cap-uploader__fileList', className)}>
-      {droppedFiles.map(file => (
+    <FileListContainer className={cn('cap-file-list', className)}>
+      {files.map(file => (
         <FileItem key={file.name}>
           <Flex direction="row" align="center" justify="flex-start">
             <Icon
@@ -35,6 +36,7 @@ const FilesList = ({
               {file.name}
             </Text>
           </Flex>
+
           <ButtonQuickAction
             label={deleteFileLabel}
             onClick={() => onRemove(file)}
@@ -47,5 +49,7 @@ const FilesList = ({
     </FileListContainer>
   )
 }
-FilesList.displayName = 'FileList'
-export default FilesList
+
+FileList.displayName = 'FileList'
+
+export default FileList

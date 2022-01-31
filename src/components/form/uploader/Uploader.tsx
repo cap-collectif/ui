@@ -6,9 +6,7 @@ import {
   FileRejection,
   useDropzone,
 } from 'react-dropzone'
-import { ResponsiveValue } from 'styled-system'
 
-import fileType from '../../../utils/fileType'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -48,22 +46,15 @@ export type WordingType = {
 }
 
 export interface UploaderProps
-  extends Omit<DropzoneProps, 'minSize' | 'ref' | 'children'>,
+  extends Omit<DropzoneProps, 'ref' | 'children'>,
     Omit<
       BoxPropsOf<'input'>,
-      | 'accept'
-      | 'size'
-      | 'value'
-      | 'onDragEnter'
-      | 'onDragLeave'
-      | 'onDragOver'
-      | 'onDrop'
+      'accept' | 'size' | 'value' | keyof DropzoneProps
     > {
-  readonly size?: ResponsiveValue<UPLOADER_SIZE>
+  readonly size?: UPLOADER_SIZE
   readonly value?: FileInfo | Array<FileInfo>
   readonly circle?: boolean
   readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[] // https://react-dropzone.js.org/#section-accepting-specific-file-types
-  readonly maxSize?: number
   readonly minResolution?: Size
   readonly multiple?: boolean
   readonly showThumbnail?: boolean
@@ -73,13 +64,12 @@ export interface UploaderProps
     event: DropEvent,
   ) => void
   readonly wording: WordingType
-  readonly onRemove?: (file?: FileInfo) => void
+  readonly onRemove?: (file: FileInfo) => void
 }
 
 const Uploader: React.FC<UploaderProps> = ({
   format,
   size = UPLOADER_SIZE.LG,
-  maxSize,
   minResolution,
   circle,
   multiple,
@@ -101,7 +91,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
   const isImageUploader =
     !multiple && value && !Array.isArray(value)
-      ? fileType(value.type) === 'image'
+      ? value.type.includes('image')
       : false
 
   React.useEffect(() => {
@@ -136,7 +126,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
   const removeFile = () => {
     setThumb(null)
-    if (onRemove && !multiple && !Array.isArray(value)) {
+    if (onRemove && !Array.isArray(value) && value) {
       onRemove(value)
     }
   }
@@ -152,9 +142,8 @@ const Uploader: React.FC<UploaderProps> = ({
     ...props,
     multiple,
     disabled,
-    maxSize,
     accept: format,
-    onDropRejected: onDropRejected,
+    onDropRejected,
     onDrop,
   })
 

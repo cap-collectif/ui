@@ -95,6 +95,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
     animated: 150,
     placement,
     unstable_offset: [getGutter(placement), 20],
+    baseId,
   })
 
   const context = React.useMemo(
@@ -112,11 +113,10 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
         ref={disclosure.ref}
         {...disclosure.props}
         className={cn('cap-popover__disclosure', disclosure.props.className)}
-        baseId={baseId}
       >
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
-      <ReakitPopover tabIndex={0} {...popover} baseId={baseId}>
+      <ReakitPopover tabIndex={0} {...popover}>
         <AnimatePresence>
           {popover.visible && (
             <ContainerAnimate

@@ -53,7 +53,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
   baseId,
   ...props
 }) => {
-  const tooltip = useTooltipState({ visible, animated: 300, gutter: 8 })
+  const tooltip = useTooltipState({
+    visible,
+    animated: 300,
+    gutter: 8,
+    baseId,
+  })
 
   const showDelayed = () => {
     setTimeout(() => {
@@ -72,7 +77,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {referenceProps => React.cloneElement(children, referenceProps)}
       </TooltipReference>
 
-      <ReakitTooltip {...tooltip} className="cap-tooltip" baseId={baseId}>
+      <ReakitTooltip {...tooltip} className="cap-tooltip">
         <AnimatePresence>
           {tooltip.visible && (
             <ContainerAnimate

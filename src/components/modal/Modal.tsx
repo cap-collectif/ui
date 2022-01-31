@@ -90,6 +90,11 @@ const ModalInner = styled(motion(Flex)).attrs(
         maxHeight: '68%',
         mt: '16vh',
       },
+      xl: {
+        width: '50%',
+        maxHeight: '92%',
+        mt: '4vh',
+      },
     },
   }),
 ) as StyledComponent<any, any>
@@ -116,7 +121,9 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const dialog = useDialogState({
     animated: TRANSITION_DURATION * 1000,
     visible: show,
+    baseId,
   })
+
   const containerRef = React.useRef<HTMLElement>(null)
   const firstMount = React.useRef(true)
   const isMobile = useIsMobile()
@@ -131,6 +138,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     }),
     [dialog, hideCloseButton],
   )
+
   React.useEffect(() => {
     if (dialog.visible && firstMount.current) {
       if (onOpen) {
@@ -168,7 +176,6 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         hideOnClickOutside={hideOnClickOutside}
         hideOnEsc={hideOnEsc}
         preventBodyScroll={preventBodyScroll}
-        baseId={baseId}
       >
         <AnimatePresence>
           {dialog.visible && (

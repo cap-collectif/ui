@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 import { CapUIFontFamily } from '../../styles'
-import { Box, BoxProps } from '../box'
-import { Flex } from '../layout'
+import { Box } from '../box'
+import { Flex, FlexProps } from '../layout'
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-export interface AvatarProps extends BoxProps {
+export interface AvatarProps extends FlexProps {
   readonly name: string
   readonly src?: string
   readonly alt?: string
@@ -102,9 +102,6 @@ export const Avatar = ({
   src,
   alt,
   children,
-  bg,
-  backgroundColor,
-  color,
   size = 'md',
   className,
   ...props
