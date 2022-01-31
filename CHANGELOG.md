@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.9.1
+
+`2022-01-31`
+
+- 🆕 Export enum size `Uploader` [#196](https://github.com/cap-collectif/ui/pull/196)
+- 🆕 Add new variant `Modal` XL [#196](https://github.com/cap-collectif/ui/pull/196)
+- 🐛 Set baseId for disclosure too (`Modal`/`Popover`/`Tooltip`) [#196](https://github.com/cap-collectif/ui/pull/196)
+
 ## 0.9.0
 
 `2022-01-25`
