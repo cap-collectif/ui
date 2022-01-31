@@ -12,7 +12,6 @@ import { useFormControl } from '../formControl'
 import { Input } from '../input'
 import InputGroup from '../inputGroup/InputGroup'
 import { Select } from '../select'
-import { PhoneNumberBox } from './PhoneNumber.style'
 import { COUNTRY_CODES } from './enums'
 
 const flags = require('./flags.json')
@@ -109,7 +108,7 @@ const PhoneNumber: React.FC<PhoneNumberProps> = ({
     }
   }, [countryCode, number, uniqueCountry])
   return (
-    <PhoneNumberBox className={cn('cap-phone-number', className)}>
+    <Box className={cn('cap-phone-number', className)}>
       <InputGroup>
         <Select
           {...inputProps}
@@ -138,7 +137,7 @@ const PhoneNumber: React.FC<PhoneNumberProps> = ({
           }}
         />
       </InputGroup>
-    </PhoneNumberBox>
+    </Box>
   )
 }
 
