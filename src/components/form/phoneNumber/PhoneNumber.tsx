@@ -64,7 +64,7 @@ export function Control<
           mr={2}
           direction="column"
           style={{ cursor: 'pointer' }}
-          onClick={() => props.clearValue()}
+          onClick={props.clearValue}
         >
           <Icon
             name={CapUIIcon.ArrowUp}
@@ -90,11 +90,8 @@ const PhoneNumber: React.FC<PhoneNumberProps> = ({
   ...props
 }: PhoneNumberProps) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
-  const getUniqueCountryIndex = (CountryCode: string) => {
-    return flagsOptions.findIndex(
-      (flag: FlagOptionType) => flag.value === CountryCode,
-    )
-  }
+  const getUniqueCountryIndex = (CountryCode: string) =>
+    flagsOptions.findIndex((flag: FlagOptionType) => flag.value === CountryCode)
 
   const [countryCode, setCountryCode] = React.useState<string>('')
   const [number, setNumber] = React.useState<string>('')
