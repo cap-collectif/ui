@@ -118,15 +118,16 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   baseId,
   ...props
 }: ModalProps) => {
+  const isMobile = useIsMobile()
   const dialog = useDialogState({
     animated: TRANSITION_DURATION * 1000,
     visible: show,
     baseId,
+    modal: !isMobile,
   })
 
   const containerRef = React.useRef<HTMLElement>(null)
   const firstMount = React.useRef(true)
-  const isMobile = useIsMobile()
   const context = React.useMemo(
     () => ({
       hide: dialog.hide,

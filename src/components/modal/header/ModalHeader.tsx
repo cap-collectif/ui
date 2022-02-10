@@ -42,6 +42,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
       boxShadow={isMobile && fullSizeOnMobile ? 'small' : 'none'}
       borderColor={isMobile ? 'transparent' : 'gray.200'}
       className={cn('cap-modal__header', className)}
+      flexShrink={0}
       borderBottomLeftRadius={
         isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
       }
