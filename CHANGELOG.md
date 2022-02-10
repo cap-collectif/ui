@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.9.2
+
+- 🆕 Add `PhoneNumber` component [#199](https://github.com/cap-collectif/ui/pull/199)
+- 🆕 Add `MultiStepModal` component [#200](https://github.com/cap-collectif/ui/pull/200)
+- 🐛 Fix non-scrollable modal on iOS (Safari) [#201](https://github.com/cap-collectif/ui/pull/201)
+
 ## 0.9.1
 
 `2022-01-31`
