@@ -53,6 +53,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
         isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
       }
       spacing={6}
+      flexShrink={0}
       className={cn('cap-modal__footer', className)}
       {...rest}
     >
