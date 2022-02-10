@@ -14,10 +14,13 @@ const MultiStepModalHeader = ({ children, ...rest }: Props) => {
   if (!steps[currentStep]) return null
 
   // It's the ModalHeaderLabel here
-  const headerLabel = React.isValidElement(React.Children.toArray(children)[0])
-    ? // @ts-ignore
-      React.Children.toArray(children)[0]?.props?.children
-    : undefined
+  const headerLabel =
+    React.isValidElement(React.Children.toArray(children)[0]) &&
+    typeof React.Children.toArray(children)[0] !== 'string'
+      ? // TS says that props doesn't exist if child is string even if I filter those
+        // @ts-ignore
+        React.Children.toArray(children)[0]?.props?.children
+      : undefined
 
   return (
     <ModalHeader height="66px" {...rest}>

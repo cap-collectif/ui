@@ -33,8 +33,10 @@ const MultiStepModalBody = ({ children, ...rest }: Props) => {
   const previousModalIndex = React.useRef(currentStep)
   React.useEffect(() => {
     if (steps.length === 0) {
-      const stepsRegistered: Step[] = React.Children.toArray(children).map(
-        modal => {
+      const stepsRegistered: Step[] = React.Children.toArray(children)
+        .filter(modal => typeof modal !== 'string')
+        .map(modal => {
+          // Typescript has a problem here where it says that modal can be a string even if I filter those out
           // @ts-ignore
           const { label, validationLabel, id, info } = modal.props
           return {
@@ -46,8 +48,7 @@ const MultiStepModalBody = ({ children, ...rest }: Props) => {
               label: info.label,
             },
           }
-        },
-      )
+        })
       registerSteps(stepsRegistered)
     }
   }, [children, registerSteps, steps])

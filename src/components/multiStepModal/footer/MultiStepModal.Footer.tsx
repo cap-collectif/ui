@@ -30,6 +30,7 @@ const MultiStepModalFooter = ({ children, ...props }: Props) => {
 
   const navigationChildren = React.Children.toArray(children).filter(child => {
     if (React.isValidElement(child) && typeof child.type !== 'string') {
+      // TS says that type can be a string even if I filter it
       // @ts-ignore
       return NAVIGATION_BUTTONS.includes(child.type?.displayName)
     }
