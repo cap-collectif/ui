@@ -8,7 +8,7 @@ import { CapUIIcon } from '../../icon'
 import { FlexProps, Flex } from '../../layout'
 import { useModal } from '../Modal.context'
 
-type ModalFooterProps = FlexProps & {
+export type ModalFooterProps = FlexProps & {
   readonly children: React.ReactNode
   readonly info?: {
     url: string
