@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useIsMobile } from '../../../hooks/useDeviceDetect'
 import { FlexProps, Flex } from '../../layout'
 
-type ModalBodyProps = FlexProps & {
+export type ModalBodyProps = FlexProps & {
   readonly children: React.ReactNode
 }
 
