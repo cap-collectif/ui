@@ -13,8 +13,7 @@ import { Input } from '../input'
 import InputGroup from '../inputGroup/InputGroup'
 import { Select } from '../select'
 import { COUNTRY_CODES } from './enums'
-
-const flags = require('./flags.json')
+import flags from './flags'
 
 export type FlagType = {
   name: string
