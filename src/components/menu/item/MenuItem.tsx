@@ -54,6 +54,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
     return (
       <Box
         as={ReakitMenuItem}
+        type="button"
         ref={ref}
         onClick={onClickHandler}
         px={3}

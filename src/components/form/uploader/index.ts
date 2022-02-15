@@ -1,5 +1,5 @@
 export { default as Uploader } from './Uploader'
-export type { UploaderProps } from './Uploader'
+export type { UploaderProps, FileInfo } from './Uploader'
 export { default as FileList } from './FileList'
 export type { FileListProps } from './FileList'
 export { UPLOADER_SIZE } from './Uploader.style'
