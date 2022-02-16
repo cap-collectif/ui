@@ -6,6 +6,7 @@ import { Flex } from '../../layout'
 import DateRange, { DateRangeValueType } from '../dateRange/DateRange'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
+import { FormLabel } from '../formLabel'
 import { Input } from '../input'
 import { InputNumber } from '../inputNumber'
 import { Select } from '../select'
@@ -40,87 +41,82 @@ export const Default: Story<InputGroupProps> = args => {
   })
   return (
     <Flex direction="column" width="700px" spacing={3}>
-      <FormControl {...args}>
-        <InputGroup {...args}>
-          <Select
-            placeholder="Placeholder..."
-            width="280px"
-            options={colourOptions}
-            defaultValue={colourOptions[0]}
-            inputId="color"
-          />
-          <Input placeholder="Placeholder..." />
-          <Button variant="primary">Action</Button>
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-      <FormControl {...args}>
-        <InputGroup {...args}>
-          <Input placeholder="Placeholder..." />
-          <Select
-            placeholder="Placeholder..."
-            width="280px"
-            options={colourOptions}
-            defaultValue={colourOptions[0]}
-            inputId="color"
-          />
-          <Button variant="primary">Action</Button>
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-      <FormControl {...args}>
-        <InputGroup {...args}>
-          <Button variant="primary">Action</Button>
-          <Select
-            placeholder="Placeholder..."
-            width="280px"
-            options={colourOptions}
-            defaultValue={colourOptions[0]}
-            inputId="color"
-          />
-          <Input placeholder="Placeholder..." />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-
       <InputGroup {...args}>
-        <InputNumber placeholder="6" />
-        <Input placeholder="Placeholder..." />
+        <FormLabel label="Choisissez une couleur :" />
+        <FormControl {...args}>
+          <Select
+            placeholder="Placeholder..."
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+        </FormControl>
+        <FormControl {...args}>
+          <Input placeholder="Placeholder..." />
+        </FormControl>
+        <Button variant="primary" variantSize="small">
+          Action
+        </Button>
       </InputGroup>
       <InputGroup {...args}>
-        <DateRange
-          displayFormat="DD/MM/YYYY"
-          value={value}
-          onChange={elem =>
-            onChange({ startDate: elem.startDate, endDate: elem.endDate })
-          }
-        />
-        <Input placeholder="Placeholder..." />
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <Input placeholder="Placeholder..." />
+        </FormControl>
+        <FormControl {...args}>
+          {' '}
+          <Select
+            placeholder="Placeholder..."
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+        </FormControl>
+        <Button variant="primary">Action</Button>
       </InputGroup>
 
       <InputGroup {...args}>
-        <Input placeholder="Placeholder..." />
-        <Select
-          placeholder="Placeholder..."
-          width="280px"
-          options={colourOptions}
-          defaultValue={colourOptions[0]}
-          inputId="color"
-        />
+        <FormLabel label="Label" />
+        <Button variant="primary">Action</Button>
+        <FormControl {...args}>
+          {' '}
+          <Select
+            placeholder="Placeholder..."
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+        </FormControl>
+        <FormControl {...args}>
+          {' '}
+          <Input placeholder="Placeholder..." />
+        </FormControl>
       </InputGroup>
+
       <InputGroup {...args}>
-        <Input placeholder="Placeholder..." />
-        <InputNumber placeholder="6" />
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <InputNumber placeholder="6" />
+        </FormControl>
+        <FormControl {...args}>
+          <Input placeholder="Placeholder..." />
+        </FormControl>
       </InputGroup>
+
       <InputGroup {...args}>
-        <Input placeholder="Placeholder..." />
-        <DateRange
-          displayFormat="DD/MM/YYYY"
-          value={value}
-          onChange={elem =>
-            onChange({ startDate: elem.startDate, endDate: elem.endDate })
-          }
-        />
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <DateRange
+            displayFormat="DD/MM/YYYY"
+            value={value}
+            onChange={elem =>
+              onChange({ startDate: elem.startDate, endDate: elem.endDate })
+            }
+          />
+        </FormControl>
+        <FormControl {...args}>
+          <Input placeholder="Placeholder..." />
+        </FormControl>
       </InputGroup>
     </Flex>
   )
@@ -132,29 +128,71 @@ export const WithError: Story<InputGroupProps> = args => {
   })
   return (
     <Flex direction="column" width="700px" spacing={3}>
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
+      <InputGroup {...args}>
+        <FormLabel label="Choisissez une couleur :" />
+        <FormControl isInvalid {...args}>
           <Select
             placeholder="Placeholder..."
-            width="280px"
             options={colourOptions}
             defaultValue={colourOptions[0]}
             inputId="color"
           />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
           <Input placeholder="Placeholder..." />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
-          <InputNumber placeholder="6" />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl isInvalid {...args}>
           <Input placeholder="Placeholder..." />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
+          <Select
+            placeholder="Placeholder..."
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
 
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl isInvalid {...args}>
+          <Select
+            placeholder="Placeholder..."
+            options={colourOptions}
+            defaultValue={colourOptions[0]}
+            inputId="color"
+          />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
+          <Input placeholder="Placeholder..." />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
+
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl isInvalid {...args}>
+          <InputNumber placeholder="6" />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
+          <Input placeholder="Placeholder..." />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
+
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl isInvalid {...args}>
           <DateRange
             displayFormat="DD/MM/YYYY"
             value={value}
@@ -162,44 +200,13 @@ export const WithError: Story<InputGroupProps> = args => {
               onChange({ startDate: elem.startDate, endDate: elem.endDate })
             }
           />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
           <Input placeholder="Placeholder..." />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
-          <Input placeholder="Placeholder..." />
-          <Select
-            placeholder="Placeholder..."
-            width="280px"
-            options={colourOptions}
-            defaultValue={colourOptions[0]}
-            inputId="color"
-          />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
-          <Input placeholder="Placeholder..." />
-          <InputNumber placeholder="6" />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
-      <FormControl isInvalid {...args}>
-        <InputGroup {...args}>
-          <Input placeholder="Placeholder..." />
-          <DateRange
-            displayFormat="DD/MM/YYYY"
-            value={value}
-            onChange={elem =>
-              onChange({ startDate: elem.startDate, endDate: elem.endDate })
-            }
-          />
-        </InputGroup>
-        <FormErrorMessage>ERROR</FormErrorMessage>
-      </FormControl>
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
     </Flex>
   )
 }

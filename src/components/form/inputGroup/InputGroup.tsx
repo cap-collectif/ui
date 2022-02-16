@@ -15,6 +15,7 @@ const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(
         className={cn('cap-input-group', className)}
         ref={ref}
         direction="row"
+        wrap="wrap"
         {...props}
       >
         {children}
