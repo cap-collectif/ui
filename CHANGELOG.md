@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.9.4
+
+`2022-02-16`
+
+- 🐛 Fix Input Group Component [#209](https://github.com/cap-collectif/ui/pull/209)
+
+
 ## 0.9.3
 
 `2022-02-15`
@@ -18,7 +25,7 @@ To better understand the changelog, here are some legends we use:
 - 🐛 Export uploader type `FileInfo` [#206](https://github.com/cap-collectif/ui/pull/206)
 - 🐛 Ajout de la prop `type` button par défaut pour le `MenuItem` [#206](https://github.com/cap-collectif/ui/pull/206)
 - 🐛 Fix PhoneNumber Export [#205](https://github.com/cap-collectif/ui/pull/205)
-- 
+
 ## 0.9.2
 
 `2022-02-10`
