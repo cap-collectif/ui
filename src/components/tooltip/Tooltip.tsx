@@ -16,6 +16,7 @@ import styled from 'styled-components'
 
 import colors from '../../styles/modules/colors'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
+import { ZINDEX } from '../../styles/theme'
 import { Box, BoxProps } from '../box'
 import Text from '../typography/Text'
 
@@ -24,6 +25,7 @@ export interface TooltipProps extends BoxProps {
   visible?: boolean
   label: React.ReactNode
   baseId?: string
+  zIndex?: number
 }
 
 type ContainerAnimate = React.FC<
@@ -51,6 +53,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   visible,
   className,
   baseId,
+  zIndex,
   ...props
 }) => {
   const tooltip = useTooltipState({
@@ -77,7 +80,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {referenceProps => React.cloneElement(children, referenceProps)}
       </TooltipReference>
 
-      <ReakitTooltip {...tooltip} className="cap-tooltip">
+      <ReakitTooltip
+        {...tooltip}
+        className="cap-tooltip-container"
+        unstable_popoverStyles={{
+          ...tooltip.unstable_popoverStyles,
+          zIndex: zIndex || ZINDEX.tooltip,
+        }}
+      >
         <AnimatePresence>
           {tooltip.visible && (
             <ContainerAnimate
@@ -91,7 +101,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
               exit={{ opacity: 0 }}
               transition={LAYOUT_TRANSITION_SPRING}
               className={cn('cap-tooltip', className)}
-              zIndex="tooltip"
               {...props}
             >
               <Arrow {...tooltip} />

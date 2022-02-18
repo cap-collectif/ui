@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box, BoxPropsOf } from '../../box'
-import { Flex } from '../../layout'
+import { Flex, FlexProps } from '../../layout'
 import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
@@ -15,22 +15,22 @@ export interface CheckboxProps extends BoxPropsOf<'input'> {
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
   readonly id: string
+  readonly direction?: FlexProps['direction']
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, id, children, ...props }, ref) => {
+  ({ className, id, children, direction = 'row', ...props }, ref) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
 
     return (
       <Flex
         display="inline-flex"
         as="label"
-        direction="row"
+        direction={direction}
         spacing={1}
         align="flexStart"
         htmlFor={id}
         fontFamily={CapUIFontFamily.Label}
-        {...props}
       >
         <Box
           className={cn('cap-checkbox', className)}
@@ -41,6 +41,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <Box
             as="input"
+            {...props}
             {...inputProps}
             type="checkbox"
             className="cap-checkbox__input"
