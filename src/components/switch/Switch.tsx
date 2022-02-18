@@ -14,21 +14,21 @@ export interface SwitchProps
   readonly id: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
+  readonly direction?: FlexProps['direction']
 }
 
 export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
-  ({ className, children, id, ...props }, ref) => {
+  ({ className, children, id, direction = 'row', ...props }, ref) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
 
     return (
       <Flex
         display="inline-flex"
         as="label"
-        direction="row"
+        direction={direction}
         spacing={2}
         align="center"
         htmlFor={id}
-        {...props}
       >
         <Box
           className={cn('cap-switch', className)}
@@ -38,6 +38,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         >
           <Box
             as="input"
+            {...props}
             {...inputProps}
             type="checkbox"
             className="cap-switch__input"
