@@ -11,12 +11,18 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 0.9.5
+
+`2022-02-18`
+
+- 🐛 Fix props rest of `Switch` & `Checkbox` [#212](https://github.com/cap-collectif/ui/pull/212)
+- 🐛 Fix zIndex of `Tooltip` [#212](https://github.com/cap-collectif/ui/pull/212)
+
 ## 0.9.4
 
 `2022-02-16`
 
 - 🐛 Fix Input Group Component [#209](https://github.com/cap-collectif/ui/pull/209)
-
 
 ## 0.9.3
 
