@@ -61,22 +61,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
     animated: 300,
     gutter: 8,
     baseId,
+    unstable_timeout: 400,
   })
-
-  const showDelayed = () => {
-    setTimeout(() => {
-      tooltip.show()
-    }, 400)
-  }
 
   return (
     <>
-      <TooltipReference
-        {...tooltip}
-        show={showDelayed}
-        ref={children.ref}
-        {...children.props}
-      >
+      <TooltipReference {...tooltip} ref={children.ref} {...children.props}>
         {referenceProps => React.cloneElement(children, referenceProps)}
       </TooltipReference>
 
