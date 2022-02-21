@@ -13,6 +13,14 @@ To better understand the changelog, here are some legends we use:
 
 ## 0.9.5
 
+`2022-02-21`
+
+- 🐛 Fix hover of `Tooltip` [#215](https://github.com/cap-collectif/ui/pull/215)
+- 🐛 Fix render of `Modal` controlled [#215](https://github.com/cap-collectif/ui/pull/215)
+- 🐛 Fix some zIndex values [#215](https://github.com/cap-collectif/ui/pull/215)
+
+## 0.9.5
+
 `2022-02-18`
 
 - 🐛 Fix props rest of `Switch` & `Checkbox` [#212](https://github.com/cap-collectif/ui/pull/212)
