@@ -151,21 +151,22 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         onClose()
       }
     }
-  }, [onOpen, onClose, dialog.visible])
+  }, [dialog.visible])
+
   React.useEffect(() => {
     if (show === true) {
       dialog.show()
     } else if (show === false) {
       dialog.hide()
     }
-  }, [dialog, show])
+  }, [show])
 
   return (
     <Provider context={context}>
       {disclosure && (
         <DialogDisclosure
           {...dialog}
-          {...(disclosure ? { ref: disclosure.ref, ...disclosure.props } : {})}
+          {...{ ref: disclosure.ref, ...disclosure.props }}
         >
           {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
         </DialogDisclosure>
