@@ -11,7 +11,7 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
-## 0.9.5
+## 0.9.6
 
 `2022-02-21`
 
