@@ -3,16 +3,12 @@ import React from 'react'
 
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
- './InfoMessage.md'
 
 const meta: Meta<InfoMessageProps> = {
   title: 'Library/InfoMessage',
   component: InfoMessage,
   args: {
     variant: 'info',
-  },
-  parameters: {
-
   },
 }
 
