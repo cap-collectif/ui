@@ -30,7 +30,7 @@ const App = () => (
 ```
 
 ## 🔗 Documentation
-👉 Read the [Storybook stories](https://master--60ca00d41db7ba003be931d8.chromatic.com)
+👉 Read the [Storybook stories](https://ds.cap-collectif.com/)
 
 📝 View the [Changelog](https://github.com/cap-collectif/ui/blob/master/CHANGELOG.md)
 
