@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.0.0
+
+`2022-03-01`
+
+ 🎉 🎉 🎉 First release into Open Source with version 1.0.0 of our design system 🎉🎉 🎉
+
 ## 0.9.6
 
 `2022-02-21`
