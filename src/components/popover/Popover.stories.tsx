@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
 import { Popover, PopoverProps } from './'
-import mdx from './Popover.mdx'
+import mdx from './Popover.md'
 
 const meta: Meta<PopoverProps> = {
   title: 'Library/Popover',

@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import Box, { BoxProps } from './Box'
-import mdx from './Box.mdx'
+import mdx from './Box.md'
 
 const meta: Meta = {
   title: 'Library/Primitives/Box',

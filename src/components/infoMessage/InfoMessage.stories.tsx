@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
-import mdx from './InfoMessage.mdx'
+import mdx from './InfoMessage.md'
 
 const meta: Meta<InfoMessageProps> = {
   title: 'Library/InfoMessage',

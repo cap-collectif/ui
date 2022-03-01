@@ -9,7 +9,7 @@ import { Flex } from '../layout'
 import { Tooltip } from '../tooltip/Tooltip'
 import { Heading, Text } from '../typography'
 import { CapUIModalSize, Modal, ModalProps } from './'
-import mdx from './Modal.mdx'
+import mdx from './Modal.md'
 
 const meta: Meta<ModalProps> = {
   title: 'Library/Modal',

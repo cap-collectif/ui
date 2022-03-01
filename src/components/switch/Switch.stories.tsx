@@ -2,7 +2,7 @@ import type { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { Switch, SwitchProps } from './Switch'
-import mdx from './Switch.mdx'
+import mdx from './Switch.md'
 
 const meta: Meta<SwitchProps> = {
   title: 'Library/Switch',

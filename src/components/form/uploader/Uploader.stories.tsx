@@ -15,7 +15,7 @@ import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
 import FilesList from './FileList'
 import Uploader, { UploaderProps } from './Uploader'
-import mdx from './Uploader.mdx'
+import mdx from './Uploader.md'
 import { UPLOADER_SIZE } from './Uploader.style'
 
 const meta: Meta = {

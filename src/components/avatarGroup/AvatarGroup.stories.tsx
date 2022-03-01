@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import Avatar from '../avatar/Avatar'
 import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
-import mdx from './AvatarGroup.mdx'
+import mdx from './AvatarGroup.md'
 
 const meta: Meta = {
   title: 'Library/AvatarGroup',

@@ -6,7 +6,7 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import Checkbox, { CheckboxProps } from './Checkbox'
-import mdx from './Checkbox.mdx'
+import mdx from './Checkbox.md'
 
 type Args = {
   errorMessage: string

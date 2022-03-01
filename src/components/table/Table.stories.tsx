@@ -11,7 +11,7 @@ import { Tag } from '../tag'
 import { Text } from '../typography'
 import { headingStyles } from '../typography/Heading'
 import { Table, TableProps } from './Table'
-import mdx from './Table.mdx'
+import mdx from './Table.md'
 import { Menu } from './menu/Menu'
 
 const EmptyMessage = (

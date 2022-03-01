@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Flex } from '../layout/Flex'
 import { Skeleton, SkeletonProps } from './'
-import mdx from './Skeleton.mdx'
+import mdx from './Skeleton.md'
 
 const meta: Meta<SkeletonProps> = {
   title: 'Library/Skeleton',

@@ -4,7 +4,7 @@ import * as React from 'react'
 import Button from '../button/Button'
 import { Flex } from '../layout/Flex'
 import { Text } from '../typography/Text'
-import mdx from './Toast.mdx'
+import mdx from './Toast.md'
 import { toast, Toast, ToastProps, clearToasts } from './index'
 
 const meta: Meta = {

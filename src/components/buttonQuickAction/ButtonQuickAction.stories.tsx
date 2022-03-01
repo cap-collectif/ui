@@ -4,7 +4,7 @@ import * as React from 'react'
 import { ButtonGroup } from '../buttonGroup'
 import { CapUIIcon } from '../icon'
 import { ButtonQuickAction, ButtonQuickActionProps } from './ButtonQuickAction'
-import mdx from './ButtonQuickAction.mdx'
+import mdx from './ButtonQuickAction.md'
 
 const meta: Meta = {
   title: 'Library/ButtonQuickAction',

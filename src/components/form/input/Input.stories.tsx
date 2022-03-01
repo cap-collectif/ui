@@ -10,7 +10,7 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import Input, { InputProps } from './Input'
-import mdx from './Input.mdx'
+import mdx from './Input.md'
 
 type Args = {
   errorMessage: string

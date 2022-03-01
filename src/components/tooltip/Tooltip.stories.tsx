@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import Text from '../typography/Text'
 import { Tooltip, TooltipProps } from './'
-import mdx from './Tooltip.mdx'
+import mdx from './Tooltip.md'
 
 const meta: Meta<TooltipProps> = {
   title: 'Library/Tooltip',

@@ -8,7 +8,7 @@ import { toast } from '../../toast'
 import { Heading, Text } from '../../typography'
 import { CapUIModalSize, Modal } from '../index'
 import ConfirmModal, { ConfirmModalProps } from './ConfirmModal'
-import mdx from './ConfirmModal.mdx'
+import mdx from './ConfirmModal.md'
 
 const meta: Meta<ConfirmModalProps> = {
   title: 'Library/Modal/ConfirmModal',

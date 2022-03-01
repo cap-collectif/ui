@@ -13,7 +13,7 @@ import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
 import Select from './Select'
-import mdx from './Select.mdx'
+import mdx from './Select.md'
 
 type Args = {
   errorMessage: string

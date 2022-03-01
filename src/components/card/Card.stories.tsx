@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { Text } from '../typography'
 import { Card, CardProps } from './'
-import mdx from './Card.mdx'
+import mdx from './Card.md'
 
 const meta: Meta<CardProps> = {
   title: 'Library/Card',

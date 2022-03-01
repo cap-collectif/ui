@@ -7,7 +7,7 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormGuideline from '../formGuideline/FormGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import TextArea, { TextAreaProps } from './TextArea'
-import mdx from './TextArea.mdx'
+import mdx from './TextArea.md'
 
 type Args = {
   errorMessage: string

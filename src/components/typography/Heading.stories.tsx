@@ -4,7 +4,7 @@ import * as React from 'react'
 import { CapUIFontWeight } from '../../styles'
 import { Flex } from '../layout/Flex'
 import Heading, { HeadingProps } from './Heading'
-import mdx from './Heading.mdx'
+import mdx from './Heading.md'
 
 const meta: Meta = {
   title: 'Library/Heading',

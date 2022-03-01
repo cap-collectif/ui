@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import { Tag, TagProps } from './'
-import mdx from './Tag.mdx'
+import mdx from './Tag.md'
 
 const meta: Meta<TagProps> = {
   title: 'Library/Tag',

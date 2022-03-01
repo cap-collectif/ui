@@ -5,7 +5,7 @@ import * as SpotIcons from '../../assets/spotIcons'
 import { Flex, Grid } from '../layout'
 import { Text } from '../typography'
 import { SpotIcon } from './'
-import mdx from './SpotIcon.mdx'
+import mdx from './SpotIcon.md'
 import { CapUISpotIcon, CapUISpotIconSize } from './enums'
 
 const listIconName = Object.keys(SpotIcons).sort() as CapUISpotIcon[]

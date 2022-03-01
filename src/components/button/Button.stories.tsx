@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import Button, { ButtonProps } from './Button'
-import mdx from './Button.mdx'
+import mdx from './Button.md'
 
 const ICONS = Object.values(CapUIIcon).sort()
 
