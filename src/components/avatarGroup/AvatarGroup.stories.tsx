@@ -11,7 +11,8 @@ const meta: Meta = {
     max: 5,
   },
   parameters: {
-    controls: { expanded: true },  },
+    controls: { expanded: true },
+  },
 }
 
 export default meta
