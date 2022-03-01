@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
-import mdx from './InfoMessage.md'
+ './InfoMessage.md'
 
 const meta: Meta<InfoMessageProps> = {
   title: 'Library/InfoMessage',
@@ -12,9 +12,7 @@ const meta: Meta<InfoMessageProps> = {
     variant: 'info',
   },
   parameters: {
-    docs: {
-      page: mdx,
-    },
+
   },
 }
 

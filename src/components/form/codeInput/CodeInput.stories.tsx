@@ -26,8 +26,7 @@ const meta: Meta = {
   component: CodeInput,
   args: { isVerified: false, length: 6 },
   parameters: {
-    controls: { expanded: true },
-  },
+    controls: { expanded: true },  },
 }
 
 export default meta

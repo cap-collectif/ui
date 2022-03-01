@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import Button, { ButtonProps } from './Button'
-import mdx from './Button.md'
 
 const ICONS = Object.values(CapUIIcon).sort()
 
@@ -22,11 +21,7 @@ const meta: Meta = {
     },
   },
   parameters: {
-    controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
-  },
+    controls: { expanded: true },  },
 }
 
 export default meta

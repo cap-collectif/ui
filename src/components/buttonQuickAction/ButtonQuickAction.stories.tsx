@@ -4,7 +4,6 @@ import * as React from 'react'
 import { ButtonGroup } from '../buttonGroup'
 import { CapUIIcon } from '../icon'
 import { ButtonQuickAction, ButtonQuickActionProps } from './ButtonQuickAction'
-import mdx from './ButtonQuickAction.md'
 
 const meta: Meta = {
   title: 'Library/ButtonQuickAction',
@@ -12,9 +11,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

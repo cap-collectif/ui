@@ -11,7 +11,6 @@ import { Tag } from '../tag'
 import { Text } from '../typography'
 import { headingStyles } from '../typography/Heading'
 import { Table, TableProps } from './Table'
-import mdx from './Table.md'
 import { Menu } from './menu/Menu'
 
 const EmptyMessage = (
@@ -41,9 +40,6 @@ const meta: Meta<TableProps> = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

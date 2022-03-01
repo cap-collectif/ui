@@ -7,8 +7,7 @@ const meta: Meta<LinkProps> = {
   title: 'Library/Link',
   component: Link,
   parameters: {
-    controls: { expanded: true },
-  },
+    controls: { expanded: true },  },
 }
 
 export default meta

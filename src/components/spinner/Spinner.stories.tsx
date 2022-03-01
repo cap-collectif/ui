@@ -32,8 +32,7 @@ export const Default: Story<SpinnerProps> = ({ color }) => (
 
 Default.argTypes = {
   size: {
-    controls: { disable: true },
-    table: { disable: true },
+    controls: { disable: true },    table: { disable: true },
   },
 }
 

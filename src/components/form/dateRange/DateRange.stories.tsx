@@ -11,7 +11,6 @@ import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './DateRange'
 import type { DateRangeValueType } from './DateRange'
-import mdx from './DateRange.md'
 
 const moment = require('moment')
 require('moment/dist/locale/fr')
@@ -42,9 +41,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 export default meta

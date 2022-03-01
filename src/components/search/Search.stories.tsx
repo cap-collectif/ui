@@ -4,7 +4,6 @@ import * as React from 'react'
 import { Button } from '../button'
 import { CapInputSize, FormLabel } from '../form'
 import Search from './Search'
-import mdx from './Search.md'
 
 type Args = {
   placeholder: string
@@ -20,9 +19,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
