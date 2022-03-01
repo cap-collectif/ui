@@ -3,7 +3,7 @@ name: 'Chromatic'
 on:
   push:
     paths-ignore:
-      - '**/*.md'
+      - '**.md'
 
 jobs:
   chromatic-deployment:
