@@ -13,7 +13,6 @@ import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
 import Select from './Select'
-import mdx from './Select.mdx'
 
 type Args = {
   errorMessage: string
@@ -43,9 +42,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

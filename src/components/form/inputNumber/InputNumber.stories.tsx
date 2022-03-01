@@ -7,7 +7,6 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import InputNumber, { InputNumberProps } from './InputNumber'
-import mdx from './InputNumber.mdx'
 
 type Args = {
   errorMessage: string
@@ -28,9 +27,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
