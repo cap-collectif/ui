@@ -17,7 +17,7 @@ npm i @cap-collectif/ui
 yarn add @cap-collectif/ui
 ```
 
-##🔨 Usage
+## 🔨 Usage
 ```tsx
 import { Button, Heading } from '@cap-collectif/ui';
 
