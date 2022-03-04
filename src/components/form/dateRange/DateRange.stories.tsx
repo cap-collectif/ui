@@ -31,8 +31,6 @@ const meta: Meta = {
   args: {
     startDateId: 'startDateId',
     endDateId: 'endDateId',
-    className: 'cap-dateRange',
-    errorMessage: 'Error info.',
     isRequired: false,
     isInvalid: false,
     isDisabled: false,
@@ -83,7 +81,7 @@ Disabled.args = {
   isDisabled: true,
 }
 
-export const WithAnErrorMessage: Story<DateRangeProps> = ({
+export const WithError: Story<DateRangeProps> = ({
   errorMessage,
   onChange: storybookOnChange,
   value: storybookValue,
@@ -114,8 +112,9 @@ export const WithAnErrorMessage: Story<DateRangeProps> = ({
   )
 }
 
-WithAnErrorMessage.args = {
+WithError.args = {
   isInvalid: true,
+  errorMessage: 'Error info.',
 }
 
 export const WithLabel: Story<DateRangeProps> = ({

@@ -1,7 +1,7 @@
 import cn from 'classnames'
-import { Moment } from 'moment'
+import type { Moment } from 'moment'
 import React, { FC } from 'react'
-import { DateRangePickerInputShape, FocusedInputShape } from 'react-dates'
+import type { DateRangePickerShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
@@ -21,30 +21,33 @@ export type DateRangeValueType = {
 }
 
 export interface DateRangeProps
-  extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'>,
-    DateRangePickerInputShape {
+  extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'> {
   readonly value: DateRangeValueType
   readonly onChange: (value: DateRangeValueType) => void
-  readonly startDatePlaceholderText?: string
-  readonly endDatePlaceholderText?: string
-  readonly startDateId?: string
-  readonly endDateId?: string
+  readonly displayFormat: DateRangePickerShape['displayFormat']
   readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
-  readonly displayFormat: string | (() => string) | undefined
+  readonly startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
+  readonly endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
+  readonly startDateId?: DateRangePickerShape['startDateId']
+  readonly endDateId?: DateRangePickerShape['endDateId']
+  readonly disabled?: DateRangePickerShape['disabled']
+  readonly keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
+  readonly isOutsideRange?: DateRangePickerShape['isOutsideRange']
+  readonly minDate?: DateRangePickerShape['minDate']
+  readonly maxDate?: DateRangePickerShape['maxDate']
 }
 
-const CustomDayContent = (day: Moment): React.ReactNode => {
-  return (
-    <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
-      {day.format('D')}
-    </Flex>
-  )
-}
+const CustomDayContent = (day: Moment): React.ReactNode => (
+  <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
+    {day.format('D')}
+  </Flex>
+)
+
 const DateRange: FC<DateRangeProps> = ({
   startDatePlaceholderText = 'jj/mm/aaaa',
   endDatePlaceholderText = 'jj/mm/aaaa',
@@ -54,6 +57,10 @@ const DateRange: FC<DateRangeProps> = ({
   endDateId = 'cap-dateRange-endDate',
   displayFormat,
   className,
+  keepOpenOnDateSelect = true,
+  isOutsideRange,
+  minDate,
+  maxDate,
   ...props
 }) => {
   const [
@@ -68,6 +75,7 @@ const DateRange: FC<DateRangeProps> = ({
   // The library doesn't handle closing the calendar after Tabbing out of the input
   // https://github.com/airbnb/react-dates/issues/1809
   useHotkeys('esc', () => setFocusedInput(null))
+
   return (
     <DateRangeBox
       className={cn('cap-dateRange', className)}
@@ -92,7 +100,10 @@ const DateRange: FC<DateRangeProps> = ({
         verticalSpacing={8}
         horizontalMargin={0}
         daySize={32}
-        keepOpenOnDateSelect
+        keepOpenOnDateSelect={keepOpenOnDateSelect}
+        isOutsideRange={isOutsideRange}
+        minDate={minDate}
+        maxDate={maxDate}
         navPrev={<NavPrev />}
         navNext={<NavNext />}
         customInputIcon={
