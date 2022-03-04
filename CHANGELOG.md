@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.0.1
+
+`2022-03-04`
+
+- 🆕 Add some props on `DateRange` [#223](https://github.com/cap-collectif/ui/pull/223)
+
 ## 1.0.0
 
 `2022-03-01`
