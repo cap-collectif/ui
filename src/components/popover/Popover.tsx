@@ -59,6 +59,12 @@ const Arrow = styled(PopoverArrow)`
   }
 `
 
+const StyledReakitPopover = styled(ReakitPopover)`
+  &:focus-visible {
+    outline: none;
+  }
+`
+
 const getGutter = (placement: PopoverProps['placement']): number => {
   switch (placement) {
     case 'left-start':
@@ -116,7 +122,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
       >
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
-      <ReakitPopover tabIndex={0} {...popover}>
+      <StyledReakitPopover tabIndex={0} {...popover}>
         <AnimatePresence>
           {popover.visible && (
             <ContainerAnimate
@@ -147,7 +153,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
             </ContainerAnimate>
           )}
         </AnimatePresence>
-      </ReakitPopover>
+      </StyledReakitPopover>
     </PopoverContext.Provider>
   )
 }
