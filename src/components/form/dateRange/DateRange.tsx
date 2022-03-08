@@ -40,6 +40,7 @@ export interface DateRangeProps
   readonly isOutsideRange?: DateRangePickerShape['isOutsideRange']
   readonly minDate?: DateRangePickerShape['minDate']
   readonly maxDate?: DateRangePickerShape['maxDate']
+  readonly onClose?: DateRangePickerShape['onClose']
 }
 
 const CustomDayContent = (day: Moment): React.ReactNode => (
@@ -61,6 +62,7 @@ const DateRange: FC<DateRangeProps> = ({
   isOutsideRange,
   minDate,
   maxDate,
+  onClose,
   ...props
 }) => {
   const [
@@ -104,6 +106,7 @@ const DateRange: FC<DateRangeProps> = ({
         isOutsideRange={isOutsideRange}
         minDate={minDate}
         maxDate={maxDate}
+        onClose={onClose}
         navPrev={<NavPrev />}
         navNext={<NavNext />}
         customInputIcon={
