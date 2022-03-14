@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.0.3
+
+`2022-03-14`
+
+- 🐛 Adds the react-select portal zIndex on the enum  [#233](https://github.com/cap-collectif/ui/pull/233)
+- 🐛 Allow to manually set the modal overlay zIndex [#232](https://github.com/cap-collectif/ui/pull/232)
+
 ## 1.0.2
 
 `2022-03-08`
