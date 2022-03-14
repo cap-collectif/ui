@@ -51,7 +51,6 @@ const Overlay = styled(motion(Flex)).attrs({
   right: 0,
   bottom: 0,
   top: 0,
-  zIndex: 'overlay',
   flexDirection: 'column',
   alignItems: 'center',
 })`` as StyledComponent<any, any>
@@ -116,6 +115,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   size,
   fullSizeOnMobile = false,
   baseId,
+  zIndex,
   ...props
 }: ModalProps) => {
   const isMobile = useIsMobile()
@@ -198,6 +198,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
               }}
               exit={{ opacity: 0 }}
               className="cap-modal__overlay"
+              zIndex={zIndex || 'overlay'}
             >
               <ModalInner
                 direction="column"
