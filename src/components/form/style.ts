@@ -173,7 +173,7 @@ export function reactSelectStyle<
     }),
     menuPortal: (base: CSSObjectWithLabel) => ({
       ...base,
-      zIndex: ZINDEX.select,
+      zIndex: ZINDEX.selectPortal,
     }),
   }
 }
