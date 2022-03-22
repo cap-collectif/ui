@@ -203,7 +203,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
               <ModalInner
                 direction="column"
                 justify="space-between"
-                overflow={scrollBehavior === 'inside' ? 'overlay' : undefined}
+                overflow={scrollBehavior === 'inside' ? 'auto' : undefined}
                 initial={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
