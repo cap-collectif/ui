@@ -80,7 +80,7 @@ export const GroupWithBasicForm: Story<Args> = ({ errorMessage, ...args }) => {
             key={index}
             id={field.id}
             checked={field.checked}
-            onChange={e => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const newState = formState.slice()
               newState[index].checked = e.target.checked
               setFormState(newState)

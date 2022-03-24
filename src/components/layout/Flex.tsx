@@ -1,12 +1,11 @@
 import { themeGet } from '@styled-system/theme-get'
 import * as React from 'react'
-import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
 import { FlexboxProps } from 'styled-system'
 
 import { useTheme } from '../../hooks'
 import { CapUIFontFamily } from '../../styles'
 import { cleanChildren, hasProps } from '../../utils/jsx'
-import { PolymorphicComponent, BoxOwnProps, Box } from '../box'
+import { BoxOwnProps, Box, PolymorphicComponent } from '../box'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']
@@ -31,7 +30,7 @@ export type FlexProps = Omit<
 > &
   FlexOptions
 
-const getChildren = (children: ReactNode) => {
+const getChildren = (children: React.ReactNode) => {
   const style = {
     marginLeft: 0,
     marginTop: 0,
@@ -42,20 +41,23 @@ const getChildren = (children: ReactNode) => {
 
   if (Array.isArray(children)) {
     return cleanChildren<any>(children).map((c, i) =>
-      cloneElement(c, {
+      React.cloneElement(c, {
         ...(i === 0 ? { style } : {}),
       }),
     )
   }
 
   if (hasProps(children)) {
-    return cloneElement(children as ReactElement, { style })
+    return React.cloneElement(children as React.ReactElement, { style })
   }
 
   return children
 }
 
-export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
+export const Flex: React.FC<FlexProps> = React.forwardRef<
+  HTMLElement,
+  FlexProps
+>((props, ref) => {
   const {
     direction = 'row',
     align,

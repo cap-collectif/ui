@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { FC, ReactElement } from 'react'
 import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
@@ -20,8 +19,8 @@ export type ButtonProps<
     variantSize?: 'small' | 'medium' | 'big'
     alternative?: boolean
     isLoading?: boolean
-    leftIcon?: CapUIIcon | ReactElement
-    rightIcon?: CapUIIcon | ReactElement
+    leftIcon?: CapUIIcon | React.ReactElement
+    rightIcon?: CapUIIcon | React.ReactElement
     variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
     variantColor?: 'primary' | 'danger' | 'hierarchy'
   }>
@@ -61,7 +60,7 @@ const ButtonInner = styled(Box)(
     }),
 )
 
-const Button = React.forwardRef<
+const Button: React.FC<ButtonProps> = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonProps
 >(
@@ -160,4 +159,4 @@ const Button = React.forwardRef<
 
 Button.displayName = 'Button'
 
-export default Button as FC<ButtonProps>
+export default Button

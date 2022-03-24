@@ -1,12 +1,13 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { Box, BoxPropsOf } from '../../box'
+import { Box, PolymorphicBoxProps } from '../../box/Box'
 import { useTable } from '../Table.context'
 import { styles, VerticalAlign } from './Tr.style'
 import TrCheckbox from './TrCheckbox'
 
-export interface TrProps extends Omit<BoxPropsOf<'tr'>, 'vertical-align'> {
+export interface TrProps
+  extends Omit<PolymorphicBoxProps<'tr'>, 'vertical-align'> {
   children: React.ReactNode
   rowId?: string
   selectable?: boolean
@@ -15,7 +16,10 @@ export interface TrProps extends Omit<BoxPropsOf<'tr'>, 'vertical-align'> {
   verticalAlign?: VerticalAlign
 }
 
-export const Tr = React.forwardRef<HTMLTableRowElement, TrProps>(
+export const Tr: React.FC<TrProps> = React.forwardRef<
+  HTMLTableRowElement,
+  TrProps
+>(
   (
     {
       selectable,

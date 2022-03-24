@@ -19,19 +19,28 @@ export interface MenuProps {
   readonly loop?: MenuBarInitialState['loop']
   readonly placement?: PopoverInitialState['placement']
   readonly gutter?: PopoverInitialState['gutter']
+  readonly ref?: React.Ref<HTMLElement>
 }
 
-export interface MenuCompounded
-  extends React.ForwardRefExoticComponent<
-    MenuProps & React.RefAttributes<HTMLElement>
-  > {
+type SubComponents = {
   List: typeof MenuList
   Item: typeof MenuItem
   OptionGroup: typeof MenuOptionGroup
   OptionItem: typeof MenuOptionItem
 }
 
-export const Menu = React.forwardRef<HTMLElement, MenuProps>(
+export interface MenuCompounded
+  extends React.ForwardRefExoticComponent<MenuProps> {
+  List: typeof MenuList
+  Item: typeof MenuItem
+  OptionGroup: typeof MenuOptionGroup
+  OptionItem: typeof MenuOptionItem
+}
+
+export const Menu: React.FC<MenuProps> & SubComponents = React.forwardRef<
+  HTMLElement,
+  MenuProps
+>(
   (
     {
       children,

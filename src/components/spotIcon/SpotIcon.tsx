@@ -50,21 +50,22 @@ const IconInner = styled(Box).attrs<
   }),
 )
 
-const SpotIcon = React.forwardRef<HTMLOrSVGElement, SpotIconProps>(
-  ({ name, size = CapUISpotIconSize.Md, className, ...props }, ref) => {
-    const SpotIconSvg = SpotIcons[name]
+const SpotIcon: React.FC<SpotIconProps> = React.forwardRef<
+  HTMLOrSVGElement,
+  SpotIconProps
+>(({ name, size = CapUISpotIconSize.Md, className, ...props }, ref) => {
+  const SpotIconSvg = SpotIcons[name]
 
-    return (
-      <IconInner
-        as={SpotIconSvg}
-        variant={size}
-        className={cn('cap-spotIcon', className)}
-        ref={ref}
-        {...props}
-      />
-    )
-  },
-)
+  return (
+    <IconInner
+      as={SpotIconSvg}
+      variant={size}
+      className={cn('cap-spotIcon', className)}
+      ref={ref}
+      {...props}
+    />
+  )
+})
 
 SpotIcon.displayName = 'SpotIcon'
 

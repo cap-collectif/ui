@@ -14,38 +14,43 @@ type MenuProps = {
   readonly children: React.ReactNode
 }
 
-export interface MenuCompounded
-  extends React.ForwardRefExoticComponent<
-    MenuProps & React.RefAttributes<HTMLElement>
-  > {
+type SubComponents = {
   Item: BaseMenuCompounded['Item']
   OptionGroup: BaseMenuCompounded['OptionGroup']
   OptionItem: BaseMenuCompounded['OptionItem']
 }
 
-export const Menu = React.forwardRef<HTMLElement, MenuProps>(
-  ({ children, label }, ref) => {
-    return (
-      <BaseMenu
-        disclosure={
-          <Box
-            as="button"
-            type="button"
-            display="flex"
-            flexDirection="row"
-            {...thStyles}
-          >
-            <Text mr={1}>{label}</Text>
-            <Icon name={CapUIIcon.ArrowDownO} size={CapUIIconSize.Md} />
-          </Box>
-        }
-        ref={ref}
-      >
-        <BaseMenu.List>{children}</BaseMenu.List>
-      </BaseMenu>
-    )
-  },
-) as MenuCompounded
+export interface MenuCompounded
+  extends React.ForwardRefExoticComponent<MenuProps> {
+  Item: BaseMenuCompounded['Item']
+  OptionGroup: BaseMenuCompounded['OptionGroup']
+  OptionItem: BaseMenuCompounded['OptionItem']
+}
+
+export const Menu: React.FC<MenuProps> & SubComponents = React.forwardRef<
+  HTMLElement,
+  MenuProps
+>(({ children, label }, ref) => {
+  return (
+    <BaseMenu
+      disclosure={
+        <Box
+          as="button"
+          type="button"
+          display="flex"
+          flexDirection="row"
+          {...thStyles}
+        >
+          <Text mr={1}>{label}</Text>
+          <Icon name={CapUIIcon.ArrowDownO} size={CapUIIconSize.Md} />
+        </Box>
+      }
+      ref={ref}
+    >
+      <BaseMenu.List>{children}</BaseMenu.List>
+    </BaseMenu>
+  )
+}) as MenuCompounded
 
 Menu.Item = BaseMenu.Item
 Menu.OptionGroup = BaseMenu.OptionGroup

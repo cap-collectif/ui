@@ -26,21 +26,22 @@ const TableLoader = (): React.ReactElement => (
   </Box>
 )
 
-const TableBody = React.forwardRef<HTMLTableSectionElement, TbodyProps>(
-  ({ children, className, ...rest }, ref) => (
-    <Box
-      key="table-tbody"
-      as="tbody"
-      bg="white"
-      color="gray.900"
-      className={cn('cap-table__tbody', className)}
-      ref={ref}
-      {...rest}
-    >
-      {children}
-    </Box>
-  ),
-)
+const TableBody: React.FC<TbodyProps> = React.forwardRef<
+  HTMLTableSectionElement,
+  TbodyProps
+>(({ children, className, ...rest }, ref) => (
+  <Box
+    key="table-tbody"
+    as="tbody"
+    bg="white"
+    color="gray.900"
+    className={cn('cap-table__tbody', className)}
+    ref={ref}
+    {...rest}
+  >
+    {children}
+  </Box>
+))
 
 const Tbody: React.FC<TbodyProps> = ({
   children,
