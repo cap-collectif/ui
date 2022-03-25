@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import { Text } from '../typography'
 import { Card, CardProps } from './'
-import mdx from './Card.mdx'
 
 const meta: Meta<CardProps> = {
   title: 'Library/Card',
@@ -11,9 +10,6 @@ const meta: Meta<CardProps> = {
   args: {},
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
