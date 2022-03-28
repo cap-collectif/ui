@@ -99,10 +99,6 @@ export const Default: Story<MultiStepModalProps> = () => (
             id="one"
             label="Jaime les pommes"
             validationLabel="Voir les poires"
-            info={{
-              url: '#',
-              label: 'Jaime les pommes',
-            }}
           />
           <ModalTwo
             id="two"
@@ -113,14 +109,7 @@ export const Default: Story<MultiStepModalProps> = () => (
               label: 'Jaime les pommes',
             }}
           />
-          <ModalThree
-            id="three"
-            validationLabel="Fermer"
-            info={{
-              url: '#',
-              label: 'Jaime les pommes',
-            }}
-          />
+          <ModalThree id="three" validationLabel="Fermer" />
         </MultiStepModal.Body>
 
         <MultiStepModal.Footer>

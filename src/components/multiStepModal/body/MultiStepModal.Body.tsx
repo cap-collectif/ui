@@ -43,7 +43,7 @@ const MultiStepModalBody = ({ children, ...rest }: Props) => {
             id: id,
             label: label,
             validationLabel: validationLabel,
-            info: {
+            info: info && {
               url: info.url,
               label: info.label,
             },
