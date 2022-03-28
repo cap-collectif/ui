@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { forwardRef } from 'react'
 
 import { CapUIFontFamily } from '../../../styles'
 import { Box, BoxProps } from '../../box'
@@ -11,27 +10,28 @@ export interface FormErrorMessageProps extends BoxProps {
   readonly children?: React.ReactNode
 }
 
-export const FormErrorMessage = forwardRef<HTMLElement, FormErrorMessageProps>(
-  ({ children, className, isInvalid, ...props }, ref) => {
-    const field = useFormControlContext()
-    if ((!field?.isInvalid && !isInvalid) || field.isDisabled) return null
+export const FormErrorMessage: React.FC<FormErrorMessageProps> = React.forwardRef<
+  HTMLElement,
+  FormErrorMessageProps
+>(({ children, className, isInvalid, ...props }, ref) => {
+  const field = useFormControlContext()
+  if ((!field?.isInvalid && !isInvalid) || field.isDisabled) return null
 
-    return (
-      <Box
-        ref={ref}
-        color="red.500"
-        fontFamily={CapUIFontFamily.Body}
-        lineHeight="normal"
-        fontSize={3}
-        className={cn('cap-form-error-message', className)}
-        {...props}
-      >
-        {children}
-      </Box>
-    )
-  },
-)
+  return (
+    <Box
+      ref={ref}
+      color="red.500"
+      fontFamily={CapUIFontFamily.Body}
+      lineHeight="normal"
+      fontSize={3}
+      className={cn('cap-form-error-message', className)}
+      {...props}
+    >
+      {children}
+    </Box>
+  )
+})
 
 FormErrorMessage.displayName = 'FormErrorMessage'
 
-export default FormErrorMessage as React.FC<FormErrorMessageProps>
+export default FormErrorMessage

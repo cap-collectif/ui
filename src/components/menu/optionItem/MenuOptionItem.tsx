@@ -9,7 +9,7 @@ export interface MenuOptionItemProps extends Omit<MenuItemProps, 'value'> {
   readonly value: string
 }
 
-export const MenuOptionItem = React.forwardRef<
+export const MenuOptionItem: React.FC<MenuOptionItemProps> = React.forwardRef<
   HTMLButtonElement,
   MenuOptionItemProps
 >(({ children, value, ...props }, ref) => {

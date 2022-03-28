@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { forwardRef } from 'react'
 
 import { useBoolean } from '../../../hooks/useBoolean'
 import { Flex, FlexProps } from '../../layout/Flex'
@@ -65,26 +64,27 @@ const [
 
 export { useFormControlContext }
 
-export const FormControl = forwardRef<FlexProps, FormControlProps>(
-  (props, ref) => {
-    const { getRootProps, htmlProps: _, ...context } = useFormControlProvider(
-      props,
-    )
-    const contextValue = React.useMemo(() => context, [context])
+export const FormControl: React.FC<FormControlProps> = React.forwardRef<
+  HTMLDivElement,
+  FormControlProps
+>((props, ref) => {
+  const { getRootProps, htmlProps: _, ...context } = useFormControlProvider(
+    props,
+  )
+  const contextValue = React.useMemo(() => context, [context])
 
-    return (
-      <FormControlProvider value={contextValue}>
-        <Flex
-          width={props.width || '100%'}
-          direction="column"
-          spacing={1}
-          {...getRootProps({}, ref)}
-          className={cn('cap-form-control', props.className)}
-        />
-      </FormControlProvider>
-    )
-  },
-)
+  return (
+    <FormControlProvider value={contextValue}>
+      <Flex
+        width={props.width || '100%'}
+        direction="column"
+        spacing={1}
+        {...getRootProps({}, ref)}
+        className={cn('cap-form-control', props.className)}
+      />
+    </FormControlProvider>
+  )
+})
 
 FormControl.displayName = 'FormControl'
 

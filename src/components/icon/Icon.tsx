@@ -10,6 +10,7 @@ import { CapUIIcon, CapUIIconSize } from './enums'
 export interface IconProps extends Omit<BoxPropsOf<'svg'>, 'size' | 'ref'> {
   name: CapUIIcon
   size?: CapUIIconSize
+  ref?: React.ForwardedRef<HTMLOrSVGElement>
 }
 
 const getSize = (size: IconProps['size'] = CapUIIconSize.Md): number => {
@@ -66,7 +67,7 @@ const IconInner = styled(Box).attrs<BoxProps & { variant: IconProps['size'] }>(
   }),
 )
 
-const Icon = React.forwardRef<HTMLOrSVGElement, IconProps>(
+const Icon: React.FC<IconProps> = React.forwardRef<HTMLOrSVGElement, IconProps>(
   (
     { name, size = CapUIIconSize.Md, color = 'inherit', className, ...props },
     ref,

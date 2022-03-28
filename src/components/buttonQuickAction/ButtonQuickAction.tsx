@@ -25,7 +25,7 @@ const PADDING: { [key in CapUIIconSize]: number } = {
   [CapUIIconSize.Xxl]: 3,
 }
 
-export const ButtonQuickAction = React.forwardRef<
+export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forwardRef<
   HTMLButtonElement,
   ButtonQuickActionProps
 >(

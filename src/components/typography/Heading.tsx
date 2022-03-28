@@ -1,4 +1,3 @@
-// @flow
 import cn from 'classnames'
 import * as React from 'react'
 
@@ -8,7 +7,7 @@ import {
   FONT_SIZES,
 } from '../../styles/theme/typography'
 import { jsxInnerText } from '../../utils/jsx'
-import { Box, BoxOwnProps, BoxProps, PolymorphicComponent } from '../box/Box'
+import { Box, BoxOwnProps, BoxProps } from '../box/Box'
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
 
@@ -52,44 +51,43 @@ export const headingStyles: HeadingStyles = {
   },
 }
 
-export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, truncate, className, as = 'h2', ...rest }, ref) => {
-    let content = children
-    const innerText = jsxInnerText(content)
+export const Heading: React.FC<HeadingProps> = React.forwardRef<
+  HTMLHeadingElement,
+  HeadingProps
+>(({ children, truncate, className, as = 'h2', ...rest }, ref) => {
+  let content = children
+  const innerText = jsxInnerText(content)
 
-    if (truncate && innerText.length > truncate) {
-      content = `${innerText.slice(0, truncate)}...`
-    }
+  if (truncate && innerText.length > truncate) {
+    content = `${innerText.slice(0, truncate)}...`
+  }
 
-    return (
-      <Box
-        ref={ref}
-        as={as}
-        className={cn('cap-heading', className)}
-        fontFamily="heading"
-        fontSize={
-          headingStyles[as] ? headingStyles[as].fontSize : FONT_SIZES['1']
-        }
-        fontWeight={
-          headingStyles[as]
-            ? headingStyles[as].fontWeight
-            : CapUIFontWeight.Normal
-        }
-        lineHeight={
-          headingStyles[as]
-            ? headingStyles[as].lineHeight
-            : CapUILineHeight.Base
-        }
-        m={0}
-        {...(truncate && { title: innerText })}
-        {...rest}
-      >
-        {content}
-      </Box>
-    )
-  },
-)
+  return (
+    <Box
+      ref={ref}
+      as={as}
+      className={cn('cap-heading', className)}
+      fontFamily="heading"
+      fontSize={
+        headingStyles[as] ? headingStyles[as].fontSize : FONT_SIZES['1']
+      }
+      fontWeight={
+        headingStyles[as]
+          ? headingStyles[as].fontWeight
+          : CapUIFontWeight.Normal
+      }
+      lineHeight={
+        headingStyles[as] ? headingStyles[as].lineHeight : CapUILineHeight.Base
+      }
+      m={0}
+      {...(truncate && { title: innerText })}
+      {...rest}
+    >
+      {content}
+    </Box>
+  )
+})
 
 Heading.displayName = 'Heading'
 
-export default Heading as PolymorphicComponent<HeadingProps>
+export default Heading

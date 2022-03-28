@@ -20,12 +20,13 @@ const SpinnerInner = styled(Icon)`
   animation: ${spinning} 1.7s linear infinite;
 `
 
-export const Spinner = React.forwardRef<HTMLElement, SpinnerProps>(
-  ({ size = CapUIIconSize.Md, ...props }, ref) => {
-    return (
-      <SpinnerInner size={size} ref={ref} {...props} name={CapUIIcon.Spinner} />
-    )
-  },
-)
+export const Spinner: React.FC<SpinnerProps> = React.forwardRef<
+  HTMLOrSVGElement,
+  SpinnerProps
+>(({ size = CapUIIconSize.Md, ...props }, ref) => {
+  return (
+    <SpinnerInner size={size} ref={ref} {...props} name={CapUIIcon.Spinner} />
+  )
+})
 
 export default Spinner

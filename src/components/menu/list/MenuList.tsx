@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { forwardRef } from 'react'
 import { Menu as ReakitMenu, MenuOptions } from 'reakit/Menu'
 import styled from 'styled-components'
 
@@ -26,32 +25,33 @@ const MenuItems = styled(motion(Flex)).attrs(props => ({
   ...props,
 }))``
 
-const MenuList = forwardRef<HTMLElement, MenuListProps>(
-  ({ children, className, ...rest }, ref) => {
-    const { menu, hideOnClickOutside } = useMenu()
+const MenuList: React.FC<MenuListProps> = React.forwardRef<
+  HTMLElement,
+  MenuListProps
+>(({ children, className, ...rest }, ref) => {
+  const { menu, hideOnClickOutside } = useMenu()
 
-    return (
-      <ReakitMenu
-        as={MenuItems}
-        {...menu}
-        hideOnClickOutside={hideOnClickOutside}
-        ref={ref}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        }}
-        initial="hidden"
-        animate={menu.visible ? 'visible' : 'hidden'}
-        transition={LAYOUT_TRANSITION_SPRING}
-        zIndex="dropdown"
-        {...rest}
-        className={cn('cap-menu__list', className)}
-      >
-        {children}
-      </ReakitMenu>
-    )
-  },
-)
+  return (
+    <ReakitMenu
+      as={MenuItems}
+      {...menu}
+      hideOnClickOutside={hideOnClickOutside}
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      initial="hidden"
+      animate={menu.visible ? 'visible' : 'hidden'}
+      transition={LAYOUT_TRANSITION_SPRING}
+      zIndex="dropdown"
+      {...rest}
+      className={cn('cap-menu__list', className)}
+    >
+      {children}
+    </ReakitMenu>
+  )
+})
 
 MenuList.displayName = 'Menu.List'
 

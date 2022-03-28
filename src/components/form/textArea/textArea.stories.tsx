@@ -42,7 +42,9 @@ export const Default: Story<TextAreaProps> = args => {
     <TextArea
       {...args}
       value={value}
-      onChange={e => setValue(e.target.value)}
+      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+        setValue(e.target.value)
+      }
       maxLength={40}
     />
   )
@@ -77,7 +79,9 @@ export const WithFixedWidthAndMaxLength: Story<Args> = ({
         maxLength={25}
         maxLengthMessage="Vous avez atteint le nombre maximum de caractères"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -95,7 +99,9 @@ export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -110,7 +116,9 @@ export const WithLabel: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -125,7 +133,9 @@ export const WithLabelDisabled: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -140,7 +150,9 @@ export const WithLabelErrorState: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -156,7 +168,9 @@ export const WithGuideline: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -175,7 +189,9 @@ export const WithGuidelineDisabled: Story<Args> = ({
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )
@@ -194,7 +210,9 @@ export const WithGuidelineErrorState: Story<Args> = ({
         placeholder={placeholder}
         width="280px"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setValue(e.target.value)
+        }
       />
     </FormControl>
   )

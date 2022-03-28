@@ -1,9 +1,8 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { forwardRef } from 'react'
 
 import { CapUILineHeight } from '../../../styles'
-import { BoxPropsOf } from '../../box'
+import type { PolymorphicBoxProps } from '../../box/Box'
 import { Flex } from '../../layout'
 import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
@@ -11,7 +10,7 @@ import { useFormControl } from '../formControl'
 import FormGuideline from '../formGuideline/FormGuideline'
 import S, { InputInner } from '../style'
 
-export interface TextAreaProps extends BoxPropsOf<'textarea'> {
+export interface TextAreaProps extends PolymorphicBoxProps<'textarea'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
@@ -28,7 +27,10 @@ export interface TextAreaProps extends BoxPropsOf<'textarea'> {
     | 'unset'
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
+  HTMLTextAreaElement,
+  TextAreaProps
+>(
   (
     {
       className,
@@ -89,4 +91,4 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
 TextArea.displayName = 'TextArea'
 
-export default TextArea as React.FC<TextAreaProps>
+export default TextArea
