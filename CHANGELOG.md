@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.0.4
+
+`2022-03-29`
+
+- 🐛 Make info props facultative on MultiStepModal [#239](https://github.com/cap-collectif/ui/pull/239)
+- 🐛 Fix generated types of components [#238](https://github.com/cap-collectif/ui/pull/238)
+- 🐛 Fix overlay of `Modal` [#236](https://github.com/cap-collectif/ui/pull/236)
+
 ## 1.0.3
 
 `2022-03-14`
