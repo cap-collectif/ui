@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.0.5
+
+`2022-03-31`
+
+- 🐛 Adds portal option on mobile modals [#244](https://github.com/cap-collectif/ui/pull/244)
+
 ## 1.0.4
 
 `2022-03-29`
