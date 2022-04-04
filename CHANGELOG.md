@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.1.0
+
+`2022-04-04`
+
+- 🆕 Add `Radio` component [#246](https://github.com/cap-collectif/ui/pull/246)
+
 ## 1.0.5
 
 `2022-03-31`
