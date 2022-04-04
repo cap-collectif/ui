@@ -12,23 +12,20 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
   ...props
 }) => {
-  const checkboxes = React.Children.map(
-    children,
-    (child: React.ReactElement) => {
-      return React.cloneElement(child, {
-        isInvalid: false, // We don't want to display the checkboxes in red
-      })
-    },
-  )
+  const radios = React.Children.map(children, (child: React.ReactElement) => {
+    return React.cloneElement(child, {
+      isInvalid: false, // We don't want to display the rodios in red
+    })
+  })
   return (
     <Flex
       width={props.width || '100%'}
       direction="column"
       spacing={1}
-      className={cn('cap-checkbox-group', props.className)}
+      className={cn('cap-radio-group', props.className)}
       {...props}
     >
-      {checkboxes}
+      {radios}
     </Flex>
   )
 }
