@@ -6,7 +6,6 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import Radio, { RadioProps } from './Radio'
-import mdx from './Radio.mdx'
 
 type Args = {
   errorMessage: string
@@ -24,17 +23,12 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
 export default meta
 
-export const Default: Story<RadioProps> = args => (
-  <Radio {...args} id="radio" />
-)
+export const Default: Story<RadioProps> = args => <Radio {...args} id="radio" />
 
 export const WithText: Story<RadioProps> = args => (
   <Radio {...args} id="radio">
