@@ -1,33 +1,64 @@
 import { SystemStyleObject } from '@styled-system/css'
 
-const styles: SystemStyleObject = {
-  '.cap-form-control': {
-    width: 'auto !important',
-  },
-  '& > .cap-form-label': {
-    flex: '100%',
-  },
-  '& > :nth-child(2)': {
-    '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
+const styles = (withGuideline: boolean): SystemStyleObject => {
+  return {
+    '.cap-form-control': {
+      width: 'auto !important',
     },
-  },
-  '& > :last-child': {
-    '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
-      borderLeftWidth: 0,
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
+    '& > .cap-form-label': {
+      flex: '100%',
     },
-  },
-  '& > :not(:first-child):not(:last-child):not(:nth-child(2))': {
-    '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
-      borderLeftWidth: 0,
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
+    '& > .cap-form-guideline': {
+      flex: '100%',
     },
-  },
+    ...(withGuideline
+      ? {
+          '& > :nth-child(3)': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+          },
+        }
+      : {
+          '& > :nth-child(2)': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+          },
+        }),
+
+    '& > :last-child': {
+      '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+        borderLeftWidth: 0,
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+      },
+    },
+    ...(withGuideline
+      ? {
+          '& > :not(:first-child):not(:last-child):not(:nth-child(3))': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+              borderLeftWidth: 0,
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+          },
+        }
+      : {
+          '& > :not(:first-child):not(:last-child):not(:nth-child(2))': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+              borderLeftWidth: 0,
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+          },
+        }),
+  }
 }
 export default styles
