@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.1.1
+
+`2022-04-04`
+
+- 💄 Style `InputGroup` to have FormGuideline [#248](https://github.com/cap-collectif/ui/pull/248)
+- 💥 Deleted `PhoneNumber` Component [#248](https://github.com/cap-collectif/ui/pull/248)
+
 ## 1.1.0
 
 `2022-04-04`
