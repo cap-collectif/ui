@@ -6,6 +6,7 @@ import { Flex } from '../../layout'
 import DateRange, { DateRangeValueType } from '../dateRange/DateRange'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
+import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
 import { Input } from '../input'
 import { InputNumber } from '../inputNumber'
@@ -43,6 +44,7 @@ export const Default: Story<InputGroupProps> = args => {
     <Flex direction="column" width="700px" spacing={3}>
       <InputGroup {...args}>
         <FormLabel label="Choisissez une couleur :" />
+        <FormGuideline>Guidelines</FormGuideline>
         <FormControl {...args}>
           <Select
             placeholder="Placeholder..."
@@ -77,6 +79,7 @@ export const Default: Story<InputGroupProps> = args => {
 
       <InputGroup {...args}>
         <FormLabel label="Label" />
+        <FormGuideline>Guidelines</FormGuideline>
         <Button variant="primary">Action</Button>
         <FormControl {...args}>
           {' '}
