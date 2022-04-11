@@ -13,7 +13,7 @@ To better understand the changelog, here are some legends we use:
 
 ## 1.1.2
 
-`2022-04-04`
+`2022-04-11`
 
 - 🛠 Export `useMultiStepModal` from `MultiStepModal`  [#250](https://github.com/cap-collectif/ui/pull/250)
 
