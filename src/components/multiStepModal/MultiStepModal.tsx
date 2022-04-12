@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { Modal, ModalProps } from '../modal'
+import type { Context as ModalContext } from '../modal/Modal.context'
 import { MultiStepModalContext } from './MultiStepModal.context'
 import type { Step } from './MultiStepModal.context'
 import MultiStepModalBody from './body/MultiStepModal.Body'
@@ -8,9 +9,16 @@ import MultiStepModalFooter from './footer/MultiStepModal.Footer'
 import MultiStepModalHeader from './header/MultiStepModal.Header'
 import MultiStepModalProgressBar from './progressBar/MultiStepModal.ProgressBar'
 
+type ModalStepsRenderProps = ModalContext & {
+  currentStep: number
+  goToNextStep: () => void
+}
+type RenderProps = (props: ModalStepsRenderProps) => React.ReactNode
+
 export interface MultiStepModalProps extends ModalProps {
   defaultStepId?: string
   resetStepOnClose?: boolean
+  children: RenderProps | React.ReactNode
 }
 
 const MultiStepModal = ({
@@ -51,12 +59,17 @@ const MultiStepModal = ({
 
     if (onClose) onClose()
   }
+  const goToNextStep = stepsRegistered[currentStep + 1]
+    ? () => setCurrentStep(currentStep + 1)
+    : () => {}
 
   return (
     <MultiStepModalContext.Provider value={context}>
       <Modal {...rest} onClose={handleOnClose}>
         {modalProps =>
-          typeof children === 'function' ? children(modalProps) : children
+          typeof children === 'function'
+            ? children({ ...modalProps, currentStep, goToNextStep })
+            : children
         }
       </Modal>
     </MultiStepModalContext.Provider>

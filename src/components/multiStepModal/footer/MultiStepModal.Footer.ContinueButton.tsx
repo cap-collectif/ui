@@ -7,7 +7,10 @@ import { useMultiStepModal } from '../MultiStepModal.context'
 
 type Props = ButtonProps
 
-const MultiStepModalFooterContinueButton: React.FC<Props> = (props: Props) => {
+const MultiStepModalFooterContinueButton: React.FC<Props> = ({
+  onClick,
+  ...props
+}: Props) => {
   const { currentStep, steps, setCurrentStep } = useMultiStepModal()
 
   const nextStep = steps[currentStep + 1]
@@ -22,7 +25,10 @@ const MultiStepModalFooterContinueButton: React.FC<Props> = (props: Props) => {
       variantColor="primary"
       variantSize="medium"
       rightIcon={CapUIIcon.LongArrowRight}
-      onClick={nextStep}
+      onClick={async (event: React.MouseEvent<any>) => {
+        if (onClick) onClick(event)
+        else nextStep()
+      }}
       {...props}
     >
       {steps[currentStep].validationLabel}
