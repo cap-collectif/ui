@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.1.3
+
+`2022-04-12`
+
+- 🛠 `MultiStepModal` pass context actions as props to children [#254](https://github.com/cap-collectif/ui/pull/254)
+
+
 ## 1.1.2
 
 `2022-04-11`
