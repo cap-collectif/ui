@@ -1,8 +1,8 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { components, ControlProps } from 'react-select'
-import type { Props } from 'react-select'
+import { components, ControlProps, GroupBase } from 'react-select'
 import ReactSelect from 'react-select/async'
+import type { AsyncProps } from 'react-select/async'
 
 import { Box } from '../box'
 import { CapInputSize } from '../form/enums'
@@ -10,8 +10,14 @@ import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
 
-export interface SearchProps
-  extends Omit<Props, 'onChange' | 'defaultValue' | 'isMulti'> {
+export interface SearchProps<
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> extends Omit<
+    AsyncProps<Option, IsMulti, Group>,
+    'onChange' | 'defaultValue' | 'value'
+  > {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
@@ -20,7 +26,14 @@ export interface SearchProps
   readonly value?: string
 }
 
-const Control = ({ children, ...props }: ControlProps) => {
+const Control = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
+  children,
+  ...props
+}: ControlProps<Option, IsMulti, Group>) => {
   const { isLoading, inputValue } = props.selectProps
   return (
     <components.Control {...props}>
@@ -47,7 +60,11 @@ const Control = ({ children, ...props }: ControlProps) => {
   )
 }
 
-export const Search = ({
+export const Search = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
   className,
   width,
   isDisabled,
@@ -55,18 +72,15 @@ export const Search = ({
   isInvalid,
   onChange,
   value,
+  loadOptions,
   ...props
-}: SearchProps) => {
+}: SearchProps<Option, IsMulti, Group>) => {
   const asyncRef = React.useRef(null)
   const [input, setInput] = React.useState(value || '')
 
-  React.useEffect(() => {
-    setInput(value || '')
-  }, [value])
-
   return (
     <Box width={width || '280px'}>
-      <ReactSelect
+      <ReactSelect<Option, IsMulti, Group>
         ref={asyncRef}
         styles={reactSelectStyle(
           false,
@@ -85,13 +99,15 @@ export const Search = ({
           setInput('')
           if (onChange) onChange('')
         }}
-        menuIsOpen={false}
-        isMulti={false}
+        menuIsOpen={loadOptions ? undefined : false}
         className={cn('cap-search', className)}
         classNamePrefix="cap-search"
         isDisabled={isDisabled}
         aria-invalid={isInvalid}
         components={{ Control }}
+        maxMenuHeight={210}
+        menuPortalTarget={document?.body}
+        loadOptions={loadOptions}
         {...props}
       />
     </Box>
@@ -100,4 +116,4 @@ export const Search = ({
 
 Search.displayName = 'Search'
 
-export default Search as React.FC<SearchProps>
+export default Search
