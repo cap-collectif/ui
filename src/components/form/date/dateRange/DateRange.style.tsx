@@ -5,9 +5,9 @@ import styled, {
   ThemeProps,
 } from 'styled-components'
 
-import { CapUILineHeight } from '../../../styles'
-import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapUILineHeight } from '../../../../styles'
+import { Box } from '../../../box'
+import { CapInputSize } from '../../enums'
 
 type variantDateRangeType = {
   [key in CapInputSize]: FlattenInterpolation<ThemeProps<DefaultTheme>>

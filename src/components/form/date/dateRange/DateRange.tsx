@@ -6,14 +6,14 @@ import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
 
-import { CapUIRadius } from '../../../styles'
-import { BoxPropsOf } from '../../box'
-import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
-import { Flex } from '../../layout/Flex'
-import { CapInputSize } from '../enums'
-import { useFormControl } from '../formControl'
+import { CapUIRadius } from '../../../../styles'
+import { BoxPropsOf } from '../../../box'
+import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
+import { Flex } from '../../../layout/Flex'
+import { CapInputSize } from '../../enums'
+import { useFormControl } from '../../formControl'
+import { NavNext, NavPrev } from '../Nav'
 import { DateRangeBox } from './DateRange.style'
-import { NavNext, NavPrev } from './Nav'
 
 export type DateRangeValueType = {
   readonly startDate: Moment | null
