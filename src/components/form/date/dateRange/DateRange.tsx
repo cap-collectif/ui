@@ -6,13 +6,11 @@ import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
 
-import { CapUIRadius } from '../../../../styles'
-import { BoxPropsOf } from '../../../box'
+import type { BoxPropsOf } from '../../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
-import { Flex } from '../../../layout/Flex'
 import { CapInputSize } from '../../enums'
 import { useFormControl } from '../../formControl'
-import { NavNext, NavPrev } from '../Nav'
+import { COMMON_PROPS } from '../commonProps'
 import { DateRangeBox } from './DateRange.style'
 
 export type DateRangeValueType = {
@@ -42,12 +40,6 @@ export interface DateRangeProps
   readonly maxDate?: DateRangePickerShape['maxDate']
   readonly onClose?: DateRangePickerShape['onClose']
 }
-
-const CustomDayContent = (day: Moment): React.ReactNode => (
-  <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
-    {day.format('D')}
-  </Flex>
-)
 
 const DateRange: FC<DateRangeProps> = ({
   startDatePlaceholderText = 'jj/mm/aaaa',
@@ -80,7 +72,7 @@ const DateRange: FC<DateRangeProps> = ({
 
   return (
     <DateRangeBox
-      className={cn('cap-dateRange', className)}
+      className={cn('cap-date-range', className)}
       isInvalid={inputProps['aria-invalid']}
       variant={inputProps.variantSize}
     >
@@ -95,27 +87,13 @@ const DateRange: FC<DateRangeProps> = ({
         onDatesChange={onChange}
         focusedInput={focusedInput}
         onFocusChange={setFocusedInput}
-        inputIconPosition="after"
         displayFormat={displayFormat}
-        hideKeyboardShortcutsPanel
-        renderDayContents={CustomDayContent}
-        verticalSpacing={8}
-        horizontalMargin={0}
-        daySize={32}
+        {...COMMON_PROPS}
         keepOpenOnDateSelect={keepOpenOnDateSelect}
         isOutsideRange={isOutsideRange}
         minDate={minDate}
         maxDate={maxDate}
         onClose={onClose}
-        navPrev={<NavPrev />}
-        navNext={<NavNext />}
-        customInputIcon={
-          <Icon
-            color="gray.700"
-            name={CapUIIcon.Calendar}
-            size={CapUIIconSize.Sm}
-          />
-        }
         customArrowIcon={
           <Icon
             color="gray.700"
