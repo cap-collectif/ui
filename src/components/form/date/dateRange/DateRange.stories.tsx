@@ -28,8 +28,6 @@ const meta: Meta = {
     },
   },
   args: {
-    startDateId: 'startDateId',
-    endDateId: 'endDateId',
     isRequired: false,
     isInvalid: false,
     isDisabled: false,
@@ -90,9 +88,6 @@ export const WithError: Story<DateRangeProps> = ({
   return (
     <FormControl {...args}>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
@@ -126,7 +121,7 @@ export const WithLabel: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -134,11 +129,7 @@ export const WithLabel: Story<DateRangeProps> = ({
         )}
       </FormLabel>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({
@@ -166,7 +157,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -175,11 +166,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
       </FormLabel>
       <DateRange
         disabled={'startDate'}
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({
@@ -207,7 +194,7 @@ export const WithGuideline: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="name" label="Label">
+      <FormLabel label="Label">
         <Tooltip label="Une aide en plus">
           <Icon
             name={CapUIIcon.Info}
@@ -218,11 +205,7 @@ export const WithGuideline: Story<DateRangeProps> = ({
       </FormLabel>
       <FormGuideline>Guidelines</FormGuideline>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({
