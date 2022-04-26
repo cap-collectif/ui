@@ -1,17 +1,16 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Box } from '../../box/Box'
-import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
-import { Tooltip } from '../../tooltip/Tooltip'
-import { CapInputSize } from '../enums'
-import FormControl from '../formControl/FormControl'
-import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
-import { FormGuideline } from '../formGuideline'
-import FormLabel from '../formLabel/FormLabel'
+import { Box } from '../../../box/Box'
+import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
+import { Tooltip } from '../../../tooltip/Tooltip'
+import { CapInputSize } from '../../enums'
+import FormControl from '../../formControl/FormControl'
+import FormErrorMessage from '../../formErrorMessage/FormErrorMessage'
+import { FormGuideline } from '../../formGuideline'
+import FormLabel from '../../formLabel/FormLabel'
 import DateRange, { DateRangeProps } from './DateRange'
 import type { DateRangeValueType } from './DateRange'
-import mdx from './DateRange.mdx'
 
 const moment = require('moment')
 require('moment/dist/locale/fr')
@@ -29,20 +28,14 @@ const meta: Meta = {
     },
   },
   args: {
-    startDateId: 'startDateId',
-    endDateId: 'endDateId',
     isRequired: false,
     isInvalid: false,
     isDisabled: false,
     variantSize: CapInputSize.Sm,
     value: { startDate: null, endDate: null },
-    displayFormat: 'DD/MM/YYYY',
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 export default meta
@@ -94,9 +87,6 @@ export const WithError: Story<DateRangeProps> = ({
   return (
     <FormControl {...args}>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
@@ -130,7 +120,7 @@ export const WithLabel: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -138,11 +128,7 @@ export const WithLabel: Story<DateRangeProps> = ({
         )}
       </FormLabel>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({
@@ -170,7 +156,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="Date" label="Label">
+      <FormLabel label="Label">
         {!args.isRequired && (
           <Box as="span" color="gray.500">
             facultatif
@@ -179,11 +165,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
       </FormLabel>
       <DateRange
         disabled={'startDate'}
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({
@@ -211,7 +193,7 @@ export const WithGuideline: Story<DateRangeProps> = ({
   })
   return (
     <FormControl {...args}>
-      <FormLabel htmlFor="name" label="Label">
+      <FormLabel label="Label">
         <Tooltip label="Une aide en plus">
           <Icon
             name={CapUIIcon.Info}
@@ -222,11 +204,7 @@ export const WithGuideline: Story<DateRangeProps> = ({
       </FormLabel>
       <FormGuideline>Guidelines</FormGuideline>
       <DateRange
-        className={args.className}
-        startDateId={args.startDateId}
-        endDateId={args.endDateId}
         displayFormat={args.displayFormat}
-        id="Date"
         onChange={elem => {
           onChange({ startDate: elem.startDate, endDate: elem.endDate })
           storybookOnChange({

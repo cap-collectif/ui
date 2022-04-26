@@ -1,44 +1,10 @@
-import styled, {
-  css,
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemeProps,
-} from 'styled-components'
+import styled from 'styled-components'
 
-import { CapUILineHeight } from '../../../styles'
-import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapUILineHeight } from '../../../../styles'
+import { Box } from '../../../box'
+import { commonStyle, DateBoxProps, variantDate } from '../Date.style';
 
-type variantDateRangeType = {
-  [key in CapInputSize]: FlattenInterpolation<ThemeProps<DefaultTheme>>
-}
-
-const variantDateRange: variantDateRangeType = {
-  [CapInputSize.Sm]: css`
-    .DateInput:first-child {
-      padding-left: ${props => props.theme.sizes['3']};
-      padding-right: ${props => props.theme.sizes['3']};
-    }
-    .DateInput {
-      padding-top: ${props => props.theme.sizes['1']};
-      padding-bottom: ${props => props.theme.sizes['1']};
-      padding-left: ${props => props.theme.sizes['2']};
-      padding-right: ${props => props.theme.sizes['2']};
-    }
-  `,
-  [CapInputSize.Md]: css`
-    .DateInput:first-child {
-      padding-left: ${props => props.theme.sizes['3']};
-      padding-right: ${props => props.theme.sizes['3']};
-    }
-    .DateInput {
-      padding: ${props => props.theme.sizes['2']};
-    }
-  `,
-}
-type DateRangeBoxProps = { variant: CapInputSize; isInvalid: boolean }
-
-export const DateRangeBox = styled(Box)<DateRangeBoxProps>`
+export const DateRangeBox = styled(Box)<DateBoxProps>`
   .PresetDateRangePicker_panel {
     padding: 0 22px 11px;
   }
@@ -897,19 +863,15 @@ export const DateRangeBox = styled(Box)<DateRangeBoxProps>`
   .DateRangePickerInput {
     border: ${props => props.theme.borders.normal};
     border-radius: ${props => props.theme.radii.normal}px;
-    border-color: ${props =>
-      props.isInvalid
-        ? props.theme.colors.red['500']
-        : props.theme.colors.gray['300']};
+    border-color: ${props => props.theme.colors.gray['300']};
     font-family: ${props => props.theme.fonts.input};
     line-height: 24px;
     background-color: white;
+    color: ${props => props.theme.colors.gray['900']};
 
     &:focus-within {
       border-color: ${props => props.theme.colors.blue['500']};
     }
-
-    color: ${props => props.theme.colors.gray['900']};
 
     &__disabled {
       background-color: ${props => props.theme.colors.gray['100']};
@@ -971,164 +933,7 @@ export const DateRangeBox = styled(Box)<DateRangeBoxProps>`
   .DateInput_input__disabled {
     color: ${props => props.theme.colors.gray['500']};
   }
-
-  .CalendarDay {
-    &:hover div {
-      background-color: ${props => props.theme.colors.blue['200']};
-    }
-
-    & div {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .CalendarDay__default {
-    font-weight: normal;
-    font-size: ${props => props.theme.fontSizes[3]};
-    font-family: ${props => props.theme.fonts.input};
-    line-height: ${CapUILineHeight.Base};
-    color: ${props => props.theme.colors.gray['900']};
-    border: none;
-    background-color: white;
-  }
-
-  .CalendarDay__today {
-    & div {
-      color: ${props => props.theme.colors.gray['900']};
-      border-width: 1px;
-      border-color: ${props => props.theme.colors.gray['900']};
-    }
-  }
-
-  .CalendarDay__selected {
-    border-radius: ${props => props.theme.radii.poppin}px;
-    padding: 0;
-
-    & div {
-      background-color: ${props => props.theme.colors.blue['500']};
-      color: ${props => props.theme.colors.blue['100']};
-      border-radius: ${props => props.theme.radii.poppin}px;
-      border: 0;
-    }
-  }
-
-  .CalendarDay__selected_start {
-    background-color: ${props => props.theme.colors.blue['150']};
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .CalendarDay__selected_end {
-    background-color: ${props => props.theme.colors.blue['150']};
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-  }
-
-  .CalendarDay__selected_span {
-    background-color: ${props => props.theme.colors.blue['150']};
-
-    &:hover {
-      background-color: ${props => props.theme.colors.blue['150']};
-
-      & div {
-        border-radius: ${props => props.theme.radii.poppin}px;
-        background-color: ${props => props.theme.colors.blue['200']};
-      }
-    }
-  }
-
-  tr td.CalendarDay__selected_span:last-child {
-    border-top-right-radius: ${props => props.theme.radii.poppin}px;
-    border-bottom-right-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  tr td.CalendarDay__selected_span:first-child {
-    border-bottom-left-radius: ${props => props.theme.radii.poppin}px;
-    border-top-left-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  tr .CalendarDay__selected_span:only-child {
-    border-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  .DateRangePickerInput_calendarIcon {
-    margin: 0;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    padding-right: 3px;
-    padding-left: 1px;
-  }
-
-  .DayPickerNavigation_button__default {
-    border: 0;
-  }
-
-  .CalendarMonth_caption {
-    font-size: ${props => props.theme.fontSizes[4]};
-    line-height: ${CapUILineHeight.Base};
-    font-weight: ${props => props.theme.fontWeights.semibold};
-    color: ${props => props.theme.colors.blue['900']};
-  }
-
-  .CalendarMonth_table {
-    border-collapse: separate;
-    border-spacing: 0 8px;
-  }
-
-  .DayPicker_transitionContainer {
-    padding-bottom: 37px;
-    box-sizing: content-box;
-  }
-
-  .DayPicker_weekHeader_li small {
-    font-size: ${props => props.theme.fontSizes[1]};
-    text-transform: uppercase;
-    line-height: ${CapUILineHeight.M};
-    font-weight: ${props => props.theme.fontWeights.semibold};
-    color: ${props => props.theme.colors.gray['500']};
-  }
-
-  .CalendarDay__hovered_span {
-    &:hover {
-      background-color: ${props => props.theme.colors.blue['150']};
-      border-top-right-radius: ${props => props.theme.radii.poppin}px;
-      border-bottom-right-radius: ${props => props.theme.radii.poppin}px;
-    }
-
-    background-color: ${props => props.theme.colors.blue['150']};
-  }
-
-  tr td.CalendarDay__hovered_span:last-child {
-    border-top-right-radius: ${props => props.theme.radii.poppin}px;
-    border-bottom-right-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  tr td.CalendarDay__hovered_span:first-child {
-    border-bottom-left-radius: ${props => props.theme.radii.poppin}px;
-    border-top-left-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  tr .CalendarDay__hovered_span:only-child {
-    border-radius: ${props => props.theme.radii.poppin}px;
-  }
-
-  tr .CalendarDay__after_hovered_start {
-    //background-color: transparent;
-  }
-
-  .CalendarDay__blocked_out_of_range {
-    & div {
-      color: ${props => props.theme.colors.gray['500']};
-    }
-  }
-
-  .CalendarDay__selected.CalendarDay__blocked_out_of_range {
-    & div {
-      color: ${props => props.theme.colors.blue['700']};
-      background-color: ${props => props.theme.colors.blue['300']};
-    }
-  }
-
-  ${props => variantDateRange[props.variant]}
+  
+  ${props => variantDate[props.variant]}
+  ${commonStyle}
 `

@@ -6,14 +6,12 @@ import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
 
-import { CapUIRadius } from '../../../styles'
-import { BoxPropsOf } from '../../box'
-import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
-import { Flex } from '../../layout/Flex'
-import { CapInputSize } from '../enums'
-import { useFormControl } from '../formControl'
+import type { BoxPropsOf } from '../../../box'
+import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
+import { CapInputSize } from '../../enums'
+import { useFormControl } from '../../formControl'
+import { COMMON_PROPS } from '../commonProps'
 import { DateRangeBox } from './DateRange.style'
-import { NavNext, NavPrev } from './Nav'
 
 export type DateRangeValueType = {
   readonly startDate: Moment | null
@@ -24,30 +22,24 @@ export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'> {
   readonly value: DateRangeValueType
   readonly onChange: (value: DateRangeValueType) => void
-  readonly displayFormat: DateRangePickerShape['displayFormat']
   readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
+  readonly isOutsideRange?: boolean
+  readonly displayFormat?: DateRangePickerShape['displayFormat']
   readonly startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
   readonly endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
   readonly startDateId?: DateRangePickerShape['startDateId']
   readonly endDateId?: DateRangePickerShape['endDateId']
   readonly disabled?: DateRangePickerShape['disabled']
   readonly keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
-  readonly isOutsideRange?: DateRangePickerShape['isOutsideRange']
   readonly minDate?: DateRangePickerShape['minDate']
   readonly maxDate?: DateRangePickerShape['maxDate']
   readonly onClose?: DateRangePickerShape['onClose']
 }
-
-const CustomDayContent = (day: Moment): React.ReactNode => (
-  <Flex justify="center" align="center" borderRadius={CapUIRadius.Poppin}>
-    {day.format('D')}
-  </Flex>
-)
 
 const DateRange: FC<DateRangeProps> = ({
   startDatePlaceholderText = 'jj/mm/aaaa',
@@ -56,7 +48,7 @@ const DateRange: FC<DateRangeProps> = ({
   onChange,
   startDateId = 'cap-dateRange-startDate',
   endDateId = 'cap-dateRange-endDate',
-  displayFormat,
+  displayFormat= 'DD/MM/YYYY',
   className,
   keepOpenOnDateSelect = true,
   isOutsideRange,
@@ -80,7 +72,7 @@ const DateRange: FC<DateRangeProps> = ({
 
   return (
     <DateRangeBox
-      className={cn('cap-dateRange', className)}
+      className={cn('cap-date-range', className)}
       isInvalid={inputProps['aria-invalid']}
       variant={inputProps.variantSize}
     >
@@ -95,27 +87,13 @@ const DateRange: FC<DateRangeProps> = ({
         onDatesChange={onChange}
         focusedInput={focusedInput}
         onFocusChange={setFocusedInput}
-        inputIconPosition="after"
         displayFormat={displayFormat}
-        hideKeyboardShortcutsPanel
-        renderDayContents={CustomDayContent}
-        verticalSpacing={8}
-        horizontalMargin={0}
-        daySize={32}
+        {...COMMON_PROPS}
         keepOpenOnDateSelect={keepOpenOnDateSelect}
-        isOutsideRange={isOutsideRange}
+        isOutsideRange={isOutsideRange ? () => false : undefined}
         minDate={minDate}
         maxDate={maxDate}
         onClose={onClose}
-        navPrev={<NavPrev />}
-        navNext={<NavNext />}
-        customInputIcon={
-          <Icon
-            color="gray.700"
-            name={CapUIIcon.Calendar}
-            size={CapUIIconSize.Sm}
-          />
-        }
         customArrowIcon={
           <Icon
             color="gray.700"

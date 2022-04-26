@@ -3,7 +3,12 @@ import * as React from 'react'
 
 import Button from '../../button/Button'
 import { Flex } from '../../layout'
-import DateRange, { DateRangeValueType } from '../dateRange/DateRange'
+import {
+  DateInput,
+  DateInputValueType,
+  DateRange,
+  DateRangeValueType
+} from '../date';
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
@@ -36,10 +41,13 @@ const colourOptions = [
 ]
 
 export const Default: Story<InputGroupProps> = args => {
-  const [value, onChange] = React.useState<DateRangeValueType>({
+  const [dateRangeExample, setDateRangeExample] = React.useState<DateRangeValueType>({
     startDate: null,
     endDate: null,
-  })
+  });
+
+  const [dateExample, setDateExample] = React.useState<DateInputValueType>( null)
+
   return (
     <Flex direction="column" width="700px" spacing={3}>
       <InputGroup {...args}>
@@ -111,10 +119,25 @@ export const Default: Story<InputGroupProps> = args => {
         <FormControl {...args}>
           <DateRange
             displayFormat="DD/MM/YYYY"
-            value={value}
+            value={dateRangeExample}
             onChange={elem =>
-              onChange({ startDate: elem.startDate, endDate: elem.endDate })
+              setDateRangeExample({ startDate: elem.startDate, endDate: elem.endDate })
             }
+          />
+        </FormControl>
+        <FormControl {...args}>
+          <Input placeholder="Placeholder..." />
+        </FormControl>
+      </InputGroup>
+
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <DateInput
+            value={dateExample}
+            onChange={date => {
+              setDateExample(date);
+            }}
           />
         </FormControl>
         <FormControl {...args}>
@@ -125,10 +148,13 @@ export const Default: Story<InputGroupProps> = args => {
   )
 }
 export const WithError: Story<InputGroupProps> = args => {
-  const [value, onChange] = React.useState<DateRangeValueType>({
+  const [dateRangeExample, setDateRangeExample] = React.useState<DateRangeValueType>({
     startDate: null,
     endDate: null,
-  })
+  });
+
+  const [dateExample, setDateExample] = React.useState<DateInputValueType>( null)
+
   return (
     <Flex direction="column" width="700px" spacing={3}>
       <InputGroup {...args}>
@@ -198,10 +224,27 @@ export const WithError: Story<InputGroupProps> = args => {
         <FormControl isInvalid {...args}>
           <DateRange
             displayFormat="DD/MM/YYYY"
-            value={value}
+            value={dateRangeExample}
             onChange={elem =>
-              onChange({ startDate: elem.startDate, endDate: elem.endDate })
+              setDateRangeExample({ startDate: elem.startDate, endDate: elem.endDate })
             }
+          />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid {...args}>
+          <Input placeholder="Placeholder..." />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
+
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl isInvalid {...args}>
+          <DateInput
+            value={dateExample}
+            onChange={date => {
+              setDateExample(date)
+            }}
           />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
