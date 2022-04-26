@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import type { Moment } from 'moment'
 import React, { FC } from 'react'
-import type { SingleDatePickerInputShape } from 'react-dates';
+import type { SingleDatePickerShape } from 'react-dates';
 import 'react-dates/initialize'
 import SingleDatePicker from 'react-dates/lib/components/SingleDatePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
@@ -25,10 +25,11 @@ export interface DateInputProps
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
   readonly id?: string
-  readonly disabled?: SingleDatePickerInputShape['disabled']
-  readonly placeholder?: SingleDatePickerInputShape['placeholder']
+  readonly isOutsideRange?: boolean
+  readonly disabled?: SingleDatePickerShape['disabled']
+  readonly placeholder?: SingleDatePickerShape['placeholder']
+  readonly displayFormat?: SingleDatePickerShape['displayFormat']
 }
-
 
 const DateInput: FC<DateInputProps> = ({
   value,
@@ -36,6 +37,8 @@ const DateInput: FC<DateInputProps> = ({
   id = 'cap-date-input-id',
   className,
   placeholder= 'jj/mm/aaaa',
+  isOutsideRange,
+  displayFormat = 'DD/MM/YYYY',
   ...props
 }) => {
   const [focusedInput, setFocusedInput] = React.useState(false)
@@ -64,6 +67,8 @@ const DateInput: FC<DateInputProps> = ({
         id={id}
         disabled={inputProps.disabled || props.disabled}
         placeholder={placeholder}
+        displayFormat={displayFormat}
+        isOutsideRange={isOutsideRange ? () => false : undefined}
         {...COMMON_PROPS}
       />
     </DateInputBox>
