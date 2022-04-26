@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { CapUILineHeight } from '../../../../styles'
 import { Box } from '../../../box'
-import { calendarStyle, DateBoxProps, variantDate } from '../Date.style';
+import { commonStyle, DateBoxProps, variantDate } from '../Date.style';
 
 export const DateRangeBox = styled(Box)<DateBoxProps>`
   .PresetDateRangePicker_panel {
@@ -935,5 +935,5 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
   }
   
   ${props => variantDate[props.variant]}
-  ${calendarStyle}
+  ${commonStyle}
 `
