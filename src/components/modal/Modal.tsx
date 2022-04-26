@@ -129,6 +129,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   })
 
   const containerRef = React.useRef<HTMLElement>(null)
+  const firstMount = React.useRef(true)
   const context = React.useMemo(
     () => ({
       hide: dialog.hide,
@@ -142,9 +143,10 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   )
 
   React.useEffect(() => {
-    if (dialog.visible && onOpen) {
-      onOpen()
-    } else if (!dialog.visible && onClose) {
+    if (dialog.visible) {
+      if(onOpen) onOpen()
+      firstMount.current = false
+    } else if (!dialog.visible && onClose && !firstMount.current) {
       onClose()
     }
   }, [dialog.visible])
