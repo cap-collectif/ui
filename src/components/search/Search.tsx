@@ -78,6 +78,10 @@ export const Search = <
   const asyncRef = React.useRef(null)
   const [input, setInput] = React.useState(value || '')
 
+  React.useEffect(() => {
+    setInput(value || '')
+  }, [value])
+
   return (
     <Box width={width || '280px'}>
       <ReactSelect<Option, IsMulti, Group>
