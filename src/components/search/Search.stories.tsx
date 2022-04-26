@@ -26,6 +26,19 @@ const meta: Meta = {
   },
 }
 
+const colourOptions = [
+  { value: 'ocean', label: 'Ocean' },
+  { value: 'blue', label: 'Blue' },
+  { value: 'purple', label: 'Purple' },
+  { value: 'red', label: 'Red' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'yellow', label: 'Yellow' },
+  { value: 'green', label: 'Green' },
+  { value: 'forest', label: 'Forest' },
+  { value: 'slate', label: 'Slate' },
+  { value: 'silver', label: 'Silver' },
+]
+
 export default meta
 
 export const Default: Story<Args> = ({ ...args }) => (
@@ -67,3 +80,28 @@ export const Controlled: Story<Args> = () => {
     </>
   )
 }
+
+const promiseOptions = (inputValue: string) =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(
+        colourOptions.filter(i =>
+          i.label.toLowerCase().includes(inputValue.toLowerCase()),
+        ),
+      )
+    }, 1000)
+  })
+
+export const WithSuggestions: Story<Args> = ({ ...args }) => (
+  <>
+    <FormLabel label="Label" mb={1} />
+    <Search
+      onChange={() => {}}
+      inputId="color"
+      loadOptions={promiseOptions}
+      defaultOptions
+      cacheOptions
+      {...args}
+    />
+  </>
+)
