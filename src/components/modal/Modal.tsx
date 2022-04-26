@@ -143,15 +143,11 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   )
 
   React.useEffect(() => {
-    if (dialog.visible && firstMount.current) {
-      if (onOpen) {
-        onOpen()
-      }
+    if (dialog.visible) {
+      if(onOpen) onOpen()
       firstMount.current = false
-    } else if (!dialog.visible && !firstMount.current) {
-      if (onClose) {
-        onClose()
-      }
+    } else if (!dialog.visible && onClose && !firstMount.current) {
+      onClose()
     }
   }, [dialog.visible])
 
