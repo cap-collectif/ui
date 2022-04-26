@@ -14,7 +14,7 @@ const styles = (withGuideline: boolean): SystemStyleObject => {
     ...(withGuideline
       ? {
           '& > :nth-child(3)': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, .SingleDatePickerInput, &.cap-button': {
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
             },
@@ -22,7 +22,7 @@ const styles = (withGuideline: boolean): SystemStyleObject => {
         }
       : {
           '& > :nth-child(2)': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, .SingleDatePickerInput, &.cap-button': {
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
             },
@@ -30,7 +30,7 @@ const styles = (withGuideline: boolean): SystemStyleObject => {
         }),
 
     '& > :last-child': {
-      '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+      '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button': {
         borderLeftWidth: 0,
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
@@ -39,7 +39,7 @@ const styles = (withGuideline: boolean): SystemStyleObject => {
     ...(withGuideline
       ? {
           '& > :not(:first-child):not(:last-child):not(:nth-child(3))': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button': {
               borderLeftWidth: 0,
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
@@ -50,7 +50,7 @@ const styles = (withGuideline: boolean): SystemStyleObject => {
         }
       : {
           '& > :not(:first-child):not(:last-child):not(:nth-child(2))': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, &.cap-button': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button': {
               borderLeftWidth: 0,
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
