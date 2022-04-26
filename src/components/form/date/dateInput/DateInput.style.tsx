@@ -8,14 +8,11 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   .SingleDatePickerInput {
     display: inline-block;
     background-color: white;
-
-    &__withBorder {
-      border: ${props => props.theme.borders.normal};
-      border-color: ${props => props.theme.colors.gray['300']};
-      border-radius: ${props => props.theme.radii.normal}px;
-      font-family: ${props => props.theme.fonts.input};
-      line-height: 24px;
-    }
+    border: ${props => props.theme.borders.normal};
+    border-color: ${props => props.theme.colors.gray['300']};
+    border-radius: ${props => props.theme.radii.normal}px;
+    font-family: ${props => props.theme.fonts.input};
+    line-height: 24px;
 
     &:focus-within {
       border-color: ${props => props.theme.colors.blue['500']};
@@ -30,11 +27,10 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
         border-color: ${props => props.theme.colors.gray['200']};
       }
     }
-  }
 
-  ${props =>
-          props.isInvalid &&
-          `
+    ${props =>
+            props.isInvalid &&
+            `
       background-color: ${props.theme.colors.red['150']};
       border-color: ${props.theme.colors.red['500']};
       &:hover,&.hover {
@@ -45,7 +41,8 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
         border-color: ${props.theme.colors.red['500']};
       }
     `}
-  
+  }
+
   .SingleDatePickerInput__rtl {
     direction: rtl
   }
@@ -170,6 +167,8 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     width: 15px;
     fill: #cacccd
   }
+
+  
   
   .DateInput {
     width: 100px;
