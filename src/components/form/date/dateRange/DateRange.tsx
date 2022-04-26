@@ -22,20 +22,20 @@ export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'> {
   readonly value: DateRangeValueType
   readonly onChange: (value: DateRangeValueType) => void
-  readonly displayFormat: DateRangePickerShape['displayFormat']
   readonly className?: string
   readonly variantSize?: CapInputSize
   readonly errorMessage?: string
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
+  readonly isOutsideRange?: boolean
+  readonly displayFormat?: DateRangePickerShape['displayFormat']
   readonly startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
   readonly endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
   readonly startDateId?: DateRangePickerShape['startDateId']
   readonly endDateId?: DateRangePickerShape['endDateId']
   readonly disabled?: DateRangePickerShape['disabled']
   readonly keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
-  readonly isOutsideRange?: DateRangePickerShape['isOutsideRange']
   readonly minDate?: DateRangePickerShape['minDate']
   readonly maxDate?: DateRangePickerShape['maxDate']
   readonly onClose?: DateRangePickerShape['onClose']
@@ -48,7 +48,7 @@ const DateRange: FC<DateRangeProps> = ({
   onChange,
   startDateId = 'cap-dateRange-startDate',
   endDateId = 'cap-dateRange-endDate',
-  displayFormat,
+  displayFormat= 'DD/MM/YYYY',
   className,
   keepOpenOnDateSelect = true,
   isOutsideRange,
@@ -90,7 +90,7 @@ const DateRange: FC<DateRangeProps> = ({
         displayFormat={displayFormat}
         {...COMMON_PROPS}
         keepOpenOnDateSelect={keepOpenOnDateSelect}
-        isOutsideRange={isOutsideRange}
+        isOutsideRange={isOutsideRange ? () => false : undefined}
         minDate={minDate}
         maxDate={maxDate}
         onClose={onClose}

@@ -33,7 +33,6 @@ const meta: Meta = {
     isDisabled: false,
     variantSize: CapInputSize.Sm,
     value: { startDate: null, endDate: null },
-    displayFormat: 'DD/MM/YYYY',
   },
   parameters: {
     controls: { expanded: true },
