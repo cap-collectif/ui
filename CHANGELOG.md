@@ -11,12 +11,20 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.2.0
+
+`2022-04-27`
+
+- 🆕 Improve `Search` to use it as field with form control [#260](https://github.com/cap-collectif/ui/pull/260)
+- 🆕 Improve `Search` component with suggestions [#257](https://github.com/cap-collectif/ui/pull/257)
+- 🆕 Add `DateInput` component [#258](https://github.com/cap-collectif/ui/pull/258)
+- 🐛 Fix `Modal` props `onOpen` & `onClose` [#256](https://github.com/cap-collectif/ui/pull/256)
+
 ## 1.1.3
 
 `2022-04-12`
 
 - 🛠 `MultiStepModal` pass context actions as props to children [#254](https://github.com/cap-collectif/ui/pull/254)
-
 
 ## 1.1.2
 
