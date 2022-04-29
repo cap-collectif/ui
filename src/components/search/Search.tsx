@@ -1,18 +1,18 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { components, ControlProps, GroupBase } from 'react-select'
+import { components, ControlProps, GroupBase, SingleValue } from 'react-select';
 import ReactSelect from 'react-select/async'
 import type { AsyncProps } from 'react-select/async'
 
 import { Box } from '../box'
-import { CapInputSize } from '../form/enums'
+import { CapInputSize, useFormControl } from '../form';
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
 
 export interface SearchProps<
   Option,
-  IsMulti extends boolean = false,
+  IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<
     AsyncProps<Option, IsMulti, Group>,
@@ -22,13 +22,14 @@ export interface SearchProps<
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
   readonly width?: string | number
-  readonly onChange: (value: string) => void
+  readonly onChange?: (value: string) => void
+  readonly onSelect?: (value: Option) => void
   readonly value?: string
 }
 
 const Control = <
   Option,
-  IsMulti extends boolean = false,
+  IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
   children,
@@ -62,19 +63,18 @@ const Control = <
 
 export const Search = <
   Option,
-  IsMulti extends boolean = false,
+  IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
   className,
   width,
-  isDisabled,
-  variantSize,
-  isInvalid,
   onChange,
+  onSelect,
   value,
   loadOptions,
   ...props
 }: SearchProps<Option, IsMulti, Group>) => {
+  const inputProps = useFormControl<HTMLInputElement>(props)
   const asyncRef = React.useRef(null)
   const [input, setInput] = React.useState(value || '')
 
@@ -85,11 +85,12 @@ export const Search = <
   return (
     <Box width={width || '280px'}>
       <ReactSelect<Option, IsMulti, Group>
+        {...inputProps}
         ref={asyncRef}
         styles={reactSelectStyle(
-          false,
-          isDisabled,
-          variantSize || CapInputSize.Sm,
+          inputProps['aria-invalid'],
+          inputProps.disabled,
+          inputProps.variantSize || CapInputSize.Sm,
           true,
         )}
         inputValue={input}
@@ -99,15 +100,15 @@ export const Search = <
             if (onChange) onChange(newValue)
           }
         }}
-        onChange={() => {
+        onChange={(newValue: SingleValue<Option>) => {
           setInput('')
-          if (onChange) onChange('')
+          if (onSelect && newValue) onSelect(newValue)
         }}
         menuIsOpen={loadOptions ? undefined : false}
         className={cn('cap-search', className)}
         classNamePrefix="cap-search"
-        isDisabled={isDisabled}
-        aria-invalid={isInvalid}
+        isDisabled={inputProps.disabled}
+        aria-invalid={inputProps['aria-invalid']}
         components={{ Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}

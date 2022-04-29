@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
-import { CapInputSize, FormLabel } from '../form'
+import { CapInputSize, FormControl, FormLabel } from '../form';
 import Search from './Search'
 import mdx from './Search.mdx'
 
@@ -81,14 +81,10 @@ export const Controlled: Story<Args> = () => {
   )
 }
 
-const promiseOptions = (inputValue: string) =>
+const promiseOptions = () =>
   new Promise(resolve => {
     setTimeout(() => {
-      resolve(
-        colourOptions.filter(i =>
-          i.label.toLowerCase().includes(inputValue.toLowerCase()),
-        ),
-      )
+      resolve(colourOptions)
     }, 1000)
   })
 
@@ -104,4 +100,20 @@ export const WithSuggestions: Story<Args> = ({ ...args }) => (
       {...args}
     />
   </>
+)
+
+export const AsField: Story<Args> = ({ ...args }) => (
+  <FormControl>
+    <FormLabel label="Label" mb={1} />
+    <Search
+      {...args}
+      inputId="color"
+      loadOptions={promiseOptions}
+      defaultOptions
+      cacheOptions
+      filterOption={(option, input) => {
+        return option.label.toLowerCase().includes(input.toLowerCase());
+      }}
+    />
+  </FormControl>
 )
