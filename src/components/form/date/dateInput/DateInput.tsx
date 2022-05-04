@@ -1,15 +1,15 @@
 import cn from 'classnames'
 import type { Moment } from 'moment'
 import React, { FC } from 'react'
-import type { SingleDatePickerShape } from 'react-dates';
+import type { SingleDatePickerShape } from 'react-dates'
 import 'react-dates/initialize'
 import SingleDatePicker from 'react-dates/lib/components/SingleDatePicker'
 import { useHotkeys } from 'react-hotkeys-hook'
 
 import { BoxPropsOf } from '../../../box'
-import { COMMON_PROPS } from '../commonProps'
 import { CapInputSize } from '../../enums'
 import { useFormControl } from '../../formControl'
+import { COMMON_PROPS } from '../commonProps'
 import { DateInputBox } from './DateInput.style'
 
 export type DateInputValueType = Moment | null
@@ -36,7 +36,7 @@ const DateInput: FC<DateInputProps> = ({
   onChange,
   id = 'cap-date-input-id',
   className,
-  placeholder= 'jj/mm/aaaa',
+  placeholder = 'jj/mm/aaaa',
   isOutsideRange,
   displayFormat = 'DD/MM/YYYY',
   ...props
@@ -61,6 +61,7 @@ const DateInput: FC<DateInputProps> = ({
         date={value}
         onDateChange={onChange}
         focused={focusedInput}
+        numberOfMonths={1}
         onFocusChange={({ focused }) => {
           setFocusedInput(focused)
         }}
