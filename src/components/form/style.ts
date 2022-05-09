@@ -65,7 +65,7 @@ const styles: SystemStyleObject = {
 export function reactSelectStyle<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   isInvalid: boolean | undefined,
   isDisabled: boolean | undefined,
@@ -112,6 +112,7 @@ export function reactSelectStyle<
     placeholder: (base: CSSObjectWithLabel) => ({
       ...base,
       margin: 0,
+      whiteSpace: 'nowrap',
       color: colors.gray['500'],
       fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
