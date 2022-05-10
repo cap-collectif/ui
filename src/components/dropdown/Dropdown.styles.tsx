@@ -16,18 +16,7 @@ export const DropdownList = styled(Box)<{ width: string }>`
 `
 
 export const DropdownListItem = styled(Box)<{ active?: boolean }>`
-  width: 100%;
-  padding: 8px 12px;
-  height: 40px;
-  background-color: ${colors.white};
-  margin: 0;
-  font-family: Open Sans, system-ui, sans-serif;
-  font-weight: ${props => (props.active ? 600 : 400)};
-  font-size: 14px;
-  line-height: 24px;
   border-bottom: 1px solid ${colors.gray['100']};
-  color: ${colors.gray['900']};
-  box-sizing: border-box;
   cursor: pointer;
   white-space: pre;
   text-overflow: ellipsis;

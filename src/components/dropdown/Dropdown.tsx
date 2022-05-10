@@ -1,29 +1,13 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { DropdownList, DropdownListItem } from './Dropdown.styles'
+import { BoxProps } from '../box'
+import { DropdownList } from './Dropdown.styles'
+import DropdownListItem from './DropdownListItem'
 
-type Option = {
-  value: any
-  label: string | React.ReactNode
-}
-export type DropDownProps = {
-  readonly children?: React.ReactChildren | React.ReactChild[]
-  readonly options?: Option[]
-  readonly width?: string
-  readonly onSelect: (selected: Option) => void
-  readonly className?: string
-  readonly isLoading?: boolean
-}
+export type DropDownProps = BoxProps
 
-const Dropdown = ({
-  options,
-  width,
-  onSelect,
-  className,
-  children,
-  ...props
-}: DropDownProps) => {
+const Dropdown = ({ width, className, children, ...props }: DropDownProps) => {
   return (
     <DropdownList
       as="ul"
@@ -31,19 +15,11 @@ const Dropdown = ({
       className={cn('cap-dropdown', className)}
       {...props}
     >
-      {!!options
-        ? options.map((option, index) => (
-            <DropdownListItem
-              as="li"
-              key={index}
-              onClick={() => onSelect(option)}
-            >
-              {option.label}
-            </DropdownListItem>
-          ))
-        : children}
+      {children}
     </DropdownList>
   )
 }
+Dropdown.displayName = 'Dropdown'
+Dropdown.Item = DropdownListItem
 
 export default Dropdown

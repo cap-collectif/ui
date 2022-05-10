@@ -19,7 +19,6 @@ const meta: Meta = {
   title: 'Library/Dropdown',
   component: Dropdown,
   args: {
-    options,
     onSelect: (option: any) => {
       console.log(option)
     },
@@ -30,4 +29,10 @@ const meta: Meta = {
 }
 
 export default meta
-export const Default: Story<DropDownProps> = args => <Dropdown {...args} />
+export const Default: Story<DropDownProps> = args => (
+  <Dropdown {...args}>
+    {options.map(option => (
+      <Dropdown.Item key={option.value}>{option.label}</Dropdown.Item>
+    ))}
+  </Dropdown>
+)
