@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+
+## 1.3.1
+
+`2022-05-10`
+
+- 🐛 Fix `Dropdown` export [#269](https://github.com/cap-collectif/ui/pull/269)
+
 ## 1.3.0
 
 `2022-05-10`
