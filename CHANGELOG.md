@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.3.0
+
+`2022-05-10`
+
+- 🆕 Add `Dropdown` component [#267](https://github.com/cap-collectif/ui/pull/267)
+- 🐛 Fix `DateInput` Component to display a single month [#265](https://github.com/cap-collectif/ui/pull/265)
+
 ## 1.2.0
 
 `2022-04-27`
