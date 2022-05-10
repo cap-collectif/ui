@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 import colors from '../../styles/modules/colors'
+import { Box } from '../box'
 
-export const DropdownList = styled.ul<{ width: string }>`
+export const DropdownList = styled(Box)<{ width: string }>`
   width: ${props => (props.width ? props.width : '290px')};
   border-radius: 4px;
   background-color: ${colors.white};
@@ -14,7 +15,7 @@ export const DropdownList = styled.ul<{ width: string }>`
   border-collapse: collapse;
 `
 
-export const DropdownListItem = styled.li<{ active?: boolean }>`
+export const DropdownListItem = styled(Box)<{ active?: boolean }>`
   width: 100%;
   padding: 8px 12px;
   height: 40px;

@@ -26,14 +26,18 @@ const Dropdown = ({
 }: DropDownProps) => {
   return (
     <DropdownList
-      // @ts-ignore
+      as="ul"
       width={width}
       className={cn('cap-dropdown', className)}
       {...props}
     >
       {!!options
         ? options.map((option, index) => (
-            <DropdownListItem key={index} onClick={() => onSelect(option)}>
+            <DropdownListItem
+              as="li"
+              key={index}
+              onClick={() => onSelect(option)}
+            >
               {option.label}
             </DropdownListItem>
           ))
