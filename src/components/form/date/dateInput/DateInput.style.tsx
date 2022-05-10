@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { CapUILineHeight } from '../../../../styles'
 import { Box } from '../../../box'
-import { commonStyle, DateBoxProps, variantDate } from '../Date.style';
+import { commonStyle, DateBoxProps, variantDate } from '../Date.style'
 
 export const DateInputBox = styled(Box)<DateBoxProps>`
   .SingleDatePickerInput {
@@ -29,8 +29,8 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     }
 
     ${props =>
-            props.isInvalid &&
-            `
+      props.isInvalid &&
+      `
       background-color: ${props.theme.colors.red['150']};
       border-color: ${props.theme.colors.red['500']};
       &:hover,&.hover {
@@ -44,14 +44,14 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   }
 
   .SingleDatePickerInput__rtl {
-    direction: rtl
+    direction: rtl;
   }
-  
+
   .SingleDatePickerInput__block {
-    display: block
+    display: block;
   }
   .SingleDatePickerInput__showClearDate {
-    padding-right: 30px
+    padding-right: 30px;
   }
   .SingleDatePickerInput_clearDate {
     background: 0 0;
@@ -68,27 +68,27 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%)
+    transform: translateY(-50%);
   }
   .SingleDatePickerInput_clearDate__default:focus,
   .SingleDatePickerInput_clearDate__default:hover {
     background: #dbdbdb;
-    border-radius: 50%
+    border-radius: 50%;
   }
   .SingleDatePickerInput_clearDate__small {
-    padding: 6px
+    padding: 6px;
   }
   .SingleDatePickerInput_clearDate__hide {
-    visibility: hidden
+    visibility: hidden;
   }
   .SingleDatePickerInput_clearDate_svg {
     fill: #82888a;
     height: 12px;
     width: 15px;
-    vertical-align: middle
+    vertical-align: middle;
   }
   .SingleDatePickerInput_clearDate_svg__small {
-    height: 9px
+    height: 9px;
   }
   .SingleDatePickerInput_calendarIcon {
     background: 0 0;
@@ -101,45 +101,45 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     display: inline-block;
     vertical-align: middle;
     padding: 10px;
-    margin: 0 5px 0 10px
+    margin: 0 5px 0 10px;
   }
   .SingleDatePickerInput_calendarIcon_svg {
     fill: #82888a;
     height: 15px;
     width: 14px;
-    vertical-align: middle
+    vertical-align: middle;
   }
   .SingleDatePicker {
     position: relative;
-    display: inline-block
+    display: inline-block;
   }
   .SingleDatePicker__block {
-    display: block
+    display: block;
   }
   .SingleDatePicker_picker {
     z-index: 1;
     background-color: #fff;
-    position: absolute
+    position: absolute;
   }
   .SingleDatePicker_picker__rtl {
-    direction: rtl
+    direction: rtl;
   }
   .SingleDatePicker_picker__directionLeft {
-    left: 0
+    left: 0;
   }
   .SingleDatePicker_picker__directionRight {
-    right: 0
+    right: 0;
   }
   .SingleDatePicker_picker__portal {
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%
+    width: 100%;
   }
   .SingleDatePicker_picker__fullScreenPortal {
-    background-color: #fff
+    background-color: #fff;
   }
   .SingleDatePicker_closeButton {
     background: 0 0;
@@ -153,23 +153,21 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     top: 0;
     right: 0;
     padding: 15px;
-    z-index: 2
+    z-index: 2;
   }
-  
+
   .SingleDatePicker_closeButton:focus,
   .SingleDatePicker_closeButton:hover {
-    color: darken(#cacccd,10%);
-    text-decoration: none
+    color: darken(#cacccd, 10%);
+    text-decoration: none;
   }
-  
+
   .SingleDatePicker_closeButton_svg {
     height: 15px;
     width: 15px;
-    fill: #cacccd
+    fill: #cacccd;
   }
 
-  
-  
   .DateInput {
     width: 100px;
     background: transparent;
@@ -303,6 +301,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     padding-top: 22px;
     padding-bottom: 37px;
     caption-side: initial;
+    text-align: left;
   }
 
   .CalendarMonth_caption__verticalScrollable {
@@ -442,11 +441,14 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   }
 
   .DayPickerNavigation_leftButton__horizontalDefault {
-    left: 22px;
+    right: 50px;
   }
 
   .DayPickerNavigation_rightButton__horizontalDefault {
     right: 22px;
+    svg {
+      padding: 0;
+    }
   }
 
   .DayPickerNavigation_button__verticalDefault {

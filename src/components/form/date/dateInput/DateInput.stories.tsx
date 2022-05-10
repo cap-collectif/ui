@@ -2,9 +2,9 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { CapInputSize } from '../../enums'
-import DateInput, { DateInputProps, DateInputValueType } from './DateInput';
-import FormErrorMessage from '../../formErrorMessage/FormErrorMessage';
-import { FormControl } from '../../formControl';
+import { FormControl } from '../../formControl'
+import FormErrorMessage from '../../formErrorMessage/FormErrorMessage'
+import DateInput, { DateInputProps, DateInputValueType } from './DateInput'
 
 const moment = require('moment')
 require('moment/dist/locale/fr')
@@ -26,6 +26,7 @@ const meta: Meta = {
     isDisabled: false,
     variantSize: CapInputSize.Sm,
     value: null,
+    isOutsideRange: true,
   },
   parameters: {
     controls: { expanded: true },
