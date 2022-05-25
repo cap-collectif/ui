@@ -12,6 +12,7 @@ import MultiStepModalProgressBar from './progressBar/MultiStepModal.ProgressBar'
 type ModalStepsRenderProps = ModalContext & {
   currentStep: number
   goToNextStep: () => void
+  goToStep: (index: number) => void
 }
 type RenderProps = (props: ModalStepsRenderProps) => React.ReactNode
 
@@ -63,12 +64,19 @@ const MultiStepModal = ({
     ? () => setCurrentStep(currentStep + 1)
     : () => {}
 
+  const goToStep = (index: number) => setCurrentStep(index)
+
   return (
     <MultiStepModalContext.Provider value={context}>
       <Modal {...rest} onClose={handleOnClose}>
         {modalProps =>
           typeof children === 'function'
-            ? children({ ...modalProps, currentStep, goToNextStep })
+            ? children({
+                ...modalProps,
+                currentStep,
+                goToNextStep,
+                goToStep,
+              })
             : children
         }
       </Modal>
