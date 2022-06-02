@@ -18,7 +18,7 @@ const MultiStepModalProgressBar = () => {
   if (!steps[currentStep]) return null
 
   return (
-    <Flex direction="row" spacing={1} mt={6}>
+    <Flex direction="row" spacing={1}>
       {steps.map((step, idx) => (
         <Box key={step.id} bg="blue.200" height={1} flex={1}>
           <AnimatePresence initial={false}>
