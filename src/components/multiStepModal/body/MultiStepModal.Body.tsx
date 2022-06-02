@@ -9,7 +9,9 @@ import { useMultiStepModal } from '../MultiStepModal.context'
 
 type Direction = 'LEFT' | 'RIGHT'
 
-export type Props = ModalBodyProps
+export type Props = ModalBodyProps & {
+  children: React.ReactElement<Step, any>[]
+}
 
 const variants = {
   enter: (direction: Direction) => ({
@@ -31,26 +33,27 @@ const Content = motion(Box)
 const MultiStepModalBody = ({ children, ...rest }: Props) => {
   const { currentStep, steps, registerSteps } = useMultiStepModal()
   const previousModalIndex = React.useRef(currentStep)
+
   React.useEffect(() => {
-    if (steps.length === 0) {
-      const stepsRegistered: Step[] = React.Children.toArray(children)
-        .filter(modal => typeof modal !== 'string')
-        .map(modal => {
-          // Typescript has a problem here where it says that modal can be a string even if I filter those out
-          // @ts-ignore
-          const { label, validationLabel, id, info } = modal.props
-          return {
-            id: id,
-            label: label,
-            validationLabel: validationLabel,
-            info: info && {
-              url: info.url,
-              label: info.label,
-            },
-          }
-        })
-      registerSteps(stepsRegistered)
-    }
+    const stepsToRegister: Step[] = React.Children.toArray(children)
+      .filter((child => React.isValidElement(child)))
+      .map(child => {
+        const modalStep = child as React.ReactElement<Step, any>;
+
+        return {
+          id: modalStep.props.id,
+          label: modalStep.props.label,
+          validationLabel: modalStep.props.validationLabel,
+          info: modalStep.props.info ? {
+            url: modalStep.props.info.url,
+            label: modalStep.props.info.label,
+          } : undefined,
+        }
+      })
+
+    const allStepRegistered = stepsToRegister.length === steps.length;
+
+    if(!allStepRegistered) registerSteps(stepsToRegister)
   }, [children, registerSteps, steps])
 
   React.useEffect(() => {
