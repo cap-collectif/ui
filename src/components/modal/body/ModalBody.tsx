@@ -18,7 +18,7 @@ export const ModalBody = ({ children, className, ...rest }: ModalBodyProps) => {
       pt={isMobile ? 0 : 6}
       height="100%"
       direction="column"
-      className={cn('cap-modal__footer', className)}
+      className={cn('cap-modal__body', className)}
       overflow="auto"
       {...rest}
     >
