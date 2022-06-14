@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.3.3
+
+`2022-06-14`
+
+- 🆕 Improve `ButtonQuickAction` (polymorphic) [#281](https://github.com/cap-collectif/ui/pull/281)
+- 🆕 Adds MAP and PROHIBITED icons to `SpotIcon` [#280](https://github.com/cap-collectif/ui/pull/280)
+
 ## 1.3.2
 
 `2022-06-02`
