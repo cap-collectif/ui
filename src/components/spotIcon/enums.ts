@@ -24,6 +24,7 @@ export enum CapUISpotIcon {
   ADD_CONTACT = 'ADD_CONTACT',
   MAIL = 'MAIL',
   CODES = 'CODES',
+  MAP = 'MAP',
 }
 
 export enum CapUISpotIconSize {
