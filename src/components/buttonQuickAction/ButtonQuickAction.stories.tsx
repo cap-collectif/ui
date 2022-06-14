@@ -44,3 +44,14 @@ Group.args = {
   label: 'Editer',
   icon: CapUIIcon.Pencil,
 }
+
+export const AsLink: Story<ButtonQuickActionProps> = args => (
+  <ButtonQuickAction {...args} href="#" />
+)
+
+AsLink.args = {
+  variantColor: 'blue',
+  label: 'Lien',
+  as: 'a',
+  icon: CapUIIcon.Link,
+}
