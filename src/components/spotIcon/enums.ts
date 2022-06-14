@@ -25,6 +25,7 @@ export enum CapUISpotIcon {
   MAIL = 'MAIL',
   CODES = 'CODES',
   MAP = 'MAP',
+  PROHIBITED = 'PROHIBITED',
 }
 
 export enum CapUISpotIconSize {
