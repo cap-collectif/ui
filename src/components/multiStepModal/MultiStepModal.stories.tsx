@@ -174,3 +174,50 @@ export const Default: Story<MultiStepModalProps> = () => (
     <ModalThree />
   </MultiStepModal>
 )
+
+const ModalConditionalOne: React.FC<{ setDisplayStep: () => void }> = ({
+  setDisplayStep,
+}) => {
+  const { goToNextStep } = useMultiStepModal()
+
+  return (
+    <>
+      <MultiStepModal.Header>
+        <Heading>Modal One</Heading>
+      </MultiStepModal.Header>
+
+      <MultiStepModal.Body>
+        <Text mb={2}>Hello world !</Text>
+        <Button variantSize="medium" onClick={setDisplayStep}>
+          Toggle step 2
+        </Button>
+      </MultiStepModal.Body>
+
+      <MultiStepModal.Footer>
+        <Button onClick={goToNextStep}>Next</Button>
+      </MultiStepModal.Footer>
+    </>
+  )
+}
+
+export const ConditionalStep: Story<MultiStepModalProps> = () => {
+  const [displayStep, setDisplayStep] = React.useState(true)
+
+  return (
+    <MultiStepModal
+      ariaLabel="Multi step modal"
+      disclosure={
+        <Button variant="primary" variantSize="medium">
+          Open modal
+        </Button>
+      }
+      size={CapUIModalSize.Md}
+    >
+      <ModalConditionalOne
+        setDisplayStep={() => setDisplayStep(!displayStep)}
+      />
+      {displayStep && <ModalTwo />}
+      <ModalThree />
+    </MultiStepModal>
+  )
+}
