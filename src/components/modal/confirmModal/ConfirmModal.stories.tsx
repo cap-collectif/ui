@@ -38,7 +38,11 @@ export default meta
 
 export const Default: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
+    <Modal
+      ariaLabel={args.ariaLabel}
+      disclosure={args.disclosure}
+      size={args.size}
+    >
       {({ hide }) => (
         <>
           <Modal.Header>
@@ -110,7 +114,11 @@ export const Default: Story<ConfirmModalProps> = args => (
 
 export const withPromisesCallbacks: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
+    <Modal
+      ariaLabel={args.ariaLabel}
+      disclosure={args.disclosure}
+      size={args.size}
+    >
       {({ hide }) => (
         <>
           <Modal.Header>
@@ -181,7 +189,11 @@ export const withPromisesCallbacks: Story<ConfirmModalProps> = args => (
 
 export const Mobile: Story<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
-    <Modal ariaLabel={args.ariaLabel} disclosure={args.disclosure}>
+    <Modal
+      ariaLabel={args.ariaLabel}
+      disclosure={args.disclosure}
+      size={args.size}
+    >
       {({ hide }) => (
         <>
           <Modal.Header>
