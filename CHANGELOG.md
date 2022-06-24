@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.4.0
+
+`2022-06-24`
+
+- 🛠 Rework `MultiStepModal` [#286](https://github.com/cap-collectif/ui/pull/286)
+
+### BREAKING CHANGES
+- [#286](https://github.com/cap-collectif/ui/pull/286) We changed the way to use the `MultiStepModal`, this one is more flexible.
+
 ## 1.3.3
 
 `2022-06-14`
