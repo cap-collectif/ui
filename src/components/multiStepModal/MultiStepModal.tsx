@@ -31,7 +31,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
   const contextValue = React.useMemo(
     () => ({
       currentStep,
-      totalStep: React.Children.toArray(children).length,
+      totalSteps: React.Children.toArray(children).length,
       direction,
       setCurrentStep,
       goToPreviousStep: () => {

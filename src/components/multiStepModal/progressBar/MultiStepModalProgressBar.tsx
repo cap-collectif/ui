@@ -14,10 +14,10 @@ const variants = {
 }
 
 const MultiStepModalProgressBar = () => {
-  const { totalStep, currentStep, direction } = useMultiStepModal()
+  const { totalSteps, currentStep, direction } = useMultiStepModal()
 
-  const steps = React.useMemo(() => Array.from(Array(totalStep).keys()), [
-    totalStep,
+  const steps = React.useMemo(() => Array.from(Array(totalSteps).keys()), [
+    totalSteps,
   ])
 
   return (

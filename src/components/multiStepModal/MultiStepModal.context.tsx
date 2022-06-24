@@ -12,7 +12,7 @@ export enum DIRECTION {
 
 export type Context = ModalContext & {
   currentStep: number
-  totalStep: number
+  totalSteps: number
   direction: DIRECTION
   setCurrentStep: (stepIndex: number) => void
   goToPreviousStep: () => void
@@ -22,7 +22,7 @@ export type Context = ModalContext & {
 export const MultiStepModalContext = React.createContext<Context>({
   ...DEFAULT_MODAL_CONTEXT,
   currentStep: 0,
-  totalStep: 0,
+  totalSteps: 0,
   direction: DIRECTION.RIGHT,
   setCurrentStep: () => {},
   goToPreviousStep: () => {},
