@@ -1,86 +1,73 @@
 import * as React from 'react'
 
 import { Modal, ModalProps } from '../modal'
-import type { Context as ModalContext } from '../modal/Modal.context'
-import { MultiStepModalContext } from './MultiStepModal.context'
-import type { Step } from './MultiStepModal.context'
-import MultiStepModalBody from './body/MultiStepModal.Body'
-import MultiStepModalFooter from './footer/MultiStepModal.Footer'
-import MultiStepModalHeader from './header/MultiStepModal.Header'
-import MultiStepModalProgressBar from './progressBar/MultiStepModal.ProgressBar'
+import { DIRECTION, MultiStepModalContext } from './MultiStepModal.context'
+import MultiStepModalBody from './body/MultiStepModalBody'
+import MultiStepModalFooter from './footer/MultiStepModalFooter'
+import MultiStepModalHeader from './header/MultiStepModalHeader'
 
-type ModalStepsRenderProps = ModalContext & {
-  currentStep: number
-  goToNextStep: () => void
+type SubComponents = {
+  Header: typeof MultiStepModalHeader
+  Body: typeof MultiStepModalBody
+  Footer: typeof MultiStepModalFooter
 }
-type RenderProps = (props: ModalStepsRenderProps) => React.ReactNode
 
 export interface MultiStepModalProps extends ModalProps {
-  defaultStepId?: string
+  defaultStep?: number
   resetStepOnClose?: boolean
-  children: RenderProps | React.ReactNode
+  children: React.ReactNode
 }
 
-const MultiStepModal = ({
+const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
   children,
-  defaultStepId,
+  defaultStep,
   resetStepOnClose = true,
   onClose,
   ...rest
-}: MultiStepModalProps) => {
-  const [currentStep, setCurrentStep] = React.useState<number>(0)
-  const [stepsRegistered, registerSteps] = React.useState<Step[]>([])
+}) => {
+  const [currentStep, setCurrentStep] = React.useState(defaultStep || 0)
+  const [direction, setDirection] = React.useState(DIRECTION.RIGHT)
 
-  const context = React.useMemo(
+  const contextValue = React.useMemo(
     () => ({
       currentStep,
+      totalSteps: React.Children.toArray(children).length,
+      direction,
       setCurrentStep,
-      steps: stepsRegistered,
-      registerSteps,
+      goToPreviousStep: () => {
+        setCurrentStep(currentStep - 1)
+        setDirection(DIRECTION.LEFT)
+      },
+      goToNextStep: () => {
+        setCurrentStep(currentStep + 1)
+        setDirection(DIRECTION.RIGHT)
+      },
     }),
-    [currentStep, stepsRegistered],
+    [currentStep, direction, children],
   )
 
-  React.useEffect(() => {
-    const defaultStep: number = defaultStepId
-      ? stepsRegistered.findIndex(step => step.id === defaultStepId) || 0
-      : 0
-
-    setCurrentStep(defaultStep)
-  }, [defaultStepId, resetStepOnClose, stepsRegistered])
-
   const handleOnClose = () => {
-    if (resetStepOnClose) {
-      const defaultStep: number = defaultStepId
-        ? stepsRegistered.findIndex(step => step.id === defaultStepId) || 0
-        : 0
-      setCurrentStep(defaultStep)
-    }
-
+    if (resetStepOnClose) setCurrentStep(defaultStep || 0)
     if (onClose) onClose()
   }
-  const goToNextStep = stepsRegistered[currentStep + 1]
-    ? () => setCurrentStep(currentStep + 1)
-    : () => {}
 
   return (
-    <MultiStepModalContext.Provider value={context}>
-      <Modal {...rest} onClose={handleOnClose}>
-        {modalProps =>
-          typeof children === 'function'
-            ? children({ ...modalProps, currentStep, goToNextStep })
-            : children
-        }
-      </Modal>
-    </MultiStepModalContext.Provider>
+    <Modal {...rest} onClose={handleOnClose}>
+      {modalProps => (
+        <MultiStepModalContext.Provider
+          value={{ ...modalProps, ...contextValue }}
+        >
+          {children ? React.Children.toArray(children)[currentStep] : null}
+        </MultiStepModalContext.Provider>
+      )}
+    </Modal>
   )
 }
 
-MultiStepModal.displayName = 'MultiStepModal'
-
 MultiStepModal.Header = MultiStepModalHeader
-MultiStepModal.Footer = MultiStepModalFooter
-MultiStepModal.ProgressBar = MultiStepModalProgressBar
 MultiStepModal.Body = MultiStepModalBody
+MultiStepModal.Footer = MultiStepModalFooter
+
+MultiStepModal.displayName = 'MultiStepModal'
 
 export default MultiStepModal

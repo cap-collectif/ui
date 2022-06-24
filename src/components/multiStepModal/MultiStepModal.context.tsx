@@ -1,27 +1,32 @@
 import * as React from 'react'
 
-export type Step = {
-  id: string
-  validationLabel: string
-  label?: string
-  info?: {
-    url: string
-    label: string
-  }
+import {
+  Context as ModalContext,
+  DEFAULT_VALUE_CONTEXT as DEFAULT_MODAL_CONTEXT,
+} from '../modal/Modal.context'
+
+export enum DIRECTION {
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
 }
 
-export type Context = {
+export type Context = ModalContext & {
   currentStep: number
+  totalSteps: number
+  direction: DIRECTION
   setCurrentStep: (stepIndex: number) => void
-  steps: Step[]
-  registerSteps: (steps: Step[]) => void
+  goToPreviousStep: () => void
+  goToNextStep: () => void
 }
 
 export const MultiStepModalContext = React.createContext<Context>({
+  ...DEFAULT_MODAL_CONTEXT,
   currentStep: 0,
+  totalSteps: 0,
+  direction: DIRECTION.RIGHT,
   setCurrentStep: () => {},
-  steps: [],
-  registerSteps: () => {},
+  goToPreviousStep: () => {},
+  goToNextStep: () => {},
 })
 
 export const useMultiStepModal = (): Context => {

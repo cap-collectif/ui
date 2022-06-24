@@ -9,14 +9,16 @@ export type Context = Readonly<{
   visible: boolean
 }>
 
-const ModalContext = React.createContext<Context>({
+export const DEFAULT_VALUE_CONTEXT = {
   hide: () => {},
   show: () => {},
   toggle: () => {},
   visible: false,
   hideCloseButton: false,
   fullSizeOnMobile: false,
-})
+}
+
+const ModalContext = React.createContext<Context>(DEFAULT_VALUE_CONTEXT)
 
 export const useModal = (): Context => {
   const context = React.useContext(ModalContext)
