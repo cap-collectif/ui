@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.4.1
+
+`2022-06-27`
+
+- 🐛 Export hook `useMultiStepModal` [#289](https://github.com/cap-collectif/ui/pull/289)
+
 ## 1.4.0
 
 `2022-06-24`
