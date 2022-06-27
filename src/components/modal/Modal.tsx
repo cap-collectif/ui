@@ -8,14 +8,14 @@ import { variant as variantStyle } from 'styled-system'
 import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
 import { Flex, FlexProps } from '../layout/Flex'
-import type { Context } from './Modal.context'
+import type { ModalContextType } from './Modal.context'
 import { Provider } from './Modal.context'
 import { ModalBody } from './body/ModalBody'
 import { CapUIModalSize } from './enums'
 import ModalFooter from './footer/ModalFooter'
 import ModalHeader from './header/ModalHeader'
 
-export type RenderProps = (props: Context) => React.ReactNode
+export type RenderProps = (props: ModalContextType) => React.ReactNode
 
 export interface ModalProps extends FlexProps {
   readonly size: CapUIModalSize
@@ -144,7 +144,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
 
   React.useEffect(() => {
     if (dialog.visible) {
-      if(onOpen) onOpen()
+      if (onOpen) onOpen()
       firstMount.current = false
     } else if (!dialog.visible && onClose && !firstMount.current) {
       onClose()
