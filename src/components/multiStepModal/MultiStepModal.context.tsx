@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import {
-  Context as ModalContext,
+  ModalContextType as ModalContext,
   DEFAULT_VALUE_CONTEXT as DEFAULT_MODAL_CONTEXT,
 } from '../modal/Modal.context'
 

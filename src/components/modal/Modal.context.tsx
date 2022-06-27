@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export type Context = Readonly<{
+export type ModalContextType = Readonly<{
   hide: () => void
   show: () => void
   toggle: () => void
@@ -18,9 +18,11 @@ export const DEFAULT_VALUE_CONTEXT = {
   fullSizeOnMobile: false,
 }
 
-const ModalContext = React.createContext<Context>(DEFAULT_VALUE_CONTEXT)
+const ModalContext = React.createContext<ModalContextType>(
+  DEFAULT_VALUE_CONTEXT,
+)
 
-export const useModal = (): Context => {
+export const useModal = (): ModalContextType => {
   const context = React.useContext(ModalContext)
   if (!context) {
     throw new Error(
@@ -32,7 +34,7 @@ export const useModal = (): Context => {
 
 type ProviderProps = {
   readonly children: React.ReactNode
-  readonly context: Context
+  readonly context: ModalContextType
 }
 
 export const Provider = ({ context, children }: ProviderProps) => (
