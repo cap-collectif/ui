@@ -32,7 +32,7 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<ColorPickerProps> = args => {
-  const [value, setValue] = React.useState<string | null>(null)
+  const [value, setValue] = React.useState<string | null>('#32a852ff')
   return <ColorPicker {...args} value={value} onChange={setValue} />
 }
 
