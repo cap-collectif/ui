@@ -41,11 +41,11 @@
   "size-limit": [
     {
       "path": "dist/ui.cjs.production.min.js",
-      "limit": "300 KB"
+      "limit": "350 KB"
     },
     {
       "path": "dist/ui.esm.js",
-      "limit": "300 KB"
+      "limit": "350 KB"
     }
   ],
   "devDependencies": {
@@ -63,6 +63,7 @@
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/react": "^17.0.11",
+    "@types/react-color": "^3.0.6",
     "@types/react-dates": "^21.8.3",
     "@types/react-dom": "^17.0.7",
     "@types/react-dropzone": "^5.1.0",
@@ -111,8 +112,9 @@
     "classnames": "^2.3.1",
     "deepmerge": "^4.2.2",
     "framer-motion": "^4.1.17",
-    "react-dropzone": "^11.4.2",
+    "react-color": "^2.19.3",
     "react-dates": "^21.8.0",
+    "react-dropzone": "^11.4.2",
     "react-hotkeys-hook": "^3.4.4",
     "react-infinite-scroller": "^1.2.4",
     "react-select": "^5.2.1",
