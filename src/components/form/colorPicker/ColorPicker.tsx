@@ -11,6 +11,8 @@ import S, { InputInner } from '../style'
 export interface ColorPickerProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
   readonly isDisabled?: boolean
+  readonly isInvalid?: boolean
+  readonly isRequired?: boolean
   readonly variantSize?: CapInputSize
   readonly value: string | null
   readonly onChange: (value: string | null) => void
@@ -33,6 +35,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   const inputProps = useFormControl<HTMLInputElement>(props)
 
   const { disabled } = inputProps
+  const invalid = inputProps['aria-invalid']
 
   return (
     <>
@@ -64,13 +67,19 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         sx={{
           ...S,
           '&:focus-within,&:active,&:focus': {
-            borderColor: disabled ? 'gray.300' : 'blue.500',
+            borderColor: disabled
+              ? 'gray.300'
+              : invalid
+              ? 'red.500'
+              : 'blue.500',
           },
+          '&:focus-within': { bg: disabled ? 'gray.100' : 'white' },
         }}
+        borderColor={invalid ? 'red.500' : undefined}
         width="132px"
         alignItems="center"
         position="relative"
-        bg={disabled ? 'gray.100' : 'white'}
+        bg={disabled ? 'gray.100' : invalid ? 'red.150' : 'white'}
       >
         <Box
           position="absolute"
@@ -101,7 +110,8 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           as="input"
           className={cn('cap-color-picker', className)}
           width="100%"
-          bg={inputProps.disabled ? 'gray.100' : 'white'}
+          bg={inputProps.disabled ? 'gray.100' : invalid ? 'red.150' : 'white'}
+          sx={{ '&:active,&:focus': { bg: disabled ? 'gray.100' : 'white' } }}
           {...props}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             if (onChange)
