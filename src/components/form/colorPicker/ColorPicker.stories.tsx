@@ -32,8 +32,13 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<ColorPickerProps> = args => {
-  const [value, setValue] = React.useState<string | null>('#32a852ff')
+  const [value, setValue] = React.useState<string | null>('#32a852')
   return <ColorPicker {...args} value={value} onChange={setValue} />
+}
+
+export const WithOpacity: Story<ColorPickerProps> = args => {
+  const [value, setValue] = React.useState<string | null>('#32a85277')
+  return <ColorPicker {...args} value={value} onChange={setValue} withOpacity />
 }
 
 export const Disabled: Story<Args> = ({ placeholder, ...args }) => {

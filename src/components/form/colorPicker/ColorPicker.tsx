@@ -14,9 +14,10 @@ export interface ColorPickerProps
   readonly variantSize?: CapInputSize
   readonly value: string | null
   readonly onChange: (value: string | null) => void
+  readonly withOpacity?: boolean
 }
 
-const toHexWithAlpha = (hex: string, opacity: number) =>
+const toHexwithOpacity = (hex: string, opacity: number) =>
   `${hex}${Math.round(opacity * 255).toString(16)}`
 
 const alphaGrid =
@@ -25,6 +26,7 @@ const alphaGrid =
 export const ColorPicker: React.FC<ColorPickerProps> = ({
   className,
   onChange,
+  withOpacity = false,
   ...props
 }) => {
   const [displayColorPicker, setDisplayColorPicker] = React.useState(false)
@@ -46,9 +48,14 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           />
           <ChromePicker
             color={String(props.value)}
+            disableAlpha={!withOpacity}
             onChange={color => {
               if (onChange)
-                onChange(toHexWithAlpha(color.hex, color.rgb.a || 0))
+                onChange(
+                  withOpacity
+                    ? toHexwithOpacity(color.hex, color.rgb.a || 0)
+                    : color.hex,
+                )
             }}
           />
         </Box>
@@ -97,7 +104,8 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           bg={inputProps.disabled ? 'gray.100' : 'white'}
           {...props}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            if (onChange) onChange(e.target.value)
+            if (onChange)
+              onChange(e.target.value?.substring(0, withOpacity ? 9 : 7))
           }}
           value={props.value}
         ></InputInner>
