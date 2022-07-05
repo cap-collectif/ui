@@ -2,16 +2,18 @@ import cn from 'classnames'
 import * as React from 'react'
 import { ChromePicker } from 'react-color'
 
-import type { PolymorphicBoxProps } from '../../box/Box'
-import Box from '../../box/Box'
+import Box, { BoxPropsOf } from '../../box/Box'
 import { Flex } from '../../layout'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { InputInner } from '../style'
 
-export interface ColorPickerProps extends PolymorphicBoxProps<'input'> {
+export interface ColorPickerProps
+  extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
   readonly isDisabled?: boolean
   readonly variantSize?: CapInputSize
+  readonly value: string | null
+  readonly onChange: (value: string | null) => void
 }
 
 const toHexWithAlpha = (hex: string, opacity: number) =>
@@ -20,12 +22,15 @@ const toHexWithAlpha = (hex: string, opacity: number) =>
 const alphaGrid =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADFJREFUOE9jZGBgEGHAD97gk2YcNYBhmIQBgWSAP52AwoAQwJvQRg1gACckQoC2gQgAIF8IscwEtKYAAAAASUVORK5CYII='
 
-export const ColorPicker: React.FC<ColorPickerProps> = React.forwardRef<
-  HTMLInputElement,
-  ColorPickerProps
->(({ className, onChange, ...props }, ref) => {
+export const ColorPicker: React.FC<ColorPickerProps> = ({
+  className,
+  onChange,
+  ...props
+}) => {
   const [displayColorPicker, setDisplayColorPicker] = React.useState(false)
   const inputProps = useFormControl<HTMLInputElement>(props)
+
+  const { disabled } = inputProps
 
   return (
     <>
@@ -51,13 +56,14 @@ export const ColorPicker: React.FC<ColorPickerProps> = React.forwardRef<
       <Flex
         sx={{
           ...S,
-          '&:focus-within': {
-            borderColor: 'blue.500',
+          '&:focus-within,&:active,&:focus': {
+            borderColor: disabled ? 'gray.300' : 'blue.500',
           },
         }}
         width="132px"
         alignItems="center"
         position="relative"
+        bg={disabled ? 'gray.100' : 'white'}
       >
         <Box
           position="absolute"
@@ -75,20 +81,22 @@ export const ColorPicker: React.FC<ColorPickerProps> = React.forwardRef<
           width={4}
           zIndex={1}
           borderRadius="button"
+          disabled={disabled}
           onClick={() => setDisplayColorPicker(true)}
           bg={String(props.value)}
+          sx={{ cursor: disabled ? 'auto' : 'pointer' }}
         ></Box>
         <InputInner
           {...inputProps}
           variant={inputProps.variantSize}
           disableFocusStyles
-          ref={ref}
           borderRadius="button"
           as="input"
           className={cn('cap-input', className)}
           width="100%"
+          bg={inputProps.disabled ? 'gray.100' : 'white'}
           {...props}
-          onChange={e => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             if (onChange) onChange(e.target.value)
           }}
           value={props.value}
@@ -96,7 +104,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = React.forwardRef<
       </Flex>
     </>
   )
-})
+}
 
 ColorPicker.displayName = 'ColorPicker'
 

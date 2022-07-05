@@ -1,14 +1,8 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Box } from '../../box/Box'
-import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
-import { Tooltip } from '../../tooltip'
 import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
-import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
-import { FormGuideline } from '../formGuideline'
-import FormLabel from '../formLabel/FormLabel'
 import ColorPicker, { ColorPickerProps } from './ColorPicker'
 import mdx from './ColorPicker.mdx'
 
@@ -38,16 +32,18 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<ColorPickerProps> = args => {
-  const [value, setValue] = React.useState<string>('')
+  const [value, setValue] = React.useState<string | null>(null)
   return <ColorPicker {...args} value={value} onChange={setValue} />
 }
 
-export const Disabled: Story<Args> = ({ placeholder, ...args }) => (
-  <FormControl {...args}>
-    <ColorPicker />
-  </FormControl>
-)
-
+export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
+  const [value, setValue] = React.useState<string | null>('#32a852')
+  return (
+    <FormControl {...args}>
+      <ColorPicker value={value} onChange={setValue} />
+    </FormControl>
+  )
+}
 Disabled.args = {
   isDisabled: true,
 }
