@@ -6,7 +6,7 @@ import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormLabel from '../formLabel/FormLabel'
-import ColorPicker, { ColorPickerProps } from './ColorPicker'
+import ColorPicker from './ColorPicker'
 import mdx from './ColorPicker.mdx'
 
 type Args = {
