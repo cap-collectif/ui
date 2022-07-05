@@ -92,7 +92,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           disableFocusStyles
           borderRadius="button"
           as="input"
-          className={cn('cap-input', className)}
+          className={cn('cap-color-picker', className)}
           width="100%"
           bg={inputProps.disabled ? 'gray.100' : 'white'}
           {...props}
