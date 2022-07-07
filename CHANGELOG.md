@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.5.0
+
+`2022-07-07`
+
+- 🆕 Adds `ColorPicker` Component [#293](https://github.com/cap-collectif/ui/pull/293)
+
 ## 1.4.1
 
 `2022-06-27`
