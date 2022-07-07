@@ -91,6 +91,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         />
         <Box
           as="button"
+          type="button"
           flex="none"
           ml={2}
           height={4}
