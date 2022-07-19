@@ -12,6 +12,7 @@ import {
   PopoverDisclosure,
   PopoverArrow,
   PopoverState,
+  PopoverInitialState,
 } from 'reakit/Popover'
 import styled from 'styled-components'
 
@@ -41,6 +42,7 @@ export interface PopoverProps
   disclosure: React.FunctionComponentElement<any>
   children: React.ReactNode | RenderChildren
   baseId?: string
+  Options?: PopoverInitialState
 }
 
 type ContainerAnimate = React.FC<
@@ -95,6 +97,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   className,
   placement = 'right',
   baseId,
+  Options,
   ...props
 }: PopoverProps) => {
   const popover = usePopoverState({
@@ -102,6 +105,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
     placement,
     unstable_offset: [getGutter(placement), 20],
     baseId,
+    ...Options,
   })
 
   const context = React.useMemo(
