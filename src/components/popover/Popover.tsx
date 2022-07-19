@@ -42,7 +42,7 @@ export interface PopoverProps
   disclosure: React.FunctionComponentElement<any>
   children: React.ReactNode | RenderChildren
   baseId?: string
-  Options?: PopoverInitialState
+  options?: PopoverInitialState
 }
 
 type ContainerAnimate = React.FC<
@@ -97,7 +97,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   className,
   placement = 'right',
   baseId,
-  Options,
+  options,
   ...props
 }: PopoverProps) => {
   const popover = usePopoverState({
@@ -105,7 +105,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
     placement,
     unstable_offset: [getGutter(placement), 20],
     baseId,
-    ...Options,
+    ...options,
   })
 
   const context = React.useMemo(
