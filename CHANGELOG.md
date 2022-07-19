@@ -16,7 +16,7 @@ To better understand the changelog, here are some legends we use:
 
 `2022-07-19`
 
-- 🛠 Added Optional `Options` object to `Popover` component [#295](https://github.com/cap-collectif/ui/pull/295)
+- 🛠 Added Optional `Options` object to `Popover` component [#297](https://github.com/cap-collectif/ui/pull/297)
 
 ## 1.5.1
 
