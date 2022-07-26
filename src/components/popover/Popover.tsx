@@ -21,6 +21,7 @@ import { PopoverContext } from './Popover.context'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
 import PopoverHeader from './header/PopoverHeader'
+import { DialogOptions } from 'reakit'
 
 type RenderChildren = ({
   closePopover,
@@ -43,6 +44,7 @@ export interface PopoverProps
   children: React.ReactNode | RenderChildren
   baseId?: string
   options?: PopoverInitialState
+  popoverProps?: Omit<DialogOptions, 'baseId'>
 }
 
 type ContainerAnimate = React.FC<
@@ -98,6 +100,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   placement = 'right',
   baseId,
   options,
+  popoverProps,
   ...props
 }: PopoverProps) => {
   const popover = usePopoverState({
@@ -126,7 +129,7 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
       >
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
-      <StyledReakitPopover tabIndex={0} {...popover}>
+      <StyledReakitPopover tabIndex={0} {...popoverProps} {...popover}>
         <AnimatePresence>
           {popover.visible && (
             <ContainerAnimate
