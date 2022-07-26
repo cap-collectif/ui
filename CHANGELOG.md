@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.5.3
+
+`2022-07-26`
+
+- 🛠 Added Optional `popoverProps` object to `Popover` component [#300](https://github.com/cap-collectif/ui/pull/300)
+
 
 ## 1.5.2
 
