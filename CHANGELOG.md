@@ -13,7 +13,7 @@ To better understand the changelog, here are some legends we use:
 
 ## 1.5.4
 
-`2022-07-26`
+`2022-08-11`
 
 - 🐛 Added `type="button"` to buttons to avoid submitting forms [#302](https://github.com/cap-collectif/ui/pull/302)
 
