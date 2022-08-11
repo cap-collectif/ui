@@ -35,6 +35,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   return (
     <Flex
       as="button"
+      type="button"
       ref={buttonRef}
       disabled={disabled}
       onClick={toggle}

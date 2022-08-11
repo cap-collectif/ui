@@ -69,6 +69,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
       {!hideCloseButton && (
         <Box
           as="button"
+          type="button"
           ref={ref}
           onClick={hide}
           aria-label={closeLabel}

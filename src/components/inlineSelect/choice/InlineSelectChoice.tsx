@@ -41,6 +41,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
       ) : (
         <Box
           as="button"
+          type="button"
           ref={elementRef}
           onClick={handler}
           color="gray.500"
