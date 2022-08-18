@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.5.5
+
+`2022-08-18`
+
+- 🛠 Extended `InputGroup` to handle cases of 3 Inputs along with a Label and a Guideline  [#307](https://github.com/cap-collectif/ui/pull/307)
+
+
 ## 1.5.4
 
 `2022-08-11`
