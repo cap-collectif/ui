@@ -103,6 +103,7 @@ export enum CapUIIcon {
   Shield = 'SHIELD',
   ShieldO = 'SHIELD_O',
   MenuArrow = 'MENU_ARROW',
+  Organization = 'ORGANIZATION',
 }
 
 export enum CapUIIconSize {
