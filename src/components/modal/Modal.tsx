@@ -46,15 +46,17 @@ type ModalInnerShape = FlexProps &
 
 const TRANSITION_DURATION = 0.35
 
-const Overlay = styled(motion(Flex)).attrs({
-  position: 'fixed',
-  left: 0,
-  right: 0,
-  bottom: 0,
-  top: 0,
-  flexDirection: 'column',
-  alignItems: 'center',
-})`` as StyledComponent<any, any>
+const Overlay = styled(motion(Flex)).attrs(
+  ({ isSidePanel }: { isSidePanel?: boolean }) => ({
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    flexDirection: 'column',
+    alignItems: isSidePanel ? 'end' : 'center',
+  }),
+)`` as StyledComponent<any, any>
 
 const ModalInner = styled(motion(Flex)).attrs(
   ({ fullSizeOnMobile, isMobile, ...rest }: ModalInnerShape) =>
@@ -94,6 +96,13 @@ const ModalInner = styled(motion(Flex)).attrs(
         width: '50%',
         maxHeight: '92%',
         mt: '4vh',
+      },
+      sidePanel: {
+        width: '50%',
+        height: '100%',
+        mt: '0',
+        borderTopRightRadius: '0',
+        borderBottomRightRadius: '0',
       },
     },
   }),
@@ -197,6 +206,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
               exit={{ opacity: 0 }}
               className="cap-modal__overlay"
               zIndex={zIndex || 'overlay'}
+              isSidePanel={size === CapUIModalSize.SidePanel}
             >
               <ModalInner
                 direction="column"

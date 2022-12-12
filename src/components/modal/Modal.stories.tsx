@@ -511,3 +511,23 @@ export const ControlledModal: Story<ModalProps> = args => {
 }
 ControlledModal.args = { disclosure: undefined }
 ControlledModal.storyName = 'Controlled Modal'
+
+export const SidePanelModal: Story<ModalProps> = args => {
+  return (
+    <Modal {...args} size={CapUIModalSize.SidePanel}>
+      <Modal.Header>
+        <Heading>Title</Heading>
+      </Modal.Header>
+      <Modal.Body>Content</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" variantColor="primary" variantSize="big">
+          Cancel
+        </Button>
+        <Button variant="primary" variantColor="primary" variantSize="big">
+          Validate
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+}
+SidePanelModal.storyName = 'Side Panel Modal'
