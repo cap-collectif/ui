@@ -55,7 +55,7 @@ const HourInput = ({
       width={width || '92px'}
       sx={{ input: { opacity: value ? '1 !important' : 0 } }}
     >
-      <ReactSelect<{ label: string; value: string }, false>
+      <ReactSelect
         {...inputProps}
         styles={reactSelectStyle(
           inputProps['aria-invalid'],
@@ -70,7 +70,8 @@ const HourInput = ({
             if (onChange) onChange(newValue)
           }
         }}
-        onChange={newValue => {
+        // @ts-ignore newValue is supposed to be generic (unknown)
+        onChange={(newValue: { label: string; value: string }) => {
           if (newValue) {
             setInput(newValue.value)
             if (onChange && newValue) onChange(newValue.value)
