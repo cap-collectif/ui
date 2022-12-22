@@ -65,7 +65,7 @@ const styles: SystemStyleObject = {
 export function reactSelectStyle<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
+  Group extends GroupBase<Option> = GroupBase<Option>
 >(
   isInvalid: boolean | undefined,
   isDisabled: boolean | undefined,
