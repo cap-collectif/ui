@@ -1,16 +1,20 @@
 import * as React from 'react'
-import { FlexboxProps } from 'styled-system'
-import { Flex } from '../../layout'
+import { TabPanel as BaseTabPanel } from 'reakit/Tab'
 
-export interface TabsPanelprops extends FlexboxProps {
-  readonly id: string
-}
-const TabsPanel: React.FC<TabsPanelprops> = ({ children, id }) => {
+import { Box, BoxProps } from '../../box'
+import { useTabs } from '../Tabs.context'
+
+export interface TabsPanelprops extends BoxProps {}
+
+const TabsPanel: React.FC<TabsPanelprops> = ({ children, ...props }) => {
+  const { tabs } = useTabs()
+
   return (
-    <Flex direction="column" id={id}>
+    <BaseTabPanel as={Box} p={6} {...tabs} tabIndex={undefined} {...props}>
       {children}
-    </Flex>
+    </BaseTabPanel>
   )
 }
+TabsPanel.displayName = 'Panel'
 
 export default TabsPanel

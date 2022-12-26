@@ -1,18 +1,16 @@
 import * as React from 'react'
+import { useTabState } from 'reakit/Tab'
 
 export type Tabs = {
   [key: string]: boolean
 }
 
 export type TabsContextType = {
-  tabs: Tabs
-  updateTabs: (tabs: Tabs) => void
+  tabs: ReturnType<typeof useTabState>
 }
 
-export const TabsContext = React.createContext<TabsContextType>({
-  tabs: {},
-  updateTabs: () => {},
-})
+export const TabsContext =
+  React.createContext<TabsContextType | undefined>(undefined)
 
 export const useTabs = (): TabsContextType => {
   const context = React.useContext(TabsContext)

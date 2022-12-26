@@ -9,6 +9,7 @@ import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { boxStyles } from './Radio.style'
+import { SystemStyleObject } from '@styled-system/css'
 
 export interface RadioProps extends PolymorphicBoxProps<'input'> {
   readonly isDisabled?: boolean
@@ -16,12 +17,13 @@ export interface RadioProps extends PolymorphicBoxProps<'input'> {
   readonly variantSize?: CapInputSize
   readonly id: string
   readonly direction?: FlexProps['direction']
+  readonly labelSx?: SystemStyleObject
 }
 
 export const Radio: React.FC<RadioProps> = React.forwardRef<
   HTMLInputElement,
   RadioProps
->(({ className, id, children, direction = 'row', ...props }, ref) => {
+>(({ className, id, children, direction = 'row', labelSx, ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
 
   return (
@@ -33,6 +35,7 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
       align="flexStart"
       htmlFor={id}
       fontFamily={CapUIFontFamily.Label}
+      sx={labelSx}
     >
       <Box
         className={cn('cap-radio', className)}
