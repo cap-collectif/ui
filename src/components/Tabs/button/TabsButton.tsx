@@ -43,6 +43,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({ children, ...props }) => {
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
       }}
       className="tab__button"
+      isDisabled={props.disabled}
       {...props}
     >
       <Box
@@ -52,7 +53,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({ children, ...props }) => {
         fontSize={3}
         fontWeight={CapUIFontWeight.Normal}
         lineHeight={CapUILineHeight.Base}
-        color="gray.800"
+        color={props.disabled ? 'gray.500' : 'gray.800'}
       >
         {children}
       </Box>
