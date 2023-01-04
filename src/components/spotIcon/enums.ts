@@ -26,6 +26,9 @@ export enum CapUISpotIcon {
   CODES = 'CODES',
   MAP = 'MAP',
   PROHIBITED = 'PROHIBITED',
+  ANALYSIS = 'ANALYSIS',
+  RESULT = 'RESULT',
+  CONSULTATION = 'CONSULTATION',
 }
 
 export enum CapUISpotIconSize {
