@@ -6,4 +6,5 @@ export enum CapUIAccordionSize {
 export enum CapUIAccordionColor {
   White = 'white',
   Gray = 'gray',
+  Transparent = 'transparent',
 }
