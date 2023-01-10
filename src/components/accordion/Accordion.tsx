@@ -54,9 +54,21 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
     ],
   )
 
+  const variants: Record<CapUIAccordionColor, { spacing: number }> = {
+    'white': {
+      spacing: 4
+    },
+    'gray': {
+      spacing: 4
+    },
+    'transparent': {
+      spacing: 0
+    }
+  }
+
   return (
     <AccordionContext.Provider value={context}>
-      <Flex direction="column" spacing={4} {...props}>
+      <Flex direction="column" spacing={variants[color].spacing} {...props}>
         {children}
       </Flex>
     </AccordionContext.Provider>

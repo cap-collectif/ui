@@ -32,6 +32,27 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
     toggleOpen()
   }, [disabled, toggleOpen])
 
+  const variants: Record<CapUIAccordionColor, { fontWeight: CapUIFontWeight, color: string, px: number, pb: number }> = {
+    'white': {
+      fontWeight: CapUIFontWeight.Bold,
+      color: 'blue.800',
+      px: 6,
+      pb: 6,
+    },
+    'gray': {
+      fontWeight: CapUIFontWeight.Normal,
+      color: 'gray.900',
+      px: 6,
+      pb: 6,
+    },
+    'transparent': {
+      fontWeight: CapUIFontWeight.Normal,
+      color: 'gray.900',
+      px: 0,
+      pb: 4,
+    }
+  }
+
   return (
     <Flex
       as="button"
@@ -40,8 +61,9 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       disabled={disabled}
       onClick={toggle}
       align="center"
-      p={6}
-      pb={open && size === CapUIAccordionSize.Sm ? 4 : 6}
+      px={variants[color].px}
+      py={variants[color].pb}
+      pb={open && size === CapUIAccordionSize.Sm ? 4 : variants[color].pb}
       width="100%"
       fontWeight={CapUIFontWeight.Normal}
       className={cn('cap-accordion__button', className)}
@@ -60,14 +82,10 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
 
       {typeof children === 'string' ? (
         <Text
-          color={color === CapUIAccordionColor.Gray ? 'gray.900' : 'blue.800'}
+          color={variants[color].color}
           fontSize={3}
           {...(size === CapUIAccordionSize.Sm ? {} : headingStyles.h4)}
-          fontWeight={
-            color === CapUIAccordionColor.White
-              ? CapUIFontWeight.Bold
-              : CapUIFontWeight.Normal
-          }
+          fontWeight={variants[color].fontWeight}
         >
           {children}
         </Text>

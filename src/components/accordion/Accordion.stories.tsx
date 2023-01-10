@@ -52,3 +52,13 @@ VariantGray.parameters = {
     default: 'undefined',
   },
 }
+
+export const VariantTransparent = Template.bind({})
+VariantTransparent.args = {
+  color: CapUIAccordionColor.Transparent,
+}
+VariantTransparent.parameters = {
+  backgrounds: {
+    default: 'undefined',
+  },
+}
