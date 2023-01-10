@@ -39,7 +39,11 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<InputProps> = args => <Input {...args} />
+export const Default: Story<InputProps> = args => (
+  <FormControl {...args}>
+    <Input />
+  </FormControl>
+)
 
 export const WithAnErrorMessage: Story<Args> = ({
   errorMessage,
@@ -116,6 +120,35 @@ export const WithSimpleFormErrorHandling: Story<Args> = ({
         onBlur={e => setIsValid(e.target.value === 'valide')}
       />
       <FormErrorMessage>Mauvais mot :(</FormErrorMessage>
+    </FormControl>
+  )
+}
+
+export const WithOnClearExample: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  ...args
+}) => {
+  const [value, setValue] = React.useState('')
+  return (
+    <FormControl {...args} width="300px" mt="20px">
+      <FormLabel htmlFor="name" label="Label">
+        <Tooltip label="Une aide en plus">
+          <Icon
+            name={CapUIIcon.Info}
+            size={CapUIIconSize.Sm}
+            color="blue.500"
+          />
+        </Tooltip>
+      </FormLabel>
+      <Input
+        placeholder={placeholder}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setValue(e.target.value)
+        }
+        value={value}
+        onClear={() => setValue('')}
+      />
     </FormControl>
   )
 }

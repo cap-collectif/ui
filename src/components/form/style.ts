@@ -62,6 +62,31 @@ const styles: SystemStyleObject = {
   },
 }
 
+export const focusWithinStyles = (
+  isInvalid: boolean,
+  isDisabled: boolean,
+): SystemStyleObject => ({
+  border: 'normal',
+  borderRadius: 'normal',
+  borderColor: isDisabled ? 'gray.200' : isInvalid ? 'red.500' : 'gray.300',
+
+  fontFamily: CapUIFontFamily.Input,
+  lineHeight: CapUILineHeight.Base,
+  color: isDisabled ? 'gray.500' : 'gray.900',
+  bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
+
+  '& > input::placeholder': {
+    color: 'gray.500',
+    fontFamily: CapUIFontFamily.Input,
+    lineHeight: CapUILineHeight.Base,
+  },
+
+  '&:focus-within': {
+    borderColor: isInvalid ? 'red.500' : 'blue.500',
+    bg: 'white',
+  },
+})
+
 export function reactSelectStyle<
   Option,
   IsMulti extends boolean = false,
