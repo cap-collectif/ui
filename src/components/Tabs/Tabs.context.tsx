@@ -15,7 +15,7 @@ export const TabsContext =
 export const useTabs = (): TabsContextType => {
   const context = React.useContext(TabsContext)
   if (!context) {
-    throw new Error(`You can't use the TabsContext outside an Tabs component.`)
+    throw new Error(`You can't use the TabsContext outside a Tabs component.`)
   }
   return context
 }
