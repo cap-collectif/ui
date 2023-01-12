@@ -11,6 +11,20 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+
+## 1.5.7
+
+`2023-01-12`
+
+- 🆕 Added SidePanel variant to modal  [#322](https://github.com/cap-collectif/ui/pull/322)
+- 🆕 Added Time Input  [#324](https://github.com/cap-collectif/ui/pull/324)
+- 💄 Added More `SpotIcons`  [#329](https://github.com/cap-collectif/ui/pull/329)
+- 💄 Added Transparent Accordion Variant  [#330](https://github.com/cap-collectif/ui/pull/330)
+- 💄 Added `onClear` prop on Inputs  [#323](https://github.com/cap-collectif/ui/pull/323)
+- 💄 Added Tabs component  [#325](https://github.com/cap-collectif/ui/pull/325)
+- 🛠 Updated Organisation Icon  [#331](https://github.com/cap-collectif/ui/pull/331)
+
+
 ## 1.5.6
 
 `2022-10-03`
