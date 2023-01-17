@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box, BoxProps } from '../../box/Box'
@@ -26,8 +25,6 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
     }
   }, [onChange, value])
 
-  const elementRef = useHotkeys('space, enter', handler, [handler])
-
   return (
     <Box
       as="li"
@@ -42,7 +39,6 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
         <Box
           as="button"
           type="button"
-          ref={elementRef}
           onClick={handler}
           color="gray.500"
           bg="transparent"
