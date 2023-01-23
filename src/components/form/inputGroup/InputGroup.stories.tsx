@@ -13,6 +13,7 @@ import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
+import { HourInput } from '../hour'
 import { Input } from '../input'
 import { InputNumber } from '../inputNumber'
 import { Select } from '../select'
@@ -148,6 +149,21 @@ export const Default: Story<InputGroupProps> = args => {
         </FormControl>
         <FormControl {...args}>
           <Input placeholder="Placeholder..." />
+        </FormControl>
+      </InputGroup>
+
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <DateInput
+            value={dateExample}
+            onChange={date => {
+              setDateExample(date)
+            }}
+          />
+        </FormControl>
+        <FormControl {...args}>
+          <HourInput />
         </FormControl>
       </InputGroup>
     </Flex>
