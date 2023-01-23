@@ -12,6 +12,14 @@ To better understand the changelog, here are some legends we use:
 - 💄 Style
 
 
+## 1.5.8
+
+`2023-01-23`
+
+- 💄 Adds `HourInput` styles on `InputGroup`  [#337](https://github.com/cap-collectif/ui/pull/337)
+- 🐛 Remove `useHotkeys` in `InlineSelect` [#335](https://github.com/cap-collectif/ui/pull/335)
+- 🐛 Fix `Accordion` background [#336](https://github.com/cap-collectif/ui/pull/336)
+
 ## 1.5.7
 
 `2023-01-12`
