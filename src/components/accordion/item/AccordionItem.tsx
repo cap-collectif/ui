@@ -33,13 +33,13 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   const variants: Record<CapUIAccordionColor, { bg: string, bgOpen: string, border: string, pbOpen: number }> = {
     white: {
       bg: 'white',
-      bgOpen: 'blue.100',
+      bgOpen: 'white',
       border: 'none',
       pbOpen: 6
     },
     gray: {
       bg: 'gray.100',
-      bgOpen: 'gray.100',
+      bgOpen: 'blue.100',
       border: 'normal',
       pbOpen: 6
     },
