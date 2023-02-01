@@ -1,11 +1,12 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
-import { ListCard, ListCardProps } from '../'
+import { ListCard } from '../'
 import { Flex } from '../../layout'
 import { Switch } from '../../switch'
 import { ButtonGroup } from '../../buttonGroup'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon } from '../../icon'
+import { ListCardItemProps } from './ListCardItem'
 
 const meta: Meta = {
   title: 'Library/ListCard/ListCardItem',
@@ -17,13 +18,13 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ListCardProps> = () => (
-  <ListCard.Item>
+export const Default: Story<ListCardItemProps> = () => (
+  <ListCard.Item draggable>
     <ListCard.Item.Label>Hello world</ListCard.Item.Label>
   </ListCard.Item>
 )
 
-export const WithType: Story<ListCardProps> = args => (
+export const WithType: Story<ListCardItemProps> = args => (
   <ListCard.Item {...args}>
     <Flex direction="column">
       <ListCard.Item.Type>Step</ListCard.Item.Type>
@@ -32,7 +33,7 @@ export const WithType: Story<ListCardProps> = args => (
   </ListCard.Item>
 )
 
-export const WithSwitch: Story<ListCardProps> = args => (
+export const WithSwitch: Story<ListCardItemProps> = args => (
   <ListCard.Item as="label" htmlFor="hello-world" {...args}>
     <Flex direction="column">
       <ListCard.Item.Type>Step</ListCard.Item.Type>
@@ -43,7 +44,7 @@ export const WithSwitch: Story<ListCardProps> = args => (
   </ListCard.Item>
 )
 
-export const WithButtonGroup: Story<ListCardProps> = args => (
+export const WithButtonGroup: Story<ListCardItemProps> = args => (
   <ListCard.Item {...args}>
     <Flex direction="column">
       <ListCard.Item.Type>Step</ListCard.Item.Type>
