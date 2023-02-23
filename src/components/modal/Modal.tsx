@@ -34,6 +34,7 @@ export interface ModalProps extends FlexProps {
   readonly onClose?: () => void
   readonly baseId?: string
   readonly alwaysOpenInPortal?: boolean
+  readonly forceModalDialogToFalse?: boolean
 }
 
 type SubComponents = {
@@ -127,6 +128,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   baseId,
   zIndex,
   alwaysOpenInPortal,
+  forceModalDialogToFalse,
   ...props
 }: ModalProps) => {
   const isMobile = useIsMobile()
@@ -134,7 +136,11 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     animated: TRANSITION_DURATION * 1000,
     visible: show,
     baseId,
-    modal: alwaysOpenInPortal ? true : !isMobile,
+    modal: forceModalDialogToFalse
+      ? false
+      : alwaysOpenInPortal
+      ? true
+      : !isMobile,
   })
 
   const containerRef = React.useRef<HTMLElement>(null)
