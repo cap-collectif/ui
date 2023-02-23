@@ -10,6 +10,9 @@ jobs:
         with:
           # Chromatic needs the full git history in order to track changes over time.
           fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - name: Install dependencies
         run: yarn install --ignore-scripts
       - name: Publish to Chromatic
