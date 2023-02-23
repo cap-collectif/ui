@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
 import { useTabs } from '../Tabs.context'
-import { Radio } from '../../form'
+import {Radio, RadioProps} from '../../form'
 import { CapUIFontWeight, CapUILineHeight, CapUIRadius } from '../../../styles'
 
 export interface TabsButtonProps
   extends BoxProps,
-    Pick<BaseTabProps, 'disabled' | 'focusable'> {}
+    Pick<BaseTabProps, 'disabled' | 'focusable'>, Pick<RadioProps, 'labelSx'> {}
 const BorderBox = styled(motion(Box))``
 
-const TabsButton: React.FC<TabsButtonProps> = ({ children, ...props }) => {
+const TabsButton: React.FC<TabsButtonProps> = ({ children, labelSx, ...props }) => {
   const { tabs } = useTabs()
   const [id, setId] = React.useState<string | undefined>(undefined)
   const $tab = React.useRef<HTMLElement>()
@@ -41,6 +41,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({ children, ...props }) => {
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
         borderTopRightRadius:
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
+        ...labelSx
       }}
       className="tab__button"
       isDisabled={props.disabled}
