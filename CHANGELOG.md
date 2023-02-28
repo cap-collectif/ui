@@ -12,6 +12,14 @@ To better understand the changelog, here are some legends we use:
 - 💄 Style
 
 
+## 1.6.0
+
+`2023-02-28`
+
+- 🆕 Added `Drag'n'Drop` component  [#341](https://github.com/cap-collectif/ui/pull/341)
+- 🐛 Added `labelSx` prop in `TabsButton` [#342](https://github.com/cap-collectif/ui/pull/342)
+- 🐛 Added `forceDialogToFalse` prop in `Modal` [#343](https://github.com/cap-collectif/ui/pull/343)
+
 ## 1.5.8
 
 `2023-01-23`
