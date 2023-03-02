@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.6.1
+
+`2023-03-02`
+
+- 🐛 Added `ListCard` export  [#348](https://github.com/cap-collectif/ui/pull/348)
+
 
 ## 1.6.0
 
