@@ -80,6 +80,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         alignItems="center"
         position="relative"
         bg={disabled ? 'gray.100' : invalid ? 'red.150' : 'white'}
+        className="cap-color-picker_container"
       >
         <Box
           position="absolute"
