@@ -12,16 +12,16 @@ export interface InputProps extends PolymorphicBoxProps<'input'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
-  readonly onClear?: () => void
+  readonly onClickActions?: Array<{ icon: CapUIIcon; onClick: () => void }>
 }
 
 export const Input: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   InputProps
->(({ className, onClear, ...props }, ref) => {
+>(({ className, onClickActions, ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { disabled } = inputProps
-  if ((props.type && props.type !== 'input') || !onClear) {
+  if ((props.type && props.type !== 'input') || !onClickActions) {
     return (
       <InputInner
         {...inputProps}
@@ -54,21 +54,24 @@ export const Input: React.FC<InputProps> = React.forwardRef<
         bg="inherit"
         {...props}
       />
-      {onClear ? (
-        <Box
-          as="button"
-          onClick={onClear}
-          type="button"
-          disabled={disabled}
-          sx={{ cursor: disabled ? 'default' : 'pointer' }}
-        >
-          <Icon
-            name={CapUIIcon.Trash}
-            size={CapUIIconSize.Sm}
-            color="gray.500"
-          />
-        </Box>
-      ) : null}
+      {onClickActions
+        ? onClickActions.map(action => (
+            <Box
+              as="button"
+              onClick={action.onClick}
+              type="button"
+              disabled={disabled}
+              sx={{ cursor: disabled ? 'default' : 'pointer' }}
+              ml={4}
+            >
+              <Icon
+                name={action.icon}
+                size={CapUIIconSize.Sm}
+                color="gray.500"
+              />
+            </Box>
+          ))
+        : null}
     </InputInner>
   )
 })
