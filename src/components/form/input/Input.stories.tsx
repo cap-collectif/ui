@@ -124,7 +124,7 @@ export const WithSimpleFormErrorHandling: Story<Args> = ({
   )
 }
 
-export const WithOnClearExample: Story<Args> = ({
+export const WithOnClickActionsExample: Story<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -147,7 +147,10 @@ export const WithOnClearExample: Story<Args> = ({
           setValue(e.target.value)
         }
         value={value}
-        onClear={() => setValue('')}
+        onClickActions={[
+          { icon: CapUIIcon.Trash, onClick: () => setValue('') },
+          { icon: CapUIIcon.Pencil, onClick: () => setValue('clickity') },
+        ]}
       />
     </FormControl>
   )
