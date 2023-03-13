@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.6.2
+
+`2023-03-13`
+
+- 💄 Added `ColorPicker` styles on `InputGroup`  [#351](https://github.com/cap-collectif/ui/pull/351)
+
 ## 1.6.1
 
 `2023-03-02`
