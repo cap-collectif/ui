@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import Button from '../../button/Button'
 import { Flex } from '../../layout'
+import { ColorPicker } from '../colorPicker'
 import {
   DateInput,
   DateInputValueType,
@@ -51,6 +52,9 @@ export const Default: Story<InputGroupProps> = args => {
   })
 
   const [dateExample, setDateExample] = React.useState<DateInputValueType>(null)
+  const [colorPickerValue, setColorPickerValue] = React.useState<string | null>(
+    null,
+  )
 
   return (
     <Flex direction="column" width="700px" spacing={3}>
@@ -88,7 +92,6 @@ export const Default: Story<InputGroupProps> = args => {
         </FormControl>
         <Button variant="primary">Action</Button>
       </InputGroup>
-
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormGuideline>Guidelines</FormGuideline>
@@ -107,7 +110,6 @@ export const Default: Story<InputGroupProps> = args => {
           <Input placeholder="Placeholder..." />
         </FormControl>
       </InputGroup>
-
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
@@ -117,7 +119,6 @@ export const Default: Story<InputGroupProps> = args => {
           <Input placeholder="Placeholder..." />
         </FormControl>
       </InputGroup>
-
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
@@ -136,7 +137,6 @@ export const Default: Story<InputGroupProps> = args => {
           <Input placeholder="Placeholder..." />
         </FormControl>
       </InputGroup>
-
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
@@ -151,7 +151,6 @@ export const Default: Story<InputGroupProps> = args => {
           <Input placeholder="Placeholder..." />
         </FormControl>
       </InputGroup>
-
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
@@ -164,6 +163,18 @@ export const Default: Story<InputGroupProps> = args => {
         </FormControl>
         <FormControl {...args}>
           <HourInput />
+        </FormControl>
+      </InputGroup>
+      <InputGroup {...args}>
+        <FormLabel label="Label" />
+        <FormControl {...args}>
+          <ColorPicker
+            value={colorPickerValue}
+            onChange={v => setColorPickerValue(v)}
+          />
+        </FormControl>
+        <FormControl {...args}>
+          <Input />
         </FormControl>
       </InputGroup>
     </Flex>
