@@ -21,7 +21,7 @@ export const Input: React.FC<InputProps> = React.forwardRef<
 >(({ className, onClickActions, ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { disabled } = inputProps
-  if ((props.type && props.type !== 'input') || !onClickActions) {
+  if ((props.type && props.type !== 'text') || !onClickActions) {
     return (
       <InputInner
         {...inputProps}
