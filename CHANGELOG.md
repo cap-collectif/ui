@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.6.3
+
+`2023-03-13`
+
+- Republishing
+
 ## 1.6.2
 
 `2023-03-13`
