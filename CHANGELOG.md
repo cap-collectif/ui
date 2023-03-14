@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.6.3
+
+`2023-03-14`
+
+- 🐛 Fix `Input` type for `onClickActions` methods  [#354](https://github.com/cap-collectif/ui/pull/354)
+
 ## 1.6.2
 
 `2023-03-13`
