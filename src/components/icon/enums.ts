@@ -104,6 +104,9 @@ export enum CapUIIcon {
   ShieldO = 'SHIELD_O',
   MenuArrow = 'MENU_ARROW',
   Organization = 'ORGANIZATION',
+  Map = 'MAP',
+  List = 'LIST',
+  Vote = 'VOTE',
 }
 
 export enum CapUIIconSize {
