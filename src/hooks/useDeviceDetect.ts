@@ -30,7 +30,11 @@ export const useIsTablet = (): boolean =>
   )
 export const useIsDesktop = (): boolean =>
   useMatchMedia(
-    `screen and (max-width: ${breakpoints.wide}) and (min-width: ${breakpoints.desktop})`,
+    `screen and (max-width: ${breakpoints.medium}) and (min-width: ${breakpoints.desktop})`,
+  )
+export const useIsMedium = (): boolean =>
+  useMatchMedia(
+    `screen and (max-width: ${breakpoints.wide}) and (min-width: ${breakpoints.medium})`,
   )
 export const useIsDesktopWide = (): boolean =>
   useMatchMedia(

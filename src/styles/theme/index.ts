@@ -16,6 +16,7 @@ import typography, {
 export interface Breakpoints {
   tablet: string
   desktop: string
+  medium: string
   wide: string
   ultraWide: string
 }
@@ -35,6 +36,7 @@ export interface CapUITheme extends Typography {
   mediaQueries: {
     tablet: string
     desktop: string
+    medium: string
     wide: string
     ultraWide: string
   }
@@ -50,12 +52,14 @@ export const theme = <Props extends { theme: CapUITheme }>(props: Props) =>
 
 export const BR_TABLET = 767
 export const BR_DESKTOP = 1024
+export const BR_MEDIUM = 1366
 export const BR_WIDE = 1800
 export const BR_ULTRAWIDE = 2200
 
 export const breakpoints: Breakpoints = {
   tablet: `${BR_TABLET}px`,
   desktop: `${BR_DESKTOP}px`,
+  medium: `${BR_MEDIUM}px`,
   wide: `${BR_WIDE}px`,
   ultraWide: `${BR_ULTRAWIDE}px`,
 }
@@ -172,12 +176,14 @@ export const capuiTheme: DefaultTheme = {
   breakpoints: [
     breakpoints.tablet,
     breakpoints.desktop,
+    breakpoints.medium,
     breakpoints.wide,
     breakpoints.ultraWide,
   ],
   mediaQueries: {
     tablet: `@media screen and (min-width: ${breakpoints.tablet})`,
     desktop: `@media screen and (min-width: ${breakpoints.desktop})`,
+    medium: `@media screen and (min-width: ${breakpoints.medium})`,
     wide: `@media screen and (min-width: ${breakpoints.wide})`,
     ultraWide: `@media screen and (min-width: ${breakpoints.ultraWide})`,
   },
