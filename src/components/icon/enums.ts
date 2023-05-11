@@ -107,6 +107,8 @@ export enum CapUIIcon {
   Map = 'MAP',
   List = 'LIST',
   Vote = 'VOTE',
+  HeartO = 'HEART_O',
+  CommentO = 'COMMENT_O',
 }
 
 export enum CapUIIconSize {
