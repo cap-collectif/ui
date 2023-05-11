@@ -1,11 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { components, ControlProps, GroupBase, SingleValue } from 'react-select';
+import { components, ControlProps, GroupBase, SingleValue } from 'react-select'
 import ReactSelect from 'react-select/async'
 import type { AsyncProps } from 'react-select/async'
 
 import { Box } from '../box'
-import { CapInputSize, useFormControl } from '../form';
+import { CapInputSize, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
@@ -35,7 +35,7 @@ const Control = <
   children,
   ...props
 }: ControlProps<Option, IsMulti, Group>) => {
-  const { isLoading, inputValue } = props.selectProps
+  const { isLoading, inputValue, onInputChange } = props.selectProps
   return (
     <components.Control {...props}>
       <Icon
@@ -54,7 +54,12 @@ const Control = <
           size={CapUIIconSize.Md}
           color="gray.700"
           _hover={{ color: 'red.500' }}
-          onClick={props.clearValue}
+          onClick={() => {
+            onInputChange('', {
+              action: 'input-change',
+              prevInputValue: inputValue,
+            })
+          }}
         />
       )}
     </components.Control>
