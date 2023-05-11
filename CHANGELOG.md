@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.7.2
+
+`2023-05-11`
+
+- 💄 Add Icons [#363](https://github.com/cap-collectif/ui/pull/363)
+
 ## 1.7.1
 
 `2023-05-11`
