@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.7.1
+
+`2023-05-11`
+
+- 🐛 Fix `Search` component clear action [#361](https://github.com/cap-collectif/ui/pull/361)
+
 ## 1.7.0
 
 `2023-05-04`
