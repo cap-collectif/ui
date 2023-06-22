@@ -29,6 +29,9 @@ export enum CapUISpotIcon {
   ANALYSIS = 'ANALYSIS',
   RESULT = 'RESULT',
   CONSULTATION = 'CONSULTATION',
+  VIGNETTE = 'VIGNETTE',
+  CARTE = 'CARTE',
+  TABLEAU = 'TABLEAU',
 }
 
 export enum CapUISpotIconSize {
