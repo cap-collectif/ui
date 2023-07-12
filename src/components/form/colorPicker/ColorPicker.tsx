@@ -19,6 +19,7 @@ export interface ColorPickerProps
   readonly onChange: (value: string | null) => void
   readonly withOpacity?: boolean
   readonly variant?: CapColorPickerVariant
+  readonly colors?: string[]
 }
 
 const toHexwithOpacity = (hex: string, opacity: number) =>
@@ -32,6 +33,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   onChange,
   withOpacity = false,
   variant = CapColorPickerVariant.Chrome,
+  colors,
   ...props
 }) => {
   const [displayColorPicker, setDisplayColorPicker] = React.useState(false)
@@ -76,14 +78,16 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
               }}
             >
               <TwitterPicker
-                colors={[
-                  '#1A88FF',
-                  '#33CEE6',
-                  '#46D267',
-                  '#FFC61A',
-                  '#FFA31A',
-                  '#DD3C4C',
-                ]}
+                colors={
+                  colors || [
+                    '#1A88FF',
+                    '#33CEE6',
+                    '#46D267',
+                    '#FFC61A',
+                    '#FFA31A',
+                    '#DD3C4C',
+                  ]
+                }
                 width="135px"
                 triangle="hide"
                 onChange={color => {
