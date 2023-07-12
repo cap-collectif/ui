@@ -6,7 +6,7 @@ import { CapInputSize } from '../enums'
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormLabel from '../formLabel/FormLabel'
-import ColorPicker from './ColorPicker'
+import ColorPicker, { CapColorPickerVariant } from './ColorPicker'
 import mdx from './ColorPicker.mdx'
 
 type Args = {
@@ -40,6 +40,17 @@ export default meta
 export const Default: Story<Args> = args => {
   const [value, setValue] = React.useState<string | null>('#32a852')
   return <ColorPicker {...args} value={value} onChange={setValue} />
+}
+export const TwitterVariant: Story<Args> = args => {
+  const [value, setValue] = React.useState<string | null>('#32a852')
+  return (
+    <ColorPicker
+      {...args}
+      value={value}
+      variant={CapColorPickerVariant.Twitter}
+      onChange={setValue}
+    />
+  )
 }
 
 export const WithOpacity: Story<Args> = args => {

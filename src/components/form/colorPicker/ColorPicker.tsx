@@ -1,12 +1,13 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { ChromePicker } from 'react-color'
+import { ChromePicker, TwitterPicker } from 'react-color'
 
 import Box, { BoxPropsOf } from '../../box/Box'
 import { Flex } from '../../layout'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { InputInner } from '../style'
+import { CapColorPickerVariant } from './enums'
 
 export interface ColorPickerProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
@@ -17,6 +18,7 @@ export interface ColorPickerProps
   readonly value: string | null
   readonly onChange: (value: string | null) => void
   readonly withOpacity?: boolean
+  readonly variant?: CapColorPickerVariant
 }
 
 const toHexwithOpacity = (hex: string, opacity: number) =>
@@ -29,6 +31,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   className,
   onChange,
   withOpacity = false,
+  variant = CapColorPickerVariant.Chrome,
   ...props
 }) => {
   const [displayColorPicker, setDisplayColorPicker] = React.useState(false)
@@ -36,11 +39,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
 
   const { disabled } = inputProps
   const invalid = inputProps['aria-invalid']
-
   return (
     <>
       {displayColorPicker ? (
-        <Box position="absolute" zIndex={2}>
+        <Box position="absolute" zIndex={2} top="50px">
           <Box
             position="fixed"
             top={0}
@@ -49,18 +51,52 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             bottom={0}
             onClick={() => setDisplayColorPicker(false)}
           />
-          <ChromePicker
-            color={String(props.value)}
-            disableAlpha={!withOpacity}
-            onChange={color => {
-              if (onChange)
-                onChange(
-                  withOpacity
-                    ? toHexwithOpacity(color.hex, color.rgb.a || 0)
-                    : color.hex,
-                )
-            }}
-          />
+          {variant === CapColorPickerVariant.Chrome ? (
+            <ChromePicker
+              color={String(props.value)}
+              disableAlpha={!withOpacity}
+              onChange={color => {
+                if (onChange)
+                  onChange(
+                    withOpacity
+                      ? toHexwithOpacity(color.hex, color.rgb.a || 0)
+                      : color.hex,
+                  )
+              }}
+            />
+          ) : (
+            <Box
+              sx={{
+                'span + div': {
+                  display: 'none !important',
+                },
+                '[id^=rc-editable-input]': {
+                  display: 'none',
+                },
+              }}
+            >
+              <TwitterPicker
+                colors={[
+                  '#1A88FF',
+                  '#33CEE6',
+                  '#46D267',
+                  '#FFC61A',
+                  '#FFA31A',
+                  '#DD3C4C',
+                ]}
+                width="135px"
+                triangle="hide"
+                onChange={color => {
+                  if (onChange)
+                    onChange(
+                      withOpacity
+                        ? toHexwithOpacity(color.hex, color.rgb.a || 0)
+                        : color.hex,
+                    )
+                }}
+              />
+            </Box>
+          )}
         </Box>
       ) : null}
       <Flex
@@ -103,7 +139,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           onClick={() => setDisplayColorPicker(true)}
           bg={String(props.value)}
           sx={{ cursor: disabled ? 'auto' : 'pointer' }}
-        ></Box>
+        />
         <InputInner
           {...inputProps}
           variant={inputProps.variantSize}
@@ -120,7 +156,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
               onChange(e.target.value?.substring(0, withOpacity ? 9 : 7))
           }}
           value={props.value}
-        ></InputInner>
+        />
       </Flex>
     </>
   )
