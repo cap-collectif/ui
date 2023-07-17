@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.7.3
+
+`2023-07-17`
+
+- 💄 Add SpotIcons [#365](https://github.com/cap-collectif/ui/pull/365)
+- 🛠 Fix Organisation Icon [#369](https://github.com/cap-collectif/ui/pull/369)
+- 🆕 New ColorPicker Variant [#370](https://github.com/cap-collectif/ui/pull/370)
+
 ## 1.7.2
 
 `2023-05-11`
