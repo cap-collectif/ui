@@ -163,6 +163,8 @@ export enum CapUIIcon {
   Village = 'VILLAGE',
   Waterdrop = 'WATERDROP',
   Web = 'WEB',
+  CoinO = 'COIN_O',
+  TagO = 'TAG_O',
 }
 
 export enum CapUIIconSize {
