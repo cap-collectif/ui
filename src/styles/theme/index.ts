@@ -53,7 +53,7 @@ export const theme = <Props extends { theme: CapUITheme }>(props: Props) =>
 export const BR_TABLET = 767
 export const BR_DESKTOP = 1133
 export const BR_MEDIUM = 1280
-export const BR_WIDE = 1600
+export const BR_WIDE = 1536
 export const BR_ULTRAWIDE = 1920
 
 export const breakpoints: Breakpoints = {
