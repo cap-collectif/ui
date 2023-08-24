@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.0
+
+`2023-08-24`
+
+- 💥 Change breakpoint [#376](https://github.com/cap-collectif/ui/pull/376)
+
 ## 1.7.5
 
 `2023-08-03`
