@@ -1,7 +1,11 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
+import { Box } from '../box'
 import { Button } from '../button'
+import { FormLabel, Input } from '../form'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
+import { Flex } from '../layout'
 import { CapUIModalSize } from '../modal'
 import { Text } from '../typography'
 import { Heading } from '../typography/Heading'
@@ -219,5 +223,148 @@ export const ConditionalStep: Story<MultiStepModalProps> = () => {
       {displayStep && <ModalTwo />}
       <ModalThree />
     </MultiStepModal>
+  )
+}
+
+const Step = ({
+  title,
+  info,
+  label,
+  placeholder,
+  onClose,
+  firstStep,
+  lastStep,
+}: {
+  title: string
+  info: string
+  label?: string
+  placeholder?: string
+  onClose: () => void
+  firstStep?: boolean
+  lastStep?: boolean
+}) => {
+  const { goToNextStep, goToPreviousStep } = useMultiStepModal()
+
+  return (
+    <>
+      <MultiStepModal.Header>
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          position="relative"
+        >
+          <Box position="absolute" left={0} display={['none', 'block']}>
+            LOGO
+          </Box>
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            margin="auto"
+            maxWidth="540px"
+            width="100%"
+          >
+            <Icon
+              cursor="pointer"
+              onClick={firstStep ? () => {} : goToPreviousStep}
+              name={CapUIIcon.LongArrowLeft}
+              size={CapUIIconSize.Md}
+              color="neutral-gray.500"
+            />
+            <Box textAlign="center">
+              <Heading>Informations requises</Heading>
+              <Text display={['none', 'block']}>
+                Validation votre participation en cours
+              </Text>
+            </Box>
+            <Icon
+              cursor="pointer"
+              onClick={onClose}
+              name={CapUIIcon.CrossO}
+              size={CapUIIconSize.Md}
+              color="neutral-gray.500"
+            />
+          </Flex>
+        </Flex>
+      </MultiStepModal.Header>
+
+      <MultiStepModal.Body bg="neutral-gray.50">
+        <Flex
+          py={13}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          margin="auto"
+          maxWidth="540px"
+        >
+          <Heading mb={4} as="h3">
+            {title}
+          </Heading>
+          <Text mb={4} textAlign="center" color="neutral-gray.700" fontSize={3}>
+            {info}
+          </Text>
+          {lastStep ? null : (
+            <Box width="100%" mb={4}>
+              <FormLabel label={label || ''} mb={1} />
+              <Input placeholder={placeholder} />
+            </Box>
+          )}
+          <Button
+            variantSize="big"
+            onClick={lastStep ? onClose : goToNextStep}
+            justifyContent="center"
+            width="100%"
+          >
+            {lastStep ? 'Valider !' : 'Continuer'}
+          </Button>
+        </Flex>
+      </MultiStepModal.Body>
+    </>
+  )
+}
+
+export const FullScreen: Story<MultiStepModalProps> = () => {
+  const [show, setShow] = React.useState(false)
+
+  return (
+    <>
+      <Button
+        variant="primary"
+        variantSize="medium"
+        onClick={() => setShow(true)}
+      >
+        Valider ma participation
+      </Button>
+      <MultiStepModal
+        ariaLabel="Fullscreen"
+        size={CapUIModalSize.Fullscreen}
+        smoothWorkflow
+        hideCloseButton
+        onClose={() => setShow(false)}
+        show={show}
+        fullSizeOnMobile
+      >
+        <Step
+          firstStep
+          onClose={() => setShow(false)}
+          title="Quelle est votre adresse e-mail ?"
+          info="Pour une participation plus sûre, fiable et authentique et vous permet de gérer votre participation."
+          placeholder="prenom.nom@mail.com"
+          label="Email"
+        />
+        <Step
+          onClose={() => setShow(false)}
+          title="Avez-vous un pseudonyme ?"
+          info="Il sera visible sur votre profil et sur vos participations"
+          placeholder="ex : John.D"
+          label="Pseudonyme"
+        />
+        <Step
+          onClose={() => setShow(false)}
+          lastStep
+          title="Merci"
+          info="Si vous êtes sur de vos informations, cliquer pour valider votre participation. Sinon, revenez en arrière"
+        />
+      </MultiStepModal>
+    </>
   )
 }

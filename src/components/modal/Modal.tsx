@@ -105,6 +105,12 @@ const ModalInner = styled(motion(Flex)).attrs(
         borderTopRightRadius: '0',
         borderBottomRightRadius: '0',
       },
+      fullscreen: {
+        width: '100%',
+        height: '100%',
+        mt: '0',
+        borderRadius: '0',
+      },
     },
   }),
 ) as StyledComponent<any, any>
@@ -212,7 +218,10 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
               exit={{ opacity: 0 }}
               className="cap-modal__overlay"
               zIndex={zIndex || 'overlay'}
-              isSidePanel={size === CapUIModalSize.SidePanel}
+              isSidePanel={
+                size === CapUIModalSize.SidePanel ||
+                size === CapUIModalSize.Fullscreen
+              }
             >
               <ModalInner
                 direction="column"

@@ -14,27 +14,41 @@ const variants = {
 }
 
 const MultiStepModalProgressBar = () => {
-  const { totalSteps, currentStep, direction } = useMultiStepModal()
-
-  const steps = React.useMemo(() => Array.from(Array(totalSteps).keys()), [
+  const {
     totalSteps,
-  ])
+    currentStep,
+    direction,
+    smoothWorkflow,
+  } = useMultiStepModal()
+
+  const total = smoothWorkflow ? totalSteps * 2 : totalSteps
+
+  const steps = React.useMemo(() => Array.from(Array(total).keys()), [total])
+
+  const fillIndex = smoothWorkflow ? totalSteps : 0
 
   return (
     <Flex
       direction="row"
-      spacing={1}
+      spacing={smoothWorkflow ? 0 : 1}
       position="absolute"
       width="100%"
       left={0}
       bottom={0}
     >
       {steps.map(step => (
-        <Box key={`item-${step}`} bg="blue.200" height={1} flex={1}>
+        <Box
+          key={`item-${step}`}
+          bg="blue.200"
+          height={smoothWorkflow ? 0.5 : 1}
+          flex={1}
+        >
           <AnimatePresence
-            initial={step === currentStep && direction !== DIRECTION.LEFT}
+            initial={
+              step === currentStep + fillIndex && direction !== DIRECTION.LEFT
+            }
           >
-            {step <= currentStep && (
+            {step <= currentStep + fillIndex && (
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
@@ -43,6 +57,12 @@ const MultiStepModalProgressBar = () => {
                 animate="fill"
                 variants={variants}
                 transition={{ duration: 0.3, ease }}
+                borderTopRightRadius={
+                  smoothWorkflow && step === currentStep + fillIndex ? 1 : 0
+                }
+                borderBottomRightRadius={
+                  smoothWorkflow && step === currentStep + fillIndex ? 1 : 0
+                }
               />
             )}
           </AnimatePresence>

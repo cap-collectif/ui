@@ -16,6 +16,7 @@ export interface MultiStepModalProps extends ModalProps {
   defaultStep?: number
   resetStepOnClose?: boolean
   children: React.ReactNode
+  smoothWorkflow?: boolean
 }
 
 const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
@@ -23,6 +24,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
   defaultStep,
   resetStepOnClose = true,
   onClose,
+  smoothWorkflow = false,
   ...rest
 }) => {
   const [currentStep, setCurrentStep] = React.useState(defaultStep || 0)
@@ -33,6 +35,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
       currentStep,
       totalSteps: React.Children.toArray(children).length,
       direction,
+      smoothWorkflow,
       setCurrentStep,
       goToPreviousStep: () => {
         setCurrentStep(currentStep - 1)
