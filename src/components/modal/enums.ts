@@ -4,4 +4,5 @@ export enum CapUIModalSize {
   Lg = 'lg',
   Xl = 'xl',
   SidePanel = 'sidePanel',
+  Fullscreen = 'fullscreen',
 }

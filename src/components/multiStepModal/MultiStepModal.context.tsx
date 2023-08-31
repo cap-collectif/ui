@@ -14,6 +14,7 @@ export type Context = ModalContext & {
   currentStep: number
   totalSteps: number
   direction: DIRECTION
+  smoothWorkflow: boolean
   setCurrentStep: (stepIndex: number) => void
   goToPreviousStep: () => void
   goToNextStep: () => void
@@ -24,6 +25,7 @@ export const MultiStepModalContext = React.createContext<Context>({
   currentStep: 0,
   totalSteps: 0,
   direction: DIRECTION.RIGHT,
+  smoothWorkflow: false,
   setCurrentStep: () => {},
   goToPreviousStep: () => {},
   goToNextStep: () => {},

@@ -67,6 +67,7 @@ export const breakpoints: Breakpoints = {
 export const SPACING = {
   px: '1px',
   0: 0,
+  0.5: pxToRem(2),
   1: pxToRem(4),
   2: pxToRem(8),
   3: pxToRem(12),
