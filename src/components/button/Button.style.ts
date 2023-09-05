@@ -1,6 +1,5 @@
 import { Colors } from '../../styles/modules/colors'
 import typography, { CapUIFontWeight } from '../../styles/theme/typography'
-import { newShade } from '../../utils/color'
 
 const styles = (alternative?: boolean, colors?: Colors) => ({
   common: {

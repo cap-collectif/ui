@@ -5,6 +5,7 @@ import {
   Accordion,
   AvatarGroup,
   Button,
+  CapUIAccordionColor,
   CapUIProvider,
   Checkbox,
   ColorPicker,
@@ -12,7 +13,6 @@ import {
   Input,
   Radio,
   Search,
-  Select,
   Switch,
   Uploader,
 } from './'
@@ -99,7 +99,7 @@ export const Default: Story<Props> = ({
           <ColorPicker />
         </Flex>
         <Flex mt={4}>
-          <Accordion color="gray">
+          <Accordion color={CapUIAccordionColor.Gray}>
             <Accordion.Item id="volet-1">
               <Accordion.Button>Volet 1</Accordion.Button>
               <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
