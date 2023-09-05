@@ -3,7 +3,9 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
+import { useTheme } from '../../hooks'
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
+import { Colors } from '../../styles/modules/colors'
 import { Box } from '../box'
 import { PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
@@ -42,22 +44,26 @@ const SIZE = {
 }
 
 const ButtonInner = styled(Box)(
-  S().common,
+  S(false).common,
   ({
     variantColor = 'primary',
     alternative,
+    colors,
   }: {
     variantColor: ButtonProps['variantColor']
     alternative: boolean
-  }) =>
-    variantStyled({
+    colors: Colors
+  }) => {
+    console.log('c', colors)
+    return variantStyled({
       variants: {
-        primary: S()[variantColor].primary,
-        secondary: S()[variantColor].secondary,
-        tertiary: S(alternative)[variantColor].tertiary,
-        link: S()[variantColor].link,
+        primary: S(false, colors)[variantColor].primary,
+        secondary: S(false, colors)[variantColor].secondary,
+        tertiary: S(alternative, colors)[variantColor].tertiary,
+        link: S(false, colors)[variantColor].link,
       },
-    }),
+    })
+  },
 )
 
 const Button: React.FC<ButtonProps> = React.forwardRef<
@@ -81,6 +87,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
     },
     ref,
   ) => {
+    const { colors } = useTheme()
     return (
       <ButtonInner
         ref={ref}
@@ -114,6 +121,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
           },
           className,
         )}
+        colors={colors}
         {...props}
       >
         {isLoading ? (

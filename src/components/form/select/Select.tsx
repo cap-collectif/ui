@@ -7,6 +7,7 @@ import ReactSelect, {
 } from 'react-select'
 import type { GroupBase, Props } from 'react-select'
 
+import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { Spinner } from '../../spinner'
@@ -57,7 +58,7 @@ export function Control<
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={2} color="blue.500" />}
+      {isLoading && <Spinner mr={2} color="primary" />}
       {!isLoading && (
         <Icon
           mr={3}
@@ -78,12 +79,14 @@ export function Select<
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ className, width, ...props }: SelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors } = useTheme()
 
   return (
     <Box width={width || '100%'}>
       {/* @ts-ignore:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/49673 */}
       <ReactSelect
         styles={reactSelectStyle(
+          colors,
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize,

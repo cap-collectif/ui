@@ -3,6 +3,7 @@ import React from 'react'
 import { components, ControlProps, Props } from 'react-select'
 import ReactSelect from 'react-select'
 
+import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { CapInputSize } from '../enums'
@@ -45,6 +46,7 @@ const HourInput = ({
 }: HourInputProps) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const [input, setInput] = React.useState(value || '')
+  const { colors } = useTheme()
 
   React.useEffect(() => {
     setInput(value || '')
@@ -58,6 +60,7 @@ const HourInput = ({
       <ReactSelect
         {...inputProps}
         styles={reactSelectStyle(
+          colors,
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize || CapInputSize.Sm,

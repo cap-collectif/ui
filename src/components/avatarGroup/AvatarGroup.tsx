@@ -67,7 +67,7 @@ export const AvatarGroup = ({
           {...avatarStyles}
           {...variantsAvatarSize[size]}
           mr={getMarginForSize(size)}
-          bg="blue.500"
+          bg="primary"
           color="white"
           borderColor="white"
           border="avatar"

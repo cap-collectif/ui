@@ -1,84 +1,83 @@
-import colors from '../../styles/modules/colors'
+import { Colors } from '../../styles/modules/colors'
 import typography, { CapUIFontWeight } from '../../styles/theme/typography'
+import { newShade } from '../../utils/color'
 
-const styles = (alternative?: boolean) => ({
+const styles = (alternative?: boolean, colors?: Colors) => ({
   common: {
     outline: 'none',
   },
   primary: {
     primary: {
-      bg: 'blue.500',
-      color: 'blue.100',
+      bg: 'primary',
+      color: 'primaryLabel',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
       },
 
       '&:hover': {
-        bg: 'blue.700',
-        color: 'blue.100',
+        bg: 'primaryHover',
+        color: 'primaryLabelHover',
       },
 
       '&:disabled': {
-        bg: 'blue.150',
-        color: 'blue.300',
+        opacity: 0.4,
       },
     },
     secondary: {
       bg: 'white',
-      color: 'blue.500',
+      color: 'primary',
       border: 'button',
-      borderColor: 'blue.500',
+      borderColor: 'primary',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
       },
 
       '&:hover': {
-        color: 'blue.700',
-        borderColor: 'blue.700',
+        color: 'primaryHover',
+        borderColor: 'primaryHover',
       },
 
       '&:disabled': {
-        color: 'blue.300',
-        borderColor: 'blue.300',
+        opacity: 0.4,
       },
     },
     tertiary: {
       bg: 'transparent',
-      color: 'blue.500',
+      color: 'primary',
       p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
       },
 
       '&:hover': {
-        color: 'blue.700',
+        color: 'primaryHover',
       },
 
       '&:disabled': {
-        color: 'blue.300',
+        opacity: 0.4,
       },
     },
     link: {
       textDecoration: 'underline',
-      color: 'blue.500',
+      color: 'primary',
       fontWeight: CapUIFontWeight.Normal,
       p: 0,
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
       },
 
       '&:hover': {
-        color: 'blue.700',
+        color: 'primaryHover',
       },
 
       '&:disabled': {
-        color: 'blue.300',
+        opacity: 0.4,
       },
     },
   },
@@ -88,7 +87,7 @@ const styles = (alternative?: boolean) => ({
       color: 'red.100',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.red['300']}`,
       },
 
       '&:hover': {
@@ -106,7 +105,7 @@ const styles = (alternative?: boolean) => ({
       borderColor: 'red.500',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.red['300']}`,
       },
 
       '&:hover': {
@@ -126,7 +125,7 @@ const styles = (alternative?: boolean) => ({
       fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.red['300']}`,
       },
 
       '&:hover': {
@@ -144,7 +143,7 @@ const styles = (alternative?: boolean) => ({
       p: 0,
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.red['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.red['300']}`,
       },
 
       '&:hover': {
@@ -162,7 +161,7 @@ const styles = (alternative?: boolean) => ({
       color: 'gray.100',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.gray['300']}`,
       },
 
       '&:hover': {
@@ -181,7 +180,7 @@ const styles = (alternative?: boolean) => ({
       borderColor: 'gray.500',
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.gray['300']}`,
       },
 
       '&:hover': {
@@ -200,7 +199,7 @@ const styles = (alternative?: boolean) => ({
       p: 0,
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.gray['300']}`,
       },
 
       '&:hover': {
@@ -218,7 +217,7 @@ const styles = (alternative?: boolean) => ({
       p: 0,
 
       '&:focus': {
-        boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
+        boxShadow: `0 0 2px 2px ${colors?.gray['300']}`,
       },
 
       '&:hover': {

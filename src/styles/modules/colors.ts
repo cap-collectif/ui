@@ -10,7 +10,15 @@ export type BaseColorsName =
   | 'blue'
   | 'aqua'
 
-type RootThemeColorsValues = 'transparent' | 'current' | 'black' | 'white'
+type RootThemeColorsValues =
+  | 'transparent'
+  | 'current'
+  | 'black'
+  | 'white'
+  | 'primary'
+  | 'primaryLabel'
+  | 'primaryHover'
+  | 'primaryLabelHover'
 
 type BaseColors = {
   [key in BaseColorsName]: {
@@ -29,6 +37,11 @@ const colors: Colors = {
 
   black: '#000',
   white: '#fff',
+
+  primary: '#1A88FF',
+  primaryLabel: '#FAFCFF',
+  primaryHover: '#0051A8',
+  primaryLabelHover: '#FAFCFF',
 
   gray: {
     '100': '#F7F7F8',

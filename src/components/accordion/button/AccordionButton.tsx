@@ -32,25 +32,28 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
     toggleOpen()
   }, [disabled, toggleOpen])
 
-  const variants: Record<CapUIAccordionColor, { fontWeight: CapUIFontWeight, color: string, px: number, pb: number }> = {
-    'white': {
+  const variants: Record<
+    CapUIAccordionColor,
+    { fontWeight: CapUIFontWeight; color: string; px: number; pb: number }
+  > = {
+    white: {
       fontWeight: CapUIFontWeight.Bold,
       color: 'blue.800',
       px: 6,
       pb: 6,
     },
-    'gray': {
+    gray: {
       fontWeight: CapUIFontWeight.Normal,
       color: 'gray.900',
       px: 6,
       pb: 6,
     },
-    'transparent': {
+    transparent: {
       fontWeight: CapUIFontWeight.Normal,
       color: 'gray.900',
       px: 0,
       pb: 4,
-    }
+    },
   }
 
   return (
@@ -77,7 +80,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
         name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
         size={CapUIIconSize.Md}
         mr={2}
-        color={open ? 'blue.500' : 'gray.500'}
+        color={open ? 'primary' : 'gray.500'}
       />
 
       {typeof children === 'string' ? (

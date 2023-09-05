@@ -1,8 +1,8 @@
 import type { SystemStyleObject } from '@styled-system/css'
 
-import colors from '../../../styles/modules/colors'
+import { Colors } from '../../../styles/modules/colors'
 
-export const boxStyles: SystemStyleObject = {
+export const boxStyles = (colors?: Colors): SystemStyleObject => ({
   position: 'absolute',
   cursor: 'pointer',
   top: '50%',
@@ -17,7 +17,7 @@ export const boxStyles: SystemStyleObject = {
 
   '&:before': {
     content: '""',
-    bg: 'blue.500',
+    bg: 'primary',
     borderRadius: '50%',
     width: '7px',
     height: '7px',
@@ -29,11 +29,11 @@ export const boxStyles: SystemStyleObject = {
   },
 
   '.cap-radio__input:checked + &': {
-    borderColor: 'blue.500',
+    borderColor: 'primary',
   },
 
   '.cap-radio__input:focus + &': {
-    boxShadow: `0 0 2px 2px ${colors.blue[300]}`,
+    boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
   },
 
   '.cap-radio__input[aria-invalid="true"] + &': {
@@ -63,4 +63,4 @@ export const boxStyles: SystemStyleObject = {
   '.cap-radio__input:disabled:checked + &:before': {
     bg: 'gray.300',
   },
-}
+})

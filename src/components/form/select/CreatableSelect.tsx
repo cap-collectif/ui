@@ -3,6 +3,7 @@ import * as React from 'react'
 import type { GroupBase } from 'react-select'
 import Select from 'react-select/creatable'
 
+import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
@@ -20,12 +21,14 @@ export function CreatableSelect<
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ className, width, ...props }: CreatableSelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors } = useTheme()
 
   return (
     <Box width={width || '100%'}>
       {/* @ts-ignore:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/49673 */}
       <Select
         styles={reactSelectStyle(
+          colors,
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize,
