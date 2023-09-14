@@ -16,7 +16,7 @@ type VariantIcon = {
 }
 
 type InfoMessageTitleProps = FlexProps & {
-  readonly children: string
+  readonly children: string | React.ReactNodeArray | React.ReactNode
   readonly withIcon?: boolean
 }
 
@@ -83,9 +83,13 @@ export const InfoMessageTitle = ({
       {...props}
     >
       {withIcon && getIcon(variant)}
-      <Text color={getColor(variant)} fontSize={1} lineHeight="sm">
-        {children}
-      </Text>
+      {typeof children === 'string' ? (
+        <Text color={getColor(variant)} fontSize={1} lineHeight="sm">
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
     </Flex>
   )
 }
