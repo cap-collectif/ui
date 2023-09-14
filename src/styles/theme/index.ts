@@ -155,7 +155,7 @@ export const ZINDEX = {
   select: 1000,
   selectPortal: 1500,
   popover: 1000,
-  tooltip: 1000,
+  tooltip: 1800,
   toast: 1800,
 } as const
 
