@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
-import { Flex } from '../layout'
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
 import mdx from './InfoMessage.mdx'
