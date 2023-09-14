@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../../hooks'
 import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
@@ -23,6 +24,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
   CheckboxProps
 >(({ className, id, children, direction = 'row', ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors } = useTheme()
 
   return (
     <Flex
@@ -54,7 +56,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-checkbox__box" sx={boxStyles} />
+        <Box as="div" className="cap-checkbox__box" sx={boxStyles(colors)} />
       </Box>
 
       {typeof children === 'string' ? (

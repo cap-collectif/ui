@@ -1,6 +1,8 @@
+import { SystemStyleObject } from '@styled-system/css'
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../../hooks'
 import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
@@ -9,7 +11,6 @@ import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { boxStyles } from './Radio.style'
-import { SystemStyleObject } from '@styled-system/css'
 
 export interface RadioProps extends PolymorphicBoxProps<'input'> {
   readonly isDisabled?: boolean
@@ -25,6 +26,7 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
   RadioProps
 >(({ className, id, children, direction = 'row', labelSx, ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors } = useTheme()
 
   return (
     <Flex
@@ -57,7 +59,7 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-radio__box" sx={boxStyles} />
+        <Box as="div" className="cap-radio__box" sx={boxStyles(colors)} />
       </Box>
 
       {typeof children === 'string' ? (

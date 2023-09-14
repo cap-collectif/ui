@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 import { CapUIFontFamily, CapUILineHeight } from '../../styles'
-import colors from '../../styles/modules/colors'
+import { Colors } from '../../styles/modules/colors'
 import { SPACING, ZINDEX } from '../../styles/theme'
 import { FONT_FAMILIES, LINE_HEIGHTS } from '../../styles/theme/typography'
 import { Box } from '../box'
@@ -44,7 +44,7 @@ const styles: SystemStyleObject = {
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'blue.500',
+    borderColor: 'primary',
   },
 
   '&[aria-invalid="true"]': {
@@ -82,7 +82,7 @@ export const focusWithinStyles = (
   },
 
   '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'blue.500',
+    borderColor: isInvalid ? 'red.500' : 'primary',
     bg: 'white',
   },
 })
@@ -92,6 +92,7 @@ export function reactSelectStyle<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
+  colors: Colors,
   isInvalid: boolean | undefined,
   isDisabled: boolean | undefined,
   variantSize: CapInputSize,
@@ -116,7 +117,7 @@ export function reactSelectStyle<
       borderColor: isInvalid
         ? colors.red['500']
         : isFocused
-        ? colors.blue['500']
+        ? colors.primary
         : colors.gray['300'],
       '&:hover': {
         borderColor: isInvalid ? colors.red['500'] : '',

@@ -4,6 +4,7 @@ import { components, ControlProps, GroupBase, SingleValue } from 'react-select'
 import ReactSelect from 'react-select/async'
 import type { AsyncProps } from 'react-select/async'
 
+import { useTheme } from '../../hooks'
 import { Box } from '../box'
 import { CapInputSize, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
@@ -45,7 +46,7 @@ const Control = <
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="blue.500" />}
+      {isLoading && <Spinner mr={1} color="primary" />}
       {!isLoading && inputValue && (
         <Icon
           mr={1}
@@ -79,6 +80,7 @@ export const Search = <
   loadOptions,
   ...props
 }: SearchProps<Option, IsMulti, Group>) => {
+  const { colors } = useTheme()
   const inputProps = useFormControl<HTMLInputElement>(props)
   const asyncRef = React.useRef(null)
   const [input, setInput] = React.useState(value || '')
@@ -93,6 +95,7 @@ export const Search = <
         {...inputProps}
         ref={asyncRef}
         styles={reactSelectStyle(
+          colors,
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize || CapInputSize.Sm,

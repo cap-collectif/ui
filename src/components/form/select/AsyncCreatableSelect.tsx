@@ -4,6 +4,7 @@ import type { GroupBase } from 'react-select'
 import type { AsyncProps } from 'react-select/async'
 import AsyncCreatable from 'react-select/async-creatable'
 
+import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
@@ -33,11 +34,13 @@ export function AsyncCreatableSelect<
   ...props
 }: AsyncCreatableSelectProps<Option, IsMulti, Group>) {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors } = useTheme()
 
   return (
     <Box width={width || '100%'}>
       <AsyncCreatable<Option, IsMulti, Group>
         styles={reactSelectStyle(
+          colors,
           inputProps['aria-invalid'],
           inputProps.disabled,
           inputProps.variantSize,

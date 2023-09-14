@@ -1,13 +1,15 @@
 import type { SystemStyleObject } from '@styled-system/css'
 
-export const sliderStyles: SystemStyleObject = {
+import { Colors } from '../../styles/modules/colors'
+
+export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   position: 'absolute',
   cursor: 'pointer',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  bg: 'gray.500',
+  bg: 'neutral-gray.500',
   transition: '0.4s',
   borderRadius: '10px',
 
@@ -25,7 +27,11 @@ export const sliderStyles: SystemStyleObject = {
   },
 
   '.cap-switch__input:checked + & ': {
-    bg: 'blue.500',
+    bg: 'primary',
+  },
+
+  '.cap-switch__input:focus + &': {
+    boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
   },
 
   '.cap-switch__input:disabled + &': {
@@ -35,4 +41,4 @@ export const sliderStyles: SystemStyleObject = {
   '.cap-switch__input:checked + &:before': {
     transform: 'translateX(16px)',
   },
-}
+})

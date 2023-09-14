@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../hooks'
 import { CapUILineHeight } from '../../styles'
 import { Box, PolymorphicBoxProps } from '../box/Box'
 import { useFormControl } from '../form'
@@ -22,7 +23,7 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
   SwitchProps
 >(({ className, children, id, direction = 'row', ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
-
+  const { colors } = useTheme()
   return (
     <Flex
       display="inline-flex"
@@ -51,7 +52,11 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-switch__slider" sx={sliderStyles} />
+        <Box
+          as="div"
+          className="cap-switch__slider"
+          sx={sliderStyles(colors)}
+        />
       </Box>
 
       {typeof children === 'string' ? (
