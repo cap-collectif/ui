@@ -42,7 +42,7 @@ export const OutOfBudget: Story<VoteInfoProps> = ({ ...args }) => (
       <VoteInfo.ProgressBar totalSteps={1} currentStep={1} color="red.500"/>
       <VoteInfo.Body>
         <Text>
-          Vous avez dépassez le budget maximum. <Box as="a" color="blue.500" sx={{textDecoration:'underline'}} href='#' >Supprimer un vote</Box> pour valider votre participation
+          Vous avez dépassez le budget maximum. <Box as="a" color="primary" sx={{textDecoration:'underline'}} href='#' >Supprimer un vote</Box> pour valider votre participation
 
         </Text>
       </VoteInfo.Body>

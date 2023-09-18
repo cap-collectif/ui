@@ -5,7 +5,7 @@ import colors from '../../styles/modules/colors'
 
 export const styles : SystemStyleObject = {
   bg: 'transparent',
-  color: 'blue.500',
+  color: 'primary',
   boxSizing: 'border-box',
   borderWidth: '1px',
   borderStyle: 'solid',
@@ -26,7 +26,7 @@ export const styles : SystemStyleObject = {
 
   '&:hover': {
     bg: 'white',
-    borderColor: 'blue.500',
+    borderColor: 'primary',
   },
 
   '&:disabled': {

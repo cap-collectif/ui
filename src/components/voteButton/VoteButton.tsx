@@ -16,7 +16,7 @@ const VoteButton: React.FC<VoteButtonProps> = React.forwardRef<
   ButtonProps
 >(({ threshold, as = 'button', children, disabled, ...rest }, ref) => {
   if (!!threshold && (threshold < 0 || threshold > 100)) {
-    console.error('Le threshold doit etre un pourcentage entre 0 et 100')
+    console.error('threshold must be between 0 and a 100')
   }
   return (
     <Box

@@ -22,7 +22,6 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
   infoLabel,
   ...rest
 }) => {
-  console.log(infoLabel)
   return (
     <Flex
       as="header"
@@ -58,7 +57,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
             <Icon
               name={CapUIIcon.Info}
               size={CapUIIconSize.Sm}
-              color="blue.500"
+              color="primary"
             />
           </Box>
         </Tooltip>
