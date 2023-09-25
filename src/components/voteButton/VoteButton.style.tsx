@@ -3,7 +3,7 @@ import type { SystemStyleObject } from '@styled-system/css'
 import { CapUIRadius } from '../../styles'
 import colors from '../../styles/modules/colors'
 
-export const styles : SystemStyleObject = {
+export const styles = (active: boolean): SystemStyleObject => ({
   bg: 'transparent',
   color: 'primary',
   boxSizing: 'border-box',
@@ -17,12 +17,12 @@ export const styles : SystemStyleObject = {
   '&:focus': {
     boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
   },
-  '&:active': {
+  ...(active && {
     bg: 'blue.150',
     '.thumb-up-o_svg__fillMeUp': {
       fill: '#1A88FF !important',
     },
-  },
+  }),
 
   '&:hover': {
     bg: 'white',
@@ -30,8 +30,11 @@ export const styles : SystemStyleObject = {
   },
 
   '&:disabled': {
-    bg: 'blue.150',
+    bg: 'transparent',
     cursor: 'not-allowed',
     color: 'neutral-gray.500',
+    '&:hover': {
+      borderColor: 'transparent',
+    },
   },
-}
+})
