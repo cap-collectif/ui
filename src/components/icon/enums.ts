@@ -165,6 +165,7 @@ export enum CapUIIcon {
   Web = 'WEB',
   CoinO = 'COIN_O',
   TagO = 'TAG_O',
+  Sport = 'SPORT',
 }
 
 export enum CapUIIconSize {
