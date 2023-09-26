@@ -11,6 +11,18 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.1
+
+`2023-09-26`
+
+- 🐛 Fix Icon (sport) [#387](https://github.com/cap-collectif/ui/pull/387)
+- 🆕 New vote components (ranking, card) [#385](https://github.com/cap-collectif/ui/pull/385)
+- 🆕 New vote components (buttons, about) [#382](https://github.com/cap-collectif/ui/pull/382)
+- 🐛 Fix InfoMessage.Title [#384](https://github.com/cap-collectif/ui/pull/384)
+- 🐛 Fix Tooltip zIndex [#383](https://github.com/cap-collectif/ui/pull/383)
+- 🆕 Adds advanced color customization [#379](https://github.com/cap-collectif/ui/pull/379)
+- 💄 Adds smoothWorkflow variant on MultiStepModal [#378](https://github.com/cap-collectif/ui/pull/378)
+
 ## 1.8.0
 
 `2023-08-24`
