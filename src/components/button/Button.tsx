@@ -54,7 +54,6 @@ const ButtonInner = styled(Box)(
     alternative: boolean
     colors: Colors
   }) => {
-    console.log('c', colors)
     return variantStyled({
       variants: {
         primary: S(false, colors)[variantColor].primary,
