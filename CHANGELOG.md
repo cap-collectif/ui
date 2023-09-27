@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.2
+
+`2023-09-27`
+
+- 🐛 Remove useless logs [#389](https://github.com/cap-collectif/ui/pull/389)
+
 ## 1.8.1
 
 `2023-09-26`
