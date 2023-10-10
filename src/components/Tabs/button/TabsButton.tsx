@@ -1,18 +1,24 @@
-import * as React from 'react'
-import { Box, BoxProps } from '../../box'
 import { motion } from 'framer-motion'
-import styled from 'styled-components'
+import * as React from 'react'
 import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
-import { useTabs } from '../Tabs.context'
-import {Radio, RadioProps} from '../../form'
+import styled from 'styled-components'
+
 import { CapUIFontWeight, CapUILineHeight, CapUIRadius } from '../../../styles'
+import { Box, BoxProps } from '../../box'
+import { Radio, RadioProps } from '../../form'
+import { useTabs } from '../Tabs.context'
 
 export interface TabsButtonProps
   extends BoxProps,
-    Pick<BaseTabProps, 'disabled' | 'focusable'>, Pick<RadioProps, 'labelSx'> {}
+    Pick<BaseTabProps, 'disabled' | 'focusable'>,
+    Pick<RadioProps, 'labelSx'> {}
 const BorderBox = styled(motion(Box))``
 
-const TabsButton: React.FC<TabsButtonProps> = ({ children, labelSx, ...props }) => {
+const TabsButton: React.FC<TabsButtonProps> = ({
+  children,
+  labelSx,
+  ...props
+}) => {
   const { tabs } = useTabs()
   const [id, setId] = React.useState<string | undefined>(undefined)
   const $tab = React.useRef<HTMLElement>()
@@ -41,7 +47,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({ children, labelSx, ...props }) 
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
         borderTopRightRadius:
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
-        ...labelSx
+        ...labelSx,
       }}
       className="tab__button"
       isDisabled={props.disabled}
@@ -49,7 +55,6 @@ const TabsButton: React.FC<TabsButtonProps> = ({ children, labelSx, ...props }) 
     >
       <Box
         as="span"
-        zIndex={1}
         position="relative"
         fontSize={3}
         fontWeight={CapUIFontWeight.Normal}
