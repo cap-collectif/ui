@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.3
+
+`2023-10-10`
+
+- 💄 Fix `TabButton` Z-index [#392](https://github.com/cap-collectif/ui/pull/392)
+- 
 ## 1.8.2
 
 `2023-09-27`
