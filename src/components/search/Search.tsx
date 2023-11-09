@@ -71,18 +71,20 @@ export const Search = <
   Option,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
->({
-  className,
-  width,
-  onChange,
-  onSelect,
-  value,
-  loadOptions,
-  ...props
-}: SearchProps<Option, IsMulti, Group>) => {
+>(
+  {
+    className,
+    width,
+    onChange,
+    onSelect,
+    value,
+    loadOptions,
+    ...props
+  }: SearchProps<Option, IsMulti, Group>,
+  ref: React.ForwardedRef<any>,
+) => {
   const { colors } = useTheme()
   const inputProps = useFormControl<HTMLInputElement>(props)
-  const asyncRef = React.useRef(null)
   const [input, setInput] = React.useState(value || '')
 
   React.useEffect(() => {
@@ -93,7 +95,6 @@ export const Search = <
     <Box width={width || '280px'}>
       <ReactSelect<Option, IsMulti, Group>
         {...inputProps}
-        ref={asyncRef}
         styles={reactSelectStyle(
           colors,
           inputProps['aria-invalid'],
@@ -122,11 +123,14 @@ export const Search = <
         menuPortalTarget={document?.body}
         loadOptions={loadOptions}
         {...props}
+        ref={ref}
       />
     </Box>
   )
 }
 
-Search.displayName = 'Search'
+const SearchWithRef = React.forwardRef(Search)
 
-export default Search
+SearchWithRef.displayName = 'Search'
+
+export default SearchWithRef
