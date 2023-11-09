@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
-import { CapInputSize, FormControl, FormLabel } from '../form';
+import { CapInputSize, FormControl, FormLabel } from '../form'
 import Search from './Search'
 import mdx from './Search.mdx'
 
@@ -112,7 +112,7 @@ export const AsField: Story<Args> = ({ ...args }) => (
       defaultOptions
       cacheOptions
       filterOption={(option, input) => {
-        return option.label.toLowerCase().includes(input.toLowerCase());
+        return option.label.toLowerCase().includes(input.toLowerCase())
       }}
     />
   </FormControl>
