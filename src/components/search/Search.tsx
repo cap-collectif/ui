@@ -67,7 +67,7 @@ const Control = <
   )
 }
 
-export const Search = <
+export const SearchWithRef = <
   Option,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
@@ -129,8 +129,8 @@ export const Search = <
   )
 }
 
-const SearchWithRef = React.forwardRef(Search)
+export const Search = React.forwardRef(SearchWithRef)
 
-SearchWithRef.displayName = 'Search'
+Search.displayName = 'Search'
 
-export default SearchWithRef
+export default Search
