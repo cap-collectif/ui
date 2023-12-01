@@ -14,9 +14,10 @@ type SubComponents = {
 }
 const ProposalContent: React.FC<ProposalContentProps> & SubComponents = ({
   children,
+  ...rest
 }) => {
   return (
-    <Flex direction="column" gap={0}>
+    <Flex direction="column" gap={0} {...rest}>
       {children}
     </Flex>
   )

@@ -67,7 +67,10 @@ export const Default: Story<ProposalProps> = args => {
           ></RankButton>
         </Proposal.Content.Footer>
       </Proposal.Content>
-      <Proposal.Cover src="https://images.unsplash.com/photo-1694630737405-f27394b91824?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2565&q=80" />
+      <Proposal.Cover
+        status="Status"
+        src="https://images.unsplash.com/photo-1694630737405-f27394b91824?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2565&q=80"
+      />
     </Proposal>
   )
 }
