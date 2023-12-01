@@ -3,11 +3,21 @@ import * as React from 'react'
 
 import { CapUIRadius } from '../../styles'
 import { Box, BoxPropsOf } from '../box'
+import { Tag } from '../tag'
 
-export interface ProposalCoverProps extends BoxPropsOf<'img'> {}
+export interface ProposalCoverProps extends BoxPropsOf<'img'> {
+  status?: string
+}
 
 const styles: SystemStyleObject = {
   backgroundClip: 'content-box',
+
+  '.cap-tag': {
+    position: 'absolute',
+    top: '8px',
+    right: '8px',
+    zIndex: 2,
+  },
 
   '&:before': {
     content: '""',
@@ -43,9 +53,15 @@ const styles: SystemStyleObject = {
   },
 }
 
-const ProposalCover: React.FC<ProposalCoverProps> = ({ src, alt }) => {
+const ProposalCover: React.FC<ProposalCoverProps> = ({
+  src,
+  alt,
+  status,
+  ...rest
+}) => {
   return (
     <Box sx={styles} position="relative" width="300px" height="200px">
+      {!!status && <Tag variantColor={'neutral-gray'}>{status}</Tag>}
       <Box
         as="img"
         position="relative"
@@ -55,6 +71,7 @@ const ProposalCover: React.FC<ProposalCoverProps> = ({ src, alt }) => {
         borderRadius={CapUIRadius.Card}
         src={src}
         alt={alt}
+        {...rest}
       />
     </Box>
   )

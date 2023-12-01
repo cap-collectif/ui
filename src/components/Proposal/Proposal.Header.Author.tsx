@@ -10,9 +10,10 @@ export interface ProposalHeaderAuthorProps {
 
 const ProposalHeaderAuthor: React.FC<ProposalHeaderAuthorProps> = ({
   author,
+  ...rest
 }) => {
   return (
-    <Flex direction="row" gap={1} justify="flex-start" align="center">
+    <Flex direction="row" gap={1} justify="flex-start" align="center" {...rest}>
       <Icon
         name={CapUIIcon.UserO}
         size={CapUIIconSize.Sm}

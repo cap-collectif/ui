@@ -11,7 +11,10 @@ type SubComponents = {
 }
 export interface ProposalProps extends FlexProps {}
 
-const Proposal: React.FC<ProposalProps> & SubComponents = ({ children }) => {
+const Proposal: React.FC<ProposalProps> & SubComponents = ({
+  children,
+  ...rest
+}) => {
   return (
     <Flex
       direction="row"
@@ -19,9 +22,10 @@ const Proposal: React.FC<ProposalProps> & SubComponents = ({ children }) => {
       p={6}
       minHeight="200px"
       gap={8}
-      width="1002px"
+      width="100%"
       bg="white"
       borderRadius={CapUIRadius.Popover}
+      {...rest}
     >
       {children}
     </Flex>
