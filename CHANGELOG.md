@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.5
+
+`2023-12-01`
+
+- 🛠 Fix Props on `Proposal` component [#396](https://github.com/cap-collectif/ui/pull/396)
+
 ## 1.8.4
 
 `2023-11-09`
