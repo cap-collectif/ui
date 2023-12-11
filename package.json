@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "tsdx watch",
-    "build": "tsdx build --transpileOnly",
+    "build": "tsdx build",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
     "lint": "eslint src --ext .ts --ext .tsx",
@@ -87,7 +87,7 @@
     "size-limit": "^4.12.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
-    "typescript": "4.2.4"
+    "typescript": "4.9.4"
   },
   "lint-staged": {
     "*.md": [
