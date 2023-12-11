@@ -10,6 +10,7 @@ export interface TheadProps extends BoxPropsOf<'thead'> {
 }
 
 const Thead: React.FC<TheadProps> = ({ children, ...rest }: TheadProps) => (
+  // @ts-ignore
   <Box
     as="thead"
     bg="gray.100"

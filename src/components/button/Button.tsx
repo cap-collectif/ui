@@ -43,7 +43,7 @@ const SIZE = {
   },
 }
 
-const ButtonInner = styled(Box)(
+const ButtonInner = styled(Box)<any>(
   S(false).common,
   ({
     variantColor = 'primary',

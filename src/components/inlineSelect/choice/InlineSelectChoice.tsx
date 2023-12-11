@@ -36,6 +36,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           <Tag.Label>{children}</Tag.Label>
         </Tag>
       ) : (
+        // @ts-ignore
         <Box
           as="button"
           type="button"

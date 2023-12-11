@@ -1,12 +1,14 @@
+import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
 import { TabList as BaseTabList } from 'reakit/Tab'
-import { AnimatePresence } from 'framer-motion'
 import { FlexboxProps } from 'styled-system'
+
 import { Box } from '../../box'
 import { useTabs } from '../Tabs.context'
 
 export interface TabsButtonListProps extends FlexboxProps {
   readonly ariaLabel: string
+  readonly children: React.ReactNode
 }
 
 const TabsButtonList: React.FC<TabsButtonListProps> = ({
@@ -16,6 +18,7 @@ const TabsButtonList: React.FC<TabsButtonListProps> = ({
 }) => {
   const { tabs } = useTabs()
   return (
+    // @ts-ignore
     <AnimatePresence>
       <BaseTabList
         aria-label={ariaLabel}

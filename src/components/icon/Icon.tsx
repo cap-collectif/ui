@@ -10,7 +10,8 @@ import { CapUIIcon, CapUIIconSize } from './enums'
 export interface IconProps extends Omit<BoxPropsOf<'svg'>, 'size' | 'ref'> {
   name: CapUIIcon
   size?: CapUIIconSize
-  ref?: React.ForwardedRef<HTMLOrSVGElement>
+  // TODO better type
+  ref?: any
 }
 
 const getSize = (size: IconProps['size'] = CapUIIconSize.Md): number => {

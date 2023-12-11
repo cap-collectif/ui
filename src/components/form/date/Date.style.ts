@@ -1,13 +1,15 @@
-import { CapInputSize } from '../enums';
-import { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
-import { CapUILineHeight } from '../../../styles';
+import { css } from 'styled-components'
 
+import { CapUILineHeight } from '../../../styles'
+import { CapInputSize } from '../enums'
+
+// TODO wait for https://github.com/styled-components/styled-components/pull/4126 to be merged
 type VariantDateType = {
-  [key in CapInputSize]: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  [key in CapInputSize]: any //FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 
 export const variantDate: VariantDateType = {
-  [CapInputSize.Sm]: css`
+  [CapInputSize.Sm]: css<any>`
     .DateInput:first-child {
       padding-left: ${props => props.theme.sizes['3']};
       padding-right: ${props => props.theme.sizes['3']};
@@ -31,11 +33,11 @@ export const variantDate: VariantDateType = {
 }
 
 export type DateBoxProps = {
-  variant: CapInputSize;
+  variant: CapInputSize
   isInvalid: boolean
 }
 
-export const commonStyle = css`
+export const commonStyle = css<any>`
   .CalendarDay {
     &:hover div {
       background-color: ${props => props.theme.colors.blue['200']};
