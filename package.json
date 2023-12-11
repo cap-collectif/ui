@@ -18,7 +18,7 @@
     "build": "tsdx build",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint src",
+    "lint": "eslint src --ext .ts --ext .tsx",
     "prepare": "run-s husky:install build",
     "size-limit:build": "yarn install --ignore-scripts && yarn run build",
     "size": "size-limit",
@@ -75,7 +75,6 @@
     "@types/styled-system__theme-get": "^5.0.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
-    "eslint-plugin-prettier": "^4.0.0",
     "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -103,7 +102,8 @@
   },
   "resolutions": {
     "**/@typescript-eslint/eslint-plugin": "^4.1.1",
-    "**/@typescript-eslint/parser": "^4.1.1"
+    "**/@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.2.8"
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
