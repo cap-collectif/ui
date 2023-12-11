@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --transpileOnly",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
     "lint": "eslint src --ext .ts --ext .tsx",
