@@ -48,7 +48,7 @@ const DateRange: FC<DateRangeProps> = ({
   onChange,
   startDateId = 'cap-dateRange-startDate',
   endDateId = 'cap-dateRange-endDate',
-  displayFormat= 'DD/MM/YYYY',
+  displayFormat = 'DD/MM/YYYY',
   className,
   keepOpenOnDateSelect = true,
   isOutsideRange,
@@ -73,7 +73,7 @@ const DateRange: FC<DateRangeProps> = ({
   return (
     <DateRangeBox
       className={cn('cap-date-range', className)}
-      isInvalid={inputProps['aria-invalid']}
+      isInvalid={!!inputProps['aria-invalid']}
       variant={inputProps.variantSize}
     >
       <DateRangePicker

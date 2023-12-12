@@ -5,7 +5,7 @@ export const styles = (isLoading: boolean, verticalAlign: VerticalAlign) => ({
     border: 'none',
   },
 
-  ':hover': isLoading
+  '&:hover': isLoading
     ? {}
     : {
         bg: 'gray.100',

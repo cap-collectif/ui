@@ -11,14 +11,14 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "scripts": {
     "dev": "tsdx watch",
     "build": "tsdx build",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint src",
+    "lint": "eslint src --ext .ts --ext .tsx",
     "prepare": "run-s husky:install build",
     "size-limit:build": "yarn install --ignore-scripts && yarn run build",
     "size": "size-limit",
@@ -33,7 +33,7 @@
     "framer-motion": ">=4.0.0",
     "moment": "^2.29.1",
     "react": ">=16",
-    "styled-components": "^5.0.0"
+    "styled-components": "^6.1.1"
   },
   "name": "@cap-collectif/ui",
   "author": "Cap Collectif <tech@cap-collectif.com>",
@@ -41,11 +41,11 @@
   "size-limit": [
     {
       "path": "dist/ui.cjs.production.min.js",
-      "limit": "350 KB"
+      "limit": "400 KB"
     },
     {
       "path": "dist/ui.esm.js",
-      "limit": "350 KB"
+      "limit": "400 KB"
     }
   ],
   "devDependencies": {
@@ -69,14 +69,12 @@
     "@types/react-dom": "^17.0.7",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-infinite-scroller": "^1.2.2",
-    "@types/styled-components": "^5.1.10",
     "@types/styled-system": "^5.1.11",
     "@types/styled-system__css": "^5.0.15",
     "@types/styled-system__should-forward-prop": "^5.1.2",
     "@types/styled-system__theme-get": "^5.0.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
-    "eslint-plugin-prettier": "^4.0.0",
     "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -89,7 +87,7 @@
     "size-limit": "^4.12.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
-    "typescript": "4.2.4"
+    "typescript": "4.9.4"
   },
   "lint-staged": {
     "*.md": [
@@ -104,7 +102,8 @@
   },
   "resolutions": {
     "**/@typescript-eslint/eslint-plugin": "^4.1.1",
-    "**/@typescript-eslint/parser": "^4.1.1"
+    "**/@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.2.8"
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
@@ -121,7 +120,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-select": "^5.2.1",
     "react-with-direction": "^1.3.1",
-    "reakit": "^1.3.10",
-    "styled-components": "^5.3.3"
+    "reakit": "1.3.10",
+    "styled-components": "^6.1.1"
   }
 }

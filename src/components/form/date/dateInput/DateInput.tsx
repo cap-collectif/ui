@@ -54,7 +54,7 @@ const DateInput: FC<DateInputProps> = ({
   return (
     <DateInputBox
       className={cn('cap-date-input', className)}
-      isInvalid={inputProps['aria-invalid']}
+      isInvalid={!!inputProps['aria-invalid']}
       variant={inputProps.variantSize}
     >
       <SingleDatePicker

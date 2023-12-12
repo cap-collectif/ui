@@ -1,9 +1,11 @@
-import { CapInputSize } from '../enums';
-import { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
-import { CapUILineHeight } from '../../../styles';
+import { css } from 'styled-components'
 
+import { CapUILineHeight } from '../../../styles'
+import { CapInputSize } from '../enums'
+
+// TODO wait for https://github.com/styled-components/styled-components/pull/4126 to be merged
 type VariantDateType = {
-  [key in CapInputSize]: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  [key in CapInputSize]: any //FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 
 export const variantDate: VariantDateType = {
@@ -31,7 +33,7 @@ export const variantDate: VariantDateType = {
 }
 
 export type DateBoxProps = {
-  variant: CapInputSize;
+  variant: CapInputSize
   isInvalid: boolean
 }
 

@@ -1,4 +1,7 @@
-import { keyframes, Keyframes } from 'styled-components'
+import { keyframes } from 'styled-components'
+
+// TODO : Wait for https://github.com/styled-components/styled-components/issues/4062 to be closed
+type Keyframes = any
 
 export const blink: Keyframes = keyframes`
   from {

@@ -43,27 +43,20 @@ const SIZE = {
   },
 }
 
-const ButtonInner = styled(Box)(
-  S(false).common,
-  ({
-    variantColor = 'primary',
-    alternative,
-    colors,
-  }: {
-    variantColor: ButtonProps['variantColor']
-    alternative: boolean
-    colors: Colors
-  }) => {
-    return variantStyled({
-      variants: {
-        primary: S(false, colors)[variantColor].primary,
-        secondary: S(false, colors)[variantColor].secondary,
-        tertiary: S(alternative, colors)[variantColor].tertiary,
-        link: S(false, colors)[variantColor].link,
-      },
-    })
-  },
-)
+const ButtonInner = styled(Box)<{
+  variantColor: ButtonProps['variantColor']
+  alternative: boolean
+  colors: Colors
+}>(S(false).common, ({ variantColor = 'primary', alternative, colors }) => {
+  return variantStyled({
+    variants: {
+      primary: S(false, colors)[variantColor].primary,
+      secondary: S(false, colors)[variantColor].secondary,
+      tertiary: S(alternative, colors)[variantColor].tertiary,
+      link: S(false, colors)[variantColor].link,
+    },
+  })
+})
 
 const Button: React.FC<ButtonProps> = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,

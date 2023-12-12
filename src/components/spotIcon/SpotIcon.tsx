@@ -51,7 +51,7 @@ const IconInner = styled(Box).attrs<
 )
 
 const SpotIcon: React.FC<SpotIconProps> = React.forwardRef<
-  HTMLOrSVGElement,
+  SVGSVGElement,
   SpotIconProps
 >(({ name, size = CapUISpotIconSize.Md, className, ...props }, ref) => {
   const SpotIconSvg = SpotIcons[name]

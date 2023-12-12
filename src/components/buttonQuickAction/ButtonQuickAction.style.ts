@@ -4,7 +4,7 @@ const styles = (variantColor: BaseColorsName) => ({
   outline: 'none',
   backgroundColor: 'transparent',
 
-  ':hover': {
+  '&:hover': {
     backgroundColor: colors[variantColor]['150'],
 
     '.cap-icon': {

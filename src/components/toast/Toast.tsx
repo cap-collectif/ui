@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import styled, { Keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { variant as styledVariant } from 'styled-system'
 
 import useTimeout from '../../hooks/useTimeout'
@@ -39,7 +39,7 @@ export interface ToastProps {
 }
 
 type StyledProps = {
-  readonly animation: Keyframes
+  readonly animation: string
 }
 
 const MIN_TIMEOUT = 1500

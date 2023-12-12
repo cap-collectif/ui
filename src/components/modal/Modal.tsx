@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
 import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog'
-import styled, { StyledComponent } from 'styled-components'
+import styled, { IStyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
@@ -47,8 +47,8 @@ type ModalInnerShape = FlexProps &
 
 const TRANSITION_DURATION = 0.35
 
-const Overlay = styled(motion(Flex)).attrs(
-  ({ isSidePanel }: { isSidePanel?: boolean }) => ({
+const Overlay = styled(motion(Flex)).attrs<{ isSidePanel?: boolean }>(
+  ({ isSidePanel }) => ({
     position: 'fixed',
     left: 0,
     right: 0,
@@ -57,9 +57,9 @@ const Overlay = styled(motion(Flex)).attrs(
     flexDirection: 'column',
     alignItems: isSidePanel ? 'end' : 'center',
   }),
-)`` as StyledComponent<any, any>
+)`` as IStyledComponent<any, any>
 
-const ModalInner = styled(motion(Flex)).attrs(
+const ModalInner = styled(motion(Flex)).attrs<any>(
   ({ fullSizeOnMobile, isMobile, ...rest }: ModalInnerShape) =>
     isMobile && {
       position: 'absolute',
@@ -113,7 +113,7 @@ const ModalInner = styled(motion(Flex)).attrs(
       },
     },
   }),
-) as StyledComponent<any, any>
+) as IStyledComponent<any, any>
 
 export const Modal: React.FC<ModalProps> & SubComponents = ({
   children,

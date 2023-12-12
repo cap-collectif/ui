@@ -1,9 +1,10 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
-import DragnDrop, { DragnDropProps } from './DragnDrop'
-import { ListCard } from '../ListCard'
 import { DropResult } from 'react-beautiful-dnd'
+
+import { ListCard } from '../ListCard'
 import { Tag } from '../tag'
+import DragnDrop, { DragnDropProps } from './DragnDrop'
 
 const meta: Meta<DragnDropProps> = {
   title: 'Library/DragnDrop',
@@ -74,6 +75,7 @@ export const Default: Story<DragnDropProps> = () => {
 }
 
 export const withTags: Story<DragnDropProps> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [vals, setVals] = React.useState(initial)
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) {

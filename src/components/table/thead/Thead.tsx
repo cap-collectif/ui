@@ -10,6 +10,7 @@ export interface TheadProps extends BoxPropsOf<'thead'> {
 }
 
 const Thead: React.FC<TheadProps> = ({ children, ...rest }: TheadProps) => (
+  // @ts-ignore TODO see why Box cannot be typed as thead element
   <Box
     as="thead"
     bg="gray.100"

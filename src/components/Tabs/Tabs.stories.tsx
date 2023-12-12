@@ -1,13 +1,14 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
-import { Tabs, TabsProps } from './'
-import { Flex } from '../layout'
-import FormLabel from '../form/formLabel/FormLabel'
-import TextArea from '../form/textArea/TextArea'
-import { CapInputSize, FormControl, RadioGroup } from '../form'
+
 import { Box } from '../box/Box'
+import { CapInputSize, FormControl, RadioGroup } from '../form'
+import FormLabel from '../form/formLabel/FormLabel'
 import Input from '../form/input/Input'
 import Radio from '../form/radio/Radio'
+import TextArea from '../form/textArea/TextArea'
+import { Flex } from '../layout'
+import { Tabs, TabsProps } from './'
 
 const meta: Meta<TabsProps> = {
   title: 'Library/Tabs',
@@ -121,6 +122,7 @@ export const Default: Story<TabsProps> = args => {
 }
 
 export const withDisabledTab: Story<TabsProps> = args => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [value, setValue] = React.useState('')
 
   return (
