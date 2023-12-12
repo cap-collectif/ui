@@ -47,8 +47,8 @@ type ModalInnerShape = FlexProps &
 
 const TRANSITION_DURATION = 0.35
 
-const Overlay = styled(motion(Flex)).attrs<any>(
-  ({ isSidePanel }: { isSidePanel?: boolean }) => ({
+const Overlay = styled(motion(Flex)).attrs<{ isSidePanel?: boolean }>(
+  ({ isSidePanel }) => ({
     position: 'fixed',
     left: 0,
     right: 0,

@@ -51,7 +51,7 @@ const ToastInner = styled(motion(Box)).attrs({
   borderRadius: 'toast',
   bg: 'white',
 })<StyledProps>`
-  animation: ${(props: any) => props.animation} 0.23s forwards ease-in-out;
+  animation: ${props => props.animation} 0.23s forwards ease-in-out;
   pointer-events: all;
   position: relative;
 

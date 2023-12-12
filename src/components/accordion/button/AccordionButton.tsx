@@ -86,9 +86,9 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       {typeof children === 'string' ? (
         <Text
           color={variants[color].color}
-          // @ts-ignore
-          fontSize={3}
-          {...(size === CapUIAccordionSize.Sm ? {} : headingStyles.h4)}
+          {...(size === CapUIAccordionSize.Sm
+            ? { fontSize: 3 }
+            : headingStyles.h4)}
           fontWeight={variants[color].fontWeight}
         >
           {children}

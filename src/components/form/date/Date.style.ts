@@ -9,7 +9,7 @@ type VariantDateType = {
 }
 
 export const variantDate: VariantDateType = {
-  [CapInputSize.Sm]: css<any>`
+  [CapInputSize.Sm]: css`
     .DateInput:first-child {
       padding-left: ${props => props.theme.sizes['3']};
       padding-right: ${props => props.theme.sizes['3']};
@@ -37,7 +37,7 @@ export type DateBoxProps = {
   isInvalid: boolean
 }
 
-export const commonStyle = css<any>`
+export const commonStyle = css`
   .CalendarDay {
     &:hover div {
       background-color: ${props => props.theme.colors.blue['200']};

@@ -18,7 +18,6 @@ const TabsButtonList: React.FC<TabsButtonListProps> = ({
 }) => {
   const { tabs } = useTabs()
   return (
-    // @ts-ignore
     <AnimatePresence>
       <BaseTabList
         aria-label={ariaLabel}

@@ -36,7 +36,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           <Tag.Label>{children}</Tag.Label>
         </Tag>
       ) : (
-        // @ts-ignore
+        // @ts-ignore See why type="button" causes error
         <Box
           as="button"
           type="button"

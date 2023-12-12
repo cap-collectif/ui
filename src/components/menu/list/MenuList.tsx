@@ -11,7 +11,7 @@ import { useMenu } from '../Menu.context'
 export interface MenuListProps
   extends Omit<FlexProps, keyof Omit<MenuOptions, 'as'>> {}
 
-const MenuItems = styled(motion(Flex)).attrs<any>(props => ({
+const MenuItems = styled(motion(Flex)).attrs<FlexProps>(props => ({
   direction: 'column',
   minWidth: '200px',
   maxWidth: '300px',
