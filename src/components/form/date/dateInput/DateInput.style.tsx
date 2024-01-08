@@ -117,7 +117,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     display: block;
   }
   .SingleDatePicker_picker {
-    z-index: 1;
+    z-index: 10;
     background-color: #fff;
     position: absolute;
   }

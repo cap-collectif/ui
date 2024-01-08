@@ -18,6 +18,7 @@ export type ButtonQuickActionProps<
     readonly variantColor: BaseColorsName
     readonly icon: CapUIIcon
     readonly label: TooltipProps['label']
+    readonly tooltipZIndex?: number
   }>
 >
 
@@ -42,12 +43,13 @@ export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forward
       size = CapUIIconSize.Md,
       className,
       as = 'button',
+      tooltipZIndex,
       ...rest
     },
     ref,
   ) => {
     return (
-      <Tooltip label={label}>
+      <Tooltip label={label} zIndex={tooltipZIndex}>
         <Box
           as={as}
           bg="transparent"
