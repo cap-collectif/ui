@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.8.6
+
+`2024-01-08`
+
+- 🐛 Fix zIndex issues - Fix icon format [#399](https://github.com/cap-collectif/ui/pull/399)
+- 🛠 Upgrade dependencies - `styled-components` [#398](https://github.com/cap-collectif/ui/pull/398)
+
 ## 1.8.5
 
 `2023-12-01`
