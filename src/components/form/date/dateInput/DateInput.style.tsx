@@ -15,7 +15,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     line-height: 24px;
 
     &:focus-within {
-      border-color: ${props => props.theme.colors.blue['500']};
+      border-color: ${props => props.theme.colors.primary['500']};
     }
 
     &__disabled {

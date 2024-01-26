@@ -5,7 +5,7 @@ import { ResponsiveValue } from 'styled-system'
 import { ThemeColorsValues } from '../../styles/modules/colors'
 import { ease } from '../../utils/motion'
 import { Box } from '../box'
-import { Flex } from '../layout'
+import { Flex, FlexProps } from '../layout'
 
 const ItemFillProgressBar = motion(Box)
 
@@ -19,24 +19,26 @@ export interface ProgressBarProps {
   color?: ResponsiveValue<ThemeColorsValues> | string
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+const ProgressBar: React.FC<ProgressBarProps & FlexProps> = ({
   totalSteps,
   currentStep,
   color,
+  ...rest
 }) => {
   const steps = React.useMemo(() => Array.from(Array(totalSteps).keys()), [
     totalSteps,
   ])
+
   return (
-    <Flex direction="row" spacing={1} width="100%">
+    <Flex direction="row" spacing={1} width="100%" {...rest}>
       {steps.map(step => (
-        <Box key={`item-${step}`} bg="blue.200" height={1} flex={1}>
+        <Box key={`item-${step}`} bg="primary.200" height={1} flex={1}>
           <AnimatePresence initial={step === currentStep}>
             {step <= currentStep && (
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
-                bg={color ? color : 'primary'}
+                bg={color ? color : 'primary.500'}
                 initial="empty"
                 animate="fill"
                 variants={variants}

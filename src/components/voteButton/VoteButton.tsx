@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { useTheme } from '../../hooks'
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { ButtonProps } from '../button'
@@ -20,13 +21,15 @@ const VoteButton: React.FC<VoteButtonProps> = React.forwardRef<
     { threshold, as = 'button', children, disabled, active = false, ...rest },
     ref,
   ) => {
+    const { colors } = useTheme()
+
     if (!!threshold && (threshold < 0 || threshold > 100)) {
       console.error('threshold must be between 0 and a 100')
     }
     return (
       <Box
         ref={ref}
-        sx={styles(active)}
+        sx={styles(active, colors)}
         as="button"
         type="button"
         display="inline-flex"

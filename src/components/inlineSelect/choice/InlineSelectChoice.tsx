@@ -32,7 +32,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
       {...rest}
     >
       {selected ? (
-        <Tag variantColor="blue">
+        <Tag variantColor="primary">
           <Tag.Label>{children}</Tag.Label>
         </Tag>
       ) : (
@@ -49,8 +49,8 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           fontFamily={CapUIFontFamily.Input}
           fontSize={2}
           lineHeight={CapUILineHeight.Sm}
-          _hover={{ bg: 'blue.150' }}
-          _focus={{ bg: 'blue.150' }}
+          _hover={{ bg: 'primary.150' }}
+          _focus={{ bg: 'primary.150' }}
           style={{ transition: 'background-color 0.1s ease' }}
         >
           {children}

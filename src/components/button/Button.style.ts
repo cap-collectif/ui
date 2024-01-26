@@ -7,7 +7,7 @@ const styles = (alternative?: boolean, colors?: Colors) => ({
   },
   primary: {
     primary: {
-      bg: 'primary',
+      bg: 'primary.500',
       color: 'primaryLabel',
 
       '&:focus': {
@@ -25,9 +25,9 @@ const styles = (alternative?: boolean, colors?: Colors) => ({
     },
     secondary: {
       bg: 'white',
-      color: 'primary',
+      color: 'primary.500',
       border: 'button',
-      borderColor: 'primary',
+      borderColor: 'primary.500',
 
       '&:focus': {
         boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
@@ -44,7 +44,7 @@ const styles = (alternative?: boolean, colors?: Colors) => ({
     },
     tertiary: {
       bg: 'transparent',
-      color: 'primary',
+      color: 'primary.500',
       p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
@@ -63,7 +63,7 @@ const styles = (alternative?: boolean, colors?: Colors) => ({
     },
     link: {
       textDecoration: 'underline',
-      color: 'primary',
+      color: 'primary.500',
       fontWeight: CapUIFontWeight.Normal,
       p: 0,
 

@@ -111,7 +111,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
               ? 'gray.300'
               : invalid
               ? 'red.500'
-              : 'primary',
+              : 'primary.500',
           },
           '&:focus-within': { bg: disabled ? 'gray.100' : 'white' },
         }}

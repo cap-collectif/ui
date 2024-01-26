@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
+import { CapUIIcon } from '../icon'
 import { Flex } from '../layout'
 import RankButton from '../rankButton/RankButton'
 import { Heading, Text } from '../typography'
@@ -28,7 +29,14 @@ export const Default: Story<ProposalProps> = args => {
     <Proposal {...args}>
       <Proposal.Content>
         <Proposal.Content.Header>
-          <Proposal.Content.Header.Author author="Auteur" />
+          <Flex alignItems="center">
+            <Proposal.Content.Header.Author author="Auteur" />
+            <Proposal.Content.Header.Author
+              author="Ecologie"
+              ml={4}
+              icon={CapUIIcon.Ecology}
+            />
+          </Flex>
           <Heading
             as="h4"
             fontSize="16px"

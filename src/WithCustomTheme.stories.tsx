@@ -4,20 +4,29 @@ import * as React from 'react'
 import {
   Accordion,
   AvatarGroup,
+  Box,
   Button,
   CapUIAccordionColor,
+  CapUIFontWeight,
   CapUIProvider,
+  CapUISpotIcon,
+  CapUISpotIconSize,
   Checkbox,
   ColorPicker,
   Flex,
+  Heading,
   Input,
   Radio,
   Search,
+  SpotIcon,
   Switch,
+  Text,
   Uploader,
+  VoteButton,
+  VoteInfo,
 } from './'
 import Avatar from './components/avatar/Avatar'
-import { capuiTheme } from './styles/theme'
+import { capuiTheme, generateShades } from './styles/theme'
 
 const meta: Meta<Props> = {
   title: 'WithCustomTheme',
@@ -46,7 +55,7 @@ export const Default: Story<Props> = ({
     ...capuiTheme,
     colors: {
       ...capuiTheme.colors,
-      primary,
+      primary: generateShades(primary),
       primaryLabel,
       primaryHover,
       primaryLabelHover,
@@ -98,13 +107,14 @@ export const Default: Story<Props> = ({
           {/** @ts-expect-error Example only */}
           <ColorPicker />
         </Flex>
-        <Flex mt={4}>
+        <Flex mt={4} alignItems="center">
           <Accordion color={CapUIAccordionColor.Gray}>
             <Accordion.Item id="volet-1">
               <Accordion.Button>Volet 1</Accordion.Button>
               <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
             </Accordion.Item>
           </Accordion>
+          <SpotIcon name={CapUISpotIcon.CALENDAR} size={CapUISpotIconSize.Lg} />
         </Flex>
         <Flex mt={4}>
           <Uploader
@@ -115,6 +125,27 @@ export const Default: Story<Props> = ({
             }}
             onDrop={() => {}}
           />
+        </Flex>
+        <Flex alignItems="center">
+          <VoteInfo mt={4} mr={4}>
+            <VoteInfo.Header infoLabel="Label d'info">
+              <VoteInfo.Header.Label>À propos du vote</VoteInfo.Header.Label>
+              <Heading>Votes minimum</Heading>
+            </VoteInfo.Header>
+            <VoteInfo.ProgressBar totalSteps={3} currentStep={1} />
+            <VoteInfo.Body>
+              <Text>
+                Votez pour 3 propositions pour valider votre participation.
+              </Text>
+            </VoteInfo.Body>
+          </VoteInfo>
+          <Box>
+            <VoteButton active>
+              <Flex direction="column" align="flex-start">
+                <Text fontWeight={CapUIFontWeight.Semibold}>101 Votes</Text>
+              </Flex>
+            </VoteButton>
+          </Box>
         </Flex>
       </CapUIProvider>
     </>

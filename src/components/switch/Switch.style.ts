@@ -27,7 +27,7 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-switch__input:checked + & ': {
-    bg: 'primary',
+    bg: 'primary.500',
   },
 
   '.cap-switch__input:focus + &': {

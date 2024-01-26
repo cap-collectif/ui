@@ -110,7 +110,7 @@ export const Avatar = ({
 
   return (
     <AvatarInner
-      bg="primary"
+      bg="primary.500"
       color="aqua.100"
       className={cn('cap-avatar', className)}
       title={shouldDisplayName ? alt : name}

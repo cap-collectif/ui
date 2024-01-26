@@ -7,7 +7,7 @@ export interface VoteInfoBodyProps extends FlexProps {
   readonly children: React.ReactNode
 }
 
-const VoteInfoBody: React.FC<VoteInfoBodyProps>  = ({
+const VoteInfoBody: React.FC<VoteInfoBodyProps> = ({
   className,
   children,
   ...rest

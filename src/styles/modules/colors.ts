@@ -9,13 +9,13 @@ export type BaseColorsName =
   | 'green'
   | 'blue'
   | 'aqua'
+  | 'primary'
 
 type RootThemeColorsValues =
   | 'transparent'
   | 'current'
   | 'black'
   | 'white'
-  | 'primary'
   | 'primaryLabel'
   | 'primaryHover'
   | 'primaryLabelHover'
@@ -38,11 +38,23 @@ const colors: Colors = {
   black: '#000',
   white: '#fff',
 
-  primary: '#1A88FF',
+  // For now we keep those as simple values
   primaryLabel: '#FAFCFF',
   primaryHover: '#0051A8',
   primaryLabelHover: '#FAFCFF',
 
+  primary: {
+    '100': '#FAFCFF',
+    '150': '#E0EFFF',
+    '200': '#C2DFFF',
+    '300': '#8AC2FF',
+    '400': '#52A5FF',
+    '500': '#1A88FF',
+    '600': '#006CE0',
+    '700': '#0051A8',
+    '800': '#003670',
+    '900': '#001B38',
+  },
   gray: {
     '100': '#F7F7F8',
     '150': '#E8EBED',
@@ -244,6 +256,16 @@ type NestedThemeColorsValues =
   | 'aqua.700'
   | 'aqua.800'
   | 'aqua.900'
+  | 'primary.100'
+  | 'primary.150'
+  | 'primary.200'
+  | 'primary.300'
+  | 'primary.400'
+  | 'primary.500'
+  | 'primary.600'
+  | 'primary.700'
+  | 'primary.800'
+  | 'primary.900'
 
 export type ThemeColorsValues =
   | NestedThemeColorsValues

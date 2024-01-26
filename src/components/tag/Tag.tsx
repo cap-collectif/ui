@@ -9,6 +9,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
+import { useTheme } from '../../hooks'
 import { CapUIFontFamily } from '../../styles'
 import { BaseColorsName } from '../../styles/modules/colors'
 import { SPACING } from '../../styles/theme'
@@ -80,11 +81,11 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
-
+  const { colors } = useTheme()
   return (
     <TagInner
       sx={{
-        ...getTagStyle(variantColor),
+        ...getTagStyle(colors, variantColor),
         ...sx,
       }}
       title={jsxInnerText(children)}

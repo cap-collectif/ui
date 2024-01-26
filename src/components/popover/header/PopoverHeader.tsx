@@ -28,7 +28,7 @@ const PopoverHeader = ({
       {...props}
     >
       {typeof children === 'string' ? (
-        <Text fontWeight="semibold" color="blue.900">
+        <Text fontWeight="semibold" color="primary.900">
           {children}
         </Text>
       ) : (

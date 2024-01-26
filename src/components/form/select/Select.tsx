@@ -58,7 +58,7 @@ export function Control<
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={2} color="primary" />}
+      {isLoading && <Spinner mr={2} color="primary.500" />}
       {!isLoading && (
         <Icon
           mr={3}
