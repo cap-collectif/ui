@@ -209,7 +209,7 @@ export const generateShades = (hexColor: string) => ({
   '400': tint(0.25, hexColor),
   '500': hexColor,
   '600': tint(-0.25, hexColor),
-  '700': tint(-0.9, hexColor),
+  '700': tint(-0.49, hexColor),
   '800': tint(-0.73, hexColor),
   '900': tint(-0.98, hexColor),
 })
