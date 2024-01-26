@@ -155,5 +155,7 @@ export const tint = (
     // If no Alpha, we remove the last 2 hex digits
     .slice(0, hasAlpha ? undefined : -2)}`
 
+  if (color.length === 1) return '#000000'
+
   return color.length === 7 ? color : `${color.slice(0, 1)}0${color.slice(1)}`
 }
