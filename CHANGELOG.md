@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.9.0
+
+`2024-01-08`
+
+- 💄 Set `Tr` verticalAlign to middle [#403](https://github.com/cap-collectif/ui/pull/403)
+- 💥 Primary color with tints [#402](https://github.com/cap-collectif/ui/pull/402)
+
 ## 1.8.6
 
 `2024-01-08`
