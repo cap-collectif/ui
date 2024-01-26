@@ -179,7 +179,7 @@ const Uploader: React.FC<UploaderProps> = ({
                   textAlign="center"
                   fontSize={3}
                   lineHeight="base"
-                  color="primary.500"
+                  color="gray.500"
                 >
                   {wording.uploaderPrompt}
                 </Text>
