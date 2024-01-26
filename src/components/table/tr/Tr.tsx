@@ -27,7 +27,7 @@ export const Tr: React.FC<TrProps> = React.forwardRef<
       children,
       inHead = false,
       checkboxLabel,
-      verticalAlign = 'top',
+      verticalAlign = 'middle',
       className,
       ...rest
     },
