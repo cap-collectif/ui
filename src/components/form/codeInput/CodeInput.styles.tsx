@@ -37,7 +37,7 @@ const styles = (isVerified?: boolean): SystemStyleObject => ({
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'blue.500',
+    borderColor: 'primary.500',
   },
 
   '&[aria-invalid="true"]': {

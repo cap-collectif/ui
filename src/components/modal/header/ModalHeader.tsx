@@ -58,7 +58,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
         sx={{
           'h1, h2, h3, h4, h5, h6': {
             ...headingStyles.h4,
-            color: 'blue.900',
+            color: 'primary.900',
             fontWeight: CapUIFontWeight.Semibold,
             fontFamily: CapUIFontFamily.Body,
           },

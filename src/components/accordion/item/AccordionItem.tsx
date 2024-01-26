@@ -30,24 +30,27 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     [isOpen, id, updateAccordions],
   )
 
-  const variants: Record<CapUIAccordionColor, { bg: string, bgOpen: string, border: string, pbOpen: number }> = {
+  const variants: Record<
+    CapUIAccordionColor,
+    { bg: string; bgOpen: string; border: string; pbOpen: number }
+  > = {
     white: {
       bg: 'white',
       bgOpen: 'white',
       border: 'none',
-      pbOpen: 6
+      pbOpen: 6,
     },
     gray: {
       bg: 'gray.100',
-      bgOpen: 'blue.100',
+      bgOpen: 'primary.100',
       border: 'normal',
-      pbOpen: 6
+      pbOpen: 6,
     },
     transparent: {
       bg: 'transparent',
       bgOpen: 'transparent',
       border: 'none',
-      pbOpen: 4
+      pbOpen: 4,
     },
   }
 
@@ -59,7 +62,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         className={cn('cap-accordion__item', className)}
         borderRadius="accordion"
         border={variants[color].border}
-        borderColor={isOpen ? 'blue.500' : 'gray.200'}
+        borderColor={isOpen ? 'primary.500' : 'gray.200'}
         _hover={{
           borderColor: 'gray.300',
         }}

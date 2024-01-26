@@ -28,6 +28,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
       align="center"
       justify="space-between"
       borderBottom="normal"
+      position="relative"
       boxShadow={'none'}
       borderColor={'transparent'}
       className={cn('cap-vote_info_header', className)}
@@ -43,7 +44,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
         sx={{
           'h1, h2, h3, h4, h5, h6': {
             ...headingStyles.h4,
-            color: 'blue.900',
+            color: 'primary.900',
             fontWeight: CapUIFontWeight.Semibold,
             fontFamily: CapUIFontFamily.Body,
           },
@@ -53,11 +54,16 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
       </Flex>
       {!!infoLabel && (
         <Tooltip label={infoLabel}>
-          <Box aria-label={infoLabel}>
+          <Box
+            aria-label={infoLabel}
+            position="absolute"
+            top="-4px"
+            right="-4px"
+          >
             <Icon
               name={CapUIIcon.Info}
               size={CapUIIconSize.Sm}
-              color="primary"
+              color="primary.500"
             />
           </Box>
         </Tooltip>

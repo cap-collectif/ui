@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { CapUILineHeight } from '../../../../styles'
 import { Box } from '../../../box'
-import { commonStyle, DateBoxProps, variantDate } from '../Date.style';
+import { commonStyle, DateBoxProps, variantDate } from '../Date.style'
 
 export const DateRangeBox = styled(Box)<DateBoxProps>`
   .PresetDateRangePicker_panel {
@@ -870,7 +870,7 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     color: ${props => props.theme.colors.gray['900']};
 
     &:focus-within {
-      border-color: ${props => props.theme.colors.blue['500']};
+      border-color: ${props => props.theme.colors.primary['500']};
     }
 
     &__disabled {
@@ -933,7 +933,7 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
   .DateInput_input__disabled {
     color: ${props => props.theme.colors.gray['500']};
   }
-  
+
   ${props => variantDate[props.variant]}
   ${commonStyle}
 `

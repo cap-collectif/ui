@@ -7,6 +7,7 @@ import {
   useDropzone,
 } from 'react-dropzone'
 
+import { useTheme } from '../../../hooks'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -84,6 +85,8 @@ const Uploader: React.FC<UploaderProps> = ({
   onRemove,
   ...props
 }) => {
+  const { colors } = useTheme()
+
   const [thumb, setThumb] = React.useState<string | null>(
     !multiple && value && !Array.isArray(value) ? value.url : null,
   )
@@ -157,7 +160,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 textAlign="center"
                 fontWeight="semibold"
                 fontSize={4}
-                color="blue.800"
+                color="primary.800"
               >
                 {wording.uploaderPrompt}
               </Text>
@@ -170,13 +173,13 @@ const Uploader: React.FC<UploaderProps> = ({
               </Flex>
             ) : (
               <>
-                <Illustration key={0} />
+                <Illustration key={0} colors={colors} />
                 <Text
                   key={1}
                   textAlign="center"
                   fontSize={3}
                   lineHeight="base"
-                  color="gray.500"
+                  color="primary.500"
                 >
                   {wording.uploaderPrompt}
                 </Text>
@@ -192,7 +195,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 textAlign="center"
                 fontWeight="semibold"
                 fontSize={4}
-                color="blue.800"
+                color="primary.800"
               >
                 {wording.uploaderPrompt}
               </Text>
@@ -227,7 +230,7 @@ const Uploader: React.FC<UploaderProps> = ({
               <Icon
                 name={isDragActive ? CapUIIcon.UploadArrow : CapUIIcon.Add}
                 size={CapUIIconSize.Lg}
-                color={isDragActive ? 'blue.500' : 'gray.500'}
+                color={isDragActive ? 'primary.500' : 'gray.500'}
               />
             )}
           </Content>
@@ -240,6 +243,7 @@ const Uploader: React.FC<UploaderProps> = ({
         drag={isDragActive}
         circle={circle}
         size={size}
+        colors={colors}
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
       >
         <input {...getInputProps()} />

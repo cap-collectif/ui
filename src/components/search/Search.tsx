@@ -46,7 +46,7 @@ const Control = <
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="primary" />}
+      {isLoading && <Spinner mr={1} color="primary.500" />}
       {!isLoading && inputValue && (
         <Icon
           mr={1}

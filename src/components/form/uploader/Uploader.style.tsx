@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 
-import colors from '../../../styles/modules/colors'
+import colors, { Colors } from '../../../styles/modules/colors'
 import { Flex } from '../../layout'
 
 export enum UPLOADER_SIZE {
@@ -14,6 +14,7 @@ export const Container = styled(Flex)<{
   readonly size: UPLOADER_SIZE
   readonly circle?: boolean
   readonly drag: boolean
+  readonly colors: Colors
 }>`
   height: 184px;
   width: ${props => {
@@ -30,25 +31,25 @@ export const Container = styled(Flex)<{
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  border: 1.5px dashed ${colors.gray[300]};
+  border: 1.5px dashed ${props => props.colors?.gray[300]};
   border-radius: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
   overflow: hidden;
   position: relative;
   &:focus {
-    background-color: ${colors.blue[100]};
-    border: 1.5px dashed ${colors.blue[300]};
-    box-shadow: 0 0 2px 2px ${colors.blue[300]};
+    background-color: ${props => props.colors?.primary[100]};
+    border: 1.5px dashed ${props => props.colors?.primary[300]};
+    box-shadow: 0 0 2px 2px ${props => props.colors?.primary[300]};
   }
   &:hover {
-    background-color: ${colors.blue[100]};
-    border: 1.5px dashed ${colors.blue[300]};
+    background-color: ${props => props.colors?.primary[100]};
+    border: 1.5px dashed ${props => props.colors?.primary[300]};
   }
 
   ${({ drag }) =>
     drag &&
-    `background-color: ${colors.blue[100]};
-    border: 1.5px dashed ${colors.blue[300]};
+    `background-color: ${props => props.colors?.primary[100]};
+    border: 1.5px dashed ${props => props.colors?.primary[300]};
   `}
 `
 export const Content = styled(Flex)`

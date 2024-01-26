@@ -1,14 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
-
-
-import { CapUIRadius } from '../../styles';
-import { SHADOWS } from '../../styles/theme';
+import { CapUIRadius } from '../../styles'
+import { SHADOWS } from '../../styles/theme'
 import { Flex, FlexProps } from '../layout'
-import { ProgressBar } from '../progressBar';
-import VoteInfoBody from './VoteInfo.body';
-import VoteInfoHeader from './VoteInfo.header';
-
+import { ProgressBar as DSProgressBar } from '../progressBar'
+import VoteInfoBody from './VoteInfo.body'
+import VoteInfoHeader from './VoteInfo.header'
 
 export interface VoteInfoProps extends FlexProps {}
 type SubComponents = {
@@ -16,17 +13,21 @@ type SubComponents = {
   Body: typeof VoteInfoBody
   ProgressBar: typeof ProgressBar
 }
-const VoteInfo: React.FC<VoteInfoProps> & SubComponents = ({ children }) => {
+
+const ProgressBar = props => <DSProgressBar mt={4} {...props} />
+
+const VoteInfo: React.FC<VoteInfoProps> & SubComponents = ({
+  children,
+  ...rest
+}) => {
   return (
     <Flex
       direction="column"
-      width="290px"
-      minHeight="150px"
       bg="white"
-      px={6}
-      py={4}
+      p={6}
       borderRadius={CapUIRadius.Card}
-      boxShadow={SHADOWS.big}
+      boxShadow={SHADOWS.small}
+      {...rest}
     >
       {children}
     </Flex>

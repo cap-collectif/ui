@@ -44,7 +44,7 @@ const styles: SystemStyleObject = {
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'primary',
+    borderColor: 'primary.500',
   },
 
   '&[aria-invalid="true"]': {
@@ -82,7 +82,7 @@ export const focusWithinStyles = (
   },
 
   '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'primary',
+    borderColor: isInvalid ? 'red.500' : 'primary.500',
     bg: 'white',
   },
 })
@@ -117,7 +117,7 @@ export function reactSelectStyle<
       borderColor: isInvalid
         ? colors.red['500']
         : isFocused
-        ? colors.primary
+        ? colors.primary['500']
         : colors.gray['300'],
       '&:hover': {
         borderColor: isInvalid ? colors.red['500'] : '',

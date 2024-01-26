@@ -1,6 +1,7 @@
 import merge from 'deepmerge'
 import type { DefaultTheme } from 'styled-components'
 
+import { tint } from '../../utils/color'
 import colors from '../modules/colors'
 import { pxToRem } from '../modules/mixins'
 import typography, {
@@ -199,3 +200,16 @@ export const capuiTheme: DefaultTheme = {
 export const extendTheme = <T extends Record<any, any>>(
   extendedTheme: T & Partial<Record<keyof CapUITheme, unknown>>,
 ): CapUITheme & T => merge.all([capuiTheme, extendedTheme]) as CapUITheme & T
+
+export const generateShades = (hexColor: string) => ({
+  '100': tint(0.98, hexColor),
+  '150': tint(0.87, hexColor),
+  '200': tint(0.73, hexColor),
+  '300': tint(0.49, hexColor),
+  '400': tint(0.25, hexColor),
+  '500': hexColor,
+  '600': tint(-0.2, hexColor),
+  '700': tint(-0.4, hexColor),
+  '800': tint(-0.6, hexColor),
+  '900': tint(-0.8, hexColor),
+})
