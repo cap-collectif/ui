@@ -43,7 +43,7 @@ const RankButton: React.FC<RankButtonProps> = ({
     >
       <Box
         as="button"
-        color={disabled ? 'neutral-gray.300' : 'primary.800'}
+        color={disabled ? 'neutral-gray.300' : 'primary.500'}
         sx={style(disabled)}
         onClick={onLeftIconClick}
         disabled={disabled}
@@ -59,7 +59,7 @@ const RankButton: React.FC<RankButtonProps> = ({
       </Tag.Label>
       <Box
         as="button"
-        color={disabled ? 'neutral-gray.300' : 'primary.800'}
+        color={disabled ? 'neutral-gray.300' : 'primary.500'}
         sx={style(disabled)}
         onClick={onRightIconClick}
         disabled={disabled}
