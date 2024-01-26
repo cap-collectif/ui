@@ -71,6 +71,14 @@ const SpotIcon: React.FC<SpotIconProps> = React.forwardRef<
         'path[fill="primary.200"]': { fill: 'primary.200' },
         'path[stroke="primary.150"]': { stroke: 'primary.150' },
         'path[fill="primary.150"]': { fill: 'primary.150' },
+        'rect[stroke="primary.900"]': { stroke: 'primary.900' },
+        'rect[fill="primary.900"]': { fill: 'primary.900' },
+        'rect[stroke="primary.800"]': { stroke: 'primary.800' },
+        'rect[fill="primary.800"]': { fill: 'primary.800' },
+        'rect[stroke="primary.200"]': { stroke: 'primary.200' },
+        'rect[fill="primary.200"]': { fill: 'primary.200' },
+        'rect[stroke="primary.150"]': { stroke: 'primary.150' },
+        'rect[fill="primary.150"]': { fill: 'primary.150' },
       }}
       {...props}
     />
