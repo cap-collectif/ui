@@ -40,7 +40,6 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
       <Flex
         direction="column"
         flex={1}
-        spacing={2}
         sx={{
           'h1, h2, h3, h4, h5, h6': {
             ...headingStyles.h4,
