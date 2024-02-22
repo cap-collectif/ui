@@ -168,8 +168,8 @@ export enum CapUIIcon {
   Sport = 'SPORT',
   PinFull = 'PIN_FULL',
   Heart = 'HEART',
-  Budget = 'Budget',
-  Trophy = 'Trophy',
+  Budget = 'BUDGET',
+  Trophy = 'TROPHY',
 }
 
 export enum CapUIIconSize {
