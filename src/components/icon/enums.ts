@@ -167,6 +167,9 @@ export enum CapUIIcon {
   TagO = 'TAG_O',
   Sport = 'SPORT',
   PinFull = 'PIN_FULL',
+  Heart = 'HEART',
+  Budget = 'BUDGET',
+  Trophy = 'TROPHY',
 }
 
 export enum CapUIIconSize {
