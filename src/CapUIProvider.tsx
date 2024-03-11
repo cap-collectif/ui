@@ -8,6 +8,7 @@ import { CapUITheme, capuiTheme } from './styles/theme'
 interface Props {
   readonly resetCSS?: boolean
   readonly theme?: CapUITheme
+  readonly children?: React.ReactNode
 }
 
 export const CapUIProvider: FC<Props> = ({
