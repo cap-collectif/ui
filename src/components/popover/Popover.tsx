@@ -6,6 +6,7 @@ import {
   MotionProps,
 } from 'framer-motion'
 import * as React from 'react'
+import { DialogOptions } from 'reakit'
 import {
   usePopoverState,
   Popover as ReakitPopover,
@@ -21,13 +22,6 @@ import { PopoverContext } from './Popover.context'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
 import PopoverHeader from './header/PopoverHeader'
-import { DialogOptions } from 'reakit'
-
-type RenderChildren = ({
-  closePopover,
-}: {
-  closePopover: () => void
-}) => React.ReactNode
 
 type SubComponents = {
   Header: typeof PopoverHeader
@@ -41,7 +35,7 @@ export interface PopoverProps
   extends FlexProps,
     Partial<Pick<PopoverState, 'placement'>> {
   disclosure: React.FunctionComponentElement<any>
-  children: React.ReactNode | RenderChildren
+  children: React.ReactNode
   baseId?: string
   options?: PopoverInitialState
   popoverProps?: Omit<DialogOptions, 'baseId'>
