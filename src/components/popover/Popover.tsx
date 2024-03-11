@@ -149,7 +149,8 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
             >
               <Arrow {...popover} />
               {typeof children === 'function'
-                ? children({ closePopover: popover.hide })
+                ? // @ts-ignore
+                  children({ closePopover: popover.hide })
                 : children}
             </ContainerAnimate>
           )}
