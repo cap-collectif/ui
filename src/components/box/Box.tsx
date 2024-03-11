@@ -400,12 +400,12 @@ Box.displayName = 'Box'
 
 export type PolymorphicBox = <E extends ElementType = typeof defaultElement>(
   props: PolymorphicBoxProps<E>,
-) => React.ReactNode
+) => JSX.Element
 
 export type PolymorphicComponent<P> = <
   E extends ElementType = typeof defaultElement
 >(
   props: PolymorphicComponentProps<E, P>,
-) => React.ReactNode
+) => JSX.Element
 
 export default Box as PolymorphicBox
