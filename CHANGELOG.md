@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.9.2
+
+`2024-03-12`
+
+- 🐛 Fix `reakit` types [#408](https://github.com/cap-collectif/ui/pull/408)
+
 ## 1.9.1
 
 `2024-02-22`
