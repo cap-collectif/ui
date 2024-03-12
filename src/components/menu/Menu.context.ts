@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { MenuStateReturn } from 'reakit/src/Menu/MenuState'
+import { MenuStateReturn } from 'reakit'
 
 export type MenuValue = {
   value: string
