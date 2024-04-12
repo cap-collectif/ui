@@ -68,7 +68,7 @@ export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
             <Text
               width="100%"
               textAlign="end"
-              color="gray.500"
+              color="gray.600"
               fontSize={1}
               mt={1}
               lineHeight={CapUILineHeight.Sm}

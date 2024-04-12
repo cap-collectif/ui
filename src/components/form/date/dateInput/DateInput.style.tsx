@@ -185,7 +185,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     width: 90px;
 
     &::placeholder {
-      color: ${props => props.theme.colors.gray['500']};
+      color: ${props => props.theme.colors.gray['600']};
       font-family: ${props => props.theme.fonts.input};
       line-height: ${CapUILineHeight.Base};
     }
@@ -197,7 +197,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   }
 
   .DateInput_input__disabled {
-    color: ${props => props.theme.colors.gray['500']};
+    color: ${props => props.theme.colors.gray['600']};
   }
 
   .CalendarDay {
@@ -720,7 +720,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
     width: 90px;
 
     &::placeholder {
-      color: ${props => props.theme.colors.gray['500']};
+      color: ${props => props.theme.colors.gray['600']};
       font-family: ${props => props.theme.fonts.input};
       line-height: ${CapUILineHeight.Base};
     }
@@ -732,7 +732,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   }
 
   .DateInput_input__disabled {
-    color: ${props => props.theme.colors.gray['500']};
+    color: ${props => props.theme.colors.gray['600']};
   }
 
   ${props => variantDate[props.variant]}
