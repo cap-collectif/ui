@@ -58,7 +58,7 @@ const styles: SystemStyleObject = {
   '&:disabled': {
     bg: 'gray.100',
     borderColor: 'gray.200',
-    color: 'gray.600',
+    color: 'gray.500',
   },
 }
 
@@ -72,7 +72,7 @@ export const focusWithinStyles = (
 
   fontFamily: CapUIFontFamily.Input,
   lineHeight: CapUILineHeight.Base,
-  color: isDisabled ? 'gray.600' : 'gray.900',
+  color: isDisabled ? 'gray.500' : 'gray.900',
   bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
 
   '& > input::placeholder': {
@@ -102,7 +102,7 @@ export function reactSelectStyle<
     ? {
         background: colors.gray['100'],
         borderColor: colors.gray['200'],
-        color: colors.gray['600'],
+        color: colors.gray['500'],
       }
     : {}
   return {

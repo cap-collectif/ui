@@ -197,7 +197,7 @@ export const DateInputBox = styled(Box)<DateBoxProps>`
   }
 
   .DateInput_input__disabled {
-    color: ${props => props.theme.colors.gray['600']};
+    color: ${props => props.theme.colors.gray['500']};
   }
 
   .CalendarDay {
