@@ -15,7 +15,7 @@ const ModalHeaderLabel: React.FC<ModalHeaderLabelProps> = ({
   <Text
     {...headingStyles.h5}
     uppercase
-    color="gray.500"
+    color="gray.600"
     className={cn('cap-modal__header--label')}
     fontWeight={CapUIFontWeight.Bold}
     {...rest}
