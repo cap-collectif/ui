@@ -32,6 +32,7 @@ export enum CapUISpotIcon {
   VIGNETTE = 'VIGNETTE',
   CARTE = 'CARTE',
   TABLEAU = 'TABLEAU',
+  SHEET_FULL = 'SHEET_FULL',
 }
 
 export enum CapUISpotIconSize {
