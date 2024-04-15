@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.9.3
+
+`2024-04-15`
+
+- 💄 Update constrast for accessibility [#410](https://github.com/cap-collectif/ui/pull/410)
+- 🆕 Add new SpotIcon [#410](https://github.com/cap-collectif/ui/pull/410)
+
 ## 1.9.2
 
 `2024-03-12`
