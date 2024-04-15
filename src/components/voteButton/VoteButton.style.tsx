@@ -8,7 +8,7 @@ export const styles = (
   colors?: Colors,
 ): SystemStyleObject => ({
   bg: 'transparent',
-  color: 'primary.500',
+  color: 'primary.600',
   boxSizing: 'border-box',
   borderWidth: '1px',
   borderStyle: 'solid',
@@ -23,19 +23,19 @@ export const styles = (
   ...(active && {
     bg: 'primary.150',
     '.thumb-up-o_svg__fillMeUp': {
-      fill: `${colors?.primary['500']} !important`,
+      fill: `${colors?.primary['600']} !important`,
     },
   }),
 
   '&:hover': {
     bg: 'white',
-    borderColor: 'primary.500',
+    borderColor: 'primary.600',
   },
 
   '&:disabled': {
     bg: 'transparent',
     cursor: 'not-allowed',
-    color: 'neutral-gray.500',
+    color: 'neutral-gray.600',
     '&:hover': {
       borderColor: 'transparent',
     },

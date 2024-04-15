@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { TextProps, Text } from '../../typography'
+
 import { CapUIFontWeight, CapUILineHeight } from '../../../styles'
+import { TextProps, Text } from '../../typography'
 
 export interface ListCardItemTypeProps extends TextProps {}
 
@@ -9,7 +10,7 @@ const ListCardItemType: React.FC<ListCardItemTypeProps> = ({
   ...rest
 }) => (
   <Text
-    color="gray.500"
+    color="gray.600"
     fontSize={1}
     fontWeight={CapUIFontWeight.Normal}
     lineHeight={CapUILineHeight.Sm}

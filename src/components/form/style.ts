@@ -38,7 +38,7 @@ const styles: SystemStyleObject = {
   '&[type=number]': { paddingRight: 32 },
 
   '&::placeholder': {
-    color: 'gray.500',
+    color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
     lineHeight: CapUILineHeight.Base,
   },
@@ -76,7 +76,7 @@ export const focusWithinStyles = (
   bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
 
   '& > input::placeholder': {
-    color: 'gray.500',
+    color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
     lineHeight: CapUILineHeight.Base,
   },
@@ -139,7 +139,7 @@ export function reactSelectStyle<
       ...base,
       margin: 0,
       whiteSpace: 'nowrap',
-      color: colors.gray['500'],
+      color: colors.gray['600'],
       fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.base,
     }),
