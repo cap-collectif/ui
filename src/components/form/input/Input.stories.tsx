@@ -79,6 +79,7 @@ export const WithFixedWidthAndLabel: Story<Args> = ({
       placeholder={placeholder}
       id="name"
       variantSize={variantSize}
+      type="date"
     />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>

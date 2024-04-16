@@ -4,11 +4,20 @@ import * as React from 'react'
 import { CapInputSize } from '../../enums'
 import { FormControl } from '../../formControl'
 import FormErrorMessage from '../../formErrorMessage/FormErrorMessage'
-import DateInput, { DateInputProps, DateInputValueType } from './DateInput'
+import { InputProps } from '../../input'
+import DateInput from './DateInput'
 
 const moment = require('moment')
 require('moment/dist/locale/fr')
 moment.locale('fr')
+
+type Args = {
+  errorMessage: string
+  placeholder: string
+  isInvalid: boolean
+  isRequired: boolean
+  variantSize: CapInputSize
+}
 
 const meta: Meta = {
   title: 'Library/Form/DateInput',
@@ -34,29 +43,21 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<DateInputProps> = args => {
-  const [value, onChange] = React.useState<DateInputValueType>(null)
-  return <DateInput {...args} value={value} onChange={onChange} />
+export const Default: Story<InputProps> = args => {
+  return <DateInput {...args} />
 }
 
-export const Disabled: Story<DateInputProps> = args => {
-  const [value, onChange] = React.useState<DateInputValueType>(null)
-  return <DateInput {...args} value={value} onChange={onChange} />
+export const Disabled: Story<InputProps> = args => {
+  return <DateInput {...args} />
 }
 Disabled.args = {
   isDisabled: true,
 }
 
-export const WithError: Story<DateInputProps> = ({
-  errorMessage,
-  onChange: storybookOnChange,
-  value: storybookValue,
-  ...args
-}) => {
-  const [value, onChange] = React.useState<DateInputValueType>(null)
+export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args}>
-      <DateInput {...args} value={value} onChange={onChange} />
+      <DateInput {...args} />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
