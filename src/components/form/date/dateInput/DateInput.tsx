@@ -4,7 +4,7 @@ import React from 'react'
 import { Input } from '../../input'
 import { InputProps } from '../../input/Input'
 
-export interface InputPropsRef extends InputProps {}
+export type InputPropsRef = InputProps
 
 const DateInput: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
