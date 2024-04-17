@@ -20,13 +20,13 @@ const styles = (
     ...((withGuideline && !withLabel) || (!withGuideline && withLabel)
       ? {
           '& > :nth-child(2)': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
             },
           },
           '& > :not(:first-child):not(:last-child):not(:nth-child(2))': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderLeftWidth: 0,
               borderRightWidth: 0,
               borderTopLeftRadius: 0,
@@ -36,7 +36,7 @@ const styles = (
             },
           },
           '& > :last-child': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
             },
@@ -45,13 +45,13 @@ const styles = (
       : withGuideline && withLabel
       ? {
           '& > :nth-child(3)': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
             },
           },
           '& > :not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-child(3))': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderLeftWidth: 0,
               borderRightWidth: 0,
               borderTopLeftRadius: 0,
@@ -61,7 +61,7 @@ const styles = (
             },
           },
           '& > :last-child': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
             },
@@ -69,13 +69,13 @@ const styles = (
         }
       : {
           '& > :first-child': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
             },
           },
           '& > :not(:first-child):not(:last-child)': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderLeftWidth: 0,
               borderRightWidth: 0,
               borderTopLeftRadius: 0,
@@ -85,7 +85,7 @@ const styles = (
             },
           },
           '& > :last-child': {
-            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .SingleDatePickerInput, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
+            '.cap-input, .cap-input-number, .cap-select__control, .DateRangePickerInput, .cap-date-input, &.cap-button, .cap-hour-input > div, .cap-color-picker_container': {
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
             },

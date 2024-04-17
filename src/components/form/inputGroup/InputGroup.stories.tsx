@@ -136,7 +136,7 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput value={dateExample} />
+          <DateInput defaultValue={dateExample} />
         </FormControl>
         <FormControl {...args}>
           <Input placeholder="Placeholder..." />
@@ -145,7 +145,7 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput value={dateExample} />
+          <DateInput defaultValue={dateExample} />
         </FormControl>
         <FormControl {...args}>
           <HourInput />

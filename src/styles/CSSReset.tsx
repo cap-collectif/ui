@@ -151,6 +151,10 @@ export const CSSReset = createGlobalStyle`
         -moz-appearance: textfield;
       }
 
+      input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+        line-height: 1;
+      }
+
       [type="search"] {
         -webkit-appearance: textfield;
         outline-offset: -2px;

@@ -36,6 +36,9 @@ const styles: SystemStyleObject = {
   bg: 'white',
 
   '&[type=number]': { paddingRight: 32 },
+  '&[type=date]': {
+    color: 'gray.900',
+  },
 
   '&::placeholder': {
     color: 'gray.600',
