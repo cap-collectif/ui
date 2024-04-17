@@ -1,2 +1,2 @@
 export { default as DateInput } from './DateInput'
-export type { InputPropsRef } from './DateInput'
+export type { DateInputProps } from './DateInput'

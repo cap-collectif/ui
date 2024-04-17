@@ -4,11 +4,11 @@ import React from 'react'
 import { Input } from '../../input'
 import { InputProps } from '../../input/Input'
 
-export type InputPropsRef = InputProps
+export type DateInputProps = InputProps
 
 const DateInput: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
-  InputPropsRef
+  DateInputProps
 >(({ id = 'cap-date-input-id', className, ...props }, ref) => {
   return (
     <Input
