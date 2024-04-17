@@ -4,12 +4,7 @@ import * as React from 'react'
 import Button from '../../button/Button'
 import { Flex } from '../../layout'
 import { ColorPicker } from '../colorPicker'
-import {
-  DateInput,
-  DateInputValueType,
-  DateRange,
-  DateRangeValueType,
-} from '../date'
+import { DateInput, DateRange, DateRangeValueType } from '../date'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
@@ -51,7 +46,8 @@ export const Default: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const [dateExample, setDateExample] = React.useState<DateInputValueType>(null)
+  const dateExample = ''
+
   const [colorPickerValue, setColorPickerValue] = React.useState<string | null>(
     null,
   )
@@ -140,12 +136,7 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput
-            value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
-          />
+          <DateInput value={dateExample} />
         </FormControl>
         <FormControl {...args}>
           <Input placeholder="Placeholder..." />
@@ -154,12 +145,7 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput
-            value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
-          />
+          <DateInput value={dateExample} />
         </FormControl>
         <FormControl {...args}>
           <HourInput />
@@ -189,7 +175,7 @@ export const WithError: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const [dateExample, setDateExample] = React.useState<DateInputValueType>(null)
+  const dateExample = ''
 
   return (
     <Flex direction="column" width="700px" spacing={3}>
@@ -279,12 +265,7 @@ export const WithError: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl isInvalid {...args}>
-          <DateInput
-            value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
-          />
+          <DateInput value={dateExample} />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
         <FormControl isInvalid {...args}>
