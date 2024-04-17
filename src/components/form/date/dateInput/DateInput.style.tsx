@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { CapUILineHeight } from '../../../../styles'
 import { Box } from '../../../box'
 import { commonStyle, DateBoxProps, variantDate } from '../Date.style'
 
