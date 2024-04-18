@@ -47,7 +47,7 @@ export const Default: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const dateExample = ''
+  const [dateExample, setDateExample] = React.useState('')
 
   const [colorPickerValue, setColorPickerValue] = React.useState<string | null>(
     null,
@@ -137,7 +137,13 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput defaultValue={dateExample} variantSize={CapInputSize.Sm} />
+          <DateInput
+            value={dateExample}
+            variantSize={CapInputSize.Sm}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
+          />
         </FormControl>
         <FormControl {...args}>
           <Input placeholder="Placeholder..." variantSize={CapInputSize.Sm} />
@@ -146,7 +152,13 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput defaultValue={dateExample} variantSize={CapInputSize.Md} />
+          <DateInput
+            value={dateExample}
+            variantSize={CapInputSize.Md}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
+          />
         </FormControl>
         <FormControl {...args}>
           <HourInput variantSize={CapInputSize.Md} />
@@ -176,7 +188,7 @@ export const WithError: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const dateExample = ''
+  const [dateExample, setDateExample] = React.useState('')
 
   return (
     <Flex direction="column" width="700px" spacing={3}>
@@ -266,7 +278,12 @@ export const WithError: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl isInvalid {...args}>
-          <DateInput value={dateExample} />
+          <DateInput
+            value={dateExample}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
+          />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
         <FormControl isInvalid {...args}>
