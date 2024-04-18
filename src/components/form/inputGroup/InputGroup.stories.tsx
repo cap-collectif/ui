@@ -5,6 +5,7 @@ import Button from '../../button/Button'
 import { Flex } from '../../layout'
 import { ColorPicker } from '../colorPicker'
 import { DateInput, DateRange, DateRangeValueType } from '../date'
+import { CapInputSize } from '../enums'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
@@ -136,19 +137,19 @@ export const Default: Story<InputGroupProps> = args => {
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput defaultValue={dateExample} />
+          <DateInput defaultValue={dateExample} variantSize={CapInputSize.Sm} />
         </FormControl>
         <FormControl {...args}>
-          <Input placeholder="Placeholder..." />
+          <Input placeholder="Placeholder..." variantSize={CapInputSize.Sm} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
         <FormLabel label="Label" />
         <FormControl {...args}>
-          <DateInput defaultValue={dateExample} />
+          <DateInput defaultValue={dateExample} variantSize={CapInputSize.Md} />
         </FormControl>
         <FormControl {...args}>
-          <HourInput />
+          <HourInput variantSize={CapInputSize.Md} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
