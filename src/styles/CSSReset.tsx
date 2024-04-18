@@ -154,6 +154,11 @@ export const CSSReset = createGlobalStyle`
       input[type="date"]::-webkit-datetime-edit-fields-wrapper {
         line-height: 1;
       }
+      
+      input::-webkit-datetime-edit {
+        display: block;
+        padding: 0;
+      }
 
       [type="search"] {
         -webkit-appearance: textfield;
