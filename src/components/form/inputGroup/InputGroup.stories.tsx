@@ -4,12 +4,8 @@ import * as React from 'react'
 import Button from '../../button/Button'
 import { Flex } from '../../layout'
 import { ColorPicker } from '../colorPicker'
-import {
-  DateInput,
-  DateInputValueType,
-  DateRange,
-  DateRangeValueType,
-} from '../date'
+import { DateInput, DateRange, DateRangeValueType } from '../date'
+import { CapInputSize } from '../enums'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
@@ -51,7 +47,8 @@ export const Default: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const [dateExample, setDateExample] = React.useState<DateInputValueType>(null)
+  const [dateExample, setDateExample] = React.useState('')
+
   const [colorPickerValue, setColorPickerValue] = React.useState<string | null>(
     null,
   )
@@ -142,13 +139,14 @@ export const Default: Story<InputGroupProps> = args => {
         <FormControl {...args}>
           <DateInput
             value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
+            variantSize={CapInputSize.Sm}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
           />
         </FormControl>
         <FormControl {...args}>
-          <Input placeholder="Placeholder..." />
+          <Input placeholder="Placeholder..." variantSize={CapInputSize.Sm} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
@@ -156,13 +154,14 @@ export const Default: Story<InputGroupProps> = args => {
         <FormControl {...args}>
           <DateInput
             value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
+            variantSize={CapInputSize.Md}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
           />
         </FormControl>
         <FormControl {...args}>
-          <HourInput />
+          <HourInput variantSize={CapInputSize.Md} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
@@ -189,7 +188,7 @@ export const WithError: Story<InputGroupProps> = args => {
     endDate: null,
   })
 
-  const [dateExample, setDateExample] = React.useState<DateInputValueType>(null)
+  const [dateExample, setDateExample] = React.useState('')
 
   return (
     <Flex direction="column" width="700px" spacing={3}>
@@ -281,9 +280,9 @@ export const WithError: Story<InputGroupProps> = args => {
         <FormControl isInvalid {...args}>
           <DateInput
             value={dateExample}
-            onChange={date => {
-              setDateExample(date)
-            }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
           />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
