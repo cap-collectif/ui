@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.0
+
+`2024-04-18`
+
+- 💥 Replace custom datePicker input with html native input[type="date"] [#414](https://github.com/cap-collectif/ui/pull/414)
+- 🐛 Fix an svg element color on SHEET_FULL SpotIcon [#413](https://github.com/cap-collectif/ui/pull/413)
+
 ## 1.9.3
 
 `2024-04-15`
