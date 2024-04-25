@@ -32,25 +32,49 @@ const CodeInput: React.FC<CodeInputProps> = ({
   const inputs = React.useRef<HTMLInputElement[]>([])
   const inputProps = useFormControl<HTMLInputElement>(props)
 
+  const ANY_DIGIT_REGEX = /^[0-9]*$/
+
   const processInput = (
     e: React.ChangeEvent<HTMLInputElement>,
     slot: number,
   ) => {
     const num = e.target.value
-    if (/[^0-9]/.test(num)) return
+    if (!ANY_DIGIT_REGEX.test(num)) return
     const newCode = [...code]
     newCode[slot] = num
     setCode(newCode)
+
     if (slot !== length - 1) {
       inputs.current[slot + 1].focus()
     }
     if (newCode.every(num => num !== '')) {
       onComplete(newCode.join(''))
     }
+    // prevent several digits from being entered in the last slot
+    if (slot === length - 1 && num) {
+      inputs.current[slot].blur()
+    }
   }
 
-  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>, slot: number) => {
-    if (e.code === 'Backspace' && !code[slot] && slot !== 0) {
+  const onKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    slot: number,
+  ) => {
+    // handle backspace
+    if (e.key === 'Backspace' && !code[slot]) {
+      e.preventDefault()
+      return handleBackspace(slot)
+    }
+    // handle non-digit key pressed
+    if (!ANY_DIGIT_REGEX.test(e.key)) {
+      e.preventDefault()
+      return
+    }
+  }
+
+  // goes back to the previous value and removes it + focuses on it to fill it again
+  const handleBackspace = (slot: number) => {
+    if (slot !== 0) {
       const newCode = [...code]
       newCode[slot - 1] = ''
       setCode(newCode)
@@ -60,31 +84,29 @@ const CodeInput: React.FC<CodeInputProps> = ({
 
   return (
     <Flex className={cn('cap-code-input', className)} direction="row" id={id}>
-      {code.map((num, idx) => {
-        return (
-          <Box
-            {...inputProps}
-            sx={S(isVerified)}
-            disableFocusStyles
-            as="input"
-            key={idx}
-            type="number"
-            placeholder="-"
-            inputMode="numeric"
-            maxLength={1}
-            value={num}
-            autoFocus={!code[0].length && idx === 0}
-            readOnly={inputProps.disabled}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              processInput(e, idx)
-            }
-            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
-              onKeyUp(e, idx)
-            }
-            ref={(ref: HTMLInputElement) => inputs.current.push(ref)}
-          />
-        )
-      })}
+      {code.map((num, idx) => (
+        <Box
+          {...inputProps}
+          sx={S(isVerified)}
+          disableFocusStyles
+          as="input"
+          key={idx}
+          type="number"
+          placeholder="-"
+          inputMode="numeric"
+          maxLength={1}
+          value={num}
+          autoFocus={!value && idx === 0}
+          readOnly={inputProps.disabled}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            processInput(e, idx)
+          }}
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+            onKeyDown(e, idx)
+          }
+          ref={(ref: HTMLInputElement) => inputs.current.push(ref)}
+        />
+      ))}
     </Flex>
   )
 }
