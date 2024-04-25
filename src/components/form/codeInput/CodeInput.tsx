@@ -94,6 +94,7 @@ const CodeInput: React.FC<CodeInputProps> = ({
           type="number"
           placeholder="-"
           inputMode="numeric"
+          autoComplete="one-time-code"
           maxLength={1}
           value={num}
           autoFocus={!value && idx === 0}
