@@ -8,7 +8,7 @@ const styles = (isVerified?: boolean): SystemStyleObject => ({
   borderColor: isVerified ? 'green.500' : 'gray.300',
   height: 10,
   maxWidth: 9,
-  marginX: 1,
+  marginX: 0.5,
   marginY: 0,
   textAlign: 'center',
   py: 3,
@@ -28,6 +28,10 @@ const styles = (isVerified?: boolean): SystemStyleObject => ({
   '&:last-child': {
     marginRight: 0,
     width: 'calc(100% / 6 + 4px)',
+  },
+
+  '&:nth-of-type(3)': {
+    marginRight: 5,
   },
 
   '&::placeholder': {
