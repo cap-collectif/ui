@@ -157,5 +157,7 @@ export const tint = (
 
   if (color.length === 1) return '#000000'
 
-  return color.length === 7 ? color : `${color.slice(0, 1)}0${color.slice(1)}`
+  return color.length === 7
+    ? color
+    : `${color.slice(0, 1)}${color.length === 6 ? '0' : '00'}${color.slice(1)}`
 }
