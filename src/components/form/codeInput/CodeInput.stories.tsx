@@ -175,12 +175,11 @@ export const CodeInputFromLib: Story<Args> = ({
   errorMessage,
   value,
   onComplete,
-  isVerified,
   length,
   ...args
 }) => {
   return (
-    <Flex width="280px">
+    <Flex>
       <FormControl {...args}>
         <FormLabel htmlFor="Code_Input" label="Label">
           {!args.isRequired && (
@@ -189,19 +188,17 @@ export const CodeInputFromLib: Story<Args> = ({
             </Box>
           )}
         </FormLabel>
-        <CodeInputLib {...args} />
-        {/* <CodeInputMy
-          onComplete={onComplete}
-          isVerified={isVerified}
-          length={6}
-        /> */}
+        <CodeInputLib {...args} maxLength={6} />
       </FormControl>
     </Flex>
   )
 }
 CodeInputFromLib.args = {
-  isVerified: false,
+  isVerified: true,
   isRequired: false,
+  isDisabled: false,
+  isInvalid: false,
+  onComplete: () => console.log('Code complete!'),
   value: '123456',
 }
 
@@ -247,7 +244,6 @@ export const WithinModal: Story<Args> = ({
               }}
             />
             <CodeInputLib />
-            {/* <CodeInput onComplete={onComplete} /> */}
           </Text>
         </Flex>
       </MultiStepModal.Body>

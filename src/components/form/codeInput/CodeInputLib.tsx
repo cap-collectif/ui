@@ -3,7 +3,7 @@ import React from 'react'
 
 import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
-import S from './CodeInputLib.styles'
+import { useFormControl } from '../formControl'
 
 type OTPInputExtendedProps = OTPInputProps & {
   readonly isDisabled?: boolean
@@ -16,33 +16,69 @@ type OTPInputExtendedProps = OTPInputProps & {
   readonly id?: string
 }
 
+const boxWidth = 9
+const boxHeight = 10
+
 const CodeInputLib: React.FC<OTPInputExtendedProps> = ({
   length = 6,
   className,
   onComplete,
-  isVerified,
+  isVerified = false,
+  isInvalid = false,
+  isDisabled = false,
   value,
   id = 'code__input',
   ...props
 }: OTPInputExtendedProps) => {
+  const [code, setCode] = React.useState(value)
+  const inputProps = useFormControl<HTMLInputElement>(props)
+
   return (
     <OTPInput
       maxLength={6}
       // containerClassName="group flex items-center has-[:disabled]:opacity-30"
       containerClassName="otp-input-wrapper"
+      // isVerified={isVerified}
+      onComplete={() => setCode(value)}
+      inputMode="numeric"
+      // disabled={isDisabled}
+      {...inputProps}
       render={({ slots }) => (
-        <Flex>
-          <Flex>
+        <Flex gap={4} width={boxWidth} height={boxHeight}>
+          <Flex gap={2}>
             {slots.slice(0, 3).map((slot, idx) => (
-              <Slot key={idx} {...slot} isVerified={isVerified || false} />
+              <Slot
+                key={idx}
+                {...slot}
+                isVerified={isVerified}
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+                hasFakeCaret={true}
+              />
             ))}
           </Flex>
 
-          <FakeDash />
+          {/* <Box color="gray.300" margin={'auto'}> */}
+          <Box
+            color="gray.300"
+            margin={'auto'}
+            height={0}
+            border={'0.5px solid'}
+            borderColor={'gray.500'}
+          >
+            &nbsp;&nbsp;
+          </Box>
 
-          <Flex>
+          <Flex gap={'10px'}>
             {slots.slice(3).map((slot, idx) => (
-              <Slot key={idx} {...slot} isVerified={isVerified || false} />
+              <Slot
+                key={idx}
+                {...slot}
+                isVerified={isVerified}
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+                hasFakeCaret={true}
+              />
             ))}
           </Flex>
         </Flex>
@@ -53,43 +89,58 @@ const CodeInputLib: React.FC<OTPInputExtendedProps> = ({
 
 type SlotExtendedProps = SlotProps & {
   isVerified: boolean
+  isInvalid: boolean
+  isDisabled: boolean
 }
 function Slot(props: SlotExtendedProps) {
+  const getSlotStyles = (
+    props: SlotExtendedProps,
+    element: 'border-color' | 'bg-color',
+  ) => {
+    switch (element) {
+      case 'border-color':
+        return props.isVerified
+          ? 'green.500'
+          : props.isInvalid
+          ? 'red.500'
+          : props.isActive
+          ? 'primary.500'
+          : props.isDisabled
+          ? 'gray.300'
+          : 'gray.200'
+
+      case 'bg-color':
+        return props.isVerified
+          ? 'green.150'
+          : props.isInvalid
+          ? 'red.150'
+          : props.isDisabled
+          ? 'gray.100'
+          : 'white'
+    }
+  }
+
   return (
     <Box
-      sx={S(props.isVerified)}
-      // className={cn(
-      //   'relative w-10 h-14 text-[2rem]',
-      //   'flex items-center justify-center',
-      //   'transition-all duration-300',
-      //   'border-border border-y border-r first:border-l first:rounded-l-md last:rounded-r-md',
-      //   'group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20',
-      //   'outline outline-0 outline-accent-foreground/20',
-      //   { 'outline-4 outline-accent-foreground': props.isActive },
-      // )}
+      border={'1px solid'}
+      borderColor={getSlotStyles(props, 'border-color')}
+      backgroundColor={getSlotStyles(props, 'bg-color')}
+      width={boxWidth}
+      height={boxHeight}
+      borderRadius={'normal'}
+      display={'flex'}
+      justifyContent={'center'}
+      alignItems={'center'}
+      style={{ caretColor: 'transparent' }}
     >
       {props.char !== null && <div>{props.char}</div>}
-      {props.hasFakeCaret && <FakeCaret />}
+      {props.hasFakeCaret && props.isActive && !props.char && <FakeCaret />}
     </Box>
   )
 }
 
-// You can emulate a fake textbox caret!
 function FakeCaret() {
-  return (
-    <div className="absolute pointer-events-none inset-0 flex items-center justify-center animate-caret-blink">
-      <div className="w-px h-8 bg-white" />
-    </div>
-  )
-}
-
-// Inspired by Stripe's MFA input.
-function FakeDash() {
-  return (
-    <div className="flex w-10 justify-center items-center">
-      <div className="w-3 h-1 rounded-full bg-border" />
-    </div>
-  )
+  return <Box color="gray.300">|</Box>
 }
 
 export default CodeInputLib
