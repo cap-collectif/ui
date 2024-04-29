@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.1
+
+`2024-04-29`
+
+- 🐛 Fix Shade Generation [#416](https://github.com/cap-collectif/ui/pull/416)
+
 ## 1.10.0
 
 `2024-04-18`
