@@ -11,8 +11,7 @@ import { Heading, Text } from '../../typography'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormLabel } from '../formLabel'
-import CodeInput, { CodeInputProps } from './CodeInput'
-import CodeInputLib from './CodeInputLib'
+import CodeInputLib, { OTPInputExtendedProps } from './CodeInputLib'
 
 type Args = {
   errorMessage: string
@@ -28,7 +27,7 @@ type Args = {
 
 const meta: Meta = {
   title: 'Library/Form/CodeInput',
-  component: CodeInput,
+  component: CodeInputLib,
   args: { isVerified: false, length: 6 },
   parameters: {
     controls: { expanded: true },
@@ -36,7 +35,9 @@ const meta: Meta = {
 }
 
 export default meta
-export const Default: Story<CodeInputProps> = args => <CodeInput {...args} />
+export const Default: Story<OTPInputExtendedProps> = args => (
+  <CodeInputLib {...args} />
+)
 
 export const WithLabel: Story<Args> = ({
   errorMessage,
@@ -55,11 +56,11 @@ export const WithLabel: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        id="Code_Input"
-        length={length}
+      <CodeInputLib
         onComplete={onComplete}
         isVerified={isVerified}
+        maxLength={length}
+        {...args}
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -83,11 +84,11 @@ export const Disabled: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        id="Code_Input"
-        length={length}
+      <CodeInputLib
         onComplete={onComplete}
         isVerified={isVerified}
+        maxLength={length}
+        {...args}
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -113,11 +114,11 @@ export const WithError: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        id="Code_Input"
-        length={length}
+      <CodeInputLib
         onComplete={onComplete}
         isVerified={isVerified}
+        maxLength={length}
+        {...args}
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -146,13 +147,14 @@ export const Verified: Story<Args> = ({
             </Box>
           )}
         </FormLabel>
-        <CodeInput
-          id="Code_Input"
-          value={value}
-          length={length}
+
+        <CodeInputLib
           onComplete={onComplete}
           isVerified={isVerified}
+          maxLength={length}
+          {...args}
         />
+
         <Box
           color="green.500"
           fontFamily={CapUIFontFamily.Body}
@@ -171,45 +173,19 @@ Verified.args = {
   value: '123456',
 }
 
-export const CodeInputFromLib: Story<Args> = ({
-  errorMessage,
-  value,
-  onComplete,
-  length,
-  ...args
-}) => {
-  return (
-    <Flex>
-      <FormControl {...args}>
-        <FormLabel htmlFor="Code_Input" label="Label">
-          {!args.isRequired && (
-            <Box as="span" color="gray.500">
-              facultatif
-            </Box>
-          )}
-        </FormLabel>
-        <CodeInputLib {...args} maxLength={6} />
-      </FormControl>
-    </Flex>
-  )
-}
-CodeInputFromLib.args = {
-  isVerified: true,
-  isRequired: false,
-  isDisabled: false,
-  isInvalid: false,
-  onComplete: () => console.log('Code complete!'),
-  value: '123456',
-}
-
 export const WithinModal: Story<Args> = ({
   errorMessage,
-  value,
-  onComplete,
+  isInvalid,
+  isDisabled,
+  isRequired,
   isVerified,
   length,
   ...args
 }) => {
+  const [code, setCode] = React.useState('')
+  const inputRef = React.useRef(null)
+
+
   return (
     <>
       <MultiStepModal.Header>
@@ -243,7 +219,14 @@ export const WithinModal: Story<Args> = ({
                 phoneNumber: '06 06 06 06 06',
               }}
             />
-            <CodeInputLib />
+            <CodeInputLib
+              autoFocus
+              isInvalid={isInvalid}
+              maxLength={length}
+              {...args}
+              ref={inputRef}
+              onComplete={onComplete}
+            />
           </Text>
         </Flex>
       </MultiStepModal.Body>
@@ -258,7 +241,7 @@ export const WithinModal: Story<Args> = ({
         <Button
           variantSize="medium"
           variant="secondary"
-          disabled={false}
+          disabled={code !== args.value}
           onClick={e => {
             console.log('clickety click', e)
           }}
@@ -270,8 +253,6 @@ export const WithinModal: Story<Args> = ({
   )
 }
 WithinModal.args = {
-  isVerified: false,
-  isRequired: false,
   value: '123456',
 }
 
@@ -293,12 +274,11 @@ export const Mobile: Story<Args> = ({
             </Box>
           )}
         </FormLabel>
-        <CodeInput
-          id="Code_Input"
-          value={value}
-          length={length}
+        <CodeInputLib
           onComplete={onComplete}
           isVerified={isVerified}
+          maxLength={length}
+          {...args}
         />
         <FormErrorMessage>{errorMessage}</FormErrorMessage>
       </FormControl>

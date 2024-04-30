@@ -1,11 +1,11 @@
 import { OTPInput, OTPInputProps, SlotProps } from 'input-otp'
-import React from 'react'
+import React, { Ref } from 'react'
 
 import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
 import { useFormControl } from '../formControl'
 
-type OTPInputExtendedProps = OTPInputProps & {
+export type OTPInputExtendedProps = Omit<OTPInputProps, 'children'> & {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
@@ -14,9 +14,9 @@ type OTPInputExtendedProps = OTPInputProps & {
   readonly isVerified?: boolean
   readonly value?: string
   readonly id?: string
+  readonly ref?: Ref<HTMLInputElement | null>
 }
 
-const boxWidth = 9
 const boxHeight = 10
 
 const CodeInputLib: React.FC<OTPInputExtendedProps> = ({
@@ -24,59 +24,52 @@ const CodeInputLib: React.FC<OTPInputExtendedProps> = ({
   className,
   onComplete,
   isVerified = false,
-  isInvalid = false,
-  isDisabled = false,
   value,
-  id = 'code__input',
+  id = 'Code_Input',
+  ref,
   ...props
 }: OTPInputExtendedProps) => {
-  const [code, setCode] = React.useState(value)
+  const inputRef = React.useRef<HTMLInputElement | null>(null)
   const inputProps = useFormControl<HTMLInputElement>(props)
 
+  const handleOnComplete = () => {}
   return (
     <OTPInput
+      autoFocus
       maxLength={6}
-      // containerClassName="group flex items-center has-[:disabled]:opacity-30"
       containerClassName="otp-input-wrapper"
-      // isVerified={isVerified}
-      onComplete={() => setCode(value)}
+      onComplete={onComplete}
       inputMode="numeric"
-      // disabled={isDisabled}
       {...inputProps}
+      ref={inputRef}
       render={({ slots }) => (
-        <Flex gap={4} width={boxWidth} height={boxHeight}>
+        <Flex
+          gap={6}
+          width={'fit-content'}
+          height={boxHeight}
+          position={'relative'}
+        >
           <Flex gap={2}>
             {slots.slice(0, 3).map((slot, idx) => (
               <Slot
                 key={idx}
                 {...slot}
                 isVerified={isVerified}
-                isInvalid={isInvalid}
-                isDisabled={isDisabled}
+                isInvalid={inputProps['aria-invalid'] || false}
+                isDisabled={inputProps.disabled}
                 hasFakeCaret={true}
               />
             ))}
           </Flex>
 
-          {/* <Box color="gray.300" margin={'auto'}> */}
-          <Box
-            color="gray.300"
-            margin={'auto'}
-            height={0}
-            border={'0.5px solid'}
-            borderColor={'gray.500'}
-          >
-            &nbsp;&nbsp;
-          </Box>
-
-          <Flex gap={'10px'}>
+          <Flex gap={2}>
             {slots.slice(3).map((slot, idx) => (
               <Slot
                 key={idx}
                 {...slot}
                 isVerified={isVerified}
-                isInvalid={isInvalid}
-                isDisabled={isDisabled}
+                isInvalid={inputProps['aria-invalid'] || false}
+                isDisabled={inputProps.disabled}
                 hasFakeCaret={true}
               />
             ))}
@@ -125,7 +118,7 @@ function Slot(props: SlotExtendedProps) {
       border={'1px solid'}
       borderColor={getSlotStyles(props, 'border-color')}
       backgroundColor={getSlotStyles(props, 'bg-color')}
-      width={boxWidth}
+      width={9}
       height={boxHeight}
       borderRadius={'normal'}
       display={'flex'}
