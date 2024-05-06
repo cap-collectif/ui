@@ -1,12 +1,11 @@
-import cn from 'classnames'
-import * as React from 'react'
+import { OTPInput, OTPInputProps, SlotProps } from 'input-otp'
+import React, { Ref } from 'react'
 
-import { Box, BoxPropsOf } from '../../box'
-import { Flex } from '../../layout'
+import Box from '../../box/Box'
+import { Flex } from '../../layout/Flex'
 import { useFormControl } from '../formControl'
-import S from './CodeInput.styles'
 
-export interface CodeInputProps extends BoxPropsOf<'input'> {
+export type OTPInputExtendedProps = Omit<OTPInputProps, 'children'> & {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
@@ -15,101 +14,133 @@ export interface CodeInputProps extends BoxPropsOf<'input'> {
   readonly isVerified?: boolean
   readonly value?: string
   readonly id?: string
+  readonly ref?: Ref<HTMLInputElement | null>
 }
 
-const CodeInput: React.FC<CodeInputProps> = ({
-  length = 6,
-  className,
-  onComplete,
-  isVerified,
-  value,
-  id = 'code__input',
-  ...props
-}: CodeInputProps) => {
-  const [code, setCode] = React.useState(
-    value ? value.split('') : [...Array(length).fill('')],
-  )
-  const inputs = React.useRef<HTMLInputElement[]>([])
-  const inputProps = useFormControl<HTMLInputElement>(props)
+type CodeInputRef = HTMLInputElement | null
 
-  const ANY_DIGIT_REGEX = /^[0-9]*$/
+const boxHeight = 10
 
-  const processInput = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    slot: number,
+const CodeInput = React.forwardRef<CodeInputRef, OTPInputExtendedProps>(
+  (
+    {
+      length = 6,
+      className,
+      onComplete,
+      isVerified = false,
+      value,
+      id = 'Code_Input',
+      ...props
+    }: OTPInputExtendedProps,
+    ref,
   ) => {
-    const num = e.target.value
-    if (!ANY_DIGIT_REGEX.test(num)) return
-    const newCode = [...code]
-    newCode[slot] = num
-    setCode(newCode)
+    const inputProps = useFormControl<HTMLInputElement>(props)
 
-    if (slot !== length - 1) {
-      inputs.current[slot + 1].focus()
-    }
-    if (newCode.every(num => num !== '')) {
-      onComplete(newCode.join(''))
-    }
-    // prevent several digits from being entered in the last slot
-    if (slot === length - 1 && num) {
-      inputs.current[slot].blur()
-    }
-  }
+    return (
+      <OTPInput
+        autoFocus
+        maxLength={6}
+        containerClassName="otp-input-wrapper"
+        onComplete={onComplete}
+        inputMode="numeric"
+        pushPasswordManagerStrategy={'none'}
+        {...inputProps}
+        ref={ref}
+        value={value}
+        render={({ slots }) => (
+          <Flex
+            gap={6}
+            width={'fit-content'}
+            height={boxHeight}
+            position={'relative'}
+          >
+            <Flex gap={2}>
+              {slots.slice(0, 3).map((slot, idx) => (
+                <Slot
+                  key={idx}
+                  {...slot}
+                  isVerified={isVerified}
+                  isInvalid={inputProps['aria-invalid'] || false}
+                  isDisabled={inputProps.disabled}
+                  hasFakeCaret={true}
+                />
+              ))}
+            </Flex>
 
-  const onKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    slot: number,
+            <Flex gap={2}>
+              {slots.slice(3).map((slot, idx) => (
+                <Slot
+                  key={idx}
+                  {...slot}
+                  isVerified={isVerified}
+                  isInvalid={inputProps['aria-invalid'] || false}
+                  isDisabled={inputProps.disabled}
+                  hasFakeCaret={true}
+                />
+              ))}
+            </Flex>
+          </Flex>
+        )}
+      />
+    )
+  },
+)
+
+type SlotExtendedProps = SlotProps & {
+  isVerified: boolean
+  isInvalid: boolean
+  isDisabled: boolean
+}
+function Slot(props: SlotExtendedProps) {
+  const getSlotStyles = (
+    props: SlotExtendedProps,
+    element: 'border-color' | 'bg-color',
   ) => {
-    // handle backspace
-    if (e.key === 'Backspace' && !code[slot]) {
-      e.preventDefault()
-      return handleBackspace(slot)
-    }
-    // handle non-digit key pressed
-    if (!ANY_DIGIT_REGEX.test(e.key)) {
-      e.preventDefault()
-      return
-    }
-  }
+    switch (element) {
+      case 'border-color':
+        return props.isVerified
+          ? 'green.500'
+          : props.isInvalid
+          ? 'red.500'
+          : props.isActive
+          ? 'primary.500'
+          : props.isDisabled
+          ? 'gray.300'
+          : 'gray.200'
 
-  // goes back to the previous value and removes it + focuses on it to fill it again
-  const handleBackspace = (slot: number) => {
-    if (slot !== 0) {
-      const newCode = [...code]
-      newCode[slot - 1] = ''
-      setCode(newCode)
-      inputs.current[slot - 1].focus()
+      case 'bg-color':
+        return props.isVerified
+          ? 'green.150'
+          : props.isInvalid
+          ? 'red.150'
+          : props.isDisabled
+          ? 'gray.100'
+          : 'white'
     }
   }
 
   return (
-    <Flex className={cn('cap-code-input', className)} direction="row" id={id}>
-      {code.map((num, idx) => (
-        <Box
-          {...inputProps}
-          sx={S(isVerified)}
-          disableFocusStyles
-          as="input"
-          key={idx}
-          type="number"
-          placeholder="-"
-          inputMode="numeric"
-          autoComplete="one-time-code"
-          maxLength={1}
-          value={num}
-          autoFocus={!value && idx === 0}
-          readOnly={inputProps.disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            processInput(e, idx)
-          }}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-            onKeyDown(e, idx)
-          }
-          ref={(ref: HTMLInputElement) => inputs.current.push(ref)}
-        />
-      ))}
-    </Flex>
+    <Box
+      border={'1px solid'}
+      borderColor={getSlotStyles(props, 'border-color')}
+      backgroundColor={getSlotStyles(props, 'bg-color')}
+      width={9}
+      height={boxHeight}
+      borderRadius={'normal'}
+      display={'flex'}
+      justifyContent={'center'}
+      alignItems={'center'}
+      style={{ caretColor: 'transparent' }}
+      className="code-input-box"
+    >
+      {props.char !== null && <div>{props.char}</div>}
+      {props.hasFakeCaret && props.isActive && !props.char && <FakeCaret />}
+    </Box>
   )
+}
+
+function FakeCaret() {
+  return <Box color="gray.300">|</Box>
 }
 
 export default CodeInput

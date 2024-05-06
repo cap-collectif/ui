@@ -5,13 +5,14 @@ import { CapUIFontFamily } from '../../../styles'
 import { Box } from '../../box/Box'
 import { Button } from '../../button'
 import { Flex } from '../../layout'
-import { MultiStepModal } from '../../multiStepModal'
+import { CapUIModalSize } from '../../modal'
+import Modal from '../../modal/Modal'
 import { CapUISpotIcon, CapUISpotIconSize, SpotIcon } from '../../spotIcon'
 import { Heading, Text } from '../../typography'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormLabel } from '../formLabel'
-import CodeInputLib, { OTPInputExtendedProps } from './CodeInputLib'
+import CodeInput, { OTPInputExtendedProps } from './CodeInput'
 
 type Args = {
   errorMessage: string
@@ -23,11 +24,13 @@ type Args = {
   value: string
   length: number
   isDisabled: boolean
+  ref: React.Ref<HTMLInputElement | null>
+  correctValue: string
 }
 
 const meta: Meta = {
   title: 'Library/Form/CodeInput',
-  component: CodeInputLib,
+  component: CodeInput,
   args: { isVerified: false, length: 6 },
   parameters: {
     controls: { expanded: true },
@@ -36,7 +39,7 @@ const meta: Meta = {
 
 export default meta
 export const Default: Story<OTPInputExtendedProps> = args => (
-  <CodeInputLib {...args} />
+  <CodeInput {...args} />
 )
 
 export const WithLabel: Story<Args> = ({
@@ -56,7 +59,7 @@ export const WithLabel: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInputLib
+      <CodeInput
         onComplete={onComplete}
         isVerified={isVerified}
         maxLength={length}
@@ -84,7 +87,7 @@ export const Disabled: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInputLib
+      <CodeInput
         onComplete={onComplete}
         isVerified={isVerified}
         maxLength={length}
@@ -114,7 +117,7 @@ export const WithError: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInputLib
+      <CodeInput
         onComplete={onComplete}
         isVerified={isVerified}
         maxLength={length}
@@ -148,7 +151,7 @@ export const Verified: Story<Args> = ({
           )}
         </FormLabel>
 
-        <CodeInputLib
+        <CodeInput
           onComplete={onComplete}
           isVerified={isVerified}
           maxLength={length}
@@ -175,85 +178,118 @@ Verified.args = {
 
 export const WithinModal: Story<Args> = ({
   errorMessage,
-  isInvalid,
   isDisabled,
   isRequired,
-  isVerified,
   length,
   ...args
 }) => {
   const [code, setCode] = React.useState('')
-  const inputRef = React.useRef(null)
+  const [isVerified, setIsVerified] = React.useState(false)
+  const [isInvalid, setIsInvalid] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
 
+  // ! This is required because of the modal animation/loading time
+  // TODO: Update Modal
+  const focusInputRef = React.useCallback(node => {
+    setTimeout(() => {
+      if (node !== null) {
+        node.focus()
+      }
+    }, 500)
+  }, [])
+
+  const onComplete = (value: string) => {
+    if (value === args.correctValue) {
+      setIsVerified(true)
+      setIsInvalid(false)
+    } else {
+      setIsVerified(false)
+      setIsInvalid(true)
+      setCode('')
+    }
+  }
 
   return (
     <>
-      <MultiStepModal.Header>
-        <Text
-          uppercase
-          color="neutral-gray.500"
-          fontWeight={700}
-          fontSize={1}
-          lineHeight="sm"
+      <Button onClick={() => setShowModal(true)}>
+        Ouvrir la modale de vérification de code
+      </Button>
+      {showModal && (
+        <Modal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          ariaLabel={'Vérifiez le code'}
+          size={CapUIModalSize.Xl}
         >
-          Title
-        </Text>
-        <Heading>Vérifiez le code</Heading>
-      </MultiStepModal.Header>
-      <MultiStepModal.Body>
-        <Flex
-          as="form"
-          direction="column"
-          spacing={3}
-          align="center"
-          justify="center"
-        >
-          <SpotIcon
-            name={CapUISpotIcon.ADD_CONTACT}
-            size={CapUISpotIconSize.Lg}
-          />
-          <Text textAlign="center" fontSize="18px" lineHeight="24px">
+          <Modal.Header>
             <Text
-              id="confirmation.code.header.title"
-              values={{
-                phoneNumber: '06 06 06 06 06',
-              }}
-            />
-            <CodeInputLib
-              autoFocus
-              isInvalid={isInvalid}
-              maxLength={length}
-              {...args}
-              ref={inputRef}
-              onComplete={onComplete}
-            />
-          </Text>
-        </Flex>
-      </MultiStepModal.Body>
-      <MultiStepModal.Footer>
-        <Button
-          variant="secondary"
-          variantColor="hierarchy"
-          variantSize="medium"
-        >
-          Retour
-        </Button>
-        <Button
-          variantSize="medium"
-          variant="secondary"
-          disabled={code !== args.value}
-          onClick={e => {
-            console.log('clickety click', e)
-          }}
-        >
-          Valider le vote
-        </Button>
-      </MultiStepModal.Footer>
+              uppercase
+              color="neutral-gray.500"
+              fontWeight={700}
+              fontSize={1}
+              lineHeight="sm"
+            >
+              Modale de vérification
+            </Text>
+            <Heading>Vérifiez le code</Heading>
+          </Modal.Header>
+          <Modal.Body>
+            <Flex
+              as="form"
+              direction="column"
+              spacing={3}
+              align="center"
+              justify="center"
+            >
+              <SpotIcon
+                name={CapUISpotIcon.ADD_CONTACT}
+                size={CapUISpotIconSize.Lg}
+              />
+              <Box textAlign="center" fontSize="18px" lineHeight="24px">
+                <Text
+                  id="confirmation.code.header.title"
+                  values={{
+                    phoneNumber: '06 06 06 06 06',
+                  }}
+                />
+                <CodeInput
+                  {...args}
+                  isInvalid={isInvalid}
+                  maxLength={length}
+                  isVerified={isVerified}
+                  onComplete={onComplete}
+                  onChange={value => setCode(value)}
+                  ref={focusInputRef}
+                  autoFocus
+                  value={code}
+                />
+              </Box>
+            </Flex>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              variantColor="hierarchy"
+              variantSize="medium"
+            >
+              Retour
+            </Button>
+            <Button
+              variantSize="medium"
+              variant="secondary"
+              disabled={isDisabled || isInvalid || !code}
+            >
+              Valider le vote
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   )
 }
 WithinModal.args = {
-  value: '123456',
+  correctValue: '123456',
 }
 
 export const Mobile: Story<Args> = ({
@@ -274,11 +310,12 @@ export const Mobile: Story<Args> = ({
             </Box>
           )}
         </FormLabel>
-        <CodeInputLib
+        <CodeInput
           onComplete={onComplete}
           isVerified={isVerified}
           maxLength={length}
           {...args}
+          ref={args.ref}
         />
         <FormErrorMessage>{errorMessage}</FormErrorMessage>
       </FormControl>
