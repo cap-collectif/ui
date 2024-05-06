@@ -5,7 +5,7 @@ import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
 import { useFormControl } from '../formControl'
 
-export type OTPInputExtendedProps = Omit<OTPInputProps, 'children'> & {
+export type CodeInputProps = Omit<OTPInputProps, 'children'> & {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
@@ -21,7 +21,7 @@ type CodeInputRef = HTMLInputElement | null
 
 const boxHeight = 10
 
-const CodeInput = React.forwardRef<CodeInputRef, OTPInputExtendedProps>(
+const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
   (
     {
       length = 6,
@@ -31,7 +31,7 @@ const CodeInput = React.forwardRef<CodeInputRef, OTPInputExtendedProps>(
       value,
       id = 'Code_Input',
       ...props
-    }: OTPInputExtendedProps,
+    }: CodeInputProps,
     ref,
   ) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
