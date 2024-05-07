@@ -12,7 +12,7 @@ import { Heading, Text } from '../../typography'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormLabel } from '../formLabel'
-import CodeInput, { OTPInputExtendedProps } from './CodeInput'
+import CodeInput, { CodeInputProps } from './CodeInput'
 
 type Args = {
   errorMessage: string
@@ -38,9 +38,7 @@ const meta: Meta = {
 }
 
 export default meta
-export const Default: Story<OTPInputExtendedProps> = args => (
-  <CodeInput {...args} />
-)
+export const Default: Story<CodeInputProps> = args => <CodeInput {...args} />
 
 export const WithLabel: Story<Args> = ({
   errorMessage,
