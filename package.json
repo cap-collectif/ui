@@ -112,6 +112,7 @@
     "classnames": "^2.3.1",
     "deepmerge": "^4.2.2",
     "framer-motion": "^4.1.17",
+    "input-otp": "^1.2.4",
     "react-beautiful-dnd": "^13.1.1",
     "react-color": "^2.19.3",
     "react-dates": "^21.8.0",

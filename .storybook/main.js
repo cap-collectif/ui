@@ -83,6 +83,12 @@ module.exports = {
     })
 
     config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    })
+
+    config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
       use: 'file-loader',
     })
