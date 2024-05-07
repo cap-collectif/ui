@@ -91,7 +91,7 @@ type SlotExtendedProps = SlotProps & {
   isInvalid: boolean
   isDisabled: boolean
 }
-function Slot(props: SlotExtendedProps) {
+const Slot = (props: SlotExtendedProps) => {
   const getSlotStyles = (
     props: SlotExtendedProps,
     element: 'border-color' | 'bg-color',
@@ -141,7 +141,7 @@ function Slot(props: SlotExtendedProps) {
   )
 }
 
-function FakeCaret() {
+const FakeCaret = () => {
   return <Box color="gray.300">|</Box>
 }
 
