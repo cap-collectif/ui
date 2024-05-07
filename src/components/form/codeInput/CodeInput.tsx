@@ -39,7 +39,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
     return (
       <OTPInput
         autoFocus
-        maxLength={6}
+        maxLength={length}
         containerClassName="otp-input-wrapper"
         onComplete={onComplete}
         inputMode="numeric"
