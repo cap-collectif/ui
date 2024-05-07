@@ -109,7 +109,9 @@ function Slot(props: SlotExtendedProps) {
           : 'gray.200'
 
       case 'bg-color':
-        return props.isVerified
+        return props.isActive
+          ? 'white'
+          : props.isVerified
           ? 'green.150'
           : props.isInvalid
           ? 'red.150'
