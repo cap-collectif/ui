@@ -122,22 +122,21 @@ const Slot = (props: SlotExtendedProps) => {
   }
 
   return (
-    <Box
+    <Flex
+      justify={'center'}
+      align={'center'}
       border={'1px solid'}
       borderColor={getSlotStyles(props, 'border-color')}
       backgroundColor={getSlotStyles(props, 'bg-color')}
       width={9}
       height={boxHeight}
       borderRadius={'normal'}
-      display={'flex'}
-      justifyContent={'center'}
-      alignItems={'center'}
       style={{ caretColor: 'transparent' }}
       className="code-input-box"
     >
       {props.char !== null && <div>{props.char}</div>}
       {props.hasFakeCaret && props.isActive && !props.char && <FakeCaret />}
-    </Box>
+    </Flex>
   )
 }
 
