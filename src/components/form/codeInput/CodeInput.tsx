@@ -5,11 +5,10 @@ import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
 import { useFormControl } from '../formControl'
 
-export type CodeInputProps = Omit<OTPInputProps, 'children'> & {
+export type CodeInputProps = Omit<OTPInputProps, 'children' | 'maxLength'> & {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
-  readonly length?: number
   readonly onComplete: (input: string) => void
   readonly isVerified?: boolean
   readonly value?: string
@@ -23,13 +22,11 @@ const boxHeight = 10
 
 // Note: this component is build for sms OTP verification, which is a 6-figure value.
 // It is designed to visually return 6 inputs ("slots"), grouped by 3
-// It only works, visually, if its length is 6.
 const DEFAULT_LENGTH = 6
 
 const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
   (
     {
-      length = DEFAULT_LENGTH,
       className,
       onComplete,
       isVerified = false,
@@ -44,7 +41,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
     return (
       <OTPInput
         autoFocus
-        maxLength={length}
+        maxLength={DEFAULT_LENGTH}
         containerClassName="otp-input-wrapper"
         onComplete={onComplete}
         inputMode="numeric"

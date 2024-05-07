@@ -22,7 +22,7 @@ type Args = {
   isVerified: boolean
   onComplete: (input: string) => void
   value: string
-  length: number
+  // length: number
   isDisabled: boolean
   ref: React.Ref<HTMLInputElement | null>
   correctValue: string
@@ -45,7 +45,6 @@ export const WithLabel: Story<Args> = ({
   value: storybookValue,
   onComplete,
   isVerified,
-  length,
   ...args
 }) => {
   return (
@@ -57,12 +56,7 @@ export const WithLabel: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        onComplete={onComplete}
-        isVerified={isVerified}
-        maxLength={length}
-        {...args}
-      />
+      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -73,7 +67,6 @@ export const Disabled: Story<Args> = ({
   value: storybookValue,
   onComplete,
   isVerified,
-  length,
   ...args
 }) => {
   return (
@@ -85,12 +78,7 @@ export const Disabled: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        onComplete={onComplete}
-        isVerified={isVerified}
-        maxLength={length}
-        {...args}
-      />
+      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -103,7 +91,6 @@ export const WithError: Story<Args> = ({
   value: storybookValue,
   onComplete,
   isVerified,
-  length,
   ...args
 }) => {
   return (
@@ -115,12 +102,7 @@ export const WithError: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput
-        onComplete={onComplete}
-        isVerified={isVerified}
-        maxLength={length}
-        {...args}
-      />
+      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -135,7 +117,6 @@ export const Verified: Story<Args> = ({
   value,
   onComplete,
   isVerified,
-  length,
   ...args
 }) => {
   return (
@@ -149,12 +130,7 @@ export const Verified: Story<Args> = ({
           )}
         </FormLabel>
 
-        <CodeInput
-          onComplete={onComplete}
-          isVerified={isVerified}
-          maxLength={length}
-          {...args}
-        />
+        <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
 
         <Box
           color="green.500"
@@ -178,7 +154,6 @@ export const WithinModal: Story<Args> = ({
   errorMessage,
   isDisabled,
   isRequired,
-  length,
   ...args
 }) => {
   const [code, setCode] = React.useState('')
@@ -253,7 +228,6 @@ export const WithinModal: Story<Args> = ({
                 <CodeInput
                   {...args}
                   isInvalid={isInvalid}
-                  maxLength={length}
                   isVerified={isVerified}
                   onComplete={onComplete}
                   onChange={value => setCode(value)}
@@ -295,7 +269,6 @@ export const Mobile: Story<Args> = ({
   value,
   onComplete,
   isVerified,
-  length,
   ...args
 }) => {
   return (
@@ -311,7 +284,6 @@ export const Mobile: Story<Args> = ({
         <CodeInput
           onComplete={onComplete}
           isVerified={isVerified}
-          maxLength={length}
           {...args}
           ref={args.ref}
         />
