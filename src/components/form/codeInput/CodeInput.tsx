@@ -21,10 +21,15 @@ type CodeInputRef = HTMLInputElement | null
 
 const boxHeight = 10
 
+// Note: this component is build for sms OTP verification, which is a 6-figure value.
+// It is designed to visually return 6 inputs ("slots"), grouped by 3
+// It only works, visually, if its length is 6.
+const DEFAULT_LENGTH = 6
+
 const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
   (
     {
-      length = 6,
+      length = DEFAULT_LENGTH,
       className,
       onComplete,
       isVerified = false,
