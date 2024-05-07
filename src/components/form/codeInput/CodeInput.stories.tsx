@@ -22,7 +22,6 @@ type Args = {
   isVerified: boolean
   onComplete: (input: string) => void
   value: string
-  // length: number
   isDisabled: boolean
   ref: React.Ref<HTMLInputElement | null>
   correctValue: string
