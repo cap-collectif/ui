@@ -53,6 +53,11 @@ export const Default: Story<Props> = ({
 }) => {
   const CustomTheme = {
     ...capuiTheme,
+    fonts: {
+      ...capuiTheme.fonts,
+      body: 'cursive, system-ui, sans-serif',
+      heading: 'monospace, system-ui, sans-serif',
+    },
     colors: {
       ...capuiTheme.colors,
       primary: generateShades(primary),
@@ -79,6 +84,7 @@ export const Default: Story<Props> = ({
             Link
           </Button>
         </Flex>
+        <Heading as="h1">TITRE</Heading>
         <Flex gap={4} mt={4}>
           <Input />
           <Search
