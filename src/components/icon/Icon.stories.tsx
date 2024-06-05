@@ -21,6 +21,7 @@ const meta: Meta<Args> = {
     color: 'black',
   },
   argTypes: {
+    // @ts-ignore
     name: {
       controls: { disable: true },
       table: { disable: true },

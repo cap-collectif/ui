@@ -23,7 +23,7 @@ const meta: Meta = {
   title: 'Library/Form/DateInput',
   component: DateInput,
   argTypes: {
-    variantSize: { type: 'select', options: Object.values(CapInputSize) },
+    variantSize: { options: Object.values(CapInputSize) as string[] },
     onChange: {
       action: 'clicked',
       description: '(value: Moment | null) => void',

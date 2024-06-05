@@ -55,12 +55,12 @@ const EXLUDED_DOCGEN_PROPS = [
 const ALLOWED_DOCGEN_NODE_MODULES = []
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   babel: async options => ({
     ...options,
-    plugins: [
-      ...options.plugins,
-      ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
-    ],
+    plugins: [...options.plugins],
   }),
   webpackFinal: async config => {
     const fileLoaderRule = config.module.rules.find(rule => {

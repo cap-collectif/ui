@@ -18,7 +18,7 @@ const meta: Meta = {
   title: 'Library/Form/HourInput',
   component: HourInput,
   argTypes: {
-    variantSize: { type: 'select', options: Object.values(CapInputSize) },
+    variantSize: { options: Object.values(CapInputSize) as string[] },
     onChange: {
       action: 'clicked',
       description: '(value: Moment | null) => void',
