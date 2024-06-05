@@ -22,7 +22,7 @@ const meta: Meta = {
   title: 'Library/Form/Uploader',
   component: Uploader,
   argTypes: {
-    size: { type: 'select', options: Object.values(UPLOADER_SIZE) },
+    size: { options: Object.values(UPLOADER_SIZE) as string[] },
   },
   args: {
     className: 'cap-uploader',

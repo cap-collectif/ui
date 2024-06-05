@@ -69,6 +69,7 @@ export const Default: Story<Props> = ({
 
   return (
     <>
+      {/** @ts-ignore */}
       <CapUIProvider theme={CustomTheme}>
         <Flex gap={4}>
           <Button variantSize="big" variant="primary">
