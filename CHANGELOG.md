@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.3
+
+`2024-06-12`
+
+- 🛠 Refactor Twitter icon by X icon [#422](https://github.com/cap-collectif/ui/pull/422)
+
 ## 1.10.2
 
 `2024-05-07`
