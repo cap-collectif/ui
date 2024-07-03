@@ -16,11 +16,13 @@ type SubComponents = {
 
 export type ModalHeaderProps = FlexProps & {
   readonly closeLabel?: string
+  readonly closeIconLabel?: string
 }
 
 const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   children,
   closeLabel,
+  closeIconLabel,
   className,
   ...rest
 }) => {
@@ -72,10 +74,14 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
           type="button"
           ref={ref}
           onClick={hide}
-          aria-label={closeLabel}
+          aria-describedby={closeLabel}
           color="gray.500"
         >
-          <Icon name={CapUIIcon.CrossO} size={CapUIIconSize.Sm} />
+          <Icon
+            name={CapUIIcon.CrossO}
+            size={CapUIIconSize.Sm}
+            aria-label={closeIconLabel}
+          />
         </Box>
       )}
     </Flex>

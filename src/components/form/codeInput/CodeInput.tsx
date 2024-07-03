@@ -101,14 +101,14 @@ const Slot = (props: SlotExtendedProps) => {
     switch (element) {
       case 'border-color':
         return props.isVerified
-          ? 'green.500'
+          ? 'green.600'
           : props.isInvalid
-          ? 'red.500'
+          ? 'red.600'
           : props.isActive
-          ? 'primary.500'
+          ? 'primary.600'
           : props.isDisabled
           ? 'gray.300'
-          : 'gray.200'
+          : 'gray.600'
 
       case 'bg-color':
         return props.isActive
