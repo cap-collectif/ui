@@ -59,6 +59,8 @@ const SpotIcon: React.FC<SpotIconProps> = React.forwardRef<
   return (
     <IconInner
       as={SpotIconSvg}
+      aria-hidden
+      focusable="false"
       variant={size}
       className={cn('cap-spotIcon', className)}
       ref={ref}
