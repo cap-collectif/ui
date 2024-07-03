@@ -118,9 +118,9 @@ export function reactSelectStyle<
       boxShadow: 'none',
       background: isInvalid && !isFocused ? colors.red['150'] : 'white',
       borderColor: isInvalid
-        ? colors.red['500']
+        ? colors.red['600']
         : isFocused
-        ? colors.primary['500']
+        ? colors.primary['600']
         : colors.gray['300'],
       '&:hover': {
         borderColor: isInvalid ? colors.red['500'] : '',
