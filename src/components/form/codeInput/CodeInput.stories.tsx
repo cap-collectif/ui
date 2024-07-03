@@ -233,6 +233,7 @@ export const WithinModal: Story<Args> = ({
                   ref={focusInputRef}
                   autoFocus
                   value={code}
+                  title="Code de vérification"
                 />
               </Box>
             </Flex>
