@@ -44,7 +44,12 @@ export default meta
 export const Default: Story<Args> = ({ ...args }) => (
   <>
     <FormLabel label="Label" mb={1} />
-    <Search onChange={() => {}} inputId="color" {...args} />
+    <Search
+      onChange={() => {}}
+      inputId="color"
+      {...args}
+      inputTitle="titre de la recherche"
+    />
   </>
 )
 
