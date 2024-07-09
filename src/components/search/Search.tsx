@@ -1,6 +1,12 @@
 import cn from 'classnames'
 import * as React from 'react'
-import { components, ControlProps, GroupBase, SingleValue } from 'react-select'
+import {
+  components,
+  ControlProps,
+  GroupBase,
+  SingleValue,
+  InputProps,
+} from 'react-select'
 import ReactSelect from 'react-select/async'
 import type { AsyncProps } from 'react-select/async'
 
@@ -15,7 +21,8 @@ export interface SearchProps<
   Option,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> extends Omit<
+>
+  extends Omit<
     AsyncProps<Option, IsMulti, Group>,
     'onChange' | 'defaultValue' | 'value'
   > {
@@ -26,6 +33,7 @@ export interface SearchProps<
   readonly onChange?: (value: string) => void
   readonly onSelect?: (value: Option) => void
   readonly value?: string
+  readonly inputTitle?:string
 }
 
 const Control = <
@@ -65,6 +73,17 @@ const Control = <
       )}
     </components.Control>
   )
+}
+
+const Input = <
+  Option,
+  IsMulti extends false = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: InputProps<Option, IsMulti, Group>,
+) => {
+  // @ts-ignore react-select doesn't handle titles on input natively
+  return <components.Input {...props} title={props.selectProps.inputTitle} />
 }
 
 export const SearchWithRef = <
@@ -118,7 +137,7 @@ export const SearchWithRef = <
         classNamePrefix="cap-search"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
-        components={{ Control }}
+        components={{ Control, Input }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         loadOptions={loadOptions}

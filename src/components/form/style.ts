@@ -121,7 +121,7 @@ export function reactSelectStyle<
         ? colors.red['600']
         : isFocused
         ? colors.primary['600']
-        : colors.gray['300'],
+        : colors.gray['500'],
       '&:hover': {
         borderColor: isInvalid ? colors.red['500'] : '',
       },
