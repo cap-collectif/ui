@@ -13,7 +13,7 @@ To better understand the changelog, here are some legends we use:
 
 ## 1.10.5
 
-`2024-07-08`
+`2024-07-09`
 
 - 🐛 Accessibility improvements [#428](https://github.com/cap-collectif/ui/pull/428)
 
