@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import ToastsContainer from './components/toast/ToastsContainer'
+import ToastContainer from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { CapUITheme, capuiTheme } from './styles/theme'
 
@@ -18,7 +18,7 @@ export const CapUIProvider: FC<Props> = ({
   return (
     <ThemeProvider theme={theme}>
       {resetCSS && <CSSReset />}
-      <ToastsContainer />
+      <ToastContainer />
 
       {children}
     </ThemeProvider>

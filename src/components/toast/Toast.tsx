@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { variant as styledVariant } from 'styled-system'
 
-import useTimeout from '../../hooks/useTimeout'
 import colors from '../../styles/modules/colors'
 import {
   fadeOut,
@@ -14,9 +13,8 @@ import {
   slideInUp,
 } from '../../styles/modules/keyframes'
 import { SHADOWS } from '../../styles/theme'
-import { jsxInnerText } from '../../utils/jsx'
 import { Box } from '../box/Box'
-import { CapUIIcon, CapUIIconSize, Icon, IconProps } from '../icon'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout/Flex'
 import { Spinner } from '../spinner'
 import Text from '../typography/Text'
@@ -31,18 +29,13 @@ export interface ToastProps {
     | 'bottom-right'
   readonly id: string
   readonly variant: 'info' | 'success' | 'danger' | 'warning' | 'loading'
-  readonly closable?: boolean
-  readonly duration?: number
   readonly content: React.ReactNode
   readonly onClose?: () => void
-  readonly onHide?: (id: string) => void
 }
 
 type StyledProps = {
   readonly animation: string
 }
-
-const MIN_TIMEOUT = 1500
 
 const ToastInner = styled(motion(Box)).attrs({
   m: 2,
@@ -95,41 +88,6 @@ const ToastInner = styled(motion(Box)).attrs({
   })};
 `
 
-const getIcon = (
-  variant: ToastProps['variant'],
-  props?: Omit<IconProps, 'name' | 'color'>,
-): React.ReactNode => {
-  const common: { size: IconProps['size'] } = {
-    size: CapUIIconSize.Md,
-  }
-
-  switch (variant) {
-    case 'info':
-      return (
-        <Icon name={CapUIIcon.Info} color="blue.500" {...common} {...props} />
-      )
-    case 'success':
-      return (
-        <Icon name={CapUIIcon.Check} color="green.500" {...common} {...props} />
-      )
-    case 'danger':
-      return (
-        <Icon name={CapUIIcon.Cross} color="red.500" {...common} {...props} />
-      )
-    case 'warning':
-      return (
-        <Icon
-          name={CapUIIcon.Alert}
-          color="yellow.500"
-          {...common}
-          {...props}
-        />
-      )
-    default:
-      throw new Error('Unsupported icon variant!')
-  }
-}
-
 const getAnimation = (position: ToastProps['position']) => {
   switch (position) {
     case 'top':
@@ -149,50 +107,20 @@ const getAnimation = (position: ToastProps['position']) => {
 export const Toast: React.FC<ToastProps> = ({
   content,
   id,
-  onHide,
   onClose,
-  duration = jsxInnerText(content) !== ''
-    ? jsxInnerText(content).length * 100
-    : MIN_TIMEOUT,
-  closable = false,
   position,
   ...props
 }) => {
   const [show, setShow] = useState(true)
   const container = useRef<HTMLDivElement>(null)
-  const clearTimeout = useTimeout(
-    () => {
-      if (duration && duration > 0) {
-        setShow(false)
-      }
-    },
-    duration < MIN_TIMEOUT ? MIN_TIMEOUT : duration,
-    [],
-  )
 
-  useEffect(() => {
-    const $container = container.current
-    const endHandler = (evt: AnimationEvent) => {
-      if (evt.animationName === fadeOut.getName()) {
-        if (onClose) {
-          onClose()
-        }
-        if (onHide) {
-          onHide(id)
-        }
-      }
+  const handleClose = () => {
+    setShow(false)
+    if (onClose) {
+      onClose()
     }
+  }
 
-    if ($container) {
-      $container.addEventListener('animationend', endHandler)
-    }
-
-    return () => {
-      if ($container) {
-        $container.removeEventListener('animationend', endHandler)
-      }
-    }
-  }, [onClose, onHide, id])
   const { variant } = props
 
   return (
@@ -204,31 +132,27 @@ export const Toast: React.FC<ToastProps> = ({
       className="cap-toast"
       zIndex="toast"
     >
-      <Flex align="center" css={{ '& > *:last-child': { flex: 1 } }}>
-        {variant === 'loading' ? (
-          <Spinner mr={2} />
-        ) : (
-          getIcon(variant, { mr: 2 })
+      <Flex align="center" gap={2} css={{ '& > *:last-child': { flex: 1 } }}>
+        {variant === 'loading' && (
+          <Spinner mr={2} aria-hidden={true} focusable={false} />
         )}
         {typeof content === 'string' ? (
           <Text dangerouslySetInnerHTML={{ __html: content }} />
         ) : (
           content
         )}
-      </Flex>
-      {closable && (
         <Icon
           name={CapUIIcon.CrossO}
-          position="absolute"
-          size={CapUIIconSize.Sm}
-          top={0}
-          right={0}
+          size={CapUIIconSize.Md}
+          tabIndex={0}
+          onKeyDown={() => {
+            handleClose()
+          }}
           onClick={() => {
-            clearTimeout()
-            setShow(false)
+            handleClose()
           }}
         />
-      )}
+      </Flex>
     </ToastInner>
   )
 }
