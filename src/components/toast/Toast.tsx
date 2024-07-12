@@ -224,6 +224,7 @@ export const Toast: React.FC<ToastProps> = ({
         )}
         <Icon
           name={CapUIIcon.CrossO}
+          size={CapUIIconSize.Md}
           tabIndex={0}
           onKeyDown={() => {
             setShow(false)
@@ -231,6 +232,7 @@ export const Toast: React.FC<ToastProps> = ({
           onClick={() => {
             setShow(false)
           }}
+          ml={2}
         />
       </Flex>
     </ToastInner>
