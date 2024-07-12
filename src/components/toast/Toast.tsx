@@ -106,21 +106,40 @@ const getIcon = (
   switch (variant) {
     case 'info':
       return (
-        <Icon name={CapUIIcon.Info} color="blue.500" {...common} {...props} />
+        <Icon
+          name={CapUIIcon.Info}
+          color="blue.500"
+          aria-roledescription="status"
+          {...common}
+          {...props}
+        />
       )
     case 'success':
       return (
-        <Icon name={CapUIIcon.Check} color="green.500" {...common} {...props} />
+        <Icon
+          name={CapUIIcon.Check}
+          color="green.500"
+          aria-roledescription="status"
+          {...common}
+          {...props}
+        />
       )
     case 'danger':
       return (
-        <Icon name={CapUIIcon.Cross} color="red.500" {...common} {...props} />
+        <Icon
+          name={CapUIIcon.Cross}
+          color="red.500"
+          aria-roledescription="alert"
+          {...common}
+          {...props}
+        />
       )
     case 'warning':
       return (
         <Icon
           name={CapUIIcon.Alert}
           color="yellow.500"
+          aria-roledescription="alert"
           {...common}
           {...props}
         />
