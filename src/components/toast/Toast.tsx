@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { variant as styledVariant } from 'styled-system'
 
-import useTimeout from '../../hooks/useTimeout'
 import colors from '../../styles/modules/colors'
 import {
   fadeOut,
@@ -31,7 +30,6 @@ export interface ToastProps {
     | 'bottom-right'
   readonly id: string
   readonly variant: 'info' | 'success' | 'danger' | 'warning' | 'loading'
-  readonly closable?: boolean
   readonly duration?: number
   readonly content: React.ReactNode
   readonly onClose?: () => void
@@ -173,7 +171,6 @@ export const Toast: React.FC<ToastProps> = ({
   duration = jsxInnerText(content) !== ''
     ? jsxInnerText(content).length * 100
     : MIN_TIMEOUT,
-  closable = false,
   position,
   ...props
 }) => {
@@ -234,8 +231,6 @@ export const Toast: React.FC<ToastProps> = ({
         ) : (
           content
         )}
-      </Flex>
-      {closable && (
         <Icon
           name={CapUIIcon.CrossO}
           position="absolute"
@@ -247,7 +242,7 @@ export const Toast: React.FC<ToastProps> = ({
             setShow(false)
           }}
         />
-      )}
+      </Flex>
     </ToastInner>
   )
 }
