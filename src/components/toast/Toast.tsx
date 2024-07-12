@@ -13,7 +13,6 @@ import {
   slideInUp,
 } from '../../styles/modules/keyframes'
 import { SHADOWS } from '../../styles/theme'
-import { jsxInnerText } from '../../utils/jsx'
 import { Box } from '../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout/Flex'
@@ -30,7 +29,6 @@ export interface ToastProps {
     | 'bottom-right'
   readonly id: string
   readonly variant: 'info' | 'success' | 'danger' | 'warning' | 'loading'
-  readonly duration?: number
   readonly content: React.ReactNode
   readonly onClose?: () => void
   readonly onHide?: (id: string) => void
@@ -39,8 +37,6 @@ export interface ToastProps {
 type StyledProps = {
   readonly animation: string
 }
-
-const MIN_TIMEOUT = 1500
 
 const ToastInner = styled(motion(Box)).attrs({
   m: 2,
@@ -114,9 +110,6 @@ export const Toast: React.FC<ToastProps> = ({
   id,
   onHide,
   onClose,
-  duration = jsxInnerText(content) !== ''
-    ? jsxInnerText(content).length * 100
-    : MIN_TIMEOUT,
   position,
   ...props
 }) => {
