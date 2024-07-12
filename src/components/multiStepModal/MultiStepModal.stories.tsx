@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { Box } from '../box'
 import { Button } from '../button'
-import { FormLabel, Input } from '../form'
+import { CodeInput, FormLabel, Input } from '../form'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout'
 import { CapUIModalSize } from '../modal'
@@ -234,6 +234,7 @@ const Step = ({
   onClose,
   firstStep,
   lastStep,
+  input,
 }: {
   title: string
   info: string
@@ -242,6 +243,7 @@ const Step = ({
   onClose: () => void
   firstStep?: boolean
   lastStep?: boolean
+  input?: React.ReactNode
 }) => {
   const { goToNextStep, goToPreviousStep } = useMultiStepModal()
 
@@ -305,7 +307,7 @@ const Step = ({
           {lastStep ? null : (
             <Box width="100%" mb={4}>
               <FormLabel label={label || ''} mb={1} />
-              <Input placeholder={placeholder} />
+              {input ? input : <Input placeholder={placeholder} />}
             </Box>
           )}
           <Button
@@ -357,6 +359,18 @@ export const FullScreen: Story<MultiStepModalProps> = () => {
           info="Il sera visible sur votre profil et sur vos participations"
           placeholder="ex : John.D"
           label="Pseudonyme"
+        />
+        <Step
+          onClose={() => setShow(false)}
+          title="Renseignez votre code"
+          info="Renseignez votre code"
+          placeholder="Code"
+          label="Code"
+          input={
+            <Flex justifyContent="center">
+              <CodeInput onComplete={() => {}} />
+            </Flex>
+          }
         />
         <Step
           onClose={() => setShow(false)}
