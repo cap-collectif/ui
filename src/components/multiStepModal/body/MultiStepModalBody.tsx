@@ -11,7 +11,7 @@ export type MultiStepModalBodyProps = ModalBodyProps
 
 const variants = {
   enter: (direction: DIRECTION) => ({
-    x: direction === DIRECTION.LEFT ? '-50%' : '50%',
+    x: direction === DIRECTION.LEFT ? '-40%' : '40%', // we set 40% because for some reason 50% is shifting the layout in chrome
     opacity: 0,
   }),
   center: {
