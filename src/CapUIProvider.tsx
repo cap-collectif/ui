@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import ToastContainer from './components/toast/ToastsContainer'
+import ToastContainer from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { CapUITheme, capuiTheme } from './styles/theme'
 
