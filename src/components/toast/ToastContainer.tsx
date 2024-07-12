@@ -41,6 +41,10 @@ const ToastContainer = () => {
     }
   }, [])
 
+  const getAriaRole = (variant: ToastProps['variant']) => {
+    return variant === 'warning' || variant === 'danger' ? 'alert' : 'status'
+  }
+
   return (
     <Box
       className={`toasts-container toasts-container--${toast?.position}`}
@@ -66,6 +70,7 @@ const ToastContainer = () => {
           key={toast.id}
           layout
           transition={LAYOUT_TRANSITION_SPRING}
+          aria-roledescription={getAriaRole(toast.variant)}
         >
           <Toast {...toast} onHide={clearToast} />
         </ToastWrapper>

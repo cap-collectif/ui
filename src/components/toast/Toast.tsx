@@ -107,9 +107,10 @@ const getIcon = (
         <Icon
           name={CapUIIcon.Info}
           color="blue.500"
-          aria-roledescription="status"
           {...common}
           {...props}
+          aria-hidden={true}
+          focusable={false}
         />
       )
     case 'success':
@@ -117,9 +118,10 @@ const getIcon = (
         <Icon
           name={CapUIIcon.Check}
           color="green.500"
-          aria-roledescription="status"
           {...common}
           {...props}
+          aria-hidden={true}
+          focusable={false}
         />
       )
     case 'danger':
@@ -127,9 +129,10 @@ const getIcon = (
         <Icon
           name={CapUIIcon.Cross}
           color="red.500"
-          aria-roledescription="alert"
           {...common}
           {...props}
+          aria-hidden={true}
+          focusable={false}
         />
       )
     case 'warning':
@@ -137,9 +140,10 @@ const getIcon = (
         <Icon
           name={CapUIIcon.Alert}
           color="yellow.500"
-          aria-roledescription="alert"
           {...common}
           {...props}
+          aria-hidden={true}
+          focusable={false}
         />
       )
     default:
