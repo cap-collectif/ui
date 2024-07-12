@@ -15,7 +15,7 @@ To better understand the changelog, here are some legends we use:
 
 `2024-07-12`
 
-- 🐛 Accessibility improvements [#431](https://github.com/cap-collectif/ui/pull/431)
+- 🐛 Refactor + enhance accessibility on toast [#431](https://github.com/cap-collectif/ui/pull/431)
 
 ## 1.10.5
 
