@@ -92,7 +92,7 @@ export const Default: Story<ToastProps> = args => (
         clearToasts()
       }}
     >
-      Clear all Toasts
+      Clear toast
     </Button>
   </Flex>
 )
