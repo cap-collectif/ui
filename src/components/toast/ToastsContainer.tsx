@@ -21,18 +21,18 @@ const common: SystemCssProperties = {
   alignItems: 'center',
 }
 
-const ToastsContainer = () => {
-  const [toasts, setToasts] = useState<ToastProps[]>([])
-  const visible = toasts.length > 0
-  const clearToast = (id: string) => {
-    setToasts(v => v.filter(toast => toast.id !== id))
+const ToastContainer = () => {
+  const [toast, setToast] = useState<ToastProps | null>(null)
+  const visible = toast !== null
+  const clearToast = () => {
+    setToast(null)
   }
   useEffect(() => {
-    Emitter.on(UIEvents.ToastShow, (toast: ToastProps) => {
-      setToasts(n => [...n, toast])
+    Emitter.on(UIEvents.ToastShow, (newToast: ToastProps) => {
+      setToast(newToast)
     })
     Emitter.on(UIEvents.ToastClear, () => {
-      setToasts([])
+      setToast(null)
     })
 
     return () => {
@@ -42,149 +42,36 @@ const ToastsContainer = () => {
   }, [])
 
   return (
-    <>
-      <Box
-        className="toasts-container toasts-container--top"
-        display={visible ? 'flex' : 'none'}
-        top={2}
-        left={0}
-        right={0}
-        bottom={0}
-        sx={common}
-      >
-        {toasts
-          .filter(n => n.position === 'top')
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-      <Box
-        className="toasts-container toasts-container--top-left"
-        display={visible ? 'flex' : 'none'}
-        top={2}
-        left={2}
-        right={0}
-        bottom={0}
-        sx={{
-          ...common,
-          alignItems: 'flex-start',
-        }}
-      >
-        {toasts
-          .filter(n => n.position === 'top-left')
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-      <Box
-        className="toasts-container toasts-container--top-right"
-        display={visible ? 'flex' : 'none'}
-        top={2}
-        left={0}
-        right={2}
-        bottom={0}
-        sx={{ ...common, alignItems: 'flex-end' }}
-      >
-        {toasts
-          .filter(n => n.position === 'top-right')
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-      <Box
-        className="toasts-container toasts-container--bottom"
-        display={visible ? 'flex' : 'none'}
-        top={0}
-        left={0}
-        right={0}
-        bottom={2}
-        sx={{ ...common, flexDirection: 'column-reverse' }}
-      >
-        {toasts
-          .filter(n => n.position === 'bottom')
-          .reverse()
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-      <Box
-        className="toasts-container toasts-container--bottom-left"
-        display={visible ? 'flex' : 'none'}
-        top={0}
-        left={2}
-        right={0}
-        bottom={2}
-        sx={{
-          ...common,
-          alignItems: 'flex-start',
-          flexDirection: 'column-reverse',
-        }}
-      >
-        {toasts
-          .filter(n => n.position === 'bottom-left')
-          .reverse()
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-      <Box
-        className="toasts-container toasts-container--bottom-right"
-        display={visible ? 'flex' : 'none'}
-        top={0}
-        left={0}
-        right={2}
-        bottom={2}
-        sx={{
-          ...common,
-          flexDirection: 'column-reverse',
-          alignItems: 'flex-end',
-        }}
-      >
-        {toasts
-          .filter(n => n.position === 'bottom-right')
-          .reverse()
-          .map(n => (
-            <ToastWrapper
-              key={n.id}
-              layout
-              transition={LAYOUT_TRANSITION_SPRING}
-            >
-              <Toast {...n} onHide={clearToast} />
-            </ToastWrapper>
-          ))}
-      </Box>
-    </>
+    <Box
+      className={`toasts-container toasts-container--${toast?.position}`}
+      display={visible ? 'flex' : 'none'}
+      top={toast?.position?.includes('top') ? 2 : 0}
+      left={toast?.position?.includes('left') ? 2 : 0}
+      right={toast?.position?.includes('right') ? 2 : 0}
+      bottom={toast?.position?.includes('bottom') ? 2 : 0}
+      sx={{
+        ...common,
+        alignItems: toast?.position?.includes('left')
+          ? 'flex-start'
+          : toast?.position?.includes('right')
+          ? 'flex-end'
+          : 'center',
+        flexDirection: toast?.position?.includes('bottom')
+          ? 'column-reverse'
+          : 'column',
+      }}
+    >
+      {toast && (
+        <ToastWrapper
+          key={toast.id}
+          layout
+          transition={LAYOUT_TRANSITION_SPRING}
+        >
+          <Toast {...toast} onHide={clearToast} />
+        </ToastWrapper>
+      )}
+    </Box>
   )
 }
 
-export default ToastsContainer
+export default ToastContainer
