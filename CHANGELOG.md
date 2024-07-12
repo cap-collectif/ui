@@ -16,6 +16,7 @@ To better understand the changelog, here are some legends we use:
 `2024-07-12`
 
 - 🐛 Refactor + enhance accessibility on toast [#431](https://github.com/cap-collectif/ui/pull/431)
+- 🐛 Fix modal display + add story [#430](https://github.com/cap-collectif/ui/pull/430)
 
 ## 1.10.5
 
