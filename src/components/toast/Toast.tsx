@@ -31,7 +31,6 @@ export interface ToastProps {
   readonly variant: 'info' | 'success' | 'danger' | 'warning' | 'loading'
   readonly content: React.ReactNode
   readonly onClose?: () => void
-  readonly onHide?: (id: string) => void
 }
 
 type StyledProps = {
@@ -108,7 +107,6 @@ const getAnimation = (position: ToastProps['position']) => {
 export const Toast: React.FC<ToastProps> = ({
   content,
   id,
-  onHide,
   onClose,
   position,
   ...props

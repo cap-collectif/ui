@@ -24,9 +24,7 @@ const common: SystemCssProperties = {
 const ToastContainer = () => {
   const [toast, setToast] = useState<ToastProps | null>(null)
   const visible = toast !== null
-  const clearToast = () => {
-    setToast(null)
-  }
+
   useEffect(() => {
     Emitter.on(UIEvents.ToastShow, (newToast: ToastProps) => {
       setToast(newToast)
@@ -72,7 +70,7 @@ const ToastContainer = () => {
           transition={LAYOUT_TRANSITION_SPRING}
           aria-roledescription={getAriaRole(toast.variant)}
         >
-          <Toast {...toast} onHide={clearToast} />
+          <Toast {...toast} />
         </ToastWrapper>
       )}
     </Box>
