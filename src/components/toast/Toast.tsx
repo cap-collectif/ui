@@ -15,7 +15,7 @@ import {
 import { SHADOWS } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box } from '../box/Box'
-import { CapUIIcon, CapUIIconSize, Icon, IconProps } from '../icon'
+import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout/Flex'
 import { Spinner } from '../spinner'
 import Text from '../typography/Text'
@@ -93,64 +93,6 @@ const ToastInner = styled(motion(Box)).attrs({
   })};
 `
 
-const getIcon = (
-  variant: ToastProps['variant'],
-  props?: Omit<IconProps, 'name' | 'color'>,
-): React.ReactNode => {
-  const common: { size: IconProps['size'] } = {
-    size: CapUIIconSize.Md,
-  }
-
-  switch (variant) {
-    case 'info':
-      return (
-        <Icon
-          name={CapUIIcon.Info}
-          color="blue.500"
-          {...common}
-          {...props}
-          aria-hidden={true}
-          focusable={false}
-        />
-      )
-    case 'success':
-      return (
-        <Icon
-          name={CapUIIcon.Check}
-          color="green.500"
-          {...common}
-          {...props}
-          aria-hidden={true}
-          focusable={false}
-        />
-      )
-    case 'danger':
-      return (
-        <Icon
-          name={CapUIIcon.Cross}
-          color="red.500"
-          {...common}
-          {...props}
-          aria-hidden={true}
-          focusable={false}
-        />
-      )
-    case 'warning':
-      return (
-        <Icon
-          name={CapUIIcon.Alert}
-          color="yellow.500"
-          {...common}
-          {...props}
-          aria-hidden={true}
-          focusable={false}
-        />
-      )
-    default:
-      throw new Error('Unsupported icon variant!')
-  }
-}
-
 const getAnimation = (position: ToastProps['position']) => {
   switch (position) {
     case 'top':
@@ -215,11 +157,9 @@ export const Toast: React.FC<ToastProps> = ({
       className="cap-toast"
       zIndex="toast"
     >
-      <Flex align="center" css={{ '& > *:last-child': { flex: 1 } }}>
-        {variant === 'loading' ? (
-          <Spinner mr={2} />
-        ) : (
-          getIcon(variant, { mr: 2 })
+      <Flex align="center" gap={2} css={{ '& > *:last-child': { flex: 1 } }}>
+        {variant === 'loading' && (
+          <Spinner mr={2} aria-hidden={true} focusable={false} />
         )}
         {typeof content === 'string' ? (
           <Text dangerouslySetInnerHTML={{ __html: content }} />
@@ -236,7 +176,6 @@ export const Toast: React.FC<ToastProps> = ({
           onClick={() => {
             setShow(false)
           }}
-          ml={2}
         />
       </Flex>
     </ToastInner>
