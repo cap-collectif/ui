@@ -176,15 +176,6 @@ export const Toast: React.FC<ToastProps> = ({
 }) => {
   const [show, setShow] = useState(true)
   const container = useRef<HTMLDivElement>(null)
-  const clearTimeout = useTimeout(
-    () => {
-      if (duration && duration > 0) {
-        setShow(false)
-      }
-    },
-    duration < MIN_TIMEOUT ? MIN_TIMEOUT : duration,
-    [],
-  )
 
   useEffect(() => {
     const $container = container.current
@@ -238,7 +229,6 @@ export const Toast: React.FC<ToastProps> = ({
           top={0}
           right={0}
           onClick={() => {
-            clearTimeout()
             setShow(false)
           }}
         />
