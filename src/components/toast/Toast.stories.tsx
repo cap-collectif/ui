@@ -89,6 +89,21 @@ export const Default: Story<ToastProps> = args => (
       variant="primary"
       variantSize="medium"
       onClick={() => {
+        toast({
+          ...args,
+          variant: 'info',
+          content: 'Ouvrez la console et fermez-moi',
+          onClose: () =>
+            console.log("Un log qui s'affiche à la fermeture du toast !"),
+        })
+      }}
+    >
+      Toast with onClose
+    </Button>
+    <Button
+      variant="primary"
+      variantSize="medium"
+      onClick={() => {
         clearToasts()
       }}
     >
