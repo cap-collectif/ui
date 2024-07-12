@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { variant as styledVariant } from 'styled-system'
 
@@ -116,29 +116,13 @@ export const Toast: React.FC<ToastProps> = ({
   const [show, setShow] = useState(true)
   const container = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const $container = container.current
-    const endHandler = (evt: AnimationEvent) => {
-      if (evt.animationName === fadeOut.getName()) {
-        if (onClose) {
-          onClose()
-        }
-        if (onHide) {
-          onHide(id)
-        }
-      }
+  const handleClose = () => {
+    setShow(false)
+    if (onClose) {
+      onClose()
     }
+  }
 
-    if ($container) {
-      $container.addEventListener('animationend', endHandler)
-    }
-
-    return () => {
-      if ($container) {
-        $container.removeEventListener('animationend', endHandler)
-      }
-    }
-  }, [onClose, onHide, id])
   const { variant } = props
 
   return (
@@ -164,10 +148,10 @@ export const Toast: React.FC<ToastProps> = ({
           size={CapUIIconSize.Md}
           tabIndex={0}
           onKeyDown={() => {
-            setShow(false)
+            handleClose()
           }}
           onClick={() => {
-            setShow(false)
+            handleClose()
           }}
         />
       </Flex>
