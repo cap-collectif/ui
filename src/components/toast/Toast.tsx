@@ -31,6 +31,7 @@ export interface ToastProps {
   readonly variant: 'info' | 'success' | 'danger' | 'warning' | 'loading'
   readonly content: React.ReactNode
   readonly onClose?: () => void
+  readonly setToast?: (value: null) => void
 }
 
 type StyledProps = {
@@ -108,6 +109,7 @@ export const Toast: React.FC<ToastProps> = ({
   content,
   id,
   onClose,
+  setToast,
   position,
   ...props
 }) => {
@@ -116,6 +118,9 @@ export const Toast: React.FC<ToastProps> = ({
 
   const handleClose = () => {
     setShow(false)
+    if (setToast) {
+      setToast(null)
+    }
     if (onClose) {
       onClose()
     }

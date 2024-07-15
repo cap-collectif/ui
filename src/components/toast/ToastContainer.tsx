@@ -71,7 +71,7 @@ const ToastContainer = () => {
           transition={LAYOUT_TRANSITION_SPRING}
           aria-roledescription={getAriaRole(toast.variant)}
         >
-          <Toast {...toast} />
+          <Toast setToast={setToast} {...toast} />
         </ToastWrapper>
       )}
     </Box>
