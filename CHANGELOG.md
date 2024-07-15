@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.7
+
+`2024-07-15`
+
+- 🐛 Add a missing default prop on toast [#433](https://github.com/cap-collectif/ui/pull/433)
+
 ## 1.10.6
 
 `2024-07-12`
