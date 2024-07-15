@@ -48,10 +48,7 @@ export const Default: Story<ModalProps> = args => (
   >
     {({ hide }) => (
       <>
-        <Modal.Header
-          closeIconLabel="Fermer"
-          closeLabel="Retour sur les propositions"
-        >
+        <Modal.Header closeIconLabel="Fermer">
           <Heading>Title</Heading>
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
