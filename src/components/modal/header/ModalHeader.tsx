@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import * as React from 'react'
-
 import { useIsMobile } from '../../../hooks/useDeviceDetect'
 import { CapUIFontFamily, CapUIFontWeight, CapUIRadius } from '../../../styles'
 import { Box } from '../../box'
@@ -15,13 +14,13 @@ type SubComponents = {
 }
 
 export type ModalHeaderProps = FlexProps & {
-  readonly closeLabel?: string
   readonly closeIconLabel?: string
 }
 
+export const MODAL_TITLE_ARIA_DESCRIBED_BY = 'modal-title'
+
 const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   children,
-  closeLabel,
   closeIconLabel,
   className,
   ...rest
@@ -32,6 +31,24 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
     if (ref.current) ref.current.focus()
   }, [])
   const isMobile = useIsMobile()
+
+  const hasLabel = React.Children.toArray(children).some(
+    // @ts-ignore property displayName not standard
+    c => c?.type?.displayName === 'Modal.Header.Label',
+  )
+
+  const childrenWithProps = React.Children.map(children, child => {
+    if (child && React.isValidElement(child)) {
+      // @ts-ignore property displayName not standard
+      const isHeading = child.type?.displayName === 'Heading'
+
+      if (isHeading && !hasLabel) // @ts-ignore cloning with custom props
+        return React.cloneElement(child, { id: MODAL_TITLE_ARIA_DESCRIBED_BY })
+      // @ts-ignore cloning with custom props
+      if (isHeading && hasLabel) return React.cloneElement(child, { as: 'h3' })
+    }
+    return child
+  })
 
   return (
     <Flex
@@ -58,7 +75,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
         flex={1}
         spacing={2}
         sx={{
-          'h1, h2, h3, h4, h5, h6': {
+          'h1, h2:not(.cap-modal__header--label), h3, h4, h5, h6': {
             ...headingStyles.h4,
             color: 'primary.900',
             fontWeight: CapUIFontWeight.Semibold,
@@ -66,7 +83,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
           },
         }}
       >
-        {children}
+        {childrenWithProps}
       </Flex>
       {!hideCloseButton && (
         <Box
@@ -74,7 +91,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
           type="button"
           ref={ref}
           onClick={hide}
-          aria-describedby={closeLabel}
+          aria-describedby={MODAL_TITLE_ARIA_DESCRIBED_BY}
           color="gray.500"
         >
           <Icon
