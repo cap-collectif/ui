@@ -45,7 +45,8 @@ const ToastContainer = () => {
 
   return (
     <Box
-      className={`toasts-container toasts-container--${toast?.position}`}
+      className={`toasts-container toasts-container--${toast?.position ||
+        'top'}`}
       display={visible ? 'flex' : 'none'}
       top={toast?.position?.includes('top') ? 2 : 0}
       left={toast?.position?.includes('left') ? 2 : 0}
