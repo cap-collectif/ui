@@ -32,6 +32,13 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   }, [])
   const isMobile = useIsMobile()
 
+
+  /**
+   * This bit checks children to see if we have a Label and a Heading on our ModalHeader
+   * and forwards, if needed, the id used by the close button to give some context
+   * to users using keyboard navigation and/or screen readers
+   */
+
   const hasLabel = React.Children.toArray(children).some(
     // @ts-ignore property displayName not standard
     c => c?.type?.displayName === 'Modal.Header.Label',
