@@ -16,6 +16,7 @@ To better understand the changelog, here are some legends we use:
 `2024-07-15`
 
 - 🐛 Add a missing default prop on toast [#433](https://github.com/cap-collectif/ui/pull/433)
+- 🆕 Accessibility: auto assign id and correct html tag on modal header [#435](https://github.com/cap-collectif/ui/pull/435)
 
 ## 1.10.6
 
