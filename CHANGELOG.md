@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.8
+
+`2024-07-15`
+
+- 🐛 Remove dismissed toast from DOM instead of hiding it [#436](https://github.com/cap-collectif/ui/pull/436)
+
 ## 1.10.7
 
 `2024-07-15`
