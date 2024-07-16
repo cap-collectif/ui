@@ -32,8 +32,10 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
     borderColor: 'primary.500',
   },
 
-  '.cap-radio__input:focus + &': {
-    boxShadow: `0 0 2px 2px ${colors?.primaryHover}`,
+  '.cap-radio__input:focus-visible + &': {
+    outline: '2px #fff solid',
+    outlineOffset: 0,
+    boxShadow: `0 0 0 4px ${colors?.primary[700]}`,
   },
 
   '.cap-radio__input[aria-invalid="true"] + &': {

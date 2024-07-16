@@ -40,6 +40,9 @@ export const Container = styled(Flex)<{
     background-color: ${props => props.colors?.primary[100]};
     border: 1.5px dashed ${props => props.colors?.primary[300]};
     box-shadow: 0 0 2px 2px ${props => props.colors?.primary[300]};
+    outline: 2px #fff solid;
+    outline-offset: 0;
+    box-shadow: 0 0 0 4px ${props => props.colors?.primary[700]};
   }
   &:hover {
     background-color: ${props => props.colors?.primary[100]};

@@ -282,7 +282,6 @@ type ModifiedStyledSystemProps = AppSizeProps &
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
-  readonly disableFocusStyles?: boolean
   readonly css?: any
   readonly ref?: any
 }
@@ -337,7 +336,7 @@ export const Box = styled('div').withConfig({
     _disabled,
     _selected,
     _invalid,
-    disableFocusStyles,
+    theme: { colors }
   }) =>
     css(
       merge.all([
@@ -346,17 +345,7 @@ export const Box = styled('div').withConfig({
           ...(_active ? { '&:active': _active } : {}),
           ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
           ...(_invalid ? { '&[aria-invalid="true"]': _invalid } : {}),
-          ...(disableFocusStyles
-            ? merge.all([
-                _focus ? { '&:focus': _focus } : {},
-                {
-                  '&:focus': {
-                    outline: 'none !important',
-                    boxShadow: 'none !important',
-                  },
-                },
-              ])
-            : _focus
+          ...(_focus
             ? { '&:focus': _focus }
             : {}),
           ...(_disabled
@@ -364,6 +353,13 @@ export const Box = styled('div').withConfig({
             : {}),
         },
         sx ?? {},
+        {
+          '&:focus-visible': {
+            outline: '2px #fff solid',
+            outlineOffset: 0,
+            boxShadow: `0 0 0 4px ${colors?.primary[700] || '#000'}`
+          }
+        },
       ]),
     ),
   ({ _variants }) =>

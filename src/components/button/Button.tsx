@@ -47,13 +47,13 @@ const ButtonInner = styled(Box)<{
   variantColor: ButtonProps['variantColor']
   alternative: boolean
   colors: Colors
-}>(S(false).common, ({ variantColor = 'primary', alternative, colors }) => {
+}>(S(false).common, ({ variantColor = 'primary', alternative }) => {
   return variantStyled({
     variants: {
-      primary: S(false, colors)[variantColor].primary,
-      secondary: S(false, colors)[variantColor].secondary,
-      tertiary: S(alternative, colors)[variantColor].tertiary,
-      link: S(false, colors)[variantColor].link,
+      primary: S(false)[variantColor].primary,
+      secondary: S(false)[variantColor].secondary,
+      tertiary: S(alternative)[variantColor].tertiary,
+      link: S(false)[variantColor].link,
     },
   })
 })
