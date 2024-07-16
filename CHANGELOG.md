@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.9
+
+`2024-07-16`
+
+- 🐛 Avoid creating several instances of ToastContainer to prevent events from not working [#438](https://github.com/cap-collectif/ui/pull/438)
+
 ## 1.10.8
 
 `2024-07-15`
