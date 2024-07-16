@@ -27,7 +27,6 @@ export const Input: React.FC<InputProps> = React.forwardRef<
         {...inputProps}
         sx={S}
         variant={inputProps.variantSize}
-        disableFocusStyles
         ref={ref}
         as="input"
         className={cn('cap-input', className)}
@@ -48,7 +47,6 @@ export const Input: React.FC<InputProps> = React.forwardRef<
       <Box
         {...inputProps}
         as="input"
-        disableFocusStyles
         width="100%"
         ref={ref}
         bg="inherit"

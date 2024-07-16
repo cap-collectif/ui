@@ -28,7 +28,6 @@ export const InputNumber = ({
   return (
     <Box position="relative" width={width || '104px'}>
       <Button
-        disableFocusStyles
         disabled={inputProps.disabled}
         variant="tertiary"
         backgroundColor="unset"
@@ -62,7 +61,6 @@ export const InputNumber = ({
         {...inputProps}
         sx={S}
         variant={variantSize}
-        disableFocusStyles
         ref={inputRef}
         as="input"
         type="number"
@@ -72,7 +70,6 @@ export const InputNumber = ({
         {...props}
       />
       <Button
-        disableFocusStyles
         disabled={inputProps.disabled}
         variant="tertiary"
         bg="none"

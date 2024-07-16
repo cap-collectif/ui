@@ -52,7 +52,6 @@ export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
           {...inputProps}
           sx={{ ...S, resize }}
           variant={inputProps.variantSize}
-          disableFocusStyles
           ref={ref}
           as="textarea"
           className={cn('cap-textarea', className)}

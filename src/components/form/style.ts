@@ -48,6 +48,8 @@ const styles: SystemStyleObject = {
 
   '&:focus,&[aria-selected="true"],&:active': {
     borderColor: 'primary.500',
+    outline: 'none !important',
+    boxShadow: 'none !important',
   },
 
   '&[aria-invalid="true"]': {
