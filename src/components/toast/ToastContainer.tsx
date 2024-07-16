@@ -26,16 +26,12 @@ const ToastContainer = () => {
   const visible = toast !== null
 
   useEffect(() => {
-    // We use several <ToastContainer> throughout the app
-    // We check if a Container already exists before creating a new one that could interfere with others, preventing events from working
-    if (Emitter.listenerCount(UIEvents.ToastShow) === 0) {      
-      Emitter.on(UIEvents.ToastShow, (newToast: ToastProps) => {
-        setToast(newToast)
-      })
-      Emitter.on(UIEvents.ToastClear, () => {
-        setToast(null)
-      })
-    }
+    Emitter.on(UIEvents.ToastShow, (newToast: ToastProps) => {
+      setToast(newToast)
+    })
+    Emitter.on(UIEvents.ToastClear, () => {
+      setToast(null)
+    })
 
     return () => {
       Emitter.removeAllListeners(UIEvents.ToastShow)
