@@ -48,6 +48,9 @@ const ToastInner = styled(motion(Box)).attrs({
   animation: ${props => props.animation} 0.23s forwards ease-in-out;
   pointer-events: all;
   position: relative;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 
   & > p {
     margin: 0;
@@ -150,12 +153,15 @@ export const Toast: React.FC<ToastProps> = ({
           name={CapUIIcon.CrossO}
           size={CapUIIconSize.Md}
           tabIndex={0}
-          onKeyDown={() => {
-            handleClose()
+          onKeyDown={event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              handleClose()
+            }
           }}
           onClick={() => {
             handleClose()
           }}
+          aria-label="Close"
         />
       </Flex>
     </ToastInner>
