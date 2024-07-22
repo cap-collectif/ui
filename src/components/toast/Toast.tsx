@@ -154,7 +154,7 @@ export const Toast: React.FC<ToastProps> = ({
           size={CapUIIconSize.Md}
           tabIndex={0}
           onKeyDown={event => {
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' || event.key === ' ') {
               handleClose()
             }
           }}
