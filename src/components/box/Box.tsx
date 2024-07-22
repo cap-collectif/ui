@@ -357,7 +357,7 @@ export const Box = styled('div').withConfig({
           '&:focus-visible': {
             outline: '2px #fff solid',
             outlineOffset: 0,
-            boxShadow: `0 0 0 4px ${colors?.primary[700] || '#000'}`
+            boxShadow: `0 0 0 4px ${colors?.primary?.[700] || '#000'}`
           }
         },
       ]),
