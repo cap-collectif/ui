@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.11
+
+`2024-07-22`
+
+- 🐛 Fix crash when primary color absent [#443](https://github.com/cap-collectif/ui/pull/443)
+
 ## 1.10.10
 
 `2024-07-16`
