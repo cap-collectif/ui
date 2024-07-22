@@ -91,6 +91,19 @@ export const Default: Story<ToastProps> = args => (
       onClick={() => {
         toast({
           ...args,
+          variant: 'loading',
+          content: 'Je suis un toast de type loading',
+        })
+      }}
+    >
+      Notify loading
+    </Button>
+    <Button
+      variant="primary"
+      variantSize="medium"
+      onClick={() => {
+        toast({
+          ...args,
           variant: 'info',
           content: 'Ouvrez la console et fermez-moi',
           onClose: () =>
