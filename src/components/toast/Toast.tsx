@@ -150,8 +150,10 @@ export const Toast: React.FC<ToastProps> = ({
           name={CapUIIcon.CrossO}
           size={CapUIIconSize.Md}
           tabIndex={0}
-          onKeyDown={() => {
-            handleClose()
+          onKeyDown={event => {
+            if (event.key === 'Enter') {
+              handleClose()
+            }
           }}
           onClick={() => {
             handleClose()
