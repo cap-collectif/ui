@@ -161,6 +161,7 @@ export const Toast: React.FC<ToastProps> = ({
           onClick={() => {
             handleClose()
           }}
+          aria-label="Close"
         />
       </Flex>
     </ToastInner>
