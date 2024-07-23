@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.12
+
+`2024-07-23`
+
+- 💄 Fix toast width on mobile [#442](https://github.com/cap-collectif/ui/pull/442)
+- 🐛 Fix toast keyboard navigation [#442](https://github.com/cap-collectif/ui/pull/442)
+
 ## 1.10.11
 
 `2024-07-22`
