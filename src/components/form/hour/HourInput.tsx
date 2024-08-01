@@ -38,10 +38,6 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
     const [value, setValue] = React.useState(defaultValue || '')
     const { colors } = useTheme()
 
-    React.useEffect(() => {
-      setValue(defaultValue || '')
-    }, [defaultValue])
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.value
       setValue(newValue)
