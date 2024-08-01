@@ -290,6 +290,7 @@ export const WithError: Story<InputGroupProps> = args => {
         </FormControl>
       </InputGroup>
       <InputGroup>
+        <FormLabel label="Label" />
         <FormControl isInvalid {...args}>
           <DateInput
             value={dateExample}
@@ -297,6 +298,7 @@ export const WithError: Story<InputGroupProps> = args => {
               setDateExample(e.target.value)
             }
           />
+          <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
         <FormControl isInvalid {...args}>
           <HourInput
