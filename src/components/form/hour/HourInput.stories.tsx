@@ -39,23 +39,20 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<Args> = args => {
-  const [value, onChange] = React.useState<string | null>(null)
-  return <HourInput {...args} value={value} onChange={onChange} />
+  return <HourInput {...args} />
 }
 
 export const Disabled: Story<Args> = args => {
-  const [value, onChange] = React.useState<string | null>(null)
-  return <HourInput {...args} value={value} onChange={onChange} />
+  return <HourInput {...args} />
 }
 Disabled.args = {
   isDisabled: true,
 }
 
 export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
-  const [value, onChange] = React.useState<string | null>(null)
   return (
     <FormControl {...args}>
-      <HourInput {...args} value={value} onChange={onChange} />
+      <HourInput {...args} />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )

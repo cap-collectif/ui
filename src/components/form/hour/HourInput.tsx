@@ -1,99 +1,75 @@
-import classNames from 'classnames'
+import cn from 'classnames'
 import React from 'react'
-import { components, ControlProps, Props } from 'react-select'
-import ReactSelect from 'react-select'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
-import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import { reactSelectStyle } from '../style'
-import options from './HourInput.utils'
+import { Input } from '../input'
 
-export interface HourInputProps
-  extends Omit<Props, 'onChange' | 'isMulti' | 'value'> {
+export interface HourInputProps {
+  readonly id?: string
+  readonly className?: string
+  readonly placeholder?: string
   readonly isDisabled?: boolean
   readonly disabled?: string
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange?: (value: string) => void
-  readonly value?: string | null
+  readonly defaultValue?: string | null
 }
 
-const Control = ({ children, ...props }: ControlProps) => (
-  <components.Control {...props}>
-    {Array.isArray(children) && children[0]}
-    <Icon
-      mr={1}
-      name={CapUIIcon.Clock}
-      size={CapUIIconSize.Md}
-      color="gray.700"
-    />
-  </components.Control>
+const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
+  (
+    {
+      defaultValue,
+      onChange,
+      id = 'cap-hour-input-id',
+      className,
+      placeholder = '00:00',
+      width,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
+    const inputProps = useFormControl<HTMLInputElement>(props)
+    const [value, setValue] = React.useState(defaultValue || '')
+    const { colors } = useTheme()
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = event.target.value
+      setValue(newValue)
+      if (onChange) onChange(newValue)
+    }
+
+    return (
+      <Box width={width || '92px'}>
+        <Input
+          {...inputProps}
+          type="time"
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+          disabled={inputProps.disabled}
+          aria-invalid={inputProps['aria-invalid']}
+          className={cn('cap-hour-input', className)}
+          ref={ref}
+          style={{
+            width: '100%',
+            height: props.variantSize === 'sm' ? '34px' : '42px',
+            padding: '0.5rem',
+            borderColor: inputProps['aria-invalid']
+              ? colors.red[500]
+              : colors.gray[300],
+          }}
+        />
+      </Box>
+    )
+  },
 )
 
-const HourInput = ({
-  value,
-  onChange,
-  id = 'cap-Hour-input-id',
-  className,
-  placeholder = '00:00',
-  width,
-  disabled,
-  ...props
-}: HourInputProps) => {
-  const inputProps = useFormControl<HTMLInputElement>(props)
-  const [input, setInput] = React.useState(value || '')
-  const { colors } = useTheme()
-
-  React.useEffect(() => {
-    setInput(value || '')
-  }, [value])
-
-  return (
-    <Box
-      width={width || '92px'}
-      sx={{ input: { opacity: value ? '1 !important' : 0 } }}
-    >
-      <ReactSelect
-        {...inputProps}
-        styles={reactSelectStyle(
-          colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
-          inputProps.variantSize || CapInputSize.Sm,
-        )}
-        inputValue={input || ''}
-        value={!value ? null : { label: value || '', value }}
-        onInputChange={(newValue, action) => {
-          if (action.action === 'input-change') {
-            setInput(newValue)
-            if (onChange) onChange(newValue)
-          }
-        }}
-        // @ts-ignore newValue is supposed to be generic (unknown)
-        onChange={(newValue: { label: string; value: string }) => {
-          if (newValue) {
-            setInput(newValue.value)
-            if (onChange && newValue) onChange(newValue.value)
-          }
-        }}
-        className={classNames('cap-hour-input', className)}
-        classNamePrefix="cap-hour-input"
-        isDisabled={inputProps.disabled}
-        aria-invalid={inputProps['aria-invalid']}
-        components={{ Control }}
-        options={options}
-        maxMenuHeight={210}
-        menuPortalTarget={document?.body}
-        placeholder={placeholder}
-        noOptionsMessage={() => null}
-        {...props}
-      />
-    </Box>
-  )
-}
+HourInput.displayName = 'HourInput'
 
 export default HourInput
