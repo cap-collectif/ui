@@ -35,16 +35,16 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
     ref,
   ) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
-    const [input, setInput] = React.useState(defaultValue || '')
+    const [value, setValue] = React.useState(defaultValue || '')
     const { colors } = useTheme()
 
     React.useEffect(() => {
-      setInput(defaultValue || '')
+      setValue(defaultValue || '')
     }, [defaultValue])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.value
-      setInput(newValue)
+      setValue(newValue)
       if (onChange) onChange(newValue)
     }
 
@@ -53,7 +53,7 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
         <Input
           {...inputProps}
           type="time"
-          value={input}
+          value={value}
           onChange={handleChange}
           placeholder={placeholder}
           disabled={inputProps.disabled}
