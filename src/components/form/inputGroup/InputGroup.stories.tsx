@@ -39,10 +39,9 @@ const colourOptions = [
 ]
 
 export const Default: Story<InputGroupProps> = args => {
-  const [
-    dateRangeExample,
-    setDateRangeExample,
-  ] = React.useState<DateRangeValueType>({
+  const [dateRangeExample, setDateRangeExample] = React.useState<
+    DateRangeValueType
+  >({
     startDate: null,
     endDate: null,
   })
@@ -180,10 +179,9 @@ export const Default: Story<InputGroupProps> = args => {
   )
 }
 export const WithError: Story<InputGroupProps> = args => {
-  const [
-    dateRangeExample,
-    setDateRangeExample,
-  ] = React.useState<DateRangeValueType>({
+  const [dateRangeExample, setDateRangeExample] = React.useState<
+    DateRangeValueType
+  >({
     startDate: null,
     endDate: null,
   })
@@ -288,6 +286,23 @@ export const WithError: Story<InputGroupProps> = args => {
         </FormControl>
         <FormControl isInvalid {...args}>
           <Input placeholder="Placeholder..." />
+          <FormErrorMessage>Error Info</FormErrorMessage>
+        </FormControl>
+      </InputGroup>
+      <InputGroup>
+        <FormControl isInvalid {...args}>
+          <DateInput
+            value={dateExample}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
+          />
+        </FormControl>
+        <FormControl isInvalid {...args}>
+          <HourInput
+            placeholder="Placeholder..."
+            variantSize={CapInputSize.Sm}
+          />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
       </InputGroup>
