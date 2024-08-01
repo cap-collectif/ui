@@ -17,13 +17,13 @@ export interface HourInputProps {
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange?: (value: string) => void
-  readonly value?: string | null
+  readonly defaultValue?: string | null
 }
 
 const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
   (
     {
-      value,
+      defaultValue,
       onChange,
       id = 'cap-hour-input-id',
       className,
@@ -35,12 +35,12 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
     ref,
   ) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
-    const [input, setInput] = React.useState(value || '')
+    const [input, setInput] = React.useState(defaultValue || '')
     const { colors } = useTheme()
 
     React.useEffect(() => {
-      setInput(value || '')
-    }, [value])
+      setInput(defaultValue || '')
+    }, [defaultValue])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.value
