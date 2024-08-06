@@ -33,7 +33,7 @@ export interface SearchProps<
   readonly onChange?: (value: string) => void
   readonly onSelect?: (value: Option) => void
   readonly value?: string
-  readonly inputTitle?:string
+  readonly inputTitle?: string
 }
 
 const Control = <
@@ -43,8 +43,10 @@ const Control = <
 >({
   children,
   ...props
-}: ControlProps<Option, IsMulti, Group>) => {
+}: ControlProps<Option, IsMulti, Group> & { deleteButtonAriaLabel?: string })  => {
   const { isLoading, inputValue, onInputChange } = props.selectProps
+  const { deleteButtonAriaLabel } = props
+  
   return (
     <components.Control {...props}>
       <Icon
@@ -56,20 +58,26 @@ const Control = <
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={1} color="primary.500" />}
       {!isLoading && inputValue && (
-        <Icon
+        <Box as={'button'} type="button"
           mr={1}
           style={{ cursor: 'pointer' }}
-          name={CapUIIcon.Cross}
-          size={CapUIIconSize.Md}
-          color="gray.700"
-          _hover={{ color: 'red.500' }}
           onClick={() => {
             onInputChange('', {
               action: 'input-change',
               prevInputValue: inputValue,
             })
           }}
-        />
+            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
+          >
+          <Icon
+            name={CapUIIcon.Cross}
+            size={CapUIIconSize.Md}
+            color="gray.700"
+            _hover={{ color: 'red.500' }}
+            aria-hidden
+            focusable={false}
+          />
+        </Box>
       )}
     </components.Control>
   )
