@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import moment from 'moment'
 import React from 'react'
 
 import { useTheme } from '../../../hooks'
@@ -18,6 +19,7 @@ export interface HourInputProps {
   readonly width?: string | number
   readonly onChange?: (value: string) => void
   readonly defaultValue?: string | null
+  readonly value?: string | null
 }
 
 const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
@@ -27,7 +29,6 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
       onChange,
       id = 'cap-hour-input-id',
       className,
-      placeholder = '00:00',
       width,
       disabled,
       ...props
@@ -35,7 +36,8 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
     ref,
   ) => {
     const inputProps = useFormControl<HTMLInputElement>(props)
-    const [value, setValue] = React.useState(defaultValue || '')
+    const now = moment().format('HH:mm')
+    const [value, setValue] = React.useState(defaultValue || now)
     const { colors } = useTheme()
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +53,6 @@ const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
           type="time"
           value={value}
           onChange={handleChange}
-          placeholder={placeholder}
           disabled={inputProps.disabled}
           aria-invalid={inputProps['aria-invalid']}
           className={cn('cap-hour-input', className)}

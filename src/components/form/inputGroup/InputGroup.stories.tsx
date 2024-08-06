@@ -160,7 +160,7 @@ export const Default: Story<InputGroupProps> = args => {
           />
         </FormControl>
         <FormControl {...args}>
-          <HourInput variantSize={CapInputSize.Md} />
+          <HourInput variantSize={CapInputSize.Md} defaultValue={'16:16'} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
@@ -301,10 +301,7 @@ export const WithError: Story<InputGroupProps> = args => {
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
         <FormControl isInvalid {...args}>
-          <HourInput
-            placeholder="Placeholder..."
-            variantSize={CapInputSize.Sm}
-          />
+          <HourInput variantSize={CapInputSize.Sm} />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
       </InputGroup>
