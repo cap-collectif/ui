@@ -67,14 +67,15 @@ const Control = <
               prevInputValue: inputValue,
             })
           }}
+            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
           >
           <Icon
             name={CapUIIcon.Cross}
             size={CapUIIconSize.Md}
             color="gray.700"
             _hover={{ color: 'red.500' }}
-            role="img"
-            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
+            aria-hidden
+            focusable={false}
           />
         </Box>
       )}
