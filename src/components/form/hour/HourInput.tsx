@@ -19,7 +19,6 @@ export interface HourInputProps {
   readonly width?: string | number
   readonly onChange?: (value: string) => void
   readonly defaultValue?: string | null
-  readonly value?: string | null
 }
 
 const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
