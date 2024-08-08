@@ -160,7 +160,7 @@ export const Default: Story<InputGroupProps> = args => {
           />
         </FormControl>
         <FormControl {...args}>
-          <HourInput variantSize={CapInputSize.Md} defaultValue={'16:16'} />
+          <HourInput variantSize={CapInputSize.Md} />
         </FormControl>
       </InputGroup>
       <InputGroup {...args}>
