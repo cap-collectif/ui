@@ -302,8 +302,11 @@ export const WithError: Story<InputGroupProps> = args => {
         </FormControl>
         <FormControl isInvalid {...args}>
           <HourInput
-            placeholder="Placeholder..."
             variantSize={CapInputSize.Sm}
+            value={dateExample}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDateExample(e.target.value)
+            }
           />
           <FormErrorMessage>Error Info</FormErrorMessage>
         </FormControl>
