@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.14
+
+`2024-08-08`
+
+- 🐛 Fix date and time inputs behaviour [#451](https://github.com/cap-collectif/ui/pull/451)
+- 🆕 Improve accessibility on Search component [#449](https://github.com/cap-collectif/ui/pull/449)
+
 ## 1.10.13
 
 `2024-08-01`
