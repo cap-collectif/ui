@@ -10,7 +10,14 @@ const TabsPanel: React.FC<TabsPanelprops> = ({ children, ...props }) => {
   const { tabs } = useTabs()
 
   return (
-    <BaseTabPanel as={Box} p={6} {...tabs} tabIndex={undefined} {...props}>
+    <BaseTabPanel
+      as={Box}
+      p={6}
+      {...tabs}
+      tabIndex={undefined}
+      {...props}
+      style={!children ? { display: 'none' } : undefined}
+    >
       {children}
     </BaseTabPanel>
   )

@@ -220,3 +220,38 @@ export const withDisabledTab: Story<TabsProps> = args => {
     </Flex>
   )
 }
+
+
+export const withEmptyContent: Story<TabsProps> = args => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const [value, setValue] = React.useState('')
+// 
+  return (
+    <Flex
+      direction="column"
+      justifyContent="flexStart"
+      alignItems="flexStart"
+      height="800px"
+    >
+      <Tabs {...args}>
+        <Tabs.ButtonList ariaLabel="Tabs example">
+          <Tabs.Button id="tab1">I am empty</Tabs.Button>
+          <Tabs.Button id="tab2">I have content</Tabs.Button>
+          <Tabs.Button id="tab3">I am empty, too!</Tabs.Button>
+          
+        </Tabs.ButtonList>
+        <Tabs.PanelList>
+          <Tabs.Panel >
+          </Tabs.Panel>
+
+          <Tabs.Panel>
+            I'm panel content
+          </Tabs.Panel>
+
+          <Tabs.Panel >  
+          </Tabs.Panel>
+        </Tabs.PanelList>
+      </Tabs>
+    </Flex>
+  )
+}
