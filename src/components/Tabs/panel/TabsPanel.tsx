@@ -9,14 +9,15 @@ export interface TabsPanelprops extends BoxProps {}
 const TabsPanel: React.FC<TabsPanelprops> = ({ children, ...props }) => {
   const { tabs } = useTabs()
 
-  return !children ? (
+  return (
     <BaseTabPanel
+      as={Box}
+      p={6}
       {...tabs}
       tabIndex={undefined}
-      style={{ display: 'none' }}
-    ></BaseTabPanel>
-  ) : (
-    <BaseTabPanel as={Box} p={6} {...tabs} tabIndex={undefined} {...props}>
+      {...props}
+      style={!children ? { display: 'none' } : undefined}
+    >
       {children}
     </BaseTabPanel>
   )
