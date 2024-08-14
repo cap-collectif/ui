@@ -223,9 +223,6 @@ export const withDisabledTab: Story<TabsProps> = args => {
 
 
 export const withEmptyContent: Story<TabsProps> = args => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [value, setValue] = React.useState('')
-// 
   return (
     <Flex
       direction="column"
