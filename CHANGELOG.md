@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.15
+
+`2024-08-14`
+
+- 🛠 Remove tab content if it is empty [#453](https://github.com/cap-collectif/ui/pull/453)
+- 💄 Fix Consultation SpotIcon [#452](https://github.com/cap-collectif/ui/pull/452)
+
 ## 1.10.14
 
 `2024-08-08`
