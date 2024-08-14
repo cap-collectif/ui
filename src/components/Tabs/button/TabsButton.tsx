@@ -28,6 +28,12 @@ const TabsButton: React.FC<TabsButtonProps> = ({
     }
   }, [])
 
+  const currentTab = tabs.currentId
+  const currentTabPanel = tabs.panels.find(
+    panel => panel.groupId === currentTab,
+  )
+  const currentTabIsEmpty = currentTabPanel?.ref.current?.lastChild === null
+
   return (
     <BaseTab
       as={Radio}
@@ -47,6 +53,8 @@ const TabsButton: React.FC<TabsButtonProps> = ({
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
         borderTopRightRadius:
           id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
+        borderBottomLeftRadius: currentTabIsEmpty ? CapUIRadius.Accordion : 0,
+        borderBottomRightRadius: currentTabIsEmpty ? CapUIRadius.Accordion : 0,
         ...labelSx,
       }}
       className="tab__button"
