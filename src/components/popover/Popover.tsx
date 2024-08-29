@@ -6,6 +6,7 @@ import {
   MotionProps,
 } from 'framer-motion'
 import * as React from 'react'
+import { DialogOptions } from 'reakit'
 import {
   usePopoverState,
   Popover as ReakitPopover,
@@ -16,12 +17,12 @@ import {
 } from 'reakit/Popover'
 import styled from 'styled-components'
 
+import { ZINDEX } from '../../styles/theme'
 import { Flex, FlexProps } from '../layout/Flex'
 import { PopoverContext } from './Popover.context'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
 import PopoverHeader from './header/PopoverHeader'
-import { DialogOptions } from 'reakit'
 
 type RenderChildren = ({
   closePopover,
@@ -129,7 +130,14 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
       >
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
-      <StyledReakitPopover tabIndex={0} {...popoverProps} {...popover}>
+      <StyledReakitPopover
+        tabIndex={0}
+        {...popoverProps}
+        {...popover}
+        style={{
+          zIndex: (props?.zIndex as number) ?? ZINDEX['popover'],
+        }}
+      >
         <AnimatePresence>
           {popover.visible && (
             <ContainerAnimate
@@ -150,7 +158,6 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
               exit={{ opacity: 0, scale: 0.9, ...getOriginPosition(placement) }}
               transition={{ duration: 0.15, ease: 'easeInOut' }}
               className={cn('cap-popover', className)}
-              zIndex="popover"
               {...props}
             >
               <Arrow {...popover} />
