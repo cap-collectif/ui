@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.16
+
+`2024-09-13`
+
+- 🐛 Fix Popover zIndex [#456](https://github.com/cap-collectif/ui/pull/456)
+
 ## 1.10.15
 
 `2024-08-14`
@@ -54,7 +60,8 @@ To better understand the changelog, here are some legends we use:
 
 `2024-07-16`
 
-- 🐛 Avoid creating several instances of ToastContainer to prevent events from not working [#438](https://github.com/cap-collectif/ui/pull/438)
+- 🐛 Avoid creating several instances of ToastContainer to prevent events from not
+  working [#438](https://github.com/cap-collectif/ui/pull/438)
 
 ## 1.10.8
 
@@ -67,7 +74,8 @@ To better understand the changelog, here are some legends we use:
 `2024-07-15`
 
 - 🐛 Add a missing default prop on toast [#433](https://github.com/cap-collectif/ui/pull/433)
-- 🆕 Accessibility: auto assign id and correct html tag on modal header [#435](https://github.com/cap-collectif/ui/pull/435)
+- 🆕 Accessibility: auto assign id and correct html tag on modal
+  header [#435](https://github.com/cap-collectif/ui/pull/435)
 
 ## 1.10.6
 
@@ -110,7 +118,8 @@ To better understand the changelog, here are some legends we use:
 
 `2024-04-18`
 
-- 💥 Replace custom datePicker input with html native input[type="date"] [#414](https://github.com/cap-collectif/ui/pull/414)
+- 💥 Replace custom datePicker input with html native
+  input[type="date"] [#414](https://github.com/cap-collectif/ui/pull/414)
 - 🐛 Fix an svg element color on SHEET_FULL SpotIcon [#413](https://github.com/cap-collectif/ui/pull/413)
 
 ## 1.9.3
@@ -250,7 +259,6 @@ To better understand the changelog, here are some legends we use:
 
 - 🐛 Added `ListCard` export  [#348](https://github.com/cap-collectif/ui/pull/348)
 
-
 ## 1.6.0
 
 `2023-02-28`
@@ -279,20 +287,18 @@ To better understand the changelog, here are some legends we use:
 - 💄 Added Tabs component  [#325](https://github.com/cap-collectif/ui/pull/325)
 - 🛠 Updated Organisation Icon  [#331](https://github.com/cap-collectif/ui/pull/331)
 
-
 ## 1.5.6
 
 `2022-10-03`
 
 - 💄 Added organisation Icon [#312](https://github.com/cap-collectif/ui/pull/312)
 
-
 ## 1.5.5
 
 `2022-08-18`
 
-- 🛠 Extended `InputGroup` to handle cases of 3 Inputs along with a Label and a Guideline  [#307](https://github.com/cap-collectif/ui/pull/307)
-
+- 🛠 Extended `InputGroup` to handle cases of 3 Inputs along with a Label and a
+  Guideline  [#307](https://github.com/cap-collectif/ui/pull/307)
 
 ## 1.5.4
 
@@ -305,7 +311,6 @@ To better understand the changelog, here are some legends we use:
 `2022-07-26`
 
 - 🛠 Added Optional `popoverProps` object to `Popover` component [#300](https://github.com/cap-collectif/ui/pull/300)
-
 
 ## 1.5.2
 
@@ -338,7 +343,9 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Rework `MultiStepModal` [#286](https://github.com/cap-collectif/ui/pull/286)
 
 ### BREAKING CHANGES
-- [#286](https://github.com/cap-collectif/ui/pull/286) We changed the way to use the `MultiStepModal`, this one is more flexible.
+
+- [#286](https://github.com/cap-collectif/ui/pull/286) We changed the way to use the `MultiStepModal`, this one is more
+  flexible.
 
 ## 1.3.3
 
@@ -438,7 +445,7 @@ To better understand the changelog, here are some legends we use:
 
 `2022-03-01`
 
- 🎉 🎉 🎉 First release into Open Source with version 1.0.0 of our design system 🎉🎉 🎉
+🎉 🎉 🎉 First release into Open Source with version 1.0.0 of our design system 🎉🎉 🎉
 
 ## 0.9.6
 
@@ -503,15 +510,17 @@ To better understand the changelog, here are some legends we use:
 - 🆕 Add baseId prop on Modal, Tooltip and Popover [#184](https://github.com/cap-collectif/ui/pull/184)
 
 ### BREAKING CHANGES
-- [#190](https://github.com/cap-collectif/ui/pull/190) We changed the way we pass label to `Checkbox`. It used to be passed only as a prop, now it can be passed as children, so: 
+
+- [#190](https://github.com/cap-collectif/ui/pull/190) We changed the way we pass label to `Checkbox`. It used to be
+  passed only as a prop, now it can be passed as children, so:
+
 ```jsx
 // Before
-<Checkbox id="checkbox-id" label="Hello world" />
+<Checkbox id="checkbox-id" label="Hello world"/>
 
 // After
 <Checkbox id="checkbox-id">Hello world</Checkbox>
 ```
-
 
 ## 0.7.2
 
@@ -559,7 +568,8 @@ To better understand the changelog, here are some legends we use:
 - 💄 Several fix for `TextArea` [#141](https://github.com/cap-collectif/ui/pull/141)
 - 💄 Several fix for `InputNumber` [#142](https://github.com/cap-collectif/ui/pull/142)
 - 💄 Fix animation of `InlineSelect` [#149](https://github.com/cap-collectif/ui/pull/149)
-- 💄 Several fix for `InfoMessage` [#150](https://github.com/cap-collectif/ui/pull/150) [#160](https://github.com/cap-collectif/ui/pull/160)
+- 💄 Several fix
+  for `InfoMessage` [#150](https://github.com/cap-collectif/ui/pull/150) [#160](https://github.com/cap-collectif/ui/pull/160)
 
 ## 0.4.2
 
@@ -575,7 +585,6 @@ To better understand the changelog, here are some legends we use:
 - 🆕 Add new spot icons [#138](https://github.com/cap-collectif/ui/pull/138)
 - 🐛 Fix CSS import of DateRange [#136](https://github.com/cap-collectif/ui/pull/136)
 - 🐛 Fix `onClose` and `onOpen` on Modal [#135](https://github.com/cap-collectif/ui/pull/135)
-
 
 ## 0.4.0
 
@@ -599,10 +608,13 @@ To better understand the changelog, here are some legends we use:
 
 `2021-11-16`
 
-- 💄 Fix styles of `Select` / `AsyncSelect` / `CreatableSelect` / `AsyncCreatableSelect` [#118](https://github.com/cap-collectif/ui/pull/118)
-- 💄 Fix styles of `FormGuideline` [#116](https://github.com/cap-collectif/ui/pull/116) [#118](https://github.com/cap-collectif/ui/pull/118)
+- 💄 Fix styles
+  of `Select` / `AsyncSelect` / `CreatableSelect` / `AsyncCreatableSelect` [#118](https://github.com/cap-collectif/ui/pull/118)
+- 💄 Fix styles
+  of `FormGuideline` [#116](https://github.com/cap-collectif/ui/pull/116) [#118](https://github.com/cap-collectif/ui/pull/118)
 - 🆕 Remove src from published build folder [#120](https://github.com/cap-collectif/ui/pull/120)
-- 🆕 Update dependencies (react-select/styled-components/react-hotkeys-hook) [#120](https://github.com/cap-collectif/ui/pull/120)
+- 🆕 Update dependencies (
+  react-select/styled-components/react-hotkeys-hook) [#120](https://github.com/cap-collectif/ui/pull/120)
 - 💄 Fix lineHeight of `FormLabel` [#116](https://github.com/cap-collectif/ui/pull/116)
 - 💄 Fix lineHeight of `FormErrorMessage` [#116](https://github.com/cap-collectif/ui/pull/116)
 
@@ -631,7 +643,8 @@ To better understand the changelog, here are some legends we use:
 
 `2021-10-22`
 
-🐛 Switch dependencies needed in the project from dev dependencies to dependencies [#94](https://github.com/cap-collectif/ui/pull/94)
+🐛 Switch dependencies needed in the project from dev dependencies to
+dependencies [#94](https://github.com/cap-collectif/ui/pull/94)
 
 ## 0.1.0
 
@@ -665,7 +678,6 @@ To better understand the changelog, here are some legends we use:
 - 🆕 Add `Tooltip` component [#70](https://github.com/cap-collectif/ui/pull/70)
 - 🆕 Add `Tag` component [#55](https://github.com/cap-collectif/ui/pull/61)
 - 🆕 Add `Popover` component [#55](https://github.com/cap-collectif/ui/pull/55)
-
 
 ## 0.0.1
 
