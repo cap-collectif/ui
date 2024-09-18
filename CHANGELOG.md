@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.17
+
+`2024-09-18`
+
+- 🆕 Add 'clear' button to Select [#459](https://github.com/cap-collectif/ui/pull/459)
+- 🆕 Improve modal accessibility [#458](https://github.com/cap-collectif/ui/pull/458)
+
 ## 1.10.16
 
 `2024-09-13`
