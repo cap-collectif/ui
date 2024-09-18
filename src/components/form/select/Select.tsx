@@ -21,6 +21,7 @@ export interface SelectProps extends Omit<Props, 'onChange'> {
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange?: (newValue: any) => void
+  readonly deleteButtonAriaLabel?: boolean
 }
 
 export function MultiValue<
@@ -54,20 +55,39 @@ export function Control<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
-  const { isLoading } = props.selectProps
+  // @ts-ignore need to rework this once back in main repo
+  const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={2} color="primary.500" />}
       {!isLoading && (
-        <Icon
-          mr={3}
-          style={{ cursor: 'pointer' }}
-          name={CapUIIcon.ArrowDown}
-          size={CapUIIconSize.Sm}
-          color="gray.700"
-          onClick={() => props.clearValue()}
-        />
+        <>
+          {isClearable && value ? <Box
+            as='button'
+            type="button"
+            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
+            mr={1}
+            style={{ cursor: 'pointer' }}
+            onClick={() => props.clearValue()}
+          >
+            <Icon
+              name={CapUIIcon.Cross}
+              size={CapUIIconSize.Md}
+              color="gray.700"
+              _hover={{ color: 'red.500' }}
+              aria-hidden
+              focusable={false}
+            />
+          </Box> : null}
+          <Icon
+            mr={3}
+            style={{ cursor: 'pointer' }}
+            name={CapUIIcon.ArrowDown}
+            size={CapUIIconSize.Sm}
+            color="gray.700"
+          />
+        </>
       )}
     </components.Control>
   )
