@@ -21,6 +21,7 @@ export interface SelectProps extends Omit<Props, 'onChange'> {
   readonly variantSize?: CapInputSize
   readonly width?: string | number
   readonly onChange?: (newValue: any) => void
+  readonly deleteButtonAriaLabel?: boolean
 }
 
 export function MultiValue<
@@ -54,14 +55,18 @@ export function Control<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
-  const { isLoading, isClearable } = props.selectProps
+  // @ts-ignore need to rework this once back in main repo
+  const { isLoading, isClearable, deleteButtonAriaLabel } = props.selectProps
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={2} color="primary.500" />}
       {!isLoading && (
         <>
-          {isClearable? <Box as='button' type="button"
+          {isClearable? <Box
+            as='button'
+            type="button"
+            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
             mr={1}
             style={{ cursor: 'pointer' }}
             onClick={() => props.clearValue()}
