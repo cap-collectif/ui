@@ -39,6 +39,7 @@ export default meta
 export const Default: Story<ModalProps> = args => (
   <Modal
     {...args}
+    ariaLabelledby="modal-title"
     onOpen={() => {
       console.log('OPENED')
     }}
@@ -49,7 +50,7 @@ export const Default: Story<ModalProps> = args => (
     {({ hide }) => (
       <>
         <Modal.Header closeIconLabel="Fermer">
-          <Heading>Title</Heading>
+          <Heading id="modal-title">Title</Heading>
         </Modal.Header>
         <Modal.Body>Content</Modal.Body>
         <Modal.Footer
