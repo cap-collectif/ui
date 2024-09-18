@@ -30,7 +30,7 @@ export interface ModalProps extends FlexProps {
   readonly show?: boolean
   readonly children: RenderProps | React.ReactNode
   readonly ariaLabel: string
-  readonly ariaLabelledBy?: string
+  readonly ariaLabelledby?: string
   readonly onOpen?: () => void
   readonly onClose?: () => void
   readonly baseId?: string
@@ -120,7 +120,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   children,
   disclosure,
   ariaLabel,
-  ariaLabelledBy,
+  ariaLabelledby,
   onOpen,
   onClose,
   show,
@@ -195,7 +195,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
 
       <Dialog
         aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
+        aria-labelledby={ariaLabelledby}
         {...dialog}
         hideOnClickOutside={hideOnClickOutside}
         hideOnEsc={hideOnEsc}
