@@ -54,20 +54,35 @@ export function Control<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
-  const { isLoading } = props.selectProps
+  const { isLoading, isClearable } = props.selectProps
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={2} color="primary.500" />}
       {!isLoading && (
-        <Icon
-          mr={3}
-          style={{ cursor: 'pointer' }}
-          name={CapUIIcon.ArrowDown}
-          size={CapUIIconSize.Sm}
-          color="gray.700"
-          onClick={() => props.clearValue()}
-        />
+        <>
+          {isClearable? <Box as='button' type="button"
+            mr={1}
+            style={{ cursor: 'pointer' }}
+            onClick={() => props.clearValue()}
+          >
+            <Icon
+              name={CapUIIcon.Cross}
+              size={CapUIIconSize.Md}
+              color="gray.700"
+              _hover={{ color: 'red.500' }}
+              aria-hidden
+              focusable={false}
+            />
+          </Box> : null}
+          <Icon
+            mr={3}
+            style={{ cursor: 'pointer' }}
+            name={CapUIIcon.ArrowDown}
+            size={CapUIIconSize.Sm}
+            color="gray.700"
+          />
+        </>
       )}
     </components.Control>
   )

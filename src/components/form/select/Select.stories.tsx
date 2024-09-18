@@ -84,6 +84,27 @@ export const Default: Story<Args> = ({
   </FormControl>
 )
 
+export const Clearable: Story<Args> = ({
+  errorMessage,
+  placeholder,
+  menuIsOpen,
+  ...args
+}) => (
+  <FormControl {...args} width="500px">
+    <FormLabel label="Choisissez une couleur :" />
+    <Select
+      isClearable
+      menuIsOpen={menuIsOpen}
+      placeholder={placeholder}
+      width="280px"
+      options={colourOptions}
+      defaultValue={colourOptions[0]}
+      inputId="color"
+    />
+    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+  </FormControl>
+)
+
 export const DefaultWithGuideline: Story<Args> = ({
   errorMessage,
   placeholder,
