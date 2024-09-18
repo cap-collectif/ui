@@ -56,14 +56,14 @@ export function Control<
   Group extends GroupBase<Option> = GroupBase<Option>
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel } = props.selectProps
+  const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={2} color="primary.500" />}
       {!isLoading && (
         <>
-          {isClearable? <Box
+          {isClearable && value ? <Box
             as='button'
             type="button"
             aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
