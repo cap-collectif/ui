@@ -15,7 +15,7 @@ To better understand the changelog, here are some legends we use:
 
 `2024-09-26`
 
-- 💄 Add 'clear' button to Select [#461](https://github.com/cap-collectif/ui/pull/461)
+- 💄 Edit picture icon [#461](https://github.com/cap-collectif/ui/pull/461)
 
 ## 1.10.17
 
