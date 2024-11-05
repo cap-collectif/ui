@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { CapUIFontWeight } from '../../../styles'
 import { headingStyles, Text, TextProps } from '../../typography'
-import { MODAL_TITLE_ARIA_DESCRIBED_BY } from '../header/ModalHeader'
+import { MODAL_TITLE_ARIA_DESCRIBED_BY } from '../shared'
 
 type ModalHeaderLabelProps = TextProps & {
   children: React.ReactNode
