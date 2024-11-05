@@ -8,6 +8,7 @@ import { Flex, FlexProps } from '../../layout'
 import { headingStyles } from '../../typography'
 import { useModal } from '../Modal.context'
 import ModalHeaderLabel from '../headerLabel/ModalHeaderLabel'
+import { MODAL_TITLE_ARIA_DESCRIBED_BY } from '../shared'
 
 type SubComponents = {
   Label: typeof ModalHeaderLabel
@@ -16,8 +17,6 @@ type SubComponents = {
 export type ModalHeaderProps = FlexProps & {
   readonly closeIconLabel?: string
 }
-
-export const MODAL_TITLE_ARIA_DESCRIBED_BY = 'modal-title'
 
 const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   children,
