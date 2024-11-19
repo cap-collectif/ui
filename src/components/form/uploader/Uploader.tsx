@@ -89,10 +89,11 @@ const Uploader: React.FC<UploaderProps> = ({
   const { colors } = useTheme()
 
   const [thumb, setThumb] = React.useState<string | null>(
-    !multiple && value && !Array.isArray(value) 
-    ? (value.url || (value.path ?? null))
-    : null,
+    !multiple && value && !Array.isArray(value)
+    ? value.url || value.path || null
+    : null
   )
+  
   const [loading, setLoading] = React.useState(false)
 
   const isImageUploader =
