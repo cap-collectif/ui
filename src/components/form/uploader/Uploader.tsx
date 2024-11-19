@@ -38,6 +38,7 @@ export type FileInfo = {
   size: string
   url: string
   type: string
+  path?: string
 }
 
 export type WordingType = {
@@ -55,7 +56,7 @@ export interface UploaderProps
   readonly size?: UPLOADER_SIZE
   readonly value?: FileInfo | Array<FileInfo>
   readonly circle?: boolean
-  readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[] // https://react-dropzone.js.org/#section-accepting-specific-file-types
+  readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[]
   readonly minResolution?: Size
   readonly multiple?: boolean
   readonly showThumbnail?: boolean
@@ -88,8 +89,11 @@ const Uploader: React.FC<UploaderProps> = ({
   const { colors } = useTheme()
 
   const [thumb, setThumb] = React.useState<string | null>(
-    !multiple && value && !Array.isArray(value) ? value.url : null,
+    !multiple && value && !Array.isArray(value)
+      ? value.url || value.path || null
+      : null,
   )
+
   const [loading, setLoading] = React.useState(false)
 
   const isImageUploader =
@@ -257,7 +261,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 color="gray.500"
               />
               <Text fontSize={3} color="gray.500">
-                {acceptedFiles.length > 0 && acceptedFiles[0].name}
+                {acceptedFiles.length > 0 && (acceptedFiles[0].name || thumb)}
               </Text>
             </FileThumbnail>
 
