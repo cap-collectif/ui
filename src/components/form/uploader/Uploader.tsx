@@ -38,6 +38,7 @@ export type FileInfo = {
   size: string
   url: string
   type: string
+  path?: string
 }
 
 export type WordingType = {
@@ -88,8 +89,9 @@ const Uploader: React.FC<UploaderProps> = ({
   const { colors } = useTheme()
 
   const [thumb, setThumb] = React.useState<string | null>(
-    // @ts-ignore > we need path property for upload of files without the url prop (e.g.: csv files)
-    !multiple && value && !Array.isArray(value) ? (value?.url || value?.path) : null,
+    !multiple && value && !Array.isArray(value) 
+    ? (value.url || (value.path ?? null))
+    : null,
   )
   const [loading, setLoading] = React.useState(false)
 
