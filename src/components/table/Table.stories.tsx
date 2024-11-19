@@ -227,6 +227,116 @@ const EmptyTemplate: Story<TableProps> = args => (
   </Table>
 )
 
+const FilterableTemplate: Story<TableProps> = args => {
+  const [selectedCountry, setSelectedCountry] = React.useState('all')
+
+  const data = [
+    {
+      id: '123',
+      name: 'Marie Sklodovska-Curie',
+      occupation: 'Multi-field Nobel prizes winner',
+      country: 'poland',
+    },
+    {
+      id: '456',
+      name: 'Ada Lovelace',
+      occupation: 'Développeuse fullstack',
+      country: 'uk',
+    },
+    {
+      id: '789',
+      name: 'Malala Yousafzai',
+      occupation: "Women's rights activist",
+      country: 'pakistan',
+    },
+    {
+      id: '101',
+      name: 'Emmeline Pankhurst',
+      occupation: 'Politician | British suffrage movement',
+      country: 'uk',
+    },
+  ]
+
+  const optionGroups = [
+    {
+      title: 'All',
+      options: [{ key: 'all', value: 'all', label: 'All' }],
+    },
+    {
+      title: 'Europe',
+      options: [
+        { key: 'france', value: 'france', label: 'France' },
+        { key: 'poland', value: 'poland', label: 'Poland' },
+        { key: 'uk', value: 'uk', label: 'United Kingdom' },
+      ],
+    },
+    {
+      title: 'Asia',
+      options: [{ key: 'pakistan', value: 'pakistan', label: 'Pakistan' }],
+    },
+  ]
+
+  const filteredData =
+    selectedCountry === 'all'
+      ? data
+      : data.filter(item => item.country === selectedCountry)
+
+  return (
+    <Table
+      {...args}
+      actionBar={({ selectedRows }) => (
+        <>
+          <Box as="span">{`${selectedRows.length} rows selected`}</Box>
+          <Button variant="primary" variantColor="danger">
+            Delete
+          </Button>
+        </>
+      )}
+    >
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Name</Table.Th>
+          <Table.Th>Occupation</Table.Th>
+          <Table.Th noPlaceholder>
+            <Table.Menu label="Country">
+              {optionGroups.map(group => (
+                <Table.Menu.OptionGroup
+                  key={group.title}
+                  value={selectedCountry}
+                  onChange={setSelectedCountry}
+                  type={'radio'}
+                  title={group.title}
+                >
+                  {group.options.map(option => (
+                    <Table.Menu.OptionItem
+                      key={option.key}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </Table.Menu.OptionItem>
+                  ))}
+                </Table.Menu.OptionGroup>
+              ))}
+            </Table.Menu>
+          </Table.Th>
+          <Table.Th />
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>
+        {filteredData.map(item => (
+          <Table.Tr key={item.id} rowId={item.id} checkboxLabel={item.name}>
+            <Table.Td>{item.name}</Table.Td>
+            <Table.Td>{item.occupation}</Table.Td>
+            <Table.Td>
+              {item.country.charAt(0).toUpperCase() + item.country.slice(1)}
+            </Table.Td>
+          </Table.Tr>
+        ))}
+      </Table.Tbody>
+    </Table>
+  )
+}
+
 export const Default = Template.bind({})
 
 export const Loading = Template.bind({})
@@ -234,5 +344,7 @@ Loading.args = { isLoading: true }
 
 export const Selectable = Template.bind({})
 Selectable.args = { selectable: true }
+
+export const Filterable = FilterableTemplate.bind({})
 
 export const Empty = EmptyTemplate.bind({})
