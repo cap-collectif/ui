@@ -93,8 +93,7 @@ const Uploader: React.FC<UploaderProps> = ({
     ? value.url || value.path || null
     : null
   )
-  
-  console.log("Hello darkness, my old friend", value)
+
   const [loading, setLoading] = React.useState(false)
 
   const isImageUploader =
@@ -262,7 +261,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 color="gray.500"
               />
               <Text fontSize={3} color="gray.500">
-                {acceptedFiles.length > 0 && acceptedFiles[0].name}
+                {acceptedFiles.length > 0 && (acceptedFiles[0].name || thumb)}
               </Text>
             </FileThumbnail>
 
