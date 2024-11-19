@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.19
+
+`2024-11-19`
+
+- 🆕 Add more stories to Table component [#466](https://github.com/cap-collectif/ui/pull/466)
+- 🐛 Fix thumbnail persistence on Uploader component [#467](https://github.com/cap-collectif/ui/pull/467)
+- 🐛 Fix undefined error on Uploader component [#465](https://github.com/cap-collectif/ui/pull/465)
+- 🐛 Remove circular dependencies on modal component [#464](https://github.com/cap-collectif/ui/pull/464)
+
 ## 1.10.18
 
 `2024-09-26`
