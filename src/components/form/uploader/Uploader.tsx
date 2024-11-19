@@ -94,6 +94,7 @@ const Uploader: React.FC<UploaderProps> = ({
     : null
   )
   
+  console.log("Hello darkness, my old friend", value)
   const [loading, setLoading] = React.useState(false)
 
   const isImageUploader =
