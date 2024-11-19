@@ -94,7 +94,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
   const isImageUploader =
     !multiple && value && !Array.isArray(value)
-      ? value.type.includes('image')
+      ? value?.type?.includes('image')
       : false
 
   React.useEffect(() => {
