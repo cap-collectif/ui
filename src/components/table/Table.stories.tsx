@@ -303,7 +303,11 @@ const FilterableTemplate: Story<TableProps> = args => {
                 <Table.Menu.OptionGroup
                   key={group.title}
                   value={selectedCountry}
-                  onChange={setSelectedCountry}
+                  onChange={value => {
+                    if (value !== selectedCountry) {
+                      setSelectedCountry(value)
+                    }
+                  }}
                   type={'radio'}
                   title={group.title}
                 >
