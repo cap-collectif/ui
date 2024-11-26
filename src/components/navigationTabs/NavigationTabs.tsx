@@ -11,7 +11,7 @@ export interface NavigationTabsProps {
   readonly links: Array<{
     id: string
     to: string
-    url: string
+    url?: string
     label: string
     count?: number
   }>
@@ -26,6 +26,13 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
   const [currentTab, setCurrentTab] = React.useState<string>(
     defaultTab ?? links[0].id,
   )
+
+  React.useEffect(() => {
+    if (onChange) {
+      onChange(currentTab)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTab])
 
   return (
     <Flex
@@ -46,12 +53,13 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
     >
       {links.map(link => {
         const isActive = currentTab === link.id
+        const isLink = !!link.url
 
         return (
           <Box
-            as="a"
-            href={link.to}
-            key={link.to}
+            as={isLink ? 'a' : 'span'}
+            {...(isLink ? { href: link.url } : null)}
+            key={link.id}
             fontSize={1}
             fontWeight={CapUIFontWeight.Bold}
             color={isActive ? 'blue.500' : 'gray.700'}
