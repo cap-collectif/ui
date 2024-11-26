@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
-import NavigationTabs, { NavigationTabsProps } from './NavigationTabs'
+import TabBar, { TabBarProps } from './TabBar'
 
-const meta: Meta<NavigationTabsProps> = {
-  title: 'Library/NavigationTabs',
-  component: NavigationTabs,
+const meta: Meta<TabBarProps> = {
+  title: 'Library/TabBar',
+  component: TabBar,
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
@@ -13,9 +13,9 @@ const meta: Meta<NavigationTabsProps> = {
 }
 
 export default meta
-const Template: Story<NavigationTabsProps> = args => {
+const Template: Story<TabBarProps> = args => {
   return (
-    <NavigationTabs
+    <TabBar
       {...args}
       onChange={newTab => {
         console.log('Switching tabs! Currently on ', newTab)

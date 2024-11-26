@@ -4,7 +4,7 @@ import { CapUIShadow, CapUIFontWeight } from '../../styles'
 import { Box } from '../box'
 import { Flex } from '../layout'
 
-export interface NavigationTabsProps {
+export interface TabBarProps {
   readonly selectedId: string
   readonly defaultTab: string
   readonly onChange?: (tabId: string) => void
@@ -16,7 +16,7 @@ export interface NavigationTabsProps {
     count?: number
   }>
 }
-const NavigationTabs: React.FC<NavigationTabsProps> = ({
+const TabBar: React.FC<TabBarProps> = ({
   selectedId,
   defaultTab,
   onChange,
@@ -104,6 +104,6 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
     </Flex>
   )
 }
-NavigationTabs.displayName = 'NavigationTabs'
+TabBar.displayName = 'TabBar'
 
-export default NavigationTabs
+export default TabBar
