@@ -1,43 +1,101 @@
-import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import * as React from 'react'
 
-import { NavigationTabsProps, NavigationTabs } from '.'
+import { CapUIShadow, CapUIFontWeight } from '../../styles'
+import { Box } from '../box'
+import { Flex } from '../layout'
 
-const meta: Meta<NavigationTabsProps> = {
-  title: 'Library/NavigationTabs',
-  component: NavigationTabs,
-  parameters: {
-    layout: 'centered',
-    controls: { expanded: true },
-  },
+export interface NavigationTabsProps {
+  readonly selectedId: string
+  readonly defaultTab: string
+  readonly onChange?: (tabId: string) => void
+  readonly links: Array<{
+    id: string
+    to: string
+    url: string
+    label: string
+    count?: number
+  }>
 }
+const NavigationTabs: React.FC<NavigationTabsProps> = ({
+  selectedId,
+  defaultTab,
+  onChange,
+  links,
+  ...props
+}) => {
+  const [currentTab, setCurrentTab] = React.useState<string>(
+    defaultTab ?? links[0].id,
+  )
 
-export default meta
-const Template: Story<NavigationTabsProps> = args => {
   return (
-    <NavigationTabs
-      {...args}
-      selectedTab={args.links[0].id}
-      onChange={newTab => {
-        console.log(newTab)
-      }}
-    />
+    <Flex
+      position="absolute"
+      top={0}
+      left={0}
+      backgroundColor="#FFF"
+      display="inline-flex"
+      justifyContent="flex-start"
+      align="center"
+      height="48px"
+      minHeight="48px"
+      width="100%"
+      boxShadow={CapUIShadow.Small}
+      gap={6}
+      paddingX={6}
+      {...props}
+    >
+      {links.map(link => {
+        const isActive = currentTab === link.id
+
+        return (
+          <Box
+            as="a"
+            href={link.to}
+            key={link.to}
+            fontSize={1}
+            fontWeight={CapUIFontWeight.Bold}
+            color={isActive ? 'blue.500' : 'gray.700'}
+            borderBottomColor={isActive ? 'blue.500' : 'transparent'}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100%"
+            sx={{
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
+              borderBottom: '2px solid transparent',
+              '&:hover': {
+                color: 'blue.500',
+                borderBottomColor: 'blue.500',
+              },
+            }}
+            onClick={() => setCurrentTab(link.id)}
+          >
+            {link.label}
+            {link.count !== undefined && (
+              <Box
+                as="span"
+                bg={isActive ? 'rgba(3, 136, 204, 0.2)' : 'neutral-gray.150'}
+                color={isActive ? 'blue.500' : 'neutral-gray.500'}
+                sx={{
+                  fontWeight: 600,
+                  height: '16px',
+                  padding: '0 4px',
+                  borderRadius: '8px',
+                  marginLeft: '5px',
+                  fontSize: '12px',
+                }}
+              >
+                {link.count}
+              </Box>
+            )}
+          </Box>
+        )
+      })}
+    </Flex>
   )
 }
+NavigationTabs.displayName = 'NavigationTabs'
 
-export const Default = Template.bind({})
-Default.args = {
-  selectedTab: 'users_list',
-  links: [
-    { to: '', id: 'users_list', label: 'Users List' },
-    {
-      to: '',
-      id: 'users_invitations',
-
-      label: 'Invitations',
-    },
-    { to: '', id: 'users_groups', label: 'Groups' },
-    { to: '', id: 'users_types', label: 'User Types', count: 99 },
-  ],
-  path: '',
-}
+export default NavigationTabs
