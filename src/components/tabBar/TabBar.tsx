@@ -1,107 +1,61 @@
 import * as React from 'react'
 
-import { CapUIShadow, CapUIFontWeight } from '../../styles'
-import { Box } from '../box'
+import { CapUIShadow } from '../../styles'
 import { Flex } from '../layout'
+import TabHeader from './TabHeader'
 
 export interface TabBarProps {
-  readonly selectedId: string
-  readonly defaultTab: string
-  readonly onChange?: (tabId: string) => void
-  readonly links: Array<{
-    id: string
-    to: string
-    url?: string
-    label: string
-    count?: number
-  }>
+  children: React.ReactElement[]
+  selectedId: string
+  defaultTab: string
+  onChange?: (tabId: string) => void
 }
 const TabBar: React.FC<TabBarProps> = ({
+  children,
   selectedId,
   defaultTab,
   onChange,
-  links,
   ...props
 }) => {
-  const [currentTab, setCurrentTab] = React.useState<string>(
-    defaultTab ?? links[0].id,
-  )
-
-  React.useEffect(() => {
-    if (onChange) {
-      onChange(currentTab)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTab])
+  const [currentTab, setCurrentTab] = React.useState<string>(defaultTab)
 
   return (
-    <Flex
-      position="absolute"
-      top={0}
-      left={0}
-      backgroundColor="#FFF"
-      display="inline-flex"
-      justifyContent="flex-start"
-      align="center"
-      height="48px"
-      minHeight="48px"
-      width="100%"
-      boxShadow={CapUIShadow.Small}
-      gap={6}
-      paddingX={6}
-      {...props}
-    >
-      {links.map(link => {
-        const isActive = currentTab === link.id
-        const isLink = !!link.url
-
-        return (
-          <Box
-            as={isLink ? 'a' : 'span'}
-            {...(isLink ? { href: link.url } : null)}
-            key={link.id}
-            fontSize={1}
-            fontWeight={CapUIFontWeight.Bold}
-            color={isActive ? 'blue.500' : 'gray.700'}
-            borderBottomColor={isActive ? 'blue.500' : 'transparent'}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            height="100%"
-            sx={{
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              boxSizing: 'border-box',
-              borderBottom: '2px solid transparent',
-              '&:hover': {
-                color: 'blue.500',
-                borderBottomColor: 'blue.500',
-              },
-            }}
-            onClick={() => setCurrentTab(link.id)}
+    <>
+      <Flex
+        as={'ul'}
+        position="absolute"
+        top={0}
+        left={0}
+        backgroundColor="#FFF"
+        display="inline-flex"
+        justifyContent="flex-start"
+        align="center"
+        height="48px"
+        minHeight="48px"
+        width="100%"
+        boxShadow={CapUIShadow.Small}
+        gap={6}
+        paddingX={6}
+        {...props}
+      >
+        {children.map(child => (
+          <TabHeader
+            key={child.props.id}
+            href={child.props.href}
+            title={child.props.title}
+            id={child.props.id}
+            count={child.props.count}
+            onClick={() => setCurrentTab(child.props.id)}
+            isActive={currentTab === child.props.id}
           >
-            {link.label}
-            {link.count !== undefined && (
-              <Box
-                as="span"
-                bg={isActive ? 'rgba(3, 136, 204, 0.2)' : 'neutral-gray.150'}
-                color={isActive ? 'blue.500' : 'neutral-gray.500'}
-                sx={{
-                  fontWeight: 600,
-                  height: '16px',
-                  padding: '0 4px',
-                  borderRadius: '8px',
-                  marginLeft: '5px',
-                  fontSize: '12px',
-                }}
-              >
-                {link.count}
-              </Box>
-            )}
-          </Box>
-        )
-      })}
-    </Flex>
+            {child.props}
+          </TabHeader>
+        ))}
+      </Flex>
+      <Flex>
+        {children.find(child => child.props.id === currentTab)?.props.children}
+      </Flex>
+    </>
   )
 }
 TabBar.displayName = 'TabBar'

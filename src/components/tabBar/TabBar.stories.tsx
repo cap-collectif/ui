@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
+import { Flex } from '../layout'
 import TabBar, { TabBarProps } from './TabBar'
+import TabPane from './TabPane'
 
 const meta: Meta<TabBarProps> = {
   title: 'Library/TabBar',
@@ -13,29 +15,27 @@ const meta: Meta<TabBarProps> = {
 }
 
 export default meta
-const Template: Story<TabBarProps> = args => {
+const Template: Story<TabBarProps> = () => {
   return (
-    <TabBar
-      {...args}
-      onChange={newTab => {
-        console.log('Switching tabs! Currently on ', newTab)
-      }}
-    />
+    <TabBar selectedId="myriam" defaultTab="agui">
+      <TabPane id="agui" title="agui">
+        Lili présidente
+      </TabPane>
+      <TabPane id="myriam" title="myriam">
+        <Flex alignItems={'center'} gap={4}>
+          Cheffe pâtissière végane
+        </Flex>
+      </TabPane>
+      <TabPane id="alex" title="alex" count={666}>
+        Pianiste de l'équipe
+      </TabPane>
+      <TabPane
+        id="capco"
+        title="Onglet avec redirection"
+        href={'https://www.cap-collectif.com/'}
+      />
+    </TabBar>
   )
 }
 
 export const Default = Template.bind({})
-Default.args = {
-  defaultTab: 'users_invitations',
-  links: [
-    { to: '', url: '', id: 'users_list', label: 'Users List' },
-    {
-      to: '',
-      id: 'users_invitations',
-
-      label: 'Invitations',
-    },
-    { to: '', id: 'users_groups', label: 'Groups' },
-    { to: '', id: 'users_types', label: 'User Types', count: 99 },
-  ],
-}
