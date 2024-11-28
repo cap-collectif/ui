@@ -45,7 +45,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({
         cursor: 'pointer',
         transition: 'box-shadow 0.2s, opacity 0.2s',
         width: '100%',
-        px: '100px',
+        px: 4,
         py: 2,
         justifyContent: 'center !important',
         backgroundColor: id === tabs.currentId ? '#F7F7F8' : 'transparent',

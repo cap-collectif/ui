@@ -40,7 +40,7 @@ export const Default: Story<TabsProps> = args => {
         <Tabs.ButtonList ariaLabel="Tabs example">
           <Tabs.Button id="tab1">Tab1</Tabs.Button>
           <Tabs.Button id="tab2">Tab2</Tabs.Button>
-          <Tabs.Button id="tab3">Tab3</Tabs.Button>
+          <Tabs.Button id="tab3">Tab3 with a rather long - very very long - name</Tabs.Button>
         </Tabs.ButtonList>
         <Tabs.PanelList>
           <Tabs.Panel>
