@@ -58,6 +58,7 @@ const TabBar: React.FC<TabBarProps> = ({
     </>
   )
 }
+
 TabBar.displayName = 'TabBar'
 
 export default TabBar
