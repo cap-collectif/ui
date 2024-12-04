@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Flex } from '../layout'
 import TabBar, { TabBarProps } from './TabBar'
-import TabPane from './TabPane'
+import TabPane from './pane/TabPane'
 
 const meta: Meta<TabBarProps> = {
   title: 'Library/TabBar',

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { CapUIFontWeight, CapUIRadius } from '../../styles'
 import { Box } from '../box'
 
-export interface TabHeaderProps {
+export type TabHeaderProps = {
   title: string
   id: string
   href?: string
