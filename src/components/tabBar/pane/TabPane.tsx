@@ -5,7 +5,7 @@ import { TabHeaderProps } from '../TabHeader'
 
 export type TabPaneProps = Omit<TabHeaderProps, 'onClick' | 'isActive'>
 
-const TabPane: React.FC<TabPaneProps> = ({ children }) => {
+export const TabPane: React.FC<TabPaneProps> = ({ children }) => {
   return <Box>{children}</Box>
 }
 

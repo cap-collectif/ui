@@ -1,4 +1,2 @@
-import TabPane from './TabPane'
-
-export { TabPane as default }
+export { TabPane } from './TabPane'
 export type { TabPaneProps } from './TabPane'
