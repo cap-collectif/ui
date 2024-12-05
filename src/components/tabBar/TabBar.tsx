@@ -3,6 +3,7 @@ import * as React from 'react'
 import { CapUIShadow } from '../../styles'
 import { Flex } from '../layout'
 import TabHeader from './TabHeader'
+import { TabPane } from './pane'
 
 export interface TabBarProps {
   children: React.ReactElement[]
@@ -10,7 +11,12 @@ export interface TabBarProps {
   defaultTab: string
   onChange?: (tabId: string) => void
 }
-const TabBar: React.FC<TabBarProps> = ({
+
+type SubComponents = {
+  Pane: typeof TabPane
+}
+
+const TabBar: React.FC<TabBarProps> & SubComponents = ({
   children,
   selectedId,
   defaultTab,
@@ -60,5 +66,6 @@ const TabBar: React.FC<TabBarProps> = ({
 }
 
 TabBar.displayName = 'TabBar'
+TabBar.Pane = TabPane
 
 export default TabBar
