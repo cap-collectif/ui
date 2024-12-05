@@ -4,7 +4,7 @@ import { Box } from '../../box'
 import { TabHeaderProps } from '../TabHeader'
 
 export type TabPaneProps = Omit<TabHeaderProps, 'onClick' | 'isActive'> & {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const TabPane: React.FC<TabPaneProps> = ({ children }) => {
