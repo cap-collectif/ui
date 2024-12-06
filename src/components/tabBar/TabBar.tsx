@@ -61,14 +61,14 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
               </TabHeader>
             ))}
       </Flex>
-      {children && (
+      {children?.length ? (
         <Flex>
           {
             children.find(child => child.props.id === currentTab)?.props
               .children
           }
         </Flex>
-      )}
+      ) : null}
     </>
   )
 }
