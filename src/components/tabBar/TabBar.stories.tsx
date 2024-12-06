@@ -17,7 +17,7 @@ const meta: Meta<TabBarProps> = {
 export default meta
 const Template: Story<TabBarProps> = () => {
   return (
-    <TabBar selectedId="myriam" defaultTab="agui">
+    <TabBar defaultTab="agui">
       <TabPane id="agui" title="agui">
         Lili présidente
       </TabPane>

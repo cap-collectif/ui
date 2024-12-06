@@ -7,7 +7,6 @@ import TabPane from './pane/TabPane'
 
 export interface TabBarProps {
   children: React.ReactElement[]
-  selectedId: string
   defaultTab: string
   onChange?: (tabId: string) => void
 }
@@ -18,7 +17,6 @@ type SubComponents = {
 
 const TabBar: React.FC<TabBarProps> & SubComponents = ({
   children,
-  selectedId,
   defaultTab,
   onChange,
   ...props
@@ -51,7 +49,11 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
             title={child.props.title}
             id={child.props.id}
             count={child.props.count}
-            onClick={() => setCurrentTab(child.props.id)}
+            onClick={() => {
+              if (currentTab !== child.props.id) {
+                setCurrentTab(child.props.id)
+              }
+            }}
             isActive={currentTab === child.props.id}
           >
             {child.props}
