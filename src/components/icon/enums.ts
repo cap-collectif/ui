@@ -170,6 +170,9 @@ export enum CapUIIcon {
   Heart = 'HEART',
   Budget = 'BUDGET',
   Trophy = 'TROPHY',
+  Youtube = 'YOUTUBE',
+  Instagram = 'INSTAGRAM',
+  Vimeo = 'VIMEO',
 }
 
 export enum CapUIIconSize {
