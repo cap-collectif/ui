@@ -9,7 +9,7 @@ const meta: Meta<TabBarProps> = {
   title: 'Library/TabBar',
   component: TabBar,
   parameters: {
-    layout: 'centered',
+    layout: 'top',
     controls: { expanded: true },
   },
 }
