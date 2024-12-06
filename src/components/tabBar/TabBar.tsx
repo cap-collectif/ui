@@ -3,7 +3,7 @@ import * as React from 'react'
 import { CapUIShadow } from '../../styles'
 import { Flex } from '../layout'
 import TabHeader from './TabHeader'
-import { TabPane } from './pane'
+import TabPane from './pane/TabPane'
 
 export interface TabBarProps {
   children: React.ReactElement[]
