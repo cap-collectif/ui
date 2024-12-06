@@ -8,7 +8,7 @@ import TabHeader from './TabHeader'
 import TabPane from './pane/TabPane'
 
 export type TabBarProps = BoxProps & {
-  children: React.ReactElement[]
+  children: React.ReactElement[] | React.ReactElement
   defaultTab: string
   onChange?: (tabId: string) => void
 }
@@ -24,6 +24,12 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
   ...props
 }) => {
   const [currentTab, setCurrentTab] = React.useState<string>(defaultTab)
+
+  if (!children) return null
+
+  const childrenToArray = React.Children.toArray(
+    children,
+  ) as React.ReactElement[]
 
   return (
     <>
@@ -41,30 +47,28 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         paddingX={6}
         {...props}
       >
-        {!children
-          ? null
-          : children.map(child => (
-              <TabHeader
-                key={child.props.id}
-                href={child.props.href}
-                title={child.props.title}
-                id={child.props.id}
-                count={child.props.count}
-                onClick={() => {
-                  if (currentTab !== child.props.id) {
-                    setCurrentTab(child.props.id)
-                  }
-                }}
-                isActive={currentTab === child.props.id}
-              >
-                {child.props}
-              </TabHeader>
-            ))}
+        {childrenToArray.map(child => (
+          <TabHeader
+            key={child.props.id}
+            href={child.props.href}
+            title={child.props.title}
+            id={child.props.id}
+            count={child.props.count}
+            onClick={() => {
+              if (currentTab !== child.props.id) {
+                setCurrentTab(child.props.id)
+              }
+            }}
+            isActive={currentTab === child.props.id}
+          >
+            {child.props}
+          </TabHeader>
+        ))}
       </Flex>
-      {children?.length ? (
+      {childrenToArray?.length ? (
         <Flex>
           {
-            children.find(child => child.props.id === currentTab)?.props
+            childrenToArray.find(child => child.props.id === currentTab)?.props
               .children
           }
         </Flex>

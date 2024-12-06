@@ -19,15 +19,13 @@ const Template: Story<TabBarProps> = () => {
   return (
     <TabBar defaultTab="agui">
       <TabPane id="agui" title="agui">
-        Lili présidente
+        <Flex m={4}>Lili présidente</Flex>
       </TabPane>
       <TabPane id="myriam" title="myriam">
-        <Flex alignItems={'center'} gap={4}>
-          Cheffe pâtissière végane
-        </Flex>
+        <Flex m={4}>Cheffe pâtissière végane</Flex>
       </TabPane>
       <TabPane id="alex" title="alex" count={666}>
-        Pianiste de l'équipe
+        <Flex m={4}>Pianiste de l'équipe</Flex>
       </TabPane>
       <TabPane
         id="capco"
