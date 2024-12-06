@@ -1,11 +1,12 @@
 import * as React from 'react'
 
 import { CapUIShadow } from '../../styles'
+import { BoxProps } from '../box'
 import { Flex } from '../layout'
 import TabHeader from './TabHeader'
 import TabPane from './pane/TabPane'
 
-export interface TabBarProps {
+export type TabBarProps = BoxProps & {
   children: React.ReactElement[]
   defaultTab: string
   onChange?: (tabId: string) => void
@@ -27,7 +28,6 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
     <>
       <Flex
         as={'ul'}
-        position="absolute"
         top={0}
         left={0}
         backgroundColor="#FFF"
