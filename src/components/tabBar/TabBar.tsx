@@ -28,8 +28,6 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
     <>
       <Flex
         as={'ul'}
-        top={0}
-        left={0}
         backgroundColor="#FFF"
         display="inline-flex"
         justifyContent="flex-start"
@@ -42,27 +40,34 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         paddingX={6}
         {...props}
       >
-        {children.map(child => (
-          <TabHeader
-            key={child.props.id}
-            href={child.props.href}
-            title={child.props.title}
-            id={child.props.id}
-            count={child.props.count}
-            onClick={() => {
-              if (currentTab !== child.props.id) {
-                setCurrentTab(child.props.id)
-              }
-            }}
-            isActive={currentTab === child.props.id}
-          >
-            {child.props}
-          </TabHeader>
-        ))}
+        {!children
+          ? null
+          : children.map(child => (
+              <TabHeader
+                key={child.props.id}
+                href={child.props.href}
+                title={child.props.title}
+                id={child.props.id}
+                count={child.props.count}
+                onClick={() => {
+                  if (currentTab !== child.props.id) {
+                    setCurrentTab(child.props.id)
+                  }
+                }}
+                isActive={currentTab === child.props.id}
+              >
+                {child.props}
+              </TabHeader>
+            ))}
       </Flex>
-      <Flex>
-        {children.find(child => child.props.id === currentTab)?.props.children}
-      </Flex>
+      {children && (
+        <Flex>
+          {
+            children.find(child => child.props.id === currentTab)?.props
+              .children
+          }
+        </Flex>
+      )}
     </>
   )
 }
