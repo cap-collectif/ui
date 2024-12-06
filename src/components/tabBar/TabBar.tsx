@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { CapUIShadow } from '../../styles'
+import { pxToRem } from '../../styles/modules/mixins'
 import { BoxProps } from '../box'
 import { Flex } from '../layout'
 import TabHeader from './TabHeader'
@@ -32,8 +33,8 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         display="inline-flex"
         justifyContent="flex-start"
         align="center"
-        height="48px"
-        minHeight="48px"
+        height={pxToRem(48)}
+        minHeight={pxToRem(48)}
         width="100%"
         boxShadow={CapUIShadow.Small}
         gap={6}
