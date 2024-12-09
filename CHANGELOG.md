@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.20
+
+`2024-12-09`
+
+- 🐛 Fix an infinite render loop [#471](https://github.com/cap-collectif/ui/pull/471)
+- 🆕 Create TabBar component [#469](https://github.com/cap-collectif/ui/pull/469)
+- 🆕 Add new icons [#472](https://github.com/cap-collectif/ui/pull/472)
+- 💄 Enhance Tab component display [#470](https://github.com/cap-collectif/ui/pull/470)
+
 ## 1.10.19
 
 `2024-11-19`
