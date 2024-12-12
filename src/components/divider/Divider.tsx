@@ -7,7 +7,7 @@ import { Flex } from '../layout'
 import { Text } from '../typography'
 
 export type DividerProps = BoxProps & {
-  children: string | React.ReactNode
+  children: React.ReactNode
   className?: string
   backgroundColor?: string
 }
