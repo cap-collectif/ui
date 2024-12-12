@@ -32,7 +32,7 @@ export const Divider: React.FC<DividerProps> = ({
       sx={{ boxSizing: 'border-box' }}
       width={'100%'}
       flex={1}
-    ></Flex>
+    />
 
     <Flex
       position={'absolute'}
@@ -47,9 +47,7 @@ export const Divider: React.FC<DividerProps> = ({
         transform: 'translate(-50%, -50%)',
       }}
     >
-      <Text fontWeight={CapUIFontWeight.Bold} color={'gray.600'}>
-        {children.toUpperCase()}
-      </Text>
+      <Text>{children}</Text>
     </Flex>
   </Flex>
 )
