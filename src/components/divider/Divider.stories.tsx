@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
+import { Text } from '../typography'
 import { Divider, DividerProps } from './'
 
 const meta: Meta<DividerProps> = {
@@ -16,11 +17,9 @@ const meta: Meta<DividerProps> = {
 export default meta
 
 export const Default: Story<DividerProps> = args => (
-  <Divider
-    fontWeight={CapUIFontWeight.Bold}
-    color={'neutral-gray.600'}
-    {...args}
-  >
-    TEXT
+  <Divider {...args}>
+    <Text fontWeight={CapUIFontWeight.Bold} color={'neutral-gray.600'}>
+      TEXT
+    </Text>
   </Divider>
 )
