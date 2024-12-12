@@ -16,7 +16,11 @@ const meta: Meta<DividerProps> = {
 export default meta
 
 export const Default: Story<DividerProps> = args => (
-  <Divider fontWeight={CapUIFontWeight.Bold} color={'gray.600'} {...args}>
+  <Divider
+    fontWeight={CapUIFontWeight.Bold}
+    color={'neutral-gray.600'}
+    {...args}
+  >
     TEXT
   </Divider>
 )

@@ -1,34 +1,28 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontWeight } from '../../styles'
 import { pxToRem } from '../../styles/modules/mixins'
 import { BoxProps } from '../box/Box'
 import { Flex } from '../layout'
 import { Text } from '../typography'
 
 export type DividerProps = BoxProps & {
-  children: string
+  children: string | React.ReactNode
+  className?: string
+  backgroundColor?: string
 }
 
 export const Divider: React.FC<DividerProps> = ({
   children,
   className,
+  backgroundColor,
   ...props
 }) => (
-  <Flex
-    direction={'column'}
-    alignItems={'center'}
-    justifyContent={'center'}
-    position="relative"
-    width={'100%'}
-    className={cn('cap-divider', className)}
-    {...props}
-  >
+  <Flex className={cn('cap-divider', className)} {...props}>
     <Flex
       position={'absolute'}
       border={`${pxToRem(1)} solid`}
-      borderColor={'gray.150'}
+      borderColor={'neutral-gray.150'}
       sx={{ boxSizing: 'border-box' }}
       width={'100%'}
       flex={1}
@@ -42,7 +36,7 @@ export const Divider: React.FC<DividerProps> = ({
       textAlign={'center'}
       pl={4}
       pr={4}
-      backgroundColor={'#fff'}
+      backgroundColor={backgroundColor ?? '#fff'}
       sx={{
         transform: 'translate(-50%, -50%)',
       }}
