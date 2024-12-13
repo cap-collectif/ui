@@ -55,7 +55,11 @@ export const WithSiblings: Story<DividerProps> = args => (
     <Input type="text" width={pxToRem(300)} />
 
     <Divider {...args}>
-      <Text fontWeight={CapUIFontWeight.Bold} color={'neutral-gray.600'}>
+      <Text
+        fontWeight={CapUIFontWeight.Bold}
+        color={'neutral-gray.600'}
+        fontSize={'4rem'}
+      >
         OR
       </Text>
     </Divider>
