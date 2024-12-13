@@ -151,7 +151,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
   ...args
 }) => {
   const [value, onChange] = React.useState<DateRangeValueType>({
-    startDate: moment().subtract(8, 'days'),
+    startDate: moment('1965-07-31'),
     endDate: null,
   })
   return (
