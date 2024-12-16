@@ -33,6 +33,8 @@ export enum CapUISpotIcon {
   CARTE = 'CARTE',
   TABLEAU = 'TABLEAU',
   SHEET_FULL = 'SHEET_FULL',
+  PERMANENTLY_DELETE = 'PERMANENTLY_DELETE',
+  ANONYMIZE = 'ANONYMIZE',
 }
 
 export enum CapUISpotIconSize {
