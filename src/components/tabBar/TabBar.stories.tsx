@@ -15,6 +15,7 @@ const meta: Meta<TabBarProps> = {
 }
 
 export default meta
+
 const Template: Story<TabBarProps> = () => {
   return (
     <TabBar defaultTab="agui">
@@ -37,3 +38,27 @@ const Template: Story<TabBarProps> = () => {
 }
 
 export const Default = Template.bind({})
+
+export const WithLink: Story<TabBarProps> = () => {
+  return (
+    <TabBar
+      defaultTab="agui"
+      link={{ href: 'https://www.cap-collectif.com/', label: 'Visit Capco' }}
+    >
+      <TabPane id="agui" title="agui">
+        <Flex m={4}>Lili présidente</Flex>
+      </TabPane>
+      <TabPane id="myriam" title="myriam">
+        <Flex m={4}>Cheffe pâtissière végane</Flex>
+      </TabPane>
+      <TabPane id="alex" title="alex" count={666}>
+        <Flex m={4}>Pianiste de l'équipe</Flex>
+      </TabPane>
+      <TabPane
+        id="capco"
+        title="Onglet avec redirection"
+        href={'https://www.cap-collectif.com/'}
+      />
+    </TabBar>
+  )
+}
