@@ -173,6 +173,7 @@ export enum CapUIIcon {
   Youtube = 'YOUTUBE',
   Instagram = 'INSTAGRAM',
   Vimeo = 'VIMEO',
+  HourglassO = 'HOURGLASS_O',
 }
 
 export enum CapUIIconSize {
