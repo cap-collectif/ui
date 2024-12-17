@@ -5,7 +5,6 @@ import { CapUIFontWeight } from '../../styles'
 import { pxToRem } from '../../styles/modules/mixins'
 import Box, { BoxProps } from '../box/Box'
 import { Flex } from '../layout'
-import { Text } from '../typography'
 
 export type DividerProps = BoxProps & {
   children: React.ReactNode
