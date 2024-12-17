@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.21
+
+`2024-12-17`
+
+- 💄 Add an `HourGlass` icon [#477](https://github.com/cap-collectif/ui/pull/477)
+- 🆕 Add a sideContent prop to `TabBar` component [#476](https://github.com/cap-collectif/ui/pull/476)
+- 🆕 Add `Divider` component [#474](https://github.com/cap-collectif/ui/pull/474)
+- 💄 Add new SpotIcons [#475](https://github.com/cap-collectif/ui/pull/475)
+
 ## 1.10.20
 
 `2024-12-09`
