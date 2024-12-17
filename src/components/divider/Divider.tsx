@@ -50,11 +50,11 @@ export const Divider: React.FC<DividerProps> = ({
       height={'fit-content'}
     >
       {typeof children === 'string' ? (
-        <Text fontWeight={CapUIFontWeight.Bold} color={'neutral-gray.600'}>
+        <Box fontWeight={CapUIFontWeight.Bold} color={'neutral-gray.600'}>
           {children}
-        </Text>
+        </Box>
       ) : (
-        <Box height={'auto'}>{children}</Box>
+        <Box>{children}</Box>
       )}
     </Flex>
   </Flex>
