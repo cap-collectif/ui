@@ -48,7 +48,7 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         paddingX={6}
         {...props}
       >
-        <Flex gap={6}>
+        <Flex gap={6} height={'inherit'}>
           {childrenToArray.map(child => (
             <TabHeader
               key={child.props.id}
