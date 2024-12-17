@@ -11,6 +11,7 @@ export type TabBarProps = BoxProps & {
   children: React.ReactElement[] | React.ReactElement
   defaultTab: string
   onChange?: (tabId: string) => void
+  sideContent?: React.ReactNode
 }
 
 type SubComponents = {
@@ -21,6 +22,7 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
   children,
   defaultTab,
   onChange,
+  sideContent,
   ...props
 }) => {
   const [currentTab, setCurrentTab] = React.useState<string>(defaultTab)
@@ -36,8 +38,7 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
       <Flex
         as={'ul'}
         backgroundColor="#FFF"
-        display="inline-flex"
-        justifyContent="flex-start"
+        justifyContent="space-between"
         align="center"
         height={pxToRem(48)}
         minHeight={pxToRem(48)}
@@ -47,23 +48,31 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         paddingX={6}
         {...props}
       >
-        {childrenToArray.map(child => (
-          <TabHeader
-            key={child.props.id}
-            href={child.props.href}
-            title={child.props.title}
-            id={child.props.id}
-            count={child.props.count}
-            onClick={() => {
-              if (currentTab !== child.props.id) {
-                setCurrentTab(child.props.id)
-              }
-            }}
-            isActive={currentTab === child.props.id}
-          >
-            {child.props}
-          </TabHeader>
-        ))}
+        <Flex gap={6}>
+          {childrenToArray.map(child => (
+            <TabHeader
+              key={child.props.id}
+              href={child.props.href}
+              title={child.props.title}
+              id={child.props.id}
+              count={child.props.count}
+              onClick={() => {
+                if (currentTab !== child.props.id) {
+                  setCurrentTab(child.props.id)
+                }
+              }}
+              isActive={currentTab === child.props.id}
+            >
+              {child.props}
+            </TabHeader>
+          ))}
+        </Flex>
+
+        {sideContent && (
+          <Flex alignItems={'center'} gap={4}>
+            {sideContent}
+          </Flex>
+        )}
       </Flex>
       {childrenToArray?.length ? (
         <Flex>
