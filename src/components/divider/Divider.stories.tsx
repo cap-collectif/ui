@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
 import { pxToRem } from '../../styles/modules/mixins'
+import { Box } from '../box'
 import { FormGuideline, FormLabel, Input } from '../form'
 import { CapUIIcon, Icon } from '../icon'
 import { Flex } from '../layout'
@@ -55,13 +56,7 @@ export const WithSiblings: Story<DividerProps> = args => (
     <Input type="text" width={pxToRem(300)} />
 
     <Divider {...args}>
-      <Text
-        fontWeight={CapUIFontWeight.Bold}
-        color={'neutral-gray.600'}
-        fontSize={'4rem'}
-      >
-        OR
-      </Text>
+      <Box as="span">OR</Box>
     </Divider>
 
     <FormLabel label={'Do you not have a favourite animal? If so, why?'} />
