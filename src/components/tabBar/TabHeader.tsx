@@ -50,6 +50,7 @@ const TabHeader: React.FC<TabHeaderProps> = ({
         }
       }}
       onClick={isLink ? undefined : onClick}
+      tabIndex={0}
       {...props}
     >
       {title}
