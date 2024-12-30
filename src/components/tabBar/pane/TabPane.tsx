@@ -3,7 +3,10 @@ import React from 'react'
 import { Box, BoxProps } from '../../box'
 import { TabHeaderProps } from '../TabHeader'
 
-export type TabPaneProps = Omit<TabHeaderProps, 'onClick' | 'isActive'> & {
+export type TabPaneProps = Omit<
+  TabHeaderProps,
+  'onClick' | 'onKeyDown' | 'isActive'
+> & {
   children?: React.ReactNode
 }
 

@@ -61,6 +61,11 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
                   setCurrentTab(child.props.id)
                 }
               }}
+              onKeyDown={event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  setCurrentTab(child.props.id)
+                }
+              }}
               isActive={currentTab === child.props.id}
             >
               {child.props}
