@@ -8,7 +8,7 @@ export type TabHeaderProps = {
   id: string
   href?: string
   onClick: () => void
-  onKeyDown: (event: any) => void | undefined
+  onKeyDown: (event: React.KeyboardEvent) => void | undefined
   isActive: boolean
   count?: number
 }
