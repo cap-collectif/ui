@@ -117,6 +117,24 @@ export const Default: Story<ToastProps> = args => (
       variant="primary"
       variantSize="medium"
       onClick={() => {
+        toast({
+          ...args,
+          variant: 'success',
+          content: `Toast with an extraordinarily long label that should help see how such a
+      case would be rendered if someone had the craziest idea of making it an
+      actual real-life case, like who would do this anyway?`,
+
+          onClose: () =>
+            console.log("Un log qui s'affiche à la fermeture du toast !"),
+        })
+      }}
+    >
+      Toast with very long content
+    </Button>
+    <Button
+      variant="primary"
+      variantSize="medium"
+      onClick={() => {
         clearToasts()
       }}
     >
