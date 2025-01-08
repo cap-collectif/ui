@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.22
+
+`2025-01-08`
+
+- 💄 Fix `Toast` component max width [#480](https://github.com/cap-collectif/ui/pull/480)
+- 🆕 Add keyboard navigation to `TabBar` component [#479](https://github.com/cap-collectif/ui/pull/479)
+
 ## 1.10.21
 
 `2024-12-17`
