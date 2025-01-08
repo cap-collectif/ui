@@ -93,6 +93,11 @@ module.exports = {
       use: 'file-loader',
     })
 
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif)$/i,
+      use: [{ loader: 'file-loader', options: { name: '[path][name].[ext]' } }],
+    })
+
     return {
       ...config,
       resolve: {
