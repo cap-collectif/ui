@@ -49,6 +49,7 @@ const ToastInner = styled(motion(Box)).attrs({
   pointer-events: all;
   position: relative;
   width: fit-content;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 
