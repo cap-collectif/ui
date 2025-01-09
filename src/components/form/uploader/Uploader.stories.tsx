@@ -2,6 +2,11 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 import { DropEvent, ErrorCode, FileRejection } from 'react-dropzone'
 
+import {
+  largeThumbnail,
+  lowQualityThumbnail,
+  thumbnail,
+} from '../../../assets/images'
 import { CapUIFontWeight } from '../../../styles'
 import { btomg, mgtob } from '../../../utils/fileSizeConvert'
 import fileType from '../../../utils/fileType'
@@ -439,7 +444,7 @@ DefaultWithValue.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/500/500',
+    url: thumbnail,
     type: 'image/jpeg',
   },
 }
@@ -524,7 +529,7 @@ MediumWithValue.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/500/500',
+    url: thumbnail,
     type: 'image/jpeg',
   },
 }
@@ -609,7 +614,7 @@ SmallWithValue.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/500/500',
+    url: thumbnail,
     type: 'image/jpeg',
   },
 }
@@ -695,7 +700,7 @@ CircleWithValue.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/500/500',
+    url: thumbnail,
     type: 'image/jpeg',
   },
 }
@@ -831,28 +836,28 @@ MultipleWithValue.args = {
       id: 'ID1',
       name: 'Storybook Image 1',
       size: '1048576',
-      url: 'https://unsplash.it/500/500',
+      url: thumbnail,
       type: 'image/jpeg',
     },
     {
       id: 'ID2',
       name: 'Storybook Image 2',
       size: '1048576',
-      url: 'https://unsplash.it/500/500',
+      url: thumbnail,
       type: 'image/jpeg',
     },
     {
       id: 'ID3',
       name: 'Storybook Image 3',
       size: '1048576',
-      url: 'https://unsplash.it/500/500',
+      url: thumbnail,
       type: 'image/jpeg',
     },
     {
       id: 'ID4',
       name: 'Storybook Image 4',
       size: '1048576',
-      url: 'https://unsplash.it/500/500',
+      url: thumbnail,
       type: 'image/jpeg',
     },
   ],
@@ -974,7 +979,7 @@ UniqueWithError.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/500/500',
+    url: thumbnail,
     type: 'image/jpeg',
   },
   required: false,
@@ -1123,7 +1128,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
     if (!!minResolution && fileType(acceptedFiles[0].type)) {
       const img = new Image()
 
-      img.onload = function () {
+      img.onload = () => {
         if (
           img.width &&
           img.height &&
@@ -1284,7 +1289,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
             id: 'ID1',
             name: 'Storybook Image',
             size: '1048576',
-            url: 'https://unsplash.it/2500/2000',
+            url: largeThumbnail,
             type: 'image/jpeg',
           }}
           {...args}
@@ -1318,7 +1323,7 @@ UniqueWithWarning.args = {
     id: 'ID1',
     name: 'Storybook Image',
     size: '1048576',
-    url: 'https://unsplash.it/170/100',
+    url: lowQualityThumbnail,
     type: 'image/jpeg',
   },
 }
