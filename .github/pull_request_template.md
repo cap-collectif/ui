@@ -4,11 +4,6 @@
 #### :pushpin: Related Issues
 <!-- What existing **issue(s)** does the pull request solve? -->
 
-#### :clipboard: Technical Specification
-<!-- Describe how you plan to solve the problem
-- [x] Subtask 1
-- [ ] Subtask 2
--->
 
 #### :art: Chromatic links
 <!--
