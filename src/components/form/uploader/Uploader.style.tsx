@@ -24,7 +24,7 @@ export const Container = styled(Flex)<{
       case UPLOADER_SIZE.MD:
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'      
+        return '184px'
     }
   }};
   max-width: ${props => {
@@ -34,7 +34,7 @@ export const Container = styled(Flex)<{
         return '488px'
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'      
+        return '184px'
     }
   }};
   width: 100%;
@@ -115,7 +115,7 @@ export const UploaderContainer = styled(Flex)<{
       case UPLOADER_SIZE.MD:
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'      
+        return '184px'
     }
   }};
   max-width: ${props => {
@@ -125,7 +125,7 @@ export const UploaderContainer = styled(Flex)<{
         return '488px'
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'      
+        return '184px'
     }
   }};
   width: 100%;
