@@ -44,7 +44,6 @@ const TabHeader: React.FC<TabHeaderProps> = ({
         borderBottom: '2px solid transparent',
         '&:hover': {
           color: 'primary.500',
-          borderBottomColor: 'primary.500',
         },
         '&:hover .tabHeaderCount': {
           color: 'primary.500',
