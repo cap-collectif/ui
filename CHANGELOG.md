@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.23
+
+`2025-02-10`
+
+- 🐛 Fix display of cells which value is 0 in `Table` [#484](https://github.com/cap-collectif/ui/pull/484)
+- 💄 Fix `TabBar` design [#486](https://github.com/cap-collectif/ui/pull/486)
+- 💄 Fix `Uploader` sizes [#485](https://github.com/cap-collectif/ui/pull/485)
+- 🛠 Replace random images with static ones in stories (`Uploader`) [#482](https://github.com/cap-collectif/ui/pull/482)
+
 ## 1.10.22
 
 `2025-01-08`
