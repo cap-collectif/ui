@@ -165,7 +165,7 @@ const Template: Story<TableProps> = args => (
         </Table.Td>
         <Table.Td>CEO</Table.Td>
         <Table.Td>Russia</Table.Td>
-        <Table.Td isNumeric>789123456</Table.Td>
+        <Table.Td isNumeric>{Number(0)}</Table.Td>
         <Table.Td>10/01/2030</Table.Td>
         <Table.Td>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad

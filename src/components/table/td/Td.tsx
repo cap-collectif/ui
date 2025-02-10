@@ -29,7 +29,7 @@ export const Td: React.FC<TdProps> = ({
   ...props
 }) => {
   const { isLoading } = useTable()
-  const isEmpty: boolean = !children && !isLoading
+  const isEmpty: boolean = !children && children !== 0 && !isLoading
 
   return (
     <Box
