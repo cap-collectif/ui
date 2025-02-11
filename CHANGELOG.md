@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 1.10.24
+
+`2025-02-11`
+
+- 🆕 Add a new `Uploader` variant (`isFullWidth` prop) [#488](https://github.com/cap-collectif/ui/pull/488)
+
 ## 1.10.23
 
 `2025-02-10`
