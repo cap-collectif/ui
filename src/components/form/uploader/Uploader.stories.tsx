@@ -11,9 +11,11 @@ import { CapUIFontWeight } from '../../../styles'
 import { btomg, mgtob } from '../../../utils/fileSizeConvert'
 import fileType from '../../../utils/fileType'
 import { Box } from '../../box/Box'
+import { Button } from '../../button'
 import { InfoMessage } from '../../infoMessage/InfoMessage'
 import { Flex } from '../../layout'
-import { Text } from '../../typography'
+import { ModalProps, Modal, CapUIModalSize } from '../../modal'
+import { Heading, Text } from '../../typography'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
 import { FormGuideline } from '../formGuideline'
@@ -1326,4 +1328,82 @@ UniqueWithWarning.args = {
     url: lowQualityThumbnail,
     type: 'image/jpeg',
   },
+}
+
+export const FullWidth: Story<ModalProps> = args => (
+  <Modal {...args} ariaLabelledby="modal-title" size={CapUIModalSize.Xl}>
+    {({ hide }) => (
+      <>
+        <Modal.Header closeIconLabel="Fermer">
+          <Heading id="modal-title">
+            With & without isFullWidth property
+          </Heading>
+        </Modal.Header>
+        <Modal.Body width={'100%'} display={'flex'} gap={4}>
+          <Flex direction={'column'}>
+            <FormGuideline>With the `isFullWidth` property</FormGuideline>
+            <Uploader
+              isFullWidth
+              className={'cap-uploader'}
+              format={'image/*'}
+              onDrop={(
+                acceptedFiles: File[],
+                fileRejections: FileRejection[],
+                event: DropEvent,
+              ) => {
+                console.log(acceptedFiles, fileRejections, event)
+              }}
+              wording={{
+                uploaderPrompt: '',
+                uploaderLoadingPrompt: '',
+                fileDeleteLabel: '',
+              }}
+            />
+          </Flex>
+          <Flex direction={'column'}>
+            <FormGuideline>Without the `isFullWidth` property</FormGuideline>
+            <Uploader
+              className={'cap-uploader'}
+              format={'image/*'}
+              onDrop={(
+                acceptedFiles: File[],
+                fileRejections: FileRejection[],
+                event: DropEvent,
+              ) => {
+                console.log(acceptedFiles, fileRejections, event)
+              }}
+              wording={{
+                uploaderPrompt: '',
+                uploaderLoadingPrompt: '',
+                fileDeleteLabel: '',
+              }}
+            />
+          </Flex>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            variantColor="primary"
+            variantSize="big"
+            onClick={hide}
+          >
+            Validate
+          </Button>
+        </Modal.Footer>
+      </>
+    )}
+  </Modal>
+)
+
+FullWidth.args = {
+  disclosure: <Button>Check display within modal</Button>,
+  size: CapUIModalSize.Md,
 }

@@ -60,6 +60,7 @@ export interface UploaderProps
   readonly minResolution?: Size
   readonly multiple?: boolean
   readonly showThumbnail?: boolean
+  readonly isFullWidth?: boolean
   readonly onDrop: <T extends File>(
     acceptedFiles: T[],
     fileRejections: FileRejection[],
@@ -81,6 +82,7 @@ const Uploader: React.FC<UploaderProps> = ({
   onDrop: onExternalDrop,
   wording,
   minSize,
+  isFullWidth,
   className,
   onDropRejected,
   onRemove,
@@ -242,9 +244,14 @@ const Uploader: React.FC<UploaderProps> = ({
     }
   }
   return (
-    <UploaderContainer className={cn('cap-uploader', className)} size={size}>
+    <UploaderContainer
+      className={cn('cap-uploader', className)}
+      size={size}
+      isFullWidth={isFullWidth}
+    >
       <Container
         drag={isDragActive}
+        isFullWidth={isFullWidth}
         circle={circle}
         size={size}
         colors={colors}

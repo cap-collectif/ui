@@ -15,6 +15,7 @@ export const Container = styled(Flex)<{
   readonly circle?: boolean
   readonly drag: boolean
   readonly colors: Colors
+  readonly isFullWidth?: boolean
 }>`
   height: 184px;
   min-width: ${props => {
@@ -28,14 +29,18 @@ export const Container = styled(Flex)<{
     }
   }};
   max-width: ${props => {
-    switch (props.size) {
-      case UPLOADER_SIZE.LG:
-      case UPLOADER_SIZE.MD:
-        return '488px'
+    if (props.isFullWidth) {
+      return undefined
+    } else {
+      switch (props.size) {
+        case UPLOADER_SIZE.LG:
+        case UPLOADER_SIZE.MD:
+          return '488px'
       case UPLOADER_SIZE.SM:
-      default:
-        return '184px'
-    }
+        default:
+          return '184px'
+        }
+      }
   }};
   width: 100%;
   background-color: transparent;
@@ -102,6 +107,7 @@ export const Content = styled(Flex)`
 `
 export const UploaderContainer = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
+  readonly isFullWidth?: boolean
 }>`
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -119,13 +125,17 @@ export const UploaderContainer = styled(Flex)<{
     }
   }};
   max-width: ${props => {
-    switch (props.size) {
-      case UPLOADER_SIZE.LG:
-      case UPLOADER_SIZE.MD:
-        return '488px'
-      case UPLOADER_SIZE.SM:
-      default:
-        return '184px'
+    if (props.isFullWidth) {
+      return undefined
+    } else {
+      switch (props.size) {
+        case UPLOADER_SIZE.LG:
+        case UPLOADER_SIZE.MD:
+          return '488px'
+        case UPLOADER_SIZE.SM:
+        default:
+          return '184px'
+      }
     }
   }};
   width: 100%;
