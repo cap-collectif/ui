@@ -1,10 +1,4 @@
-import { background } from 'styled-system'
-
-import { Colors } from './colors.type'
-
-export * from './colors.type'
-
-const baseColors: Colors = {
+export const baseColors: Colors = {
   transparent: 'transparent',
   current: 'currentColor',
 
@@ -19,14 +13,6 @@ const baseColors: Colors = {
     dark: '#0051A8',
     darker: '#003670',
   },
-  danger: {
-    background: '#FEFBFB',
-    lighter: '#FAE5E7',
-    light: '#ED9BA4',
-    base: '#BF2231',
-    dark: '#8F1925',
-    darker: '#5F1119',
-  },
   gray: {
     '100': '#F7F7F8',
     '150': '#E8EBED',
@@ -38,14 +24,6 @@ const baseColors: Colors = {
     '700': '#545E68',
     '800': '#3D454C',
     '900': '#272B30',
-    white: 'white',
-    background: '#F7F7F8',
-    lighter: '#E8EBED',
-    light: '#BEC4CB',
-    base: '#6B7885',
-    dark: '#545E68',
-    darker: '#3D454C',
-    black: '#272B30',
   },
   'neutral-gray': {
     '50': '#FAFAFA',
@@ -133,5 +111,7 @@ const baseColors: Colors = {
     '900': '#062C32',
   },
 }
-
-export default baseColors
+const buttonColors = {
+  'button-primary-background-color-background-button-primary-default':
+    baseColors.primary.base,
+}

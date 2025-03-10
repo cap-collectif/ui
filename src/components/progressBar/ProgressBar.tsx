@@ -38,7 +38,7 @@ const ProgressBar: React.FC<ProgressBarProps & FlexProps> = ({
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
-                bg={color ? color : 'primary.500'}
+                bg={color ? color : 'primary.base'}
                 initial="empty"
                 animate="fill"
                 variants={variants}

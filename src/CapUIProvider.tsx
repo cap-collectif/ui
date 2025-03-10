@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import ToastContainer from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { CapUITheme, capuiTheme } from './styles/theme'
+import { getThemeWithColorsToken } from './utils/getThemeWithColorsToken'
 
 interface Props {
   readonly resetCSS?: boolean
@@ -16,10 +17,9 @@ export const CapUIProvider: FC<Props> = ({
   children,
 }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={getThemeWithColorsToken(theme)}>
       {resetCSS && <CSSReset />}
       <ToastContainer />
-
       {children}
     </ThemeProvider>
   )

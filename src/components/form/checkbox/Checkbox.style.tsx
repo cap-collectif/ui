@@ -31,8 +31,8 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-checkbox__input:checked + & ': {
-    bg: 'primary.500',
-    borderColor: 'primary.500',
+    bg: 'primary.base',
+    borderColor: 'primary.base',
   },
 
   '.cap-checkbox__input:focus-visible + &': {

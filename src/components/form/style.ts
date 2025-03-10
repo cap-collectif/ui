@@ -47,7 +47,7 @@ const styles: SystemStyleObject = {
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'primary.500',
+    borderColor: 'primary.base',
     outline: 'none !important',
     boxShadow: 'none !important',
   },
@@ -87,7 +87,7 @@ export const focusWithinStyles = (
   },
 
   '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'primary.500',
+    borderColor: isInvalid ? 'red.500' : 'primary.base',
     bg: 'white',
   },
 })

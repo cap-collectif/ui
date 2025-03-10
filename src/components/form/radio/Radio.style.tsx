@@ -17,7 +17,7 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
 
   '&:before': {
     content: '""',
-    bg: 'primary.500',
+    bg: 'primary.base',
     borderRadius: '50%',
     width: '7px',
     height: '7px',
@@ -29,7 +29,7 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-radio__input:checked + &': {
-    borderColor: 'primary.500',
+    borderColor: 'primary.base',
   },
 
   '.cap-radio__input:focus-visible + &': {

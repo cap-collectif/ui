@@ -22,8 +22,7 @@ const meta: Meta = {
     },
     onClick: {
       action: 'clicked',
-      description:
-        'onClick',
+      description: 'onClick',
     },
   },
   parameters: {

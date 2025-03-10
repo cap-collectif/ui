@@ -3,7 +3,7 @@ import type { DefaultTheme } from 'styled-components'
 
 import { tint } from '../../utils/color'
 import colors from '../modules/colors'
-import { pxToRem } from '../modules/mixins'
+import { SPACING, NEW_SPACING } from './spacing'
 import typography, {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -12,7 +12,7 @@ import typography, {
   LINE_HEIGHTS,
 } from './typography'
 
-/* eslint-disable @typescript-eslint/ban-types */
+export * from './spacing'
 
 export interface Breakpoints {
   tablet: string
@@ -65,28 +65,6 @@ export const breakpoints: Breakpoints = {
   ultraWide: `${BR_ULTRAWIDE}px`,
 }
 
-export const SPACING = {
-  px: '1px',
-  0: 0,
-  0.5: pxToRem(2),
-  1: pxToRem(4),
-  2: pxToRem(8),
-  3: pxToRem(12),
-  4: pxToRem(16),
-  5: pxToRem(20),
-  6: pxToRem(24),
-  7: pxToRem(28),
-  8: pxToRem(32),
-  9: pxToRem(40),
-  10: pxToRem(48),
-  11: pxToRem(56),
-  12: pxToRem(64),
-  13: pxToRem(72),
-  14: pxToRem(128),
-  15: pxToRem(256),
-  16: pxToRem(512),
-} as const
-
 export type ThemeSpacingValues =
   | keyof typeof SPACING
   | (string & {})
@@ -107,6 +85,7 @@ export enum CapUIShadow {
 export type ThemeShadowsValues = keyof typeof SHADOWS | (string & {})
 
 export const RADII = {
+  ...NEW_SPACING,
   normal: 4,
   button: 4,
   card: 4,
@@ -134,6 +113,7 @@ export enum CapUIRadius {
 }
 
 export type ThemeRadiiValues =
+  | keyof typeof SPACING
   | keyof typeof RADII
   | (string & {})
   | (number & {})
@@ -212,4 +192,13 @@ export const generateShades = (hexColor: string) => ({
   '700': tint(-0.49, hexColor),
   '800': tint(-0.73, hexColor),
   '900': tint(-0.98, hexColor),
+})
+
+export const generatePalette = (hexColor: string) => ({
+  background: tint(0.98, hexColor),
+  lighter: tint(0.87, hexColor),
+  light: tint(0.49, hexColor),
+  base: hexColor,
+  dark: tint(-0.49, hexColor),
+  darker: tint(-0.73, hexColor),
 })

@@ -52,7 +52,7 @@ const MultiStepModalProgressBar = () => {
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
-                bg="primary.500"
+                bg="primary.base"
                 initial="empty"
                 animate="fill"
                 variants={variants}

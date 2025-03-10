@@ -62,7 +62,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         className={cn('cap-accordion__item', className)}
         borderRadius="accordion"
         border={variants[color].border}
-        borderColor={isOpen ? 'primary.500' : 'gray.200'}
+        borderColor={isOpen ? 'primary.base' : 'gray.200'}
         _hover={{
           borderColor: 'gray.300',
         }}

@@ -60,7 +60,7 @@ export function Control<
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={2} color="primary.500" />}
+      {isLoading && <Spinner mr={2} color="primary.base" />}
       {!isLoading && (
         <>
           {isClearable && value ? <Box

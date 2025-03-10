@@ -236,7 +236,7 @@ const Uploader: React.FC<UploaderProps> = ({
               <Icon
                 name={isDragActive ? CapUIIcon.UploadArrow : CapUIIcon.Add}
                 size={CapUIIconSize.Lg}
-                color={isDragActive ? 'primary.500' : 'gray.500'}
+                color={isDragActive ? 'primary.base' : 'gray.500'}
               />
             )}
           </Content>

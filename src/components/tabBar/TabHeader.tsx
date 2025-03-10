@@ -31,8 +31,8 @@ const TabHeader: React.FC<TabHeaderProps> = ({
       href={isLink ? href : undefined}
       fontSize={1}
       fontWeight={CapUIFontWeight.Bold}
-      color={isActive ? 'primary.500' : 'gray.700'}
-      borderBottomColor={isActive ? 'primary.500' : 'transparent'}
+      color={isActive ? 'primary.base' : 'gray.700'}
+      borderBottomColor={isActive ? 'primary.base' : 'transparent'}
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -43,10 +43,10 @@ const TabHeader: React.FC<TabHeaderProps> = ({
         boxSizing: 'border-box',
         borderBottom: '2px solid transparent',
         '&:hover': {
-          color: 'primary.500',
+          color: 'primary.base',
         },
         '&:hover .tabHeaderCount': {
-          color: 'primary.500',
+          color: 'primary.base',
           backgroundColor: 'primary.150',
         },
       }}
@@ -61,7 +61,7 @@ const TabHeader: React.FC<TabHeaderProps> = ({
           as="span"
           className="tabHeaderCount"
           bg={isActive ? 'primary.150' : 'neutral-gray.150'}
-          color={isActive ? 'primary.500' : 'neutral-gray.500'}
+          color={isActive ? 'primary.base' : 'neutral-gray.500'}
           sx={{
             fontWeight: 600,
             height: 4,

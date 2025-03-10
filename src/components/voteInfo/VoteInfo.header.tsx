@@ -62,7 +62,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
             <Icon
               name={CapUIIcon.Info}
               size={CapUIIconSize.Sm}
-              color="primary.500"
+              color="primary.base"
             />
           </Box>
         </Tooltip>

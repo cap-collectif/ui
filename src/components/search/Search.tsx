@@ -56,7 +56,7 @@ const Control = <
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="primary.500" />}
+      {isLoading && <Spinner mr={1} color="primary.base" />}
       {!isLoading && inputValue && (
         <Box as={'button'} type="button"
           mr={1}

@@ -16,7 +16,7 @@ export interface TdProps extends BoxPropsOf<'td'> {
 const styles = {
   a: {
     '&:hover': {
-      color: 'primary.500',
+      color: 'primary.base',
     },
   },
 }

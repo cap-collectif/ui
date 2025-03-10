@@ -80,7 +80,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
         name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
         size={CapUIIconSize.Md}
         mr={2}
-        color={open ? 'primary.500' : 'gray.500'}
+        color={open ? 'primary.base' : 'gray.500'}
       />
 
       {typeof children === 'string' ? (
