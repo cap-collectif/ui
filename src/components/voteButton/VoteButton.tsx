@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { useTheme } from '../../hooks'
-import { CapUIFontWeight, CapUILineHeight } from '../../styles'
+import { CapUIFontSize, CapUIFontWeight, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { ButtonProps } from '../button'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
@@ -35,9 +35,9 @@ const VoteButton: React.FC<VoteButtonProps> = React.forwardRef<
         display="inline-flex"
         alignItems="center"
         fontFamily="body"
-        fontSize={3}
+        fontSize={CapUIFontSize.BodyRegular}
         fontWeight={CapUIFontWeight.Semibold}
-        lineHeight={CapUILineHeight.Base}
+        lineHeight={CapUILineHeight.M}
         disabled={disabled}
         {...rest}
       >

@@ -36,7 +36,7 @@ export const ChildrenHasOwnStyles: Story<DividerProps> = args => (
 export const WithHtmlContent: Story<DividerProps> = args => (
   <Divider {...args}>
     <Flex justifyContent={'center'} gap={2}>
-      <Icon name={CapUIIcon.Heart} color={'primary.600'} />
+      <Icon name={CapUIIcon.Heart} color={'primary.base'} />
       <Text fontWeight={CapUIFontWeight.Bold} color={'neutral-gray.600'}>
         I love animals
       </Text>

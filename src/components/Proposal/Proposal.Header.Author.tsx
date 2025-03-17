@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { CapUIFontSize } from '../../styles'
 import { BoxProps } from '../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Flex } from '../layout'
@@ -22,7 +23,7 @@ const ProposalHeaderAuthor: React.FC<ProposalHeaderAuthorProps & BoxProps> = ({
         size={CapUIIconSize.Sm}
         color="neutral-gray.800"
       />
-      <Text color="neutral-gray.800" fontSize={2}>
+      <Text color="neutral-gray.800" fontSize={CapUIFontSize.BodySmall}>
         {author}
       </Text>
     </Flex>

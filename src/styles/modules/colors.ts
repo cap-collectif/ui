@@ -1,5 +1,3 @@
-import { background } from 'styled-system'
-
 import { Colors } from './colors.type'
 
 export * from './colors.type'

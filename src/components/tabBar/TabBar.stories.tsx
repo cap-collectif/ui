@@ -50,7 +50,7 @@ export const WithLink: Story<TabBarProps> = () => {
           <Link
             href={'https://www.cap-collectif.com/'}
             display={'flex'}
-            color="primary.600"
+            color="primary.base"
             mr={0}
             ml={'auto'}
             target="_blank"

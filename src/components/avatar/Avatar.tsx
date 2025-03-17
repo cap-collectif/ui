@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { CapUIFontFamily } from '../../styles'
+import { CapUIFontFamily, CapUIFontSize } from '../../styles'
 import { Box } from '../box'
 import { Flex, FlexProps } from '../layout'
 
@@ -19,7 +19,7 @@ export interface AvatarProps extends FlexProps {
 
 export const variants = {
   xs: {
-    fontSize: 1,
+    fontSize: CapUIFontSize.Caption,
     lineHeight: 'sm',
     size: 4,
     minWidth: 4,
@@ -28,7 +28,7 @@ export const variants = {
     maxHeight: 4,
   },
   sm: {
-    fontSize: 1,
+    fontSize: CapUIFontSize.Caption,
     lineHeight: 'sm',
     size: 6,
     minWidth: 6,
@@ -37,7 +37,7 @@ export const variants = {
     maxHeight: 6,
   },
   md: {
-    fontSize: 3,
+    fontSize: CapUIFontSize.BodyRegular,
     lineHeight: 'base',
     size: 8,
     minWidth: 8,
@@ -46,7 +46,7 @@ export const variants = {
     maxHeight: 8,
   },
   lg: {
-    fontSize: 4,
+    fontSize: CapUIFontSize.Headline,
     lineHeight: 'base',
     size: 9,
     minWidth: 9,
@@ -55,7 +55,7 @@ export const variants = {
     maxHeight: 9,
   },
   xl: {
-    fontSize: 6,
+    fontSize: CapUIFontSize.DisplayMedium,
     lineHeight: 'l',
     size: 13,
     minWidth: 13,
@@ -110,7 +110,7 @@ export const Avatar = ({
 
   return (
     <AvatarInner
-      bg="primary.600"
+      bg="primary.base"
       color="aqua.100"
       className={cn('cap-avatar', className)}
       title={shouldDisplayName ? alt : name}

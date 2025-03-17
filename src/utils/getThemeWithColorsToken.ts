@@ -146,7 +146,50 @@ const buttonColors = (theme: CapUITheme) => ({
         },
       },
     },
-    tertiary: {},
+    tertiary: {
+      default: {
+        text: {
+          default: theme.colors.primary.base,
+          hover: theme.colors.primary.dark,
+          disable: theme.colors.primary.light,
+          loading: theme.colors.primary.base,
+        },
+        icon: {
+          default: theme.colors.primary.base,
+          hover: theme.colors.primary.dark,
+          disable: theme.colors.primary.light,
+          loading: theme.colors.primary.base,
+        },
+      },
+      danger: {
+        text: {
+          default: theme.colors.danger.base,
+          hover: theme.colors.danger.dark,
+          disable: theme.colors.danger.light,
+          loading: theme.colors.danger.base,
+        },
+        icon: {
+          default: theme.colors.danger.base,
+          hover: theme.colors.danger.dark,
+          disable: theme.colors.danger.light,
+          loading: theme.colors.danger.base,
+        },
+      },
+      hierarchy: {
+        text: {
+          default: theme.colors.gray.dark,
+          hover: theme.colors.gray.darker,
+          disable: theme.colors.gray.light,
+          loading: theme.colors.gray.darker,
+        },
+        icon: {
+          default: theme.colors.gray.base,
+          hover: theme.colors.gray.dark,
+          disable: theme.colors.gray.light,
+          loading: theme.colors.gray.base,
+        },
+      },
+    },
   },
 })
 

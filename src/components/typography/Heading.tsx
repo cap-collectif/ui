@@ -2,6 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import {
+  CapUIFontSize,
   CapUIFontWeight,
   CapUILineHeight,
   FONT_SIZES,
@@ -25,29 +26,29 @@ export type HeadingProps = BoxOwnProps<HeadingLevel> & {
 
 export const headingStyles: HeadingStyles = {
   h1: {
-    fontSize: 7,
+    fontSize: CapUIFontSize.DisplayLarge,
     fontWeight: CapUIFontWeight.Semibold,
-    lineHeight: CapUILineHeight.Xl,
+    lineHeight: CapUILineHeight.XXL,
   },
   h2: {
-    fontSize: 6,
+    fontSize: CapUIFontSize.DisplayMedium,
+    fontWeight: CapUIFontWeight.Semibold,
+    lineHeight: CapUILineHeight.XL,
+  },
+  h3: {
+    fontSize: CapUIFontSize.DisplaySmall,
     fontWeight: CapUIFontWeight.Semibold,
     lineHeight: CapUILineHeight.L,
   },
-  h3: {
-    fontSize: 5,
-    fontWeight: CapUIFontWeight.Semibold,
+  h4: {
+    fontSize: CapUIFontSize.Headline,
+    fontWeight: CapUIFontWeight.Normal,
     lineHeight: CapUILineHeight.M,
   },
-  h4: {
-    fontSize: 4,
-    fontWeight: CapUIFontWeight.Normal,
-    lineHeight: CapUILineHeight.Base,
-  },
   h5: {
-    fontSize: 1,
+    fontSize: CapUIFontSize.Caption,
     fontWeight: CapUIFontWeight.Normal,
-    lineHeight: CapUILineHeight.Sm,
+    lineHeight: CapUILineHeight.S,
   },
 }
 
@@ -77,7 +78,7 @@ export const Heading: React.FC<HeadingProps> = React.forwardRef<
           : CapUIFontWeight.Normal
       }
       lineHeight={
-        headingStyles[as] ? headingStyles[as].lineHeight : CapUILineHeight.Base
+        headingStyles[as] ? headingStyles[as].lineHeight : CapUILineHeight.M
       }
       m={0}
       {...(truncate && { title: innerText })}

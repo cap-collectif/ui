@@ -16,6 +16,7 @@ import { CapInputSize, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
+import { pxToRem } from '../../styles/modules/mixins'
 
 export interface SearchProps<
   Option,
@@ -119,7 +120,7 @@ export const SearchWithRef = <
   }, [value])
 
   return (
-    <Box width={width || '280px'}>
+    <Box width={width || pxToRem(280)}>
       <ReactSelect<Option, IsMulti, Group>
         {...inputProps}
         styles={reactSelectStyle(

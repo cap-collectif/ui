@@ -3,7 +3,12 @@ import * as React from 'react'
 import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
 import styled from 'styled-components'
 
-import { CapUIFontWeight, CapUILineHeight, CapUIRadius } from '../../../styles'
+import {
+  CapUIFontSize,
+  CapUIFontWeight,
+  CapUILineHeight,
+  CapUIRadius,
+} from '../../../styles'
 import { Box, BoxProps } from '../../box'
 import { Radio, RadioProps } from '../../form'
 import { useTabs } from '../Tabs.context'
@@ -64,9 +69,9 @@ const TabsButton: React.FC<TabsButtonProps> = ({
       <Box
         as="span"
         position="relative"
-        fontSize={3}
+        fontSize={CapUIFontSize.BodyRegular}
         fontWeight={CapUIFontWeight.Normal}
-        lineHeight={CapUILineHeight.Base}
+        lineHeight={CapUILineHeight.M}
         color={props.disabled ? 'gray.500' : 'gray.800'}
       >
         {children}

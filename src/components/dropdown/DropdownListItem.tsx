@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontWeight, CapUILineHeight } from '../../styles'
+import { CapUIFontSize, CapUIFontWeight, CapUILineHeight } from '../../styles'
 import { BoxProps } from '../box'
 import { DropdownListItem as DropdownListItemStyled } from './Dropdown.styles'
 
@@ -23,8 +23,8 @@ const DropdownListItem: React.FC<DropdownListItemProps> = ({
       bg="white"
       fontWeight={active ? CapUIFontWeight.Semibold : CapUIFontWeight.Normal}
       className={cn('cap-dropdown__item', className)}
-      fontSize={3}
-      lineHeight={CapUILineHeight.Base}
+      fontSize={CapUIFontSize.BodyRegular}
+      lineHeight={CapUILineHeight.M}
       color="gray.900"
       as="li"
       {...props}

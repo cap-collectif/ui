@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { CapUIFontWeight } from '../../styles'
+import { CapUIFontSize, CapUIFontWeight } from '../../styles'
 import { Flex } from '../layout'
 import { Text } from '../typography'
 import VoteButton, { VoteButtonProps } from './VoteButton'
@@ -34,7 +34,7 @@ export const Active: Story<VoteButtonProps> = () => (
   <VoteButton active>
     <Flex direction="column" align="flex-start">
       <Text fontWeight={CapUIFontWeight.Semibold}>101 Votes</Text>
-      <Text fontSize={1}>70 % de l’objectif</Text>
+      <Text fontSize={CapUIFontSize.Caption}>70 % de l’objectif</Text>
     </Flex>
   </VoteButton>
 )
@@ -47,7 +47,7 @@ export const Disabled: Story<VoteButtonProps> = args => (
       >
         101 Votes
       </Text>
-      <Text fontSize={1} style={{ whiteSpace: 'nowrap' }}>
+      <Text fontSize={CapUIFontSize.Caption} style={{ whiteSpace: 'nowrap' }}>
         70 % de l’objectif
       </Text>
     </Flex>
@@ -72,7 +72,7 @@ export const AvecSeuil: Story<VoteButtonProps> = args => {
         >
           {votes} Votes
         </Text>
-        <Text fontSize={1} style={{ whiteSpace: 'nowrap' }}>
+        <Text fontSize={CapUIFontSize.Caption} style={{ whiteSpace: 'nowrap' }}>
           {Math.floor((votes / maxVotes) * 100)} % de l’objectif
         </Text>
       </Flex>

@@ -12,4 +12,5 @@ export {
   CapUIFontWeight,
   CapUILetterSpacing,
   CapUILineHeight,
+  CapUIFontSize,
 } from './theme/typography'

@@ -42,7 +42,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     },
     gray: {
       bg: 'gray.100',
-      bgOpen: 'primary.100',
+      bgOpen: 'primary.background',
       border: 'normal',
       pbOpen: 6,
     },

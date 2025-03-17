@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
+import { CapUIFontSize } from '../../styles'
 import { Box } from '../box'
 import { Button } from '../button'
 import { CodeInput, FormLabel, Input } from '../form'
@@ -301,7 +302,12 @@ const Step = ({
           <Heading mb={4} as="h3">
             {title}
           </Heading>
-          <Text mb={4} textAlign="center" color="neutral-gray.700" fontSize={3}>
+          <Text
+            mb={4}
+            textAlign="center"
+            color="neutral-gray.700"
+            fontSize={CapUIFontSize.BodyRegular}
+          >
             {info}
           </Text>
           {lastStep ? null : (

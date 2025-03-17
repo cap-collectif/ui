@@ -2,7 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { useTheme } from '../../hooks'
-import { CapUILineHeight } from '../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box, PolymorphicBoxProps } from '../box/Box'
 import { useFormControl } from '../form'
 import { Flex, FlexProps } from '../layout'
@@ -60,7 +60,11 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
       </Box>
 
       {typeof children === 'string' ? (
-        <Text as="span" fontSize={3} lineHeight={CapUILineHeight.Base}>
+        <Text
+          as="span"
+          fontSize={CapUIFontSize.BodyRegular}
+          lineHeight={CapUILineHeight.M}
+        >
           {children}
         </Text>
       ) : (

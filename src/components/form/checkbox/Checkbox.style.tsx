@@ -38,7 +38,7 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
   '.cap-checkbox__input:focus-visible + &': {
     outline: '2px #fff solid',
     outlineOffset: 0,
-    boxShadow: `0 0 0 4px ${colors?.primary[700]}`,
+    boxShadow: `0 0 0 4px ${colors?.primary.dark}`,
   },
 
   '.cap-checkbox__input[aria-invalid="true"] + &': {

@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUIFontSize } from '../../../styles'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { FlexProps, Flex } from '../../layout'
 import { Text } from '../../typography'
@@ -84,7 +85,11 @@ export const InfoMessageTitle = ({
     >
       {withIcon && getIcon(variant)}
       {typeof children === 'string' ? (
-        <Text color={getColor(variant)} fontSize={1} lineHeight="sm">
+        <Text
+          color={getColor(variant)}
+          fontSize={CapUIFontSize.Caption}
+          lineHeight="sm"
+        >
           {children}
         </Text>
       ) : (

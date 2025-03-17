@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUIFontSize } from '../../styles'
 import { Flex, FlexProps } from '../layout'
 
 export interface VoteInfoBodyProps extends FlexProps {
@@ -20,7 +21,7 @@ const VoteInfoBody: React.FC<VoteInfoBodyProps> = ({
       direction="column"
       className={cn('cap-vote_info__body', className)}
       overflow="auto"
-      fontSize={3}
+      fontSize={CapUIFontSize.BodyRegular}
       color="neutral-gray.900"
       {...rest}
     >

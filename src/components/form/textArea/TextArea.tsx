@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUILineHeight } from '../../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import type { PolymorphicBoxProps } from '../../box/Box'
 import { Flex } from '../../layout'
 import { Text } from '../../typography'
@@ -68,9 +68,9 @@ export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
               width="100%"
               textAlign="end"
               color="gray.600"
-              fontSize={1}
+              fontSize={CapUIFontSize.Caption}
               mt={1}
-              lineHeight={CapUILineHeight.Sm}
+              lineHeight={CapUILineHeight.S}
               bg="inherit"
             >
               {(value && typeof value === 'string' && value.length) || 0} /{' '}

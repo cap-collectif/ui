@@ -1,5 +1,7 @@
 import { pxToRem } from '../modules/mixins'
 
+
+// TODO : find a way to just simply allow numbers
 export const LEGACY_SPACING = {
   0.5: pxToRem(2),
   1: pxToRem(4),

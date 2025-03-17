@@ -43,7 +43,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
         sx={{
           'h1, h2, h3, h4, h5, h6': {
             ...headingStyles.h4,
-            color: 'primary.900',
+            color: 'primary.darker',
             fontWeight: CapUIFontWeight.Semibold,
             fontFamily: CapUIFontFamily.Body,
           },

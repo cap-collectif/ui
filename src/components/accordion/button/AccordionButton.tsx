@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontWeight } from '../../../styles'
+import { CapUIFontSize, CapUIFontWeight } from '../../../styles'
 import { PolymorphicBoxProps } from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout'
@@ -38,7 +38,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   > = {
     white: {
       fontWeight: CapUIFontWeight.Bold,
-      color: 'primary.800',
+      color: 'primary.darker',
       px: 6,
       pb: 6,
     },
@@ -87,7 +87,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
         <Text
           color={variants[color].color}
           {...(size === CapUIAccordionSize.Sm
-            ? { fontSize: 3 }
+            ? { fontSize: CapUIFontSize.BodyRegular }
             : headingStyles.h4)}
           fontWeight={variants[color].fontWeight}
         >

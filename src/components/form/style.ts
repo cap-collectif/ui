@@ -31,7 +31,7 @@ const styles: SystemStyleObject = {
   borderColor: 'gray.300',
 
   fontFamily: CapUIFontFamily.Input,
-  lineHeight: CapUILineHeight.Base,
+  lineHeight: CapUILineHeight.M,
   color: 'gray.900',
   bg: 'white',
 
@@ -43,7 +43,7 @@ const styles: SystemStyleObject = {
   '&::placeholder': {
     color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
-    lineHeight: CapUILineHeight.Base,
+    lineHeight: CapUILineHeight.M,
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
@@ -76,14 +76,14 @@ export const focusWithinStyles = (
   borderColor: isDisabled ? 'gray.200' : isInvalid ? 'red.500' : 'gray.300',
 
   fontFamily: CapUIFontFamily.Input,
-  lineHeight: CapUILineHeight.Base,
+  lineHeight: CapUILineHeight.M,
   color: isDisabled ? 'gray.500' : 'gray.900',
   bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
 
   '& > input::placeholder': {
     color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
-    lineHeight: CapUILineHeight.Base,
+    lineHeight: CapUILineHeight.M,
   },
 
   '&:focus-within': {
@@ -122,7 +122,7 @@ export function reactSelectStyle<
       borderColor: isInvalid
         ? colors.red['600']
         : isFocused
-        ? colors.primary['600']
+        ? colors.primary.base
         : isSearch
         ? colors.gray['500']
         : colors.gray['300'],

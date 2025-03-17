@@ -1,4 +1,8 @@
-import typography, { CapUIFontWeight } from '../../styles/theme/typography'
+import {
+  CapUIFontSize,
+  CapUIFontWeight,
+  CapUILineHeight,
+} from '../../styles/theme/typography'
 
 export const SIZE = {
   small: {
@@ -93,31 +97,66 @@ const styles = (alternative: boolean) => ({
     },
     tertiary: {
       bg: 'transparent',
-      color: 'primary.600',
+      color: 'button.tertiary.default.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.default.icon.default',
+      },
       p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
-      fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
+      fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
+      fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
+      lineHeight: alternative ? CapUILineHeight.S : CapUILineHeight.M,
 
       '&:hover': {
-        color: 'primaryHover',
+        color: 'button.tertiary.default.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.hover',
+        },
       },
 
       '&:disabled': {
-        opacity: 0.4,
+        color: 'button.tertiary.default.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        color: 'button.tertiary.default.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.loading',
+        },
       },
     },
     link: {
       textDecoration: 'underline',
-      color: 'primary.600',
-      fontWeight: CapUIFontWeight.Normal,
+      color: 'button.tertiary.default.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.default.icon.default',
+      },
       p: 0,
 
       '&:hover': {
-        color: 'primaryHover',
+        color: 'button.tertiary.default.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.hover',
+        },
       },
 
       '&:disabled': {
-        opacity: 0.4,
+        textDecoration: 'none',
+        color: 'button.tertiary.default.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        textDecoration: 'underline',
+        color: 'button.tertiary.default.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.default.icon.loading',
+        },
       },
     },
   },
@@ -192,31 +231,66 @@ const styles = (alternative: boolean) => ({
     },
     tertiary: {
       bg: 'transparent',
-      color: 'red.600',
+      color: 'button.tertiary.danger.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.danger.icon.default',
+      },
       p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
-      fontSize: alternative ? typography.fontSizes[1] : typography.fontSizes[3],
+      fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
+      fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
+      lineHeight: alternative ? CapUILineHeight.S : CapUILineHeight.M,
 
       '&:hover': {
-        color: 'red.700',
+        color: 'button.tertiary.danger.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.hover',
+        },
       },
 
       '&:disabled': {
-        color: 'red.300',
+        color: 'button.tertiary.danger.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        color: 'button.tertiary.danger.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.loading',
+        },
       },
     },
     link: {
       textDecoration: 'underline',
-      color: 'red.600',
-      fontWeight: CapUIFontWeight.Normal,
+      color: 'button.tertiary.danger.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.danger.icon.default',
+      },
       p: 0,
 
       '&:hover': {
-        color: 'red.700',
+        color: 'button.tertiary.danger.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.hover',
+        },
       },
 
       '&:disabled': {
-        color: 'red.300',
+        textDecoration: 'none',
+        color: 'button.tertiary.danger.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        textDecoration: 'underline',
+        color: 'button.tertiary.danger.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.danger.icon.loading',
+        },
       },
     },
   },
@@ -290,30 +364,66 @@ const styles = (alternative: boolean) => ({
     },
     tertiary: {
       bg: 'transparent',
-      color: 'gray.600',
+      color: 'button.tertiary.hierarchy.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.hierarchy.icon.default',
+      },
       p: 0,
+      textTransform: alternative ? 'uppercase' : 'initial',
+      fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
+      fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
+      lineHeight: alternative ? CapUILineHeight.S : CapUILineHeight.M,
 
       '&:hover': {
-        color: 'gray.700',
+        color: 'button.tertiary.hierarchy.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.hover',
+        },
       },
 
       '&:disabled': {
-        color: 'gray.300',
+        color: 'button.tertiary.hierarchy.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        color: 'button.tertiary.hierarchy.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.loading',
+        },
       },
     },
     link: {
       textDecoration: 'underline',
-      color: 'gray.600',
-      fontWeight: CapUIFontWeight.Normal,
+      color: 'button.tertiary.hierarchy.text.default',
+      '.cap-icon': {
+        color: 'button.tertiary.hierarchy.icon.default',
+      },
       p: 0,
 
       '&:hover': {
-        color: 'gray.700',
+        color: 'button.tertiary.hierarchy.text.hover',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.hover',
+        },
       },
 
       '&:disabled': {
-        color: 'gray.300',
-        cursor: 'default',
+        textDecoration: 'none',
+        color: 'button.tertiary.hierarchy.text.disable',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.disable',
+        },
+      },
+
+      '&[data-loading="true"]': {
+        textDecoration: 'underline',
+        color: 'button.tertiary.hierarchy.text.loading',
+        '.cap-icon': {
+          color: 'button.tertiary.hierarchy.icon.loading',
+        },
       },
     },
   },

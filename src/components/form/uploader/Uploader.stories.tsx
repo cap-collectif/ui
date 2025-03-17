@@ -7,7 +7,7 @@ import {
   lowQualityThumbnail,
   thumbnail,
 } from '../../../assets/images'
-import { CapUIFontWeight } from '../../../styles'
+import { CapUIFontSize, CapUIFontWeight } from '../../../styles'
 import { btomg, mgtob } from '../../../utils/fileSizeConvert'
 import fileType from '../../../utils/fileType'
 import { Box } from '../../box/Box'
@@ -88,7 +88,7 @@ export const Default: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -104,7 +104,7 @@ export const Default: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -117,7 +117,7 @@ export const Default: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -160,7 +160,7 @@ export const Medium: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -176,7 +176,7 @@ export const Medium: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -189,7 +189,7 @@ export const Medium: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -235,7 +235,7 @@ export const Small: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -251,7 +251,7 @@ export const Small: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -264,7 +264,7 @@ export const Small: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -310,7 +310,7 @@ export const Circle: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -326,7 +326,7 @@ export const Circle: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -339,7 +339,7 @@ export const Circle: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -387,7 +387,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -403,7 +403,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -416,7 +416,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -472,7 +472,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -488,7 +488,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -501,7 +501,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -557,7 +557,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -573,7 +573,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -586,7 +586,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -642,7 +642,7 @@ export const CircleWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -658,7 +658,7 @@ export const CircleWithValue: Story<UploaderProps> = ({
           as="span"
           flexDirection="row"
           marginRight={1}
-          fontSize={2}
+          fontSize={CapUIFontSize.BodySmall}
           lineHeight="sm"
           color="gray.500"
         >
@@ -671,7 +671,7 @@ export const CircleWithValue: Story<UploaderProps> = ({
           <Flex
             as="span"
             flexDirection="row"
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -755,7 +755,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               marginRight={1}
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -771,7 +771,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -784,7 +784,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
             <Flex
               as="span"
               flexDirection="row"
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -910,7 +910,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               marginRight={1}
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -926,7 +926,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -939,7 +939,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
             <Flex
               as="span"
               flexDirection="row"
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -1041,7 +1041,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               marginRight={1}
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -1057,7 +1057,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             marginRight={1}
-            fontSize={2}
+            fontSize={CapUIFontSize.BodySmall}
             lineHeight="sm"
             color="gray.500"
           >
@@ -1070,7 +1070,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
             <Flex
               as="span"
               flexDirection="row"
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -1170,7 +1170,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 as="span"
                 flexDirection="row"
                 marginRight={1}
-                fontSize={2}
+                fontSize={CapUIFontSize.BodySmall}
                 lineHeight="sm"
                 color="gray.500"
               >
@@ -1186,7 +1186,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               marginRight={1}
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -1199,7 +1199,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               <Flex
                 as="span"
                 flexDirection="row"
-                fontSize={2}
+                fontSize={CapUIFontSize.BodySmall}
                 lineHeight="sm"
                 color="gray.500"
               >
@@ -1245,7 +1245,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 as="span"
                 flexDirection="row"
                 marginRight={1}
-                fontSize={2}
+                fontSize={CapUIFontSize.BodySmall}
                 lineHeight="sm"
                 color="gray.500"
               >
@@ -1261,7 +1261,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               marginRight={1}
-              fontSize={2}
+              fontSize={CapUIFontSize.BodySmall}
               lineHeight="sm"
               color="gray.500"
             >
@@ -1274,7 +1274,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               <Flex
                 as="span"
                 flexDirection="row"
-                fontSize={2}
+                fontSize={CapUIFontSize.BodySmall}
                 lineHeight="sm"
                 color="gray.500"
               >

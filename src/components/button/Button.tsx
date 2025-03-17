@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
+import { CapUIFontSize } from '../../styles/theme/fontSizes'
 import { Box } from '../box'
 import { PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
@@ -68,9 +69,9 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
         display="inline-flex"
         alignItems="center"
         fontFamily="body"
-        fontSize={3}
+        fontSize={CapUIFontSize.BodyRegular}
         fontWeight={CapUIFontWeight.Semibold}
-        lineHeight={CapUILineHeight.Base}
+        lineHeight={CapUILineHeight.M}
         border="none"
         borderRadius="xxs"
         bg="transparent"
@@ -102,9 +103,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
                 <Icon
                   color="inherit"
                   name={leftIcon}
-                  size={
-                    variant === 'link' ? CapUIIconSize.Sm : CapUIIconSize.Md
-                  }
+                  size={CapUIIconSize.Md}
                   mr="xxs"
                 />
               ) : (

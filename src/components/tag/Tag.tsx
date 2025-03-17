@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 import { useTheme } from '../../hooks'
-import { CapUIFontFamily } from '../../styles'
+import { CapUIFontFamily, CapUIFontSize } from '../../styles'
 import { BaseColorsName } from '../../styles/modules/colors'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
@@ -53,7 +53,7 @@ const TagInner = styled(motion(Box)).attrs({
     variants: {
       tag: {
         px: 2,
-        fontSize: 2,
+        fontSize: CapUIFontSize.BodySmall,
         py: 1,
         fontWeight: 400,
         fontFamily: CapUIFontFamily.Input,
@@ -61,7 +61,7 @@ const TagInner = styled(motion(Box)).attrs({
       },
       badge: {
         px: 4,
-        fontSize: 1,
+        fontSize: CapUIFontSize.Caption,
         py: 2,
         fontWeight: 600,
         fontFamily: CapUIFontFamily.Body,

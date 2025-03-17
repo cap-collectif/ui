@@ -8,6 +8,7 @@ import {
 } from 'react-dropzone'
 
 import { useTheme } from '../../../hooks'
+import { CapUIFontSize } from '../../../styles'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -165,8 +166,8 @@ const Uploader: React.FC<UploaderProps> = ({
               <Text
                 textAlign="center"
                 fontWeight="semibold"
-                fontSize={4}
-                color="primary.800"
+                fontSize={CapUIFontSize.Headline}
+                color="primary.darker"
               >
                 {wording.uploaderPrompt}
               </Text>
@@ -183,7 +184,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 <Text
                   key={1}
                   textAlign="center"
-                  fontSize={3}
+                  fontSize={CapUIFontSize.BodyRegular}
                   lineHeight="base"
                   color="gray.500"
                 >
@@ -200,8 +201,8 @@ const Uploader: React.FC<UploaderProps> = ({
               <Text
                 textAlign="center"
                 fontWeight="semibold"
-                fontSize={4}
-                color="primary.800"
+                fontSize={CapUIFontSize.Headline}
+                color="primary.darker"
               >
                 {wording.uploaderPrompt}
               </Text>
@@ -216,7 +217,7 @@ const Uploader: React.FC<UploaderProps> = ({
               <Text
                 width="70%"
                 textAlign="center"
-                fontSize={3}
+                fontSize={CapUIFontSize.BodyRegular}
                 lineHeight="base"
                 color="gray.500"
               >
@@ -267,7 +268,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 name={CapUIIcon.FileO}
                 color="gray.500"
               />
-              <Text fontSize={3} color="gray.500">
+              <Text fontSize={CapUIFontSize.BodyRegular} color="gray.500">
                 {acceptedFiles.length > 0 && (acceptedFiles[0].name || thumb)}
               </Text>
             </FileThumbnail>

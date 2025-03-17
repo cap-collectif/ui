@@ -52,7 +52,7 @@ const RankButton: React.FC<RankButtonProps> = ({
         <Icon name={CapUIIcon.ArrowUp} size={CapUIIconSize.Sm} />
       </Box>
       <Tag.Label
-        color={disabled ? 'neutral-gray.300' : 'primary.800'}
+        color={disabled ? 'neutral-gray.300' : 'primary.darker'}
         fontWeight={CapUIFontWeight.Semibold}
       >
         {label}
