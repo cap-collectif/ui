@@ -75,6 +75,7 @@ export const Default: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args}>
@@ -138,6 +139,7 @@ export const Default: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -147,6 +149,7 @@ export const Medium: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="240px">
@@ -210,6 +213,7 @@ export const Medium: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -222,6 +226,7 @@ export const Small: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="184px">
@@ -285,6 +290,7 @@ export const Small: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -297,6 +303,7 @@ export const Circle: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="184px">
@@ -360,6 +367,7 @@ export const Circle: Story<UploaderProps> = ({
       className={className}
       ref={ref}
       onDrop={onDrop}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -374,6 +382,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args}>
@@ -440,6 +449,7 @@ export const DefaultWithValue: Story<UploaderProps> = ({
       onRemove={() => {
         console.log('removed')
       }}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -459,6 +469,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="240px">
@@ -525,6 +536,7 @@ export const MediumWithValue: Story<UploaderProps> = ({
       onRemove={() => {
         console.log('removed')
       }}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -544,6 +556,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="184px">
@@ -610,6 +623,7 @@ export const SmallWithValue: Story<UploaderProps> = ({
       onRemove={() => {
         console.log('removed')
       }}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -629,6 +643,7 @@ export const CircleWithValue: Story<UploaderProps> = ({
   className,
   value,
   ref,
+  size,
   ...args
 }) => (
   <FormControl {...args} maxWidth="184px">
@@ -695,6 +710,7 @@ export const CircleWithValue: Story<UploaderProps> = ({
       onRemove={() => {
         console.log('removed')
       }}
+      size={size}
       {...args}
     />
   </FormControl>
@@ -718,6 +734,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
   onDropRejected: onDropRejectedFunction,
   onDropAccepted,
   onFileDialogCancel,
+  size,
   ...args
 }) => {
   const [errors, setErrors] = React.useState<string[]>([
@@ -806,6 +823,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
         {...args}
         ref={ref}
         onDrop={onDrop}
+        size={size}
         onDropRejected={onDropRejected}
       />
       <FormErrorMessage>
@@ -877,6 +895,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
   onDropRejected: onDropRejectedFunction,
   onDropAccepted,
   onFileDialogCancel,
+  size,
   ...args
 }) => {
   const [error, setError] = React.useState<string>(
@@ -964,6 +983,7 @@ export const UniqueWithError: Story<UploaderProps> = ({
         onRemove={() => {
           console.log('removed')
         }}
+        size={size}
         onDropRejected={onDropRejected}
       />
       <FormErrorMessage>
@@ -1003,6 +1023,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
   onDropRejected: onDropRejectedFunction,
   onDropAccepted,
   onFileDialogCancel,
+  size,
   ...args
 }) => {
   const [errors, setErrors] = React.useState<string[]>([
@@ -1093,6 +1114,7 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
         ref={ref}
         onDrop={onDrop}
         onDropRejected={onDropRejected}
+        size={size}
       />
       <FormErrorMessage>
         <InfoMessage variant="danger">
@@ -1125,6 +1147,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
   onDropAccepted,
   onFileDialogCancel,
   minResolution,
+  size,
   ...args
 }) => {
   const [warning, setWarning] = React.useState<string | null>(
@@ -1224,6 +1247,7 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
           onDropAccepted={onDropAccepted}
           onFileDialogCancel={onFileDialogCancel}
           onDropRejected={onDropRejectedFunction}
+          size={size}
           onRemove={() => {
             console.log('removed')
           }}
