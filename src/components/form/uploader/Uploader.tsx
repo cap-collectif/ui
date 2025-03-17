@@ -8,7 +8,7 @@ import {
 } from 'react-dropzone'
 
 import { useTheme } from '../../../hooks'
-import { CapUIFontSize } from '../../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { BoxPropsOf } from '../../box'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
@@ -185,7 +185,7 @@ const Uploader: React.FC<UploaderProps> = ({
                   key={1}
                   textAlign="center"
                   fontSize={CapUIFontSize.BodyRegular}
-                  lineHeight="base"
+                  lineHeight={CapUILineHeight.M}
                   color="gray.500"
                 >
                   {wording.uploaderPrompt}
@@ -218,7 +218,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 width="70%"
                 textAlign="center"
                 fontSize={CapUIFontSize.BodyRegular}
-                lineHeight="base"
+                lineHeight={CapUILineHeight.M}
                 color="gray.500"
               >
                 {wording.uploaderPrompt}

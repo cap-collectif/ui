@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUILineHeight } from '../../../styles'
 import formatSpacingNumber from '../../../utils/formatSpacingNumber'
 import { Box, BoxPropsOf } from '../../box'
 import { SkeletonText } from '../../skeleton'
@@ -40,7 +41,7 @@ export const Td: React.FC<TdProps> = ({
       style={{ whiteSpace: isNumeric ? 'nowrap' : 'initial' }}
       className={cn('cap-table__td', { 'visible-on-hover': visibleOnHover })}
       sx={styles}
-      lineHeight="base"
+      lineHeight={CapUILineHeight.M}
       color="gray.900"
       {...props}
     >

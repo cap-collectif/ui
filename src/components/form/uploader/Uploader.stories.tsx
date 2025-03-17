@@ -7,7 +7,11 @@ import {
   lowQualityThumbnail,
   thumbnail,
 } from '../../../assets/images'
-import { CapUIFontSize, CapUIFontWeight } from '../../../styles'
+import {
+  CapUIFontSize,
+  CapUIFontWeight,
+  CapUILineHeight,
+} from '../../../styles'
 import { btomg, mgtob } from '../../../utils/fileSizeConvert'
 import fileType from '../../../utils/fileType'
 import { Box } from '../../box/Box'
@@ -89,11 +93,11 @@ export const Default: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -105,11 +109,11 @@ export const Default: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -118,11 +122,11 @@ export const Default: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -161,11 +165,11 @@ export const Medium: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -177,11 +181,11 @@ export const Medium: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -190,11 +194,11 @@ export const Medium: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -236,11 +240,11 @@ export const Small: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -252,11 +256,11 @@ export const Small: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -265,11 +269,11 @@ export const Small: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -311,11 +315,11 @@ export const Circle: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -327,11 +331,11 @@ export const Circle: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -340,11 +344,11 @@ export const Circle: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -388,11 +392,11 @@ export const DefaultWithValue: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -404,11 +408,11 @@ export const DefaultWithValue: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -417,11 +421,11 @@ export const DefaultWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -473,11 +477,11 @@ export const MediumWithValue: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -489,11 +493,11 @@ export const MediumWithValue: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -502,11 +506,11 @@ export const MediumWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -558,11 +562,11 @@ export const SmallWithValue: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -574,11 +578,11 @@ export const SmallWithValue: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -587,11 +591,11 @@ export const SmallWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -643,11 +647,11 @@ export const CircleWithValue: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Format supporté :
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {Array.isArray(args.format)
                 ? args.format.join(', ')
                 : args.format}
@@ -659,11 +663,11 @@ export const CircleWithValue: Story<UploaderProps> = ({
           flexDirection="row"
           marginRight={1}
           fontSize={CapUIFontSize.BodySmall}
-          lineHeight="sm"
+          lineHeight={CapUILineHeight.S}
           color="gray.500"
         >
           Poids max:
-          <Text lineHeight="sm" color="gray.700" ml={1}>
+          <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
             {btomg(args.maxSize)}mo
           </Text>
         </Flex>
@@ -672,11 +676,11 @@ export const CircleWithValue: Story<UploaderProps> = ({
             as="span"
             flexDirection="row"
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Taille min:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {args.minResolution.width}x{args.minResolution.height}px
             </Text>
           </Flex>
@@ -756,11 +760,11 @@ export const MultipleWithValue: Story<UploaderProps> = ({
               flexDirection="row"
               marginRight={1}
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Format supporté :
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {Array.isArray(args.format)
                   ? args.format.join(', ')
                   : args.format}
@@ -772,11 +776,11 @@ export const MultipleWithValue: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Poids max:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {btomg(args.maxSize)}mo
             </Text>
           </Flex>
@@ -785,11 +789,11 @@ export const MultipleWithValue: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Taille min:
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {args.minResolution.width}x{args.minResolution.height}px
               </Text>
             </Flex>
@@ -911,11 +915,11 @@ export const UniqueWithError: Story<UploaderProps> = ({
               flexDirection="row"
               marginRight={1}
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Format supporté :
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {Array.isArray(args.format)
                   ? args.format.join(', ')
                   : args.format}
@@ -927,11 +931,11 @@ export const UniqueWithError: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Poids max:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {btomg(args.maxSize)}mo
             </Text>
           </Flex>
@@ -940,11 +944,11 @@ export const UniqueWithError: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Taille min:
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {args.minResolution.width}x{args.minResolution.height}px
               </Text>
             </Flex>
@@ -1042,11 +1046,11 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
               flexDirection="row"
               marginRight={1}
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Format supporté :
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {Array.isArray(args.format)
                   ? args.format.join(', ')
                   : args.format}
@@ -1058,11 +1062,11 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
             flexDirection="row"
             marginRight={1}
             fontSize={CapUIFontSize.BodySmall}
-            lineHeight="sm"
+            lineHeight={CapUILineHeight.S}
             color="gray.500"
           >
             Poids max:
-            <Text lineHeight="sm" color="gray.700" ml={1}>
+            <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
               {btomg(args.maxSize)}mo
             </Text>
           </Flex>
@@ -1071,11 +1075,11 @@ export const MultipleWithErrors: Story<UploaderProps> = ({
               as="span"
               flexDirection="row"
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Taille min:
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {args.minResolution.width}x{args.minResolution.height}px
               </Text>
             </Flex>
@@ -1171,11 +1175,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 flexDirection="row"
                 marginRight={1}
                 fontSize={CapUIFontSize.BodySmall}
-                lineHeight="sm"
+                lineHeight={CapUILineHeight.S}
                 color="gray.500"
               >
                 Format supporté :
-                <Text lineHeight="sm" color="gray.700" ml={1}>
+                <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                   {Array.isArray(args.format)
                     ? args.format.join(', ')
                     : args.format}
@@ -1187,11 +1191,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               flexDirection="row"
               marginRight={1}
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Poids max:
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {btomg(args.maxSize)}mo
               </Text>
             </Flex>
@@ -1200,11 +1204,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 as="span"
                 flexDirection="row"
                 fontSize={CapUIFontSize.BodySmall}
-                lineHeight="sm"
+                lineHeight={CapUILineHeight.S}
                 color="gray.500"
               >
                 Taille min:
-                <Text lineHeight="sm" color="gray.700" ml={1}>
+                <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                   {minResolution.width}x{minResolution.height}px
                 </Text>
               </Flex>
@@ -1246,11 +1250,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 flexDirection="row"
                 marginRight={1}
                 fontSize={CapUIFontSize.BodySmall}
-                lineHeight="sm"
+                lineHeight={CapUILineHeight.S}
                 color="gray.500"
               >
                 Format supporté :
-                <Text lineHeight="sm" color="gray.700" ml={1}>
+                <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                   {Array.isArray(args.format)
                     ? args.format.join(', ')
                     : args.format}
@@ -1262,11 +1266,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
               flexDirection="row"
               marginRight={1}
               fontSize={CapUIFontSize.BodySmall}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
               color="gray.500"
             >
               Poids max:
-              <Text lineHeight="sm" color="gray.700" ml={1}>
+              <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                 {btomg(args.maxSize)}mo
               </Text>
             </Flex>
@@ -1275,11 +1279,11 @@ export const UniqueWithWarning: Story<UploaderProps> = ({
                 as="span"
                 flexDirection="row"
                 fontSize={CapUIFontSize.BodySmall}
-                lineHeight="sm"
+                lineHeight={CapUILineHeight.S}
                 color="gray.500"
               >
                 Taille min:
-                <Text lineHeight="sm" color="gray.700" ml={1}>
+                <Text lineHeight={CapUILineHeight.S} color="gray.700" ml={1}>
                   {minResolution.width}x{minResolution.height}px
                 </Text>
               </Flex>

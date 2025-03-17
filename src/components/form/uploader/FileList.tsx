@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontSize } from '../../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout'
@@ -33,7 +33,10 @@ const FileList = ({
               name={CapUIIcon.File}
               color="gray.300"
             />
-            <Text fontSize={CapUIFontSize.BodySmall} lineHeight="sm">
+            <Text
+              fontSize={CapUIFontSize.BodySmall}
+              lineHeight={CapUILineHeight.S}
+            >
               {file.name}
             </Text>
           </Flex>

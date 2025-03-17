@@ -2,7 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 import { MenuItem as ReakitMenuItem } from 'reakit/Menu'
 
-import { CapUIFontSize } from '../../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { jsxInnerText } from '../../../utils/jsx'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
@@ -86,7 +86,7 @@ const MenuItem: React.FC<MenuItemProps> = React.forwardRef<
       {typeof children === 'string' ? (
         <Text
           fontSize={CapUIFontSize.BodyRegular}
-          lineHeight="base"
+          lineHeight={CapUILineHeight.M}
           ref={textRef}
           title={hasTruncateItem ? jsxInnerText(children) : undefined}
           sx={{

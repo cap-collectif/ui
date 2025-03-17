@@ -193,6 +193,9 @@ const buttonColors = (theme: CapUITheme) => ({
   },
 })
 
+/**
+ * TODO - same stuff for all other components
+ */
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {

@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUIFontSize } from '../../../styles'
+import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { Box } from '../../box/Box'
 import { Button } from '../../button'
 import { Flex } from '../../layout'
@@ -199,7 +199,7 @@ export const WithinModal: Story<Args> = ({
               color="neutral-gray.500"
               fontWeight={700}
               fontSize={CapUIFontSize.Caption}
-              lineHeight="sm"
+              lineHeight={CapUILineHeight.S}
             >
               Modale de vérification
             </Text>

@@ -148,14 +148,14 @@ export function reactSelectStyle<
       whiteSpace: 'nowrap',
       color: colors.gray['600'],
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     input: (
       base: CSSObjectWithLabel,
       { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
     ) => ({
       ...base,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
       fontFamily: FONT_FAMILIES.input,
       padding: 0,
       margin: 0,
@@ -171,14 +171,14 @@ export function reactSelectStyle<
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       margin: 0,
       color: colors.gray['900'],
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     indicatorSeparator: (base: CSSObjectWithLabel) => ({
       ...base,

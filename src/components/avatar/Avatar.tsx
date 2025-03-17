@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { CapUIFontFamily, CapUIFontSize } from '../../styles'
+import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { Flex, FlexProps } from '../layout'
 
@@ -20,7 +20,7 @@ export interface AvatarProps extends FlexProps {
 export const variants = {
   xs: {
     fontSize: CapUIFontSize.Caption,
-    lineHeight: 'sm',
+    lineHeight: CapUILineHeight.S,
     size: 4,
     minWidth: 4,
     minHeight: 4,
@@ -29,7 +29,7 @@ export const variants = {
   },
   sm: {
     fontSize: CapUIFontSize.Caption,
-    lineHeight: 'sm',
+    lineHeight: CapUILineHeight.S,
     size: 6,
     minWidth: 6,
     minHeight: 6,
@@ -38,7 +38,7 @@ export const variants = {
   },
   md: {
     fontSize: CapUIFontSize.BodyRegular,
-    lineHeight: 'base',
+    lineHeight: CapUILineHeight.M,
     size: 8,
     minWidth: 8,
     minHeight: 8,
@@ -47,7 +47,7 @@ export const variants = {
   },
   lg: {
     fontSize: CapUIFontSize.Headline,
-    lineHeight: 'base',
+    lineHeight: CapUILineHeight.M,
     size: 9,
     minWidth: 9,
     minHeight: 9,
@@ -56,7 +56,7 @@ export const variants = {
   },
   xl: {
     fontSize: CapUIFontSize.DisplayMedium,
-    lineHeight: 'l',
+    lineHeight: CapUILineHeight.XL,
     size: 13,
     minWidth: 13,
     minHeight: 13,

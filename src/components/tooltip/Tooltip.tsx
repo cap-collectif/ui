@@ -14,7 +14,7 @@ import {
 } from 'reakit/Tooltip'
 import styled from 'styled-components'
 
-import { CapUIFontSize } from '../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import colors from '../../styles/modules/colors'
 import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
 import { ZINDEX } from '../../styles/theme'
@@ -98,7 +98,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               {typeof label === 'string' && (
                 <Text
                   textAlign="center"
-                  lineHeight="sm"
+                  lineHeight={CapUILineHeight.S}
                   fontSize={CapUIFontSize.Caption}
                 >
                   {label}
