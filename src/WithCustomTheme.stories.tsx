@@ -40,9 +40,6 @@ export default meta
 
 type Props = {
   primary: string
-  primaryLabel: string
-  primaryHover: string
-  primaryLabelHover: string
 }
 
 export const Default: Story<Props> = ({
@@ -156,21 +153,9 @@ export const Default: Story<Props> = ({
 
 Default.args = {
   primary: '#ff9909',
-  primaryLabel: '#fff',
-  primaryHover: '#c27a15',
-  primaryLabelHover: '#fff',
 }
 Default.argTypes = {
   primary: {
-    control: { type: 'color' },
-  },
-  primaryLabel: {
-    control: { type: 'color' },
-  },
-  primaryHover: {
-    control: { type: 'color' },
-  },
-  primaryLabelHover: {
     control: { type: 'color' },
   },
 }
