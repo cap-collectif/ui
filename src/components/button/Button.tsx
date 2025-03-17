@@ -101,6 +101,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
             {leftIcon &&
               (typeof leftIcon === 'string' ? (
                 <Icon
+                  className="cap-button-icon"
                   color="inherit"
                   name={leftIcon}
                   size={CapUIIconSize.Md}
@@ -115,6 +116,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
             {rightIcon &&
               (typeof rightIcon === 'string' ? (
                 <Icon
+                  className="cap-button-icon"
                   color="inherit"
                   name={rightIcon}
                   size={CapUIIconSize.Md}

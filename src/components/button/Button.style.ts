@@ -31,14 +31,14 @@ const styles = (alternative: boolean) => ({
     primary: {
       bg: 'button.primary.default.background.default',
       color: 'button.primary.default.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.primary.default.icon.default',
       },
 
       '&:hover': {
         bg: 'button.primary.default.background.hover',
         color: 'button.primary.default.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.default.icon.hover',
         },
       },
@@ -46,7 +46,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         bg: 'button.primary.default.background.disable',
         color: 'button.primary.default.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.default.icon.disabled',
         },
       },
@@ -54,7 +54,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         bg: 'button.primary.default.background.loading',
         color: 'button.primary.default.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.default.icon.loading',
         },
       },
@@ -64,7 +64,7 @@ const styles = (alternative: boolean) => ({
       color: 'button.secondary.default.text.default',
       border: 'button',
       borderColor: 'button.secondary.default.border.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.secondary.default.icon.default',
       },
 
@@ -72,7 +72,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.default.background.hover',
         color: 'button.secondary.default.text.hover',
         borderColor: 'button.secondary.default.border.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.default.icon.hover',
         },
       },
@@ -81,7 +81,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.default.background.disable',
         color: 'button.secondary.default.text.disable',
         borderColor: 'button.secondary.default.border.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.default.icon.disable',
         },
       },
@@ -90,7 +90,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.default.background.loading',
         color: 'button.secondary.default.text.loading',
         borderColor: 'button.secondary.default.border.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.default.icon.loading',
         },
       },
@@ -98,7 +98,7 @@ const styles = (alternative: boolean) => ({
     tertiary: {
       bg: 'transparent',
       color: 'button.tertiary.default.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
       },
       p: 0,
@@ -109,21 +109,21 @@ const styles = (alternative: boolean) => ({
 
       '&:hover': {
         color: 'button.tertiary.default.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.hover',
         },
       },
 
       '&:disabled': {
         color: 'button.tertiary.default.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.disable',
         },
       },
 
       '&[data-loading="true"]': {
         color: 'button.tertiary.default.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.loading',
         },
       },
@@ -131,14 +131,14 @@ const styles = (alternative: boolean) => ({
     link: {
       textDecoration: 'underline',
       color: 'button.tertiary.default.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
       },
       p: 0,
 
       '&:hover': {
         color: 'button.tertiary.default.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.hover',
         },
       },
@@ -146,7 +146,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         textDecoration: 'none',
         color: 'button.tertiary.default.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.disable',
         },
       },
@@ -154,7 +154,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         textDecoration: 'underline',
         color: 'button.tertiary.default.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.default.icon.loading',
         },
       },
@@ -165,14 +165,14 @@ const styles = (alternative: boolean) => ({
       bg: 'button.primary.danger.background.default',
       color: 'button.primary.danger.text.default',
 
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.primary.danger.icon.default',
       },
 
       '&:hover': {
         bg: 'button.primary.danger.background.hover',
         color: 'button.primary.danger.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.danger.icon.hover',
         },
       },
@@ -180,7 +180,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         bg: 'button.primary.danger.background.disable',
         color: 'button.primary.danger.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.danger.icon.disabled',
         },
       },
@@ -188,7 +188,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         bg: 'button.primary.danger.background.loading',
         color: 'button.primary.danger.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.danger.icon.loading',
         },
       },
@@ -198,7 +198,7 @@ const styles = (alternative: boolean) => ({
       color: 'button.secondary.danger.text.default',
       border: 'button',
       borderColor: 'button.secondary.danger.border.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.secondary.danger.icon.default',
       },
 
@@ -206,7 +206,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.danger.background.hover',
         color: 'button.secondary.danger.text.hover',
         borderColor: 'button.secondary.danger.border.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.danger.icon.hover',
         },
       },
@@ -215,7 +215,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.danger.background.disable',
         color: 'button.secondary.danger.text.disable',
         borderColor: 'button.secondary.danger.border.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.danger.icon.disable',
         },
       },
@@ -224,7 +224,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.danger.background.loading',
         color: 'button.secondary.danger.text.loading',
         borderColor: 'button.secondary.danger.border.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.danger.icon.loading',
         },
       },
@@ -232,7 +232,7 @@ const styles = (alternative: boolean) => ({
     tertiary: {
       bg: 'transparent',
       color: 'button.tertiary.danger.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
       },
       p: 0,
@@ -243,21 +243,21 @@ const styles = (alternative: boolean) => ({
 
       '&:hover': {
         color: 'button.tertiary.danger.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.hover',
         },
       },
 
       '&:disabled': {
         color: 'button.tertiary.danger.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.disable',
         },
       },
 
       '&[data-loading="true"]': {
         color: 'button.tertiary.danger.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.loading',
         },
       },
@@ -265,14 +265,14 @@ const styles = (alternative: boolean) => ({
     link: {
       textDecoration: 'underline',
       color: 'button.tertiary.danger.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
       },
       p: 0,
 
       '&:hover': {
         color: 'button.tertiary.danger.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.hover',
         },
       },
@@ -280,7 +280,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         textDecoration: 'none',
         color: 'button.tertiary.danger.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.disable',
         },
       },
@@ -288,7 +288,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         textDecoration: 'underline',
         color: 'button.tertiary.danger.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.danger.icon.loading',
         },
       },
@@ -298,14 +298,14 @@ const styles = (alternative: boolean) => ({
     primary: {
       bg: 'button.primary.hierarchy.background.default',
       color: 'button.primary.hierarchy.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.primary.hierarchy.icon.default',
       },
 
       '&:hover': {
         bg: 'button.primary.hierarchy.background.hover',
         color: 'button.primary.hierarchy.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.hierarchy.icon.hover',
         },
       },
@@ -313,7 +313,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         bg: 'button.primary.hierarchy.background.disable',
         color: 'button.primary.hierarchy.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.hierarchy.icon.disabled',
         },
       },
@@ -321,7 +321,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         bg: 'button.primary.hierarchy.background.loading',
         color: 'button.primary.hierarchy.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.primary.hierarchy.icon.loading',
         },
       },
@@ -331,7 +331,7 @@ const styles = (alternative: boolean) => ({
       color: 'button.secondary.hierarchy.text.default',
       border: 'button',
       borderColor: 'button.secondary.hierarchy.border.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.secondary.hierarchy.icon.default',
       },
 
@@ -339,7 +339,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.hierarchy.background.hover',
         color: 'button.secondary.hierarchy.text.hover',
         borderColor: 'button.secondary.hierarchy.border.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.hierarchy.icon.hover',
         },
       },
@@ -348,7 +348,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.hierarchy.background.disable',
         color: 'button.secondary.hierarchy.text.disable',
         borderColor: 'button.secondary.hierarchy.border.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.hierarchy.icon.disable',
         },
       },
@@ -357,7 +357,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.secondary.hierarchy.background.loading',
         color: 'button.secondary.hierarchy.text.loading',
         borderColor: 'button.secondary.hierarchy.border.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.secondary.hierarchy.icon.loading',
         },
       },
@@ -365,7 +365,7 @@ const styles = (alternative: boolean) => ({
     tertiary: {
       bg: 'transparent',
       color: 'button.tertiary.hierarchy.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',
       },
       p: 0,
@@ -376,21 +376,21 @@ const styles = (alternative: boolean) => ({
 
       '&:hover': {
         color: 'button.tertiary.hierarchy.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.hover',
         },
       },
 
       '&:disabled': {
         color: 'button.tertiary.hierarchy.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.disable',
         },
       },
 
       '&[data-loading="true"]': {
         color: 'button.tertiary.hierarchy.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.loading',
         },
       },
@@ -398,14 +398,14 @@ const styles = (alternative: boolean) => ({
     link: {
       textDecoration: 'underline',
       color: 'button.tertiary.hierarchy.text.default',
-      '.cap-icon': {
+      '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',
       },
       p: 0,
 
       '&:hover': {
         color: 'button.tertiary.hierarchy.text.hover',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.hover',
         },
       },
@@ -413,7 +413,7 @@ const styles = (alternative: boolean) => ({
       '&:disabled': {
         textDecoration: 'none',
         color: 'button.tertiary.hierarchy.text.disable',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.disable',
         },
       },
@@ -421,7 +421,7 @@ const styles = (alternative: boolean) => ({
       '&[data-loading="true"]': {
         textDecoration: 'underline',
         color: 'button.tertiary.hierarchy.text.loading',
-        '.cap-icon': {
+        '.cap-icon.cap-button-icon': {
           color: 'button.tertiary.hierarchy.icon.loading',
         },
       },
