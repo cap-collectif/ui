@@ -9,6 +9,8 @@ export type BaseColorsName =
   | 'aqua'
   | 'primary'
   | 'danger'
+  | 'success'
+  | 'warning'
 
 type RootThemeColorsValues = 'transparent' | 'current' | 'black' | 'white'
 
@@ -117,6 +119,17 @@ type NestedThemeColorsValues =
   | 'danger.base'
   | 'danger.dark'
   | 'danger.darker'
+  | 'success.background'
+  | 'success.lighter'
+  | 'success.light'
+  | 'success.base'
+  | 'success.dark'
+  | 'success.darker'
+  | 'warning.lighter'
+  | 'warning.light'
+  | 'warning.base'
+  | 'warning.dark'
+  | 'warning.darker'
 
 export type ThemeColorsValues =
   | NestedThemeColorsValues

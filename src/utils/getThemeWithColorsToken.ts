@@ -193,14 +193,41 @@ const buttonColors = (theme: CapUITheme) => ({
   },
 })
 
-/**
- * TODO - same stuff for all other components
- */
+const toastColors = (theme: CapUITheme) => ({
+  toast: {
+    background: {
+      info: theme.colors.primary.background,
+      success: theme.colors.success.background,
+      warning: theme.colors.warning.background,
+      danger: theme.colors.danger.background,
+    },
+    border: {
+      info: theme.colors.primary.light,
+      success: theme.colors.success.light,
+      warning: theme.colors.warning.light,
+      danger: theme.colors.danger.light,
+    },
+    text: {
+      info: theme.colors.primary.darker,
+      success: theme.colors.success.darker,
+      warning: theme.colors.warning.darker,
+      danger: theme.colors.danger.darker,
+    },
+    icon: {
+      info: theme.colors.primary.darker,
+      success: theme.colors.success.darker,
+      warning: theme.colors.warning.darker,
+      danger: theme.colors.danger.darker,
+    },
+  },
+})
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
       colors: {
         ...buttonColors(theme),
+        ...toastColors(theme),
       },
     },
     theme,

@@ -25,6 +25,22 @@ const baseColors: Colors = {
     dark: '#8F1925',
     darker: '#5F1119',
   },
+  success: {
+    background: '#FBFEFC',
+    lighter: '#E4F9E9',
+    light: '#A1E8B1',
+    base: '#2CB54C',
+    dark: '#218739',
+    darker: '#165A26',
+  },
+  warning: {
+    background: '#FFFDFA',
+    lighter: '#FFF3E0',
+    light: '#FFD08A',
+    base: '#E08700',
+    dark: '#A86500',
+    darker: '#704300',
+  },
   gray: {
     '100': '#F7F7F8',
     '150': '#E8EBED',
