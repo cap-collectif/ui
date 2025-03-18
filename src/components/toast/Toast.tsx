@@ -40,7 +40,7 @@ type StyledProps = {
 const ToastInner = styled(motion(Box)).attrs<StyledProps>(({ variant }) => ({
   m: 'xs',
   p: 'md',
-  borderRadius: 'toast',
+  borderRadius: 'xxs',
   color: `toast.text.${variant}`,
   bg: `toast.background.${variant}`,
   boxShadow: SHADOWS.medium,

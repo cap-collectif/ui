@@ -17,7 +17,7 @@ export const InfoMessageContent = ({
 }: InfoMessageContentProps) => (
   <Box
     className={cn('cap-info-message__content', className)}
-    fontSize={CapUIFontSize.Caption}
+    fontSize={CapUIFontSize.BodySmall}
     lineHeight={CapUILineHeight.S}
     fontFamily={CapUIFontFamily.Body}
     {...props}
