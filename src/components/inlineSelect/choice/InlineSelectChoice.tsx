@@ -32,7 +32,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
       {...rest}
     >
       {selected ? (
-        <Tag variantColor="primary">
+        <Tag variantColor="blue">
           <Tag.Label>{children}</Tag.Label>
         </Tag>
       ) : (
