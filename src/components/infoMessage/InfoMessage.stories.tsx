@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
+import { Tag } from '../tag'
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
 import mdx from './InfoMessage.mdx'
-import { Tag } from '../tag';
 
 const meta: Meta<InfoMessageProps> = {
   title: 'Library/InfoMessage',
@@ -24,10 +24,7 @@ export default meta
 export const Default: Story<InfoMessageProps> = args => (
   <InfoMessage {...args}>
     <InfoMessage.Title>Ceci est un titre</InfoMessage.Title>
-    <InfoMessage.Content>
-      <Text>Hello</Text>
-      <Text>World</Text>
-    </InfoMessage.Content>
+    <InfoMessage.Content>Hello</InfoMessage.Content>
   </InfoMessage>
 )
 

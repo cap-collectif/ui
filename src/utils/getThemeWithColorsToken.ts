@@ -222,12 +222,66 @@ const toastColors = (theme: CapUITheme) => ({
   },
 })
 
+const infoMessageColors = (theme: CapUITheme) => ({
+  infoMessage: {
+    background: {
+      info: theme.colors.primary.background,
+      infoGray: theme.colors.gray.background,
+      success: theme.colors.success.background,
+      warning: theme.colors.warning.background,
+      danger: theme.colors.danger.background,
+    },
+    border: {
+      info: theme.colors.primary.light,
+      infoGray: theme.colors.gray.light,
+      success: theme.colors.success.light,
+      warning: theme.colors.warning.light,
+      danger: theme.colors.danger.light,
+    },
+    text: {
+      info: theme.colors.primary.darker,
+      infoGray: theme.colors.gray.darker,
+      success: theme.colors.success.darker,
+      warning: theme.colors.warning.darker,
+      danger: theme.colors.danger.darker,
+    },
+  },
+})
+
+const tagColors = (theme: CapUITheme) => ({
+  infoMessage: {
+    background: {
+      info: theme.colors.primary.lighter,
+      infoGray: theme.colors.gray.lighter,
+      success: theme.colors.success.lighter,
+      warning: theme.colors.warning.lighter,
+      danger: theme.colors.danger.lighter,
+    },
+    text: {
+      info: theme.colors.primary.darker,
+      infoGray: theme.colors.gray.darker,
+      success: theme.colors.success.darker,
+      warning: theme.colors.warning.darker,
+      danger: theme.colors.danger.darker,
+    },
+    icon: {
+      info: theme.colors.primary.darker,
+      infoGray: theme.colors.gray.darker,
+      success: theme.colors.success.darker,
+      warning: theme.colors.warning.darker,
+      danger: theme.colors.danger.darker,
+    },
+  },
+})
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
       colors: {
         ...buttonColors(theme),
         ...toastColors(theme),
+        ...infoMessageColors(theme),
+        ...tagColors(theme),
       },
     },
     theme,

@@ -34,11 +34,9 @@ export interface TagProps
     AnimationProps,
     Pick<MotionProps, 'initial'>,
     Pick<HoverHandlers, 'whileHover'> {
-  readonly variantColor: BaseColorsName
-  readonly variantType?: VariantType
-  readonly onRemove?:
-    | React.MouseEventHandler<HTMLElement | SVGElement>
-    | undefined
+  variantColor: BaseColorsName
+  variantType?: VariantType
+  onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
 }
 
 const TagInner = styled(motion(Box)).attrs({
@@ -57,7 +55,6 @@ const TagInner = styled(motion(Box)).attrs({
         py: 1,
         fontWeight: 400,
         fontFamily: CapUIFontFamily.Input,
-        maxWidth: '150px',
       },
       badge: {
         px: 4,

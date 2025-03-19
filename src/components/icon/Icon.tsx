@@ -78,6 +78,7 @@ const Icon: React.FC<IconProps> = React.forwardRef<HTMLOrSVGElement, IconProps>(
     return (
       <IconInner
         as={IconSvg}
+        aria-hidden="true" 
         variant={size}
         className={cn('cap-icon', className)}
         color={color}
