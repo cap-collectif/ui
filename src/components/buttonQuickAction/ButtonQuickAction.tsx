@@ -1,7 +1,8 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import colors, { BaseColorsName } from '../../styles/modules/colors'
+import { CapUIFontSize } from '../../styles'
+import { LEGACY_SPACING, NEW_SPACING, SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize } from '../icon'
@@ -9,26 +10,28 @@ import Icon from '../icon/Icon'
 import { Tooltip, TooltipProps } from '../tooltip'
 import S from './ButtonQuickAction.style'
 
+export type ButtonQuickActionVariantColor = 'primary' | 'danger' | 'hierarchy'
+
 export type ButtonQuickActionProps<
   T extends React.ElementType = React.ElementType
 > = PolymorphicComponentProps<
   T,
   Readonly<{
     readonly size?: CapUIIconSize
-    readonly variantColor: BaseColorsName
+    readonly variantColor: ButtonQuickActionVariantColor
     readonly icon: CapUIIcon
     readonly label: TooltipProps['label']
     readonly tooltipZIndex?: number
   }>
 >
 
-const PADDING: { [key in CapUIIconSize]: number } = {
-  [CapUIIconSize.Xs]: 1,
-  [CapUIIconSize.Sm]: 1,
-  [CapUIIconSize.Md]: 1,
-  [CapUIIconSize.Lg]: 2,
-  [CapUIIconSize.Xl]: 2,
-  [CapUIIconSize.Xxl]: 3,
+const PADDING: { [key in CapUIIconSize]: string } = {
+  [CapUIIconSize.Xs]: LEGACY_SPACING['1'],
+  [CapUIIconSize.Sm]: LEGACY_SPACING['1'],
+  [CapUIIconSize.Md]: LEGACY_SPACING['1'],
+  [CapUIIconSize.Lg]: LEGACY_SPACING['2'],
+  [CapUIIconSize.Xl]: LEGACY_SPACING['2'],
+  [CapUIIconSize.Xxl]: LEGACY_SPACING['3'],
 }
 
 export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forwardRef<
@@ -52,20 +55,19 @@ export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forward
       <Tooltip label={label} zIndex={tooltipZIndex}>
         <Box
           as={as}
-          bg="transparent"
           ref={ref}
-          borderRadius="50px"
           display="inline-block"
           sx={S(variantColor)}
-          _focus={{
-            boxShadow: `0 0 2px 2px ${colors.gray['300']}`,
-          }}
           p={PADDING[size as CapUIIconSize]}
           aria-label={jsxInnerText(label)}
           className={cn('cap-buttonQuickAction', className)}
           {...rest}
         >
-          <Icon name={icon} size={size} color="gray.500" />
+          <Icon
+            className="cap-buttonQuickAction-icon"
+            name={icon}
+            size={size}
+          />
         </Box>
       </Tooltip>
     )

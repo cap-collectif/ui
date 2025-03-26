@@ -46,7 +46,7 @@ const FileList = ({
             onClick={() => onRemove(file)}
             icon={CapUIIcon.Trash}
             size={CapUIIconSize.Sm}
-            variantColor="red"
+            variantColor="danger"
           />
         </FileItem>
       ))}
