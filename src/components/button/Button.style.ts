@@ -47,7 +47,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.primary.default.background.disable',
         color: 'button.primary.default.text.disable',
         '.cap-icon.cap-button-icon': {
-          color: 'button.primary.default.icon.disabled',
+          color: 'button.primary.default.icon.disable',
         },
       },
 
@@ -181,7 +181,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.primary.danger.background.disable',
         color: 'button.primary.danger.text.disable',
         '.cap-icon.cap-button-icon': {
-          color: 'button.primary.danger.icon.disabled',
+          color: 'button.primary.danger.icon.disable',
         },
       },
 
@@ -314,7 +314,7 @@ const styles = (alternative: boolean) => ({
         bg: 'button.primary.hierarchy.background.disable',
         color: 'button.primary.hierarchy.text.disable',
         '.cap-icon.cap-button-icon': {
-          color: 'button.primary.hierarchy.icon.disabled',
+          color: 'button.primary.hierarchy.icon.disable',
         },
       },
 

@@ -909,7 +909,7 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
 
   .DateInput_input {
     font-weight: ${props => props.theme.fontWeights.normal};
-    font-size: ${props => props.theme.fontSizes[3]};
+    font-size: ${props => props.theme.fontSizes.BodyRegular};
     font-family: ${props => props.theme.fonts.input};
     line-height: ${CapUILineHeight.M};
     color: ${props => props.theme.colors.gray['900']};
