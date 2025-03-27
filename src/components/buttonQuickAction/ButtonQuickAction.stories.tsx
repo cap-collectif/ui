@@ -1,6 +1,5 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
-import { size } from 'styled-system'
 
 import { ButtonGroup } from '../buttonGroup'
 import { CapUIIcon, CapUIIconSize } from '../icon'

@@ -1,8 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontSize } from '../../styles'
-import { LEGACY_SPACING, NEW_SPACING, SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize } from '../icon'
@@ -25,13 +23,13 @@ export type ButtonQuickActionProps<
   }>
 >
 
-const PADDING: { [key in CapUIIconSize]: string } = {
-  [CapUIIconSize.Xs]: LEGACY_SPACING['1'],
-  [CapUIIconSize.Sm]: LEGACY_SPACING['1'],
-  [CapUIIconSize.Md]: LEGACY_SPACING['1'],
-  [CapUIIconSize.Lg]: LEGACY_SPACING['2'],
-  [CapUIIconSize.Xl]: LEGACY_SPACING['2'],
-  [CapUIIconSize.Xxl]: LEGACY_SPACING['3'],
+const PADDING: { [key in CapUIIconSize]: number } = {
+  [CapUIIconSize.Xs]: 1,
+  [CapUIIconSize.Sm]: 1,
+  [CapUIIconSize.Md]: 1,
+  [CapUIIconSize.Lg]: 2,
+  [CapUIIconSize.Xl]: 2,
+  [CapUIIconSize.Xxl]: 3,
 }
 
 export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forwardRef<
