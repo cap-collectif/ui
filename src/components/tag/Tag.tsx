@@ -9,9 +9,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { useTheme } from '../../hooks'
 import { CapUIFontFamily, CapUIFontSize } from '../../styles'
-import { BaseColorsName } from '../../styles/modules/colors'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, BoxProps, PolymorphicComponent } from '../box/Box'
@@ -29,12 +27,19 @@ type SubComponents = {
 
 type VariantType = 'tag' | 'badge'
 
+export type TagVariantColor =
+  | 'info'
+  | 'infoGray'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
 export interface TagProps
   extends BoxProps,
     AnimationProps,
     Pick<MotionProps, 'initial'>,
     Pick<HoverHandlers, 'whileHover'> {
-  variantColor: BaseColorsName
+  variantColor: TagVariantColor
   variantType?: VariantType
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
 }
@@ -78,11 +83,10 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
-  const { colors } = useTheme()
   return (
     <TagInner
       sx={{
-        ...getTagStyle(colors, variantColor),
+        ...getTagStyle(variantColor),
         ...sx,
       }}
       title={jsxInnerText(children)}

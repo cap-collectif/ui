@@ -61,7 +61,7 @@ const ProposalCover: React.FC<ProposalCoverProps> = ({
 }) => {
   return (
     <Box sx={styles} position="relative" width="300px" height="200px">
-      {!!status && <Tag variantColor={'neutral-gray'}>{status}</Tag>}
+      {!!status && <Tag variantColor={'infoGray'}>{status}</Tag>}
       <Box
         as="img"
         position="relative"

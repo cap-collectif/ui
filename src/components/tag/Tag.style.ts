@@ -1,7 +1,7 @@
-import { BaseColorsName } from '../../styles/modules/colors'
+import { TagVariantColor } from './Tag'
 
-export const getTagStyle = (colors, color: BaseColorsName) => ({
-  bg: colors[color]['150'],
-  color: colors[color]['800'],
-  '--current-shadow-color': colors[color]['200'],
+export const getTagStyle = (variant: TagVariantColor) => ({
+  bg: `tag.background.${variant}`,
+  color: `tag.text.${variant}`,
+  '--current-shadow-color': `tag.shadowColor.${variant}`,
 })
