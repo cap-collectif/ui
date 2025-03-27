@@ -39,7 +39,7 @@ export function MultiValue<
   return (
     <Tag
       variantColor={
-        isDisabled ? 'gray' : props.selectProps['aria-invalid'] ? 'red' : 'blue'
+        isDisabled ? 'infoGray' : props.selectProps['aria-invalid'] ? 'danger' : 'info'
       }
       mr={1}
       mt={1}

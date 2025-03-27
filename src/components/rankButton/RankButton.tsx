@@ -32,7 +32,7 @@ const RankButton: React.FC<RankButtonProps> = ({
 }) => {
   return (
     <Tag
-      variantColor={disabled ? 'neutral-gray' : 'blue'}
+      variantColor={disabled ? 'infoGray' : 'info'}
       display="flex"
       flexDirection="row"
       gap={1}

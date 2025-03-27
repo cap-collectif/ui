@@ -9,7 +9,7 @@ const meta: Meta<TagProps> = {
   title: 'Library/Tag',
   component: Tag,
   args: {
-    variantColor: 'blue',
+    variantColor: 'info',
     onRemove: undefined,
   },
   parameters: {

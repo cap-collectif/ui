@@ -249,7 +249,7 @@ const infoMessageColors = (theme: CapUITheme) => ({
 })
 
 const tagColors = (theme: CapUITheme) => ({
-  infoMessage: {
+  tag: {
     background: {
       info: theme.colors.primary.lighter,
       infoGray: theme.colors.gray.lighter,
@@ -270,6 +270,13 @@ const tagColors = (theme: CapUITheme) => ({
       success: theme.colors.success.darker,
       warning: theme.colors.warning.darker,
       danger: theme.colors.danger.darker,
+    },
+    shadowColor: {
+      info: theme.colors.primary.lighter,
+      infoGray: theme.colors.gray.lighter,
+      success: theme.colors.success.lighter,
+      warning: theme.colors.warning.lighter,
+      danger: theme.colors.danger.lighter,
     },
   },
 })
