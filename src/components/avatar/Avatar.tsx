@@ -128,7 +128,6 @@ export const Avatar = ({
           sx={{ objectFit: 'cover' }}
           src={src}
           alt={alt ?? name}
-          title={alt ?? name}
         />
       )}
     </AvatarInner>
