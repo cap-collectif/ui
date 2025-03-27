@@ -114,7 +114,6 @@ export const Avatar = ({
       color="avatar.text.placeholder"
       borderColor="avatar.border.pictureGroup"
       className={cn('cap-avatar', className)}
-      title={shouldDisplayName ? alt : name}
       {...props}
       variant={size}
     >
