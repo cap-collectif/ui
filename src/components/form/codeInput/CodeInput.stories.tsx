@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { CapUIFontFamily } from '../../../styles'
+import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { Box } from '../../box/Box'
 import { Button } from '../../button'
 import { Flex } from '../../layout'
@@ -135,7 +135,7 @@ export const Verified: Story<Args> = ({
           color="green.500"
           fontFamily={CapUIFontFamily.Body}
           lineHeight="normal"
-          fontSize={3}
+          fontSize={CapUIFontSize.BodyRegular}
           textAlign="center"
         >
           Merci, votre numéro a été vérifié !
@@ -198,8 +198,8 @@ export const WithinModal: Story<Args> = ({
               uppercase
               color="neutral-gray.500"
               fontWeight={700}
-              fontSize={1}
-              lineHeight="sm"
+              fontSize={CapUIFontSize.Caption}
+              lineHeight={CapUILineHeight.S}
             >
               Modale de vérification
             </Text>

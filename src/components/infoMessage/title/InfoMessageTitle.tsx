@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { FlexProps, Flex } from '../../layout'
 import { Text } from '../../typography'
@@ -16,8 +17,8 @@ type VariantIcon = {
 }
 
 type InfoMessageTitleProps = FlexProps & {
-  readonly children: string | React.ReactNodeArray | React.ReactNode
-  readonly withIcon?: boolean
+  children: string | React.ReactNode
+  withIcon?: boolean
 }
 
 const getIcon = (variant: Variant) => {
@@ -47,23 +48,6 @@ const getIcon = (variant: Variant) => {
   return <Icon {...variantIcon[variant]} size={CapUIIconSize.Sm} />
 }
 
-const getColor = (variant: Variant): string => {
-  switch (variant) {
-    case 'info':
-      return 'blue.900'
-    case 'infoGray':
-      return 'gray.900'
-    case 'danger':
-      return 'red.900'
-    case 'success':
-      return 'green.900'
-    case 'warning':
-      return 'orange.900'
-    default:
-      throw new Error('Unknown variant InfoMessage')
-  }
-}
-
 export const InfoMessageTitle = ({
   children,
   className,
@@ -76,7 +60,7 @@ export const InfoMessageTitle = ({
   return (
     <Flex
       direction="row"
-      spacing={2}
+      spacing="xs"
       className={cn('cap-info-message__title', className)}
       align="center"
       fontWeight="semibold"
@@ -84,7 +68,7 @@ export const InfoMessageTitle = ({
     >
       {withIcon && getIcon(variant)}
       {typeof children === 'string' ? (
-        <Text color={getColor(variant)} fontSize={1} lineHeight="sm">
+        <Text fontSize={CapUIFontSize.BodySmall} lineHeight={CapUILineHeight.S}>
           {children}
         </Text>
       ) : (

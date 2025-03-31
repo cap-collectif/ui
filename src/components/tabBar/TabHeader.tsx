@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { CapUIFontWeight, CapUIRadius } from '../../styles'
+import { CapUIFontSize, CapUIFontWeight, CapUIRadius } from '../../styles'
 import { Box } from '../box'
 
 export type TabHeaderProps = {
@@ -29,10 +29,10 @@ const TabHeader: React.FC<TabHeaderProps> = ({
       as={isLink ? 'a' : 'span'}
       // @ts-expect-error - span won't take href as a prop
       href={isLink ? href : undefined}
-      fontSize={1}
+      fontSize={CapUIFontSize.Caption}
       fontWeight={CapUIFontWeight.Bold}
-      color={isActive ? 'primary.500' : 'gray.700'}
-      borderBottomColor={isActive ? 'primary.500' : 'transparent'}
+      color={isActive ? 'primary.base' : 'gray.700'}
+      borderBottomColor={isActive ? 'primary.base' : 'transparent'}
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -43,11 +43,11 @@ const TabHeader: React.FC<TabHeaderProps> = ({
         boxSizing: 'border-box',
         borderBottom: '2px solid transparent',
         '&:hover': {
-          color: 'primary.500',
+          color: 'primary.base',
         },
         '&:hover .tabHeaderCount': {
-          color: 'primary.500',
-          backgroundColor: 'primary.150',
+          color: 'primary.base',
+          backgroundColor: 'primary.lighter',
         },
       }}
       onClick={isLink ? undefined : onClick}
@@ -60,8 +60,8 @@ const TabHeader: React.FC<TabHeaderProps> = ({
         <Box
           as="span"
           className="tabHeaderCount"
-          bg={isActive ? 'primary.150' : 'neutral-gray.150'}
-          color={isActive ? 'primary.500' : 'neutral-gray.500'}
+          bg={isActive ? 'primary.lighter' : 'neutral-gray.150'}
+          color={isActive ? 'primary.base' : 'neutral-gray.500'}
           sx={{
             fontWeight: 600,
             height: 4,
@@ -69,7 +69,7 @@ const TabHeader: React.FC<TabHeaderProps> = ({
             py: 0,
             borderRadius: CapUIRadius.Tags,
             marginLeft: 1,
-            fontSize: 2,
+            fontSize: CapUIFontSize.BodySmall,
           }}
         >
           {count}

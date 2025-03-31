@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { CapUILineHeight } from '../../../styles'
 import { Text, TextProps } from '../../typography/Text'
 
 type TagLabelProps = TextProps
@@ -11,7 +12,7 @@ const TagLabel: React.FC<TagLabelProps> = ({
   ...rest
 }) => (
   <Text
-    lineHeight="sm"
+    lineHeight={CapUILineHeight.S}
     fontFamily="inherit"
     className={cn('cap-tag__label', className)}
     sx={{

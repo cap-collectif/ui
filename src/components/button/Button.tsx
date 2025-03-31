@@ -3,16 +3,14 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant as variantStyled } from 'styled-system'
 
-import { useTheme } from '../../hooks'
 import { CapUIFontWeight, CapUILineHeight } from '../../styles'
-import { Colors } from '../../styles/modules/colors'
+import { CapUIFontSize } from '../../styles/theme/fontSizes'
 import { Box } from '../box'
 import { PolymorphicComponentProps } from '../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Spinner } from '../spinner'
-import S from './Button.style'
+import S, { SIZE } from './Button.style'
 
-// @TODO Should be type restrained to button or anchor
 export type ButtonProps<
   T extends React.ElementType = React.ElementType
 > = PolymorphicComponentProps<
@@ -28,25 +26,9 @@ export type ButtonProps<
   }>
 >
 
-const SIZE = {
-  small: {
-    px: 2,
-    py: 1,
-  },
-  medium: {
-    px: 4,
-    py: 3,
-  },
-  big: {
-    px: 8,
-    py: 3,
-  },
-}
-
 const ButtonInner = styled(Box)<{
   variantColor: ButtonProps['variantColor']
   alternative: boolean
-  colors: Colors
 }>(S(false).common, ({ variantColor = 'primary', alternative }) => {
   return variantStyled({
     variants: {
@@ -79,7 +61,6 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
     },
     ref,
   ) => {
-    const { colors } = useTheme()
     return (
       <ButtonInner
         ref={ref}
@@ -88,24 +69,18 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
         display="inline-flex"
         alignItems="center"
         fontFamily="body"
-        fontSize={3}
+        fontSize={CapUIFontSize.BodyRegular}
         fontWeight={CapUIFontWeight.Semibold}
-        lineHeight={CapUILineHeight.Base}
+        lineHeight={CapUILineHeight.M}
         border="none"
-        borderRadius="button"
+        borderRadius="xxs"
         bg="transparent"
         px={variantSize ? SIZE[variantSize].px : 0}
         py={variantSize ? SIZE[variantSize].py : 0}
         variantColor={variantColor}
         variant={variant}
         alternative={alternative}
-        isLoading={isLoading}
         disabled={isLoading || disabled}
-        sx={{
-          '&:disabled': {
-            cursor: 'not-allowed',
-          },
-        }}
         className={cn(
           {
             'cap-button': as === 'button',
@@ -113,12 +88,12 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
           },
           className,
         )}
-        colors={colors}
+        data-loading={isLoading || undefined}
         {...props}
       >
         {isLoading ? (
           <>
-            <Spinner mr={1} />
+            <Spinner mr="xxs" />
             {children}
           </>
         ) : (
@@ -126,15 +101,14 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
             {leftIcon &&
               (typeof leftIcon === 'string' ? (
                 <Icon
+                  className="cap-button-icon"
                   color="inherit"
                   name={leftIcon}
-                  size={
-                    variant === 'link' ? CapUIIconSize.Sm : CapUIIconSize.Md
-                  }
-                  mr={1}
+                  size={CapUIIconSize.Md}
+                  mr="xxs"
                 />
               ) : (
-                React.cloneElement(leftIcon, { mr: 1 })
+                React.cloneElement(leftIcon, { mr: 'xxs' })
               ))}
 
             {children}
@@ -142,13 +116,13 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
             {rightIcon &&
               (typeof rightIcon === 'string' ? (
                 <Icon
+                  className="cap-button-icon"
                   color="inherit"
                   name={rightIcon}
                   size={CapUIIconSize.Md}
-                  ml={1}
                 />
               ) : (
-                React.cloneElement(rightIcon, { ml: 1 })
+                React.cloneElement(rightIcon, { ml: 'xxs' })
               ))}
           </>
         )}

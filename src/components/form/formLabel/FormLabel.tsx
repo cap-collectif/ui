@@ -1,7 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
+import {
+  CapUIFontFamily,
+  CapUIFontSize,
+  CapUILineHeight,
+} from '../../../styles'
 import { Flex, FlexProps } from '../../layout/Flex'
 import { Text } from '../../typography'
 
@@ -22,15 +26,15 @@ export const FormLabel: React.FC<FormLabelProps> = React.forwardRef<
       spacing={1}
       ref={ref}
       fontFamily={CapUIFontFamily.Label}
-      lineHeight={CapUILineHeight.Sm}
-      fontSize={2}
+      lineHeight={CapUILineHeight.S}
+      fontSize={CapUIFontSize.BodySmall}
       className={cn('cap-form-label', className)}
       {...props}
     >
       <Text
         fontFamily={CapUIFontFamily.Label}
-        lineHeight={CapUILineHeight.Sm}
-        fontSize={2}
+        lineHeight={CapUILineHeight.S}
+        fontSize={CapUIFontSize.BodySmall}
         color="gray.900"
       >
         {label}

@@ -8,7 +8,7 @@ export const styles = (
   colors?: Colors,
 ): SystemStyleObject => ({
   bg: 'transparent',
-  color: 'primary.600',
+  color: 'primary.base',
   boxSizing: 'border-box',
   borderWidth: '1px',
   borderStyle: 'solid',
@@ -18,18 +18,18 @@ export const styles = (
   py: 1,
 
   '&:focus': {
-    boxShadow: `0 0 2px 2px ${colors?.primary['300']}`,
+    boxShadow: `0 0 2px 2px ${colors?.primary.light}`,
   },
   ...(active && {
-    bg: 'primary.150',
+    bg: 'primary.lighter',
     '.thumb-up-o_svg__fillMeUp': {
-      fill: `${colors?.primary['600']} !important`,
+      fill: `${colors?.primary.base} !important`,
     },
   }),
 
   '&:hover': {
     bg: 'white',
-    borderColor: 'primary.600',
+    borderColor: 'primary.base',
   },
 
   '&:disabled': {

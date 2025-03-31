@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
+import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { Box, BoxProps } from '../../box/Box'
 import { Tag } from '../../tag'
 import { useInlineSelect } from '../InlineSelect.context'
@@ -32,7 +32,7 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
       {...rest}
     >
       {selected ? (
-        <Tag variantColor="primary">
+        <Tag variantColor="blue">
           <Tag.Label>{children}</Tag.Label>
         </Tag>
       ) : (
@@ -47,10 +47,10 @@ export const InlineSelectChoice: React.FC<InlineSelectChoiceProps> = ({
           py={1}
           borderRadius="normal"
           fontFamily={CapUIFontFamily.Input}
-          fontSize={2}
-          lineHeight={CapUILineHeight.Sm}
-          _hover={{ bg: 'primary.150' }}
-          _focus={{ bg: 'primary.150' }}
+          fontSize={CapUIFontSize.BodySmall}
+          lineHeight={CapUILineHeight.S}
+          _hover={{ bg: 'primary.lighter' }}
+          _focus={{ bg: 'primary.lighter' }}
           style={{ transition: 'background-color 0.1s ease' }}
         >
           {children}

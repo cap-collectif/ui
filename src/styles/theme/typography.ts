@@ -1,5 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import { pxToRem } from '../modules/mixins'
+import { FONT_SIZES } from './fontSizes'
+import { LINE_HEIGHTS } from './lineHeights'
+
+export * from './lineHeights'
+export * from './fontSizes'
 
 export const LETTER_SPACINGS = {
   tighter: '-0.05em',
@@ -21,29 +24,6 @@ export enum CapUILetterSpacing {
 
 export type ThemeLetterSpacingsValues =
   | keyof typeof LETTER_SPACINGS
-  | (string & {})
-  | (number & {})
-
-export const LINE_HEIGHTS = {
-  xl: pxToRem(64),
-  l: pxToRem(48),
-  m: pxToRem(32),
-  base: pxToRem(24),
-  s: pxToRem(18),
-  sm: pxToRem(16),
-} as const
-
-export enum CapUILineHeight {
-  Xl = 'xl',
-  L = 'l',
-  M = 'm',
-  Base = 'base',
-  S = 's',
-  Sm = 'sm',
-}
-
-export type ThemeLineHeightsValues =
-  | keyof typeof LINE_HEIGHTS
   | (string & {})
   | (number & {})
 
@@ -91,22 +71,6 @@ export enum CapUIFontFamily {
 }
 
 export type ThemeFontFamiliesValue = keyof typeof FONT_FAMILIES | (string & {})
-
-export const FONT_SIZES = {
-  0: 0,
-  1: pxToRem(11),
-  2: pxToRem(13),
-  3: pxToRem(14),
-  4: pxToRem(18),
-  5: pxToRem(24),
-  6: pxToRem(33),
-  7: pxToRem(44),
-} as const
-
-export type ThemeFontSizesValues =
-  | keyof typeof FONT_SIZES
-  | (string & {})
-  | (number & {})
 
 const typography = {
   letterSpacings: LETTER_SPACINGS,

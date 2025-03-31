@@ -40,7 +40,7 @@ export type DateBoxProps = {
 export const commonStyle = css`
   .CalendarDay {
     &:hover div {
-      background-color: ${props => props.theme.colors.primary['200']};
+      background-color: ${props => props.theme.colors.primary.lighter};
     }
 
     & div {
@@ -53,7 +53,7 @@ export const commonStyle = css`
     font-weight: normal;
     font-size: ${props => props.theme.fontSizes[3]};
     font-family: ${props => props.theme.fonts.input};
-    line-height: ${CapUILineHeight.Base};
+    line-height: ${CapUILineHeight.M};
     color: ${props => props.theme.colors.gray['900']};
     border: none;
     background-color: white;
@@ -72,34 +72,34 @@ export const commonStyle = css`
     padding: 0;
 
     & div {
-      background-color: ${props => props.theme.colors.primary['500']};
-      color: ${props => props.theme.colors.primary['100']};
+      background-color: ${props => props.theme.colors.primary.base};
+      color: ${props => props.theme.colors.primary.background};
       border-radius: ${props => props.theme.radii.poppin}px;
       border: 0;
     }
   }
 
   .CalendarDay__selected_start {
-    background-color: ${props => props.theme.colors.primary['150']};
+    background-color: ${props => props.theme.colors.primary.lighter};
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
   .CalendarDay__selected_end {
-    background-color: ${props => props.theme.colors.primary['150']};
+    background-color: ${props => props.theme.colors.primary.lighter};
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
 
   .CalendarDay__selected_span {
-    background-color: ${props => props.theme.colors.primary['150']};
+    background-color: ${props => props.theme.colors.primary.lighter};
 
     &:hover {
-      background-color: ${props => props.theme.colors.primary['150']};
+      background-color: ${props => props.theme.colors.primary.lighter};
 
       & div {
         border-radius: ${props => props.theme.radii.poppin}px;
-        background-color: ${props => props.theme.colors.primary['200']};
+        background-color: ${props => props.theme.colors.primary.lighter};
       }
     }
   }
@@ -130,9 +130,9 @@ export const commonStyle = css`
 
   .CalendarMonth_caption {
     font-size: ${props => props.theme.fontSizes[4]};
-    line-height: ${CapUILineHeight.Base};
+    line-height: ${CapUILineHeight.M};
     font-weight: ${props => props.theme.fontWeights.semibold};
-    color: ${props => props.theme.colors.primary['900']};
+    color: ${props => props.theme.colors.primary.darker};
   }
 
   .CalendarMonth_table {
@@ -148,19 +148,19 @@ export const commonStyle = css`
   .DayPicker_weekHeader_li small {
     font-size: ${props => props.theme.fontSizes[1]};
     text-transform: uppercase;
-    line-height: ${CapUILineHeight.M};
+    line-height: ${CapUILineHeight.L};
     font-weight: ${props => props.theme.fontWeights.semibold};
     color: ${props => props.theme.colors.gray['500']};
   }
 
   .CalendarDay__hovered_span {
     &:hover {
-      background-color: ${props => props.theme.colors.primary['150']};
+      background-color: ${props => props.theme.colors.primary.lighter};
       border-top-right-radius: ${props => props.theme.radii.poppin}px;
       border-bottom-right-radius: ${props => props.theme.radii.poppin}px;
     }
 
-    background-color: ${props => props.theme.colors.primary['150']};
+    background-color: ${props => props.theme.colors.primary.lighter};
   }
 
   tr td.CalendarDay__hovered_span:last-child {
@@ -185,8 +185,8 @@ export const commonStyle = css`
 
   .CalendarDay__selected.CalendarDay__blocked_out_of_range {
     & div {
-      color: ${props => props.theme.colors.primary['700']};
-      background-color: ${props => props.theme.colors.primary['300']};
+      color: ${props => props.theme.colors.primary.dark};
+      background-color: ${props => props.theme.colors.primary.light};
     }
   }
 `

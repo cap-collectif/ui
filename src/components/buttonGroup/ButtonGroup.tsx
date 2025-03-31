@@ -12,7 +12,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 }) => (
   <Flex
     direction="row"
-    spacing={3}
+    spacing="md"
     className={cn('cap-buttonGroup', className)}
     {...rest}
   >

@@ -65,22 +65,18 @@ const SpotIcon: React.FC<SpotIconProps> = React.forwardRef<
       className={cn('cap-spotIcon', className)}
       ref={ref}
       sx={{
-        'path[stroke="primary.900"]': { stroke: 'primary.900' },
-        'path[fill="primary.900"]': { fill: 'primary.900' },
-        'path[stroke="primary.800"]': { stroke: 'primary.800' },
-        'path[fill="primary.800"]': { fill: 'primary.800' },
-        'path[stroke="primary.200"]': { stroke: 'primary.200' },
-        'path[fill="primary.200"]': { fill: 'primary.200' },
-        'path[stroke="primary.150"]': { stroke: 'primary.150' },
-        'path[fill="primary.150"]': { fill: 'primary.150' },
-        'rect[stroke="primary.900"]': { stroke: 'primary.900' },
-        'rect[fill="primary.900"]': { fill: 'primary.900' },
-        'rect[stroke="primary.800"]': { stroke: 'primary.800' },
-        'rect[fill="primary.800"]': { fill: 'primary.800' },
-        'rect[stroke="primary.200"]': { stroke: 'primary.200' },
-        'rect[fill="primary.200"]': { fill: 'primary.200' },
-        'rect[stroke="primary.150"]': { stroke: 'primary.150' },
-        'rect[fill="primary.150"]': { fill: 'primary.150' },
+        'path[stroke="primary.darker"]': { stroke: 'primary.darker' },
+        'path[fill="primary.darker"]': { fill: 'primary.darker' },
+        'path[stroke="primary.light"]': { stroke: 'primary.light' },
+        'path[fill="primary.light"]': { fill: 'primary.light' },
+        'path[stroke="primary.lighter"]': { stroke: 'primary.lighter' },
+        'path[fill="primary.lighter"]': { fill: 'primary.lighter' },
+        'rect[stroke="primary.darker"]': { stroke: 'primary.darker' },
+        'rect[fill="primary.darker"]': { fill: 'primary.darker' },
+        'rect[stroke="primary.light"]': { stroke: 'primary.light' },
+        'rect[fill="primary.light"]': { fill: 'primary.light' },
+        'rect[stroke="primary.lighter"]': { stroke: 'primary.lighter' },
+        'rect[fill="primary.lighter"]': { fill: 'primary.lighter' },
       }}
       {...props}
     />

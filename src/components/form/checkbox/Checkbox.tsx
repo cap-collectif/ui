@@ -2,7 +2,11 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { useTheme } from '../../../hooks'
-import { CapUIFontFamily, CapUILineHeight } from '../../../styles'
+import {
+  CapUIFontFamily,
+  CapUIFontSize,
+  CapUILineHeight,
+} from '../../../styles'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
 import { Flex, FlexProps } from '../../layout'
@@ -62,9 +66,9 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
       {typeof children === 'string' ? (
         <Text
           as="span"
-          fontSize={3}
+          fontSize={CapUIFontSize.BodyRegular}
           color={inputProps.disabled ? 'gray.500' : 'gray.900'}
-          lineHeight={CapUILineHeight.Base}
+          lineHeight={CapUILineHeight.M}
         >
           {children}
         </Text>

@@ -870,7 +870,7 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     color: ${props => props.theme.colors.gray['900']};
 
     &:focus-within {
-      border-color: ${props => props.theme.colors.primary['500']};
+      border-color: ${props => props.theme.colors.primary.base};
     }
 
     &__disabled {
@@ -909,9 +909,9 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
 
   .DateInput_input {
     font-weight: ${props => props.theme.fontWeights.normal};
-    font-size: ${props => props.theme.fontSizes[3]};
+    font-size: ${props => props.theme.fontSizes.BodyRegular};
     font-family: ${props => props.theme.fonts.input};
-    line-height: ${CapUILineHeight.Base};
+    line-height: ${CapUILineHeight.M};
     color: ${props => props.theme.colors.gray['900']};
     background-color: transparent;
     border-bottom: none;
@@ -921,7 +921,7 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     &::placeholder {
       color: ${props => props.theme.colors.gray['600']};
       font-family: ${props => props.theme.fonts.input};
-      line-height: ${CapUILineHeight.Base};
+      line-height: ${CapUILineHeight.M};
     }
 
     &:disabled {

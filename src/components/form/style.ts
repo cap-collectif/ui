@@ -31,7 +31,7 @@ const styles: SystemStyleObject = {
   borderColor: 'gray.300',
 
   fontFamily: CapUIFontFamily.Input,
-  lineHeight: CapUILineHeight.Base,
+  lineHeight: CapUILineHeight.M,
   color: 'gray.900',
   bg: 'white',
 
@@ -43,11 +43,11 @@ const styles: SystemStyleObject = {
   '&::placeholder': {
     color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
-    lineHeight: CapUILineHeight.Base,
+    lineHeight: CapUILineHeight.M,
   },
 
   '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'primary.500',
+    borderColor: 'primary.base',
     outline: 'none !important',
     boxShadow: 'none !important',
   },
@@ -76,18 +76,18 @@ export const focusWithinStyles = (
   borderColor: isDisabled ? 'gray.200' : isInvalid ? 'red.500' : 'gray.300',
 
   fontFamily: CapUIFontFamily.Input,
-  lineHeight: CapUILineHeight.Base,
+  lineHeight: CapUILineHeight.M,
   color: isDisabled ? 'gray.500' : 'gray.900',
   bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
 
   '& > input::placeholder': {
     color: 'gray.600',
     fontFamily: CapUIFontFamily.Input,
-    lineHeight: CapUILineHeight.Base,
+    lineHeight: CapUILineHeight.M,
   },
 
   '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'primary.500',
+    borderColor: isInvalid ? 'red.500' : 'primary.base',
     bg: 'white',
   },
 })
@@ -122,7 +122,7 @@ export function reactSelectStyle<
       borderColor: isInvalid
         ? colors.red['600']
         : isFocused
-        ? colors.primary['600']
+        ? colors.primary.base
         : isSearch
         ? colors.gray['500']
         : colors.gray['300'],
@@ -148,14 +148,14 @@ export function reactSelectStyle<
       whiteSpace: 'nowrap',
       color: colors.gray['600'],
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     input: (
       base: CSSObjectWithLabel,
       { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
     ) => ({
       ...base,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
       fontFamily: FONT_FAMILIES.input,
       padding: 0,
       margin: 0,
@@ -171,14 +171,14 @@ export function reactSelectStyle<
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       margin: 0,
       color: colors.gray['900'],
       fontFamily: FONT_FAMILIES.input,
-      lineHeight: LINE_HEIGHTS.base,
+      lineHeight: LINE_HEIGHTS.M,
     }),
     indicatorSeparator: (base: CSSObjectWithLabel) => ({
       ...base,

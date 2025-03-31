@@ -26,7 +26,7 @@ import {
   VoteInfo,
 } from './'
 import Avatar from './components/avatar/Avatar'
-import { capuiTheme, generateShades } from './styles/theme'
+import { capuiTheme, generatePalette } from './styles/theme'
 
 const meta: Meta<Props> = {
   title: 'WithCustomTheme',
@@ -40,16 +40,11 @@ export default meta
 
 type Props = {
   primary: string
-  primaryLabel: string
-  primaryHover: string
-  primaryLabelHover: string
 }
 
 export const Default: Story<Props> = ({
   primary,
-  primaryLabel,
-  primaryHover,
-  primaryLabelHover,
+ 
 }) => {
   const CustomTheme = {
     ...capuiTheme,
@@ -60,10 +55,7 @@ export const Default: Story<Props> = ({
     },
     colors: {
       ...capuiTheme.colors,
-      primary: generateShades(primary),
-      primaryLabel,
-      primaryHover,
-      primaryLabelHover,
+      primary: generatePalette(primary),
     },
   }
 
@@ -161,21 +153,9 @@ export const Default: Story<Props> = ({
 
 Default.args = {
   primary: '#ff9909',
-  primaryLabel: '#fff',
-  primaryHover: '#c27a15',
-  primaryLabelHover: '#fff',
 }
 Default.argTypes = {
   primary: {
-    control: { type: 'color' },
-  },
-  primaryLabel: {
-    control: { type: 'color' },
-  },
-  primaryHover: {
-    control: { type: 'color' },
-  },
-  primaryLabelHover: {
     control: { type: 'color' },
   },
 }

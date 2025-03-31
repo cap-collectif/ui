@@ -60,22 +60,26 @@ const Overlay = styled(motion(Flex)).attrs<{ isSidePanel?: boolean }>(
   }),
 )`` as IStyledComponent<any, any>
 
-const ModalInner = styled(motion(Flex)).attrs<any>(
-  ({ fullSizeOnMobile, isMobile, ...rest }: ModalInnerShape) =>
-    isMobile && {
-      position: 'absolute',
-      bottom: 0,
-      height: fullSizeOnMobile ? '100% ' : 'auto',
-      width: '100% ',
-      borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 0,
-      borderTopLeftRadius: fullSizeOnMobile && 0,
-      borderTopRightRadius: fullSizeOnMobile && 0,
-      boxShadow: 'medium',
-      maxHeight: fullSizeOnMobile ? '100% ' : '55% ',
-      ...rest,
-    },
-)(
+const ModalInner = styled(motion(Flex))
+  .withConfig({
+    shouldForwardProp: propName => propName !== 'size',
+  })
+  .attrs<any>(
+    ({ fullSizeOnMobile, isMobile, ...rest }: ModalInnerShape) =>
+      isMobile && {
+        position: 'absolute',
+        bottom: 0,
+        height: fullSizeOnMobile ? '100% ' : 'auto',
+        width: '100% ',
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+        borderTopLeftRadius: fullSizeOnMobile && 0,
+        borderTopRightRadius: fullSizeOnMobile && 0,
+        boxShadow: 'medium',
+        maxHeight: fullSizeOnMobile ? '100% ' : '55% ',
+        ...rest,
+      },
+  )(
   variantStyle({
     prop: 'size',
     variants: {

@@ -22,7 +22,7 @@ export const Text: React.FC<TextProps> = React.forwardRef<
     <Box
       ref={ref}
       fontFamily={CapUIFontFamily.Body}
-      lineHeight={CapUILineHeight.Base}
+      lineHeight={CapUILineHeight.M}
       as="p"
       className={cn('cap-text', className)}
       {...(truncate ? { title: innerText } : {})}

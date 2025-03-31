@@ -1,7 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontWeight } from '../../../styles'
+import {
+  CapUIFontSize,
+  CapUIFontWeight,
+  CapUILineHeight,
+} from '../../../styles'
 import { Box, BoxProps } from '../../box'
 import { Text } from '../../typography'
 import { Context, MenuOptionGroupContext } from './MenuOptionGroup.context'
@@ -56,8 +60,8 @@ export const MenuOptionGroup: React.FC<MenuOptionGroupProps> = ({
           <Text
             className="cap-menu__optionGroup--title"
             color="gray.900"
-            lineHeight="sm"
-            fontSize={1}
+            lineHeight={CapUILineHeight.S}
+            fontSize={CapUIFontSize.Caption}
             fontWeight={CapUIFontWeight.Semibold}
             px={3}
             py={2}

@@ -105,7 +105,7 @@ const Slot = (props: SlotExtendedProps) => {
           : props.isInvalid
           ? 'red.600'
           : props.isActive
-          ? 'primary.600'
+          ? 'primary.base'
           : props.isDisabled
           ? 'gray.300'
           : 'gray.600'

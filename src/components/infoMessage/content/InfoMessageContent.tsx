@@ -1,7 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontFamily } from '../../../styles'
+import {
+  CapUIFontFamily,
+  CapUIFontSize,
+  CapUILineHeight,
+} from '../../../styles'
 import { Box, BoxProps } from '../../box'
 
 type InfoMessageContentProps = BoxProps
@@ -13,8 +17,8 @@ export const InfoMessageContent = ({
 }: InfoMessageContentProps) => (
   <Box
     className={cn('cap-info-message__content', className)}
-    fontSize={1}
-    lineHeight="sm"
+    fontSize={CapUIFontSize.BodySmall}
+    lineHeight={CapUILineHeight.S}
     fontFamily={CapUIFontFamily.Body}
     {...props}
   >

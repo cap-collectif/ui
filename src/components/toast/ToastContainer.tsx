@@ -73,6 +73,7 @@ const ToastContainer = () => {
           key={toast.id}
           layout
           transition={LAYOUT_TRANSITION_SPRING}
+          aria-live="polite"
           aria-roledescription={getAriaRole(toast.variant)}
         >
           <Toast setToast={setToast} {...toast} />

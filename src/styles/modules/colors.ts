@@ -1,59 +1,45 @@
-/* eslint-disable @typescript-eslint/ban-types */
+import { Colors } from './colors.type'
 
-export type BaseColorsName =
-  | 'gray'
-  | 'neutral-gray'
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'blue'
-  | 'aqua'
-  | 'primary'
+export * from './colors.type'
 
-type RootThemeColorsValues =
-  | 'transparent'
-  | 'current'
-  | 'black'
-  | 'white'
-  | 'primaryLabel'
-  | 'primaryHover'
-  | 'primaryLabelHover'
-
-type BaseColors = {
-  [key in BaseColorsName]: {
-    [tint: string]: string
-  }
-}
-
-type RootColors = {
-  [key in RootThemeColorsValues]: string
-}
-export type Colors = BaseColors & RootColors
-
-const colors: Colors = {
+const baseColors: Colors = {
   transparent: 'transparent',
   current: 'currentColor',
 
   black: '#000',
   white: '#fff',
 
-  // For now we keep those as simple values
-  primaryLabel: '#FAFCFF',
-  primaryHover: '#0051A8',
-  primaryLabelHover: '#FAFCFF',
-
   primary: {
-    '100': '#FAFCFF',
-    '150': '#E0EFFF',
-    '200': '#C2DFFF',
-    '300': '#8AC2FF',
-    '400': '#52A5FF',
-    '500': '#1A88FF',
-    '600': '#006CE0',
-    '700': '#0051A8',
-    '800': '#003670',
-    '900': '#001B38',
+    background: '#FAFCFF',
+    lighter: '#E0EFFF',
+    light: '#8AC2FF',
+    base: '#006CE0',
+    dark: '#0051A8',
+    darker: '#003670',
+  },
+  danger: {
+    background: '#FEFBFB',
+    lighter: '#FAE5E7',
+    light: '#ED9BA4',
+    base: '#BF2231',
+    dark: '#8F1925',
+    darker: '#5F1119',
+  },
+  success: {
+    background: '#FBFEFC',
+    lighter: '#E4F9E9',
+    light: '#A1E8B1',
+    base: '#2CB54C',
+    dark: '#218739',
+    darker: '#165A26',
+  },
+  warning: {
+    background: '#FFFDFA',
+    lighter: '#FFF3E0',
+    light: '#FFD08A',
+    base: '#E08700',
+    dark: '#A86500',
+    darker: '#704300',
   },
   gray: {
     '100': '#F7F7F8',
@@ -66,6 +52,14 @@ const colors: Colors = {
     '700': '#545E68',
     '800': '#3D454C',
     '900': '#272B30',
+    white: 'white',
+    background: '#F7F7F8',
+    lighter: '#E8EBED',
+    light: '#BEC4CB',
+    base: '#6B7885',
+    dark: '#545E68',
+    darker: '#3D454C',
+    black: '#272B30',
   },
   'neutral-gray': {
     '50': '#FAFAFA',
@@ -154,122 +148,4 @@ const colors: Colors = {
   },
 }
 
-// seems to cause rollup not to compile... weird, so currently defining here all the colors
-// looks like tsdx is using a rollup plugin which does not understand quite the new TS template litterals types
-// type PathsToStringProps<T> = T extends string
-//   ? []
-//   : {
-//       [K in Extract<keyof T, string>]: [K, ...PathsToStringProps<T[K]>]
-//     }[Extract<keyof T, string>];
-//
-// type Join<T extends string[], D extends string> = T extends []
-//   ? never
-//   : T extends [infer F]
-//   ? F
-//   : T extends [infer F, ...infer R]
-//   ? F extends string
-//     ? string extends F
-//       ? string
-//       : `${F}${D}${Join<Extract<R, string[]>, D>}`
-//     : never
-//   : string;
-
-type NestedThemeColorsValues =
-  | 'gray.100'
-  | 'gray.150'
-  | 'gray.200'
-  | 'gray.300'
-  | 'gray.400'
-  | 'gray.500'
-  | 'gray.600'
-  | 'gray.700'
-  | 'gray.800'
-  | 'gray.900'
-  | 'neutral-gray.50'
-  | 'neutral-gray.100'
-  | 'neutral-gray.150'
-  | 'neutral-gray.200'
-  | 'neutral-gray.300'
-  | 'neutral-gray.400'
-  | 'neutral-gray.500'
-  | 'neutral-gray.600'
-  | 'neutral-gray.700'
-  | 'neutral-gray.800'
-  | 'neutral-gray.900'
-  | 'red.100'
-  | 'red.150'
-  | 'red.200'
-  | 'red.300'
-  | 'red.400'
-  | 'red.500'
-  | 'red.600'
-  | 'red.700'
-  | 'red.800'
-  | 'red.900'
-  | 'orange.100'
-  | 'orange.150'
-  | 'orange.200'
-  | 'orange.300'
-  | 'orange.400'
-  | 'orange.500'
-  | 'orange.600'
-  | 'orange.700'
-  | 'orange.800'
-  | 'orange.900'
-  | 'yellow.100'
-  | 'yellow.150'
-  | 'yellow.200'
-  | 'yellow.300'
-  | 'yellow.400'
-  | 'yellow.500'
-  | 'yellow.600'
-  | 'yellow.700'
-  | 'yellow.800'
-  | 'yellow.900'
-  | 'green.100'
-  | 'green.150'
-  | 'green.200'
-  | 'green.300'
-  | 'green.400'
-  | 'green.500'
-  | 'green.600'
-  | 'green.700'
-  | 'green.800'
-  | 'green.900'
-  | 'blue.100'
-  | 'blue.150'
-  | 'blue.200'
-  | 'blue.300'
-  | 'blue.400'
-  | 'blue.500'
-  | 'blue.600'
-  | 'blue.700'
-  | 'blue.800'
-  | 'blue.900'
-  | 'aqua.100'
-  | 'aqua.150'
-  | 'aqua.200'
-  | 'aqua.300'
-  | 'aqua.400'
-  | 'aqua.500'
-  | 'aqua.600'
-  | 'aqua.700'
-  | 'aqua.800'
-  | 'aqua.900'
-  | 'primary.100'
-  | 'primary.150'
-  | 'primary.200'
-  | 'primary.300'
-  | 'primary.400'
-  | 'primary.500'
-  | 'primary.600'
-  | 'primary.700'
-  | 'primary.800'
-  | 'primary.900'
-
-export type ThemeColorsValues =
-  | NestedThemeColorsValues
-  | RootThemeColorsValues
-  | (string & {})
-
-export default colors
+export default baseColors

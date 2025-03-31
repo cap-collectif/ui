@@ -54,10 +54,9 @@ type FormControlProviderContext = Omit<
   'getRootProps' | 'htmlProps'
 >
 
-const [
-  FormControlProvider,
-  useFormControlContext,
-] = createContext<FormControlProviderContext>({
+const [FormControlProvider, useFormControlContext] = createContext<
+  FormControlProviderContext
+>({
   strict: false,
   name: 'FormControlContext',
 })

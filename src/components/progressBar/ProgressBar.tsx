@@ -32,13 +32,13 @@ const ProgressBar: React.FC<ProgressBarProps & FlexProps> = ({
   return (
     <Flex direction="row" spacing={1} width="100%" {...rest}>
       {steps.map(step => (
-        <Box key={`item-${step}`} bg="primary.200" height={1} flex={1}>
+        <Box key={`item-${step}`} bg="primary.light" height={1} flex={1}>
           <AnimatePresence initial={step === currentStep}>
             {step <= currentStep && (
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
-                bg={color ? color : 'primary.500'}
+                bg={color ? color : 'primary.base'}
                 initial="empty"
                 animate="fill"
                 variants={variants}

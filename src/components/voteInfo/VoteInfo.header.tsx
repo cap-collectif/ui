@@ -43,7 +43,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
         sx={{
           'h1, h2, h3, h4, h5, h6': {
             ...headingStyles.h4,
-            color: 'primary.900',
+            color: 'primary.darker',
             fontWeight: CapUIFontWeight.Semibold,
             fontFamily: CapUIFontFamily.Body,
           },
@@ -62,7 +62,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
             <Icon
               name={CapUIIcon.Info}
               size={CapUIIconSize.Sm}
-              color="primary.500"
+              color="primary.base"
             />
           </Box>
         </Tooltip>

@@ -18,7 +18,7 @@ const style = (disabled: boolean): SystemStyleObject => ({
   cursor: disabled ? 'default' : 'pointer',
   '&:hover': {
     svg: {
-      color: disabled ? 'inherit' : 'primary.500',
+      color: disabled ? 'inherit' : 'primary.base',
     },
   },
 })
@@ -32,7 +32,7 @@ const RankButton: React.FC<RankButtonProps> = ({
 }) => {
   return (
     <Tag
-      variantColor={disabled ? 'neutral-gray' : 'primary'}
+      variantColor={disabled ? 'neutral-gray' : 'blue'}
       display="flex"
       flexDirection="row"
       gap={1}
@@ -43,7 +43,7 @@ const RankButton: React.FC<RankButtonProps> = ({
     >
       <Box
         as="button"
-        color={disabled ? 'neutral-gray.300' : 'primary.500'}
+        color={disabled ? 'neutral-gray.300' : 'primary.base'}
         sx={style(disabled)}
         onClick={onLeftIconClick}
         disabled={disabled}
@@ -52,14 +52,14 @@ const RankButton: React.FC<RankButtonProps> = ({
         <Icon name={CapUIIcon.ArrowUp} size={CapUIIconSize.Sm} />
       </Box>
       <Tag.Label
-        color={disabled ? 'neutral-gray.300' : 'primary.800'}
+        color={disabled ? 'neutral-gray.300' : 'primary.darker'}
         fontWeight={CapUIFontWeight.Semibold}
       >
         {label}
       </Tag.Label>
       <Box
         as="button"
-        color={disabled ? 'neutral-gray.300' : 'primary.500'}
+        color={disabled ? 'neutral-gray.300' : 'primary.base'}
         sx={style(disabled)}
         onClick={onRightIconClick}
         disabled={disabled}

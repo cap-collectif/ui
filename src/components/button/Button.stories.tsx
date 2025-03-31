@@ -22,8 +22,7 @@ const meta: Meta = {
     },
     onClick: {
       action: 'clicked',
-      description:
-        'onClick',
+      description: 'onClick',
     },
   },
   parameters: {
@@ -55,23 +54,3 @@ WithIcon.args = { leftIcon: CapUIIcon.Add }
 
 export const Loading = Template.bind({})
 Loading.args = { isLoading: true }
-
-export const WithActionIcons = Template.bind({})
-WithActionIcons.args = {
-  leftIcon: (
-    <Button
-      leftIcon={CapUIIcon.ArrowUpO}
-      onClick={() => {
-        console.log('UP')
-      }}
-    />
-  ),
-  rightIcon: (
-    <Button
-      leftIcon={CapUIIcon.ArrowDownO}
-      onClick={() => {
-        console.log('DOWN')
-      }}
-    />
-  ),
-}

@@ -39,7 +39,7 @@ const MultiStepModalProgressBar = () => {
       {steps.map(step => (
         <Box
           key={`item-${step}`}
-          bg="primary.200"
+          bg="primary.light"
           height={smoothWorkflow ? 0.5 : 1}
           flex={1}
         >
@@ -52,7 +52,7 @@ const MultiStepModalProgressBar = () => {
               <ItemFillProgressBar
                 key={`item-fill-${step}`}
                 height="100%"
-                bg="primary.500"
+                bg="primary.base"
                 initial="empty"
                 animate="fill"
                 variants={variants}

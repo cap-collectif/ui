@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { CapUIFontFamily } from '../../styles'
+import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { Flex, FlexProps } from '../layout'
 
@@ -19,8 +19,8 @@ export interface AvatarProps extends FlexProps {
 
 export const variants = {
   xs: {
-    fontSize: 1,
-    lineHeight: 'sm',
+    fontSize: CapUIFontSize.Caption,
+    lineHeight: CapUILineHeight.S,
     size: 4,
     minWidth: 4,
     minHeight: 4,
@@ -28,8 +28,8 @@ export const variants = {
     maxHeight: 4,
   },
   sm: {
-    fontSize: 1,
-    lineHeight: 'sm',
+    fontSize: CapUIFontSize.Caption,
+    lineHeight: CapUILineHeight.S,
     size: 6,
     minWidth: 6,
     minHeight: 6,
@@ -37,8 +37,8 @@ export const variants = {
     maxHeight: 6,
   },
   md: {
-    fontSize: 3,
-    lineHeight: 'base',
+    fontSize: CapUIFontSize.BodyRegular,
+    lineHeight: CapUILineHeight.M,
     size: 8,
     minWidth: 8,
     minHeight: 8,
@@ -46,8 +46,8 @@ export const variants = {
     maxHeight: 8,
   },
   lg: {
-    fontSize: 4,
-    lineHeight: 'base',
+    fontSize: CapUIFontSize.Headline,
+    lineHeight: CapUILineHeight.M,
     size: 9,
     minWidth: 9,
     minHeight: 9,
@@ -55,8 +55,8 @@ export const variants = {
     maxHeight: 9,
   },
   xl: {
-    fontSize: 6,
-    lineHeight: 'l',
+    fontSize: CapUIFontSize.DisplayMedium,
+    lineHeight: CapUILineHeight.XL,
     size: 13,
     minWidth: 13,
     minHeight: 13,
@@ -110,7 +110,7 @@ export const Avatar = ({
 
   return (
     <AvatarInner
-      bg="primary.600"
+      bg="primary.base"
       color="aqua.100"
       className={cn('cap-avatar', className)}
       title={shouldDisplayName ? alt : name}
