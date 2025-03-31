@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 2.0.0
+
+`2025-03-31`
+
+- 💥 Update LineHeight, FontSize, Spacing tokens, Color tokens, and Button Component [#490](https://github.com/cap-collectif/ui/pull/490)
+
 ## 1.10.24
 
 `2025-02-11`
