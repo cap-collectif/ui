@@ -41,9 +41,10 @@ export function MultiValue<
       variantColor={
         isDisabled ? 'infoGray' : props.selectProps['aria-invalid'] ? 'danger' : 'info'
       }
-      mr={1}
-      mt={1}
+      mr={"xxs"}
+      mt={"xxs"}
       onRemove={removeProps.onClick}
+      tabIndex={0}
     >
       <Tag.Label>{props.data.label}</Tag.Label>
     </Tag>

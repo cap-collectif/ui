@@ -102,7 +102,6 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
             }
           : {},
       }}
-      tabIndex={0}
       variantType={variantType}
       aria-label={`Tag ${tagLabel}`}
       {...rest}
