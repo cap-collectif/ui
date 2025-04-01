@@ -55,16 +55,16 @@ const TagInner = styled(motion(Box)).attrs({
     prop: 'variantType',
     variants: {
       tag: {
-        px: 2,
+        px: 'xs',
         fontSize: CapUIFontSize.BodySmall,
-        py: 1,
+        py: 'xxs',
         fontWeight: 400,
         fontFamily: CapUIFontFamily.Input,
       },
       badge: {
-        px: 4,
+        px: 'md',
         fontSize: CapUIFontSize.Caption,
-        py: 2,
+        py: 'xs',
         fontWeight: 600,
         fontFamily: CapUIFontFamily.Body,
         textTransform: 'uppercase',
