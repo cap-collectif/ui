@@ -8,6 +8,7 @@ import { CapUIIcon, CapUIIconSize, Icon, IconProps } from '../../icon'
 
 export type TagCloseButtonProps = Omit<IconProps, 'name' | 'color' | 'size'> & {
   onClick: React.MouseEventHandler<HTMLDivElement> | undefined
+  tagLabel: string
 }
 
 const IconContainer = motion(Box)
@@ -15,32 +16,42 @@ const IconContainer = motion(Box)
 const TagCloseButton: React.FC<TagCloseButtonProps> = ({
   onClick,
   className,
-}) => (
-  <IconContainer
-    role="button"
-    variants={{
-      initial: {
-        opacity: 0,
-        right: '0rem',
-        transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] },
-      },
-      hover: {
-        opacity: 1,
-        right: SPACING['1'],
-        transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] },
-      },
-    }}
-    onClick={onClick}
-    _hover={{ cursor: 'pointer' }}
-    display="flex"
-    position="absolute"
-    className={cn('cap-tag__closeButton', className)}
-    aria-label="close"
-    tabIndex={0}
-  >
-    <Icon name={CapUIIcon.CrossO} color="inherit" size={CapUIIconSize.Xs} />
-  </IconContainer>
-)
+  tagLabel,
+}) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      onClick && onClick((event as unknown) as React.MouseEvent<HTMLDivElement>)
+    }
+  }
+
+  return (
+    <IconContainer
+      role="button"
+      variants={{
+        initial: {
+          opacity: 0,
+          right: '0rem',
+          transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] },
+        },
+        hover: {
+          opacity: 1,
+          right: SPACING['1'],
+          transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] },
+        },
+      }}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      _hover={{ cursor: 'pointer' }}
+      display="flex"
+      position="absolute"
+      className={cn('cap-tag__closeButton', className)}
+      aria-label={`Remove ${tagLabel}`}
+      tabIndex={0}
+    >
+      <Icon name={CapUIIcon.CrossO} color="inherit" size={CapUIIconSize.Xs} />
+    </IconContainer>
+  )
+}
 
 TagCloseButton.displayName = 'Tag.CloseButton'
 

@@ -63,7 +63,7 @@ export function Control<
       {isLoading && <Spinner mr={2} color="primary.base" />}
       {!isLoading && (
         <>
-          {isClearable && value ? <Box
+          {isClearable && value ? <Box 
             as='button'
             type="button"
             aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
@@ -118,6 +118,7 @@ export function Select<
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
+        tabIndex={0}
         {...props}
       />
     </Box>

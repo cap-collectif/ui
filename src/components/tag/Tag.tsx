@@ -83,13 +83,15 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
+  const tagLabel = jsxInnerText(children)
+
   return (
     <TagInner
       sx={{
         ...getTagStyle(variantColor),
         ...sx,
       }}
-      title={jsxInnerText(children)}
+      title={tagLabel}
       className={cn('cap-tag', className)}
       initial="initial"
       whileHover="hover"
@@ -100,11 +102,13 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
             }
           : {},
       }}
+      tabIndex={0}
       variantType={variantType}
+      aria-label={`Tag ${tagLabel}`}
       {...rest}
     >
       {children}
-      {onRemove && <TagCloseButton onClick={onRemove} />}
+      {onRemove && <TagCloseButton onClick={onRemove} tagLabel={tagLabel} />}
     </TagInner>
   )
 }
