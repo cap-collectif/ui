@@ -1,18 +1,11 @@
 import cn from 'classnames'
-import {
-  AnimationProps,
-  motion,
-  MotionProps,
-  HoverHandlers,
-} from 'framer-motion'
+import { AnimationProps, MotionProps, HoverHandlers } from 'framer-motion'
 import * as React from 'react'
-import styled from 'styled-components'
-import { variant } from 'styled-system'
 
 import { CapUIFontFamily, CapUIFontSize } from '../../styles'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
-import { Box, BoxProps, PolymorphicComponent } from '../box/Box'
+import { Box, BoxProps } from '../box/Box'
 import { getTagStyle } from './Tag.style'
 import TagAvatar from './avatar/TagAvatar'
 import TagCloseButton from './closeButton/TagCloseButton'
@@ -44,34 +37,37 @@ export interface TagProps
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
 }
 
-const TagInner = styled(motion(Box)).attrs({
-  position: 'relative',
-  maxHeight: SPACING['6'],
-  display: 'inline-flex',
-  alignItems: 'center',
-  borderRadius: 'tags',
-})(
-  variant<unknown, NonNullable<TagProps['variantType']>, 'variantType'>({
-    prop: 'variantType',
-    variants: {
-      tag: {
-        px: 'xs',
-        fontSize: CapUIFontSize.BodySmall,
-        py: 'xxs',
-        fontWeight: 400,
-        fontFamily: CapUIFontFamily.Input,
-      },
-      badge: {
-        px: 'md',
-        fontSize: CapUIFontSize.Caption,
-        py: 'xs',
-        fontWeight: 600,
-        fontFamily: CapUIFontFamily.Body,
-        textTransform: 'uppercase',
-      },
-    },
-  }),
-) as PolymorphicComponent<Omit<TagProps, 'variantColor'>>
+type TagInnerProps = {
+  variantType: VariantType
+} & Omit<TagProps, 'variantColor'>
+
+const TagInner: React.FC<TagInnerProps> = ({
+  variantType,
+  children,
+  ...rest
+}: TagInnerProps) => {
+  return (
+    <Box
+      position={'relative'}
+      maxHeight={SPACING['6']}
+      display={'inline-flex'}
+      alignItems={'center'}
+      borderRadius={'tags'}
+      px={variantType === 'tag' ? 'xs' : 'md'}
+      fontSize={
+        variantType === 'tag' ? CapUIFontSize.BodySmall : CapUIFontSize.Caption
+      }
+      py={variantType === 'tag' ? 'xxs' : 'xs'}
+      fontWeight={variantType === 'tag' ? 400 : 600}
+      fontFamily={
+        variantType === 'tag' ? CapUIFontFamily.Input : CapUIFontFamily.Body
+      }
+      {...rest}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export const Tag: React.FC<TagProps> & SubComponents = ({
   children,
@@ -88,6 +84,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   return (
     <TagInner
       sx={{
+        textTransform: variantType === 'badge' ? 'uppercase' : undefined,
         ...getTagStyle(variantColor),
         ...sx,
       }}
@@ -104,6 +101,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       }}
       variantType={variantType}
       aria-label={`Tag ${tagLabel}`}
+      tabIndex={hasCloseButton ? 0 : -1}
       {...rest}
     >
       {children}
