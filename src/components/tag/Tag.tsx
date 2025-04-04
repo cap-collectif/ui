@@ -54,10 +54,10 @@ const TagInner: React.FC<TagInnerProps> = ({
       alignItems={'center'}
       borderRadius={'tags'}
       px={variantType === 'tag' ? 'xs' : 'md'}
+      py={variantType === 'tag' ? 'xxs' : 'xs'}
       fontSize={
         variantType === 'tag' ? CapUIFontSize.BodySmall : CapUIFontSize.Caption
       }
-      py={variantType === 'tag' ? 'xxs' : 'xs'}
       fontWeight={variantType === 'tag' ? 400 : 600}
       fontFamily={
         variantType === 'tag' ? CapUIFontFamily.Input : CapUIFontFamily.Body
@@ -80,6 +80,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
 }) => {
   const hasCloseButton = !!onRemove
   const tagLabel = jsxInnerText(children)
+  const [isFocused, setIsFocused] = React.useState<boolean>(false)
 
   return (
     <TagInner
@@ -102,10 +103,19 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       variantType={variantType}
       aria-label={`Tag ${tagLabel}`}
       tabIndex={hasCloseButton ? 0 : -1}
+      overflow={'hidden'}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       {...rest}
     >
       {children}
-      {onRemove && <TagCloseButton onClick={onRemove} tagLabel={tagLabel} />}
+      {onRemove && (
+        <TagCloseButton
+          onClick={onRemove}
+          tagLabel={tagLabel}
+          isFocused={isFocused}
+        />
+      )}
     </TagInner>
   )
 }

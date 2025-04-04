@@ -36,6 +36,7 @@ export function MultiValue<
   isDisabled: boolean
   removeProps: { onClick?: React.MouseEventHandler<HTMLDivElement> | undefined }
 }) {
+
   return (
     <Tag
       variantColor={
@@ -58,6 +59,7 @@ export function Control<
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
   const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
+
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
@@ -68,7 +70,7 @@ export function Control<
             as='button'
             type="button"
             aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
-            mr={1}
+            mr={"xxs"}
             style={{ cursor: 'pointer' }}
             onClick={() => props.clearValue()}
           >
