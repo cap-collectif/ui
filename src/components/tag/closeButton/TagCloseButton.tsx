@@ -7,15 +7,18 @@ import { CapUIIcon, CapUIIconSize, Icon, IconProps } from '../../icon'
 export type TagCloseButtonProps = Omit<IconProps, 'name' | 'color' | 'size'> & {
   onClick: React.MouseEventHandler<HTMLDivElement> | undefined
   tagLabel: string
+  isFocused: boolean
 }
 
 const TagCloseButton: React.FC<TagCloseButtonProps> = ({
   onClick,
   className,
   tagLabel,
+  isFocused,
 }) => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+    // TODO: make swtiching between tags use left/right arrow keys instead of Tab
+    if (event.key === ' ') {
       onClick && onClick((event as unknown) as React.MouseEvent<HTMLDivElement>)
     }
   }
@@ -26,12 +29,11 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
       onKeyDown={handleKeyDown}
       className={cn('cap-tag__closeButton', className)}
       aria-label={`Remove ${tagLabel}`}
-      tabIndex={0}
       variant="link"
       backgroundColor={'transparent'}
-      opacity={0}
+      opacity={isFocused ? 1 : 0}
       position={'absolute'}
-      right={0}
+      right={isFocused ? 1 : 0}
       sx={{
         transitionProperty: 'all',
         transitionDuration: '0.2s',
