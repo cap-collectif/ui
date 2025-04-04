@@ -33,6 +33,12 @@ export const Default: Story<TagProps> = args => (
   </Tag>
 )
 
+export const Badge: Story<TagProps> = args => (
+  <Tag variantType="badge" {...args}>
+    <Tag.Label>Bonjour</Tag.Label>
+  </Tag>
+)
+
 export const WithIcon: Story<TagProps> = args => (
   <Tag {...args}>
     <Tag.LeftIcon name={CapUIIcon.Check} />
@@ -48,7 +54,9 @@ export const WithCloseButton: Story<TagProps> = args => (
 )
 
 WithCloseButton.args = {
-  onRemove: () => {},
+  onRemove: () => {
+    console.log('Remove button clicked')
+  },
 }
 
 export const WithAvatar: Story<TagProps> = args => (
