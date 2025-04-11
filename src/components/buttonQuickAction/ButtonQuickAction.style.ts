@@ -1,8 +1,11 @@
+import { CapUIBorder } from '../../styles'
 import { ButtonQuickActionVariantColor } from './ButtonQuickAction'
 
-const styles = (variantColor: ButtonQuickActionVariantColor) => ({
+const styles = (
+  variantColor: ButtonQuickActionVariantColor,
+) => ({
   bg: `action.${variantColor}.background.default`,
-  borderRadius: '100%',
+  borderRadius: CapUIBorder.Button,
 
   '.cap-icon.cap-buttonQuickAction-icon': {
     color: `action.${variantColor}.icon.default`,

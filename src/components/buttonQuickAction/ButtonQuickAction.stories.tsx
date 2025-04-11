@@ -6,6 +6,7 @@ import { CapUIIcon, CapUIIconSize } from '../icon'
 import { Flex } from '../layout'
 import { ButtonQuickAction, ButtonQuickActionProps } from './ButtonQuickAction'
 import mdx from './ButtonQuickAction.mdx'
+import { CapUIButtonQuickActionSize } from './enums'
 
 const meta: Meta = {
   title: 'Library/ButtonQuickAction',
@@ -32,47 +33,26 @@ Default.args = {
 
 export const AllSizes: Story<ButtonQuickActionProps> = args => (
   <Flex>
-    <ButtonQuickAction {...args.xs} />
     <ButtonQuickAction {...args.sm} />
     <ButtonQuickAction {...args.md} />
     <ButtonQuickAction {...args.lg} />
-    <ButtonQuickAction {...args.xl} />
-    <ButtonQuickAction {...args.xxl} />
   </Flex>
 )
 AllSizes.args = {
-  xs: {
-    size: CapUIIconSize.Xs,
-    variantColor: 'primary',
-    label: 'Editer',
-    icon: CapUIIcon.Pencil,
-  },
   sm: {
-    size: CapUIIconSize.Sm,
+    size: CapUIButtonQuickActionSize.S,
     variantColor: 'primary',
     label: 'Editer',
     icon: CapUIIcon.Pencil,
   },
   md: {
-    size: CapUIIconSize.Md,
+    size: CapUIButtonQuickActionSize.M,
     variantColor: 'primary',
     label: 'Editer',
     icon: CapUIIcon.Pencil,
   },
   lg: {
-    size: CapUIIconSize.Lg,
-    variantColor: 'primary',
-    label: 'Editer',
-    icon: CapUIIcon.Pencil,
-  },
-  xl: {
-    size: CapUIIconSize.Xl,
-    variantColor: 'primary',
-    label: 'Editer',
-    icon: CapUIIcon.Pencil,
-  },
-  xxl: {
-    size: CapUIIconSize.Xxl,
+    size: CapUIButtonQuickActionSize.L,
     variantColor: 'primary',
     label: 'Editer',
     icon: CapUIIcon.Pencil,
