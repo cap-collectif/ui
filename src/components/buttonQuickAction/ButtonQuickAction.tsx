@@ -48,7 +48,7 @@ export const ButtonQuickAction: React.FC<ButtonQuickActionProps> = React.forward
       variantColor,
       icon,
       label,
-      size = CapUIButtonQuickActionSize.M,
+      size = CapUIButtonQuickActionSize.S,
       className,
       as = 'button',
       tooltipZIndex,
