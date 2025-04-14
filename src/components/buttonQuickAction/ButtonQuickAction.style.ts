@@ -23,7 +23,7 @@ const styles = (variantColor: ButtonQuickActionVariantColor) => ({
     },
   },
 
-  '&:hover': {
+  '&:hover, &:focus-visible': {
     bg: `action.${variantColor}.background.hover`,
     '.cap-icon.cap-buttonQuickAction-icon': {
       color: `action.${variantColor}.icon.hover`,
