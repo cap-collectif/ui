@@ -36,11 +36,11 @@ export const WithHTML: Story<TooltipProps> = args => (
     <Text fontWeight="bold">Hover me</Text>
   </Tooltip>
 )
-
 WithHTML.args = {
   ...meta.args,
   label: <Text bg="blue.500">Hello world</Text>,
 }
+
 export const WithNestedZIndex: Story<TooltipProps> = args => (
   <Modal
     size={CapUIModalSize.Md}
@@ -60,7 +60,9 @@ export const WithNestedZIndex: Story<TooltipProps> = args => (
         </Modal.Header>
         <Modal.Body>
           <Tooltip {...args}>
-            <Text fontWeight="bold" width="24px" style={{whiteSpace:'pre'}} >Hover me</Text>
+            <Text fontWeight="bold" width="24px" style={{ whiteSpace: 'pre' }}>
+              Hover me
+            </Text>
           </Tooltip>
         </Modal.Body>
         <Modal.Footer

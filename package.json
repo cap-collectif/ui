@@ -113,6 +113,7 @@
     "loader-utils": "2.0.1"
   },
   "dependencies": {
+    "@ariakit/react": "^0.4.17",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
