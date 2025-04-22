@@ -332,6 +332,12 @@ const avatarColors = (theme: CapUITheme) => ({
     },
   },
 })
+const tooltipColors = (theme: CapUITheme) => ({
+  tooltip: {
+    background: theme.colors.gray.darker,
+    text: theme.colors.white,
+  },
+})
 
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
@@ -343,6 +349,7 @@ export const getThemeWithColorsToken = (theme: CapUITheme) => {
         ...tagColors(theme),
         ...actionColors(theme),
         ...avatarColors(theme),
+        ...tooltipColors(theme),
       },
     },
     theme,
