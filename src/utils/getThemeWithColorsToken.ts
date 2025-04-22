@@ -274,6 +274,13 @@ const tagColors = (theme: CapUITheme) => ({
   },
 })
 
+const tooltipColors = (theme: CapUITheme) => ({
+  tooltip: {
+    background: theme.colors.gray.darker,
+    text: theme.colors.white,
+  },
+})
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
@@ -282,6 +289,7 @@ export const getThemeWithColorsToken = (theme: CapUITheme) => {
         ...toastColors(theme),
         ...infoMessageColors(theme),
         ...tagColors(theme),
+        ...tooltipColors(theme),
       },
     },
     theme,
