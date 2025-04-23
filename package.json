@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "tsdx watch",
-    "build": "tsdx build",
+    "build": "rollup --config",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
     "lint": "eslint src --ext .ts --ext .tsx",
@@ -51,6 +51,10 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@emotion/react": "^11.4.0",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@size-limit/preset-small-lib": "^4.12.0",
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/addon-info": "^5.3.21",
@@ -60,7 +64,7 @@
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^6.5.0",
-    "@svgr/rollup": "^5.5.0",
+    "@svgr/rollup": "^8.1.0",
     "@svgr/webpack": "^5.5.0",
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/body-scroll-lock": "^3.1.0",
@@ -84,6 +88,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "rollup": "^4.40.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "run-s": "^0.0.0",
     "size-limit": "^4.12.0",
@@ -100,7 +105,7 @@
       "npx prettier --parser css --write"
     ],
     "*.{js,ts,jsx,tsx}": [
-      "npx tsdx lint src --fix"
+      "npx eslint --fix"
     ]
   },
   "resolutions": {
