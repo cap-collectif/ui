@@ -312,6 +312,20 @@ const actionColors = (theme: CapUITheme) => ({
   },
 })
 
+const avatarColors = (theme: CapUITheme) => ({
+  avatar: {
+    background: theme.colors.primary.base,
+    border: {
+      pictureGroup: theme.colors.white,
+      fullGroup: theme.colors.white,
+    },
+    text: {
+      placeholder: theme.colors.white,
+      fullGroup: theme.colors.white,
+    },
+  },
+})
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
@@ -321,6 +335,7 @@ export const getThemeWithColorsToken = (theme: CapUITheme) => {
         ...infoMessageColors(theme),
         ...tagColors(theme),
         ...actionColors(theme),
+        ...avatarColors(theme),
       },
     },
     theme,

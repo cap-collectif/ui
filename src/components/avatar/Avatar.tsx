@@ -110,10 +110,10 @@ export const Avatar = ({
 
   return (
     <AvatarInner
-      bg="primary.base"
-      color="aqua.100"
+      bg="avatar.background"
+      color="avatar.text.placeholder"
+      borderColor="avatar.border.pictureGroup"
       className={cn('cap-avatar', className)}
-      title={shouldDisplayName ? alt : name}
       {...props}
       variant={size}
     >
@@ -124,10 +124,9 @@ export const Avatar = ({
           as="img"
           width="100%"
           height="100%"
-          style={{ objectFit: 'cover' }}
+          sx={{ objectFit: 'cover' }}
           src={src}
           alt={alt ?? name}
-          title={alt ?? name}
         />
       )}
     </AvatarInner>
