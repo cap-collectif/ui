@@ -1,11 +1,12 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
+
 import { ListCard } from '../'
-import { Flex } from '../../layout'
-import { Switch } from '../../switch'
 import { ButtonGroup } from '../../buttonGroup'
 import { ButtonQuickAction } from '../../buttonQuickAction'
 import { CapUIIcon } from '../../icon'
+import { Flex } from '../../layout'
+import { Switch } from '../../switch'
 import { ListCardItemProps } from './ListCardItem'
 
 const meta: Meta = {
@@ -53,12 +54,12 @@ export const WithButtonGroup: Story<ListCardItemProps> = args => (
 
     <ButtonGroup>
       <ButtonQuickAction
-        variantColor="blue"
+        variantColor="primary"
         icon={CapUIIcon.Pencil}
         label="Éditer"
       />
       <ButtonQuickAction
-        variantColor="red"
+        variantColor="danger"
         icon={CapUIIcon.Trash}
         label="Éditer"
       />

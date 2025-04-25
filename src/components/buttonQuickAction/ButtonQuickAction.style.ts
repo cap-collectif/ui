@@ -1,23 +1,33 @@
-import colors, { BaseColorsName } from '../../styles/modules/colors'
+import { CapUIBorder } from '../../styles'
+import { ButtonQuickActionVariantColor } from './ButtonQuickAction'
 
-const styles = (variantColor: BaseColorsName) => ({
-  outline: 'none',
-  backgroundColor: 'transparent',
+const styles = (variantColor: ButtonQuickActionVariantColor) => ({
+  bg: `action.${variantColor}.background.default`,
+  borderRadius: CapUIBorder.Button,
 
-  '&:hover': {
-    backgroundColor: colors[variantColor]['150'],
+  '.cap-icon.cap-buttonQuickAction-icon': {
+    color: `action.${variantColor}.icon.default`,
+  },
 
-    '.cap-icon': {
-      color: colors[variantColor]['500'],
+  '&:disabled': {
+    cursor: 'not-allowed',
+    bg: `action.${variantColor}.background.default`,
+    '.cap-icon.cap-buttonQuickAction-icon': {
+      color: `action.${variantColor}.icon.disabled`,
     },
-
-    ':focus': {
-      boxShadow: `0 0 2px 2px ${colors[variantColor]['300']}`,
+    '&:hover': {
+      bg: `action.${variantColor}.background.default`,
+      '.cap-icon.cap-buttonQuickAction-icon': {
+        color: `action.${variantColor}.icon.disabled`,
+      },
     },
   },
-  ':focus': {
-    backgroundColor: colors[variantColor]['150'],
-    boxShadow: `0 0 2px 2px ${colors[variantColor]['300']}`,
+
+  '&:hover, &:focus-visible': {
+    bg: `action.${variantColor}.background.hover`,
+    '.cap-icon.cap-buttonQuickAction-icon': {
+      color: `action.${variantColor}.icon.hover`,
+    },
   },
 })
 

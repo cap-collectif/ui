@@ -282,7 +282,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 }}
                 icon={CapUIIcon.Trash}
                 size={CapUIIconSize.Md}
-                variantColor="red"
+                variantColor="danger"
               />
             </FileThumbnailControls>
           </ThumbContainer>
@@ -300,7 +300,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 }}
                 icon={CapUIIcon.Trash}
                 size={CapUIIconSize.Md}
-                variantColor="red"
+                variantColor="danger"
               />
             </ThumbnailControls>
           </ThumbContainer>

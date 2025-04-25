@@ -274,6 +274,44 @@ const tagColors = (theme: CapUITheme) => ({
   },
 })
 
+const actionColors = (theme: CapUITheme) => ({
+  action: {
+    primary: {
+      background: {
+        default: theme.colors.transparent,
+        hover: theme.colors.primary.lighter,
+      },
+      icon: {
+        default: theme.colors.gray.base,
+        hover: theme.colors.primary.base,
+        disabled: theme.colors.gray.light,
+      },
+    },
+    danger: {
+      background: {
+        default: theme.colors.transparent,
+        hover: theme.colors.danger.lighter,
+      },
+      icon: {
+        default: theme.colors.gray.base,
+        hover: theme.colors.danger.base,
+        disabled: theme.colors.gray.light,
+      },
+    },
+    hierarchy: {
+      background: {
+        default: theme.colors.transparent,
+        hover: theme.colors.gray.lighter,
+      },
+      icon: {
+        default: theme.colors.gray.base,
+        hover: theme.colors.gray.dark,
+        disabled: theme.colors.gray.light,
+      },
+    },
+  },
+})
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
@@ -282,6 +320,7 @@ export const getThemeWithColorsToken = (theme: CapUITheme) => {
         ...toastColors(theme),
         ...infoMessageColors(theme),
         ...tagColors(theme),
+        ...actionColors(theme),
       },
     },
     theme,
