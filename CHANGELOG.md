@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 3.0.0
+
+`2025-04-25`
+
+- 💥 Update `Avatar` Component [#494](https://github.com/cap-collectif/ui/pull/494)
+- 💥 Update `ButtonQuickAction` Component [#493](https://github.com/cap-collectif/ui/pull/493)
+- 💥 Upgrade `Typescript` v4 --> v5 [#497](https://github.com/cap-collectif/ui/pull/497)
+
 ## 2.0.0
 
 `2025-03-31`
