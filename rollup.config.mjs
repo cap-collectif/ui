@@ -1,12 +1,10 @@
-import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
-import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import svgr from '@svgr/rollup'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
-const isProduction = process.env.NODE_ENV === 'production'
+// todo fixme with correct env variable
+const isProduction = process.env.APP_ENV === 'production'
 
 export default {
   input: 'src/index.ts',
@@ -15,6 +13,7 @@ export default {
       file: 'dist/ui.esm.js',
       format: 'esm',
       sourcemap: true,
+      plugins: [terser()],
     },
     ...(isProduction
       ? []
@@ -36,9 +35,6 @@ export default {
   plugins: [
     peerDepsExternal(),
     svgr({ ref: true, icon: true }),
-    json(),
-    resolve({ preferBuiltins: true }),
-    commonjs(),
     typescript(),
   ],
   treeshake: true,
