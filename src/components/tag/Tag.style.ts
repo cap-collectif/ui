@@ -1,7 +1,15 @@
-import { BaseColorsName } from '../../styles/modules/colors'
+import { SPACING } from '../../styles/theme'
+import { TagVariantColor } from './Tag'
 
-export const getTagStyle = (colors, color: BaseColorsName) => ({
-  bg: colors[color]['150'],
-  color: colors[color]['800'],
-  '--current-shadow-color': colors[color]['200'],
+export const getTagStyle = (variant: TagVariantColor) => ({
+  bg: `tag.background.${variant}`,
+  color: `tag.text.${variant}`,
+  '--current-shadow-color': `tag.shadowColor.${variant}`,
+  '&:hover': {
+    '.cap-tag__closeButton': {
+      opacity: 1,
+      right: SPACING['1'],
+      mr: SPACING['1'],
+    },
+  },
 })

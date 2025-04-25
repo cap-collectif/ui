@@ -95,7 +95,7 @@ export const withTags: Story<DragnDropProps> = () => {
       <DragnDrop.List droppableId="list">
         {vals.map((val, index) => (
           <DragnDrop.Item draggableId={val.id} index={index} key={val.id}>
-            <Tag variantColor={'aqua'}>{val.content}</Tag>
+            <Tag variantColor={'info'}>{val.content}</Tag>
           </DragnDrop.Item>
         ))}
       </DragnDrop.List>

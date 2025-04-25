@@ -37,10 +37,10 @@ export const WithIcon: Story<InfoMessageProps> = args => (
 export const WithHTMLInTitle: Story<InfoMessageProps> = args => (
   <InfoMessage {...args}>
     <InfoMessage.Title gap={3}>
-      <Tag variantColor="blue">
+      <Tag variantColor="info">
         <Tag.Label>Bonjour</Tag.Label>
       </Tag>
-      <Tag variantColor="red">
+      <Tag variantColor="danger">
         <Tag.Label>CouCou</Tag.Label>
       </Tag>
     </InfoMessage.Title>

@@ -36,14 +36,16 @@ export function MultiValue<
   isDisabled: boolean
   removeProps: { onClick?: React.MouseEventHandler<HTMLDivElement> | undefined }
 }) {
+
   return (
     <Tag
       variantColor={
-        isDisabled ? 'gray' : props.selectProps['aria-invalid'] ? 'red' : 'blue'
+        isDisabled ? 'infoGray' : props.selectProps['aria-invalid'] ? 'danger' : 'info'
       }
-      mr={1}
-      mt={1}
+      mr={"xxs"}
+      mt={"xxs"}
       onRemove={removeProps.onClick}
+      tabIndex={0}
     >
       <Tag.Label>{props.data.label}</Tag.Label>
     </Tag>
@@ -57,6 +59,7 @@ export function Control<
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
   const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
+
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
@@ -67,7 +70,7 @@ export function Control<
             as='button'
             type="button"
             aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
-            mr={1}
+            mr={"xxs"}
             style={{ cursor: 'pointer' }}
             onClick={() => props.clearValue()}
           >
@@ -118,6 +121,7 @@ export function Select<
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
+        tabIndex={0}
         {...props}
       />
     </Box>
