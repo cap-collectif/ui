@@ -3,8 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 import svgr from '@svgr/rollup'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
-// todo fixme with correct env variable
-const isProduction = process.env.APP_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 export default {
   input: 'src/index.ts',
@@ -32,10 +31,6 @@ export default {
       plugins: [terser()],
     },
   ],
-  plugins: [
-    peerDepsExternal(),
-    svgr({ ref: true, icon: true }),
-    typescript(),
-  ],
+  plugins: [peerDepsExternal(), svgr({ ref: true, icon: true }), typescript()],
   treeshake: true,
 }
