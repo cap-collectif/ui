@@ -30,7 +30,7 @@ export default {
       file: 'dist/ui.cjs.development.js',
       format: 'cjs',
       sourcemap: true,
-      interop: 'auto',
+      interop: 'compat',
     },
     {
       file: 'dist/ui.cjs.production.min.js',
@@ -50,5 +50,6 @@ export default {
     svgr({ ref: true, icon: true }),
     typescript(),
   ],
+  compiler: { styledComponents: true },
   treeshake: true,
 }
