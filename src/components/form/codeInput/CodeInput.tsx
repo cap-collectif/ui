@@ -31,7 +31,6 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
       onComplete,
       isVerified = false,
       value,
-      id = 'Code_Input',
       ...props
     }: CodeInputProps,
     ref,

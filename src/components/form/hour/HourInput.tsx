@@ -10,7 +10,7 @@ export type HourInputProps = InputProps
 const HourInput: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   HourInputProps
->(({ id = 'cap-hour-input-id', className, width = '100px', ...props }, ref) => {
+>(({ className, width = '100px', ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
   return (
     <Input
