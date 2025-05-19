@@ -300,7 +300,7 @@ const actionColors = (theme: CapUITheme) => ({
     },
     hierarchy: {
       background: {
-        default: theme.colors.gray.white,
+        default: theme.colors.white,
         hover: theme.colors.gray.lighter,
       },
       icon: {
