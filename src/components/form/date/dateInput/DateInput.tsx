@@ -9,7 +9,7 @@ export type DateInputProps = InputProps
 const DateInput: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   DateInputProps
->(({ id = 'cap-date-input-id', className, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <Input
       type="date"
