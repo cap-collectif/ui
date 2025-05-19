@@ -278,7 +278,7 @@ const actionColors = (theme: CapUITheme) => ({
   action: {
     primary: {
       background: {
-        default: theme.colors.transparent,
+        default: theme.colors.white,
         hover: theme.colors.primary.lighter,
       },
       icon: {
@@ -289,7 +289,7 @@ const actionColors = (theme: CapUITheme) => ({
     },
     danger: {
       background: {
-        default: theme.colors.transparent,
+        default: theme.colors.white,
         hover: theme.colors.danger.lighter,
       },
       icon: {
@@ -300,7 +300,7 @@ const actionColors = (theme: CapUITheme) => ({
     },
     hierarchy: {
       background: {
-        default: theme.colors.transparent,
+        default: theme.colors.gray.white,
         hover: theme.colors.gray.lighter,
       },
       icon: {
