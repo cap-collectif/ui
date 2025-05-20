@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 3.0.1
+
+`2025-05-19`
+
+- 💄 Update `ButtonQuickAction` background color [#503](https://github.com/cap-collectif/ui/pull/503)
+- 🐛 Remove hardcoded non-unique ids (`CodeInput`, `HourInput`, `DateInput`) [#502](https://github.com/cap-collectif/ui/pull/502)
+
+
 ## 3.0.0
 
 `2025-04-25`
