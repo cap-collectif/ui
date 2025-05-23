@@ -44,7 +44,7 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
           transition={{ duration: 0.2, ease: 'easeInOut' }}
           aria-labelledby={`accordion-button-${id}`}
           id={`accordion-panel-${id}`}
-          role="region"
+          role="group"
           className={cn('cap-accordion__panel', className)}
           {...props}
         >
