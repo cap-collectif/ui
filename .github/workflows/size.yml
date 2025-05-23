@@ -4,7 +4,7 @@ jobs:
   size:
     runs-on: ubuntu-latest
     container: 
-      image: node:16
+      image: node:18
       options: --user 1001
     env:
       CI_JOB_NUMBER: 1

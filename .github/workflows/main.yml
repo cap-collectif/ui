@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['16.x']
+        node: ['18.x']
         os: [ubuntu-latest]
 
     steps:
@@ -25,10 +25,7 @@ jobs:
           install-command: yarn --frozen-lockfile --ignore-scripts
 
       - name: Lint
-        run: yarn lint
-
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: yarn run lint
 
       - name: Build
         run: yarn build

@@ -11,13 +11,11 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "tsdx watch",
-    "build": "tsdx build",
+    "build": "rollup --config",
     "ts:check": "tsc --noEmit",
-    "test": "tsdx test --passWithNoTests",
     "lint": "eslint src --ext .ts --ext .tsx",
     "prepare": "run-s husky:install build",
     "size-limit:build": "yarn install --ignore-scripts && yarn run build",
@@ -51,6 +49,8 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@emotion/react": "^11.4.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@size-limit/preset-small-lib": "^4.12.0",
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/addon-info": "^5.3.21",
@@ -60,7 +60,7 @@
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^6.5.0",
-    "@svgr/rollup": "^5.5.0",
+    "@svgr/rollup": "^8.1.0",
     "@svgr/webpack": "^5.5.0",
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/body-scroll-lock": "^3.1.0",
@@ -77,6 +77,8 @@
     "@types/styled-system__theme-get": "^5.0.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
+    "eslint": "^7.2.8",
+    "eslint-config-react-app": "^7.0.1",
     "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -84,10 +86,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "rollup": "^4.40.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "run-s": "^0.0.0",
     "size-limit": "^4.12.0",
-    "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
     "typescript": "5.8.3",
     "webpack": "^5.91.0"
@@ -100,7 +102,7 @@
       "npx prettier --parser css --write"
     ],
     "*.{js,ts,jsx,tsx}": [
-      "npx tsdx lint src --fix"
+      "npx eslint --fix"
     ]
   },
   "resolutions": {
