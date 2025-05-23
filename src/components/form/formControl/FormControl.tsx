@@ -31,7 +31,6 @@ export function useFormControlProvider(props: FormControlContext) {
       ...props,
       ...htmlProps,
       ref: forwardedRef,
-      role: 'group',
     }),
     [htmlProps],
   )
