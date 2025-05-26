@@ -27,7 +27,7 @@ export interface SelectProps extends Omit<Props, 'onChange'> {
 export function MultiValue<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   removeProps,
   isDisabled,
@@ -55,10 +55,11 @@ export function MultiValue<
 export function Control<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
+  const { isLoading, isClearable, deleteButtonAriaLabel, value } =
+    props.selectProps
 
   return (
     <components.Control {...props}>
@@ -66,23 +67,25 @@ export function Control<
       {isLoading && <Spinner mr={2} color="primary.base" />}
       {!isLoading && (
         <>
-          {isClearable && value ? <Box
-            as='button'
-            type="button"
-            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
-            mr={"xxs"}
-            style={{ cursor: 'pointer' }}
-            onClick={() => props.clearValue()}
-          >
-            <Icon
-              name={CapUIIcon.Cross}
-              size={CapUIIconSize.Md}
-              color="gray.700"
-              _hover={{ color: 'red.500' }}
-              aria-hidden
-              focusable={false}
-            />
-          </Box> : null}
+          {isClearable && value ? (
+            <Box
+              as="button"
+              type="button"
+              aria-label={deleteButtonAriaLabel || 'Supprimer la saisie'}
+              mr={'xxs'}
+              style={{ cursor: 'pointer' }}
+              onClick={() => props.clearValue()}
+            >
+              <Icon
+                name={CapUIIcon.Cross}
+                size={CapUIIconSize.Md}
+                color="gray.700"
+                _hover={{ color: 'red.500' }}
+                aria-hidden
+                focusable={false}
+              />
+            </Box>
+          ) : null}
           <Icon
             mr={3}
             style={{ cursor: 'pointer' }}
@@ -99,7 +102,7 @@ export function Control<
 export function Select<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({ className, width, ...props }: SelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
