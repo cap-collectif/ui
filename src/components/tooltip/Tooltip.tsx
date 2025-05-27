@@ -68,7 +68,15 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <>
       <TooltipReference {...tooltip} ref={children.ref} {...children.props}>
-        {referenceProps => React.cloneElement(children, referenceProps)}
+        {({ tabIndex, ...referenceProps }) =>
+          React.cloneElement(children, {
+            ...referenceProps,
+            tabIndex:
+              referenceProps.type === 'button' || children.props.as
+                ? undefined
+                : tabIndex,
+          })
+        }
       </TooltipReference>
 
       <ReakitTooltip
