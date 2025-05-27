@@ -17,7 +17,6 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
   isFocused,
 }) => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    // TODO: make swtiching between tags use left/right arrow keys instead of Tab
     if (event.key === ' ') {
       onClick && onClick(event as unknown as React.MouseEvent<HTMLDivElement>)
     }
