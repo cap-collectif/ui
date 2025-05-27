@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 3.0.4
+
+`2025-05-27`
+
+- 🐛 Fix prod build [#510](https://github.com/cap-collectif/ui/pull/510)
+- 🛠 Replace build tool - from TSDX to rollup [#499](https://github.com/cap-collectif/ui/pull/499)
+
 ## 3.0.3
 
 `2025-05-27`
