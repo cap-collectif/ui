@@ -102,7 +102,6 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       }}
       variantType={variantType}
       aria-label={`Tag ${tagLabel}`}
-      tabIndex={hasCloseButton ? 0 : -1}
       overflow={'hidden'}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
