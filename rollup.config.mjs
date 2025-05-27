@@ -37,6 +37,7 @@ export default {
       format: 'cjs',
       sourcemap: true,
       plugins: [terser()],
+      interop: 'auto',
     },
   ],
   plugins: [
