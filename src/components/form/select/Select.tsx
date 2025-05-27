@@ -11,10 +11,10 @@ import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { Spinner } from '../../spinner'
-import { Tag } from '../../tag'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
+import MultiValueTag from './MultiValueTag'
 
 export interface SelectProps extends Omit<Props, 'onChange'> {
   readonly isDisabled?: boolean
@@ -36,19 +36,13 @@ export function MultiValue<
   isDisabled: boolean
   removeProps: { onClick?: React.MouseEventHandler<HTMLDivElement> | undefined }
 }) {
-
   return (
-    <Tag
-      variantColor={
-        isDisabled ? 'infoGray' : props.selectProps['aria-invalid'] ? 'danger' : 'info'
-      }
-      mr={"xxs"}
-      mt={"xxs"}
-      onRemove={removeProps.onClick}
-      tabIndex={0}
-    >
-      <Tag.Label>{props.data.label}</Tag.Label>
-    </Tag>
+    <MultiValueTag
+      isInvalid={props.selectProps['aria-invalid'] || false}
+      isDisabled={isDisabled}
+      removeProps={removeProps}
+      label={props.data.label}
+    />
   )
 }
 
@@ -106,6 +100,44 @@ export function Select<
 >({ className, width, ...props }: SelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
+  const [currentIndex, setCurrentIndex] = React.useState<number>(0)
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const removeButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(
+      '.cap-tag__closeButton',
+    )
+
+    if (!removeButtons) {
+      return
+    }
+
+    setCurrentIndex(removeButtons.length - 1)
+
+    const currentTagIsLastTag: boolean =
+      currentIndex === removeButtons.length - 1
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      e.stopPropagation()
+      if (currentTagIsLastTag) {
+        setCurrentIndex(0)
+        ;(removeButtons[0] as HTMLElement)?.focus()
+      } else {
+        setCurrentIndex(currentIndex + 1)
+        ;(removeButtons[currentIndex + 1] as HTMLElement)?.focus()
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      e.stopPropagation()
+      if (currentIndex === 0) {
+        setCurrentIndex(removeButtons.length - 1)
+        ;(removeButtons[removeButtons.length - 1] as HTMLElement)?.focus()
+      } else {
+        setCurrentIndex(currentIndex - 1)
+        ;(removeButtons[currentIndex - 1] as HTMLElement)?.focus()
+      }
+    }
+  }
 
   return (
     <Box width={width || '100%'}>
@@ -125,6 +157,7 @@ export function Select<
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         tabIndex={0}
+        onKeyDown={handleKeyDown}
         {...props}
       />
     </Box>

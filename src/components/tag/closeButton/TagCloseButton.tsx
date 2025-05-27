@@ -19,7 +19,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
   const handleKeyDown = (event: React.KeyboardEvent) => {
     // TODO: make swtiching between tags use left/right arrow keys instead of Tab
     if (event.key === ' ') {
-      onClick && onClick((event as unknown) as React.MouseEvent<HTMLDivElement>)
+      onClick && onClick(event as unknown as React.MouseEvent<HTMLDivElement>)
     }
   }
 
@@ -40,6 +40,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
         transitionTimingFunction: '0.48s, 0.15s, 0.25s, 0.96s',
       }}
       size="xs"
+      tabIndex={-1}
     >
       <Icon name={CapUIIcon.CrossO} color="inherit" size={CapUIIconSize.Xs} />
     </Button>
