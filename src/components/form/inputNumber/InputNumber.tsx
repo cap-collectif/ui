@@ -1,12 +1,13 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../../hooks'
+import { pxToRem } from '../../../styles/modules/mixins'
 import { Box, BoxPropsOf } from '../../box'
-import { Button } from '../../button'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import S, { InputInner } from '../style'
+import S, { focusWithinStyles, InputInner } from '../style'
 
 export interface InputNumberProps extends BoxPropsOf<'input'> {
   readonly placeholder?: string
@@ -23,17 +24,24 @@ export const InputNumber = ({
 }: InputNumberProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const inputProps = useFormControl<HTMLInputElement>(props)
-  const [isHover, setIsHover] = React.useState(false)
-  const { variantSize } = inputProps
+  const { variantSize, disabled } = inputProps
+  const isEmpty = props.value !== 0 && !props.value
+  const { colors } = useTheme()
+
   return (
-    <Box position="relative" width={width || '104px'}>
-      <Button
+    <InputInner
+      sx={focusWithinStyles(!!disabled, isEmpty, inputProps.readOnly, colors)}
+      variant={variantSize}
+      as="div"
+      display="flex"
+      alignItems="center"
+      width={width || pxToRem(104)}
+    >
+      <Box
+        as="button"
+        aria-hidden
+        tabIndex={-1}
         disabled={inputProps.disabled}
-        variant="tertiary"
-        backgroundColor="unset"
-        position="absolute"
-        right={3}
-        bottom={variantSize === CapInputSize.Sm ? 1 : 2}
         onClick={() => {
           inputRef.current?.focus()
           inputRef.current?.setAttribute(
@@ -47,35 +55,31 @@ export const InputNumber = ({
             )
           }
         }}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
       >
         <Icon
-          color="gray.500"
-          _hover={{ color: 'gray.900' }}
-          name={CapUIIcon.ArrowDown}
-          size={CapUIIconSize.Xs}
+          color="inherit"
+          _hover={{ color: 'gray.black' }}
+          name={CapUIIcon.Minus}
+          size={CapUIIconSize.Sm}
         />
-      </Button>
-      <InputInner
-        {...inputProps}
-        sx={S}
-        variant={variantSize}
-        ref={inputRef}
+      </Box>
+      <Box
         as="input"
+        {...inputProps}
+        ref={inputRef}
         type="number"
-        className={cn('cap-input-number', className, { hover: isHover })}
+        className={cn('cap-input-number', className)}
         width="100%"
+        bg="inherit"
+        textAlign="center"
         onChange={onChange}
         {...props}
       />
-      <Button
+      <Box
+        as="button"
+        aria-hidden
+        tabIndex={-1}
         disabled={inputProps.disabled}
-        variant="tertiary"
-        bg="none"
-        position="absolute"
-        right={3}
-        top={variantSize === CapInputSize.Sm ? 1 : 2}
         onClick={() => {
           inputRef.current?.focus()
           inputRef.current?.setAttribute(
@@ -89,17 +93,15 @@ export const InputNumber = ({
             )
           }
         }}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
       >
         <Icon
-          color="gray.500"
-          _hover={{ color: 'gray.900' }}
-          name={CapUIIcon.ArrowUp}
-          size={CapUIIconSize.Xs}
+          color="inherit"
+          _hover={{ color: 'gray.black' }}
+          name={CapUIIcon.Add}
+          size={CapUIIconSize.Sm}
         />
-      </Button>
-    </Box>
+      </Box>
+    </InputInner>
   )
 }
 InputNumber.displayName = 'InputNumber'

@@ -3,10 +3,15 @@ import type { CSSObjectWithLabel, GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { CapUIFontFamily, CapUILineHeight } from '../../styles'
+import { CapUILineHeight } from '../../styles'
 import { Colors } from '../../styles/modules/colors'
 import { SPACING, ZINDEX } from '../../styles/theme'
-import { FONT_FAMILIES, LINE_HEIGHTS } from '../../styles/theme/typography'
+import {
+  CapUIFontSize,
+  FONT_FAMILIES,
+  LINE_HEIGHTS,
+} from '../../styles/theme/typography'
+import { ExtendedColors } from '../../utils/getThemeWithColorsToken'
 import { Box } from '../box'
 import { CapInputSize } from './enums'
 
@@ -14,82 +19,107 @@ export const InputInner = styled(Box)(
   variant({
     variants: {
       sm: {
-        px: 3,
-        py: 1,
+        px: 'sm',
+        py: 'xxs',
+        fontSize: CapUIFontSize.BodyRegular,
       },
       md: {
-        px: 3,
-        py: 2,
+        px: 'sm',
+        py: 'xs',
+        fontSize: CapUIFontSize.BodyLarge,
       },
     },
   }),
 )
 
-const styles: SystemStyleObject = {
-  border: 'normal',
-  borderRadius: 'normal',
-  borderColor: 'gray.300',
-
-  fontFamily: CapUIFontFamily.Input,
+const styles = (colors: ExtendedColors, isEmpty?: boolean) => ({
+  borderTopLeftRadius: 'xxs',
+  borderTopRightRadius: 'xxs',
+  boxShadow: `inset 0px -1px 0px 0px ${
+    colors.input.border[isEmpty ? 'placeholder' : 'default']
+  }`,
   lineHeight: CapUILineHeight.M,
-  color: 'gray.900',
-  bg: 'white',
-
-  '&[type=number]': { paddingRight: 32 },
-  '&[type=date]': {
-    color: 'gray.900',
-  },
+  color: 'text.primary',
+  bg: isEmpty ? 'input.background.placeholder' : 'input.background.default',
 
   '&::placeholder': {
-    color: 'gray.600',
-    fontFamily: CapUIFontFamily.Input,
+    color: 'text.tertiary',
     lineHeight: CapUILineHeight.M,
   },
 
-  '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'primary.base',
-    outline: 'none !important',
-    boxShadow: 'none !important',
-  },
+  '&[type=number]': { paddingRight: 32 },
 
-  '&[aria-invalid="true"]': {
-    bg: 'red.150',
-    borderColor: 'red.500',
-    '&:focus,&[aria-selected="true"],&:active': {
-      bg: 'white',
-    },
+  '&:focus,&:focus-visible,&[aria-selected="true"],&:active': {
+    outline: 'none',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.selected}`,
+    bg: 'input.background.selected',
   },
 
   '&:disabled': {
-    bg: 'gray.100',
-    borderColor: 'gray.200',
-    color: 'gray.500',
+    bg: 'input.background.disable',
+    color: 'text.disable',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.disable}`,
+    '&::placeholder': { color: 'text.disable' },
   },
-}
+
+  '&[readonly]': {
+    bg: 'input.background.readonly',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.readonly}`,
+    '&::placeholder': { color: 'text.tertiary' },
+  },
+})
 
 export const focusWithinStyles = (
-  isInvalid: boolean,
   isDisabled: boolean,
+  isEmpty: boolean,
+  isReadonly: boolean,
+  colors: ExtendedColors,
 ): SystemStyleObject => ({
-  border: 'normal',
-  borderRadius: 'normal',
-  borderColor: isDisabled ? 'gray.200' : isInvalid ? 'red.500' : 'gray.300',
-
-  fontFamily: CapUIFontFamily.Input,
+  borderTopLeftRadius: 'xxs',
+  borderTopRightRadius: 'xxs',
+  boxShadow: `inset 0px -1px 0px 0px ${
+    colors.input.border[
+      isReadonly
+        ? 'readonly'
+        : isDisabled
+        ? 'disable'
+        : isEmpty
+        ? 'placeholder'
+        : 'default'
+    ]
+  }`,
   lineHeight: CapUILineHeight.M,
-  color: isDisabled ? 'gray.500' : 'gray.900',
-  bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
+  color: isDisabled ? 'text.disable' : 'text.primary',
+  bg: `input.background.${
+    isReadonly
+      ? 'readonly'
+      : isDisabled
+      ? 'disable'
+      : isEmpty
+      ? 'placeholder'
+      : 'default'
+  }`,
 
   '& > input::placeholder': {
-    color: 'gray.600',
-    fontFamily: CapUIFontFamily.Input,
+    color: isDisabled ? 'text.disable' : 'text.tertiary',
     lineHeight: CapUILineHeight.M,
   },
 
-  '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'primary.base',
-    bg: 'white',
+  '.cap-icon.cap-input-icon': {
+    color: `input.icon.${
+      isDisabled ? 'disable' : isEmpty ? 'placeholder' : 'default'
+    }`,
+    '&:hover': { color: isDisabled ? 'input.icon.disable' : 'gray.black' },
   },
+
+  '&:focus-within': {
+    boxShadow: `inset 0px -1px 0px 0px ${
+      colors.input.border[isReadonly ? 'readonly' : 'selected']
+    }`,
+    bg: 'input.background.selected',
+  },
+
+  '& > input': { boxShadow: 'none', outline: 'none' },
 })
 
 export function reactSelectStyle<
@@ -147,7 +177,7 @@ export function reactSelectStyle<
       margin: 0,
       whiteSpace: 'nowrap',
       color: colors.gray['600'],
-      fontFamily: FONT_FAMILIES.input,
+      fontFamily: FONT_FAMILIES.body,
       lineHeight: LINE_HEIGHTS.M,
     }),
     input: (
@@ -156,7 +186,7 @@ export function reactSelectStyle<
     ) => ({
       ...base,
       lineHeight: LINE_HEIGHTS.M,
-      fontFamily: FONT_FAMILIES.input,
+      fontFamily: FONT_FAMILIES.body,
       padding: 0,
       margin: 0,
       marginTop: isMulti && hasValue ? SPACING[1] : 0,
@@ -170,14 +200,14 @@ export function reactSelectStyle<
       },
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
-      fontFamily: FONT_FAMILIES.input,
+      fontFamily: FONT_FAMILIES.body,
       lineHeight: LINE_HEIGHTS.M,
     }),
     singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       margin: 0,
       color: colors.gray['900'],
-      fontFamily: FONT_FAMILIES.input,
+      fontFamily: FONT_FAMILIES.body,
       lineHeight: LINE_HEIGHTS.M,
     }),
     indicatorSeparator: (base: CSSObjectWithLabel) => ({

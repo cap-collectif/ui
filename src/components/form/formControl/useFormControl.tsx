@@ -27,6 +27,7 @@ export interface UseFormControlProps<T extends HTMLElement>
   onBlur?: FocusEventHandler<T>
   disabled?: boolean
   required?: boolean
+  readOnly?: boolean
   variantSize?: CapInputSize
   'aria-describedby'?: string
 }
@@ -39,12 +40,15 @@ function useFormControlProps<T extends HTMLElement>(
     id,
     disabled,
     required,
+    readOnly,
     isRequired,
     isInvalid,
     isDisabled,
+    isReadonly,
     onFocus,
     onBlur,
     variantSize,
+    inputId,
     ...rest
   } = props
   return {
@@ -54,6 +58,8 @@ function useFormControlProps<T extends HTMLElement>(
     isDisabled: disabled ?? isDisabled ?? field?.isDisabled,
     isRequired: required ?? isRequired ?? field?.isRequired,
     isInvalid: isInvalid ?? field?.isInvalid,
+    isReadonly: readOnly ?? isReadonly ?? field?.isReadonly,
+    inputId,
     onFocus: callAllHandlers(field?.onFocus, onFocus),
     onBlur: callAllHandlers(field?.onBlur, onBlur),
   }
@@ -67,12 +73,14 @@ export function useFormControl<T extends HTMLElement>(
     isInvalid,
     isRequired,
     variantSize,
+    isReadonly,
     ...rest
   } = useFormControlProps(props)
   return {
     ...rest,
     variantSize: variantSize || CapInputSize.Sm,
     disabled: isDisabled,
+    readOnly: isReadonly,
     required: isRequired,
     'aria-invalid': isInvalid || undefined,
     'aria-required': isRequired || undefined,

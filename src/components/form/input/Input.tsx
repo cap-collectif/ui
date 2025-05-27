@@ -1,9 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../../hooks'
 import type { PolymorphicBoxProps } from '../../box/Box'
 import Box from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
+import { Tooltip } from '../../tooltip'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { focusWithinStyles, InputInner } from '../style'
@@ -11,21 +13,29 @@ import S, { focusWithinStyles, InputInner } from '../style'
 export interface InputProps extends PolymorphicBoxProps<'input'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
+  readonly isReadonly?: boolean
   readonly variantSize?: CapInputSize
-  readonly onClickActions?: Array<{ icon: CapUIIcon; onClick: () => void }>
+  readonly onClickActions?: Array<{
+    icon: CapUIIcon
+    onClick: () => void
+    label: string
+  }>
 }
 
 export const Input: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   InputProps
 >(({ className, onClickActions, ...props }, ref) => {
+  const { colors } = useTheme()
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { disabled } = inputProps
+  const isEmpty = props.value !== 0 && !props.value
+
   if ((props.type && props.type !== 'text') || !onClickActions) {
     return (
       <InputInner
         {...inputProps}
-        sx={S}
+        sx={S(colors, isEmpty)}
         variant={inputProps.variantSize}
         ref={ref}
         as="input"
@@ -38,14 +48,15 @@ export const Input: React.FC<InputProps> = React.forwardRef<
 
   return (
     <InputInner
-      sx={focusWithinStyles(!!inputProps['aria-invalid'], !!disabled)}
+      sx={focusWithinStyles(!!disabled, isEmpty, inputProps.readOnly, colors)}
       variant={inputProps.variantSize}
       as="div"
       display="flex"
-      className={cn('cap-input', className)}
+      className={cn('cap-input-outer', className)}
     >
       <Box
         {...inputProps}
+        className="cap-input"
         as="input"
         width="100%"
         ref={ref}
@@ -54,20 +65,23 @@ export const Input: React.FC<InputProps> = React.forwardRef<
       />
       {onClickActions
         ? onClickActions.map(action => (
-            <Box
-              as="button"
-              onClick={action.onClick}
-              type="button"
-              disabled={disabled}
-              sx={{ cursor: disabled ? 'default' : 'pointer' }}
-              ml={4}
-            >
-              <Icon
-                name={action.icon}
-                size={CapUIIconSize.Sm}
-                color="gray.500"
-              />
-            </Box>
+            <Tooltip label={action.label}>
+              <Box
+                as="button"
+                onClick={action.onClick}
+                type="button"
+                disabled={disabled}
+                sx={{ cursor: disabled ? 'default' : 'pointer' }}
+                ml={4}
+              >
+                <Icon
+                  className="cap-input-icon"
+                  name={action.icon}
+                  size={CapUIIconSize.Sm}
+                  color="inherit"
+                />
+              </Box>
+            </Tooltip>
           ))
         : null}
     </InputInner>

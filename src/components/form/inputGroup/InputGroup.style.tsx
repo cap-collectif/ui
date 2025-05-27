@@ -12,6 +12,7 @@ const styles = (
     },
     '& > .cap-form-label': {
       flex: '100%',
+      mb: 1,
     },
     '& > .cap-form-guideline': {
       flex: '100%',

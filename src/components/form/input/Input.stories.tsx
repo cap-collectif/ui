@@ -24,11 +24,15 @@ const meta: Meta = {
   title: 'Library/Form/Input',
   component: Input,
   args: {
+    variantSize: 'sm',
     placeholder: 'Placeholder...',
     errorMessage: 'Error info.',
     isRequired: true,
     isInvalid: false,
+    isDisabled: false,
+    isReadonly: false,
   },
+  argTypes: { variantSize: { control: 'select', options: ['sm', 'md'] } },
   parameters: {
     controls: { expanded: true },
     docs: {
@@ -41,9 +45,25 @@ export default meta
 
 export const Default: Story<InputProps> = args => (
   <FormControl {...args}>
-    <Input />
+    <Input placeholder={args.placeholder} />
   </FormControl>
 )
+
+export const Disabled: Story<InputProps> = args => (
+  <FormControl {...args}>
+    <FormLabel htmlFor="name" label="Label" />
+    <Input name="name" placeholder={args.placeholder} value="John Doe" />
+  </FormControl>
+)
+Disabled.args = { isDisabled: true }
+
+export const Readonly: Story<InputProps> = args => (
+  <FormControl {...args}>
+    <FormLabel htmlFor="name" label="Label" />
+    <Input name="name" placeholder={args.placeholder} value="John Doe" />
+  </FormControl>
+)
+Readonly.args = { isReadonly: true }
 
 export const WithAnErrorMessage: Story<Args> = ({
   errorMessage,
@@ -148,8 +168,16 @@ export const WithOnClickActionsExample: Story<Args> = ({
         }
         value={value}
         onClickActions={[
-          { icon: CapUIIcon.Trash, onClick: () => setValue('') },
-          { icon: CapUIIcon.Pencil, onClick: () => setValue('clickity') },
+          {
+            icon: CapUIIcon.Trash,
+            onClick: () => setValue(''),
+            label: 'Supprimer',
+          },
+          {
+            icon: CapUIIcon.Pencil,
+            onClick: () => setValue('clickity'),
+            label: 'Edit stuff',
+          },
         ]}
       />
     </FormControl>

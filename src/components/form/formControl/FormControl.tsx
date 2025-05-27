@@ -10,19 +10,31 @@ export interface FormControlProps extends FlexProps {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly isRequired?: boolean
+  readonly isReadonly?: boolean
   readonly variantSize?: CapInputSize
+  readonly inputId?: string
 }
 
 export interface FormControlContext {
   isRequired?: boolean
   isDisabled?: boolean
   isInvalid?: boolean
+  isReadonly?: boolean
   variantSize?: CapInputSize
   id?: string
+  inputId?: string
 }
 
 export function useFormControlProvider(props: FormControlContext) {
-  const { isRequired, isInvalid, isDisabled, variantSize, ...htmlProps } = props
+  const {
+    isRequired,
+    isInvalid,
+    isDisabled,
+    isReadonly,
+    variantSize,
+    inputId,
+    ...htmlProps
+  } = props
 
   const [isFocused, setFocus] = useBoolean()
 
@@ -41,10 +53,12 @@ export function useFormControlProvider(props: FormControlContext) {
     isInvalid: !!isInvalid,
     isDisabled: !!isDisabled,
     isFocused: !!isFocused,
+    isReadonly: !!isReadonly,
     onFocus: setFocus.on,
     onBlur: setFocus.off,
     htmlProps,
     getRootProps,
+    inputId,
   }
 }
 
@@ -76,7 +90,7 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef<
       <Flex
         width={props.width || '100%'}
         direction="column"
-        spacing={1}
+        spacing="xxs"
         {...getRootProps({}, ref)}
         className={cn('cap-form-control', props.className)}
       />

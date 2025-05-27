@@ -333,17 +333,60 @@ const avatarColors = (theme: CapUITheme) => ({
   },
 })
 
+const inputColors = (theme: CapUITheme) => ({
+  input: {
+    background: {
+      placeholder: theme.colors.gray.background,
+      default: theme.colors.gray.background,
+      selected: theme.colors.gray.white,
+      disable: theme.colors.gray.background,
+      readonly: theme.colors.gray.white,
+    },
+    border: {
+      placeholder: theme.colors.gray.base,
+      default: theme.colors.gray.base,
+      selected: theme.colors.primary.base,
+      disable: theme.colors.gray.lighter,
+      readonly: theme.colors.gray.lighter,
+    },
+    icon: {
+      placeholder: theme.colors.gray.base,
+      default: theme.colors.gray.dark,
+      selected: theme.colors.gray.dark,
+      disable: theme.colors.gray.light,
+      readonly: theme.colors.gray.light,
+    },
+  },
+})
+
+const textColors = (theme: CapUITheme) => ({
+  text: {
+    primary: theme.colors.gray.black,
+    secondary: theme.colors.gray.darker,
+    tertiary: theme.colors.gray.dark,
+    disable: theme.colors.gray.light,
+    inverse: theme.colors.gray.white,
+    error: theme.colors.danger.base,
+  },
+})
+
+const getColors = (theme: CapUITheme) => ({
+  ...buttonColors(theme),
+  ...toastColors(theme),
+  ...infoMessageColors(theme),
+  ...tagColors(theme),
+  ...actionColors(theme),
+  ...avatarColors(theme),
+  ...inputColors(theme),
+  ...textColors(theme),
+})
+
+export type ExtendedColors = ReturnType<typeof getColors>
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
-      colors: {
-        ...buttonColors(theme),
-        ...toastColors(theme),
-        ...infoMessageColors(theme),
-        ...tagColors(theme),
-        ...actionColors(theme),
-        ...avatarColors(theme),
-      },
+      colors: getColors(theme),
     },
     theme,
   ]) as CapUITheme

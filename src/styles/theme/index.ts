@@ -152,7 +152,7 @@ export enum CapUIBorder {
 
 export type ThemeBordersValues = keyof typeof BORDERS | (string & {})
 
-export const capuiTheme: DefaultTheme = {
+export const capuiTheme: Omit<DefaultTheme, 'colors'> = {
   ...typography,
   colors,
   breakpoints: [

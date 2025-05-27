@@ -71,6 +71,10 @@ interface AppLineHeight {
   lineHeight?: ResponsiveValue<CapUILineHeight | ThemeLineHeightsValues>
 }
 
+interface AppForm {
+  htmlFor?: string
+}
+
 interface AppLetterSpacing {
   letterSpacing?: ResponsiveValue<
     CapUILetterSpacing | ThemeLetterSpacingsValues
@@ -278,7 +282,8 @@ type ModifiedStyledSystemProps = AppSizeProps &
   AppFontWeight &
   AppFontFamily &
   AppLineHeight &
-  AppZIndex
+  AppZIndex &
+  AppForm
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
@@ -354,7 +359,7 @@ export const Box = styled('div').withConfig({
         },
         sx ?? {},
         {
-          '&:focus-visible': {
+          '&:focus-visible:not(.cap-input,.cap-textarea,.cap-input-number)': {
             outline: '2px #fff solid',
             outlineOffset: 0,
             boxShadow: `0 0 0 4px ${colors?.primary?.dark || '#000'}`
