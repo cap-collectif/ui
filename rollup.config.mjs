@@ -37,6 +37,7 @@ export default {
       format: 'cjs',
       sourcemap: true,
       plugins: [terser()],
+      interop: 'auto',
     },
   ],
   plugins: [
@@ -50,6 +51,5 @@ export default {
     svgr({ ref: true, icon: true }),
     typescript(),
   ],
-  compiler: { styledComponents: true },
   treeshake: true,
 }

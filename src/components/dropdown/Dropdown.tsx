@@ -11,6 +11,7 @@ const Dropdown = ({ width, className, children, ...props }: DropDownProps) => {
   return (
     <DropdownList
       as="ul"
+      // @ts-ignore styled-component issues
       width={width}
       className={cn('cap-dropdown', className)}
       {...props}
