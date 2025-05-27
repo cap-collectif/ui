@@ -6,7 +6,6 @@ import { CapUIModalSize, Modal } from '../modal'
 import { Heading } from '../typography'
 import Text from '../typography/Text'
 import { Tooltip, TooltipProps } from './'
-import mdx from './Tooltip.mdx'
 
 const meta: Meta<TooltipProps> = {
   title: 'Library/Tooltip',
@@ -17,9 +16,6 @@ const meta: Meta<TooltipProps> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
