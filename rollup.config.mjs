@@ -50,6 +50,5 @@ export default {
     svgr({ ref: true, icon: true }),
     typescript(),
   ],
-  compiler: { styledComponents: true },
   treeshake: true,
 }
