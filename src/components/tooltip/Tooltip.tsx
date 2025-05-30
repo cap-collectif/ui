@@ -36,10 +36,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
         className="link"
         render={<Link href="#" />}
         ref={children.ref}
-        aria-label={typeof label === 'string' ? label : undefined} // todo: handle case when label is html
+        aria-label={
+          typeof label === 'string' ? label : props['aria-label'] ?? undefined
+        }
         {...children.props}
       >
-        {referenceProps => React.cloneElement(children, referenceProps)} TOTO
+        {children}
       </TooltipAnchor>
       <AriakitTooltip
         className={cn('cap-tooltip', className)}
@@ -54,7 +56,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
             textAlign="center"
             lineHeight={CapUILineHeight.S}
             fontSize={CapUIFontSize.Caption}
-            p={'xxs'}
+            p="xxs"
             bg="tooltip.background"
             color="tooltip.text"
             borderRadius="xxs"
