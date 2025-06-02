@@ -10,7 +10,6 @@ import * as React from 'react'
 import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { ZINDEX } from '../../styles/theme'
 import { BoxProps } from '../box'
-import { Link } from '../link'
 import Text from '../typography/Text'
 
 export interface TooltipProps extends BoxProps {
@@ -33,8 +32,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <TooltipProvider>
       <TooltipAnchor
-        className="link"
-        render={<Link href="#" />}
         ref={children.ref}
         aria-label={
           typeof label === 'string' ? label : props['aria-label'] ?? undefined
