@@ -48,7 +48,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         }}
       >
         <TooltipArrow style={{ fill: 'tooltip.background' }} />
-        {typeof label === 'string' && (
+        {typeof label === 'string' ? (
           <Text
             textAlign="center"
             lineHeight={CapUILineHeight.S}
@@ -61,8 +61,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
           >
             {label}
           </Text>
+        ) : (
+          label
         )}
-        {typeof label !== 'string' && label}
       </AriakitTooltip>
     </TooltipProvider>
   )
