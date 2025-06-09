@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 4.0.0
+
+`2025-06-09`
+
+- 🛠 Improve `Tag` accessibility + implement design tokens [#495](https://github.com/cap-collectif/ui/pull/495)
+
 ## 3.0.4
 
 `2025-05-27`
@@ -28,7 +34,7 @@ To better understand the changelog, here are some legends we use:
 
 `2025-05-23`
 
-- 🐛 Improve accesibility roles [#505](https://github.com/cap-collectif/ui/pull/505)
+- 🐛 Improve accessibility roles [#505](https://github.com/cap-collectif/ui/pull/505)
 
 ## 3.0.1
 
