@@ -34,12 +34,14 @@ const meta: Meta = {
     isRequired: true,
     isInvalid: false,
     isMulti: false,
+    isDisabled: false,
   },
   argTypes: {
     menuIsOpen: {
       options: [undefined, true, false],
       control: { type: 'radio' },
     },
+    variantSize: { control: 'select', options: ['sm', 'md'] },
   },
   parameters: {
     controls: { expanded: true },

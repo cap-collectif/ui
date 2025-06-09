@@ -64,6 +64,7 @@ export const WithLabel: Story<Args> = ({
         isVerified={isVerified}
         title="Inserez un code"
         {...args}
+        id="Code_Input"
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -156,7 +157,7 @@ export const Verified: Story<Args> = ({
         />
 
         <Box
-          color="green.500"
+          color="text.primary"
           fontFamily={CapUIFontFamily.Body}
           lineHeight="normal"
           fontSize={CapUIFontSize.BodyRegular}

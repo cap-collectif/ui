@@ -4,7 +4,6 @@ import React, { FC } from 'react'
 import type { DateRangePickerShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
-import { useHotkeys } from 'react-hotkeys-hook'
 
 import type { BoxPropsOf } from '../../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
@@ -57,24 +56,25 @@ const DateRange: FC<DateRangeProps> = ({
   onClose,
   ...props
 }) => {
-  const [
-    focusedInput,
-    setFocusedInput,
-  ] = React.useState<FocusedInputShape | null>(null)
+  const [focusedInput, setFocusedInput] =
+    React.useState<FocusedInputShape | null>(null)
 
   const inputProps = useFormControl<HTMLInputElement>({
     ...props,
     disabled: typeof props.disabled === 'string' ? undefined : props.disabled,
   })
-  // The library doesn't handle closing the calendar after Tabbing out of the input
-  // https://github.com/airbnb/react-dates/issues/1809
-  useHotkeys('esc', () => setFocusedInput(null))
+
+  const isEmpty = !value || (!value.endDate && !value.startDate)
 
   return (
     <DateRangeBox
       className={cn('cap-date-range', className)}
       isInvalid={!!inputProps['aria-invalid']}
+      isEmpty={isEmpty}
       variant={inputProps.variantSize}
+      onKeyUp={e => {
+        if (e.key === 'Escape') setFocusedInput(null)
+      }}
     >
       <DateRangePicker
         disabled={inputProps.disabled || props.disabled}
@@ -96,9 +96,15 @@ const DateRange: FC<DateRangeProps> = ({
         onClose={onClose}
         customArrowIcon={
           <Icon
-            color="gray.700"
+            color={`input.icon.${
+              inputProps.disabled
+                ? 'disable'
+                : isEmpty
+                ? 'placeholder'
+                : 'default'
+            }`}
             name={CapUIIcon.LongArrowRight}
-            size={CapUIIconSize.Sm}
+            size={CapUIIconSize.Md}
           />
         }
       />

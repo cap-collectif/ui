@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { CapUILineHeight } from '../../../../styles'
+import { pxToRem } from '../../../../styles/modules/mixins'
 import { Box } from '../../../box'
 import { commonStyle, DateBoxProps, variantDate } from '../Date.style'
 
@@ -854,84 +854,76 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     fill: #cacccd;
   }
 
-  /*
-  Custom Code for the date Range component
-  Quick Explanation : NextJs doesn't accept packages importing CSS from node_modules so we had to put our CSS in JS 
-  by creating this file with the first part being most of the datepicker.css file and the second part is our own custom CSS
-   */
-
   .DateRangePickerInput {
-    border: ${props => props.theme.borders.normal};
-    border-radius: ${props => props.theme.radii.normal}px;
-    border-color: ${props => props.theme.colors.gray['300']};
-    font-family: ${props => props.theme.fonts.input};
-    line-height: 24px;
-    background-color: white;
-    color: ${props => props.theme.colors.gray['900']};
+    border: none;
+    border-top-left-radius: ${props => props.theme.radii.normal}px;
+    border-top-right-radius: ${props => props.theme.radii.normal}px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding-right: ${props => props.theme.space.sm};
+    box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border[props.isEmpty ? 'placeholder' : 'default']};
+    line-height: ${props => props.theme.lineHeights.M};
+    background-color: ${props => props.theme.colors.input.background.default};
+
+    .DateRangePickerInput_calendarIcon svg {
+      color: ${props =>
+        props.theme.colors.input.icon[
+          props.isEmpty ? 'placeholder' : 'default'
+        ]};
+    }
 
     &:focus-within {
-      border-color: ${props => props.theme.colors.primary.base};
+      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border.selected};
+      background-color: ${props =>
+        props.theme.colors.input.background.selected};
     }
 
     &__disabled {
-      background-color: ${props => props.theme.colors.gray['100']};
-      border-color: ${props => props.theme.colors.gray['200']};
-
-      &:hover,
-      &.hover {
-        border-color: ${props => props.theme.colors.gray['200']};
-      }
+      background-color: ${props => props.theme.colors.input.background.disable};
+      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border.disable};
 
       .DateRangePickerInput_calendarIcon {
         cursor: default;
+        svg {
+          color: ${props => props.theme.colors.input.icon.disable};
+        }
       }
     }
-
-    ${props =>
-      props.isInvalid &&
-      `
-      background-color: ${props.theme.colors.red['150']};
-      border-color: ${props.theme.colors.red['500']};
-      &:hover,&.hover {
-        border-color:${props.theme.colors.red['500']};
-      }
-      &:focus-within{
-        background-color: 'white';
-        border-color: ${props.theme.colors.red['500']};
-      }
-    `}
   }
 
   .DateInput {
-    width: 100px;
+    width: ${pxToRem(100)};
     background: transparent;
   }
 
   .DateInput_input {
     font-weight: ${props => props.theme.fontWeights.normal};
-    font-size: ${props => props.theme.fontSizes.BodyRegular};
-    font-family: ${props => props.theme.fonts.input};
-    line-height: ${CapUILineHeight.M};
-    color: ${props => props.theme.colors.gray['900']};
+    font-size: ${props =>
+      props.variant === 'sm'
+        ? props.theme.fontSizes.BodyRegular
+        : props.theme.fontSizes.BodyLarge};
+    line-height: ${props => props.theme.lineHeights.M};
+    color: ${props => props.theme.colors.text.primary};
     background-color: transparent;
     border-bottom: none;
     padding: 0;
-    width: 90px;
+    width: ${pxToRem(90)};
 
     &::placeholder {
-      color: ${props => props.theme.colors.gray['600']};
-      font-family: ${props => props.theme.fonts.input};
-      line-height: ${CapUILineHeight.M};
+      color: ${props => props.theme.colors.text.tertiary};
+      line-height: ${props => props.theme.lineHeights.M};
     }
 
     &:disabled {
-      background-color: ${props => props.theme.colors.gray['100']};
       font-style: normal;
+      &::placeholder {
+        color: ${props => props.theme.colors.text.disable};
+      }
     }
   }
 
   .DateInput_input__disabled {
-    color: ${props => props.theme.colors.gray['500']};
+    color: ${props => props.theme.colors.text.disable};
   }
 
   ${props => variantDate[props.variant]}

@@ -5,10 +5,12 @@ import { variant } from 'styled-system'
 
 import { CapUILineHeight } from '../../styles'
 import { Colors } from '../../styles/modules/colors'
+import { pxToRem } from '../../styles/modules/mixins'
 import { SPACING, ZINDEX } from '../../styles/theme'
 import {
   CapUIFontSize,
   FONT_FAMILIES,
+  FONT_SIZES,
   LINE_HEIGHTS,
 } from '../../styles/theme/typography'
 import { ExtendedColors } from '../../utils/getThemeWithColorsToken'
@@ -125,117 +127,96 @@ export const focusWithinStyles = (
 export function reactSelectStyle<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
-  colors: Colors,
-  isInvalid: boolean | undefined,
-  isDisabled: boolean | undefined,
+  colors: ExtendedColors & Colors,
   variantSize: CapInputSize,
   isSearch?: boolean,
 ): StylesConfig<Option, IsMulti, Group> {
-  const disabledStyles = isDisabled
-    ? {
-        background: colors.gray['100'],
-        borderColor: colors.gray['200'],
-        color: colors.gray['500'],
-      }
-    : {}
   return {
-    control: (
-      base: CSSObjectWithLabel,
-      { isFocused }: { isFocused: boolean },
-    ) => ({
+    control: (base, { isFocused, hasValue, isDisabled }) => ({
       ...base,
       minHeight: 'unset',
-      boxShadow: 'none',
-      background: isInvalid && !isFocused ? colors.red['150'] : 'white',
-      borderColor: isInvalid
-        ? colors.red['600']
-        : isFocused
-        ? colors.primary.base
-        : isSearch
-        ? colors.gray['500']
-        : colors.gray['300'],
-      '&:hover': {
-        borderColor: isInvalid ? colors.red['500'] : '',
-      },
-      ...disabledStyles,
+      border: 'none',
+      borderRadius: 'none',
+      background: colors.input.background[isFocused ? 'selected' : 'default'],
+      boxShadow: `inset 0px -1px 0px 0px ${
+        colors.input.border[
+          isFocused
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : hasValue
+            ? 'default'
+            : 'placeholder'
+        ]
+      }`,
     }),
-    valueContainer: (
-      base: CSSObjectWithLabel,
-      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
-    ) => ({
+    valueContainer: (base, { isMulti, hasValue }) => ({
       ...base,
-      paddingLeft: SPACING[isSearch ? 1 : 3],
-      paddingRight: SPACING[3],
-      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
-      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
-      marginTop: isMulti && hasValue ? '-4px' : 0,
+      paddingLeft: SPACING[isSearch ? 'xxs' : 'sm'],
+      paddingRight: SPACING['sm'],
+      paddingTop: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      marginTop: isMulti && hasValue ? pxToRem(-4) : 0,
     }),
-    placeholder: (base: CSSObjectWithLabel) => ({
+    placeholder: base => ({
       ...base,
       margin: 0,
       whiteSpace: 'nowrap',
-      color: colors.gray['600'],
-      fontFamily: FONT_FAMILIES.body,
+      color: colors.text.tertiary,
       lineHeight: LINE_HEIGHTS.M,
     }),
-    input: (
-      base: CSSObjectWithLabel,
-      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
-    ) => ({
+    input: (base, { isMulti, hasValue }) => ({
       ...base,
       lineHeight: LINE_HEIGHTS.M,
-      fontFamily: FONT_FAMILIES.body,
       padding: 0,
       margin: 0,
-      marginTop: isMulti && hasValue ? SPACING[1] : 0,
+      marginTop: isMulti && hasValue ? SPACING['xxs'] : 0,
     }),
-    option: (base: CSSObjectWithLabel) => ({
+    option: base => ({
       ...base,
-      color: colors.gray['900'],
+      color: colors.text.primary,
       '&[class*="is-selected"]': { backgroundColor: 'white' },
       '&:hover,&[class*="is-focused"]': {
         backgroundColor: colors.gray['100'],
       },
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
-      fontFamily: FONT_FAMILIES.body,
       lineHeight: LINE_HEIGHTS.M,
     }),
-    singleValue: (base: CSSObjectWithLabel) => ({
+    singleValue: (base, { isDisabled }) => ({
       ...base,
       margin: 0,
-      color: colors.gray['900'],
-      fontFamily: FONT_FAMILIES.body,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
       lineHeight: LINE_HEIGHTS.M,
+      color: colors.text[isDisabled ? 'disable' : 'primary'],
     }),
-    indicatorSeparator: (base: CSSObjectWithLabel) => ({
-      ...base,
+    indicatorSeparator: () => ({
       display: 'none',
     }),
-    clearIndicator: (base: CSSObjectWithLabel) => ({
+    clearIndicator: (base) => ({
       ...base,
       padding: 0,
       margin: 0,
       display: !isSearch ? 'none' : 'flex',
     }),
-    indicatorsContainer: (base: CSSObjectWithLabel) => ({
+    indicatorsContainer: (base) => ({
       ...base,
-      paddingLeft: SPACING[3],
-      paddingRight: SPACING[3],
-      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
-      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
+      paddingLeft: SPACING['sm'],
+      paddingRight: SPACING['sm'],
+      paddingTop: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
       color: colors.gray['700'],
     }),
-    dropdownIndicator: (base: CSSObjectWithLabel) => ({
+    dropdownIndicator: (base) => ({
       ...base,
       padding: 0,
       margin: 0,
-      color: colors.gray[isDisabled ? '500' : '700'],
+      color: colors.gray[false ? '500' : '700'],
       display: isSearch ? 'none' : 'flex',
     }),
-    menuPortal: (base: CSSObjectWithLabel) => ({
+    menuPortal: base => ({
       ...base,
       zIndex: ZINDEX.selectPortal,
     }),

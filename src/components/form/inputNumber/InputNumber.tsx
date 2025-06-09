@@ -7,7 +7,7 @@ import { Box, BoxPropsOf } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import S, { focusWithinStyles, InputInner } from '../style'
+import { focusWithinStyles, InputInner } from '../style'
 
 export interface InputNumberProps extends BoxPropsOf<'input'> {
   readonly placeholder?: string

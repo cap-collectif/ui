@@ -11,23 +11,23 @@ type VariantDateType = {
 export const variantDate: VariantDateType = {
   [CapInputSize.Sm]: css`
     .DateInput:first-child {
-      padding-left: ${props => props.theme.sizes['3']};
-      padding-right: ${props => props.theme.sizes['3']};
+      padding-left: ${props => props.theme.space.sm};
+      padding-right: ${props => props.theme.space.sm};
     }
     .DateInput {
-      padding-top: ${props => props.theme.sizes['1']};
-      padding-bottom: ${props => props.theme.sizes['1']};
-      padding-left: ${props => props.theme.sizes['2']};
-      padding-right: ${props => props.theme.sizes['2']};
+      padding-top: ${props => props.theme.space.xxs};
+      padding-bottom: ${props => props.theme.sizes.xxs};
+      padding-left: ${props => props.theme.sizes.xs};
+      padding-right: ${props => props.theme.sizes.xs};
     }
   `,
   [CapInputSize.Md]: css`
     .DateInput:first-child {
-      padding-left: ${props => props.theme.sizes['3']};
-      padding-right: ${props => props.theme.sizes['3']};
+      padding-left: ${props => props.theme.space.sm};
+      padding-right: ${props => props.theme.space.sm};
     }
     .DateInput {
-      padding: ${props => props.theme.sizes['2']};
+      padding: ${props => props.theme.sizes.xs};
     }
   `,
 }
@@ -52,7 +52,6 @@ export const commonStyle = css`
   .CalendarDay__default {
     font-weight: normal;
     font-size: ${props => props.theme.fontSizes[3]};
-    font-family: ${props => props.theme.fonts.input};
     line-height: ${CapUILineHeight.M};
     color: ${props => props.theme.colors.gray['900']};
     border: none;
