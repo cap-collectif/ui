@@ -33,7 +33,7 @@ const RankButton: React.FC<RankButtonProps> = ({
   return (
     <Tag
       variantColor={disabled ? 'infoGray' : 'info'}
-      display="flex"
+      display="inline-flex"
       flexDirection="row"
       gap={1}
       minHeight="40px"
