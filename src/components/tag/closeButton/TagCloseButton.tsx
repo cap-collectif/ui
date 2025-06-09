@@ -15,6 +15,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
   className,
   tagLabel,
   isFocused,
+  tabIndex,
 }) => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === ' ') {
@@ -39,7 +40,7 @@ const TagCloseButton: React.FC<TagCloseButtonProps> = ({
         transitionTimingFunction: '0.48s, 0.15s, 0.25s, 0.96s',
       }}
       size="xs"
-      tabIndex={-1}
+      tabIndex={tabIndex ?? 0}
     >
       <Icon name={CapUIIcon.CrossO} color="inherit" size={CapUIIconSize.Xs} />
     </Button>

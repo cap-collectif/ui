@@ -76,6 +76,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   className,
   onRemove,
   sx,
+  tabIndex,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
@@ -105,6 +106,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       overflow={'hidden'}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
+      tabIndex={-1}
       {...rest}
     >
       {children}
@@ -113,6 +115,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
           onClick={onRemove}
           tagLabel={tagLabel}
           isFocused={isFocused}
+          tabIndex={tabIndex} // necessary to remove button from natural tab order on specific cases, e.g.: MultiValueTag
         />
       )}
     </TagInner>
