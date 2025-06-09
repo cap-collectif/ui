@@ -97,7 +97,7 @@ const Template: Story<TableProps> = args => (
         </Table.Td>
         <Table.Td isNumeric>123456789</Table.Td>
         <Table.Td>
-          <Tag variantColor="aqua">
+          <Tag variantColor="info">
             <Tag.Label>Coucou</Tag.Label>
           </Tag>
         </Table.Td>

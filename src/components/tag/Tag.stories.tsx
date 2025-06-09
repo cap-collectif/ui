@@ -3,13 +3,12 @@ import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import { Tag, TagProps } from './'
-import mdx from './Tag.mdx'
 
 const meta: Meta<TagProps> = {
   title: 'Library/Tag',
   component: Tag,
   args: {
-    variantColor: 'blue',
+    variantColor: 'info',
     onRemove: undefined,
   },
   parameters: {
@@ -19,9 +18,6 @@ const meta: Meta<TagProps> = {
         color: null,
       },
     },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
@@ -29,6 +25,12 @@ export default meta
 
 export const Default: Story<TagProps> = args => (
   <Tag {...args}>
+    <Tag.Label>Bonjour</Tag.Label>
+  </Tag>
+)
+
+export const Badge: Story<TagProps> = args => (
+  <Tag variantType="badge" {...args}>
     <Tag.Label>Bonjour</Tag.Label>
   </Tag>
 )
@@ -48,7 +50,9 @@ export const WithCloseButton: Story<TagProps> = args => (
 )
 
 WithCloseButton.args = {
-  onRemove: () => {},
+  onRemove: () => {
+    console.log('Remove button clicked')
+  },
 }
 
 export const WithAvatar: Story<TagProps> = args => (

@@ -11,10 +11,10 @@ import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { Spinner } from '../../spinner'
-import { Tag } from '../../tag'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
+import MultiValueTag from './MultiValueTag'
 
 export interface SelectProps extends Omit<Props, 'onChange'> {
   readonly isDisabled?: boolean
@@ -27,7 +27,7 @@ export interface SelectProps extends Omit<Props, 'onChange'> {
 export function MultiValue<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   removeProps,
   isDisabled,
@@ -37,49 +37,49 @@ export function MultiValue<
   removeProps: { onClick?: React.MouseEventHandler<HTMLDivElement> | undefined }
 }) {
   return (
-    <Tag
-      variantColor={
-        isDisabled ? 'gray' : props.selectProps['aria-invalid'] ? 'red' : 'blue'
-      }
-      mr={1}
-      mt={1}
-      onRemove={removeProps.onClick}
-    >
-      <Tag.Label>{props.data.label}</Tag.Label>
-    </Tag>
+    <MultiValueTag
+      isInvalid={props.selectProps['aria-invalid'] || false}
+      isDisabled={isDisabled}
+      removeProps={removeProps}
+      label={props.data.label}
+    />
   )
 }
 
 export function Control<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel, value } = props.selectProps
+  const { isLoading, isClearable, deleteButtonAriaLabel, value } =
+    props.selectProps
+
   return (
     <components.Control {...props}>
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={2} color="primary.base" />}
       {!isLoading && (
         <>
-          {isClearable && value ? <Box
-            as='button'
-            type="button"
-            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
-            mr={1}
-            style={{ cursor: 'pointer' }}
-            onClick={() => props.clearValue()}
-          >
-            <Icon
-              name={CapUIIcon.Cross}
-              size={CapUIIconSize.Md}
-              color="gray.700"
-              _hover={{ color: 'red.500' }}
-              aria-hidden
-              focusable={false}
-            />
-          </Box> : null}
+          {isClearable && value ? (
+            <Box
+              as="button"
+              type="button"
+              aria-label={deleteButtonAriaLabel || 'Supprimer la saisie'}
+              mr={'xxs'}
+              style={{ cursor: 'pointer' }}
+              onClick={() => props.clearValue()}
+            >
+              <Icon
+                name={CapUIIcon.Cross}
+                size={CapUIIconSize.Md}
+                color="gray.700"
+                _hover={{ color: 'red.500' }}
+                aria-hidden
+                focusable={false}
+              />
+            </Box>
+          ) : null}
           <Icon
             mr={3}
             style={{ cursor: 'pointer' }}
@@ -96,10 +96,48 @@ export function Control<
 export function Select<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({ className, width, ...props }: SelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
+  const [currentIndex, setCurrentIndex] = React.useState<number>(0)
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const removeButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(
+      '.cap-tag__closeButton',
+    )
+
+    if (!removeButtons) {
+      return
+    }
+
+    setCurrentIndex(removeButtons.length - 1)
+
+    const currentTagIsLastTag: boolean =
+      currentIndex === removeButtons.length - 1
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      e.stopPropagation()
+      if (currentTagIsLastTag) {
+        setCurrentIndex(0)
+        ;(removeButtons[0] as HTMLElement)?.focus()
+      } else {
+        setCurrentIndex(currentIndex + 1)
+        ;(removeButtons[currentIndex + 1] as HTMLElement)?.focus()
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      e.stopPropagation()
+      if (currentIndex === 0) {
+        setCurrentIndex(removeButtons.length - 1)
+        ;(removeButtons[removeButtons.length - 1] as HTMLElement)?.focus()
+      } else {
+        setCurrentIndex(currentIndex - 1)
+        ;(removeButtons[currentIndex - 1] as HTMLElement)?.focus()
+      }
+    }
+  }
 
   return (
     <Box width={width || '100%'}>
@@ -118,6 +156,8 @@ export function Select<
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
         {...props}
       />
     </Box>

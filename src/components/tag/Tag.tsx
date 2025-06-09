@@ -1,20 +1,11 @@
 import cn from 'classnames'
-import {
-  AnimationProps,
-  motion,
-  MotionProps,
-  HoverHandlers,
-} from 'framer-motion'
+import { AnimationProps, MotionProps, HoverHandlers } from 'framer-motion'
 import * as React from 'react'
-import styled from 'styled-components'
-import { variant } from 'styled-system'
 
-import { useTheme } from '../../hooks'
 import { CapUIFontFamily, CapUIFontSize } from '../../styles'
-import { BaseColorsName } from '../../styles/modules/colors'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
-import { Box, BoxProps, PolymorphicComponent } from '../box/Box'
+import { Box, BoxProps } from '../box/Box'
 import { getTagStyle } from './Tag.style'
 import TagAvatar from './avatar/TagAvatar'
 import TagCloseButton from './closeButton/TagCloseButton'
@@ -29,44 +20,54 @@ type SubComponents = {
 
 type VariantType = 'tag' | 'badge'
 
+export type TagVariantColor =
+  | 'info'
+  | 'infoGray'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
 export interface TagProps
   extends BoxProps,
     AnimationProps,
     Pick<MotionProps, 'initial'>,
     Pick<HoverHandlers, 'whileHover'> {
-  variantColor: BaseColorsName
+  variantColor: TagVariantColor
   variantType?: VariantType
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
 }
 
-const TagInner = styled(motion(Box)).attrs({
-  position: 'relative',
-  maxHeight: SPACING['6'],
-  display: 'inline-flex',
-  alignItems: 'center',
-  borderRadius: 'tags',
-})(
-  variant<unknown, NonNullable<TagProps['variantType']>, 'variantType'>({
-    prop: 'variantType',
-    variants: {
-      tag: {
-        px: 2,
-        fontSize: CapUIFontSize.BodySmall,
-        py: 1,
-        fontWeight: 400,
-        fontFamily: CapUIFontFamily.Input,
-      },
-      badge: {
-        px: 4,
-        fontSize: CapUIFontSize.Caption,
-        py: 2,
-        fontWeight: 600,
-        fontFamily: CapUIFontFamily.Body,
-        textTransform: 'uppercase',
-      },
-    },
-  }),
-) as PolymorphicComponent<Omit<TagProps, 'variantColor'>>
+type TagInnerProps = {
+  variantType: VariantType
+} & Omit<TagProps, 'variantColor'>
+
+const TagInner: React.FC<TagInnerProps> = ({
+  variantType,
+  children,
+  ...rest
+}: TagInnerProps) => {
+  return (
+    <Box
+      position={'relative'}
+      maxHeight={SPACING['6']}
+      display={'inline-flex'}
+      alignItems={'center'}
+      borderRadius={'tags'}
+      px={variantType === 'tag' ? 'xs' : 'md'}
+      py={variantType === 'tag' ? 'xxs' : 'xs'}
+      fontSize={
+        variantType === 'tag' ? CapUIFontSize.BodySmall : CapUIFontSize.Caption
+      }
+      fontWeight={variantType === 'tag' ? 400 : 600}
+      fontFamily={
+        variantType === 'tag' ? CapUIFontFamily.Input : CapUIFontFamily.Body
+      }
+      {...rest}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export const Tag: React.FC<TagProps> & SubComponents = ({
   children,
@@ -75,17 +76,21 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   className,
   onRemove,
   sx,
+  tabIndex,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
-  const { colors } = useTheme()
+  const tagLabel = jsxInnerText(children)
+  const [isFocused, setIsFocused] = React.useState<boolean>(false)
+
   return (
     <TagInner
       sx={{
-        ...getTagStyle(colors, variantColor),
+        textTransform: variantType === 'badge' ? 'uppercase' : undefined,
+        ...getTagStyle(variantColor),
         ...sx,
       }}
-      title={jsxInnerText(children)}
+      title={tagLabel}
       className={cn('cap-tag', className)}
       initial="initial"
       whileHover="hover"
@@ -97,10 +102,22 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
           : {},
       }}
       variantType={variantType}
+      aria-label={`Tag ${tagLabel}`}
+      overflow={'hidden'}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      tabIndex={-1}
       {...rest}
     >
       {children}
-      {onRemove && <TagCloseButton onClick={onRemove} />}
+      {onRemove && (
+        <TagCloseButton
+          onClick={onRemove}
+          tagLabel={tagLabel}
+          isFocused={isFocused}
+          tabIndex={tabIndex} // necessary to remove button from natural tab order on specific cases, e.g.: MultiValueTag
+        />
+      )}
     </TagInner>
   )
 }
