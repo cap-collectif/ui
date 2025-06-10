@@ -11,7 +11,7 @@ import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { Spinner } from '../../spinner'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import MultiValueTag from './MultiValueTag'
@@ -22,6 +22,7 @@ export interface SelectProps extends Omit<Props, 'onChange'> {
   width?: string | number
   onChange?: (newValue: any) => void
   deleteButtonAriaLabel?: boolean
+  variantColor?: InputVariantColor
 }
 
 export function MultiValue<
@@ -144,7 +145,11 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <Box width={width || '100%'}>
       <ReactSelect
-        styles={reactSelectStyle(colors, inputProps.variantSize)}
+        styles={reactSelectStyle(
+          colors,
+          inputProps.variantSize,
+          inputProps.variantColor,
+        )}
         className={cn('cap-select', className)}
         classNamePrefix="cap-select"
         isDisabled={inputProps.disabled}

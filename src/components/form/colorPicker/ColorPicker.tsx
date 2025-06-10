@@ -6,7 +6,7 @@ import { useTheme } from '../../../hooks'
 import { pxToRem } from '../../../styles/modules/mixins'
 import Box, { BoxPropsOf } from '../../box/Box'
 import { Flex } from '../../layout'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { focusWithinStyles, InputInner } from '../style'
 import { CapColorPickerVariant } from './enums'
@@ -23,6 +23,7 @@ export interface ColorPickerProps
   variant?: CapColorPickerVariant
   colors?: string[]
   openPickerLabel?: string
+  variantColor?: InputVariantColor
 }
 
 const toHexwithOpacity = (hex: string, opacity: number) =>
@@ -36,6 +37,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   onChange,
   withOpacity = false,
   variant = CapColorPickerVariant.Chrome,
+  variantColor = 'default',
   colors,
   openPickerLabel = 'Ouvrir le colorPicker',
   ...props
@@ -56,6 +58,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           !props.value,
           inputProps.readOnly,
           themeColors,
+          variantColor,
         )}
         width={pxToRem(132)}
         alignItems="center"

@@ -6,7 +6,7 @@ import type { AsyncProps } from 'react-select/async'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { MultiValue, Control } from './Select'
@@ -18,6 +18,7 @@ export interface AsyncSelectProps<
 > extends AsyncProps<Option, IsMulti, Group> {
   isDisabled?: boolean
   variantSize?: CapInputSize
+  variantColor?: InputVariantColor
   width?: string | number
   onChange?: (newValue: any) => void
   loadOptions?: (
@@ -37,7 +38,11 @@ export function AsyncSelect<
   return (
     <Box width={width || '100%'}>
       <Async<Option, IsMulti, Group>
-        styles={reactSelectStyle(colors, inputProps.variantSize)}
+        styles={reactSelectStyle(
+          colors,
+          inputProps.variantSize,
+          inputProps.variantColor,
+        )}
         className={cn('cap-async-select', className)}
         classNamePrefix="cap-async-select"
         isDisabled={inputProps.disabled}

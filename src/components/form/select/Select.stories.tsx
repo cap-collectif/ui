@@ -42,6 +42,10 @@ const meta: Meta = {
       control: { type: 'radio' },
     },
     variantSize: { control: 'select', options: ['sm', 'md'] },
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
   },
   parameters: {
     controls: { expanded: true },

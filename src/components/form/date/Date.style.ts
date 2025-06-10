@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 import { CapUILineHeight } from '../../../styles'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 
 // TODO wait for https://github.com/styled-components/styled-components/pull/4126 to be merged
 type VariantDateType = {
@@ -34,6 +34,7 @@ export const variantDate: VariantDateType = {
 
 export type DateBoxProps = {
   variant: CapInputSize
+  variantColor: InputVariantColor
   isInvalid: boolean
 }
 

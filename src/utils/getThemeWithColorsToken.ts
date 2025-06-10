@@ -335,26 +335,51 @@ const avatarColors = (theme: CapUITheme) => ({
 
 const inputColors = (theme: CapUITheme) => ({
   input: {
-    background: {
-      placeholder: theme.colors.gray.background,
-      default: theme.colors.gray.background,
-      selected: theme.colors.gray.white,
-      disable: theme.colors.gray.background,
-      readonly: theme.colors.gray.white,
+    default: {
+      background: {
+        placeholder: theme.colors.gray.background,
+        default: theme.colors.gray.background,
+        selected: theme.colors.gray.white,
+        disable: theme.colors.gray.background,
+        readonly: theme.colors.gray.white,
+      },
+      border: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.base,
+        selected: theme.colors.primary.base,
+        disable: theme.colors.gray.lighter,
+        readonly: theme.colors.gray.lighter,
+      },
+      icon: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.dark,
+        selected: theme.colors.gray.dark,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
     },
-    border: {
-      placeholder: theme.colors.gray.base,
-      default: theme.colors.gray.base,
-      selected: theme.colors.primary.base,
-      disable: theme.colors.gray.lighter,
-      readonly: theme.colors.gray.lighter,
-    },
-    icon: {
-      placeholder: theme.colors.gray.base,
-      default: theme.colors.gray.dark,
-      selected: theme.colors.gray.dark,
-      disable: theme.colors.gray.light,
-      readonly: theme.colors.gray.light,
+    hierarchy: {
+      background: {
+        placeholder: theme.colors.white,
+        default: theme.colors.white,
+        selected: theme.colors.white,
+        disable: theme.colors.white,
+        readonly: theme.colors.white,
+      },
+      border: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.base,
+        selected: theme.colors.primary.base,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
+      icon: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.dark,
+        selected: theme.colors.gray.dark,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
     },
   },
 })

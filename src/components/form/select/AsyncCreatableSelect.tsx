@@ -6,7 +6,7 @@ import AsyncCreatable from 'react-select/async-creatable'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { MultiValue, Control } from './Select'
@@ -18,6 +18,7 @@ export interface AsyncCreatableSelectProps<
 > extends AsyncProps<Option, IsMulti, Group> {
   isDisabled?: boolean
   variantSize?: CapInputSize
+  variantColor?: InputVariantColor
   width?: string | number
   formatCreateLabel?: (userInput: string) => React.ReactNode
   onCreateOption?: (userInput: string) => void
@@ -43,7 +44,11 @@ export function AsyncCreatableSelect<
   return (
     <Box width={width || '100%'}>
       <AsyncCreatable<Option, IsMulti, Group>
-        styles={reactSelectStyle(colors, inputProps.variantSize)}
+        styles={reactSelectStyle(
+          colors,
+          inputProps.variantSize,
+          inputProps.variantColor,
+        )}
         className={cn('cap-async-creatable-select', className)}
         classNamePrefix="cap-async-creatable-select"
         isDisabled={inputProps.disabled}

@@ -861,31 +861,34 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     padding-right: ${props => props.theme.space.sm};
-    box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border[props.isEmpty ? 'placeholder' : 'default']};
+    box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input[props.variantColor].border[props.isEmpty ? 'placeholder' : 'default']};
     line-height: ${props => props.theme.lineHeights.M};
-    background-color: ${props => props.theme.colors.input.background.default};
+    background-color: ${props =>
+      props.theme.colors.input[props.variantColor].background.default};
 
     .DateRangePickerInput_calendarIcon svg {
       color: ${props =>
-        props.theme.colors.input.icon[
+        props.theme.colors.input[props.variantColor].icon[
           props.isEmpty ? 'placeholder' : 'default'
         ]};
     }
 
     &:focus-within {
-      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border.selected};
+      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input[props.variantColor].border.selected};
       background-color: ${props =>
-        props.theme.colors.input.background.selected};
+        props.theme.colors.input[props.variantColor].background.selected};
     }
 
     &__disabled {
-      background-color: ${props => props.theme.colors.input.background.disable};
-      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input.border.disable};
+      background-color: ${props =>
+        props.theme.colors.input[props.variantColor].background.disable};
+      box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input[props.variantColor].border.disable};
 
       .DateRangePickerInput_calendarIcon {
         cursor: default;
         svg {
-          color: ${props => props.theme.colors.input.icon.disable};
+          color: ${props =>
+            props.theme.colors.input[props.variantColor].icon.disable};
         }
       }
     }

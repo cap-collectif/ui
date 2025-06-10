@@ -21,7 +21,10 @@ const meta: Meta = {
   component: DateRange,
   argTypes: {
     variantSize: { control: 'select', options: ['sm', 'md'] },
-
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
     onChange: {
       action: 'clicked',
       description:

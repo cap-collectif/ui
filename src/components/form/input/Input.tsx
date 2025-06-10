@@ -6,16 +6,17 @@ import type { PolymorphicBoxProps } from '../../box/Box'
 import Box from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Tooltip } from '../../tooltip'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { focusWithinStyles, InputInner } from '../style'
 
 export interface InputProps extends PolymorphicBoxProps<'input'> {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isReadonly?: boolean
-  readonly variantSize?: CapInputSize
-  readonly onClickActions?: Array<{
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isReadonly?: boolean
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  onClickActions?: Array<{
     icon: CapUIIcon
     onClick: () => void
     label: string
@@ -25,7 +26,7 @@ export interface InputProps extends PolymorphicBoxProps<'input'> {
 export const Input: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   InputProps
->(({ className, onClickActions, ...props }, ref) => {
+>(({ className, onClickActions, variantColor = 'default', ...props }, ref) => {
   const { colors } = useTheme()
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { disabled } = inputProps
@@ -35,7 +36,7 @@ export const Input: React.FC<InputProps> = React.forwardRef<
     return (
       <InputInner
         {...inputProps}
-        sx={S(colors, isEmpty)}
+        sx={S(colors, inputProps.variantColor, isEmpty)}
         variant={inputProps.variantSize}
         ref={ref}
         as="input"
@@ -48,7 +49,13 @@ export const Input: React.FC<InputProps> = React.forwardRef<
 
   return (
     <InputInner
-      sx={focusWithinStyles(!!disabled, isEmpty, inputProps.readOnly, colors)}
+      sx={focusWithinStyles(
+        !!disabled,
+        isEmpty,
+        inputProps.readOnly,
+        colors,
+        variantColor,
+      )}
       variant={inputProps.variantSize}
       as="div"
       display="flex"

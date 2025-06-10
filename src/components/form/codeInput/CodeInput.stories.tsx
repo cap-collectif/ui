@@ -35,6 +35,12 @@ const meta: Meta = {
   title: 'Library/Form/CodeInput',
   component: CodeInput,
   args: { isVerified: false, length: 6 },
+  argTypes: {
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
+  },
   parameters: {
     controls: { expanded: true },
   },

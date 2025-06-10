@@ -32,7 +32,13 @@ const meta: Meta = {
     isDisabled: false,
     isReadonly: false,
   },
-  argTypes: { variantSize: { control: 'select', options: ['sm', 'md'] } },
+  argTypes: {
+    variantSize: { control: 'select', options: ['sm', 'md'] },
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
+  },
   parameters: {
     controls: { expanded: true },
     docs: {

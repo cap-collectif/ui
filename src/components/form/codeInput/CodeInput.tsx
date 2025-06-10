@@ -4,18 +4,20 @@ import React, { Ref } from 'react'
 import { useTheme } from '../../../hooks'
 import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
+import { InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 
 export type CodeInputProps = Omit<OTPInputProps, 'children' | 'maxLength'> & {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isRequired?: boolean
-  readonly onComplete: (input: string) => void
-  readonly isVerified?: boolean
-  readonly value?: string
-  readonly id?: string
-  readonly ref?: Ref<HTMLInputElement | null>
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isRequired?: boolean
+  onComplete: (input: string) => void
+  isVerified?: boolean
+  value?: string
+  id?: string
+  ref?: Ref<HTMLInputElement | null>
   title: string
+  variantColor?: InputVariantColor
 }
 
 type CodeInputRef = HTMLInputElement | null
@@ -33,6 +35,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
       onComplete,
       isVerified = false,
       value,
+      variantColor = 'default',
       ...props
     }: CodeInputProps,
     ref,
@@ -67,6 +70,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
                   isInvalid={inputProps['aria-invalid'] || false}
                   isDisabled={inputProps.disabled}
                   hasFakeCaret={true}
+                  variantColor={variantColor}
                 />
               ))}
             </Flex>
@@ -80,6 +84,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
                   isInvalid={inputProps['aria-invalid'] || false}
                   isDisabled={inputProps.disabled}
                   hasFakeCaret={true}
+                  variantColor={variantColor}
                 />
               ))}
             </Flex>
@@ -94,17 +99,24 @@ type SlotExtendedProps = SlotProps & {
   isVerified: boolean
   isInvalid: boolean
   isDisabled: boolean
+  variantColor?: InputVariantColor
 }
 const Slot = (props: SlotExtendedProps) => {
   const { colors } = useTheme()
 
   const getSlotStyles = (
-    { isActive, isVerified, isDisabled, char }: SlotExtendedProps,
+    {
+      isActive,
+      isVerified,
+      isDisabled,
+      char,
+      variantColor = 'default',
+    }: SlotExtendedProps,
     element: 'border-color' | 'bg-color',
   ) => {
     switch (element) {
       case 'border-color':
-        return colors.input.border[
+        return colors.input[variantColor].border[
           isVerified
             ? 'readonly'
             : isActive
@@ -117,7 +129,7 @@ const Slot = (props: SlotExtendedProps) => {
         ]
 
       case 'bg-color':
-        return colors.input.background[
+        return colors.input[variantColor].background[
           isVerified
             ? 'readonly'
             : isActive

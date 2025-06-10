@@ -14,7 +14,7 @@ import {
 } from '../../styles/theme/typography'
 import { ExtendedColors } from '../../utils/getThemeWithColorsToken'
 import { Box } from '../box'
-import { CapInputSize } from './enums'
+import { CapInputSize, InputVariantColor } from './enums'
 
 export const InputInner = styled(Box)(
   variant({
@@ -33,15 +33,21 @@ export const InputInner = styled(Box)(
   }),
 )
 
-const styles = (colors: ExtendedColors, isEmpty?: boolean) => ({
+const styles = (
+  colors: ExtendedColors,
+  variantColor: InputVariantColor,
+  isEmpty?: boolean,
+) => ({
   borderTopLeftRadius: 'xxs',
   borderTopRightRadius: 'xxs',
   boxShadow: `inset 0px -1px 0px 0px ${
-    colors.input.border[isEmpty ? 'placeholder' : 'default']
+    colors.input[variantColor].border[isEmpty ? 'placeholder' : 'default']
   }`,
   lineHeight: CapUILineHeight.M,
   color: 'text.primary',
-  bg: isEmpty ? 'input.background.placeholder' : 'input.background.default',
+  bg: isEmpty
+    ? `input.${variantColor}.background.placeholder`
+    : `input.${variantColor}.background.default`,
 
   '&::placeholder': {
     color: 'text.tertiary',
@@ -52,20 +58,20 @@ const styles = (colors: ExtendedColors, isEmpty?: boolean) => ({
 
   '&:focus,&:focus-visible,&[aria-selected="true"],&:active': {
     outline: 'none',
-    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.selected}`,
-    bg: 'input.background.selected',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.selected}`,
+    bg: `input.${variantColor}.background.selected`,
   },
 
   '&:disabled': {
-    bg: 'input.background.disable',
+    bg: `input.${variantColor}.background.disable`,
     color: 'text.disable',
-    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.disable}`,
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.disable}`,
     '&::placeholder': { color: 'text.disable' },
   },
 
   '&[readonly]': {
-    bg: 'input.background.readonly',
-    boxShadow: `inset 0px -1px 0px 0px ${colors.input.border.readonly}`,
+    bg: `input.${variantColor}.background.readonly`,
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.readonly}`,
     '&::placeholder': { color: 'text.tertiary' },
   },
 })
@@ -75,11 +81,12 @@ export const focusWithinStyles = (
   isEmpty: boolean,
   isReadonly: boolean,
   colors: ExtendedColors,
+  variantColor: InputVariantColor,
 ): SystemStyleObject => ({
   borderTopLeftRadius: 'xxs',
   borderTopRightRadius: 'xxs',
   boxShadow: `inset 0px -1px 0px 0px ${
-    colors.input.border[
+    colors.input[variantColor].border[
       isReadonly
         ? 'readonly'
         : isDisabled
@@ -91,7 +98,7 @@ export const focusWithinStyles = (
   }`,
   lineHeight: CapUILineHeight.M,
   color: isDisabled ? 'text.disable' : 'text.primary',
-  bg: `input.background.${
+  bg: `input.${variantColor}.background.${
     isReadonly
       ? 'readonly'
       : isDisabled
@@ -107,17 +114,19 @@ export const focusWithinStyles = (
   },
 
   '.cap-icon.cap-input-icon': {
-    color: `input.icon.${
+    color: `input.${variantColor}.icon.${
       isDisabled ? 'disable' : isEmpty ? 'placeholder' : 'default'
     }`,
-    '&:hover': { color: isDisabled ? 'input.icon.disable' : 'gray.black' },
+    '&:hover': {
+      color: isDisabled ? `input.${variantColor}.icon.disable` : 'gray.black',
+    },
   },
 
   '&:focus-within': {
     boxShadow: `inset 0px -1px 0px 0px ${
-      colors.input.border[isReadonly ? 'readonly' : 'selected']
+      colors.input[variantColor].border[isReadonly ? 'readonly' : 'selected']
     }`,
-    bg: 'input.background.selected',
+    bg: `input.${variantColor}.background.selected`,
   },
 
   '& > input': { boxShadow: 'none', outline: 'none' },
@@ -130,6 +139,7 @@ export function reactSelectStyle<
 >(
   colors: ExtendedColors & Colors,
   variantSize: CapInputSize,
+  variantColor: InputVariantColor,
   isSearch?: boolean,
 ): StylesConfig<Option, IsMulti, Group> {
   return {
@@ -138,9 +148,12 @@ export function reactSelectStyle<
       minHeight: 'unset',
       border: 'none',
       borderRadius: 'none',
-      background: colors.input.background[isFocused ? 'selected' : 'default'],
+      background:
+        colors.input[variantColor].background[
+          isFocused ? 'selected' : 'default'
+        ],
       boxShadow: `inset 0px -1px 0px 0px ${
-        colors.input.border[
+        colors.input[variantColor].border[
           isFocused
             ? 'selected'
             : isDisabled

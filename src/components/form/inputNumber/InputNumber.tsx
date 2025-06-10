@@ -5,21 +5,23 @@ import { useTheme } from '../../../hooks'
 import { pxToRem } from '../../../styles/modules/mixins'
 import { Box, BoxPropsOf } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { focusWithinStyles, InputInner } from '../style'
 
 export interface InputNumberProps extends BoxPropsOf<'input'> {
-  readonly placeholder?: string
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly variantSize?: CapInputSize
+  placeholder?: string
+  isDisabled?: boolean
+  isInvalid?: boolean
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
 }
 
 export const InputNumber = ({
   className,
   width,
   onChange,
+  variantColor = 'default',
   ...props
 }: InputNumberProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
@@ -30,7 +32,13 @@ export const InputNumber = ({
 
   return (
     <InputInner
-      sx={focusWithinStyles(!!disabled, isEmpty, inputProps.readOnly, colors)}
+      sx={focusWithinStyles(
+        !!disabled,
+        isEmpty,
+        inputProps.readOnly,
+        colors,
+        variantColor,
+      )}
       variant={variantSize}
       as="div"
       display="flex"

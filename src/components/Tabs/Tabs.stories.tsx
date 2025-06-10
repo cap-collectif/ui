@@ -40,11 +40,13 @@ export const Default: Story<TabsProps> = args => {
         <Tabs.ButtonList ariaLabel="Tabs example">
           <Tabs.Button id="tab1">Tab1</Tabs.Button>
           <Tabs.Button id="tab2">Tab2</Tabs.Button>
-          <Tabs.Button id="tab3">Tab3 with a rather long - very very long - name</Tabs.Button>
+          <Tabs.Button id="tab3">
+            Tab3 with a rather long - very very long - name
+          </Tabs.Button>
         </Tabs.ButtonList>
         <Tabs.PanelList>
           <Tabs.Panel>
-            <FormControl width="100%">
+            <FormControl width="100%" variantColor="hierarchy">
               <FormLabel label="Introduction" />
               <TextArea
                 placeholder={'placeholder'}
@@ -56,7 +58,7 @@ export const Default: Story<TabsProps> = args => {
             </FormControl>
           </Tabs.Panel>
           <Tabs.Panel>
-            <FormControl>
+            <FormControl variantColor="hierarchy">
               <FormLabel htmlFor="name" label="Label">
                 <Box as="span" color="gray.500">
                   facultatif
@@ -69,7 +71,7 @@ export const Default: Story<TabsProps> = args => {
                 variantSize={CapInputSize.Sm}
               />
             </FormControl>
-            <FormControl width="100%">
+            <FormControl width="100%" variantColor="hierarchy">
               <FormLabel label="Introduction" />
               <TextArea
                 placeholder={'placeholder'}
@@ -81,7 +83,7 @@ export const Default: Story<TabsProps> = args => {
             </FormControl>
           </Tabs.Panel>
           <Tabs.Panel>
-            <FormControl>
+            <FormControl variantColor="hierarchy">
               <FormLabel htmlFor="name" label="Label">
                 <Box as="span" color="gray.500">
                   facultatif
@@ -221,7 +223,6 @@ export const withDisabledTab: Story<TabsProps> = args => {
   )
 }
 
-
 export const withEmptyContent: Story<TabsProps> = args => {
   return (
     <Flex
@@ -235,18 +236,13 @@ export const withEmptyContent: Story<TabsProps> = args => {
           <Tabs.Button id="tab1">I am empty</Tabs.Button>
           <Tabs.Button id="tab2">I have content</Tabs.Button>
           <Tabs.Button id="tab3">I am empty, too!</Tabs.Button>
-          
         </Tabs.ButtonList>
         <Tabs.PanelList>
-          <Tabs.Panel >
-          </Tabs.Panel>
+          <Tabs.Panel></Tabs.Panel>
 
-          <Tabs.Panel>
-            I'm panel content
-          </Tabs.Panel>
+          <Tabs.Panel>I'm panel content</Tabs.Panel>
 
-          <Tabs.Panel >  
-          </Tabs.Panel>
+          <Tabs.Panel></Tabs.Panel>
         </Tabs.PanelList>
       </Tabs>
     </Flex>

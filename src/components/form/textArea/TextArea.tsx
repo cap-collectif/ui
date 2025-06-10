@@ -38,7 +38,7 @@ export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
     <Flex direction="column" width={width || '100%'} position="relative">
       <InputInner
         {...inputProps}
-        sx={{ ...S(colors), resize }}
+        sx={{ ...S(colors, inputProps.variantColor), resize }}
         variant={inputProps.variantSize}
         ref={ref}
         as="textarea"

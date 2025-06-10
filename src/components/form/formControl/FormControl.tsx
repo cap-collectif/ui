@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { useBoolean } from '../../../hooks/useBoolean'
 import { Flex, FlexProps } from '../../layout/Flex'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { createContext } from './FormControl.context'
 
 export interface FormControlProps extends FlexProps {
@@ -12,6 +12,7 @@ export interface FormControlProps extends FlexProps {
   readonly isRequired?: boolean
   readonly isReadonly?: boolean
   readonly variantSize?: CapInputSize
+  readonly variantColor?: InputVariantColor
   readonly inputId?: string
 }
 
@@ -21,6 +22,7 @@ export interface FormControlContext {
   isInvalid?: boolean
   isReadonly?: boolean
   variantSize?: CapInputSize
+  variantColor?: InputVariantColor
   id?: string
   inputId?: string
 }
@@ -32,6 +34,7 @@ export function useFormControlProvider(props: FormControlContext) {
     isDisabled,
     isReadonly,
     variantSize,
+    variantColor,
     inputId,
     ...htmlProps
   } = props
@@ -49,6 +52,7 @@ export function useFormControlProvider(props: FormControlContext) {
 
   return {
     variantSize,
+    variantColor,
     isRequired: !!isRequired,
     isInvalid: !!isInvalid,
     isDisabled: !!isDisabled,
@@ -67,12 +71,11 @@ type FormControlProviderContext = Omit<
   'getRootProps' | 'htmlProps'
 >
 
-const [FormControlProvider, useFormControlContext] = createContext<
-  FormControlProviderContext
->({
-  strict: false,
-  name: 'FormControlContext',
-})
+const [FormControlProvider, useFormControlContext] =
+  createContext<FormControlProviderContext>({
+    strict: false,
+    name: 'FormControlContext',
+  })
 
 export { useFormControlContext }
 
@@ -80,9 +83,11 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef<
   HTMLDivElement,
   FormControlProps
 >((props, ref) => {
-  const { getRootProps, htmlProps: _, ...context } = useFormControlProvider(
-    props,
-  )
+  const {
+    getRootProps,
+    htmlProps: _,
+    ...context
+  } = useFormControlProvider(props)
   const contextValue = React.useMemo(() => context, [context])
 
   return (

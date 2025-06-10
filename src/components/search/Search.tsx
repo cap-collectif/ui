@@ -13,7 +13,7 @@ import type { AsyncProps } from 'react-select/async'
 import { useTheme } from '../../hooks'
 import { pxToRem } from '../../styles/modules/mixins'
 import { Box } from '../box'
-import { CapInputSize, useFormControl } from '../form'
+import { CapInputSize, InputVariantColor, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
@@ -33,6 +33,7 @@ export interface SearchProps<
   isDisabled?: boolean
   isInvalid?: boolean
   variantSize?: CapInputSize
+  variantColor?: InputVariantColor
   width?: string | number
   onChange?: (value: string) => void
   onSelect?: (value: Option) => void
@@ -69,7 +70,7 @@ const Control = <
 }: ControlProps<Option, IsMulti, Group> & {
   deleteButtonAriaLabel?: string
 }) => {
-  const { isLoading, inputValue, onInputChange } = props.selectProps
+  const { isLoading, inputValue, onInputChange, isDisabled } = props.selectProps
   const { deleteButtonAriaLabel } = props
 
   return (
@@ -77,7 +78,13 @@ const Control = <
       <Icon
         name={CapUIIcon.Search}
         size={CapUIIconSize.Md}
-        color={!inputValue ? 'input.icon.placeholder' : 'input.icon.default'}
+        color={
+          isDisabled
+            ? 'input.icon.disable'
+            : !inputValue
+            ? 'input.icon.placeholder'
+            : 'input.icon.default'
+        }
         ml={1}
       />
       {Array.isArray(children) && children[0]}
@@ -172,6 +179,7 @@ export const SearchWithRef = <
         styles={reactSelectStyle(
           colors,
           inputProps.variantSize || CapInputSize.Sm,
+          inputProps.variantColor,
           true,
         )}
         inputValue={input}

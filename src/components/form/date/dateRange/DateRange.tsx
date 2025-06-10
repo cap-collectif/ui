@@ -7,37 +7,38 @@ import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
 
 import type { BoxPropsOf } from '../../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
-import { CapInputSize } from '../../enums'
+import { CapInputSize, InputVariantColor } from '../../enums'
 import { useFormControl } from '../../formControl'
 import { COMMON_PROPS } from '../commonProps'
 import { DateRangeBox } from './DateRange.style'
 
 export type DateRangeValueType = {
-  readonly startDate: Moment | null
-  readonly endDate: Moment | null
+  startDate: Moment | null
+  endDate: Moment | null
 }
 
 export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'> {
-  readonly value: DateRangeValueType
-  readonly onChange: (value: DateRangeValueType) => void
-  readonly className?: string
-  readonly variantSize?: CapInputSize
-  readonly errorMessage?: string
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isRequired?: boolean
-  readonly isOutsideRange?: boolean
-  readonly displayFormat?: DateRangePickerShape['displayFormat']
-  readonly startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
-  readonly endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
-  readonly startDateId?: DateRangePickerShape['startDateId']
-  readonly endDateId?: DateRangePickerShape['endDateId']
-  readonly disabled?: DateRangePickerShape['disabled']
-  readonly keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
-  readonly minDate?: DateRangePickerShape['minDate']
-  readonly maxDate?: DateRangePickerShape['maxDate']
-  readonly onClose?: DateRangePickerShape['onClose']
+  value: DateRangeValueType
+  onChange: (value: DateRangeValueType) => void
+  className?: string
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  errorMessage?: string
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isRequired?: boolean
+  isOutsideRange?: boolean
+  displayFormat?: DateRangePickerShape['displayFormat']
+  startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
+  endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
+  startDateId?: DateRangePickerShape['startDateId']
+  endDateId?: DateRangePickerShape['endDateId']
+  disabled?: DateRangePickerShape['disabled']
+  keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
+  minDate?: DateRangePickerShape['minDate']
+  maxDate?: DateRangePickerShape['maxDate']
+  onClose?: DateRangePickerShape['onClose']
 }
 
 const DateRange: FC<DateRangeProps> = ({
@@ -54,6 +55,7 @@ const DateRange: FC<DateRangeProps> = ({
   minDate,
   maxDate,
   onClose,
+  variantColor = 'default',
   ...props
 }) => {
   const [focusedInput, setFocusedInput] =
@@ -72,6 +74,7 @@ const DateRange: FC<DateRangeProps> = ({
       isInvalid={!!inputProps['aria-invalid']}
       isEmpty={isEmpty}
       variant={inputProps.variantSize}
+      variantColor={variantColor}
       onKeyUp={e => {
         if (e.key === 'Escape') setFocusedInput(null)
       }}
