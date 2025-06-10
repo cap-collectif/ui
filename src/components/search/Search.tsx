@@ -70,7 +70,9 @@ const Control = <
 }: ControlProps<Option, IsMulti, Group> & {
   deleteButtonAriaLabel?: string
 }) => {
-  const { isLoading, inputValue, onInputChange, isDisabled } = props.selectProps
+  // @ts-ignore need to rework this once back in main repo
+  const { isLoading, inputValue, onInputChange, isDisabled, variantColor } =
+    props.selectProps
   const { deleteButtonAriaLabel } = props
 
   return (
@@ -80,15 +82,17 @@ const Control = <
         size={CapUIIconSize.Md}
         color={
           isDisabled
-            ? 'input.icon.disable'
+            ? `input.${variantColor}.icon.disable`
             : !inputValue
-            ? 'input.icon.placeholder'
-            : 'input.icon.default'
+            ? `input.${variantColor}.icon.placeholder`
+            : `input.${variantColor}.icon.default`
         }
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="input.icon.selected" />}
+      {isLoading && (
+        <Spinner mr={1} color={`input.${variantColor}.icon.selected`} />
+      )}
       {!isLoading && inputValue && (
         <Box
           as={'button'}
@@ -106,7 +110,7 @@ const Control = <
           <Icon
             name={CapUIIcon.Cross}
             size={CapUIIconSize.Md}
-            color="input.icon.default"
+            color={`input.${variantColor}.icon.default`}
             _hover={{ color: 'red.500' }}
             aria-hidden
             focusable={false}
@@ -202,6 +206,7 @@ export const SearchWithRef = <
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         loadOptions={loadOptions}
+        variantColor={inputProps.variantColor}
         {...props}
         ref={ref}
       />

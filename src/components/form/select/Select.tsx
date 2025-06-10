@@ -53,9 +53,14 @@ export function Control<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
-  // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel, value, isDisabled } =
-    props.selectProps
+  const {
+    isLoading,
+    isClearable, // @ts-ignore need to rework this once back in main repo
+    deleteButtonAriaLabel,
+    value,
+    isDisabled, // @ts-ignore need to rework this once back in main repo
+    variantColor,
+  } = props.selectProps
 
   return (
     <components.Control {...props}>
@@ -76,7 +81,11 @@ export function Control<
               <Icon
                 name={CapUIIcon.Cross}
                 size={CapUIIconSize.Md}
-                color={isDisabled ? 'text.disable' : 'input.icon.selected'}
+                color={
+                  isDisabled
+                    ? 'text.disable'
+                    : `input.${variantColor}.icon.selected`
+                }
                 _hover={{ color: 'red.500' }}
                 aria-hidden
                 focusable={false}
@@ -88,7 +97,11 @@ export function Control<
             style={{ cursor: 'pointer' }}
             name={CapUIIcon.ArrowDown}
             size={CapUIIconSize.Sm}
-            color={isDisabled ? 'text.disable' : 'input.icon.selected'}
+            color={
+              isDisabled
+                ? 'text.disable'
+                : `input.${variantColor}.icon.selected`
+            }
           />
         </>
       )}
@@ -159,6 +172,7 @@ export const Select: React.FC<SelectProps> = ({
         menuPortalTarget={document?.body}
         tabIndex={0}
         onKeyDown={handleKeyDown}
+        variantColor={inputProps.variantColor}
         {...props}
       />
     </Box>
