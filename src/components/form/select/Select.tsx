@@ -38,6 +38,7 @@ export function MultiValue<
 }) {
   return (
     <MultiValueTag
+      // @ts-ignore fix tag stuff
       isInvalid={props.selectProps['aria-invalid'] || false}
       isDisabled={isDisabled}
       removeProps={removeProps}
@@ -52,7 +53,7 @@ export function Control<
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
   // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel, value ,isDisabled} =
+  const { isLoading, isClearable, deleteButtonAriaLabel, value, isDisabled } =
     props.selectProps
 
   return (
@@ -69,7 +70,7 @@ export function Control<
               mr={'xxs'}
               style={{ cursor: 'pointer' }}
               onClick={() => props.clearValue()}
-               disabled={isDisabled}
+              disabled={isDisabled}
             >
               <Icon
                 name={CapUIIcon.Cross}

@@ -1,5 +1,5 @@
 import type { SystemStyleObject } from '@styled-system/css'
-import type { CSSObjectWithLabel, GroupBase, StylesConfig } from 'react-select'
+import type { GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
@@ -9,7 +9,6 @@ import { pxToRem } from '../../styles/modules/mixins'
 import { SPACING, ZINDEX } from '../../styles/theme'
 import {
   CapUIFontSize,
-  FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
 } from '../../styles/theme/typography'
@@ -160,12 +159,13 @@ export function reactSelectStyle<
       paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
       marginTop: isMulti && hasValue ? pxToRem(-4) : 0,
     }),
-    placeholder: base => ({
+    placeholder: (base, { isDisabled }) => ({
       ...base,
       margin: 0,
       whiteSpace: 'nowrap',
-      color: colors.text.tertiary,
+      color: colors.text[isDisabled ? 'disable' : 'tertiary'],
       lineHeight: LINE_HEIGHTS.M,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
     }),
     input: (base, { isMulti, hasValue }) => ({
       ...base,
@@ -173,6 +173,7 @@ export function reactSelectStyle<
       padding: 0,
       margin: 0,
       marginTop: isMulti && hasValue ? SPACING['xxs'] : 0,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
     }),
     option: base => ({
       ...base,
@@ -195,13 +196,13 @@ export function reactSelectStyle<
     indicatorSeparator: () => ({
       display: 'none',
     }),
-    clearIndicator: (base) => ({
+    clearIndicator: base => ({
       ...base,
       padding: 0,
       margin: 0,
       display: !isSearch ? 'none' : 'flex',
     }),
-    indicatorsContainer: (base) => ({
+    indicatorsContainer: base => ({
       ...base,
       paddingLeft: SPACING['sm'],
       paddingRight: SPACING['sm'],
@@ -209,7 +210,7 @@ export function reactSelectStyle<
       paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
       color: colors.gray['700'],
     }),
-    dropdownIndicator: (base) => ({
+    dropdownIndicator: base => ({
       ...base,
       padding: 0,
       margin: 0,

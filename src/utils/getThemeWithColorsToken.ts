@@ -359,6 +359,32 @@ const inputColors = (theme: CapUITheme) => ({
   },
 })
 
+const uploaderColors = (theme: CapUITheme) => ({
+  uploader: {
+    background: {
+      default: theme.colors.gray.background,
+      hover: theme.colors.gray.white,
+      drag: theme.colors.blue[100],
+      loading: theme.colors.gray.white,
+      complete: theme.colors.gray.background,
+    },
+    border: {
+      default: theme.colors.gray.base,
+      hover: theme.colors.primary.base,
+      drag: theme.colors.primary.base,
+      loading: theme.colors.primary.base,
+      complete: theme.colors.gray.base,
+    },
+    icon: {
+      default: theme.colors.gray.base,
+      hover: theme.colors.primary.base,
+      drag: theme.colors.primary.base,
+      loading: theme.colors.gray.base,
+      complete: theme.colors.gray.base,
+    },
+  },
+})
+
 const textColors = (theme: CapUITheme) => ({
   text: {
     primary: theme.colors.gray.black,
@@ -379,6 +405,7 @@ const getColors = (theme: CapUITheme) => ({
   ...avatarColors(theme),
   ...inputColors(theme),
   ...textColors(theme),
+  ...uploaderColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

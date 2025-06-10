@@ -36,6 +36,7 @@ export const InputNumber = ({
       display="flex"
       alignItems="center"
       width={width || pxToRem(104)}
+      className="cap-input-number_container"
     >
       <Box
         as="button"

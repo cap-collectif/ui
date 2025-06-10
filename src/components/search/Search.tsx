@@ -24,16 +24,20 @@ export interface SearchProps<
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
     AsyncProps<Option, IsMulti, Group>,
-    'onChange' | 'defaultValue' | 'value'
+    'onChange' | 'defaultValue' | 'value' | 'loadOption'
   > {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly variantSize?: CapInputSize
-  readonly width?: string | number
-  readonly onChange?: (value: string) => void
-  readonly onSelect?: (value: Option) => void
-  readonly value?: string
-  readonly inputTitle?: string
+  loadOptions?: (
+    inputValue: string,
+    callback: (options: any) => void,
+  ) => Promise<any> | void
+  isDisabled?: boolean
+  isInvalid?: boolean
+  variantSize?: CapInputSize
+  width?: string | number
+  onChange?: (value: string) => void
+  onSelect?: (value: Option) => void
+  value?: string
+  inputTitle?: string
 }
 
 const SelectContainer = ({ children: initialChildren, ...props }) => {
@@ -73,11 +77,11 @@ const Control = <
       <Icon
         name={CapUIIcon.Search}
         size={CapUIIconSize.Md}
-        color="gray.700"
+        color={!inputValue ? 'input.icon.placeholder' : 'input.icon.default'}
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="primary.base" />}
+      {isLoading && <Spinner mr={1} color="input.icon.selected" />}
       {!isLoading && inputValue && (
         <Box
           as={'button'}
@@ -95,7 +99,7 @@ const Control = <
           <Icon
             name={CapUIIcon.Cross}
             size={CapUIIconSize.Md}
-            color="gray.700"
+            color="input.icon.default"
             _hover={{ color: 'red.500' }}
             aria-hidden
             focusable={false}
@@ -167,8 +171,6 @@ export const SearchWithRef = <
         {...inputProps}
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize || CapInputSize.Sm,
           true,
         )}

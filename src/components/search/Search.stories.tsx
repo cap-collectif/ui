@@ -18,6 +18,7 @@ const meta: Meta = {
   args: {
     placeholder: 'Placeholder...',
   },
+  argTypes: { variantSize: { control: 'select', options: ['sm', 'md'] } },
   parameters: {
     controls: { expanded: true },
     docs: {
@@ -68,8 +69,10 @@ export const Loading: Story<Args> = ({ ...args }) => (
 
 export const Disabled: Story<Args> = ({ ...args }) => (
   <>
-    <FormLabel label="Label" mb={1} />
-    <Search inputId="color" onChange={() => {}} {...args} isDisabled />
+    <FormControl isDisabled>
+      <FormLabel label="Label" mb={1} />
+      <Search inputId="color" onChange={() => {}} {...args} />
+    </FormControl>
   </>
 )
 

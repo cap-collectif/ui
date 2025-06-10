@@ -2,24 +2,27 @@ import cn from 'classnames'
 import * as React from 'react'
 import { ChromePicker, TwitterPicker } from 'react-color'
 
+import { useTheme } from '../../../hooks'
+import { pxToRem } from '../../../styles/modules/mixins'
 import Box, { BoxPropsOf } from '../../box/Box'
 import { Flex } from '../../layout'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import S, { InputInner } from '../style'
+import { focusWithinStyles, InputInner } from '../style'
 import { CapColorPickerVariant } from './enums'
 
 export interface ColorPickerProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value'> {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isRequired?: boolean
-  readonly variantSize?: CapInputSize
-  readonly value: string | null
-  readonly onChange: (value: string | null) => void
-  readonly withOpacity?: boolean
-  readonly variant?: CapColorPickerVariant
-  readonly colors?: string[]
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isRequired?: boolean
+  variantSize?: CapInputSize
+  value: string | null
+  onChange: (value: string | null) => void
+  withOpacity?: boolean
+  variant?: CapColorPickerVariant
+  colors?: string[]
+  openPickerLabel?: string
 }
 
 const toHexwithOpacity = (hex: string, opacity: number) =>
@@ -34,92 +37,29 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   withOpacity = false,
   variant = CapColorPickerVariant.Chrome,
   colors,
+  openPickerLabel = 'Ouvrir le colorPicker',
   ...props
 }) => {
   const [displayColorPicker, setDisplayColorPicker] = React.useState(false)
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const { colors: themeColors } = useTheme()
 
   const { disabled } = inputProps
-  const invalid = inputProps['aria-invalid']
+
+  const handleFocus = () => setDisplayColorPicker(false)
+
   return (
     <>
-      {displayColorPicker ? (
-        <Box position="absolute" zIndex={2} top="50px">
-          <Box
-            position="fixed"
-            top={0}
-            left={0}
-            right={0}
-            bottom={0}
-            onClick={() => setDisplayColorPicker(false)}
-          />
-          {variant === CapColorPickerVariant.Chrome ? (
-            <ChromePicker
-              color={String(props.value)}
-              disableAlpha={!withOpacity}
-              onChange={color => {
-                if (onChange)
-                  onChange(
-                    withOpacity
-                      ? toHexwithOpacity(color.hex, color.rgb.a || 0)
-                      : color.hex,
-                  )
-              }}
-            />
-          ) : (
-            <Box
-              sx={{
-                'span + div': {
-                  display: 'none !important',
-                },
-                '[id^=rc-editable-input]': {
-                  display: 'none',
-                },
-              }}
-            >
-              <TwitterPicker
-                colors={
-                  colors || [
-                    '#1A88FF',
-                    '#33CEE6',
-                    '#46D267',
-                    '#FFC61A',
-                    '#FFA31A',
-                    '#DD3C4C',
-                  ]
-                }
-                width="135px"
-                triangle="hide"
-                onChange={color => {
-                  if (onChange)
-                    onChange(
-                      withOpacity
-                        ? toHexwithOpacity(color.hex, color.rgb.a || 0)
-                        : color.hex,
-                    )
-                }}
-              />
-            </Box>
-          )}
-        </Box>
-      ) : null}
       <Flex
-        sx={{
-          ...S,
-          '&:focus-within,&:active,&:focus': {
-            borderColor: disabled
-              ? 'gray.300'
-              : invalid
-              ? 'red.500'
-              : 'primary.base',
-          },
-          '&:focus-within': { bg: disabled ? 'gray.100' : 'white' },
-        }}
-        borderColor={invalid ? 'red.500' : undefined}
-        width="132px"
+        sx={focusWithinStyles(
+          !!disabled,
+          !props.value,
+          inputProps.readOnly,
+          themeColors,
+        )}
+        width={pxToRem(132)}
         alignItems="center"
         position="relative"
-        bg={disabled ? 'gray.100' : invalid ? 'red.150' : 'white'}
         className="cap-color-picker_container"
       >
         <Box
@@ -128,8 +68,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           height={4}
           width={4}
           left={2}
+          aria-hidden
           sx={{ background: `url("${alphaGrid}")` }}
         />
+
         <Box
           as="button"
           type="button"
@@ -141,9 +83,71 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           borderRadius="button"
           disabled={disabled}
           onClick={() => setDisplayColorPicker(true)}
+          onFocus={handleFocus}
           bg={String(props.value)}
           sx={{ cursor: disabled ? 'auto' : 'pointer' }}
+          aria-label={openPickerLabel}
         />
+        {displayColorPicker ? (
+          <Box position="absolute" zIndex={2} top="50px">
+            <Box
+              position="fixed"
+              top={0}
+              left={0}
+              right={0}
+              bottom={0}
+              onClick={() => setDisplayColorPicker(false)}
+            />
+            {variant === CapColorPickerVariant.Chrome ? (
+              <ChromePicker
+                color={String(props.value)}
+                disableAlpha={!withOpacity}
+                onChange={color => {
+                  if (onChange)
+                    onChange(
+                      withOpacity
+                        ? toHexwithOpacity(color.hex, color.rgb.a || 0)
+                        : color.hex,
+                    )
+                }}
+              />
+            ) : (
+              <Box
+                sx={{
+                  'span + div': {
+                    display: 'none !important',
+                  },
+                  '[id^=rc-editable-input]': {
+                    display: 'none',
+                  },
+                }}
+              >
+                <TwitterPicker
+                  colors={
+                    colors || [
+                      '#1A88FF',
+                      '#33CEE6',
+                      '#46D267',
+                      '#FFC61A',
+                      '#FFA31A',
+                      '#DD3C4C',
+                    ]
+                  }
+                  width="135px"
+                  triangle="hide"
+                  onChange={color => {
+                    if (onChange)
+                      onChange(
+                        withOpacity
+                          ? toHexwithOpacity(color.hex, color.rgb.a || 0)
+                          : color.hex,
+                      )
+                  }}
+                />
+              </Box>
+            )}
+          </Box>
+        ) : null}
         <InputInner
           {...inputProps}
           variant={inputProps.variantSize}
@@ -151,9 +155,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           as="input"
           className={cn('cap-color-picker', className)}
           width="100%"
-          bg={inputProps.disabled ? 'gray.100' : invalid ? 'red.150' : 'white'}
-          sx={{ '&:active,&:focus': { bg: disabled ? 'gray.100' : 'white' } }}
+          bg="transparent"
+          sx={{ '&:focus-visible': { outline: 'none' } }}
           {...props}
+          onFocus={handleFocus}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             if (onChange)
               onChange(e.target.value?.substring(0, withOpacity ? 9 : 7))

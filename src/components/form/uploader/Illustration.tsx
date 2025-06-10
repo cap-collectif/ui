@@ -33,7 +33,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           className="leftpage"
           key="leftpage 2"
           d="M34.2748 51.2388L36.9339 61.162L46.8571 58.5029L34.2748 51.2388Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -51,7 +51,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           className="leftpage"
           key="leftpage 4"
           d="M26.9998 83.0416L29.4277 76.3185C29.5265 76.0455 29.6787 75.795 29.8755 75.5816C30.0723 75.3682 30.3097 75.1962 30.5738 75.0758C30.8379 74.9553 31.1234 74.8887 31.4136 74.88C31.7037 74.8713 31.9927 74.9206 32.2636 75.0249L35.2674 76.1898L37.067 70.047C37.176 69.6751 37.3821 69.3389 37.6641 69.0731C37.9461 68.8073 38.2938 68.6214 38.6715 68.5345C39.0491 68.4476 39.4431 68.463 39.8129 68.5789C40.1827 68.6948 40.5149 68.9071 40.7754 69.194L47.9981 77.1475L26.9998 83.0416Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -73,7 +73,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           key="rightpage 2"
           style={{ transformOrigin: 'right top' }}
           d="M101.709 53.8687L99.0504 63.792L108.974 66.4507L101.709 53.8687Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -83,7 +83,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           key="rightpage 3"
           style={{ transformOrigin: 'right top' }}
           d="M89.1692 64.0794C89.0241 63.945 88.8467 63.8504 88.6543 63.8049C88.4618 63.7595 88.2609 63.7646 88.071 63.8198C87.8811 63.8751 87.7087 63.9785 87.5707 64.1202C87.4327 64.2618 87.3337 64.4368 87.2834 64.628L84.838 73.9207C84.7877 74.112 84.7878 74.313 84.8382 74.5042C84.8886 74.6954 84.9877 74.8703 85.1258 75.0119C85.2639 75.1534 85.4363 75.2568 85.6263 75.312C85.8162 75.3671 86.0171 75.3721 86.2096 75.3265L96.1459 72.9724C96.3479 72.9246 96.5331 72.8227 96.6816 72.6778C96.8302 72.5328 96.9366 72.3502 96.9894 72.1495C97.0422 71.9488 97.0395 71.7375 96.9815 71.5382C96.9236 71.3389 96.8125 71.1591 96.6602 71.018L89.1692 64.0794Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
         />
         <path
           className="rightpage"
@@ -109,7 +109,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           className="centerpage"
           key="centerpage 2"
           d="M69.3712 38.7732L69.3066 52.3975L82.931 52.4621L69.3712 38.7732Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -141,12 +141,12 @@ const Illustration = ({ colors }: { colors: Colors }) => {
         <path
           className="centerpage"
           d="M70.5202 81.2908C70.1425 81.6683 69.6303 81.8804 69.0962 81.8804C68.5622 81.8804 68.05 81.6683 67.6723 81.2908L64.5647 78.1831V96.4825C64.5647 97.1502 64.2995 97.7905 63.8273 98.2626C63.3552 98.7348 62.7149 99 62.0472 99C61.3795 99 60.7392 98.7348 60.267 98.2626C59.7949 97.7905 59.5297 97.1502 59.5297 96.4825V78.1831L56.422 81.2908C56.0405 81.6486 55.5347 81.8439 55.0117 81.8354C54.4887 81.8269 53.9895 81.6152 53.6198 81.2452C53.25 80.8752 53.0387 80.3759 53.0306 79.8529C53.0225 79.3299 53.2182 78.8242 53.5762 78.4429L60.6253 71.3939C61.003 71.0163 61.5152 70.8042 62.0492 70.8042C62.5832 70.8042 63.0954 71.0163 63.4731 71.3939L70.5222 78.4429C70.8995 78.8209 71.1112 79.3332 71.1108 79.8673C71.1105 80.4013 70.898 80.9133 70.5202 81.2908Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
         />
         <path
           className="centerpage"
           d="M70.5202 81.2908C70.1425 81.6683 69.6303 81.8804 69.0962 81.8804C68.5622 81.8804 68.05 81.6683 67.6723 81.2908L64.5647 78.1831V96.4825C64.5647 97.1502 64.2995 97.7905 63.8273 98.2626C63.3552 98.7348 62.7149 99 62.0472 99C61.3795 99 60.7392 98.7348 60.267 98.2626C59.7949 97.7905 59.5297 97.1502 59.5297 96.4825V78.1831L56.422 81.2908C56.0405 81.6486 55.5347 81.8439 55.0117 81.8354C54.4887 81.8269 53.9895 81.6152 53.6198 81.2452C53.25 80.8752 53.0387 80.3759 53.0306 79.8529C53.0225 79.3299 53.2182 78.8242 53.5762 78.4429L60.6253 71.3939C61.003 71.0163 61.5152 70.8042 62.0492 70.8042C62.5832 70.8042 63.0954 71.0163 63.4731 71.3939L70.5222 78.4429C70.8995 78.8209 71.1112 79.3332 71.1108 79.8673C71.1105 80.4013 70.898 80.9133 70.5202 81.2908Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinejoin="round"
         />
@@ -165,7 +165,7 @@ const Illustration = ({ colors }: { colors: Colors }) => {
           className="left"
           key="left 2"
           d="M31.452 27.1916L21.8991 29.7107L24.1532 38.2585L33.7061 35.7394L31.452 27.1916Z"
-          fill={colors?.primary.lighter}
+          fill={colors?.primary.light}
           stroke={colors?.primary.darker}
           strokeLinecap="round"
           strokeLinejoin="round"

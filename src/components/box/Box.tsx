@@ -309,7 +309,7 @@ export type BoxProps = BoxHTMLProps &
   BoxCssStateProps
 
 export type BoxPropsOf<
-  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
+  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
 > = Omit<BoxProps, keyof Omit<PropsOf<C>, 'css'>> & Omit<PropsOf<C>, 'css'>
 
 export interface BoxOwnProps<E extends ElementType = ElementType>
@@ -341,7 +341,7 @@ export const Box = styled('div').withConfig({
     _disabled,
     _selected,
     _invalid,
-    theme: { colors }
+    theme: { colors },
   }) =>
     css(
       merge.all([
@@ -350,20 +350,19 @@ export const Box = styled('div').withConfig({
           ...(_active ? { '&:active': _active } : {}),
           ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
           ...(_invalid ? { '&[aria-invalid="true"]': _invalid } : {}),
-          ...(_focus
-            ? { '&:focus': _focus }
-            : {}),
+          ...(_focus ? { '&:focus': _focus } : {}),
           ...(_disabled
             ? { '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled }
             : {}),
         },
         sx ?? {},
         {
-          '&:focus-visible:not(.cap-input,.cap-textarea,.cap-input-number)': {
-            outline: '2px #fff solid',
-            outlineOffset: 0,
-            boxShadow: `0 0 0 4px ${colors?.primary?.dark || '#000'}`
-          }
+          '&:focus-visible:not(.cap-input,.cap-textarea,.cap-input-number,.cap-color-picker)':
+            {
+              outline: '2px #fff solid',
+              outlineOffset: 0,
+              boxShadow: `0 0 0 4px ${colors?.primary?.dark || '#000'}`,
+            },
         },
       ]),
     ),
@@ -404,7 +403,7 @@ export type PolymorphicBox = <E extends ElementType = typeof defaultElement>(
 ) => JSX.Element
 
 export type PolymorphicComponent<P> = <
-  E extends ElementType = typeof defaultElement
+  E extends ElementType = typeof defaultElement,
 >(
   props: PolymorphicComponentProps<E, P>,
 ) => JSX.Element

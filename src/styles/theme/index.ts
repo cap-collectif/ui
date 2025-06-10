@@ -2,7 +2,8 @@ import merge from 'deepmerge'
 import type { DefaultTheme } from 'styled-components'
 
 import { tint } from '../../utils/color'
-import colors from '../modules/colors'
+import { ExtendedColors } from '../../utils/getThemeWithColorsToken'
+import colors, { Colors } from '../modules/colors'
 import { SPACING, NEW_SPACING } from './spacing'
 import typography, {
   FONT_FAMILIES,
@@ -152,8 +153,11 @@ export enum CapUIBorder {
 
 export type ThemeBordersValues = keyof typeof BORDERS | (string & {})
 
-export const capuiTheme: Omit<DefaultTheme, 'colors'> = {
+export const capuiTheme: Omit<DefaultTheme, 'colors'> & {
+  colors: ExtendedColors & Colors
+} = {
   ...typography,
+  // @ts-expect-error Color type is a bit too complex for now
   colors,
   breakpoints: [
     breakpoints.tablet,
