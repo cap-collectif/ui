@@ -99,7 +99,7 @@ const DateRange: FC<DateRangeProps> = ({
         onClose={onClose}
         customArrowIcon={
           <Icon
-            color={`input.icon.${
+            color={`input.${inputProps.variantColor}.icon.${
               inputProps.disabled
                 ? 'disable'
                 : isEmpty
