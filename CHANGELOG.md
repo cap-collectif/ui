@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 4.0.1
+
+`2025-06-12`
+
+- 🐛 Remove types folder from `/dist` to match previous config [#513](https://github.com/cap-collectif/ui/pull/513)
+
 ## 4.0.0
 
 `2025-06-09`
