@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   return fs.outputFile('dist/index.js', contents)
 }
 
-export default {
+const config = {
   input: 'src/index.ts',
   output: [
     {
@@ -53,3 +53,5 @@ export default {
   ],
   treeshake: true,
 }
+
+export default config

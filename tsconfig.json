@@ -9,8 +9,6 @@
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
-    // Specify a directory for generated .d.ts files
-    "declarationDir": "dist/types", 
     // Ensure there's an output directory for compiled files
     "outDir": "dist",
     // output .js.map sourcemap files for consumers
