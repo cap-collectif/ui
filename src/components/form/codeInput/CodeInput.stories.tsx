@@ -1,7 +1,11 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUIFontSize, CapUILineHeight } from '../../../styles'
+import {
+  CapUIFontFamily,
+  CapUIFontSize,
+  CapUILineHeight,
+} from '../../../styles'
 import { Box } from '../../box/Box'
 import { Button } from '../../button'
 import { Flex } from '../../layout'
@@ -55,7 +59,12 @@ export const WithLabel: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
+      <CodeInput
+        onComplete={onComplete}
+        isVerified={isVerified}
+        title="Inserez un code"
+        {...args}
+      />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -77,7 +86,12 @@ export const Disabled: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
+      <CodeInput
+        onComplete={onComplete}
+        isVerified={isVerified}
+        title="Inserez un code"
+        {...args}
+      />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -101,7 +115,12 @@ export const WithError: Story<Args> = ({
           </Box>
         )}
       </FormLabel>
-      <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
+      <CodeInput
+        onComplete={onComplete}
+        isVerified={isVerified}
+        title="Inserez un code"
+        {...args}
+      />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
@@ -129,7 +148,12 @@ export const Verified: Story<Args> = ({
           )}
         </FormLabel>
 
-        <CodeInput onComplete={onComplete} isVerified={isVerified} {...args} />
+        <CodeInput
+          onComplete={onComplete}
+          isVerified={isVerified}
+          title="Inserez un code"
+          {...args}
+        />
 
         <Box
           color="green.500"
@@ -284,6 +308,7 @@ export const Mobile: Story<Args> = ({
         <CodeInput
           onComplete={onComplete}
           isVerified={isVerified}
+          title="Inserez un code"
           {...args}
           ref={args.ref}
         />
