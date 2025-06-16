@@ -11,19 +11,18 @@ import ReactSelect from 'react-select/async'
 import type { AsyncProps } from 'react-select/async'
 
 import { useTheme } from '../../hooks'
+import { pxToRem } from '../../styles/modules/mixins'
 import { Box } from '../box'
 import { CapInputSize, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
-import { pxToRem } from '../../styles/modules/mixins'
 
 export interface SearchProps<
   Option,
   IsMulti extends false = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
->
-  extends Omit<
+  Group extends GroupBase<Option> = GroupBase<Option>,
+> extends Omit<
     AsyncProps<Option, IsMulti, Group>,
     'onChange' | 'defaultValue' | 'value'
   > {
@@ -37,17 +36,34 @@ export interface SearchProps<
   readonly inputTitle?: string
 }
 
+const SelectContainer = ({ children: initialChildren, ...props }) => {
+  const hasSuggestions = !!props?.options?.length
+
+  const children = React.Children.map(
+    initialChildren,
+    (child: React.ReactElement) => {
+      // @ts-expect-error react-select types are a bit different from react children native types
+      if (child?.type?.name === 'LiveRegion' && !hasSuggestions) return null
+      return child
+    },
+  )
+  // @ts-expect-error react-select types are a bit different from react children native types
+  return <components.SelectContainer children={children} {...props} />
+}
+
 const Control = <
   Option,
   IsMulti extends false = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   children,
   ...props
-}: ControlProps<Option, IsMulti, Group> & { deleteButtonAriaLabel?: string })  => {
+}: ControlProps<Option, IsMulti, Group> & {
+  deleteButtonAriaLabel?: string
+}) => {
   const { isLoading, inputValue, onInputChange } = props.selectProps
   const { deleteButtonAriaLabel } = props
-  
+
   return (
     <components.Control {...props}>
       <Icon
@@ -59,7 +75,9 @@ const Control = <
       {Array.isArray(children) && children[0]}
       {isLoading && <Spinner mr={1} color="primary.base" />}
       {!isLoading && inputValue && (
-        <Box as={'button'} type="button"
+        <Box
+          as={'button'}
+          type="button"
           mr={1}
           style={{ cursor: 'pointer' }}
           onClick={() => {
@@ -68,8 +86,8 @@ const Control = <
               prevInputValue: inputValue,
             })
           }}
-            aria-label={deleteButtonAriaLabel || "Supprimer la saisie"}
-          >
+          aria-label={deleteButtonAriaLabel || 'Supprimer la saisie'}
+        >
           <Icon
             name={CapUIIcon.Cross}
             size={CapUIIconSize.Md}
@@ -87,18 +105,38 @@ const Control = <
 const Input = <
   Option,
   IsMulti extends false = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: InputProps<Option, IsMulti, Group>,
 ) => {
-  // @ts-ignore react-select doesn't handle titles on input natively
-  return <components.Input {...props} title={props.selectProps.inputTitle} />
+  const hasSuggestions = !!props?.options?.length
+
+  const roleProps = hasSuggestions
+    ? {}
+    : {
+        'aria-expanded': undefined,
+        'aria-haspopup': undefined,
+        'aria-controls': undefined,
+        'aria-autocomplete': undefined,
+        'aria-owns': undefined,
+        haspopup: undefined,
+        role: undefined,
+      }
+
+  return (
+    <components.Input
+      {...props} // @ts-ignore react-select doesn't handle titles on input natively
+      title={props.selectProps.inputTitle}
+      aria-describedby={undefined}
+      {...roleProps}
+    />
+  )
 }
 
 export const SearchWithRef = <
   Option,
   IsMulti extends false = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   {
     className,
@@ -146,7 +184,7 @@ export const SearchWithRef = <
         classNamePrefix="cap-search"
         isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
-        components={{ Control, Input }}
+        components={{ Control, Input, SelectContainer }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         loadOptions={loadOptions}

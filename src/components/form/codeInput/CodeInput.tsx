@@ -14,6 +14,7 @@ export type CodeInputProps = Omit<OTPInputProps, 'children' | 'maxLength'> & {
   readonly value?: string
   readonly id?: string
   readonly ref?: Ref<HTMLInputElement | null>
+  title: string
 }
 
 type CodeInputRef = HTMLInputElement | null

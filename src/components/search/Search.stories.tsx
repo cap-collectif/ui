@@ -75,6 +75,7 @@ export const Disabled: Story<Args> = ({ ...args }) => (
 
 export const Controlled: Story<Args> = () => {
   const [value, setValue] = React.useState('')
+
   return (
     <>
       <FormLabel label="Label" mb={1} />
