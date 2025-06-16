@@ -26,7 +26,7 @@ export interface InputProps extends PolymorphicBoxProps<'input'> {
 export const Input: React.FC<InputProps> = React.forwardRef<
   HTMLInputElement,
   InputProps
->(({ className, onClickActions, variantColor = 'default', ...props }, ref) => {
+>(({ className, onClickActions, ...props }, ref) => {
   const { colors } = useTheme()
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { disabled } = inputProps
@@ -54,7 +54,7 @@ export const Input: React.FC<InputProps> = React.forwardRef<
         isEmpty,
         inputProps.readOnly,
         colors,
-        variantColor,
+        inputProps.variantColor,
       )}
       variant={inputProps.variantSize}
       as="div"
