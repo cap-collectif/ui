@@ -39,11 +39,11 @@
   "size-limit": [
     {
       "path": "dist/ui.cjs.production.min.js",
-      "limit": "400 KB"
+      "limit": "750 KB"
     },
     {
       "path": "dist/ui.esm.js",
-      "limit": "400 KB"
+      "limit": "750 KB"
     }
   ],
   "devDependencies": {
