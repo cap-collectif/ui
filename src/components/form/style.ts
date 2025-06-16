@@ -148,6 +148,8 @@ export function reactSelectStyle<
       minHeight: 'unset',
       border: 'none',
       borderRadius: 'none',
+      borderTopLeftRadius: SPACING.xxs,
+      borderTopRightRadius: SPACING.xxs,
       background:
         colors.input[variantColor].background[
           isFocused ? 'selected' : 'default'
