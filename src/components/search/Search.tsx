@@ -38,12 +38,16 @@ export interface SearchProps<
 
 const SelectContainer = ({ children: initialChildren, ...props }) => {
   const hasSuggestions = !!props?.options?.length
-
   const children = React.Children.map(
     initialChildren,
     (child: React.ReactElement) => {
-      // @ts-expect-error react-select types are a bit different from react children native types
-      if (child?.type?.name === 'LiveRegion' && !hasSuggestions) return null
+      if (
+        // @ts-expect-error react-select types are a bit different from react children native types
+        (child?.type?.name === 'LiveRegion' ||
+          child?.props?.id?.includes('-live-region')) &&
+        !hasSuggestions
+      )
+        return null
       return child
     },
   )
