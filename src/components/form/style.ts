@@ -1,7 +1,7 @@
 import type { SystemStyleObject } from '@styled-system/css'
 import type { GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
+import { borderColor, variant } from 'styled-system'
 
 import { CapUILineHeight } from '../../styles'
 import { Colors } from '../../styles/modules/colors'
@@ -43,6 +43,9 @@ const styles = (
   boxShadow: `inset 0px -1px 0px 0px ${
     colors.input[variantColor].border[isEmpty ? 'placeholder' : 'default']
   }`,
+  borderColor: `${
+    colors.input[variantColor].border[isEmpty ? 'placeholder' : 'default']
+  } !important`,
   lineHeight: CapUILineHeight.M,
   color: 'text.primary',
   bg: isEmpty
@@ -59,6 +62,7 @@ const styles = (
   '&:focus,&:focus-visible,&[aria-selected="true"],&:active': {
     outline: 'none',
     boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.selected}`,
+    borderColor: `${colors.input[variantColor].border.selected} !important`,
     bg: `input.${variantColor}.background.selected`,
   },
 
@@ -96,6 +100,17 @@ export const focusWithinStyles = (
         : 'default'
     ]
   }`,
+  borderColor: `${
+    colors.input[variantColor].border[
+      isReadonly
+        ? 'readonly'
+        : isDisabled
+        ? 'disable'
+        : isEmpty
+        ? 'placeholder'
+        : 'default'
+    ]
+  } !important`,
   lineHeight: CapUILineHeight.M,
   color: isDisabled ? 'text.disable' : 'text.primary',
   bg: `input.${variantColor}.background.${
@@ -126,6 +141,9 @@ export const focusWithinStyles = (
     boxShadow: `inset 0px -1px 0px 0px ${
       colors.input[variantColor].border[isReadonly ? 'readonly' : 'selected']
     }`,
+    borderColor: `${
+      colors.input[variantColor].border[isReadonly ? 'readonly' : 'selected']
+    } !important`,
     bg: `input.${variantColor}.background.selected`,
   },
 
@@ -165,6 +183,17 @@ export function reactSelectStyle<
             : 'placeholder'
         ]
       }`,
+      borderColor: `${
+        colors.input[variantColor].border[
+          isFocused
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : hasValue
+            ? 'default'
+            : 'placeholder'
+        ]
+      } !important`,
     }),
     valueContainer: (base, { isMulti, hasValue }) => ({
       ...base,

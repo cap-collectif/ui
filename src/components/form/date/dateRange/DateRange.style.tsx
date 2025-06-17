@@ -862,6 +862,10 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
     border-bottom-right-radius: 0px;
     padding-right: ${props => props.theme.space.sm};
     box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input[props.variantColor].border[props.isEmpty ? 'placeholder' : 'default']};
+    border-color: ${props =>
+      props.theme.colors.input[props.variantColor].border[
+        props.isEmpty ? 'placeholder' : 'default'
+      ]} !important;
     line-height: ${props => props.theme.lineHeights.M};
     background-color: ${props =>
       props.theme.colors.input[props.variantColor].background.default};
@@ -875,6 +879,9 @@ export const DateRangeBox = styled(Box)<DateBoxProps>`
 
     &:focus-within {
       box-shadow: inset 0px -1px 0px 0px ${props => props.theme.colors.input[props.variantColor].border.selected};
+      border-color: ${props =>
+        props.theme.colors.input[props.variantColor].border
+          .selected} !important;
       background-color: ${props =>
         props.theme.colors.input[props.variantColor].background.selected};
     }
