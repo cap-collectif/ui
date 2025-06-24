@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
+
 import { useIsMobile } from '../../../hooks/useDeviceDetect'
 import { CapUIFontFamily, CapUIFontWeight, CapUIRadius } from '../../../styles'
 import { Box } from '../../box'
@@ -31,7 +32,6 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
   }, [])
   const isMobile = useIsMobile()
 
-
   /**
    * This bit checks children to see if we have a Label and a Heading on our ModalHeader
    * and forwards, if needed, the id used by the close button to give some context
@@ -48,7 +48,8 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
       // @ts-ignore property displayName not standard
       const isHeading = child.type?.displayName === 'Heading'
 
-      if (isHeading && !hasLabel) // @ts-ignore cloning with custom props
+      if (isHeading && !hasLabel)
+        // @ts-ignore cloning with custom props
         return React.cloneElement(child, { id: MODAL_TITLE_ARIA_DESCRIBED_BY })
       // @ts-ignore cloning with custom props
       if (isHeading && hasLabel) return React.cloneElement(child, { as: 'h3' })
@@ -104,6 +105,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
             name={CapUIIcon.CrossO}
             size={CapUIIconSize.Sm}
             aria-label={closeIconLabel}
+            aria-hidden="false"
           />
         </Box>
       )}
