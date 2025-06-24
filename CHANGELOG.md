@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 4.0.4
+
+`2025-06-24`
+
+- 🛠 Accessibility improvements on `ModalHeader` [#519](https://github.com/cap-collectif/ui/pull/519)
+
 ## 4.0.3
 
 `2025-06-16`
@@ -22,7 +28,6 @@ To better understand the changelog, here are some legends we use:
 `2025-06-16`
 
 - 🛠 Accessibility improvements on `Search` and `CodeInput` [#515](https://github.com/cap-collectif/ui/pull/515)
-
 
 ## 4.0.1
 
@@ -60,8 +65,8 @@ To better understand the changelog, here are some legends we use:
 `2025-05-19`
 
 - 💄 Update `ButtonQuickAction` background color [#503](https://github.com/cap-collectif/ui/pull/503)
-- 🐛 Remove hardcoded non-unique ids (`CodeInput`, `HourInput`, `DateInput`) [#502](https://github.com/cap-collectif/ui/pull/502)
-
+- 🐛 Remove hardcoded non-unique
+  ids (`CodeInput`, `HourInput`, `DateInput`) [#502](https://github.com/cap-collectif/ui/pull/502)
 
 ## 3.0.0
 
@@ -75,7 +80,8 @@ To better understand the changelog, here are some legends we use:
 
 `2025-03-31`
 
-- 💥 Update LineHeight, FontSize, Spacing tokens, Color tokens, and Button Component [#490](https://github.com/cap-collectif/ui/pull/490)
+- 💥 Update LineHeight, FontSize, Spacing tokens, Color tokens, and Button
+  Component [#490](https://github.com/cap-collectif/ui/pull/490)
 
 ## 1.10.24
 
