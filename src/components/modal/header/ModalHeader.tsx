@@ -106,6 +106,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
             size={CapUIIconSize.Sm}
             aria-label={closeIconLabel}
             aria-hidden="false"
+            role="img"
           />
         </Box>
       )}
