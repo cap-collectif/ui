@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 4.0.6
+
+`2025-06-27`
+
+- 🛠 Accessibility add role="img" to `ModalHeader` close button [#525](https://github.com/cap-collectif/ui/pull/525)
+
 ## 4.0.5
 
 `2025-06-27`
