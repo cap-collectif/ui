@@ -13,7 +13,7 @@ export const ModalBody = ({ children, className, ...rest }: ModalBodyProps) => {
 
   return (
     <Flex
-      as="main"
+      as="div"
       p={isMobile ? 4 : 6}
       pt={isMobile ? 0 : 6}
       height="100%"
