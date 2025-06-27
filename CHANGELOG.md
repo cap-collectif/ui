@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 4.0.5
+
+`2025-06-27`
+
+- 🛠 Better HTML structure of `ModalBody` [#522](https://github.com/cap-collectif/ui/pull/522)
+
 ## 4.0.4
 
 `2025-06-24`
