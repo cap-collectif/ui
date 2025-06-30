@@ -61,6 +61,7 @@ const Tbody: React.FC<TbodyProps> = ({
         .filter(c => c.props && c.props.rowId)
         .map(c => (c.props ? String(c.props.rowId) : ''))
       const hasRowsEquals =
+        // eslint-disable-next-line eqeqeq
         JSON.stringify(rowIds) == JSON.stringify(Object.keys(rows))
 
       if (!hasRowsEquals) {

@@ -6,7 +6,7 @@ import type { AsyncProps } from 'react-select/async'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { MultiValue, Control } from './Select'
@@ -14,18 +14,23 @@ import { MultiValue, Control } from './Select'
 export interface AsyncSelectProps<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends AsyncProps<Option, IsMulti, Group> {
-  readonly isDisabled?: boolean
-  readonly variantSize?: CapInputSize
-  readonly width?: string | number
-  readonly onChange?: (newValue: any) => void
+  isDisabled?: boolean
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  width?: string | number
+  onChange?: (newValue: any) => void
+  loadOptions?: (
+    inputValue: string,
+    callback: (options: any) => void,
+  ) => Promise<any> | void
 }
 
 export function AsyncSelect<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({ className, width, ...props }: AsyncSelectProps<Option, IsMulti, Group>) {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
@@ -35,9 +40,8 @@ export function AsyncSelect<
       <Async<Option, IsMulti, Group>
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize,
+          inputProps.variantColor,
         )}
         className={cn('cap-async-select', className)}
         classNamePrefix="cap-async-select"

@@ -48,11 +48,11 @@ export interface PopoverProps
   popoverProps?: Omit<DialogOptions, 'baseId'>
 }
 
-type ContainerAnimate = React.FC<
+type ContainerAnimateType = React.FC<
   AnimationProps & Pick<MotionProps, 'initial'> & FlexProps
 >
 
-const ContainerAnimate = motion(Flex) as ContainerAnimate
+const ContainerAnimate = motion(Flex) as ContainerAnimateType
 
 const Arrow = styled(PopoverArrow)`
   .stroke {

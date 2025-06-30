@@ -35,6 +35,12 @@ const meta: Meta = {
   title: 'Library/Form/CodeInput',
   component: CodeInput,
   args: { isVerified: false, length: 6 },
+  argTypes: {
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
+  },
   parameters: {
     controls: { expanded: true },
   },
@@ -64,6 +70,7 @@ export const WithLabel: Story<Args> = ({
         isVerified={isVerified}
         title="Inserez un code"
         {...args}
+        id="Code_Input"
       />
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
@@ -156,7 +163,7 @@ export const Verified: Story<Args> = ({
         />
 
         <Box
-          color="green.500"
+          color="text.primary"
           fontFamily={CapUIFontFamily.Body}
           lineHeight="normal"
           fontSize={CapUIFontSize.BodyRegular}

@@ -20,7 +20,11 @@ const meta: Meta = {
   title: 'Library/Form/DateRange',
   component: DateRange,
   argTypes: {
-    variantSize: { options: Object.values(CapInputSize) as string[] },
+    variantSize: { control: 'select', options: ['sm', 'md'] },
+    variantColor: {
+      control: 'select',
+      options: ['default', 'hierarchy'],
+    },
     onChange: {
       action: 'clicked',
       description:

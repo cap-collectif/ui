@@ -1,25 +1,26 @@
 import cn from 'classnames'
 import * as React from 'react'
-import type { GroupBase } from 'react-select'
 import Select from 'react-select/creatable'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
+import { InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { SelectProps } from './'
 import { MultiValue, Control } from './Select'
 
 export interface CreatableSelectProps extends SelectProps {
-  readonly formatCreateLabel?: (userInput: string) => React.ReactNode
-  readonly onCreateOption?: (userInput: string) => void
+  formatCreateLabel?: (userInput: string) => React.ReactNode
+  onCreateOption?: (userInput: string) => void
+  variantColor?: InputVariantColor
 }
 
-export function CreatableSelect<
-  Option,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
->({ className, width, ...props }: CreatableSelectProps) {
+export function CreatableSelect({
+  className,
+  width,
+  ...props
+}: CreatableSelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
 
@@ -29,9 +30,8 @@ export function CreatableSelect<
       <Select
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize,
+          inputProps.variantColor,
         )}
         className={cn('cap-creatable-select', className)}
         classNamePrefix="cap-creatable-select"

@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 
+import { pxToRem } from '../../../styles/modules/mixins'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
 import { Input, InputProps } from '../input'
@@ -19,7 +20,7 @@ const HourInput: React.FC<InputProps> = React.forwardRef<
       className={cn('cap-hour-input', className)}
       ref={ref}
       width={width}
-      height={props.variantSize === CapInputSize.Sm ? '34px' : '42px'}
+      height={pxToRem(props.variantSize === CapInputSize.Sm ? 32 : 40)}
     />
   )
 })

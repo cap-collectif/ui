@@ -374,7 +374,7 @@ export const FullScreen: Story<MultiStepModalProps> = () => {
           label="Code"
           input={
             <Flex justifyContent="center">
-              <CodeInput onComplete={() => {}} />
+              <CodeInput onComplete={() => {}} title="Inserez un code" />
             </Flex>
           }
         />

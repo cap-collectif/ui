@@ -60,14 +60,12 @@ export const FONT_FAMILIES = {
   heading: `Open Sans, system-ui, sans-serif`,
   label: `Open Sans, system-ui, sans-serif`,
   body: `Open Sans, system-ui, sans-serif`,
-  input: `Roboto, system-ui, sans-serif`,
 } as const
 
 export enum CapUIFontFamily {
   Heading = 'heading',
   Label = 'label',
   Body = 'body',
-  Input = 'input',
 }
 
 export type ThemeFontFamiliesValue = keyof typeof FONT_FAMILIES | (string & {})

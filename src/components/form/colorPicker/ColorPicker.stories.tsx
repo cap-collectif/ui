@@ -28,6 +28,7 @@ const meta: Meta = {
     isInvalid: false,
     errorMessage: '',
   },
+  argTypes: { variantSize: { control: 'select', options: ['sm', 'md'] } },
   parameters: {
     controls: { expanded: true },
     docs: {

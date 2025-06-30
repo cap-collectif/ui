@@ -71,6 +71,21 @@ export interface UploaderProps
   readonly onRemove?: (file: FileInfo) => void
 }
 
+const UploaderText = ({ icon, children }) => (
+  <Flex direction="column" align="center" gap="xs">
+    {icon}
+    <Text
+      textAlign="center"
+      fontSize={CapUIFontSize.BodyRegular}
+      lineHeight={CapUILineHeight.M}
+      color="text.primary"
+      px="xs"
+    >
+      {children}
+    </Text>
+  </Flex>
+)
+
 const Uploader: React.FC<UploaderProps> = ({
   format,
   size = UPLOADER_SIZE.LG,
@@ -163,21 +178,21 @@ const Uploader: React.FC<UploaderProps> = ({
         return (
           <Content>
             {isDragActive ? (
-              <Text
-                textAlign="center"
-                fontWeight="semibold"
-                fontSize={CapUIFontSize.Headline}
-                color="primary.darker"
+              <UploaderText
+                icon={
+                  <Icon
+                    name={CapUIIcon.UploadArrow}
+                    size={CapUIIconSize.Lg}
+                    color="uploader.icon.drag"
+                  />
+                }
               >
                 {wording.uploaderPrompt}
-              </Text>
+              </UploaderText>
             ) : loading ? (
-              <Flex direction="column" align="center">
-                <Spinner size={CapUIIconSize.Lg} />
-                <Text color="gray.800" mt={3}>
-                  {wording.uploaderLoadingPrompt}
-                </Text>
-              </Flex>
+              <UploaderText icon={<Spinner size={CapUIIconSize.Lg} />}>
+                {wording.uploaderLoadingPrompt}
+              </UploaderText>
             ) : (
               <>
                 <Illustration key={0} colors={colors} />
@@ -186,7 +201,7 @@ const Uploader: React.FC<UploaderProps> = ({
                   textAlign="center"
                   fontSize={CapUIFontSize.BodyRegular}
                   lineHeight={CapUILineHeight.M}
-                  color="gray.500"
+                  color="text.primary"
                 >
                   {wording.uploaderPrompt}
                 </Text>
@@ -198,31 +213,41 @@ const Uploader: React.FC<UploaderProps> = ({
         return (
           <Content>
             {isDragActive ? (
-              <Text
-                textAlign="center"
-                fontWeight="semibold"
-                fontSize={CapUIFontSize.Headline}
-                color="primary.darker"
+              <UploaderText
+                icon={
+                  <Icon
+                    name={CapUIIcon.UploadArrow}
+                    size={CapUIIconSize.Lg}
+                    color="uploader.icon.drag"
+                  />
+                }
               >
                 {wording.uploaderPrompt}
-              </Text>
+              </UploaderText>
             ) : loading ? (
-              <Flex direction="column" align="center">
+              <Flex direction="column" align="center" gap="xs" p="xs">
                 <Spinner size={CapUIIconSize.Lg} />
-                <Text color="gray.800" mt={3}>
+                <Text
+                  textAlign="center"
+                  fontSize={CapUIFontSize.BodyRegular}
+                  lineHeight={CapUILineHeight.M}
+                  color="text.primary"
+                >
                   {wording.uploaderLoadingPrompt}
                 </Text>
               </Flex>
             ) : (
-              <Text
-                width="70%"
-                textAlign="center"
-                fontSize={CapUIFontSize.BodyRegular}
-                lineHeight={CapUILineHeight.M}
-                color="gray.500"
+              <UploaderText
+                icon={
+                  <Icon
+                    name={CapUIIcon.Add}
+                    size={CapUIIconSize.Lg}
+                    color="uploader.icon.default"
+                  />
+                }
               >
                 {wording.uploaderPrompt}
-              </Text>
+              </UploaderText>
             )}
           </Content>
         )
@@ -244,11 +269,15 @@ const Uploader: React.FC<UploaderProps> = ({
         )
     }
   }
+
   return (
     <UploaderContainer
       className={cn('cap-uploader', className)}
       size={size}
       isFullWidth={isFullWidth}
+      borderTopLeftRadius="xxs"
+      borderTopRightRadius="xxs"
+      overflow="hidden"
     >
       <Container
         drag={isDragActive}

@@ -6,7 +6,7 @@ import AsyncCreatable from 'react-select/async-creatable'
 
 import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { MultiValue, Control } from './Select'
@@ -14,20 +14,25 @@ import { MultiValue, Control } from './Select'
 export interface AsyncCreatableSelectProps<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends AsyncProps<Option, IsMulti, Group> {
-  readonly isDisabled?: boolean
-  readonly variantSize?: CapInputSize
-  readonly width?: string | number
-  readonly formatCreateLabel?: (userInput: string) => React.ReactNode
-  readonly onCreateOption?: (userInput: string) => void
-  readonly onChange?: (newValue: any) => void
+  isDisabled?: boolean
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  width?: string | number
+  formatCreateLabel?: (userInput: string) => React.ReactNode
+  onCreateOption?: (userInput: string) => void
+  onChange?: (newValue: any) => void
+  loadOptions?: (
+    inputValue: string,
+    callback: (options: any) => void,
+  ) => Promise<any> | void
 }
 
 export function AsyncCreatableSelect<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   className,
   width,
@@ -41,9 +46,8 @@ export function AsyncCreatableSelect<
       <AsyncCreatable<Option, IsMulti, Group>
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize,
+          inputProps.variantColor,
         )}
         className={cn('cap-async-creatable-select', className)}
         classNamePrefix="cap-async-creatable-select"

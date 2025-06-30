@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { AnimationProps, MotionProps, HoverHandlers } from 'framer-motion'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUIFontSize } from '../../styles'
+import { CapUIFontSize } from '../../styles'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, BoxProps } from '../box/Box'
@@ -59,9 +59,6 @@ const TagInner: React.FC<TagInnerProps> = ({
         variantType === 'tag' ? CapUIFontSize.BodySmall : CapUIFontSize.Caption
       }
       fontWeight={variantType === 'tag' ? 400 : 600}
-      fontFamily={
-        variantType === 'tag' ? CapUIFontFamily.Input : CapUIFontFamily.Body
-      }
       {...rest}
     >
       {children}

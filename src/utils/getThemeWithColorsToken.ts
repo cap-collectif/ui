@@ -333,17 +333,112 @@ const avatarColors = (theme: CapUITheme) => ({
   },
 })
 
+const inputColors = (theme: CapUITheme) => ({
+  input: {
+    default: {
+      background: {
+        placeholder: theme.colors.gray.background,
+        default: theme.colors.gray.background,
+        selected: theme.colors.gray.white,
+        disable: theme.colors.gray.background,
+        readonly: theme.colors.gray.white,
+      },
+      border: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.base,
+        selected: theme.colors.primary.base,
+        disable: theme.colors.gray.lighter,
+        readonly: theme.colors.gray.lighter,
+      },
+      icon: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.dark,
+        selected: theme.colors.gray.dark,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
+    },
+    hierarchy: {
+      background: {
+        placeholder: theme.colors.white,
+        default: theme.colors.white,
+        selected: theme.colors.white,
+        disable: theme.colors.white,
+        readonly: theme.colors.white,
+      },
+      border: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.base,
+        selected: theme.colors.primary.base,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
+      icon: {
+        placeholder: theme.colors.gray.base,
+        default: theme.colors.gray.dark,
+        selected: theme.colors.gray.dark,
+        disable: theme.colors.gray.light,
+        readonly: theme.colors.gray.light,
+      },
+    },
+  },
+})
+
+const uploaderColors = (theme: CapUITheme) => ({
+  uploader: {
+    background: {
+      default: theme.colors.gray.background,
+      hover: theme.colors.gray.white,
+      drag: theme.colors.blue[100],
+      loading: theme.colors.gray.white,
+      complete: theme.colors.gray.background,
+    },
+    border: {
+      default: theme.colors.gray.base,
+      hover: theme.colors.primary.base,
+      drag: theme.colors.primary.base,
+      loading: theme.colors.primary.base,
+      complete: theme.colors.gray.base,
+    },
+    icon: {
+      default: theme.colors.gray.base,
+      hover: theme.colors.primary.base,
+      drag: theme.colors.primary.base,
+      loading: theme.colors.gray.base,
+      complete: theme.colors.gray.base,
+    },
+  },
+})
+
+const textColors = (theme: CapUITheme) => ({
+  text: {
+    primary: theme.colors.gray.black,
+    secondary: theme.colors.gray.darker,
+    tertiary: theme.colors.gray.dark,
+    disable: theme.colors.gray.light,
+    inverse: theme.colors.gray.white,
+    error: theme.colors.danger.base,
+  },
+})
+
+const getColors = (theme: CapUITheme) => ({
+  ...buttonColors(theme),
+  ...toastColors(theme),
+  ...infoMessageColors(theme),
+  ...tagColors(theme),
+  ...actionColors(theme),
+  ...avatarColors(theme),
+  ...inputColors(theme),
+  ...textColors(theme),
+  ...uploaderColors(theme),
+})
+
+export type ExtendedColors = ReturnType<typeof getColors>
+
 export const getThemeWithColorsToken = (theme: CapUITheme) => {
   return merge.all([
     {
-      colors: {
-        ...buttonColors(theme),
-        ...toastColors(theme),
-        ...infoMessageColors(theme),
-        ...tagColors(theme),
-        ...actionColors(theme),
-        ...avatarColors(theme),
-      },
+      colors: getColors(theme),
     },
     theme,
   ]) as CapUITheme
