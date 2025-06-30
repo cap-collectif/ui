@@ -66,7 +66,6 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
         as={as}
         type={as === 'button' ? 'button' : undefined}
         display="inline-flex"
-        justifyContent="center"
         alignItems="center"
         fontFamily="body"
         fontSize={CapUIFontSize.BodyRegular}
