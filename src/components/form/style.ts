@@ -1,7 +1,7 @@
 import type { SystemStyleObject } from '@styled-system/css'
 import type { GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
-import { borderColor, variant } from 'styled-system'
+import { variant } from 'styled-system'
 
 import { CapUILineHeight } from '../../styles'
 import { Colors } from '../../styles/modules/colors'
