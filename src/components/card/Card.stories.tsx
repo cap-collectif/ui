@@ -1,9 +1,8 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Text } from '../typography'
-import { Card, CardProps } from './'
-import mdx from './Card.mdx'
+import { largeThumbnail } from '../../assets/images'
+import { Card, CardCover, CardProps } from './'
 
 const meta: Meta<CardProps> = {
   title: 'Library/Card',
@@ -11,9 +10,7 @@ const meta: Meta<CardProps> = {
   args: {},
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
+    backgrounds: { default: 'light' },
   },
 }
 
@@ -21,6 +18,6 @@ export default meta
 
 export const Default: Story<CardProps> = args => (
   <Card {...args}>
-    <Text>Card</Text>
+    <CardCover src={largeThumbnail}>Card</CardCover>
   </Card>
 )

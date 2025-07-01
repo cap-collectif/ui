@@ -421,6 +421,16 @@ const textColors = (theme: CapUITheme) => ({
   },
 })
 
+const cardColors = (theme: CapUITheme) => ({
+  card: {
+    default: {
+      background: theme.colors.white,
+      border: theme.colors['neutral-gray'].lighter,
+      icon: theme.colors['neutral-gray'].darker,
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -431,6 +441,7 @@ const getColors = (theme: CapUITheme) => ({
   ...inputColors(theme),
   ...textColors(theme),
   ...uploaderColors(theme),
+  ...cardColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

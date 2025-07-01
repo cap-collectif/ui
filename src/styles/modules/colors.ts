@@ -73,6 +73,9 @@ const baseColors: Colors = {
     '700': '#5E5E5E',
     '800': '#454545',
     '900': '#2B2B2B',
+    white: 'white',
+    lighter: '#EBEBEB',
+    darker: '#454545',
   },
   red: {
     '100': '#FEFBFB',
