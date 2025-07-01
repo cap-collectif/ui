@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 5.0.1
+
+`2025-07-01`
+
+- 🐛 Fix button type on number input [#528](https://github.com/cap-collectif/ui/pull/528)
+
 ## 5.0.0
 
 `2025-07-01`
