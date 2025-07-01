@@ -48,6 +48,7 @@ export const InputNumber = ({
     >
       <Box
         as="button"
+        type="button"
         aria-hidden
         tabIndex={-1}
         disabled={inputProps.disabled}
@@ -86,6 +87,7 @@ export const InputNumber = ({
       />
       <Box
         as="button"
+        type="button"
         aria-hidden
         tabIndex={-1}
         disabled={inputProps.disabled}
