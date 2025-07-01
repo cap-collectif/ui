@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 5.0.0
+
+`2025-07-01`
+
+- 💥 Inputs UI rework - improving accessibility [#507](https://github.com/cap-collectif/ui/pull/507)
+
 ## 4.0.6
 
 `2025-06-27`
