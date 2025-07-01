@@ -4,41 +4,41 @@ import React, { FC } from 'react'
 import type { DateRangePickerShape, FocusedInputShape } from 'react-dates'
 import 'react-dates/initialize'
 import DateRangePicker from 'react-dates/lib/components/DateRangePicker'
-import { useHotkeys } from 'react-hotkeys-hook'
 
 import type { BoxPropsOf } from '../../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../../icon'
-import { CapInputSize } from '../../enums'
+import { CapInputSize, InputVariantColor } from '../../enums'
 import { useFormControl } from '../../formControl'
 import { COMMON_PROPS } from '../commonProps'
 import { DateRangeBox } from './DateRange.style'
 
 export type DateRangeValueType = {
-  readonly startDate: Moment | null
-  readonly endDate: Moment | null
+  startDate: Moment | null
+  endDate: Moment | null
 }
 
 export interface DateRangeProps
   extends Omit<BoxPropsOf<'input'>, 'onChange' | 'value' | 'disabled'> {
-  readonly value: DateRangeValueType
-  readonly onChange: (value: DateRangeValueType) => void
-  readonly className?: string
-  readonly variantSize?: CapInputSize
-  readonly errorMessage?: string
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isRequired?: boolean
-  readonly isOutsideRange?: boolean
-  readonly displayFormat?: DateRangePickerShape['displayFormat']
-  readonly startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
-  readonly endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
-  readonly startDateId?: DateRangePickerShape['startDateId']
-  readonly endDateId?: DateRangePickerShape['endDateId']
-  readonly disabled?: DateRangePickerShape['disabled']
-  readonly keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
-  readonly minDate?: DateRangePickerShape['minDate']
-  readonly maxDate?: DateRangePickerShape['maxDate']
-  readonly onClose?: DateRangePickerShape['onClose']
+  value: DateRangeValueType
+  onChange: (value: DateRangeValueType) => void
+  className?: string
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  errorMessage?: string
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isRequired?: boolean
+  isOutsideRange?: boolean
+  displayFormat?: DateRangePickerShape['displayFormat']
+  startDatePlaceholderText?: DateRangePickerShape['startDatePlaceholderText']
+  endDatePlaceholderText?: DateRangePickerShape['endDatePlaceholderText']
+  startDateId?: DateRangePickerShape['startDateId']
+  endDateId?: DateRangePickerShape['endDateId']
+  disabled?: DateRangePickerShape['disabled']
+  keepOpenOnDateSelect?: DateRangePickerShape['keepOpenOnDateSelect']
+  minDate?: DateRangePickerShape['minDate']
+  maxDate?: DateRangePickerShape['maxDate']
+  onClose?: DateRangePickerShape['onClose']
 }
 
 const DateRange: FC<DateRangeProps> = ({
@@ -55,26 +55,29 @@ const DateRange: FC<DateRangeProps> = ({
   minDate,
   maxDate,
   onClose,
+  variantColor = 'default',
   ...props
 }) => {
-  const [
-    focusedInput,
-    setFocusedInput,
-  ] = React.useState<FocusedInputShape | null>(null)
+  const [focusedInput, setFocusedInput] =
+    React.useState<FocusedInputShape | null>(null)
 
   const inputProps = useFormControl<HTMLInputElement>({
     ...props,
     disabled: typeof props.disabled === 'string' ? undefined : props.disabled,
   })
-  // The library doesn't handle closing the calendar after Tabbing out of the input
-  // https://github.com/airbnb/react-dates/issues/1809
-  useHotkeys('esc', () => setFocusedInput(null))
+
+  const isEmpty = !value || (!value.endDate && !value.startDate)
 
   return (
     <DateRangeBox
       className={cn('cap-date-range', className)}
       isInvalid={!!inputProps['aria-invalid']}
+      isEmpty={isEmpty}
       variant={inputProps.variantSize}
+      variantColor={variantColor}
+      onKeyUp={e => {
+        if (e.key === 'Escape') setFocusedInput(null)
+      }}
     >
       <DateRangePicker
         disabled={inputProps.disabled || props.disabled}
@@ -96,9 +99,15 @@ const DateRange: FC<DateRangeProps> = ({
         onClose={onClose}
         customArrowIcon={
           <Icon
-            color="gray.700"
+            color={`input.${inputProps.variantColor}.icon.${
+              inputProps.disabled
+                ? 'disable'
+                : isEmpty
+                ? 'placeholder'
+                : 'default'
+            }`}
             name={CapUIIcon.LongArrowRight}
-            size={CapUIIconSize.Sm}
+            size={CapUIIconSize.Md}
           />
         }
       />

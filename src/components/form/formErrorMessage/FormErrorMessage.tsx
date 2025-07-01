@@ -1,7 +1,11 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontFamily, CapUIFontSize } from '../../../styles'
+import {
+  CapUIFontFamily,
+  CapUIFontSize,
+  CapUILineHeight,
+} from '../../../styles'
 import { Box, BoxProps } from '../../box'
 import { useFormControlContext } from '../formControl'
 
@@ -20,10 +24,10 @@ export const FormErrorMessage: React.FC<FormErrorMessageProps> = React.forwardRe
   return (
     <Box
       ref={ref}
-      color="red.500"
+      color="text.error"
       fontFamily={CapUIFontFamily.Body}
-      lineHeight="normal"
-      fontSize={CapUIFontSize.BodyRegular}
+      lineHeight={CapUILineHeight.S}
+      fontSize={CapUIFontSize.BodySmall}
       className={cn('cap-form-error-message', className)}
       {...props}
     >

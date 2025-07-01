@@ -15,16 +15,22 @@ type Args = {
   isInvalid: boolean
   isRequired: boolean
   variantSize: CapInputSize
+  maxLength?: number
 }
 
 const meta: Meta = {
   title: 'Library/Form/TextArea',
   component: TextArea,
   args: {
+    variantSize: 'sm',
     placeholder: 'Placeholder...',
     errorMessage: 'Error info.',
     isRequired: true,
     isInvalid: false,
+  },
+  argTypes: {
+    variantSize: { control: 'select', options: ['sm', 'md'] },
+    maxLength: { control: 'number' },
   },
   parameters: {
     controls: { expanded: true },
@@ -45,7 +51,6 @@ export const Default: Story<TextAreaProps> = args => {
       onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
         setValue(e.target.value)
       }
-      maxLength={40}
     />
   )
 }
@@ -73,11 +78,11 @@ export const WithFixedWidthAndMaxLength: Story<Args> = ({
   const [value, setValue] = React.useState('Beaucoup de caracteres et')
   return (
     <FormControl {...args} width="500px">
+      <FormLabel label="Label" />
       <TextArea
         placeholder={placeholder}
         width="280px"
         maxLength={25}
-        maxLengthMessage="Vous avez atteint le nombre maximum de caractères"
         value={value}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           setValue(e.target.value)
@@ -116,6 +121,7 @@ export const WithLabel: Story<Args> = ({ placeholder, ...args }) => {
         placeholder={placeholder}
         width="280px"
         value={value}
+        maxLength={args.maxLength}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           setValue(e.target.value)
         }
@@ -128,23 +134,6 @@ export const WithLabelDisabled: Story<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} isDisabled width="500px">
-      <FormLabel label="Label" />
-      <TextArea
-        placeholder={placeholder}
-        width="280px"
-        value={value}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setValue(e.target.value)
-        }
-      />
-    </FormControl>
-  )
-}
-
-export const WithLabelErrorState: Story<Args> = ({ placeholder, ...args }) => {
-  const [value, setValue] = React.useState('')
-  return (
-    <FormControl {...args} isInvalid width="500px">
       <FormLabel label="Label" />
       <TextArea
         placeholder={placeholder}
@@ -183,27 +172,6 @@ export const WithGuidelineDisabled: Story<Args> = ({
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} isDisabled width="500px">
-      <FormLabel label="Label" />
-      <FormGuideline>Guideline</FormGuideline>
-      <TextArea
-        placeholder={placeholder}
-        width="280px"
-        value={value}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setValue(e.target.value)
-        }
-      />
-    </FormControl>
-  )
-}
-
-export const WithGuidelineErrorState: Story<Args> = ({
-  placeholder,
-  ...args
-}) => {
-  const [value, setValue] = React.useState('')
-  return (
-    <FormControl {...args} isInvalid width="500px">
       <FormLabel label="Label" />
       <FormGuideline>Guideline</FormGuideline>
       <TextArea

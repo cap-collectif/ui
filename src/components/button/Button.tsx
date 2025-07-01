@@ -11,20 +11,19 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
 import { Spinner } from '../spinner'
 import S, { SIZE } from './Button.style'
 
-export type ButtonProps<
-  T extends React.ElementType = React.ElementType
-> = PolymorphicComponentProps<
-  T,
-  Readonly<{
-    variantSize?: 'small' | 'medium' | 'big'
-    alternative?: boolean
-    isLoading?: boolean
-    leftIcon?: CapUIIcon | React.ReactElement
-    rightIcon?: CapUIIcon | React.ReactElement
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
-    variantColor?: 'primary' | 'danger' | 'hierarchy'
-  }>
->
+export type ButtonProps<T extends React.ElementType = React.ElementType> =
+  PolymorphicComponentProps<
+    T,
+    Readonly<{
+      variantSize?: 'small' | 'medium' | 'big'
+      alternative?: boolean
+      isLoading?: boolean
+      leftIcon?: CapUIIcon | React.ReactElement
+      rightIcon?: CapUIIcon | React.ReactElement
+      variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
+      variantColor?: 'primary' | 'danger' | 'hierarchy'
+    }>
+  >
 
 const ButtonInner = styled(Box)<{
   variantColor: ButtonProps['variantColor']

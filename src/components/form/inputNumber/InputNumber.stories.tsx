@@ -21,10 +21,11 @@ const meta: Meta = {
   title: 'Library/Form/InputNumber',
   component: InputNumber,
   args: {
-    placeholder: '1000',
+    placeholder: '',
     errorMessage: 'Error info.',
     isRequired: true,
     isInvalid: false,
+    isDisabled: false,
   },
   parameters: {
     controls: { expanded: true },

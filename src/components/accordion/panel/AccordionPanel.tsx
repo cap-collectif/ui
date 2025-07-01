@@ -15,11 +15,11 @@ type AccordionPanelProps = FlexProps & {
   children: React.ReactNode
 }
 
-type ContainerAnimate = React.FC<
+type ContainerAnimateType = React.FC<
   FlexProps & AnimationProps & Pick<MotionProps, 'initial'>
 >
 
-const ContainerAnimate = motion(Flex) as ContainerAnimate
+const ContainerAnimate = motion(Flex) as ContainerAnimateType
 
 const AccordionPanel: React.FC<AccordionPanelProps> = ({
   children,

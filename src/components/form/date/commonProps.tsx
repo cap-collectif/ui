@@ -34,7 +34,7 @@ export const COMMON_PROPS: CommonProps = {
   navPrev: <NavPrev />,
   navNext: <NavNext />,
   customInputIcon: (
-    <Icon color="gray.700" name={CapUIIcon.Calendar} size={CapUIIconSize.Sm} />
+    <Icon color="inherit" name={CapUIIcon.CalendarO} size={CapUIIconSize.Md} />
   ),
   renderDayContents: (day: Moment) => <CustomDayContent day={day} />
 }

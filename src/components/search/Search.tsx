@@ -13,7 +13,7 @@ import type { AsyncProps } from 'react-select/async'
 import { useTheme } from '../../hooks'
 import { pxToRem } from '../../styles/modules/mixins'
 import { Box } from '../box'
-import { CapInputSize, useFormControl } from '../form'
+import { CapInputSize, InputVariantColor, useFormControl } from '../form'
 import { reactSelectStyle } from '../form/style'
 import { Icon, CapUIIcon, CapUIIconSize } from '../icon'
 import { Spinner } from '../spinner'
@@ -24,16 +24,21 @@ export interface SearchProps<
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
     AsyncProps<Option, IsMulti, Group>,
-    'onChange' | 'defaultValue' | 'value'
+    'onChange' | 'defaultValue' | 'value' | 'loadOption'
   > {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly variantSize?: CapInputSize
-  readonly width?: string | number
-  readonly onChange?: (value: string) => void
-  readonly onSelect?: (value: Option) => void
-  readonly value?: string
-  readonly inputTitle?: string
+  loadOptions?: (
+    inputValue: string,
+    callback: (options: any) => void,
+  ) => Promise<any> | void
+  isDisabled?: boolean
+  isInvalid?: boolean
+  variantSize?: CapInputSize
+  variantColor?: InputVariantColor
+  width?: string | number
+  onChange?: (value: string) => void
+  onSelect?: (value: Option) => void
+  value?: string
+  inputTitle?: string
 }
 
 const SelectContainer = ({ children: initialChildren, ...props }) => {
@@ -65,7 +70,9 @@ const Control = <
 }: ControlProps<Option, IsMulti, Group> & {
   deleteButtonAriaLabel?: string
 }) => {
-  const { isLoading, inputValue, onInputChange } = props.selectProps
+  // @ts-ignore need to rework this once back in main repo
+  const { isLoading, inputValue, onInputChange, isDisabled, variantColor } =
+    props.selectProps
   const { deleteButtonAriaLabel } = props
 
   return (
@@ -73,11 +80,19 @@ const Control = <
       <Icon
         name={CapUIIcon.Search}
         size={CapUIIconSize.Md}
-        color="gray.700"
+        color={
+          isDisabled
+            ? `input.${variantColor}.icon.disable`
+            : !inputValue
+            ? `input.${variantColor}.icon.placeholder`
+            : `input.${variantColor}.icon.default`
+        }
         ml={1}
       />
       {Array.isArray(children) && children[0]}
-      {isLoading && <Spinner mr={1} color="primary.base" />}
+      {isLoading && (
+        <Spinner mr={1} color={`input.${variantColor}.icon.selected`} />
+      )}
       {!isLoading && inputValue && (
         <Box
           as={'button'}
@@ -95,7 +110,7 @@ const Control = <
           <Icon
             name={CapUIIcon.Cross}
             size={CapUIIconSize.Md}
-            color="gray.700"
+            color={`input.${variantColor}.icon.default`}
             _hover={{ color: 'red.500' }}
             aria-hidden
             focusable={false}
@@ -167,9 +182,8 @@ export const SearchWithRef = <
         {...inputProps}
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize || CapInputSize.Sm,
+          inputProps.variantColor,
           true,
         )}
         inputValue={input}
@@ -192,6 +206,7 @@ export const SearchWithRef = <
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         loadOptions={loadOptions}
+        variantColor={inputProps.variantColor}
         {...props}
         ref={ref}
       />

@@ -29,11 +29,11 @@ export interface TooltipProps extends BoxProps {
   zIndex?: number
 }
 
-type ContainerAnimate = React.FC<
+type ContainerAnimateType = React.FC<
   AnimationProps & Pick<MotionProps, 'initial'> & BoxProps
 >
 
-const ContainerAnimate = motion(Box) as ContainerAnimate
+const ContainerAnimate = motion(Box) as ContainerAnimateType
 
 const Arrow = styled(TooltipArrow)`
   svg {

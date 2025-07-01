@@ -1,20 +1,23 @@
 import { OTPInput, OTPInputProps, SlotProps } from 'input-otp'
 import React, { Ref } from 'react'
 
+import { useTheme } from '../../../hooks'
 import Box from '../../box/Box'
 import { Flex } from '../../layout/Flex'
+import { InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 
 export type CodeInputProps = Omit<OTPInputProps, 'children' | 'maxLength'> & {
-  readonly isDisabled?: boolean
-  readonly isInvalid?: boolean
-  readonly isRequired?: boolean
-  readonly onComplete: (input: string) => void
-  readonly isVerified?: boolean
-  readonly value?: string
-  readonly id?: string
-  readonly ref?: Ref<HTMLInputElement | null>
+  isDisabled?: boolean
+  isInvalid?: boolean
+  isRequired?: boolean
+  onComplete: (input: string) => void
+  isVerified?: boolean
+  value?: string
+  id?: string
+  ref?: Ref<HTMLInputElement | null>
   title: string
+  variantColor?: InputVariantColor
 }
 
 type CodeInputRef = HTMLInputElement | null
@@ -32,6 +35,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
       onComplete,
       isVerified = false,
       value,
+      variantColor = 'default',
       ...props
     }: CodeInputProps,
     ref,
@@ -45,8 +49,9 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
         containerClassName="otp-input-wrapper"
         onComplete={onComplete}
         inputMode="numeric"
-        pushPasswordManagerStrategy={'none'}
+        pushPasswordManagerStrategy="none"
         {...inputProps}
+        readOnly={isVerified || inputProps.readOnly}
         ref={ref}
         value={value}
         render={({ slots }) => (
@@ -65,6 +70,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
                   isInvalid={inputProps['aria-invalid'] || false}
                   isDisabled={inputProps.disabled}
                   hasFakeCaret={true}
+                  variantColor={variantColor}
                 />
               ))}
             </Flex>
@@ -78,6 +84,7 @@ const CodeInput = React.forwardRef<CodeInputRef, CodeInputProps>(
                   isInvalid={inputProps['aria-invalid'] || false}
                   isDisabled={inputProps.disabled}
                   hasFakeCaret={true}
+                  variantColor={variantColor}
                 />
               ))}
             </Flex>
@@ -92,34 +99,45 @@ type SlotExtendedProps = SlotProps & {
   isVerified: boolean
   isInvalid: boolean
   isDisabled: boolean
+  variantColor?: InputVariantColor
 }
 const Slot = (props: SlotExtendedProps) => {
+  const { colors } = useTheme()
+
   const getSlotStyles = (
-    props: SlotExtendedProps,
+    {
+      isActive,
+      isVerified,
+      isDisabled,
+      char,
+      variantColor = 'default',
+    }: SlotExtendedProps,
     element: 'border-color' | 'bg-color',
   ) => {
     switch (element) {
       case 'border-color':
-        return props.isVerified
-          ? 'green.600'
-          : props.isInvalid
-          ? 'red.600'
-          : props.isActive
-          ? 'primary.base'
-          : props.isDisabled
-          ? 'gray.300'
-          : 'gray.600'
+        return colors.input[variantColor].border[
+          isVerified
+            ? 'readonly'
+            : isActive
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : !!char
+            ? 'default'
+            : 'placeholder'
+        ]
 
       case 'bg-color':
-        return props.isActive
-          ? 'white'
-          : props.isVerified
-          ? 'green.150'
-          : props.isInvalid
-          ? 'red.150'
-          : props.isDisabled
-          ? 'gray.100'
-          : 'white'
+        return colors.input[variantColor].background[
+          isVerified
+            ? 'readonly'
+            : isActive
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : 'default'
+        ]
     }
   }
 
@@ -127,23 +145,28 @@ const Slot = (props: SlotExtendedProps) => {
     <Flex
       justify={'center'}
       align={'center'}
-      border={'1px solid'}
+      borderBottom="1px solid"
       borderColor={getSlotStyles(props, 'border-color')}
       backgroundColor={getSlotStyles(props, 'bg-color')}
       width={9}
       height={boxHeight}
-      borderRadius={'normal'}
+      borderTopLeftRadius="normal"
+      borderTopRightRadius="normal"
       style={{ caretColor: 'transparent' }}
       className="code-input-box"
     >
       {props.char !== null && <div>{props.char}</div>}
-      {props.hasFakeCaret && props.isActive && !props.char && <FakeCaret />}
+      {props.hasFakeCaret && !props.char && (
+        <FakeCaret isDisabled={props.isDisabled} />
+      )}
     </Flex>
   )
 }
 
-const FakeCaret = () => {
-  return <Box color="gray.300">|</Box>
-}
+const FakeCaret = ({ isDisabled }: { isDisabled: boolean }) => (
+  <Box color={isDisabled ? 'text.disable' : 'text.primary'} as="span">
+    -
+  </Box>
+)
 
 export default CodeInput

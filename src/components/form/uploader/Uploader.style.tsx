@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 
 import colors, { Colors } from '../../../styles/modules/colors'
+import { pxToRem } from '../../../styles/modules/mixins'
+import { ExtendedColors } from '../../../utils/getThemeWithColorsToken'
 import { Flex } from '../../layout'
 
 export enum UPLOADER_SIZE {
@@ -11,21 +13,21 @@ export enum UPLOADER_SIZE {
 }
 
 export const Container = styled(Flex)<{
-  readonly size: UPLOADER_SIZE
-  readonly circle?: boolean
-  readonly drag: boolean
-  readonly colors: Colors
-  readonly isFullWidth?: boolean
+  size: UPLOADER_SIZE
+  circle?: boolean
+  drag: boolean
+  colors: ExtendedColors & Colors
+  isFullWidth?: boolean
 }>`
-  height: 184px;
+  height: ${pxToRem(184)};
   min-width: ${props => {
     switch (props.size) {
       case UPLOADER_SIZE.LG:
-        return '240px'
+        return pxToRem(240)
       case UPLOADER_SIZE.MD:
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'
+        return pxToRem(184)
     }
   }};
   max-width: ${props => {
@@ -35,42 +37,38 @@ export const Container = styled(Flex)<{
       switch (props.size) {
         case UPLOADER_SIZE.LG:
         case UPLOADER_SIZE.MD:
-          return '488px'
-      case UPLOADER_SIZE.SM:
+          return pxToRem(488)
+        case UPLOADER_SIZE.SM:
         default:
-          return '184px'
-        }
+          return pxToRem(184)
       }
+    }
   }};
   width: 100%;
-  background-color: transparent;
+  overflow: hidden;
+  background-color: ${props => props.colors?.uploader.background.default};
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  border: 1.5px dashed ${props => props.colors?.gray[300]};
-  border-radius: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
-  overflow: hidden;
+  box-shadow: inset 0px -1px 0px 0px ${props => props.colors?.uploader.border.default};
   position: relative;
+  cursor: pointer;
   &:focus {
-    background-color: ${props => props.colors?.primary.background};
-    border: 1.5px dashed ${props => props.colors?.primary.light};
-    box-shadow: 0 0 2px 2px ${props => props.colors?.primary.light};
-    outline: 2px #fff solid;
-    outline-offset: 0;
-    box-shadow: 0 0 0 4px ${props => props.colors?.primary.dark};
+    background-color: ${props => props.colors?.uploader.background.drag};
+    border: 1.5px dashed ${props => props.colors?.uploader.border.drag};
+    border-radius: ${props => props.theme?.radii.xxs};
+    box-shadow: unset;
   }
   &:hover {
-    background-color: ${props => props.colors?.primary.background};
-    border: 1.5px dashed ${props => props.colors?.primary.light};
+    background-color: ${props => props.colors?.uploader.background.hover};
+    box-shadow: inset 0px -1px 0px 0px ${props => props.colors?.uploader.border.hover};
   }
 
-  ${({ drag }) =>
-    drag &&
-    `background-color: ${props => props.colors?.primary.background};
-    border: 1.5px dashed ${props => props.colors?.primary.light};
-  `}
+  ${props =>
+    props.drag &&
+    `background-color: ${props.theme.colors?.uploader.background.drag}`}
 `
+
 export const Content = styled(Flex)`
   width: 100%;
   height: 100%;
@@ -106,8 +104,8 @@ export const Content = styled(Flex)`
   }
 `
 export const UploaderContainer = styled(Flex)<{
-  readonly size?: ResponsiveValue<UPLOADER_SIZE>
-  readonly isFullWidth?: boolean
+  size?: ResponsiveValue<UPLOADER_SIZE>
+  isFullWidth?: boolean
 }>`
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -117,11 +115,11 @@ export const UploaderContainer = styled(Flex)<{
   min-width: ${props => {
     switch (props.size) {
       case UPLOADER_SIZE.LG:
-        return '240px'
+        return pxToRem(240)
       case UPLOADER_SIZE.MD:
       case UPLOADER_SIZE.SM:
       default:
-        return '184px'
+        return pxToRem(184)
     }
   }};
   max-width: ${props => {
@@ -131,10 +129,10 @@ export const UploaderContainer = styled(Flex)<{
       switch (props.size) {
         case UPLOADER_SIZE.LG:
         case UPLOADER_SIZE.MD:
-          return '488px'
+          return pxToRem(488)
         case UPLOADER_SIZE.SM:
         default:
-          return '184px'
+          return pxToRem(184)
       }
     }
   }};
@@ -144,22 +142,21 @@ export const ThumbContainer = styled(Flex)`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: ${props =>
+    props.theme?.colors?.uploader.background.complete};
+  box-shadow: inset 0px -1px 0px 0px ${props => props.theme?.colors?.uploader.border.default};
+  &:hover {
+    box-shadow: unset;
+  }
   justify-content: center;
 `
 export const Thumbnail = styled.img<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
-  width: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  height: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  margin: ${props =>
+  width: 100%;
+  height: 100%;
+  padding: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '8px' : '16px'};
   border-radius: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
@@ -170,20 +167,11 @@ export const FileThumbnail = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
-  width: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : '158px'};
-  height: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  margin: ${props =>
+  width: 100%;
+  height: 100%;
+  padding: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '8px' : '16px'};
-  border-radius: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
   overflow: hidden;
-  background: ${colors.gray[100]};
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -192,15 +180,9 @@ export const FileThumbnailControls = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
-  width: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : '158px'};
-  height: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  margin: ${props =>
+  width: 100%;
+  height: 100%;
+  padding: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '8px' : '16px'};
   border-radius: ${props =>
     props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
@@ -210,7 +192,10 @@ export const FileThumbnailControls = styled(Flex)<{
   align-items: center;
   justify-content: center;
   & > button {
-    opacity: 0 !important;
+    opacity: ;
+    &:focus {
+      opacity: 1;
+    }
   }
   &:hover {
     background: linear-gradient(
@@ -230,18 +215,10 @@ export const ThumbnailControls = styled(Flex)<{
   readonly size?: ResponsiveValue<UPLOADER_SIZE>
   readonly circle?: boolean
 }>`
-  width: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  height: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle
-      ? 'calc(100% - 16px);'
-      : 'calc(100% - 32px)'};
-  margin: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle ? '8px' : '16px'};
-  border-radius: ${props =>
-    props.size === UPLOADER_SIZE.SM && !!props.circle ? '50%' : '4px'};
+  width: 100%;
+  height: 100%;
+  padding: ${props => props.theme?.radii?.xxs};
+  border-radius: ${props => props.theme?.radii?.xxs};
   background: transparent;
   position: absolute;
   top: 0;
@@ -250,6 +227,9 @@ export const ThumbnailControls = styled(Flex)<{
   justify-content: center;
   & > button {
     opacity: 0;
+    &:focus {
+      opacity: 1;
+    }
   }
   &:hover {
     background: linear-gradient(

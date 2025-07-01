@@ -17,6 +17,7 @@ export const CapUIProvider: FC<Props> = ({
   children,
 }) => {
   return (
+    // @ts-expect-error : complex color types
     <ThemeProvider theme={getThemeWithColorsToken(theme)}>
       {resetCSS && <CSSReset />}
       <ToastContainer />

@@ -11,17 +11,18 @@ import { useTheme } from '../../../hooks'
 import { Box } from '../../box'
 import { Icon, CapUIIcon, CapUIIconSize } from '../../icon'
 import { Spinner } from '../../spinner'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import MultiValueTag from './MultiValueTag'
 
 export interface SelectProps extends Omit<Props, 'onChange'> {
-  readonly isDisabled?: boolean
-  readonly variantSize?: CapInputSize
-  readonly width?: string | number
-  readonly onChange?: (newValue: any) => void
-  readonly deleteButtonAriaLabel?: boolean
+  isDisabled?: boolean
+  variantSize?: CapInputSize
+  width?: string | number
+  onChange?: (newValue: any) => void
+  deleteButtonAriaLabel?: boolean
+  variantColor?: InputVariantColor
 }
 
 export function MultiValue<
@@ -38,6 +39,7 @@ export function MultiValue<
 }) {
   return (
     <MultiValueTag
+      // @ts-ignore fix tag stuff
       isInvalid={props.selectProps['aria-invalid'] || false}
       isDisabled={isDisabled}
       removeProps={removeProps}
@@ -51,9 +53,14 @@ export function Control<
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({ children, ...props }: ControlProps<Option, IsMulti, Group>) {
-  // @ts-ignore need to rework this once back in main repo
-  const { isLoading, isClearable, deleteButtonAriaLabel, value } =
-    props.selectProps
+  const {
+    isLoading,
+    isClearable, // @ts-ignore need to rework this once back in main repo
+    deleteButtonAriaLabel,
+    value,
+    isDisabled, // @ts-ignore need to rework this once back in main repo
+    variantColor,
+  } = props.selectProps
 
   return (
     <components.Control {...props}>
@@ -69,11 +76,16 @@ export function Control<
               mr={'xxs'}
               style={{ cursor: 'pointer' }}
               onClick={() => props.clearValue()}
+              disabled={isDisabled}
             >
               <Icon
                 name={CapUIIcon.Cross}
                 size={CapUIIconSize.Md}
-                color="gray.700"
+                color={
+                  isDisabled
+                    ? 'text.disable'
+                    : `input.${variantColor}.icon.selected`
+                }
                 _hover={{ color: 'red.500' }}
                 aria-hidden
                 focusable={false}
@@ -85,7 +97,11 @@ export function Control<
             style={{ cursor: 'pointer' }}
             name={CapUIIcon.ArrowDown}
             size={CapUIIconSize.Sm}
-            color="gray.700"
+            color={
+              isDisabled
+                ? 'text.disable'
+                : `input.${variantColor}.icon.selected`
+            }
           />
         </>
       )}
@@ -93,11 +109,11 @@ export function Control<
   )
 }
 
-export function Select<
-  Option,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
->({ className, width, ...props }: SelectProps) {
+export const Select: React.FC<SelectProps> = ({
+  className,
+  width,
+  ...props
+}) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
   const { colors } = useTheme()
   const [currentIndex, setCurrentIndex] = React.useState<number>(0)
@@ -141,13 +157,11 @@ export function Select<
 
   return (
     <Box width={width || '100%'}>
-      {/* @ts-ignore:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/49673 */}
       <ReactSelect
         styles={reactSelectStyle(
           colors,
-          inputProps['aria-invalid'],
-          inputProps.disabled,
           inputProps.variantSize,
+          inputProps.variantColor,
         )}
         className={cn('cap-select', className)}
         classNamePrefix="cap-select"
@@ -158,6 +172,7 @@ export function Select<
         menuPortalTarget={document?.body}
         tabIndex={0}
         onKeyDown={handleKeyDown}
+        variantColor={inputProps.variantColor}
         {...props}
       />
     </Box>

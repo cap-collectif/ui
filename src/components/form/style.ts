@@ -1,211 +1,267 @@
 import type { SystemStyleObject } from '@styled-system/css'
-import type { CSSObjectWithLabel, GroupBase, StylesConfig } from 'react-select'
+import type { GroupBase, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-import { CapUIFontFamily, CapUILineHeight } from '../../styles'
+import { CapUILineHeight } from '../../styles'
 import { Colors } from '../../styles/modules/colors'
+import { pxToRem } from '../../styles/modules/mixins'
 import { SPACING, ZINDEX } from '../../styles/theme'
-import { FONT_FAMILIES, LINE_HEIGHTS } from '../../styles/theme/typography'
+import {
+  CapUIFontSize,
+  FONT_SIZES,
+  LINE_HEIGHTS,
+} from '../../styles/theme/typography'
+import { ExtendedColors } from '../../utils/getThemeWithColorsToken'
 import { Box } from '../box'
-import { CapInputSize } from './enums'
+import { CapInputSize, InputVariantColor } from './enums'
 
 export const InputInner = styled(Box)(
   variant({
     variants: {
       sm: {
-        px: 3,
-        py: 1,
+        px: 'sm',
+        py: 'xxs',
+        fontSize: CapUIFontSize.BodyRegular,
       },
       md: {
-        px: 3,
-        py: 2,
+        px: 'sm',
+        py: 'xs',
+        fontSize: CapUIFontSize.BodyLarge,
       },
     },
   }),
 )
 
-const styles: SystemStyleObject = {
-  border: 'normal',
-  borderRadius: 'normal',
-  borderColor: 'gray.300',
-
-  fontFamily: CapUIFontFamily.Input,
+const styles = (
+  colors: ExtendedColors,
+  variantColor: InputVariantColor,
+  isEmpty?: boolean,
+) => ({
+  borderTopLeftRadius: 'xxs',
+  borderTopRightRadius: 'xxs',
+  boxShadow: `inset 0px -1px 0px 0px ${
+    colors.input[variantColor].border[isEmpty ? 'placeholder' : 'default']
+  }`,
+  borderColor: `${
+    colors.input[variantColor].border[isEmpty ? 'placeholder' : 'default']
+  } !important`,
   lineHeight: CapUILineHeight.M,
-  color: 'gray.900',
-  bg: 'white',
-
-  '&[type=number]': { paddingRight: 32 },
-  '&[type=date]': {
-    color: 'gray.900',
-  },
+  color: 'text.primary',
+  bg: isEmpty
+    ? `input.${variantColor}.background.placeholder`
+    : `input.${variantColor}.background.default`,
 
   '&::placeholder': {
-    color: 'gray.600',
-    fontFamily: CapUIFontFamily.Input,
+    color: 'text.tertiary',
     lineHeight: CapUILineHeight.M,
   },
 
-  '&:focus,&[aria-selected="true"],&:active': {
-    borderColor: 'primary.base',
-    outline: 'none !important',
-    boxShadow: 'none !important',
-  },
+  '&[type=number]': { paddingRight: 32 },
 
-  '&[aria-invalid="true"]': {
-    bg: 'red.150',
-    borderColor: 'red.500',
-    '&:focus,&[aria-selected="true"],&:active': {
-      bg: 'white',
-    },
+  '&:focus,&:focus-visible,&[aria-selected="true"],&:active': {
+    outline: 'none',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.selected}`,
+    borderColor: `${colors.input[variantColor].border.selected} !important`,
+    bg: `input.${variantColor}.background.selected`,
   },
 
   '&:disabled': {
-    bg: 'gray.100',
-    borderColor: 'gray.200',
-    color: 'gray.500',
+    bg: `input.${variantColor}.background.disable`,
+    color: 'text.disable',
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.disable}`,
+    '&::placeholder': { color: 'text.disable' },
   },
-}
+
+  '&[readonly]': {
+    bg: `input.${variantColor}.background.readonly`,
+    boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border.readonly}`,
+    '&::placeholder': { color: 'text.tertiary' },
+  },
+})
 
 export const focusWithinStyles = (
-  isInvalid: boolean,
   isDisabled: boolean,
+  isEmpty: boolean,
+  isReadonly: boolean,
+  colors: ExtendedColors,
+  variantColor: InputVariantColor,
 ): SystemStyleObject => ({
-  border: 'normal',
-  borderRadius: 'normal',
-  borderColor: isDisabled ? 'gray.200' : isInvalid ? 'red.500' : 'gray.300',
-
-  fontFamily: CapUIFontFamily.Input,
+  borderTopLeftRadius: 'xxs',
+  borderTopRightRadius: 'xxs',
+  boxShadow: `inset 0px -1px 0px 0px ${
+    colors.input[variantColor].border[
+      isReadonly
+        ? 'readonly'
+        : isDisabled
+        ? 'disable'
+        : isEmpty
+        ? 'placeholder'
+        : 'default'
+    ]
+  }`,
+  borderColor: `${
+    colors.input[variantColor].border[
+      isReadonly
+        ? 'readonly'
+        : isDisabled
+        ? 'disable'
+        : isEmpty
+        ? 'placeholder'
+        : 'default'
+    ]
+  } !important`,
   lineHeight: CapUILineHeight.M,
-  color: isDisabled ? 'gray.500' : 'gray.900',
-  bg: isDisabled ? 'gray.100' : isInvalid ? 'red.150' : 'white',
+  color: isDisabled ? 'text.disable' : 'text.primary',
+  bg: `input.${variantColor}.background.${
+    isReadonly
+      ? 'readonly'
+      : isDisabled
+      ? 'disable'
+      : isEmpty
+      ? 'placeholder'
+      : 'default'
+  }`,
 
   '& > input::placeholder': {
-    color: 'gray.600',
-    fontFamily: CapUIFontFamily.Input,
+    color: isDisabled ? 'text.disable' : 'text.tertiary',
     lineHeight: CapUILineHeight.M,
   },
 
-  '&:focus-within': {
-    borderColor: isInvalid ? 'red.500' : 'primary.base',
-    bg: 'white',
+  '.cap-icon.cap-input-icon': {
+    color: `input.${variantColor}.icon.${
+      isDisabled ? 'disable' : isEmpty ? 'placeholder' : 'default'
+    }`,
+    '&:hover': {
+      color: isDisabled ? `input.${variantColor}.icon.disable` : 'gray.black',
+    },
   },
+
+  '&:focus-within': {
+    boxShadow: `inset 0px -1px 0px 0px ${
+      colors.input[variantColor].border[isReadonly ? 'readonly' : 'selected']
+    }`,
+    borderColor: `${
+      colors.input[variantColor].border[isReadonly ? 'readonly' : 'selected']
+    } !important`,
+    bg: `input.${variantColor}.background.selected`,
+  },
+
+  '& > input': { boxShadow: 'none', outline: 'none' },
 })
 
 export function reactSelectStyle<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
-  colors: Colors,
-  isInvalid: boolean | undefined,
-  isDisabled: boolean | undefined,
+  colors: ExtendedColors & Colors,
   variantSize: CapInputSize,
+  variantColor: InputVariantColor,
   isSearch?: boolean,
 ): StylesConfig<Option, IsMulti, Group> {
-  const disabledStyles = isDisabled
-    ? {
-        background: colors.gray['100'],
-        borderColor: colors.gray['200'],
-        color: colors.gray['500'],
-      }
-    : {}
   return {
-    control: (
-      base: CSSObjectWithLabel,
-      { isFocused }: { isFocused: boolean },
-    ) => ({
+    control: (base, { isFocused, hasValue, isDisabled }) => ({
       ...base,
       minHeight: 'unset',
-      boxShadow: 'none',
-      background: isInvalid && !isFocused ? colors.red['150'] : 'white',
-      borderColor: isInvalid
-        ? colors.red['600']
-        : isFocused
-        ? colors.primary.base
-        : isSearch
-        ? colors.gray['500']
-        : colors.gray['300'],
-      '&:hover': {
-        borderColor: isInvalid ? colors.red['500'] : '',
-      },
-      ...disabledStyles,
+      border: 'none',
+      borderRadius: 'none',
+      borderTopLeftRadius: SPACING.xxs,
+      borderTopRightRadius: SPACING.xxs,
+      background:
+        colors.input[variantColor].background[
+          isFocused ? 'selected' : 'default'
+        ],
+      boxShadow: `inset 0px -1px 0px 0px ${
+        colors.input[variantColor].border[
+          isFocused
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : hasValue
+            ? 'default'
+            : 'placeholder'
+        ]
+      }`,
+      borderColor: `${
+        colors.input[variantColor].border[
+          isFocused
+            ? 'selected'
+            : isDisabled
+            ? 'disable'
+            : hasValue
+            ? 'default'
+            : 'placeholder'
+        ]
+      } !important`,
     }),
-    valueContainer: (
-      base: CSSObjectWithLabel,
-      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
-    ) => ({
+    valueContainer: (base, { isMulti, hasValue }) => ({
       ...base,
-      paddingLeft: SPACING[isSearch ? 1 : 3],
-      paddingRight: SPACING[3],
-      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
-      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
-      marginTop: isMulti && hasValue ? '-4px' : 0,
+      paddingLeft: SPACING[isSearch ? 'xxs' : 'sm'],
+      paddingRight: SPACING['sm'],
+      paddingTop: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      marginTop: isMulti && hasValue ? pxToRem(-4) : 0,
     }),
-    placeholder: (base: CSSObjectWithLabel) => ({
+    placeholder: (base, { isDisabled }) => ({
       ...base,
       margin: 0,
       whiteSpace: 'nowrap',
-      color: colors.gray['600'],
-      fontFamily: FONT_FAMILIES.input,
+      color: colors.text[isDisabled ? 'disable' : 'tertiary'],
       lineHeight: LINE_HEIGHTS.M,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
     }),
-    input: (
-      base: CSSObjectWithLabel,
-      { isMulti, hasValue }: { isMulti: boolean; hasValue: boolean },
-    ) => ({
+    input: (base, { isMulti, hasValue }) => ({
       ...base,
       lineHeight: LINE_HEIGHTS.M,
-      fontFamily: FONT_FAMILIES.input,
       padding: 0,
       margin: 0,
-      marginTop: isMulti && hasValue ? SPACING[1] : 0,
+      marginTop: isMulti && hasValue ? SPACING['xxs'] : 0,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
     }),
-    option: (base: CSSObjectWithLabel) => ({
+    option: base => ({
       ...base,
-      color: colors.gray['900'],
+      color: colors.text.primary,
       '&[class*="is-selected"]': { backgroundColor: 'white' },
       '&:hover,&[class*="is-focused"]': {
         backgroundColor: colors.gray['100'],
       },
       borderBottom: `1px solid ${colors.gray['200']}`,
       '&:last-child': { borderBottom: 'none' },
-      fontFamily: FONT_FAMILIES.input,
       lineHeight: LINE_HEIGHTS.M,
     }),
-    singleValue: (base: CSSObjectWithLabel) => ({
+    singleValue: (base, { isDisabled }) => ({
       ...base,
       margin: 0,
-      color: colors.gray['900'],
-      fontFamily: FONT_FAMILIES.input,
+      fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
       lineHeight: LINE_HEIGHTS.M,
+      color: colors.text[isDisabled ? 'disable' : 'primary'],
     }),
-    indicatorSeparator: (base: CSSObjectWithLabel) => ({
-      ...base,
+    indicatorSeparator: () => ({
       display: 'none',
     }),
-    clearIndicator: (base: CSSObjectWithLabel) => ({
+    clearIndicator: base => ({
       ...base,
       padding: 0,
       margin: 0,
       display: !isSearch ? 'none' : 'flex',
     }),
-    indicatorsContainer: (base: CSSObjectWithLabel) => ({
+    indicatorsContainer: base => ({
       ...base,
-      paddingLeft: SPACING[3],
-      paddingRight: SPACING[3],
-      paddingTop: SPACING[variantSize === 'sm' ? 1 : 2],
-      paddingBottom: SPACING[variantSize === 'sm' ? 1 : 2],
+      paddingLeft: SPACING['sm'],
+      paddingRight: SPACING['sm'],
+      paddingTop: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
+      paddingBottom: SPACING[variantSize === 'sm' ? 'xxs' : 'xs'],
       color: colors.gray['700'],
     }),
-    dropdownIndicator: (base: CSSObjectWithLabel) => ({
+    dropdownIndicator: base => ({
       ...base,
       padding: 0,
       margin: 0,
-      color: colors.gray[isDisabled ? '500' : '700'],
+      color: colors.gray[false ? '500' : '700'],
       display: isSearch ? 'none' : 'flex',
     }),
-    menuPortal: (base: CSSObjectWithLabel) => ({
+    menuPortal: base => ({
       ...base,
       zIndex: ZINDEX.selectPortal,
     }),
