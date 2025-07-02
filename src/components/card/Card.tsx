@@ -35,6 +35,7 @@ export const Card: React.FC<CardProps> = ({
       borderRadius="xs"
       backgroundColor="card.default.background"
       maxWidth={maxWidth}
+      width="100%"
       sx={{ '.cap-card-primaryInfo a': { textDecoration: 'none' } }}
       _hover={{
         boxShadow: 'small',

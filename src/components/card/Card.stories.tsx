@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { largeThumbnail } from '../../assets/images'
+import { Flex } from '../layout'
 import {
   Card,
   CardCover,
@@ -43,4 +44,25 @@ export const Default: Story<CardProps> = args => (
       target="_blank"
     />
   </Card>
+)
+
+export const Layout: Story<CardProps> = args => (
+  <Flex gap="xs">
+    {Array.from({ length: 2 }).map(_ => (
+      <Card {...args}>
+        <CardCover>
+          <CardCoverImage src={largeThumbnail} />
+          <CardTag variantColor="success">
+            <CardTagLabel>Inscription Ouverte</CardTagLabel>
+          </CardTag>
+        </CardCover>
+        <CardContent
+          primaryInfo="Primary info"
+          secondaryInfo="secondary info"
+          href="https://monsuperprojet.com"
+          target="_blank"
+        />
+      </Card>
+    ))}
+  </Flex>
 )
