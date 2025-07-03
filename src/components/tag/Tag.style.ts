@@ -1,8 +1,11 @@
 import { SPACING } from '../../styles/theme'
 import { TagVariantColor } from './Tag'
 
-export const getTagStyle = (variant: TagVariantColor) => ({
-  bg: `tag.background.${variant}`,
+export const getTagStyle = (
+  variant: TagVariantColor,
+  transparent: boolean,
+) => ({
+  bg: transparent ? 'transparent' : `tag.background.${variant}`,
   color: `tag.text.${variant}`,
   '--current-shadow-color': `tag.shadowColor.${variant}`,
   '&:hover': {

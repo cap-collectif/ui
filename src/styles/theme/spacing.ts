@@ -1,6 +1,5 @@
 import { pxToRem } from '../modules/mixins'
 
-
 // TODO : find a way to just simply allow numbers
 export const LEGACY_SPACING = {
   0.5: pxToRem(2),
@@ -33,6 +32,7 @@ export const NEW_SPACING = {
   xl: pxToRem(32),
   xxl: pxToRem(48),
   xxxl: pxToRem(64),
+  '-sm': pxToRem(-12),
 }
 
 export const SPACING = {

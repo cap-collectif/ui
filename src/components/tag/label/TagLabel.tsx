@@ -5,7 +5,7 @@ import { CapUILineHeight } from '../../../styles'
 import { Box } from '../../box'
 import { TextProps } from '../../typography/Text'
 
-type TagLabelProps = TextProps
+export type TagLabelProps = TextProps
 
 const TagLabel: React.FC<TagLabelProps> = ({
   children,
