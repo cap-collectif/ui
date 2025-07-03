@@ -332,6 +332,12 @@ const avatarColors = (theme: CapUITheme) => ({
     },
   },
 })
+const tooltipColors = (theme: CapUITheme) => ({
+  tooltip: {
+    background: theme.colors.gray.darker,
+    text: theme.colors.white,
+  },
+})
 
 const inputColors = (theme: CapUITheme) => ({
   input: {
@@ -431,6 +437,7 @@ const getColors = (theme: CapUITheme) => ({
   ...inputColors(theme),
   ...textColors(theme),
   ...uploaderColors(theme),
+  ...tooltipColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
