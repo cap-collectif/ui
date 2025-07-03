@@ -92,6 +92,7 @@ export const CardCover: React.FC<FlexProps> = ({
 
   return (
     <Flex
+      flex="none"
       position="relative"
       borderRadius="xxs"
       border="1px solid"
