@@ -34,12 +34,15 @@ export const CardContent: React.FC<
   const { format, size } = React.useContext(CardContext)
   const isHorizontal = format === 'horizontal'
   const isSmall = size === 'S'
+  const justifyContent =
+    !isHorizontal || isSmall ? null : size === 'M' ? 'center' : 'space-between'
 
   return (
     <Flex
       px={isHorizontal && size === 'S' ? 0 : 'md'}
       py={isHorizontal && isSmall ? 0 : isHorizontal || isSmall ? 'md' : 'lg'}
       flexDirection="column"
+      justifyContent={justifyContent}
       gap="md"
       {...props}
       className={cn('cap-card-content', className)}
@@ -97,7 +100,11 @@ export const CardContent: React.FC<
 }
 
 export const CardTagList: React.FC<FlexProps> = props => {
-  return <Flex gap="md" alignItems="center" {...props} />
+  const { format, size } = React.useContext(CardContext)
+
+  if (size === 'S' && format === 'horizontal') return null
+
+  return <Flex gap="md" alignItems="center" flexWrap="wrap" {...props} />
 }
 
 export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
@@ -122,7 +129,7 @@ export const CardTag: React.FC<
   return (
     <Tag variantColor="infoGray" transparent {...props}>
       {children}
-      {srOnlyText ? <SROnly>{srOnlyText}</SROnly> : null}
+      {srOnlyText ? <SROnly> {srOnlyText}</SROnly> : null}
     </Tag>
   )
 }

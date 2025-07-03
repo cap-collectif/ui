@@ -31,7 +31,7 @@ export const Card: React.FC<CardProps> = ({
       ref={ref}
       position="relative"
       flexDirection={flexDirection}
-      gap={format === 'vertical' || size === 'S' ? undefined : 'lg'}
+      gap={format === 'vertical' ? undefined : size === 'S' ? 'xs' : 'lg'}
       p={internalPadding}
       borderRadius="xs"
       backgroundColor="card.default.background"

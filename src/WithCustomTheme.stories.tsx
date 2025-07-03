@@ -42,10 +42,7 @@ type Props = {
   primary: string
 }
 
-export const Default: Story<Props> = ({
-  primary,
- 
-}) => {
+export const Default: Story<Props> = ({ primary }) => {
   const CustomTheme = {
     ...capuiTheme,
     fonts: {
