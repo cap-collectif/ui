@@ -5,6 +5,7 @@ import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { Flex, FlexProps } from '../layout'
 import { LinkProps } from '../link'
+import { SROnly } from '../sronly'
 import { Tag, TagProps } from '../tag'
 import { TagLabelProps } from '../tag/label/TagLabel'
 import { TagLeftIconProps } from '../tag/leftIcon/TagLeftIcon'
@@ -38,6 +39,8 @@ export const CardContent: React.FC<
     <Flex
       px={isHorizontal && size === 'S' ? 0 : 'md'}
       py={isHorizontal && isSmall ? 0 : isHorizontal || isSmall ? 'md' : 'lg'}
+      flexDirection="column"
+      gap="md"
       {...props}
       className={cn('cap-card-content', className)}
     >
@@ -93,7 +96,11 @@ export const CardContent: React.FC<
   )
 }
 
-export const CardTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
+export const CardTagList: React.FC<FlexProps> = props => {
+  return <Flex gap="md" alignItems="center" {...props} />
+}
+
+export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
   const { format, size } = React.useContext(CardContext)
 
   if (size === 'S' && format === 'horizontal') return null
@@ -106,6 +113,17 @@ export const CardTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
       top={format === 'horizontal' ? 'xs' : undefined}
       left="xs"
     />
+  )
+}
+
+export const CardTag: React.FC<
+  Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText?: string }
+> = ({ children, srOnlyText, ...props }) => {
+  return (
+    <Tag variantColor="infoGray" transparent {...props}>
+      {children}
+      {srOnlyText ? <SROnly>{srOnlyText}</SROnly> : null}
+    </Tag>
   )
 }
 

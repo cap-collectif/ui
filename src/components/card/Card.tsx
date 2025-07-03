@@ -24,6 +24,7 @@ export const Card: React.FC<CardProps> = ({
   const size = getSize(format, width)
   const internalPadding = size === 'S' && format === 'horizontal' ? 'xs' : 'md'
   const maxWidth = pxToRem(format === 'horizontal' ? 1232 : 604)
+  const minWidth = pxToRem(format === 'horizontal' ? 320 : 290)
 
   return (
     <Flex
@@ -35,6 +36,7 @@ export const Card: React.FC<CardProps> = ({
       borderRadius="xs"
       backgroundColor="card.default.background"
       maxWidth={maxWidth}
+      minWidth={minWidth}
       width="100%"
       sx={{ '.cap-card-primaryInfo a': { textDecoration: 'none' } }}
       _hover={{

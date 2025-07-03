@@ -63,6 +63,7 @@ export const domElements = [
   'thead',
   'tr',
   'ul',
+  'use',
 ] as const
 
 type Components = {
@@ -125,6 +126,7 @@ type Components = {
   thead: FC<BoxPropsOf<'thead'>>
   tr: FC<BoxPropsOf<'tr'>>
   ul: FC<BoxPropsOf<'ul'>>
+  use: FC<BoxPropsOf<'use'>>
 }
 
 export const capui: Components = Object.freeze<Components>(

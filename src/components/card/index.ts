@@ -1,10 +1,12 @@
 export { Card } from './Card'
-export { CardCover, CardCoverImage } from './CardCover'
+export { CardCover, CardCoverImage, CardCoverPlaceholder } from './CardCover'
 export {
   CardContent,
+  CardStatusTag,
   CardTag,
   CardTagLabel,
   CardTagLeftIcon,
+  CardTagList,
 } from './CardContent'
 export { CardContext } from './utils'
 
