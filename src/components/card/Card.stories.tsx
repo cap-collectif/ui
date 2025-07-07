@@ -30,6 +30,7 @@ const meta: Meta<CardProps> = {
   },
   argTypes: {
     format: { control: 'select', options: ['horizontal', 'vertical'] },
+    isArchived: { control: 'boolean' },
   },
 }
 

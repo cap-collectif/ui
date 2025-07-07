@@ -4,10 +4,11 @@ import * as React from 'react'
 import useResizeObserver from '../../hooks/useResizeObserver'
 import { pxToRem } from '../../styles/modules/mixins'
 import { Flex, FlexProps } from '../layout'
-import { CardContext, getSize } from './utils'
+import { CardContext, CardSize, getSize } from './utils'
 
 export type CardProps = FlexProps & {
   format?: 'horizontal' | 'vertical'
+  forcedSize?: CardSize
   isArchived?: boolean
 }
 
@@ -16,12 +17,13 @@ export const Card: React.FC<CardProps> = ({
   className,
   format = 'vertical',
   isArchived = false,
+  forcedSize,
   ...props
 }) => {
   const [ref, rect] = useResizeObserver()
   const width = rect?.width || 400
   const flexDirection = format === 'horizontal' ? 'row' : 'column'
-  const size = getSize(format, width)
+  const size = forcedSize || getSize(format, width)
   const internalPadding = size === 'S' && format === 'horizontal' ? 'xs' : 'md'
   const maxWidth = pxToRem(format === 'horizontal' ? 1232 : 604)
   const minWidth = pxToRem(format === 'horizontal' ? 320 : 290)

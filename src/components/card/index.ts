@@ -9,5 +9,6 @@ export {
   CardTagList,
 } from './CardContent'
 export { CardContext } from './utils'
+export type { CardSize } from './utils'
 
 export type { CardProps } from './Card'

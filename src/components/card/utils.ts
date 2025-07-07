@@ -2,9 +2,11 @@ import { createContext } from 'react'
 
 import { CapUIFontSize } from '../../styles'
 
+export type CardSize = 'M' | 'S' | 'L'
+
 export const CardContext = createContext<{
   format: 'horizontal' | 'vertical'
-  size: 'M' | 'S' | 'L'
+  size: CardSize
   isArchived: boolean
 }>({
   format: 'vertical',
@@ -24,7 +26,7 @@ export const getSize = (format: 'horizontal' | 'vertical', width: number) => {
 }
 
 export const getPrimaryInfoSize = (
-  size: 'M' | 'S' | 'L',
+  size: CardSize,
   format: 'horizontal' | 'vertical',
 ) => {
   return size === 'L'

@@ -54,7 +54,7 @@ export const CardCoverImage: React.FC<
 export const CardCoverPlaceholder: React.FC<
   FlexProps & { color?: string; icon?: CapUIIcon }
 > = ({ children, className, color = 'neutral-gray.base', icon, ...props }) => {
-  const { size, format } = React.useContext(CardContext)
+  const { size, format, isArchived } = React.useContext(CardContext)
   const smallScale = format === 'horizontal' ? '1' : '2'
   return (
     <Flex
@@ -68,7 +68,10 @@ export const CardCoverPlaceholder: React.FC<
       style={{ aspectRatio: '3 / 2' }}
       {...props}
     >
-      <PlaceholderBackground color={color} position="absolute" />
+      <PlaceholderBackground
+        color={isArchived ? 'neutral-gray.base' : color}
+        position="absolute"
+      />
       {icon ? (
         <Icon
           color="white"
