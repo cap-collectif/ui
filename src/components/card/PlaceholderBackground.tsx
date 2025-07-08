@@ -18,7 +18,7 @@ export const PlaceholderBackground: FC<Props> = ({
   const { colors } = useTheme()
 
   const fillColor = access(color, colors) || color
-  console.log({ fillColor })
+
   return (
     <Box position="relative" height="100%" {...props}>
       <Box

@@ -26,7 +26,7 @@ export const Card: React.FC<CardProps> = ({
   const size = forcedSize || getSize(format, width)
   const internalPadding = size === 'S' && format === 'horizontal' ? 'xs' : 'md'
   const maxWidth = pxToRem(format === 'horizontal' ? 1232 : 604)
-  const minWidth = pxToRem(format === 'horizontal' ? 320 : 290)
+  const minWidth = pxToRem(format === 'horizontal' ? 0 : 290)
 
   return (
     <Flex

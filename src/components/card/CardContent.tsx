@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
+import { CapUIIcon } from '../icon'
 import { Flex, FlexProps } from '../layout'
 import { LinkProps } from '../link'
 import { SROnly } from '../sronly'
@@ -59,6 +60,7 @@ export const CardContent: React.FC<
           {href ? (
             <Box
               as="a"
+              className="cap-card-link"
               href={href}
               color="text.primary"
               target={target}
@@ -108,13 +110,14 @@ export const CardTagList: React.FC<FlexProps> = props => {
 }
 
 export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
-  const { format, size } = React.useContext(CardContext)
+  const { format, size, isArchived } = React.useContext(CardContext)
 
   if (size === 'S' && format === 'horizontal') return null
 
   return (
     <Tag
       {...props}
+      variantColor={isArchived ? 'infoGray' : props.variantColor}
       position="absolute"
       bottom={format === 'vertical' ? '-sm' : undefined}
       top={format === 'horizontal' ? 'xs' : undefined}
@@ -137,6 +140,28 @@ export const CardTag: React.FC<
 export const CardTagLabel: React.FC<TagLabelProps> = props => (
   <Tag.Label {...props} />
 )
+
+export const CardRestricted: React.FC<
+  Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText: string }
+> = ({ srOnlyText, ...props }) => {
+  const { format, size } = React.useContext(CardContext)
+
+  if (size === 'S' && format === 'horizontal') return null
+
+  return (
+    <Tag
+      {...props}
+      variantColor="infoGray"
+      position="absolute"
+      top="xs"
+      right="xs"
+      zIndex={1}
+    >
+      <Tag.LeftIcon name={CapUIIcon.Lock} m={0} />
+      <SROnly> {srOnlyText}</SROnly>
+    </Tag>
+  )
+}
 
 export const CardTagLeftIcon: React.FC<TagLeftIconProps> = props => (
   <Tag.LeftIcon {...props} />

@@ -17,6 +17,7 @@ import {
   CardCoverPlaceholder,
   CardTagList,
   CardStatusTag,
+  CardRestricted,
 } from './'
 import './CardCover'
 
@@ -142,6 +143,7 @@ const Cards = ({ crop, ...args }: any) => (
             <CardTagLeftIcon name={CapUIIcon.Police} />
             <CardTagLabel>Refusé</CardTagLabel>
           </CardStatusTag>
+          <CardRestricted srOnlyText="accès restreint" />
         </CardCover>
         <CardContent
           primaryInfo="Raser la forêt"

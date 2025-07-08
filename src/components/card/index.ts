@@ -7,6 +7,7 @@ export {
   CardTagLabel,
   CardTagLeftIcon,
   CardTagList,
+  CardRestricted,
 } from './CardContent'
 export { CardContext } from './utils'
 export type { CardSize } from './utils'
