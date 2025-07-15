@@ -16,7 +16,7 @@ export const AbstractCard: React.FC<AbstractCardProps> = ({
     border="card"
     borderColor="gray.150"
     {...props}
-    className={cn('cap-tile', className)}
+    className={cn('cap-abstract-card', className)}
   >
     {children}
   </Box>
