@@ -48,7 +48,7 @@ export const CardContent: React.FC<
       {...props}
       className={cn('cap-card-content', className)}
     >
-      <Flex flexDirection="column" gap="xxs">
+      <Flex flexDirection="column" gap="xxs" sx={{ wordBreak: 'break-word' }}>
         <Box
           className="cap-card-primaryInfo"
           as={primaryInfoTag}
