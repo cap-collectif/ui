@@ -5,12 +5,12 @@ import { useTheme } from '../../hooks'
 import { access } from '../../utils/access'
 import { Box, BoxProps } from '../box'
 
-type Props = BoxProps & {
+export type PlaceholderBackgroundProps = BoxProps & {
   color?: string
   viewBox?: string | null | undefined
 }
 
-export const PlaceholderBackground: FC<Props> = ({
+export const PlaceholderBackground: FC<PlaceholderBackgroundProps> = ({
   color = 'neutral-gray.base',
   viewBox,
   ...props

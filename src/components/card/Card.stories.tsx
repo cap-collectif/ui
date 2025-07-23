@@ -168,6 +168,50 @@ export const HorizontalLayout: Story<CardProps> = args => (
 )
 HorizontalLayout.args = { format: 'horizontal' }
 
+export const LayoutWithoutCover: Story<CardProps> = args => (
+  <Grid gap="lg">
+    <Card {...args}>
+      <CardContent
+        primaryInfo="Aménagement durable de la rue de Vern"
+        secondaryInfo="Créer de petits passages entre les propriétés (notamment jardins) pour les hérissons qui parcourent jusqu'à 4 km par nuit."
+        href="https://monsuperprojet.com"
+        target="_blank"
+      >
+        <CardTagList>
+          <CardTag srOnlyText="contributions">
+            <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
+            <CardTagLabel>623.5 K</CardTagLabel>
+          </CardTag>
+          <CardTag srOnlyText="commentaires">
+            <CardTagLeftIcon name={CapUIIcon.BubbleO} />
+            <CardTagLabel>7 000</CardTagLabel>
+          </CardTag>
+        </CardTagList>
+      </CardContent>
+    </Card>
+    <Card {...args}>
+      <CardContent
+        primaryInfo="Jardins Familiaux du Pâtis-des-Friches"
+        secondaryInfo="Mettre des parcelles à la disposition de famille en respectant la nature.Echange sur les méthodes de culture en respectant la biodiversité sans produits phytosanitaires."
+        href="https://monsuperprojet.com"
+        target="_blank"
+      >
+        <CardTagList>
+          <CardTag srOnlyText="contributions">
+            <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
+            <CardTagLabel>623.5 K</CardTagLabel>
+          </CardTag>
+          <CardTag srOnlyText="commentaires">
+            <CardTagLeftIcon name={CapUIIcon.BubbleO} />
+            <CardTagLabel>7 000</CardTagLabel>
+          </CardTag>
+        </CardTagList>
+      </CardContent>
+    </Card>
+  </Grid>
+)
+LayoutWithoutCover.args = { format: 'vertical' }
+
 export const MixedLayout: Story<CardProps> = args => {
   const isMobile = useIsMobile()
   return (

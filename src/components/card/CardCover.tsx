@@ -3,9 +3,9 @@ import * as React from 'react'
 
 import { pxToRem } from '../../styles/modules/mixins'
 import { Box } from '../box'
-import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
+import { EntityPlaceholder } from '../entityPlaceholder'
+import { CapUIIcon } from '../icon'
 import { Flex, FlexProps } from '../layout'
-import { PlaceholderBackground } from './PlaceholderBackground'
 import { CardContext } from './utils'
 
 const defaultSizes = `(max-width: 320px) 320px,(max-width: 640px) 640px,(max-width: 960px) 960px,(max-width: 1280px) 960px,(max-width: 2560px) 960px,`
@@ -53,34 +53,16 @@ export const CardCoverImage: React.FC<
 
 export const CardCoverPlaceholder: React.FC<
   FlexProps & { color?: string; icon?: CapUIIcon }
-> = ({ children, className, color = 'neutral-gray.base', icon, ...props }) => {
+> = ({ className, color = 'neutral-gray.base', icon, ...props }) => {
   const { size, format, isArchived } = React.useContext(CardContext)
   const smallScale = format === 'horizontal' ? '1' : '2'
   return (
-    <Flex
-      position="relative"
-      borderRadius="xxs"
-      overflow="hidden"
-      alignItems="center"
-      justifyContent="center"
-      className={cn('cap-card-cover-placeholder', className)}
-      width="100%"
-      style={{ aspectRatio: '3 / 2' }}
+    <EntityPlaceholder
+      color={isArchived ? 'neutral-gray.base' : color}
+      icon={icon}
+      scale={size === 'L' ? '4' : size === 'M' ? '3' : smallScale}
       {...props}
-    >
-      <PlaceholderBackground
-        color={isArchived ? 'neutral-gray.base' : color}
-        position="absolute"
-      />
-      {icon ? (
-        <Icon
-          color="white"
-          name={icon}
-          size={CapUIIconSize.Xxl}
-          sx={{ scale: size === 'L' ? '4' : size === 'M' ? '3' : smallScale }}
-        />
-      ) : null}
-    </Flex>
+    />
   )
 }
 
