@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.0
+
+`2025-07-23`
+
+- 🆕 New `Card` component [#530](https://github.com/cap-collectif/ui/pull/530)
+- 💥 Rename old `Card` component to `AbstractCard` [#530](https://github.com/cap-collectif/ui/pull/530)
+
 ## 5.0.1
 
 `2025-07-01`
