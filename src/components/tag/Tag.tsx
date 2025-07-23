@@ -35,6 +35,7 @@ export interface TagProps
   variantColor: TagVariantColor
   variantType?: VariantType
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
+  transparent?: boolean
 }
 
 type TagInnerProps = {
@@ -74,6 +75,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   onRemove,
   sx,
   tabIndex,
+  transparent = false,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
@@ -84,7 +86,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
     <TagInner
       sx={{
         textTransform: variantType === 'badge' ? 'uppercase' : undefined,
-        ...getTagStyle(variantColor),
+        ...getTagStyle(variantColor, transparent),
         ...sx,
       }}
       title={tagLabel}
