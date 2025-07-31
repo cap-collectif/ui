@@ -7,10 +7,10 @@ import {
 import cn from 'classnames'
 import * as React from 'react'
 
+import { useTheme } from '../../hooks'
 import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { ZINDEX } from '../../styles/theme'
-import { BoxProps } from '../box'
-import Text from '../typography/Text'
+import { Box, BoxProps } from '../box'
 
 export interface TooltipProps extends BoxProps {
   children: React.FunctionComponentElement<any>
@@ -29,6 +29,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   zIndex,
   ...props
 }) => {
+  const { colors } = useTheme()
+
   return (
     <TooltipProvider>
       <TooltipAnchor
@@ -47,23 +49,19 @@ export const Tooltip: React.FC<TooltipProps> = ({
           zIndex: zIndex || ZINDEX.tooltip,
         }}
       >
-        <TooltipArrow style={{ fill: 'tooltip.background' }} />
-        {typeof label === 'string' ? (
-          <Text
-            textAlign="center"
-            lineHeight={CapUILineHeight.S}
-            fontSize={CapUIFontSize.Caption}
-            p="xxs"
-            bg="tooltip.background"
-            color="tooltip.text"
-            borderRadius="xxs"
-            maxWidth="270px"
-          >
-            {label}
-          </Text>
-        ) : (
-          label
-        )}
+        <TooltipArrow style={{ fill: colors.tooltip.background }} />
+        <Box
+          textAlign="center"
+          lineHeight={CapUILineHeight.S}
+          fontSize={CapUIFontSize.Caption}
+          p="xxs"
+          bg="tooltip.background"
+          color="tooltip.text"
+          borderRadius="xxs"
+          maxWidth="270px"
+        >
+          {label}
+        </Box>
       </AriakitTooltip>
     </TooltipProvider>
   )
