@@ -6,9 +6,11 @@ import {
 } from '@ariakit/react'
 import cn from 'classnames'
 import * as React from 'react'
+import { useId } from 'react'
 
 import { useTheme } from '../../hooks'
 import { CapUIFontSize, CapUILineHeight } from '../../styles'
+import { pxToRem } from '../../styles/modules/mixins'
 import { ZINDEX } from '../../styles/theme'
 import { Box, BoxProps } from '../box'
 
@@ -30,26 +32,20 @@ export const Tooltip: React.FC<TooltipProps> = ({
   ...props
 }) => {
   const { colors } = useTheme()
+  const id = useId()
 
   return (
     <TooltipProvider>
-      <TooltipAnchor
-        ref={children.ref}
-        aria-label={
-          typeof label === 'string' ? label : props['aria-label'] ?? undefined
-        }
-        {...children.props}
-      >
-        {children}
-      </TooltipAnchor>
+      <TooltipAnchor aria-describedby={id} render={children} />
       <AriakitTooltip
         className={cn('cap-tooltip', className)}
         {...props}
         style={{
           zIndex: zIndex || ZINDEX.tooltip,
         }}
+        id={id}
       >
-        <TooltipArrow style={{ fill: colors.tooltip.background }} />
+        <TooltipArrow style={{ fill: colors?.tooltip?.background }} />
         <Box
           textAlign="center"
           lineHeight={CapUILineHeight.S}
@@ -58,7 +54,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
           bg="tooltip.background"
           color="tooltip.text"
           borderRadius="xxs"
-          maxWidth="270px"
+          maxWidth={pxToRem(270)}
         >
           {label}
         </Box>
