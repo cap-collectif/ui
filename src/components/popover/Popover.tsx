@@ -39,7 +39,7 @@ type SubComponents = {
 type OriginPosition = { x: string } | { y: string } | {}
 
 export interface PopoverProps
-  extends FlexProps,
+  extends Omit<FlexProps, 'children'>,
     Partial<Pick<PopoverState, 'placement'>> {
   disclosure: React.FunctionComponentElement<any>
   children: React.ReactNode | RenderChildren

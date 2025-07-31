@@ -47,6 +47,7 @@ export const Table = ({
             <ActionBar>{actionBar}</ActionBar>
 
             <Box width="100%">
+              {/* @ts-ignore as="table" won't work - probably an issue with styled-components - investigate this when moving from styled-components */}
               <Box as="table" width="100%" {...rest}>
                 {children}
               </Box>
@@ -56,6 +57,7 @@ export const Table = ({
           </Flex>
         ) : (
           <Box width="100%" fontFamily={CapUIFontFamily.Body}>
+             {/* @ts-ignore see upstairs */}
             <Box
               as="table"
               borderTopLeftRadius="normal"

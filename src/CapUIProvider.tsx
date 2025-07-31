@@ -7,8 +7,9 @@ import { CapUITheme, capuiTheme } from './styles/theme'
 import { getThemeWithColorsToken } from './utils/getThemeWithColorsToken'
 
 interface Props {
-  readonly resetCSS?: boolean
-  readonly theme?: CapUITheme
+  resetCSS?: boolean
+  theme?: CapUITheme
+  children?: any
 }
 
 export const CapUIProvider: FC<Props> = ({

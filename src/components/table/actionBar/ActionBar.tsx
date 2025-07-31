@@ -13,7 +13,7 @@ type RenderChildren = ({
   selectedRows: string[]
 }) => React.ReactNode
 
-export interface ActionBarProps extends FlexProps {
+export interface ActionBarProps extends Omit<FlexProps, 'children'> {
   children: React.ReactNode | RenderChildren
 }
 

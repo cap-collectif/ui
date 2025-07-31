@@ -16,8 +16,8 @@ type DefaultStyles = {
 
 type RenderChildren = ({ styles }: { styles: DefaultStyles }) => React.ReactNode
 
-export interface ThProps extends BoxPropsOf<'th'> {
-  isNumeric?: boolean
+export interface ThProps extends Omit<BoxPropsOf<'th'>, 'children'> {
+  isNumeric?: boolean 
   noPlaceholder?: boolean
   children?: React.ReactNode | RenderChildren
 }

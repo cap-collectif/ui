@@ -17,7 +17,7 @@ import ModalHeader from './header/ModalHeader'
 
 export type RenderProps = (props: ModalContextType) => React.ReactNode
 
-export interface ModalProps extends FlexProps {
+export interface ModalProps extends Omit<FlexProps, 'children'> {
   readonly size: CapUIModalSize
   readonly hideOnClickOutside?: boolean
   readonly noBackdrop?: boolean
