@@ -11,6 +11,7 @@ export type TabHeaderProps = {
   onKeyDown: (event: React.KeyboardEvent) => void | undefined
   isActive: boolean
   count?: number
+  children?: React.ReactNode
 }
 
 const TabHeader: React.FC<TabHeaderProps> = ({

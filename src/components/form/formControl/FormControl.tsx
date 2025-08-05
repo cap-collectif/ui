@@ -96,7 +96,7 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef<
         width={props.width || '100%'}
         direction="column"
         spacing="xxs"
-        {...getRootProps({}, ref)}
+        {...getRootProps({}, ref as any)}
         className={cn('cap-form-control', props.className)}
       />
     </FormControlProvider>

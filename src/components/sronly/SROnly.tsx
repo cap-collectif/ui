@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { BoxProps } from 'reakit'
 
+import { BoxProps } from '../box'
 import { Box } from '../box'
 
 export const SROnly: FC<BoxProps> = props => (
