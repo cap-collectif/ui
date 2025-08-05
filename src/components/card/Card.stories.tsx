@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import { largeThumbnail, thumbnail } from '../../assets/images'
 import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { CapUIIcon } from '../icon'
 import { Grid } from '../layout'
+import { Tooltip } from '../tooltip'
 import {
   Card,
   CardCover,
@@ -48,7 +48,7 @@ export const Default: Story<CardProps> = args => (
     </CardCover>
     <CardContent
       primaryInfo="Primary info"
-      secondaryInfo="secondary info"
+      secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
       href="https://monsuperprojet.com"
       target="_blank"
     >
@@ -61,7 +61,10 @@ export const Default: Story<CardProps> = args => (
           <CardTagLeftIcon name={CapUIIcon.BubbleO} />
           <CardTagLabel>7 000</CardTagLabel>
         </CardTag>
-        <CardTag srOnlyText="participants">
+        <CardTag
+          srOnlyText="participants"
+          tooltipLabel="Ca fait beaucoup de participants wow"
+        >
           <CardTagLeftIcon name={CapUIIcon.UserO} />
           <CardTagLabel>1.5M</CardTagLabel>
         </CardTag>

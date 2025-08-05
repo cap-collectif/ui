@@ -23,6 +23,7 @@ export const Card: React.FC<CardProps> = ({
   const [ref, rect] = useResizeObserver()
   const width = rect?.width || 400
   const flexDirection = format === 'horizontal' ? 'row' : 'column'
+  const alignItems = format === 'horizontal' ? 'center' : null
   const size = forcedSize || getSize(format, width)
   const internalPadding = size === 'S' && format === 'horizontal' ? 'xs' : 'md'
   const maxWidth = pxToRem(format === 'horizontal' ? 1232 : 604)
@@ -33,6 +34,7 @@ export const Card: React.FC<CardProps> = ({
       ref={ref}
       position="relative"
       flexDirection={flexDirection}
+      alignItems={alignItems}
       gap={format === 'vertical' ? undefined : size === 'S' ? 'xs' : 'lg'}
       p={internalPadding}
       borderRadius="xs"
