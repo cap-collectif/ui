@@ -11,6 +11,15 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.1
+
+`2025-08-05`
+
+- 💄 `TabBar` component styling [#534](https://github.com/cap-collectif/ui/pull/534)
+- 🛠 Improve `Card` component [#533](https://github.com/cap-collectif/ui/pull/533)
+- 🆕 Add yarn-audit-fix package [#532](https://github.com/cap-collectif/ui/pull/532)
+- 🛠 Make `Tooltip` component more accessible [#498](https://github.com/cap-collectif/ui/pull/498)
+
 ## 6.0.0
 
 `2025-07-23`
