@@ -37,6 +37,7 @@ export const CardContent: React.FC<
   const isSmall = size === 'S'
   const justifyContent =
     !isHorizontal || isSmall ? null : size === 'M' ? 'center' : 'space-between'
+  const alignSelf = isHorizontal && size === 'L' ? 'stretch' : null
 
   return (
     <Flex
@@ -44,6 +45,7 @@ export const CardContent: React.FC<
       py={isHorizontal && isSmall ? 0 : isHorizontal || isSmall ? 'md' : 'lg'}
       flexDirection="column"
       justifyContent={justifyContent}
+      alignSelf={alignSelf}
       gap="md"
       {...props}
       className={cn('cap-card-content', className)}
@@ -104,9 +106,9 @@ export const CardContent: React.FC<
 export const CardTagList: React.FC<FlexProps> = props => {
   const { format, size } = React.useContext(CardContext)
 
-  if (size === 'S' && format === 'horizontal') return null
+  const gap = size === 'S' && format === 'horizontal' ? null : 'md'
 
-  return <Flex gap="md" alignItems="center" flexWrap="wrap" {...props} />
+  return <Flex gap={gap} alignItems="center" flexWrap="wrap" {...props} />
 }
 
 export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {

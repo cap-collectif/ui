@@ -6,6 +6,7 @@ import { CapUIFontSize } from '../../styles'
 import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, BoxProps } from '../box/Box'
+import { Tooltip } from '../tooltip'
 import { getTagStyle } from './Tag.style'
 import TagAvatar from './avatar/TagAvatar'
 import TagCloseButton from './closeButton/TagCloseButton'
@@ -30,12 +31,13 @@ export type TagVariantColor =
 export interface TagProps
   extends BoxProps,
     AnimationProps,
-    Pick<MotionProps, 'initial'>,
-    Pick<HoverHandlers, 'whileHover'> {
+    Partial<Pick<MotionProps, 'initial'>>,
+    Partial<Pick<HoverHandlers, 'whileHover'>> {
   variantColor: TagVariantColor
   variantType?: VariantType
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
   transparent?: boolean
+  tooltipLabel?: React.ReactNode
 }
 
 type TagInnerProps = {
@@ -76,20 +78,21 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   sx,
   tabIndex,
   transparent = false,
+  tooltipLabel,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
   const tagLabel = jsxInnerText(children)
   const [isFocused, setIsFocused] = React.useState<boolean>(false)
 
-  return (
+  const renderTag = (withinTooltip: boolean = false) => (
     <TagInner
       sx={{
         textTransform: variantType === 'badge' ? 'uppercase' : undefined,
         ...getTagStyle(variantColor, transparent),
         ...sx,
       }}
-      title={tagLabel}
+      title={withinTooltip ? undefined : tagLabel}
       className={cn('cap-tag', className)}
       initial="initial"
       whileHover="hover"
@@ -101,11 +104,11 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
           : {},
       }}
       variantType={variantType}
-      aria-label={`Tag ${tagLabel}`}
+      aria-label={withinTooltip ? undefined : `Tag ${tagLabel}`}
       overflow={'hidden'}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
-      tabIndex={-1}
+      tabIndex={withinTooltip ? 0 : undefined}
       {...rest}
     >
       {children}
@@ -118,6 +121,12 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
         />
       )}
     </TagInner>
+  )
+
+  return tooltipLabel ? (
+    <Tooltip label={tooltipLabel}>{renderTag(true)}</Tooltip>
+  ) : (
+    renderTag()
   )
 }
 
