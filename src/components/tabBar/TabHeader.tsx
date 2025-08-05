@@ -63,15 +63,11 @@ const TabHeader: React.FC<TabHeaderProps> = ({
           className="tabHeaderCount"
           bg={isActive ? 'primary.lighter' : 'neutral-gray.150'}
           color={isActive ? 'primary.base' : 'neutral-gray.500'}
-          sx={{
-            fontWeight: 600,
-            height: 4,
-            px: 1,
-            py: 0,
-            borderRadius: CapUIRadius.Tags,
-            marginLeft: 1,
-            fontSize: CapUIFontSize.BodySmall,
-          }}
+          px={1}
+          borderRadius={CapUIRadius.Normal}
+          fontWeight={CapUIFontWeight.Semibold}
+          fontSize={CapUIFontSize.BodySmall}
+          marginLeft={1}
         >
           {count}
         </Box>
