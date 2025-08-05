@@ -4,7 +4,6 @@ import { largeThumbnail, thumbnail } from '../../assets/images'
 import { useIsMobile } from '../../hooks/useDeviceDetect'
 import { CapUIIcon } from '../icon'
 import { Grid } from '../layout'
-import { Tooltip } from '../tooltip'
 import {
   Card,
   CardCover,
