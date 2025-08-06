@@ -1,7 +1,6 @@
+import * as Ariakit from '@ariakit/react'
 import cn from 'classnames'
 import * as React from 'react'
-import type { PopoverInitialState, MenuBarInitialState } from 'reakit'
-import { useMenuState, MenuButton } from 'reakit/Menu'
 
 import { MenuContext, Context, MenuValue } from './Menu.context'
 import MenuItem from './item/MenuItem'
@@ -10,16 +9,14 @@ import MenuOptionGroup from './optionGroup/MenuOptionGroup'
 import MenuOptionItem from './optionItem/MenuOptionItem'
 
 export interface MenuProps {
-  readonly children: React.ReactNode
-  readonly disclosure: React.FunctionComponentElement<any>
-  readonly hideOnClickOutside?: boolean
-  readonly closeOnSelect?: boolean
-  readonly onChange?: (value: MenuValue) => void
-  readonly value?: MenuValue
-  readonly loop?: MenuBarInitialState['loop']
-  readonly placement?: PopoverInitialState['placement']
-  readonly gutter?: PopoverInitialState['gutter']
-  readonly ref?: React.Ref<HTMLElement>
+  children: React.ReactNode
+  disclosure: React.FunctionComponentElement<any>
+  hideOnClickOutside?: boolean
+  closeOnSelect?: boolean
+  onChange?: (value: MenuValue) => void
+  value?: MenuValue
+  placement?: Ariakit.MenuProviderProps['placement']
+  ref?: React.Ref<HTMLElement>
 }
 
 type SubComponents = {
@@ -47,46 +44,35 @@ export const Menu: React.FC<MenuProps> & SubComponents = React.forwardRef<
       disclosure,
       hideOnClickOutside = true,
       closeOnSelect = true,
-      loop = false,
       placement = 'bottom-end',
-      gutter = 8,
       onChange,
       value,
       ...props
     },
     ref,
   ) => {
-    const menu = useMenuState({ loop, placement, gutter })
     const context = React.useMemo<Context>(
       () => ({
-        menu,
         closeOnSelect,
         hideOnClickOutside,
         onChange,
         value,
       }),
-      [menu, closeOnSelect, hideOnClickOutside, onChange, value],
+      [closeOnSelect, hideOnClickOutside, onChange, value],
     )
 
     return (
       <MenuContext.Provider value={context}>
-        <MenuButton
-          ref={ref}
-          {...menu}
-          {...props}
-          {...disclosure.props}
-          className={cn('cap-menu__disclosure', disclosure.props.className)}
-        >
-          {disclosureProps =>
-            React.cloneElement(
-              disclosure,
-              disclosureProps,
-              value ? value.label : disclosure.props.children,
-            )
-          }
-        </MenuButton>
-
-        {children}
+        <Ariakit.MenuProvider placement={placement}>
+          <Ariakit.MenuButton
+            className={cn('cap-menu__disclosure', disclosure.props.className)}
+            render={disclosure}
+            {...props}
+            ref={ref as React.RefObject<HTMLButtonElement>}
+            children={value ? value.label : disclosure.props.children}
+          />
+          {children}
+        </Ariakit.MenuProvider>
       </MenuContext.Provider>
     )
   },

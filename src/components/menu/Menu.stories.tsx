@@ -12,7 +12,7 @@ const meta: Meta = {
   title: 'Library/Menu',
   component: Menu,
   args: {
-    disclosure: <Button>Filters</Button>,
+    disclosure: <Button id="oooo">Filters</Button>,
   },
   argTypes: {
     disclosure: {

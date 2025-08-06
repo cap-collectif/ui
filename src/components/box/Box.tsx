@@ -357,7 +357,7 @@ export const Box = styled('div').withConfig({
         },
         sx ?? {},
         {
-          '&:focus-visible:not(.cap-input,.cap-textarea,.cap-input-number,.cap-color-picker)':
+          '&:focus-visible:not(.cap-input,.cap-textarea,.cap-input-number,.cap-color-picker,.cap-menu__list,.cap-menu__item)':
             {
               outline: '2px #fff solid',
               outlineOffset: 0,
