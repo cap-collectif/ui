@@ -63,7 +63,7 @@ export const Menu: React.FC<MenuProps> & SubComponents = React.forwardRef<
 
     return (
       <MenuContext.Provider value={context}>
-        <Ariakit.MenuProvider placement={placement}>
+        <Ariakit.MenuProvider placement={placement} focusLoop>
           <Ariakit.MenuButton
             className={cn('cap-menu__disclosure', disclosure.props.className)}
             render={disclosure}

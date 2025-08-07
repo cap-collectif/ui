@@ -2,8 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { CapUIFontSize, CapUIFontWeight, CapUILineHeight } from '../../styles'
-import { BoxProps } from '../box'
-import { DropdownListItem as DropdownListItemStyled } from './Dropdown.styles'
+import { Box, BoxProps } from '../box'
 
 export type DropdownListItemProps = BoxProps & { active?: boolean }
 
@@ -11,26 +10,41 @@ const DropdownListItem: React.FC<DropdownListItemProps> = ({
   children,
   className,
   active,
+  sx,
   ...props
 }) => {
   return (
-    <DropdownListItemStyled
+    <Box
+      as="li"
       width="100%"
-      px={3}
-      py={2}
-      fontFamily="body"
+      px="sm"
+      py="xs"
+      color="text.primary"
+      overflow="hidden"
+      bg="dropdown.listItem.background.default"
+      _hover={{
+        bg: 'dropdown.listItem.background.hover',
+        cursor: 'pointer',
+      }}
+      borderBottom="normal"
+      borderColor="dropdown.listItem.border.hover"
+      sx={{
+        textOverflow: 'ellipsis',
+        whiteSpace: 'pre',
+        '&:last-child': {
+          borderBottom: 'none',
+        },
+        ...sx,
+      }}
       m={0}
-      bg="white"
       fontWeight={active ? CapUIFontWeight.Semibold : CapUIFontWeight.Normal}
       className={cn('cap-dropdown__item', className)}
       fontSize={CapUIFontSize.BodyRegular}
       lineHeight={CapUILineHeight.M}
-      color="gray.900"
-      as="li"
       {...props}
     >
       {children}
-    </DropdownListItemStyled>
+    </Box>
   )
 }
 DropdownListItem.displayName = 'Dropdown.Item'

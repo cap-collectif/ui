@@ -28,14 +28,15 @@ const MenuList: React.FC<MenuListProps> = ({
           maxWidth={pxToRem(300)}
           maxHeight={pxToRem(200)}
           overflow="auto"
-          boxShadow="medium"
+          boxShadow="small"
           border="normal"
-          borderColor="gray.200"
+          borderColor="dropdown.border"
           borderRadius="normal"
           sx={{ '&:focus-visible': { outline: 'none' } }}
           {...rest}
         />
       }
+      portal
       gutter={8}
       hideOnInteractOutside={hideOnClickOutside}
       className={cn('cap-menu__list', className)}

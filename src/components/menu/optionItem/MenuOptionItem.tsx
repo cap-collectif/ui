@@ -6,7 +6,7 @@ import MenuItem, { MenuItemProps } from '../item/MenuItem'
 import { useMenuOptionGroup } from '../optionGroup/MenuOptionGroup.context'
 
 export interface MenuOptionItemProps extends Omit<MenuItemProps, 'value'> {
-  readonly value: string
+  value: string
 }
 
 export const MenuOptionItem: React.FC<MenuOptionItemProps> = React.forwardRef<
@@ -22,8 +22,12 @@ export const MenuOptionItem: React.FC<MenuOptionItemProps> = React.forwardRef<
   return (
     <MenuItem
       {...props}
+      _internal_isSelectable
+      role={type === 'checkbox' ? 'menuitemcheckbox' : 'menuitemradio'}
+      aria-checked={isSelected}
       ref={ref}
-      onClick={() => {
+      onClick={e => {
+        e.preventDefault()
         if (type === 'checkbox' && Array.isArray(originalValue)) {
           onChange(
             isSelected
@@ -37,10 +41,14 @@ export const MenuOptionItem: React.FC<MenuOptionItemProps> = React.forwardRef<
       className={cn('cap-menu__optionItem', props.className)}
     >
       <Box
+        tabIndex={-1}
+        aria-hidden
+        sx={{ pointerEvents: 'none' }}
         display="inline-block"
         as="input"
         checked={isSelected}
         type={type}
+        readOnly
         ml={1}
         mr={2}
       />
