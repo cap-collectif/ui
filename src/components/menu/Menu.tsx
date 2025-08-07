@@ -17,6 +17,7 @@ export interface MenuProps {
   value?: MenuValue
   placement?: Ariakit.MenuProviderProps['placement']
   ref?: React.Ref<HTMLElement>
+  className?: string
 }
 
 type SubComponents = {
