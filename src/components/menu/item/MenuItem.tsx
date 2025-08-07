@@ -5,17 +5,21 @@ import * as React from 'react'
 import { useTheme } from '../../../hooks'
 import { CapUIFontSize, CapUILineHeight } from '../../../styles'
 import { Box } from '../../box'
-import { PolymorphicBoxProps } from '../../box/Box'
+import { BoxOwnProps, PolymorphicBoxProps } from '../../box/Box'
 import { Text } from '../../typography'
 import { MenuValue, useMenu } from '../Menu.context'
 
-export interface MenuItemProps
-  extends Omit<PolymorphicBoxProps<'button'>, 'value'> {
-  children: React.ReactNode
-  closeOnSelect?: boolean
-  value?: MenuValue
-  _internal_isSelectable?: boolean
-}
+export type MenuItemProps = Omit<
+  PolymorphicBoxProps<'button'>,
+  'value' | 'as'
+> &
+  Omit<PolymorphicBoxProps<'a'>, 'as'> &
+  BoxOwnProps & {
+    children: React.ReactNode
+    closeOnSelect?: boolean
+    value?: MenuValue
+    _internal_isSelectable?: boolean
+  }
 
 const MenuItem: React.FC<MenuItemProps> = React.forwardRef<
   HTMLButtonElement,
@@ -89,8 +93,8 @@ const MenuItem: React.FC<MenuItemProps> = React.forwardRef<
             }}
           />
         }
-        as={_internal_isSelectable ? 'div' : 'button'}
-        type={_internal_isSelectable ? null : 'button'}
+        as={_internal_isSelectable ? 'div' : props.href ? 'a' : 'button'}
+        type={_internal_isSelectable || props.href ? null : 'button'}
         ref={ref}
         onClick={onClickHandler}
         {...props}

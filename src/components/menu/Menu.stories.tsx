@@ -32,10 +32,12 @@ export default meta
 export const Default: Story<MenuProps> = args => (
   <Menu {...args}>
     <Menu.List>
-      <Menu.Item>Normal item</Menu.Item>
-      <Menu.Item>Hello world</Menu.Item>
+      <Menu.Item onClick={() => alert('Hello')}>Button</Menu.Item>
       <Menu.Item disabled>Disabled item</Menu.Item>
-      <Menu.Item>
+      <Menu.Item href="https://google.fr" target="_blank">
+        Link
+      </Menu.Item>
+      <Menu.Item className="customClassName">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus
         aliquid aspernatur atque consequatur cumque dolorem doloremque eum
         laboriosam laborum, laudantium maiores numquam quaerat quibusdam quo,
