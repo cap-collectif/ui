@@ -1,14 +1,12 @@
 import * as Ariakit from '@ariakit/react'
 import cn from 'classnames'
 import * as React from 'react'
-import { MenuOptions } from 'reakit/Menu'
 
 import { pxToRem } from '../../../styles/modules/mixins'
 import { Flex, FlexProps } from '../../layout/Flex'
 import { useMenu } from '../Menu.context'
 
-export interface MenuListProps
-  extends Omit<FlexProps, keyof Omit<MenuOptions, 'as'>> {}
+export type MenuListProps = FlexProps & Ariakit.MenuListProps
 
 const MenuList: React.FC<MenuListProps> = ({
   children,
