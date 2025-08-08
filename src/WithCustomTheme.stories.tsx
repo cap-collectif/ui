@@ -8,6 +8,7 @@ import {
   Button,
   CapUIAccordionColor,
   CapUIFontWeight,
+  CapUIIcon,
   CapUIProvider,
   CapUISpotIcon,
   CapUISpotIconSize,
@@ -55,6 +56,7 @@ export const Default: Story<Props> = ({ primary }) => {
       primary: generatePalette(primary),
     },
   }
+  const [showPassword, setShowPassword] = React.useState<boolean>(false)
 
   return (
     <>
@@ -102,6 +104,29 @@ export const Default: Story<Props> = ({ primary }) => {
           </AvatarGroup>
           {/** @ts-expect-error Example only */}
           <ColorPicker />
+        </Flex>
+        <Flex gap={4} mt={4}>
+          <Input
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            onClickActions={
+              showPassword
+                ? [
+                    {
+                      icon: CapUIIcon.Eye,
+                      onClick: () => setShowPassword(false),
+                      label: 'global.password.hide',
+                    },
+                  ]
+                : [
+                    {
+                      icon: CapUIIcon.EyeClose,
+                      onClick: () => setShowPassword(true),
+                      label: 'global.password.show',
+                    },
+                  ]
+            }
+          />
         </Flex>
         <Flex mt={4} alignItems="center">
           <Accordion color={CapUIAccordionColor.Gray}>
