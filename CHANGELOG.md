@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.2
+
+`2025-08-08`
+
+- 🆕 Make `Input` type `text` able to receive `onClickAction` icons [#535](https://github.com/cap-collectif/ui/pull/535)
+
 ## 6.0.1
 
 `2025-08-05`
