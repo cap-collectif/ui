@@ -115,14 +115,14 @@ export const Default: Story<Props> = ({ primary }) => {
                     {
                       icon: CapUIIcon.Eye,
                       onClick: () => setShowPassword(false),
-                      label: 'global.password.hide',
+                      label: 'Masquer le mot de passe',
                     },
                   ]
                 : [
                     {
                       icon: CapUIIcon.EyeClose,
                       onClick: () => setShowPassword(true),
-                      label: 'global.password.show',
+                      label: 'Afficher le mot de passe',
                     },
                   ]
             }
