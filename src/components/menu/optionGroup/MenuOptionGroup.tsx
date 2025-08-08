@@ -11,17 +11,17 @@ import { Text } from '../../typography'
 import { Context, MenuOptionGroupContext } from './MenuOptionGroup.context'
 
 export type MenuOptionGroupProps = Omit<BoxProps, 'onChange'> & {
-  readonly title: React.ReactNode
+  title: React.ReactNode
 } & (
     | {
-        readonly type: 'checkbox'
-        readonly onChange: (newValue: string[]) => void
-        readonly value: string[]
+        type: 'checkbox'
+        onChange: (newValue: string[]) => void
+        value: string[]
       }
     | {
-        readonly type: 'radio'
-        readonly onChange: (newValue: string) => void
-        readonly value: string
+        type: 'radio'
+        onChange: (newValue: string) => void
+        value: string
       }
   )
 
@@ -56,23 +56,26 @@ export const MenuOptionGroup: React.FC<MenuOptionGroupProps> = ({
           ...props.sx,
         }}
       >
-        {title && (
+        {title ? (
           <Text
+            as="span"
+            display="block"
+            uppercase
             className="cap-menu__optionGroup--title"
-            color="gray.900"
+            color="text.primary"
             lineHeight={CapUILineHeight.S}
             fontSize={CapUIFontSize.Caption}
             fontWeight={CapUIFontWeight.Semibold}
-            px={3}
-            py={2}
-            bg="gray.100"
+            px="sm"
+            py="xs"
+            bg="dropdown.listItem.background.hover"
             borderTop="normal"
             borderBottom="normal"
-            borderColor="gray.300"
+            borderColor="dropdown.listItem.border.hover"
           >
             {title}
           </Text>
-        )}
+        ) : null}
         {children}
       </Box>
     </MenuOptionGroupContext.Provider>

@@ -437,6 +437,22 @@ const cardColors = (theme: CapUITheme) => ({
   },
 })
 
+const dropdownColors = (theme: CapUITheme) => ({
+  dropdown: {
+    border: theme.colors.gray.lighter,
+    listItem: {
+      background: {
+        default: theme.colors.white,
+        hover: theme.colors.gray.background,
+      },
+      border: {
+        default: theme.colors.transparent,
+        hover: theme.colors.gray.lighter,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -449,6 +465,7 @@ const getColors = (theme: CapUITheme) => ({
   ...uploaderColors(theme),
   ...cardColors(theme),
   ...tooltipColors(theme),
+  ...dropdownColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

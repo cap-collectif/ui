@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { MenuStateReturn } from 'reakit'
 
 export type MenuValue = {
   value: string
@@ -7,7 +6,6 @@ export type MenuValue = {
 }
 
 export type Context = {
-  menu: MenuStateReturn
   hideOnClickOutside: boolean
   closeOnSelect: boolean
   onChange?: (value: MenuValue) => void
