@@ -32,7 +32,7 @@ export const Input: React.FC<InputProps> = React.forwardRef<
   const { disabled } = inputProps
   const isEmpty = props.value !== 0 && !props.value
 
-  if ((props.type && props.type !== 'text') || !onClickActions) {
+  if (!onClickActions) {
     return (
       <InputInner
         {...inputProps}
