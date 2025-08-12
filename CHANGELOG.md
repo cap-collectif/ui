@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.3
+
+`2025-08-12`
+
+- 🛠 Make `Menu` component more accessible [#536](https://github.com/cap-collectif/ui/pull/536)
+
 ## 6.0.2
 
 `2025-08-08`
