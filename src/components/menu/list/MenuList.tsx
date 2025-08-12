@@ -1,57 +1,48 @@
+import * as Ariakit from '@ariakit/react'
 import cn from 'classnames'
-import { motion } from 'framer-motion'
 import * as React from 'react'
-import { Menu as ReakitMenu, MenuOptions } from 'reakit/Menu'
-import styled from 'styled-components'
 
-import { LAYOUT_TRANSITION_SPRING } from '../../../styles/modules/variables'
+import { pxToRem } from '../../../styles/modules/mixins'
 import { Flex, FlexProps } from '../../layout/Flex'
 import { useMenu } from '../Menu.context'
 
-export interface MenuListProps
-  extends Omit<FlexProps, keyof Omit<MenuOptions, 'as'>> {}
+export type MenuListProps = FlexProps & Ariakit.MenuListProps
 
-const MenuItems = styled(motion(Flex)).attrs<FlexProps>(props => ({
-  direction: 'column',
-  minWidth: '200px',
-  maxWidth: '300px',
-  maxHeight: '200px',
-  overflow: 'auto',
-  bg: 'white',
-  boxShadow: 'medium',
-  border: 'normal',
-  borderColor: 'gray.200',
-  borderRadius: 'normal',
-  ...props,
-}))``
-
-const MenuList: React.FC<MenuListProps> = React.forwardRef<
-  HTMLElement,
-  MenuListProps
->(({ children, className, ...rest }, ref) => {
-  const { menu, hideOnClickOutside } = useMenu()
+const MenuList: React.FC<MenuListProps> = ({
+  children,
+  className,
+  ...rest
+}) => {
+  const { hideOnClickOutside } = useMenu()
 
   return (
-    <ReakitMenu
-      as={MenuItems}
-      {...menu}
-      hideOnClickOutside={hideOnClickOutside}
-      ref={ref}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }}
-      initial="hidden"
-      animate={menu.visible ? 'visible' : 'hidden'}
-      transition={LAYOUT_TRANSITION_SPRING}
-      zIndex="dropdown"
-      {...rest}
+    <Ariakit.Menu
+      render={
+        <Flex
+          zIndex="dropdown"
+          direction="column"
+          bg="white"
+          minWidth={pxToRem(200)}
+          maxWidth={pxToRem(300)}
+          maxHeight={pxToRem(200)}
+          overflow="auto"
+          boxShadow="small"
+          border="normal"
+          borderColor="dropdown.border"
+          borderRadius="normal"
+          sx={{ '&:focus-visible': { outline: 'none' } }}
+          {...rest}
+        />
+      }
+      portal
+      gutter={8}
+      hideOnInteractOutside={hideOnClickOutside}
       className={cn('cap-menu__list', className)}
     >
       {children}
-    </ReakitMenu>
+    </Ariakit.Menu>
   )
-})
+}
 
 MenuList.displayName = 'Menu.List'
 

@@ -13,7 +13,7 @@ const options = [
   { value: 'green', label: 'Green' },
   { value: 'forest', label: 'Forest' },
   { value: 'slate', label: 'Slate' },
-  { value: 'silver', label: 'Silver' },
+  { value: 'silver', label: 'Silver but I am very loooooooong overflow ' },
 ]
 const meta: Meta = {
   title: 'Library/Dropdown',
