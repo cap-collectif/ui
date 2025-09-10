@@ -558,6 +558,26 @@ const checkboxColors = (theme: CapUITheme) => ({
   },
 })
 
+const switchColors = (theme: CapUITheme) => ({
+  switch: {
+    default: {
+      icon: {
+        default: theme.colors.white,
+      },
+      background: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.lighter,
+        active: theme.colors.blue[600],
+        activeDisable: theme.colors.blue[300],
+      },
+      text: {
+        default: theme.colors.gray[900],
+        disable: theme.colors.gray.light,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -576,6 +596,7 @@ const getColors = (theme: CapUITheme) => ({
   ...listCardColors(theme),
   ...radioColors(theme),
   ...checkboxColors(theme),
+  ...switchColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

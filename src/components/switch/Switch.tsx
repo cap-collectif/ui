@@ -29,11 +29,12 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
       display="inline-flex"
       as="label"
       direction={direction}
-      spacing={2}
+      spacing={'xs'}
       align="center"
       htmlFor={id}
     >
       <Box
+        as="span"
         className={cn('cap-switch', className)}
         position="relative"
         width={8}
@@ -53,7 +54,7 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
         />
 
         <Box
-          as="div"
+          as="span"
           className="cap-switch__slider"
           sx={sliderStyles(colors)}
         />
@@ -64,6 +65,11 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
           as="span"
           fontSize={CapUIFontSize.BodyRegular}
           lineHeight={CapUILineHeight.M}
+          color={
+            inputProps.disabled
+              ? 'radio.default.text.disable'
+              : 'radio.default.text.default'
+          }
         >
           {children}
         </Text>

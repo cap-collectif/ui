@@ -9,7 +9,7 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   left: 0,
   right: 0,
   bottom: 0,
-  bg: 'neutral-gray.500',
+  bg: 'switch.default.background.default',
   transition: '0.4s',
   borderRadius: '10px',
 
@@ -20,14 +20,14 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
     width: 3,
     left: '2px',
     bottom: '2px',
-    bg: 'white',
+    bg: 'switch.default.icon.default',
     transition: '0.4s',
     borderRadius: '50%',
     boxShadow: 'medium',
   },
 
   '.cap-switch__input:checked + & ': {
-    bg: 'primary.base',
+    bg: 'switch.default.background.active',
   },
 
   '.cap-switch__input:focus-visible + &': {
@@ -37,7 +37,11 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-switch__input:disabled + &': {
-    opacity: 0.3,
+    bg: 'switch.default.background.disable',
+  },
+
+  '.cap-switch__input:checked:disabled + &': {
+    bg: 'switch.default.background.activeDisable',
   },
 
   '.cap-switch__input:checked + &:before': {
