@@ -524,6 +524,36 @@ const radioColors = (theme: CapUITheme) => ({
         default: theme.colors.white,
         disable: theme.colors.gray.background,
       },
+      text: {
+        default: theme.colors.gray[900],
+        disable: theme.colors.gray.light,
+      },
+    },
+  },
+})
+
+const checkboxColors = (theme: CapUITheme) => ({
+  checkbox: {
+    default: {
+      border: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.light,
+        active: theme.colors.blue[600],
+        invalid: theme.colors.red[700],
+      },
+      icon: {
+        default: theme.colors.white,
+        invalid: theme.colors.red[600],
+      },
+      background: {
+        disable: theme.colors.gray.background,
+        active: theme.colors.blue[600],
+        invalid: theme.colors.red[150],
+      },
+      text: {
+        default: theme.colors.gray[900],
+        disable: theme.colors.gray.light,
+      },
     },
   },
 })
@@ -545,6 +575,7 @@ const getColors = (theme: CapUITheme) => ({
   ...circularStepColors(theme),
   ...listCardColors(theme),
   ...radioColors(theme),
+  ...checkboxColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

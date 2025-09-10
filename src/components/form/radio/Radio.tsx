@@ -35,8 +35,8 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
       display="inline-flex"
       as="label"
       direction={direction}
-      spacing={1}
-      align="flexStart"
+      spacing={'xxs'}
+      align="flex-start"
       htmlFor={id}
       fontFamily={CapUIFontFamily.Label}
       sx={labelSx}
@@ -69,7 +69,11 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
         <Text
           as="span"
           fontSize={CapUIFontSize.BodyRegular}
-          color={inputProps.disabled ? 'gray.500' : 'gray.900'}
+          color={
+            inputProps.disabled
+              ? 'radio.default.text.disable'
+              : 'radio.default.text.default'
+          }
           lineHeight={CapUILineHeight.M}
         >
           {children}
