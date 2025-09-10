@@ -508,6 +508,26 @@ const circularStepColors = (theme: CapUITheme) => ({
   },
 })
 
+const radioColors = (theme: CapUITheme) => ({
+  radio: {
+    default: {
+      border: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.light,
+        active: theme.colors.blue[600],
+      },
+      icon: {
+        default: theme.colors.blue[600],
+        disable: theme.colors.gray.light,
+      },
+      background: {
+        default: theme.colors.white,
+        disable: theme.colors.gray.background,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -524,6 +544,7 @@ const getColors = (theme: CapUITheme) => ({
   ...popoverColors(theme),
   ...circularStepColors(theme),
   ...listCardColors(theme),
+  ...radioColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
