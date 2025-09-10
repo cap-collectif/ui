@@ -2,7 +2,6 @@ import { SystemStyleObject } from '@styled-system/css'
 import cn from 'classnames'
 import * as React from 'react'
 
-import { useTheme } from '../../../hooks'
 import {
   CapUIFontFamily,
   CapUIFontSize,
@@ -30,7 +29,6 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
   RadioProps
 >(({ className, id, children, direction = 'row', labelSx, ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
-  const { colors } = useTheme()
 
   return (
     <Flex
@@ -44,6 +42,7 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
       sx={labelSx}
     >
       <Box
+        as="span"
         className={cn('cap-radio', className)}
         position="relative"
         width="24px"
@@ -63,7 +62,7 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-radio__box" sx={boxStyles(colors)} />
+        <Box as="span" className="cap-radio__box" sx={boxStyles()} />
       </Box>
 
       {typeof children === 'string' ? (
