@@ -33,7 +33,11 @@ export const WithLabelLeft: Story = args => (
   </Switch>
 )
 
-export const Disabled: Story = () => <Switch isDisabled id="switch-1" />
+export const Disabled: Story = () => (
+  <Switch isDisabled id="switch-1">
+    Toggle
+  </Switch>
+)
 
 export const DisabledChecked: Story = () => (
   <Switch isDisabled id="switch-1" checked />
