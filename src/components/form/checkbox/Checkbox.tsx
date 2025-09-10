@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { useTheme } from '../../../hooks'
 import {
   CapUIFontFamily,
   CapUIFontSize,
@@ -28,19 +27,19 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
   CheckboxProps
 >(({ className, id, children, direction = 'row', ...props }, ref) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
-  const { colors } = useTheme()
 
   return (
     <Flex
       display="inline-flex"
       as="label"
       direction={direction}
-      spacing={1}
-      align="flexStart"
+      spacing={'xxs'}
+      align="flex-start"
       htmlFor={id}
       fontFamily={CapUIFontFamily.Label}
     >
       <Box
+        as="span"
         className={cn('cap-checkbox', className)}
         position="relative"
         width="24px"
@@ -60,14 +59,18 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-checkbox__box" sx={boxStyles(colors)} />
+        <Box as="span" className="cap-checkbox__box" sx={boxStyles()} />
       </Box>
 
       {typeof children === 'string' ? (
         <Text
           as="span"
           fontSize={CapUIFontSize.BodyRegular}
-          color={inputProps.disabled ? 'gray.500' : 'gray.900'}
+          color={
+            inputProps.disabled
+              ? 'radio.default.text.disable'
+              : 'radio.default.text.default'
+          }
           lineHeight={CapUILineHeight.M}
         >
           {children}
