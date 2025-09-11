@@ -1,6 +1,8 @@
 import type { SystemStyleObject } from '@styled-system/css'
 
-export const boxStyles = (): SystemStyleObject => ({
+import { Colors } from '../../../styles/modules/colors.type'
+
+export const boxStyles = (colors: Colors): SystemStyleObject => ({
   position: 'absolute',
   cursor: 'pointer',
   top: '50%',
@@ -34,8 +36,9 @@ export const boxStyles = (): SystemStyleObject => ({
   },
 
   '.cap-checkbox__input:focus-visible + &': {
-    outline: '2px #fff solid',
+    outline: '2px white solid',
     outlineOffset: 0,
+    boxShadow: `0 0 0 4px ${colors?.primary.dark}`,
   },
 
   '.cap-checkbox__input[aria-invalid="true"] + &': {
@@ -65,4 +68,8 @@ export const boxStyles = (): SystemStyleObject => ({
   '.cap-checkbox__input:disabled:checked + &:before': {
     color: 'checkbox.default.border.disable',
   },
+})
+
+export const labelStyles = (): SystemStyleObject => ({
+  cursor: 'pointer',
 })
