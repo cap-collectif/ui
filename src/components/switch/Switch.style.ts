@@ -38,6 +38,7 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
 
   '.cap-switch__input:disabled + &': {
     bg: 'switch.default.background.disable',
+    cursor: 'auto',
   },
 
   '.cap-switch__input:checked:disabled + &': {
