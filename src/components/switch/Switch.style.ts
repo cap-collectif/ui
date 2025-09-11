@@ -49,7 +49,3 @@ export const sliderStyles = (colors: Colors): SystemStyleObject => ({
     transform: 'translateX(16px)',
   },
 })
-
-export const labelStyles = (): SystemStyleObject => ({
-  cursor: 'pointer',
-})

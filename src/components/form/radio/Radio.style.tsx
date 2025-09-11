@@ -57,7 +57,3 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
     bg: 'radio.default.icon.disable',
   },
 })
-
-export const labelStyles = (): SystemStyleObject => ({
-  cursor: 'pointer',
-})
