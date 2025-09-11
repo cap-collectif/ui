@@ -7,7 +7,7 @@ import { Box, PolymorphicBoxProps } from '../box/Box'
 import { useFormControl } from '../form'
 import { Flex, FlexProps } from '../layout'
 import { Text } from '../typography'
-import { sliderStyles } from './Switch.style'
+import { sliderStyles, labelStyles } from './Switch.style'
 
 export interface SwitchProps
   extends Omit<PolymorphicBoxProps<'input'>, keyof FlexProps>,
@@ -65,11 +65,8 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
           as="span"
           fontSize={CapUIFontSize.BodyRegular}
           lineHeight={CapUILineHeight.M}
-          color={
-            inputProps.disabled
-              ? 'radio.default.text.disable'
-              : 'radio.default.text.default'
-          }
+          color={inputProps.disabled ? 'text.disable' : 'text.primary'}
+          sx={labelStyles()}
         >
           {children}
         </Text>

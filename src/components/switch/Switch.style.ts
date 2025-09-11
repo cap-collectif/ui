@@ -1,8 +1,8 @@
 import type { SystemStyleObject } from '@styled-system/css'
 
-import { Colors } from '../../styles/modules/colors'
+import { Colors } from '../../styles/modules/colors.type'
 
-export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
+export const sliderStyles = (colors: Colors): SystemStyleObject => ({
   position: 'absolute',
   cursor: 'pointer',
   top: 0,
@@ -31,7 +31,7 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-switch__input:focus-visible + &': {
-    outline: '2px #fff solid',
+    outline: '2px white solid',
     outlineOffset: 0,
     boxShadow: `0 0 0 4px ${colors?.primary.dark}`,
   },
@@ -48,4 +48,8 @@ export const sliderStyles = (colors?: Colors): SystemStyleObject => ({
   '.cap-switch__input:checked + &:before': {
     transform: 'translateX(16px)',
   },
+})
+
+export const labelStyles = (): SystemStyleObject => ({
+  cursor: 'pointer',
 })
