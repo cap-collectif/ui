@@ -3,11 +3,12 @@ import * as React from 'react'
 
 import { useTheme } from '../../hooks'
 import { CapUIFontSize, CapUILineHeight } from '../../styles'
+import { labelTextStyles } from '../../utils/labelTextStyle'
 import { Box, PolymorphicBoxProps } from '../box/Box'
 import { useFormControl } from '../form'
 import { Flex, FlexProps } from '../layout'
 import { Text } from '../typography'
-import { sliderStyles, labelStyles } from './Switch.style'
+import { sliderStyles } from './Switch.style'
 
 export interface SwitchProps
   extends Omit<PolymorphicBoxProps<'input'>, keyof FlexProps>,
@@ -66,7 +67,7 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<
           fontSize={CapUIFontSize.BodyRegular}
           lineHeight={CapUILineHeight.M}
           color={inputProps.disabled ? 'text.disable' : 'text.primary'}
-          sx={labelStyles()}
+          sx={labelTextStyles()}
         >
           {children}
         </Text>

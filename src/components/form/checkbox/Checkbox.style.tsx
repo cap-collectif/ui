@@ -69,7 +69,3 @@ export const boxStyles = (colors: Colors): SystemStyleObject => ({
     color: 'checkbox.default.border.disable',
   },
 })
-
-export const labelStyles = (): SystemStyleObject => ({
-  cursor: 'pointer',
-})

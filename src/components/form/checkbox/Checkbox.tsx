@@ -7,13 +7,14 @@ import {
   CapUIFontSize,
   CapUILineHeight,
 } from '../../../styles'
+import { labelTextStyles } from '../../../utils/labelTextStyle'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
 import { Flex, FlexProps } from '../../layout'
 import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
 import { useFormControl } from '../formControl'
-import { boxStyles, labelStyles } from './Checkbox.style'
+import { boxStyles } from './Checkbox.style'
 
 export interface CheckboxProps extends PolymorphicBoxProps<'input'> {
   readonly isDisabled?: boolean
@@ -70,7 +71,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef<
           fontSize={CapUIFontSize.BodyRegular}
           color={inputProps.disabled ? 'text.disable' : 'text.primary'}
           lineHeight={CapUILineHeight.M}
-          sx={labelStyles()}
+          sx={labelTextStyles()}
         >
           {children}
         </Text>
