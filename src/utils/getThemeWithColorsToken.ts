@@ -514,10 +514,10 @@ const radioColors = (theme: CapUITheme) => ({
       border: {
         default: theme.colors.gray.base,
         disable: theme.colors.gray.light,
-        active: theme.colors.blue[600],
+        active: theme.colors.primary.base,
       },
       icon: {
-        default: theme.colors.blue[600],
+        default: theme.colors.primary.base,
         disable: theme.colors.gray.light,
       },
       background: {
@@ -538,17 +538,18 @@ const checkboxColors = (theme: CapUITheme) => ({
       border: {
         default: theme.colors.gray.base,
         disable: theme.colors.gray.light,
-        active: theme.colors.blue[600],
-        invalid: theme.colors.red[700],
+        active: theme.colors.primary.base,
+        invalid: theme.colors.danger.dark,
       },
       icon: {
         default: theme.colors.white,
-        invalid: theme.colors.red[600],
+        invalid: theme.colors.danger.base,
       },
       background: {
+        default: theme.colors.white,
         disable: theme.colors.gray.background,
-        active: theme.colors.blue[600],
-        invalid: theme.colors.red[150],
+        active: theme.colors.primary.base,
+        invalid: theme.colors.danger.lighter,
       },
       text: {
         default: theme.colors.gray[900],
@@ -567,8 +568,8 @@ const switchColors = (theme: CapUITheme) => ({
       background: {
         default: theme.colors.gray.base,
         disable: theme.colors.gray.lighter,
-        active: theme.colors.blue[600],
-        activeDisable: theme.colors.blue[300],
+        active: theme.colors.primary.base,
+        activeDisable: theme.colors.primary.light,
       },
       text: {
         default: theme.colors.gray[900],
