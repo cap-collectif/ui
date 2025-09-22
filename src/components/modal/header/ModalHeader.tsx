@@ -59,8 +59,6 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
 
   return (
     <Flex
-      as="header"
-      role="banner"
       px={isMobile ? 4 : 6}
       py={4}
       align="center"
