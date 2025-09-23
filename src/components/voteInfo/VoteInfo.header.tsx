@@ -25,6 +25,7 @@ const VoteInfoHeader: React.FC<VoteInfoHeaderProps> & SubComponents = ({
   return (
     <Flex
       as="header"
+      role="banner"
       align="center"
       justify="space-between"
       borderBottom="normal"
