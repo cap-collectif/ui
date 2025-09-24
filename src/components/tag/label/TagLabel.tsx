@@ -4,6 +4,7 @@ import * as React from 'react'
 import { CapUILineHeight } from '../../../styles'
 import { Box } from '../../box'
 import { TextProps } from '../../typography/Text'
+import { tagLabelStyle } from './TagLabel.style'
 
 export type TagLabelProps = TextProps
 
@@ -18,8 +19,7 @@ const TagLabel: React.FC<TagLabelProps> = ({
     lineHeight={CapUILineHeight.S}
     fontFamily="inherit"
     overflow="hidden"
-    whiteSpace="nowrap"
-    textOverflow="ellipsis"
+    sx={tagLabelStyle()}
     {...rest}
   >
     {children}
