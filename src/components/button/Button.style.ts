@@ -96,7 +96,7 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.default.background.default',
       color: 'button.tertiary.default.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
@@ -230,7 +230,7 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.danger.background.default',
       color: 'button.tertiary.danger.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
@@ -363,7 +363,7 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.hierarchy.background.default',
       color: 'button.tertiary.hierarchy.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',

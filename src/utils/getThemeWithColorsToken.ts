@@ -148,6 +148,12 @@ const buttonColors = (theme: CapUITheme) => ({
     },
     tertiary: {
       default: {
+        background: {
+          default: theme.colors.white,
+          hover: theme.colors.white,
+          disable: theme.colors.white,
+          loading: theme.colors.white,
+        },
         text: {
           default: theme.colors.primary.base,
           hover: theme.colors.primary.dark,
@@ -162,6 +168,12 @@ const buttonColors = (theme: CapUITheme) => ({
         },
       },
       danger: {
+        background: {
+          default: theme.colors.white,
+          hover: theme.colors.white,
+          disable: theme.colors.white,
+          loading: theme.colors.white,
+        },
         text: {
           default: theme.colors.danger.base,
           hover: theme.colors.danger.dark,
@@ -176,6 +188,12 @@ const buttonColors = (theme: CapUITheme) => ({
         },
       },
       hierarchy: {
+        background: {
+          default: theme.colors.white,
+          hover: theme.colors.white,
+          disable: theme.colors.white,
+          loading: theme.colors.white,
+        },
         text: {
           default: theme.colors.gray.dark,
           hover: theme.colors.gray.darker,
