@@ -453,6 +453,18 @@ const dropdownColors = (theme: CapUITheme) => ({
   },
 })
 
+const circularStepColors = (theme: CapUITheme) => ({
+  circularStep: {
+    border: {
+      background: theme.colors.primary.lighter,
+      fill: theme.colors.primary.base,
+    },
+    icon: {
+      default: theme.colors.primary.base,
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -466,6 +478,7 @@ const getColors = (theme: CapUITheme) => ({
   ...cardColors(theme),
   ...tooltipColors(theme),
   ...dropdownColors(theme),
+  ...circularStepColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>

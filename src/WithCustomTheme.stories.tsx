@@ -27,6 +27,7 @@ import {
   VoteInfo,
 } from './'
 import Avatar from './components/avatar/Avatar'
+import CircularStep from './components/circularStep/CircularStep'
 import { capuiTheme, generatePalette } from './styles/theme'
 
 const meta: Meta<Props> = {
@@ -166,6 +167,9 @@ export const Default: Story<Props> = ({ primary }) => {
                 <Text fontWeight={CapUIFontWeight.Semibold}>101 Votes</Text>
               </Flex>
             </VoteButton>
+            <Box mt={4}>
+              <CircularStep progress={33} />
+            </Box>
           </Box>
         </Flex>
       </CapUIProvider>

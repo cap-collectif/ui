@@ -32,6 +32,7 @@ export const NEW_SPACING = {
   xl: pxToRem(32),
   xxl: pxToRem(48),
   xxxl: pxToRem(64),
+  '4xl': pxToRem(72),
   '-sm': pxToRem(-12),
 }
 
