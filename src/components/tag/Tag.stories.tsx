@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
+import { Box } from '../box'
 import { CapUIIcon } from '../icon'
 import { Tag, TagProps } from './'
 
@@ -24,15 +25,33 @@ const meta: Meta<TagProps> = {
 export default meta
 
 export const Default: Story<TagProps> = args => (
-  <Tag {...args}>
-    <Tag.Label>Bonjour</Tag.Label>
-  </Tag>
+  <>
+    <Box>
+      <Tag {...args}>
+        <Tag.Label>Small</Tag.Label>
+      </Tag>
+    </Box>
+    <Box>
+      <Tag variantSize="medium" {...args} mt={4}>
+        <Tag.Label>Medium</Tag.Label>
+      </Tag>
+    </Box>
+  </>
 )
 
 export const Badge: Story<TagProps> = args => (
-  <Tag variantType="badge" {...args}>
-    <Tag.Label>Bonjour</Tag.Label>
-  </Tag>
+  <>
+    <Box>
+      <Tag variantType="badge" {...args}>
+        <Tag.Label>Bonjour</Tag.Label>
+      </Tag>
+    </Box>
+    <Box>
+      <Tag variantType="badge" variantSize="medium" mt={4} {...args}>
+        <Tag.Label>Bonjour</Tag.Label>
+      </Tag>
+    </Box>
+  </>
 )
 
 export const WithIcon: Story<TagProps> = args => (

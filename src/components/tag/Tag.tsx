@@ -7,7 +7,7 @@ import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
 import { Box, BoxProps } from '../box/Box'
 import { Tooltip } from '../tooltip'
-import { getTagStyle } from './Tag.style'
+import { getTagStyle, STYLES } from './Tag.style'
 import TagAvatar from './avatar/TagAvatar'
 import TagCloseButton from './closeButton/TagCloseButton'
 import TagLabel from './label/TagLabel'
@@ -19,7 +19,8 @@ type SubComponents = {
   Label: typeof TagLabel
 }
 
-type VariantType = 'tag' | 'badge'
+export type VariantType = 'tag' | 'badge'
+export type VariantSize = 'small' | 'medium'
 
 export type TagVariantColor =
   | 'info'
@@ -35,6 +36,7 @@ export interface TagProps
     Partial<Pick<HoverHandlers, 'whileHover'>> {
   variantColor: TagVariantColor
   variantType?: VariantType
+  variantSize?: VariantSize
   onRemove?: React.MouseEventHandler<HTMLElement | SVGElement> | undefined
   transparent?: boolean
   tooltipLabel?: React.ReactNode
@@ -42,26 +44,25 @@ export interface TagProps
 
 type TagInnerProps = {
   variantType: VariantType
+  variantSize: VariantSize
 } & Omit<TagProps, 'variantColor'>
 
 const TagInner: React.FC<TagInnerProps> = ({
   variantType,
+  variantSize,
   children,
   ...rest
 }: TagInnerProps) => {
   return (
     <Box
       position={'relative'}
-      maxHeight={SPACING['6']}
       display={'inline-flex'}
       alignItems={'center'}
       borderRadius={'tags'}
-      px={variantType === 'tag' ? 'xs' : 'md'}
-      py={variantType === 'tag' ? 'xxs' : 'xs'}
-      fontSize={
-        variantType === 'tag' ? CapUIFontSize.BodySmall : CapUIFontSize.Caption
-      }
-      fontWeight={variantType === 'tag' ? 400 : 600}
+      px={STYLES[variantType][variantSize].px}
+      py={STYLES[variantType][variantSize].py}
+      fontSize={STYLES[variantType][variantSize].fontSize}
+      fontWeight={STYLES[variantType][variantSize].fontWeight}
       {...rest}
     >
       {children}
@@ -72,6 +73,7 @@ const TagInner: React.FC<TagInnerProps> = ({
 export const Tag: React.FC<TagProps> & SubComponents = ({
   children,
   variantType = 'tag',
+  variantSize = 'small',
   variantColor,
   className,
   onRemove,
@@ -88,7 +90,6 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   const renderTag = (withinTooltip: boolean = false) => (
     <TagInner
       sx={{
-        textTransform: variantType === 'badge' ? 'uppercase' : undefined,
         ...getTagStyle(variantColor, transparent),
         ...sx,
       }}
@@ -99,11 +100,12 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       _hover={{
         '.cap-tag__label': hasCloseButton
           ? {
-              paddingRight: variantType === 'tag' ? '15%' : '1%',
+              paddingRight: STYLES[variantType][variantSize].paddingRight,
             }
           : {},
       }}
       variantType={variantType}
+      variantSize={variantSize}
       aria-label={withinTooltip ? undefined : `Tag ${tagLabel}`}
       overflow={'hidden'}
       onFocus={() => setIsFocused(true)}
