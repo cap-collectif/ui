@@ -101,7 +101,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
       },
-      p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
       fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
