@@ -52,7 +52,7 @@ export const getTagStyle = (
   variant: TagVariantColor,
   transparent: boolean,
 ) => ({
-  bg: transparent ? 'transparent' : `tag.background.${variant}`,
+  bg: transparent ? `tag.background.transparent` : `tag.background.${variant}`,
   color: `tag.text.${variant}`,
   '--current-shadow-color': `tag.shadowColor.${variant}`,
   '&:hover': {

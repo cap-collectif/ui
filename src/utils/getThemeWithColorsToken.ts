@@ -256,6 +256,7 @@ const tagColors = (theme: CapUITheme) => ({
       success: theme.colors.success.lighter,
       warning: theme.colors.warning.lighter,
       danger: theme.colors.danger.lighter,
+      transparent: theme.colors.white,
     },
     text: {
       info: theme.colors.primary.darker,

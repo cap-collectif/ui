@@ -92,10 +92,6 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   const renderTag = (withinTooltip: boolean = false) => (
     <TagInner
       as={as}
-      sx={{
-        ...getTagStyle(variantColor, transparent),
-        ...sx,
-      }}
       title={withinTooltip ? undefined : tagLabel}
       className={cn('cap-tag', className)}
       initial="initial"
@@ -114,10 +110,14 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       tabIndex={withinTooltip ? 0 : undefined}
+      sx={{
+        ...getTagStyle(variantColor, transparent),
+        ...sx,
+      }}
       {...rest}
     >
       {children}
-      {onRemove && (
+      {as !== 'button' && onRemove && (
         <TagCloseButton
           onClick={onRemove}
           tagLabel={tagLabel}
