@@ -19,8 +19,6 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<CircularStepProps> = args => <CircularStep {...args} />
-
 export const Small: Story<CircularStepProps> = args => (
   <Flex gap={'md'}>
     <CircularStep {...args.empty} />
@@ -60,10 +58,10 @@ export const WithoutIcon: Story<CircularStepProps> = args => (
   </Flex>
 )
 WithoutIcon.args = {
-  empty: { variantSize: 'small', defaultIcon: false },
-  one_third: { variantSize: 'small', defaultIcon: false, progress: 33 },
-  half: { variantSize: 'small', defaultIcon: false, progress: 66 },
-  full: { variantSize: 'small', defaultIcon: false, progress: 100 },
+  empty: { variantSize: 'small', icon: null },
+  one_third: { variantSize: 'small', icon: null, progress: 33 },
+  half: { variantSize: 'small', icon: null, progress: 66 },
+  full: { variantSize: 'small', icon: null, progress: 100 },
 }
 
 export const WithCustomIcon: Story<CircularStepProps> = args => (
@@ -75,22 +73,19 @@ export const WithCustomIcon: Story<CircularStepProps> = args => (
   </Flex>
 )
 WithCustomIcon.args = {
-  empty: { variantSize: 'small', defaultIcon: false, icon: CapUIIcon.Culture },
+  empty: { variantSize: 'small', icon: CapUIIcon.Culture },
   one_third: {
     variantSize: 'small',
-    defaultIcon: false,
     icon: CapUIIcon.Culture,
     progress: 33,
   },
   half: {
     variantSize: 'small',
-    defaultIcon: false,
     icon: CapUIIcon.Culture,
     progress: 66,
   },
   full: {
     variantSize: 'small',
-    defaultIcon: false,
     icon: CapUIIcon.Culture,
     progress: 100,
   },

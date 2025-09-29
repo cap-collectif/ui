@@ -14,8 +14,7 @@ export type CircularStepProps<T extends React.ElementType = React.ElementType> =
     Readonly<{
       variantSize?: 'small' | 'medium'
       step?: number
-      defaultIcon?: boolean
-      icon?: CapUIIcon
+      icon?: CapUIIcon | null
       progress?: number
     }>
   >
@@ -27,22 +26,40 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
   (
     {
       variantSize = 'small',
-      defaultIcon = true,
-      icon,
+      icon = CapUIIcon.ThumbUp,
       className,
       progress = 0,
     },
     ref,
   ) => {
-    const CIRCLE_DASHARRAY = variantSize == 'small' ? 264 : 283
-    const CIRCLE_RADIUS = variantSize == 'small' ? '42' : '45'
-    const CIRCLE_STROKE_WIDTH =
-      variantSize == 'small' ? pxToRem(16) : pxToRem(10)
-    const SIZE = variantSize == 'small' ? 'xxl' : '4xl'
+    const config = {
+      CIRCLE_DASHARRAY: {
+        small: 264,
+        medium: 283,
+      },
+      CIRCLE_RADIUS: {
+        small: '42',
+        medium: '45',
+      },
+      CIRCLE_STROKE_WIDTH: {
+        small: pxToRem(16),
+        medium: pxToRem(10),
+      },
+      SIZE: {
+        small: 'xxl',
+        medium: '4xl',
+      },
+      ICON_SIZE: {
+        small: CapUIIconSize.Md,
+        medium: CapUIIconSize.Lg,
+      },
+    }
 
     /* Calculate the percentage */
     const dashOffset = React.useCallback(
-      () => CIRCLE_DASHARRAY - (progress * CIRCLE_DASHARRAY) / 100,
+      () =>
+        config.CIRCLE_DASHARRAY[variantSize] -
+        (progress * config.CIRCLE_DASHARRAY[variantSize]) / 100,
       [progress],
     )
 
@@ -51,17 +68,17 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
         ref={ref}
         justify="center"
         align="center"
-        width={SIZE}
-        height={SIZE}
+        width={config.SIZE[variantSize]}
+        height={config.SIZE[variantSize]}
         position="relative"
         sx={styles()}
         className={cn(className)}
       >
-        {(!!defaultIcon || !!icon) && (
+        {!!icon && (
           <Icon
             className="cap-circular-step-icon"
-            name={defaultIcon ? CapUIIcon.ThumbUp : icon!}
-            size={variantSize == 'small' ? CapUIIconSize.Md : CapUIIconSize.Lg}
+            name={icon}
+            size={config.ICON_SIZE[variantSize]}
           />
         )}
         <Box
@@ -77,19 +94,19 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
           <circle
             cx="50"
             cy="50"
-            r={CIRCLE_RADIUS}
+            r={config.CIRCLE_RADIUS[variantSize]}
             id="background-circle"
-            strokeWidth={CIRCLE_STROKE_WIDTH}
+            strokeWidth={config.CIRCLE_STROKE_WIDTH[variantSize]}
             fill="none"
           />
           <circle
             cx="50"
             cy="50"
-            r={CIRCLE_RADIUS}
+            r={config.CIRCLE_RADIUS[variantSize]}
             id="progress-circle"
-            strokeWidth={CIRCLE_STROKE_WIDTH}
+            strokeWidth={config.CIRCLE_STROKE_WIDTH[variantSize]}
             fill="none"
-            strokeDasharray={CIRCLE_DASHARRAY}
+            strokeDasharray={config.CIRCLE_DASHARRAY[variantSize]}
             strokeDashoffset={dashOffset()}
             transform="rotate(-90 50 50)"
           />
