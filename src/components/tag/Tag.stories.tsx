@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { Box } from '../box'
 import { CapUIIcon } from '../icon'
+import { Flex } from '../layout'
 import { Tag, TagProps } from './'
 
 const meta: Meta<TagProps> = {
@@ -25,18 +26,38 @@ const meta: Meta<TagProps> = {
 export default meta
 
 export const Default: Story<TagProps> = args => (
-  <>
+  <Flex gap={4}>
     <Box>
-      <Tag {...args}>
-        <Tag.Label>Small</Tag.Label>
-      </Tag>
+      <Box>
+        <Tag {...args}>
+          <Tag.Label>Small</Tag.Label>
+        </Tag>
+      </Box>
+      <Box>
+        <Tag variantSize="medium" {...args} mt={4}>
+          <Tag.Label>Medium</Tag.Label>
+        </Tag>
+      </Box>
     </Box>
     <Box>
-      <Tag variantSize="medium" {...args} mt={4}>
-        <Tag.Label>Medium</Tag.Label>
-      </Tag>
+      <Box>
+        <Tag as={'button'} {...args} onClick={() => alert('Une alert')}>
+          <Tag.Label>Small button</Tag.Label>
+        </Tag>
+      </Box>
+      <Box>
+        <Tag
+          as={'button'}
+          variantSize="medium"
+          {...args}
+          mt={4}
+          onClick={() => alert('Une alert')}
+        >
+          <Tag.Label>Medium button</Tag.Label>
+        </Tag>
+      </Box>
     </Box>
-  </>
+  </Flex>
 )
 
 export const Badge: Story<TagProps> = args => (

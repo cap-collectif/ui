@@ -2,10 +2,8 @@ import cn from 'classnames'
 import { AnimationProps, MotionProps, HoverHandlers } from 'framer-motion'
 import * as React from 'react'
 
-import { CapUIFontSize } from '../../styles'
-import { SPACING } from '../../styles/theme'
 import { jsxInnerText } from '../../utils/jsx'
-import { Box, BoxProps } from '../box/Box'
+import { Box, BoxProps, PolymorphicBoxProps } from '../box/Box'
 import { Tooltip } from '../tooltip'
 import { getTagStyle, STYLES } from './Tag.style'
 import TagAvatar from './avatar/TagAvatar'
@@ -32,6 +30,7 @@ export type TagVariantColor =
 export interface TagProps
   extends BoxProps,
     AnimationProps,
+    PolymorphicBoxProps<React.ElementType>,
     Partial<Pick<MotionProps, 'initial'>>,
     Partial<Pick<HoverHandlers, 'whileHover'>> {
   variantColor: TagVariantColor
@@ -51,6 +50,7 @@ const TagInner: React.FC<TagInnerProps> = ({
   variantType,
   variantSize,
   children,
+  as,
   ...rest
 }: TagInnerProps) => {
   return (
@@ -63,6 +63,7 @@ const TagInner: React.FC<TagInnerProps> = ({
       py={STYLES[variantType][variantSize].py}
       fontSize={STYLES[variantType][variantSize].fontSize}
       fontWeight={STYLES[variantType][variantSize].fontWeight}
+      as={as}
       {...rest}
     >
       {children}
@@ -81,6 +82,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
   tabIndex,
   transparent = false,
   tooltipLabel,
+  as,
   ...rest
 }) => {
   const hasCloseButton = !!onRemove
@@ -89,6 +91,7 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
 
   const renderTag = (withinTooltip: boolean = false) => (
     <TagInner
+      as={as}
       sx={{
         ...getTagStyle(variantColor, transparent),
         ...sx,
