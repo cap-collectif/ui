@@ -96,12 +96,11 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.default.background.default',
       color: 'button.tertiary.default.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
       },
-      p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
       fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
@@ -230,7 +229,7 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.danger.background.default',
       color: 'button.tertiary.danger.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
@@ -363,7 +362,7 @@ const styles = (alternative: boolean) => ({
       },
     },
     tertiary: {
-      bg: 'transparent',
+      bg: 'button.tertiary.hierarchy.background.default',
       color: 'button.tertiary.hierarchy.text.default',
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',
