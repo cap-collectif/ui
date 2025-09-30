@@ -5,7 +5,7 @@ import { Avatar, AvatarProps } from '../../avatar'
 export type TagAvatarProps = AvatarProps
 
 const TagAvatar: React.FC<TagAvatarProps> = props => (
-  <Avatar size="xs" mr={1} {...props} />
+  <Avatar size="xs" {...props} />
 )
 
 TagAvatar.displayName = 'Tag.Avatar'

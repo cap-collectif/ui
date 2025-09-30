@@ -106,10 +106,12 @@ export const Tag: React.FC<TagProps> & SubComponents = ({
       variantType={variantType}
       variantSize={variantSize}
       aria-label={withinTooltip ? undefined : `Tag ${tagLabel}`}
-      overflow={'hidden'}
+      overflow="hidden"
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       tabIndex={withinTooltip ? 0 : undefined}
+      display="inline-flex"
+      gap="xxs"
       sx={{
         ...getTagStyle(variantColor, transparent),
         ...sx,

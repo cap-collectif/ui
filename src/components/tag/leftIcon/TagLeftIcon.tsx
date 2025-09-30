@@ -12,7 +12,6 @@ const TagLeftIcon: React.FC<TagLeftIconProps> = React.forwardRef<
   <Icon
     ref={ref}
     size={CapUIIconSize.Sm}
-    mr={1}
     className={cn('cap-tag__leftIcon', props.className)}
     {...props}
   />
