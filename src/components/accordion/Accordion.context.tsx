@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { CapUIAccordionSize, CapUIAccordionColor } from './enums'
+import { CapUIAccordionSizeType, CapUIAccordionColorType } from './types'
 
 export type Accordions = {
   [key: string]: boolean
@@ -11,8 +11,9 @@ export type AccordionContextType = {
   allowMultiple?: boolean
   accordions: Accordions
   updateAccordions: (id: string) => void
-  size: CapUIAccordionSize
-  color: CapUIAccordionColor
+  size: CapUIAccordionSizeType
+  color: CapUIAccordionColorType
+  disabled: boolean
 }
 
 export const AccordionContext = React.createContext<AccordionContextType>({
@@ -20,8 +21,9 @@ export const AccordionContext = React.createContext<AccordionContextType>({
   allowMultiple: false,
   accordions: {},
   updateAccordions: () => {},
-  size: CapUIAccordionSize.Md,
-  color: CapUIAccordionColor.White,
+  size: 'md',
+  color: 'default',
+  disabled: false,
 })
 
 export const useAccordion = (): AccordionContextType => {
