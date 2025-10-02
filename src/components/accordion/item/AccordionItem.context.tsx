@@ -4,12 +4,14 @@ export type Context = {
   open: boolean
   toggleOpen: () => void
   id: string
+  styleState: string
 }
 
 export const AccordionItemContext = React.createContext<Context>({
   open: false,
   toggleOpen: () => undefined,
   id: '',
+  styleState: '',
 })
 
 export const useAccordionItem = (): Context => {

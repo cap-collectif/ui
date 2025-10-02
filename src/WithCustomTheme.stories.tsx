@@ -6,7 +6,6 @@ import {
   AvatarGroup,
   Box,
   Button,
-  CapUIAccordionColor,
   CapUIFontWeight,
   CapUIIcon,
   CapUIProvider,
@@ -48,7 +47,6 @@ export const Default: Story<Props> = ({ primary }) => {
   const CustomTheme = {
     ...capuiTheme,
     fonts: {
-      ...capuiTheme.fonts,
       body: 'cursive, system-ui, sans-serif',
       heading: 'monospace, system-ui, sans-serif',
     },
@@ -130,7 +128,7 @@ export const Default: Story<Props> = ({ primary }) => {
           />
         </Flex>
         <Flex mt={4} alignItems="center">
-          <Accordion color={CapUIAccordionColor.Gray}>
+          <Accordion>
             <Accordion.Item id="volet-1">
               <Accordion.Button>Volet 1</Accordion.Button>
               <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
