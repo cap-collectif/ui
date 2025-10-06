@@ -4,7 +4,7 @@ import * as React from 'react'
 import { BoxProps } from '../../box'
 import { Box } from '../../box/Box'
 import { useAccordion } from '../Accordion.context'
-import { CapUIAccordionColorType, CapUIAccordionSizeType } from '../types'
+import { CapUIAccordionColorType } from '../types'
 import { AccordionItemContext } from './AccordionItem.context'
 
 export type AccordionItemProps = BoxProps & {
@@ -43,15 +43,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     },
   }
 
-  const sizes: Record<CapUIAccordionSizeType, { padding: string }> = {
-    md: {
-      padding: 'lg',
-    },
-    sm: {
-      padding: 'xs',
-    },
-  }
-
   return (
     <AccordionItemContext.Provider value={context}>
       <Box
@@ -66,7 +57,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         _hover={{
           borderColor: `accordion.${color}.border.active`,
         }}
-        // {...sizes[size]}
         sx={{ pointerEvents: disabled ? 'none' : 'initial' }}
         {...props}
       >
