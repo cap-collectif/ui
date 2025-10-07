@@ -9,7 +9,7 @@ type PopoverBodyProps = BoxProps & {
 
 const PopoverBody = ({ children, className, ...props }: PopoverBodyProps) => (
   <Box
-    color="gray.900"
+    color="popover.text.body"
     className={cn('cap-popover__body', className)}
     {...props}
   >

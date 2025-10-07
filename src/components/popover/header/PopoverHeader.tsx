@@ -1,10 +1,22 @@
+import {
+  PopoverHeading as AriakitPopoverHeading,
+  PopoverDismiss,
+  usePopoverStore,
+} from '@ariakit/react'
 import cn from 'classnames'
 import * as React from 'react'
+import styled from 'styled-components'
 
 import { Box, BoxProps } from '../../box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Text } from '../../typography'
-import { usePopover } from '../Popover.context'
+
+const StyledDismiss = styled(PopoverDismiss)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: ${props => props.theme.colors.popover?.icon};
+`
 
 type PopoverHeaderProps = BoxProps & {
   children: React.ReactNode
@@ -17,18 +29,22 @@ const PopoverHeader = ({
   closeButton = true,
   ...props
 }: PopoverHeaderProps) => {
-  const { hide } = usePopover()
+  const { hide } = usePopoverStore()
 
   return (
-    <Box
-      mb={6}
-      pr={closeButton ? 8 : undefined}
-      className={cn('cap-popover__header', className)}
-      position="relative"
-      {...props}
+    <AriakitPopoverHeading
+      render={
+        <Box
+          mb="md"
+          pr={closeButton ? 8 : undefined}
+          className={cn('cap-popover__header', className)}
+          position="relative"
+          {...props}
+        />
+      }
     >
       {typeof children === 'string' ? (
-        <Text fontWeight="semibold" color="primary.darker">
+        <Text fontWeight="semibold" color="popover.text.title">
           {children}
         </Text>
       ) : (
@@ -36,20 +52,11 @@ const PopoverHeader = ({
       )}
 
       {closeButton && (
-        <Box
-          as="button"
-          type="button"
-          position="absolute"
-          top={0}
-          right={0}
-          aria-label="close"
-          color="gray.500"
-          onClick={hide}
-        >
+        <StyledDismiss type="button" aria-label="close" onClick={hide}>
           <Icon name={CapUIIcon.CrossO} size={CapUIIconSize.Md} />
-        </Box>
+        </StyledDismiss>
       )}
-    </Box>
+    </AriakitPopoverHeading>
   )
 }
 

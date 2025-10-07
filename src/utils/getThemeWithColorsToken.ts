@@ -472,6 +472,17 @@ const dropdownColors = (theme: CapUITheme) => ({
   },
 })
 
+const popoverColors = (theme: CapUITheme) => ({
+  popover: {
+    background: theme.colors.white,
+    icon: theme.colors.gray.base,
+    text: {
+      title: textColors(theme).text.primary,
+      body: textColors(theme).text.primary,
+    },
+  },
+})
+
 const circularStepColors = (theme: CapUITheme) => ({
   circularStep: {
     border: {
@@ -497,6 +508,7 @@ const getColors = (theme: CapUITheme) => ({
   ...cardColors(theme),
   ...tooltipColors(theme),
   ...dropdownColors(theme),
+  ...popoverColors(theme),
   ...circularStepColors(theme),
 })
 

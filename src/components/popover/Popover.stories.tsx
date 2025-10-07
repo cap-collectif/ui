@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
+import { Flex } from '../layout'
 import { Popover, PopoverProps } from './'
 import mdx from './Popover.mdx'
-import { Flex } from '../layout'
 
 const meta: Meta<PopoverProps> = {
   title: 'Library/Popover',
@@ -25,7 +25,7 @@ const meta: Meta<PopoverProps> = {
 export default meta
 
 export const Default: Story<PopoverProps> = args => (
-  <Popover {...args} disclosure={<button type="button">Open popover</button>}>
+  <Popover {...args} disclosure={<span>Open popover</span>}>
     <Popover.Header>Lorem ipsum</Popover.Header>
     <Popover.Body>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -35,7 +35,7 @@ export const Default: Story<PopoverProps> = args => (
 )
 
 export const WithFooter: Story<PopoverProps> = args => (
-  <Popover {...args} disclosure={<button type="button">Open popover</button>}>
+  <Popover {...args} disclosure={<span>Open popover</span>}>
     <Popover.Header>Lorem ipsum</Popover.Header>
     <Popover.Body>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -50,7 +50,7 @@ export const WithBodyScroll: Story<PopoverProps> = args => (
       options={{ modal: true }}
       popoverProps={{ preventBodyScroll: false }}
       {...args}
-      disclosure={<button type="button">Open popover</button>}
+      disclosure={<span>Open popover</span>}
     >
       <Popover.Header>Lorem ipsum</Popover.Header>
       <Popover.Body>
