@@ -34,19 +34,34 @@ export const CardContent: React.FC<
 }) => {
   const { format, size } = React.useContext(CardContext)
   const isHorizontal = format === 'horizontal'
+
+  const sizes = {
+    S: {
+      justifyContent: null,
+      alignSelf: null,
+      px: isHorizontal ? 0 : 'md',
+      py: isHorizontal ? 0 : 'md',
+    },
+    M: {
+      justifyContent: isHorizontal ? 'center' : null,
+      alignSelf: null,
+      px: 'md',
+      py: isHorizontal ? 'md' : 'lg',
+    },
+    L: {
+      justifyContent: isHorizontal ? 'space-between' : null,
+      alignSelf: isHorizontal ? 'stretch' : null,
+      px: 'md',
+      py: isHorizontal ? 'md' : 'lg',
+    },
+  }
   const isSmall = size === 'S'
-  const justifyContent =
-    !isHorizontal || isSmall ? null : size === 'M' ? 'center' : 'space-between'
-  const alignSelf = isHorizontal && size === 'L' ? 'stretch' : null
 
   return (
     <Flex
-      px={isHorizontal && size === 'S' ? 0 : 'md'}
-      py={isHorizontal && isSmall ? 0 : isHorizontal || isSmall ? 'md' : 'lg'}
       flexDirection="column"
-      justifyContent={justifyContent}
-      alignSelf={alignSelf}
       gap="md"
+      {...sizes[size]}
       {...props}
       className={cn('cap-card-content', className)}
     >

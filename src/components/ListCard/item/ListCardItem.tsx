@@ -1,8 +1,10 @@
 import * as React from 'react'
+
+import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex, FlexProps } from '../../layout'
 import ListCardItemLabel from './ListCardItemLabel'
+import { styleListCardItem } from './ListCardItemStyle'
 import ListCardItemType from './ListCardItemType'
-import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 
 export interface ListCardItemProps extends FlexProps {
   readonly htmlFor?: string
@@ -13,6 +15,23 @@ type SubComponents = {
   Label: typeof ListCardItemLabel
   Type: typeof ListCardItemType
 }
+
+const ListCardItemInner: React.FC<ListCardItemProps> = ({
+  children,
+  ...rest
+}) => (
+  <Flex
+    position="relative"
+    direction="row"
+    align="center"
+    justify="space-between"
+    width="100%"
+    sx={styleListCardItem()}
+    {...rest}
+  >
+    {children}
+  </Flex>
+)
 
 const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
   children,
@@ -27,58 +46,20 @@ const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
         align="center"
         justify="flex-start"
         width="100%"
+        overflow="hidden"
+        gap="sm"
       >
-        <Icon name={CapUIIcon.Drag} size={CapUIIconSize.Sm} color="gray.300" />
-        <Flex
-          position="relative"
-          direction="row"
-          align="center"
-          justify="space-between"
-          px={4}
-          py={3}
-          bg="gray.100"
-          borderBottom="normal"
-          borderColor="gray.200"
-          width="100%"
-          _hover={{
-            bg: 'white',
-          }}
-          sx={{
-            '&:last-child': {
-              border: 'none',
-            },
-          }}
-          {...rest}
-        >
-          {children}
-        </Flex>
+        <Icon
+          name={CapUIIcon.Drag}
+          size={CapUIIconSize.Sm}
+          color="listCard.default.icon"
+          className="list-card-item-drag-handle"
+        />
+        <ListCardItemInner {...rest}>{children}</ListCardItemInner>
       </Flex>
     )
   }
-  return (
-    <Flex
-      position="relative"
-      direction="row"
-      align="center"
-      justify="space-between"
-      px={4}
-      py={3}
-      bg="gray.100"
-      borderBottom="normal"
-      borderColor="gray.200"
-      _hover={{
-        bg: 'white',
-      }}
-      sx={{
-        '&:last-child': {
-          border: 'none',
-        },
-      }}
-      {...rest}
-    >
-      {children}
-    </Flex>
-  )
+  return <ListCardItemInner {...rest}>{children}</ListCardItemInner>
 }
 
 ListCardItem.Label = ListCardItemLabel

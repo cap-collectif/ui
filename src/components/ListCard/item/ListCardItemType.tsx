@@ -14,9 +14,9 @@ const ListCardItemType: React.FC<ListCardItemTypeProps> = ({
   ...rest
 }) => (
   <Text
-    color="gray.600"
+    color="text.tertiary"
     fontSize={CapUIFontSize.Caption}
-    fontWeight={CapUIFontWeight.Normal}
+    fontWeight={CapUIFontWeight.Semibold}
     lineHeight={CapUILineHeight.S}
     {...rest}
   >
