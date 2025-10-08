@@ -1,12 +1,16 @@
+import {
+  Dialog,
+  DialogDisclosure,
+  DialogStoreState,
+  useDialogStore,
+  useStoreState,
+} from '@ariakit/react'
 import cn from 'classnames'
-import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
-import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog'
 import styled, { IStyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
-import { LAYOUT_TRANSITION_SPRING } from '../../styles/modules/variables'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { ModalContextType } from './Modal.context'
 import { Provider } from './Modal.context'
@@ -14,6 +18,7 @@ import { ModalBody } from './body/ModalBody'
 import { CapUIModalSize } from './enums'
 import ModalFooter from './footer/ModalFooter'
 import ModalHeader from './header/ModalHeader'
+import { Overlay, StyledDialog } from './modalStyles'
 
 export type RenderProps = (props: ModalContextType) => React.ReactNode
 
@@ -43,24 +48,12 @@ type SubComponents = {
   Body: typeof ModalBody
   Footer: typeof ModalFooter
 }
-type ModalInnerShape = FlexProps &
-  MotionProps & { fullSizeOnMobile: boolean; isMobile: boolean }
+type ModalInnerShape = FlexProps & {
+  fullSizeOnMobile: boolean
+  isMobile: boolean
+}
 
-const TRANSITION_DURATION = 0.35
-
-const Overlay = styled(motion(Flex)).attrs<{ isSidePanel?: boolean }>(
-  ({ isSidePanel }) => ({
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    top: 0,
-    flexDirection: 'column',
-    alignItems: isSidePanel ? 'end' : 'center',
-  }),
-)`` as IStyledComponent<any, any>
-
-const ModalInner = styled(motion(Flex))
+const ModalInner = styled(Flex)
   .withConfig({
     shouldForwardProp: propName => propName !== 'size',
   })
@@ -144,45 +137,40 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   ...props
 }: ModalProps) => {
   const isMobile = useIsMobile()
-  const dialog = useDialogState({
-    animated: TRANSITION_DURATION * 1000,
-    visible: show,
-    baseId,
-    modal: forceModalDialogToFalse
-      ? false
-      : alwaysOpenInPortal
-      ? true
-      : !isMobile,
-  })
+  const dialogStore = useDialogStore()
+  const isOpen = useStoreState(
+    dialogStore,
+    (state: DialogStoreState) => state.open,
+  )
 
   const containerRef = React.useRef<HTMLElement>(null)
   const firstMount = React.useRef(true)
   const context = React.useMemo(
     () => ({
-      hide: dialog.hide,
-      show: dialog.show,
-      toggle: dialog.toggle,
-      visible: dialog.visible,
+      hide: dialogStore.hide,
+      show: dialogStore.show,
+      toggle: dialogStore.toggle,
+      visible: isOpen,
       fullSizeOnMobile,
       hideCloseButton,
     }),
-    [dialog, hideCloseButton],
+    [dialogStore, hideCloseButton],
   )
 
   React.useEffect(() => {
-    if (dialog.visible) {
+    if (isOpen) {
       if (onOpen) onOpen()
       firstMount.current = false
-    } else if (!dialog.visible && onClose && !firstMount.current) {
+    } else if (!isOpen && onClose && !firstMount.current) {
       onClose()
     }
-  }, [dialog.visible])
+  }, [isOpen])
 
   React.useEffect(() => {
     if (show === true) {
-      dialog.show()
+      dialogStore.show()
     } else if (show === false) {
-      dialog.hide()
+      dialogStore.hide()
     }
   }, [show])
 
@@ -190,75 +178,56 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     <Provider context={context}>
       {disclosure && (
         <DialogDisclosure
-          {...dialog}
+          store={dialogStore}
           {...{ ref: disclosure.ref, ...disclosure.props }}
-        >
-          {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-        </DialogDisclosure>
+          render={disclosureProps =>
+            React.cloneElement(disclosure, disclosureProps)
+          }
+        />
       )}
-
-      <Dialog
+      <StyledDialog
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
-        {...dialog}
-        hideOnClickOutside={hideOnClickOutside}
-        hideOnEsc={hideOnEsc}
+        open={forceModalDialogToFalse ? false : alwaysOpenInPortal}
+        store={dialogStore}
+        portal={false}
+        hideOnInteractOutside={hideOnClickOutside}
+        hideOnEscape={hideOnEsc}
         preventBodyScroll={preventBodyScroll}
       >
-        <AnimatePresence>
-          {dialog.visible && (
-            <Overlay
-              bg={noBackdrop ? 'transparent' : 'rgba(39,43,43,0.32)'}
-              overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
-              ref={containerRef}
-              onClick={(e: MouseEvent) => {
-                if (e.target === containerRef.current && hideOnClickOutside) {
-                  dialog.hide()
-                }
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: TRANSITION_DURATION,
-                ease: [0.48, 0.15, 0.25, 0.96],
-              }}
-              exit={{ opacity: 0 }}
-              className="cap-modal__overlay"
-              zIndex={zIndex || 'overlay'}
-              isSidePanel={
-                size === CapUIModalSize.SidePanel ||
-                size === CapUIModalSize.Fullscreen
-              }
-            >
-              <ModalInner
-                direction="column"
-                justify="space-between"
-                overflow={scrollBehavior === 'inside' ? 'auto' : undefined}
-                initial={{ opacity: 0, y: isMobile ? 20 : -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  opacity: {
-                    duration: TRANSITION_DURATION,
-                    ease: [0.48, 0.15, 0.25, 0.96],
-                  },
-                  y: LAYOUT_TRANSITION_SPRING,
-                }}
-                exit={{ opacity: 0, y: isMobile ? 20 : -20 }}
-                className={cn('cap-modal', className)}
-                size={isMobile ? null : size}
-                isMobile={isMobile}
-                fullSizeOnMobile={fullSizeOnMobile}
-                bg="modal.default.background"
-                borderRadius="modal"
-                zIndex="modal"
-                {...props}
-              >
-                {typeof children === 'function' ? children(context) : children}
-              </ModalInner>
-            </Overlay>
-          )}
-        </AnimatePresence>
-      </Dialog>
+        <Overlay
+          bg={noBackdrop ? 'transparent' : 'rgba(39,43,43,0.32)'}
+          overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
+          ref={containerRef}
+          onClick={(e: MouseEvent) => {
+            if (e.target === containerRef.current && hideOnClickOutside) {
+              dialogStore.hide()
+            }
+          }}
+          className="cap-modal__overlay"
+          zIndex={zIndex || 'overlay'}
+          isSidePanel={
+            size === CapUIModalSize.SidePanel ||
+            size === CapUIModalSize.Fullscreen
+          }
+        >
+          <ModalInner
+            direction="column"
+            justify="space-between"
+            overflow={scrollBehavior === 'inside' ? 'auto' : undefined}
+            className={cn('cap-modal', className)}
+            size={isMobile ? null : size}
+            isMobile={isMobile}
+            fullSizeOnMobile={fullSizeOnMobile}
+            bg="modal.default.background"
+            borderRadius="modal"
+            zIndex="modal"
+            {...props}
+          >
+            {typeof children === 'function' ? children(context) : children}
+          </ModalInner>
+        </Overlay>
+      </StyledDialog>
     </Provider>
   )
 }
