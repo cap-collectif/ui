@@ -14,9 +14,9 @@ const ModalHeaderLabel: React.FC<ModalHeaderLabelProps> = ({
   ...rest
 }) => (
   <Text
-    as="h2"
+    as="span"
     uppercase
-    color="neutral-gray.700"
+    color="text.tertiary"
     className={cn('cap-modal__header--label')}
     id={MODAL_TITLE_ARIA_DESCRIBED_BY}
     {...headingStyles.h5}
