@@ -1,5 +1,4 @@
 import {
-  Dialog,
   DialogDisclosure,
   DialogStoreState,
   useDialogStore,
@@ -154,7 +153,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
       fullSizeOnMobile,
       hideCloseButton,
     }),
-    [dialogStore, hideCloseButton],
+    [dialogStore, hideCloseButton, fullSizeOnMobile, isOpen],
   )
 
   React.useEffect(() => {
@@ -164,7 +163,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     } else if (!isOpen && onClose && !firstMount.current) {
       onClose()
     }
-  }, [isOpen])
+  }, [isOpen, onOpen, onClose])
 
   React.useEffect(() => {
     if (show === true) {
@@ -172,7 +171,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
     } else if (show === false) {
       dialogStore.hide()
     }
-  }, [show])
+  }, [show, dialogStore])
 
   return (
     <Provider context={context}>
