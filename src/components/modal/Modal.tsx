@@ -208,7 +208,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         <AnimatePresence>
           {dialog.visible && (
             <Overlay
-              bg={noBackdrop ? 'transparent' : 'rgba(43,43,43,0.32)'}
+              bg={noBackdrop ? 'transparent' : 'rgba(39,43,43,0.32)'}
               overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
               ref={containerRef}
               onClick={(e: MouseEvent) => {
@@ -248,7 +248,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
                 size={isMobile ? null : size}
                 isMobile={isMobile}
                 fullSizeOnMobile={fullSizeOnMobile}
-                bg="white"
+                bg="modal.default.background"
                 borderRadius="modal"
                 zIndex="modal"
                 {...props}
