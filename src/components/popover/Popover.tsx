@@ -111,7 +111,7 @@ export const Popover: React.FC<any> & SubComponents = ({
         store={popover}
         ref={disclosure.ref}
         {...disclosure.props}
-        className={cn('cap-popover__disclosure')}
+        className={cn('cap-popover__disclosure', disclosure.props.className)}
       >
         {React.cloneElement(disclosure)}
       </PopoverDisclosure>
