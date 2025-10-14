@@ -28,7 +28,7 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
   className,
   ...props
 }) => {
-  const { open, id, styleState } = useAccordionItem()
+  const { open, id } = useAccordionItem()
   const { color, size } = useAccordion()
 
   const sizes: Record<
@@ -46,8 +46,6 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
       ml: 'xl',
     },
   }
-
-  console.log('isOpen', open)
 
   return (
     <AnimatePresence exitBeforeEnter>
