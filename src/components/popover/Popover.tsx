@@ -15,9 +15,10 @@ import {
   MotionProps,
 } from 'framer-motion'
 import * as React from 'react'
-import styled from 'styled-components'
 
+import { useTheme } from '../../hooks'
 import { ZINDEX } from '../../styles/theme'
+import { Box } from '../box'
 import { Flex, FlexProps } from '../layout/Flex'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
@@ -51,18 +52,6 @@ type ContainerAnimateType = React.FC<
 >
 
 const ContainerAnimate = motion(Flex) as ContainerAnimateType
-
-const Arrow = styled(PopoverArrow)`
-  svg {
-    fill: ${props => props.theme.colors.popover?.background};
-  }
-`
-
-const StyledPopover = styled(AriakitPopover)`
-  &:focus-visible {
-    outline: none;
-  }
-`
 
 const getGutter = (placement: PopoverProps['placement']): number => {
   switch (placement) {
@@ -98,6 +87,8 @@ export const Popover: React.FC<any> & SubComponents = ({
   popoverProps,
   ...props
 }: any) => {
+  const { colors } = useTheme()
+
   const popover = usePopoverStore({
     placement,
     gutter: getGutter(placement),
@@ -107,50 +98,56 @@ export const Popover: React.FC<any> & SubComponents = ({
 
   return (
     <PopoverProvider>
-      <PopoverDisclosure
-        store={popover}
-        ref={disclosure.ref}
-        {...disclosure.props}
-        className={cn('cap-popover__disclosure', disclosure.props.className)}
+      <Box
+        sx={{
+          'div:focus-visible': {
+            outline: 'none',
+          },
+        }}
       >
-        {React.cloneElement(disclosure)}
-      </PopoverDisclosure>
-      <AnimatePresence>
-        <StyledPopover
-          tabIndex={0}
-          {...popoverProps}
-          {...placement}
-          style={{
-            zIndex: (props?.zIndex as number) ?? ZINDEX['popover'],
-          }}
+        <PopoverDisclosure
           store={popover}
-          unmountOnHide
+          ref={disclosure.ref}
+          {...disclosure.props}
+          className={cn('cap-popover__disclosure', disclosure.props.className)}
         >
-          <ContainerAnimate
-            direction="column"
-            p="md"
-            bg="popover.background"
-            borderRadius="popover"
-            boxShadow="medium"
-            width="350px"
-            maxWidth="350px"
-            initial={{
-              opacity: 0,
-              scale: 0.9,
-              ...getOriginPosition(placement),
-            }}
-            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.15, ease: 'easeInOut' }}
-            className={cn('cap-popover', className)}
-            {...props}
+          {React.cloneElement(disclosure)}
+        </PopoverDisclosure>
+        <AnimatePresence>
+          <AriakitPopover
+            tabIndex={0}
+            {...popoverProps}
+            {...placement}
+            style={{ zIndex: (props?.zIndex as number) ?? ZINDEX['popover'] }}
+            store={popover}
+            unmountOnHide
           >
-            <Arrow />
-            {typeof children === 'function'
-              ? children({ closePopover: popover.hide })
-              : children}
-          </ContainerAnimate>
-        </StyledPopover>
-      </AnimatePresence>
+            <ContainerAnimate
+              direction="column"
+              p="md"
+              bg="popover.background"
+              borderRadius="popover"
+              boxShadow="medium"
+              width="350px"
+              maxWidth="350px"
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+                ...getOriginPosition(placement),
+              }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.15, ease: 'easeInOut' }}
+              className={cn('cap-popover', className)}
+              {...props}
+            >
+              <PopoverArrow style={{ fill: colors.popover.background }} />
+              {typeof children === 'function'
+                ? children({ closePopover: popover.hide })
+                : children}
+            </ContainerAnimate>
+          </AriakitPopover>
+        </AnimatePresence>
+      </Box>
     </PopoverProvider>
   )
 }
