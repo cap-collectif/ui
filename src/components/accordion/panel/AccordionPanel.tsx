@@ -47,6 +47,8 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
     },
   }
 
+  console.log('isOpen', open)
+
   return (
     <AnimatePresence exitBeforeEnter>
       {open && (
@@ -68,9 +70,7 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
           {...props}
         >
           {typeof children === 'string' ? (
-            <Text color={`accordion.${color}.textContent.${styleState}`}>
-              {children}
-            </Text>
+            <Text color={`accordion.${color}.textContent`}>{children}</Text>
           ) : (
             <>{children}</>
           )}

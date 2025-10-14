@@ -17,6 +17,10 @@ export default meta
 const Template: Story<AccordionProps> = args => (
   <>
     <Accordion {...args}>
+      <Accordion.Item id="volet-default">
+        <Accordion.Button>Ouvert par défaut</Accordion.Button>
+        <Accordion.Panel>Contenu du volet ouvert</Accordion.Panel>
+      </Accordion.Item>
       <Accordion.Item id="volet-1">
         <Accordion.Button>Volet 1</Accordion.Button>
         <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
@@ -66,6 +70,10 @@ const Template: Story<AccordionProps> = args => (
 )
 
 export const Default = Template.bind({})
+Default.args = {
+  defaultAccordion: 'volet-default',
+  allowMultiple: true,
+}
 
 export const Disable: Story<AccordionProps> = args => (
   <>
