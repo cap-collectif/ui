@@ -4,7 +4,7 @@ export const CapUIAccordionSize = {
 } as const
 export type CapUIAccordionSizeType = keyof typeof CapUIAccordionSize
 
-const CapUIAccordionColor = {
+export const CapUIAccordionColor = {
   default: 'default',
   white: 'white',
 } as const
