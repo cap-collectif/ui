@@ -84,7 +84,7 @@ export const Input: React.FC<InputProps> = React.forwardRef<
                 <Icon
                   className="cap-input-icon"
                   name={action.icon}
-                  size={CapUIIconSize.Sm}
+                  size={CapUIIconSize.Md}
                   color="inherit"
                 />
               </Box>
