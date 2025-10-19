@@ -471,6 +471,20 @@ const dropdownColors = (theme: CapUITheme) => ({
   },
 })
 
+const modalColors = (theme: CapUITheme) => ({
+  modal: {
+    default: {
+      background: theme.colors.white,
+      border: theme.colors.gray.lighter,
+      icon: theme.colors.gray.dark,
+      step: {
+        background: theme.colors.primary.lighter,
+        progress: theme.colors.primary.base,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -484,6 +498,7 @@ const getColors = (theme: CapUITheme) => ({
   ...cardColors(theme),
   ...tooltipColors(theme),
   ...dropdownColors(theme),
+  ...modalColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
