@@ -1,15 +1,15 @@
 import type { SystemStyleObject } from '@styled-system/css'
 
-import { Colors } from '../../../styles/modules/colors'
+import { Colors } from '../../../styles/modules/colors.type'
 
-export const boxStyles = (colors?: Colors): SystemStyleObject => ({
+export const boxStyles = (colors: Colors): SystemStyleObject => ({
   position: 'absolute',
   cursor: 'pointer',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   border: 'normal',
-  borderColor: 'gray.500',
+  borderColor: 'checkbox.default.border.default',
   borderRadius: 'normal',
   height: '14px',
   width: '14px',
@@ -27,34 +27,34 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
     position: 'absolute',
     transform: 'rotate(45deg) translate(-50%, -50%)',
     transformOrigin: '25% 0%',
-    color: 'white',
+    color: 'checkbox.default.icon.default',
   },
 
   '.cap-checkbox__input:checked + & ': {
-    bg: 'primary.base',
-    borderColor: 'primary.base',
+    bg: 'checkbox.default.background.active',
+    borderColor: 'checkbox.default.border.active',
   },
 
   '.cap-checkbox__input:focus-visible + &': {
-    outline: '2px #fff solid',
+    outline: '2px white solid',
     outlineOffset: 0,
     boxShadow: `0 0 0 4px ${colors?.primary.dark}`,
   },
 
   '.cap-checkbox__input[aria-invalid="true"] + &': {
-    bg: 'red.150',
-    borderColor: 'red.500',
+    bg: 'checkbox.default.background.invalid',
+    borderColor: 'checkbox.default.border.invalid',
   },
 
   '.cap-checkbox__input:disabled + &': {
-    bg: 'gray.150',
-    borderColor: 'gray.300',
+    bg: 'checkbox.default.background.disable',
+    borderColor: 'checkbox.default.border.disable',
     cursor: 'auto',
   },
 
   '.cap-checkbox__input:disabled:checked + &': {
-    bg: 'gray.100',
-    borderColor: 'gray.300',
+    bg: 'checkbox.default.background.disable',
+    borderColor: 'checkbox.default.border.disable',
   },
 
   '.cap-checkbox__input:checked + &:before': {
@@ -62,10 +62,10 @@ export const boxStyles = (colors?: Colors): SystemStyleObject => ({
   },
 
   '.cap-checkbox__input[aria-invalid="true"] + &:before': {
-    color: 'red.500',
+    color: 'checkbox.default.icon.invalid',
   },
 
   '.cap-checkbox__input:disabled:checked + &:before': {
-    color: 'gray.300',
+    color: 'checkbox.default.border.disable',
   },
 })

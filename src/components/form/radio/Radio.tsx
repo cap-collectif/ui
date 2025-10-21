@@ -8,6 +8,7 @@ import {
   CapUIFontSize,
   CapUILineHeight,
 } from '../../../styles'
+import { labelTextStyles } from '../../../utils/labelTextStyle'
 import { Box } from '../../box'
 import { PolymorphicBoxProps } from '../../box/Box'
 import { Flex, FlexProps } from '../../layout'
@@ -37,13 +38,14 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
       display="inline-flex"
       as="label"
       direction={direction}
-      spacing={1}
-      align="flexStart"
+      spacing={'xxs'}
+      align="flex-start"
       htmlFor={id}
       fontFamily={CapUIFontFamily.Label}
       sx={labelSx}
     >
       <Box
+        as="span"
         className={cn('cap-radio', className)}
         position="relative"
         width="24px"
@@ -63,15 +65,16 @@ export const Radio: React.FC<RadioProps> = React.forwardRef<
           ref={ref}
         />
 
-        <Box as="div" className="cap-radio__box" sx={boxStyles(colors)} />
+        <Box as="span" className="cap-radio__box" sx={boxStyles(colors)} />
       </Box>
 
       {typeof children === 'string' ? (
         <Text
           as="span"
           fontSize={CapUIFontSize.BodyRegular}
-          color={inputProps.disabled ? 'gray.500' : 'gray.900'}
+          color={inputProps.disabled ? 'text.disable' : 'text.primary'}
           lineHeight={CapUILineHeight.M}
+          sx={labelTextStyles()}
         >
           {children}
         </Text>
