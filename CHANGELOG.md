@@ -22,6 +22,7 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Improve `Tag` component [#542](https://github.com/cap-collectif/ui/pull/542) & [#549](https://github.com/cap-collectif/ui/pull/549)
 - 🆕 Add `CircularStep` component [#548](https://github.com/cap-collectif/ui/pull/548)
 - 💄 Change `Button` tertiary variant styling [#547](https://github.com/cap-collectif/ui/pull/547)
+- 🐛 Remove unnecessary attribute [#541](https://github.com/cap-collectif/ui/pull/541)
 
 ## 6.0.3
 
