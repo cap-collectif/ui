@@ -11,6 +11,18 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.4
+
+`2025-10-22`
+
+- 💄 Change `Input` interaction icon size [#556](https://github.com/cap-collectif/ui/pull/556)
+- 🛠 Make `ListCard` & `Card` component more accessible [#554](https://github.com/cap-collectif/ui/pull/554)
+- 🛠 Make `Popover` component more accessible and change library [#553](https://github.com/cap-collectif/ui/pull/553)
+- 💄 Add new icon & icon improvement in `icons` component [#551](https://github.com/cap-collectif/ui/pull/551)
+- 🛠 Improve `Tag` component [#542](https://github.com/cap-collectif/ui/pull/542) & [#549](https://github.com/cap-collectif/ui/pull/549)
+- 🆕 Add `CircularStep` component [#548](https://github.com/cap-collectif/ui/pull/548)
+- 💄 Change `Button` tertiary variant styling [#547](https://github.com/cap-collectif/ui/pull/547)
+
 ## 6.0.3
 
 `2025-08-12`
