@@ -1,5 +1,7 @@
 import * as React from 'react'
+
 import { Flex, FlexProps } from '../../layout'
+import { styleListCardItem } from '../item/ListCardItemStyle'
 
 export interface ListCardSubItemProps extends FlexProps {}
 
@@ -10,11 +12,8 @@ const ListCardSubItem: React.FC<ListCardSubItemProps> = ({
   <Flex
     direction="row"
     align="center"
-    px={4}
-    py={3}
-    bg="white"
-    borderBottom="normal"
-    borderColor="gray.200"
+    backgroundColor="listCard.default.background.hover"
+    sx={styleListCardItem()}
     {...rest}
   >
     {children}

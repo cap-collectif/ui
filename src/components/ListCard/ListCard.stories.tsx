@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
+
 import { ListCard, ListCardProps } from './'
 
 const meta: Meta = {
@@ -13,19 +14,36 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<ListCardProps> = args => (
-  <ListCard {...args}>
-    <ListCard.Item>
-      <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-    </ListCard.Item>
-    <ListCard.Item>
-      <ListCard.Item.Label>Hello Its me</ListCard.Item.Label>
-    </ListCard.Item>
-    <ListCard.SubItem>Who exactly ?</ListCard.SubItem>
-    <ListCard.Item>
-      <ListCard.Item.Label>Mario</ListCard.Item.Label>
-    </ListCard.Item>
-    <ListCard.Item>
-      <ListCard.Item.Label>Luigi</ListCard.Item.Label>
-    </ListCard.Item>
-  </ListCard>
+  <>
+    <ListCard {...args}>
+      <ListCard.Item>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.Item>
+        <ListCard.Item.Label>Hello Its me</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.SubItem>Who exactly ?</ListCard.SubItem>
+      <ListCard.Item>
+        <ListCard.Item.Label>Mario</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.Item>
+        <ListCard.Item.Label>Luigi</ListCard.Item.Label>
+      </ListCard.Item>
+    </ListCard>
+    <ListCard {...args} mt={8} grouped>
+      <ListCard.Item>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.Item>
+        <ListCard.Item.Label>Hello Its me</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.SubItem>Who exactly ?</ListCard.SubItem>
+      <ListCard.Item>
+        <ListCard.Item.Label>Mario</ListCard.Item.Label>
+      </ListCard.Item>
+      <ListCard.Item>
+        <ListCard.Item.Label>Luigi</ListCard.Item.Label>
+      </ListCard.Item>
+    </ListCard>
+  </>
 )
