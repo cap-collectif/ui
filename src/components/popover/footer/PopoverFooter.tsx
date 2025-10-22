@@ -18,6 +18,7 @@ const PopoverFooter = ({
     className={cn('cap-popover__footer', className)}
     mt={6}
     {...props}
+    color="popover.text.body"
   >
     {children}
   </Flex>

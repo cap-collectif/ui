@@ -1,3 +1,12 @@
+import {
+  Popover as AriakitPopover,
+  PopoverAnchorProps,
+  PopoverArrow,
+  PopoverDisclosure,
+  PopoverProvider,
+  PopoverProviderProps,
+  usePopoverStore,
+} from '@ariakit/react'
 import cn from 'classnames'
 import {
   motion,
@@ -6,20 +15,11 @@ import {
   MotionProps,
 } from 'framer-motion'
 import * as React from 'react'
-import { DialogOptions } from 'reakit'
-import {
-  usePopoverState,
-  Popover as ReakitPopover,
-  PopoverDisclosure,
-  PopoverArrow,
-  PopoverState,
-  PopoverInitialState,
-} from 'reakit/Popover'
-import styled from 'styled-components'
 
+import { useTheme } from '../../hooks'
 import { ZINDEX } from '../../styles/theme'
+import { Box } from '../box'
 import { Flex, FlexProps } from '../layout/Flex'
-import { PopoverContext } from './Popover.context'
 import PopoverBody from './body/PopoverBody'
 import PopoverFooter from './footer/PopoverFooter'
 import PopoverHeader from './header/PopoverHeader'
@@ -40,12 +40,11 @@ type OriginPosition = { x: string } | { y: string } | {}
 
 export interface PopoverProps
   extends Omit<FlexProps, 'children'>,
-    Partial<Pick<PopoverState, 'placement'>> {
+    Partial<Pick<PopoverProviderProps, 'placement'>> {
   disclosure: React.FunctionComponentElement<any>
   children: React.ReactNode | RenderChildren
   baseId?: string
-  options?: PopoverInitialState
-  popoverProps?: Omit<DialogOptions, 'baseId'>
+  popoverProps?: Omit<PopoverAnchorProps, 'baseId'>
 }
 
 type ContainerAnimateType = React.FC<
@@ -53,22 +52,6 @@ type ContainerAnimateType = React.FC<
 >
 
 const ContainerAnimate = motion(Flex) as ContainerAnimateType
-
-const Arrow = styled(PopoverArrow)`
-  .stroke {
-    fill: transparent;
-  }
-
-  .fill {
-    fill: #fff;
-  }
-`
-
-const StyledReakitPopover = styled(ReakitPopover)`
-  &:focus-visible {
-    outline: none;
-  }
-`
 
 const getGutter = (placement: PopoverProps['placement']): number => {
   switch (placement) {
@@ -94,7 +77,7 @@ const getOriginPosition = (
   return {}
 }
 
-export const Popover: React.FC<PopoverProps> & SubComponents = ({
+export const Popover: React.FC<any> & SubComponents = ({
   disclosure,
   children,
   className,
@@ -103,48 +86,46 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
   options,
   popoverProps,
   ...props
-}: PopoverProps) => {
-  const popover = usePopoverState({
-    animated: 150,
+}: any) => {
+  const { colors } = useTheme()
+
+  const popover = usePopoverStore({
     placement,
-    unstable_offset: [getGutter(placement), 20],
+    gutter: getGutter(placement),
     baseId,
     ...options,
   })
 
-  const context = React.useMemo(
-    () => ({
-      hide: popover.hide,
-      visible: popover.visible,
-    }),
-    [popover],
-  )
-
   return (
-    <PopoverContext.Provider value={context}>
-      <PopoverDisclosure
-        {...popover}
-        ref={disclosure.ref}
-        {...disclosure.props}
-        className={cn('cap-popover__disclosure', disclosure.props.className)}
-      >
-        {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-      </PopoverDisclosure>
-      <StyledReakitPopover
-        tabIndex={0}
-        {...popoverProps}
-        {...popover}
-        style={{
-          zIndex: (props?.zIndex as number) ?? ZINDEX['popover'],
+    <PopoverProvider>
+      <Box
+        sx={{
+          'div:focus-visible': {
+            outline: 'none',
+          },
         }}
       >
+        <PopoverDisclosure
+          store={popover}
+          ref={disclosure.ref}
+          {...disclosure.props}
+          className={cn('cap-popover__disclosure', disclosure.props.className)}
+        >
+          {React.cloneElement(disclosure)}
+        </PopoverDisclosure>
         <AnimatePresence>
-          {popover.visible && (
+          <AriakitPopover
+            tabIndex={0}
+            {...popoverProps}
+            {...placement}
+            style={{ zIndex: (props?.zIndex as number) ?? ZINDEX['popover'] }}
+            store={popover}
+            unmountOnHide
+          >
             <ContainerAnimate
               direction="column"
-              p={4}
-              bg="white"
-              color="gray.900"
+              p="md"
+              bg="popover.background"
               borderRadius="popover"
               boxShadow="medium"
               width="350px"
@@ -155,20 +136,19 @@ export const Popover: React.FC<PopoverProps> & SubComponents = ({
                 ...getOriginPosition(placement),
               }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, ...getOriginPosition(placement) }}
               transition={{ duration: 0.15, ease: 'easeInOut' }}
               className={cn('cap-popover', className)}
               {...props}
             >
-              <Arrow {...popover} />
+              <PopoverArrow style={{ fill: colors.popover.background }} />
               {typeof children === 'function'
                 ? children({ closePopover: popover.hide })
                 : children}
             </ContainerAnimate>
-          )}
+          </AriakitPopover>
         </AnimatePresence>
-      </StyledReakitPopover>
-    </PopoverContext.Provider>
+      </Box>
+    </PopoverProvider>
   )
 }
 
