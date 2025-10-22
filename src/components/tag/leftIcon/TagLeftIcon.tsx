@@ -5,17 +5,16 @@ import { CapUIIconSize, Icon, IconProps } from '../../icon'
 
 export type TagLeftIconProps = IconProps
 
-const TagLeftIcon: React.FC<TagLeftIconProps> = React.forwardRef<
-  HTMLOrSVGElement,
-  TagLeftIconProps
->((props, ref) => (
-  <Icon
-    ref={ref}
-    size={CapUIIconSize.Sm}
-    className={cn('cap-tag__leftIcon', props.className)}
-    {...props}
-  />
-))
+const TagLeftIcon = React.forwardRef<SVGSVGElement, TagLeftIconProps>(
+  (props, ref) => (
+    <Icon
+      ref={ref}
+      size={CapUIIconSize.Sm}
+      className={cn('cap-tag__leftIcon', props.className)}
+      {...props}
+    />
+  ),
+)
 
 TagLeftIcon.displayName = 'Tag.LeftIcon'
 
