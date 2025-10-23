@@ -5,7 +5,6 @@
 # Owners for UI.
 *.tsx @cap-collectif/ui
 *.ts @cap-collectif/ui
-*.mdx @cap-collectif/ui
 *.js @cap-collectif/ui
 
 # Don't set any reviewers for these,
