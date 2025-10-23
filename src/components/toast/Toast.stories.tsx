@@ -1,11 +1,9 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import Button from '../button/Button'
 import { Flex } from '../layout/Flex'
 import { Text } from '../typography/Text'
-import mdx from './Toast.mdx'
-import { toast, Toast, ToastProps, clearToasts } from './index'
+import { clearToasts, toast, Toast, ToastProps } from './index'
 
 const meta: Meta = {
   title: 'Library/Toast',
@@ -22,9 +20,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
