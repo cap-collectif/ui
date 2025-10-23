@@ -7,7 +7,6 @@ import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormGuideline from '../formGuideline/FormGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import TextArea, { TextAreaProps } from './TextArea'
-import mdx from './TextArea.mdx'
 
 type Args = {
   errorMessage: string
@@ -34,9 +33,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

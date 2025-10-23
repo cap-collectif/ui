@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
-import { Icon, CapUIIcon } from '../../icon'
+import { CapUIIcon, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { Text } from '../../typography'
 import { CapInputSize } from '../enums'
@@ -13,7 +13,6 @@ import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
 import Select from './Select'
-import mdx from './Select.mdx'
 
 type Args = {
   errorMessage: string
@@ -49,9 +48,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
