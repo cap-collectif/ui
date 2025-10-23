@@ -18,9 +18,9 @@
     "ts:check": "tsc --noEmit",
     "lint": "eslint src --ext .ts --ext .tsx",
     "prepare": "run-s husky:install build",
-    "size-limit:build": "yarn install --ignore-scripts && yarn run build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
+    "size-limit:build": "NODE_OPTIONS=--openssl-legacy-provider yarn install --ignore-scripts && NODE_OPTIONS=--openssl-legacy-provider yarn run build",
+    "size": "NODE_OPTIONS=--openssl-legacy-provider size-limit",
+    "analyze": "NODE_OPTIONS=--openssl-legacy-provider size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "husky:install": "husky install",
@@ -52,7 +52,7 @@
     "@emotion/react": "^11.4.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@size-limit/preset-small-lib": "^4.12.0",
+    "@size-limit/preset-small-lib": "^5.0.0",
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.5.0",
@@ -90,11 +90,12 @@
     "rollup": "^4.40.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "run-s": "^0.0.0",
-    "size-limit": "^4.12.0",
+    "size-limit": "^6.0.0",
+    "@size-limit/webpack": "^6.0.0",
     "styled-components": "^6.1.8",
     "tslib": "^2.3.0",
     "typescript": "5.8.3",
-    "webpack": "^5.91.0",
+    "webpack": "^5.95.0",
     "yarn-audit-fix": "^10.1.1"
   },
   "lint-staged": {
@@ -112,7 +113,9 @@
     "**/@typescript-eslint/eslint-plugin": "^4.1.1",
     "**/@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.2.8",
-    "loader-utils": "2.0.1"
+    "loader-utils": "2.0.1",
+    "**/webpack": "^5.95.0",
+    "**/@size-limit/webpack": "^6.0.0"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.17",
