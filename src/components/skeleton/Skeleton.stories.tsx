@@ -1,9 +1,7 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 
 import { Flex } from '../layout/Flex'
 import { Skeleton, SkeletonProps } from './'
-import mdx from './Skeleton.mdx'
 
 const meta: Meta<SkeletonProps> = {
   title: 'Library/Skeleton',
@@ -29,9 +27,6 @@ const meta: Meta<SkeletonProps> = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

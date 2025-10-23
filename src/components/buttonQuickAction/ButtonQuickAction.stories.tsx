@@ -1,11 +1,9 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import { ButtonGroup } from '../buttonGroup'
 import { CapUIIcon, CapUIIconSize } from '../icon'
 import { Flex } from '../layout'
 import { ButtonQuickAction, ButtonQuickActionProps } from './ButtonQuickAction'
-import mdx from './ButtonQuickAction.mdx'
 import { CapUIButtonQuickActionSize } from './enums'
 
 const meta: Meta = {
@@ -14,9 +12,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

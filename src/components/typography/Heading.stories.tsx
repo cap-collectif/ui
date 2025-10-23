@@ -1,10 +1,8 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
 import { Flex } from '../layout/Flex'
 import Heading, { HeadingProps } from './Heading'
-import mdx from './Heading.mdx'
 
 const meta: Meta = {
   title: 'Library/Heading',
@@ -12,9 +10,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

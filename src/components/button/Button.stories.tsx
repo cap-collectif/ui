@@ -1,9 +1,7 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import { CapUIIcon } from '../icon'
 import Button, { ButtonProps } from './Button'
-import mdx from './Button.mdx'
 
 const ICONS = Object.values(CapUIIcon).sort()
 
@@ -27,9 +25,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

@@ -1,21 +1,14 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 
 import { Tag } from '../tag'
 import { Text } from '../typography'
 import { InfoMessage, InfoMessageProps } from './'
-import mdx from './InfoMessage.mdx'
 
 const meta: Meta<InfoMessageProps> = {
   title: 'Library/InfoMessage',
   component: InfoMessage,
   args: {
     variant: 'info',
-  },
-  parameters: {
-    docs: {
-      page: mdx,
-    },
   },
 }
 
