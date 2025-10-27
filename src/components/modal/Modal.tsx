@@ -138,9 +138,9 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const isMobile = useIsMobile()
   const isControlled = controlledShow !== undefined
 
-  const open = isControlled ? controlledShow! : undefined
-
-  const dialogStore = useDialogStore({ open })
+  const dialogStore = isControlled
+    ? useDialogStore({ open: controlledShow })
+    : useDialogStore()
   const show = useStoreState(
     dialogStore,
     (state: DialogStoreState) => state.open,
