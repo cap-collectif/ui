@@ -119,7 +119,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   ariaLabelledby,
   onOpen,
   onClose,
-  show,
+  show: controlledShow,
   noBackdrop = false,
   scrollBehavior = 'inside',
   hideCloseButton = false,
@@ -136,42 +136,41 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   ...props
 }: ModalProps) => {
   const isMobile = useIsMobile()
-  const dialogStore = useDialogStore()
-  const isOpen = useStoreState(
+  const isControlled = controlledShow !== undefined
+
+  const open = isControlled ? controlledShow! : undefined
+
+  const dialogStore = useDialogStore({ open })
+  const show = useStoreState(
     dialogStore,
     (state: DialogStoreState) => state.open,
   )
 
   const containerRef = React.useRef<HTMLElement>(null)
-  const firstMount = React.useRef(true)
-  const context = React.useMemo(
+
+  React.useEffect(() => {
+    if (isControlled) {
+      if (controlledShow) dialogStore.show()
+      else dialogStore.hide()
+    }
+  }, [isControlled, controlledShow, dialogStore])
+
+  React.useEffect(() => {
+    if (show) onOpen?.()
+    else onClose?.()
+  }, [show])
+
+  const context = React.useMemo<ModalContextType>(
     () => ({
       hide: dialogStore.hide,
       show: dialogStore.show,
       toggle: dialogStore.toggle,
-      visible: isOpen,
+      visible: show,
       fullSizeOnMobile,
       hideCloseButton,
     }),
-    [dialogStore, hideCloseButton, fullSizeOnMobile, isOpen],
+    [dialogStore, hideCloseButton, fullSizeOnMobile, show],
   )
-
-  React.useEffect(() => {
-    if (isOpen) {
-      if (onOpen) onOpen()
-      firstMount.current = false
-    } else if (!isOpen && onClose && !firstMount.current) {
-      onClose()
-    }
-  }, [isOpen, onOpen, onClose])
-
-  React.useEffect(() => {
-    if (show === true) {
-      dialogStore.show()
-    } else if (show === false) {
-      dialogStore.hide()
-    }
-  }, [show, dialogStore])
 
   return (
     <Provider context={context}>
