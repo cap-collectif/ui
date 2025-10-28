@@ -113,7 +113,7 @@
     "**/@typescript-eslint/eslint-plugin": "^4.1.1",
     "**/@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.2.8",
-    "loader-utils": "2.0.1",
+    "loader-utils": "2.0.3",
     "**/webpack": "^5.95.0",
     "**/@size-limit/webpack": "^6.0.0"
   },
