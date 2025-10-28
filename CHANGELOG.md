@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.5
+
+`2025-10-28`
+
+- 🐛 Spread sx property in the last changes to avoid complete override [#565](https://github.com/cap-collectif/ui/pull/565)
+- 🛠 Updating loader-utils lib [#564](https://github.com/cap-collectif/ui/pull/564)
+- 🐛 Correctly add new icon and component [#563](https://github.com/cap-collectif/ui/pull/563)
+
 ## 6.0.4
 
 `2025-10-22`
