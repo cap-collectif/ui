@@ -18,6 +18,7 @@ type SubComponents = {
 
 const ListCardItemInner: React.FC<ListCardItemProps> = ({
   children,
+  sx,
   ...rest
 }) => (
   <Flex
@@ -26,7 +27,7 @@ const ListCardItemInner: React.FC<ListCardItemProps> = ({
     align="center"
     justify="space-between"
     width="100%"
-    sx={styleListCardItem()}
+    sx={{ ...styleListCardItem(), ...sx }}
     {...rest}
   >
     {children}
@@ -48,6 +49,7 @@ const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
         width="100%"
         overflow="hidden"
         gap="sm"
+        {...rest}
       >
         <Icon
           name={CapUIIcon.Drag}
@@ -55,7 +57,7 @@ const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
           color="listCard.default.icon"
           className="list-card-item-drag-handle"
         />
-        <ListCardItemInner {...rest}>{children}</ListCardItemInner>
+        <ListCardItemInner>{children}</ListCardItemInner>
       </Flex>
     )
   }
