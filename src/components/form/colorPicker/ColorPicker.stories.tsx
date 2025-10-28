@@ -7,7 +7,6 @@ import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import FormLabel from '../formLabel/FormLabel'
 import ColorPicker from './ColorPicker'
-import mdx from './ColorPicker.mdx'
 import { CapColorPickerVariant } from './enums'
 
 type Args = {
@@ -31,9 +30,6 @@ const meta: Meta = {
   argTypes: { variantSize: { control: 'select', options: ['sm', 'md'] } },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

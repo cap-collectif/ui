@@ -18,7 +18,7 @@ import { Box } from '../../box/Box'
 import { Button } from '../../button'
 import { InfoMessage } from '../../infoMessage/InfoMessage'
 import { Flex } from '../../layout'
-import { ModalProps, Modal, CapUIModalSize } from '../../modal'
+import { CapUIModalSize, Modal, ModalProps } from '../../modal'
 import { Heading, Text } from '../../typography'
 import { FormControl } from '../formControl'
 import { FormErrorMessage } from '../formErrorMessage'
@@ -26,7 +26,6 @@ import { FormGuideline } from '../formGuideline'
 import { FormLabel } from '../formLabel'
 import FilesList from './FileList'
 import Uploader, { UploaderProps } from './Uploader'
-import mdx from './Uploader.mdx'
 import { UPLOADER_SIZE } from './Uploader.style'
 
 const meta: Meta = {
@@ -63,9 +62,6 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 export default meta

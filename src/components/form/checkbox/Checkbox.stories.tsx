@@ -1,12 +1,10 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
 import Checkbox, { CheckboxProps } from './Checkbox'
-import mdx from './Checkbox.mdx'
 
 type Args = {
   errorMessage: string
@@ -24,9 +22,6 @@ const meta: Meta = {
   },
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 

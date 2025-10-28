@@ -1,11 +1,9 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 
 import * as SpotIcons from '../../assets/spotIcons'
 import { Flex, Grid } from '../layout'
 import { Text } from '../typography'
 import { SpotIcon } from './'
-import mdx from './SpotIcon.mdx'
 import { CapUISpotIcon, CapUISpotIconSize } from './enums'
 
 const listIconName = Object.keys(SpotIcons).sort() as CapUISpotIcon[]
@@ -16,9 +14,6 @@ const meta: Meta = {
   component: SpotIcon,
   parameters: {
     controls: { expanded: true },
-    docs: {
-      page: mdx,
-    },
   },
 }
 
