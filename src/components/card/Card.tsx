@@ -18,6 +18,7 @@ export const Card: React.FC<CardProps> = ({
   format = 'vertical',
   isArchived = false,
   forcedSize,
+  sx,
   ...props
 }) => {
   const [ref, rect] = useResizeObserver()
@@ -42,7 +43,7 @@ export const Card: React.FC<CardProps> = ({
       maxWidth={maxWidth}
       minWidth={minWidth}
       width="100%"
-      sx={{ '.cap-card-primaryInfo a': { textDecoration: 'none' } }}
+      sx={{ '.cap-card-primaryInfo a': { textDecoration: 'none' }, ...sx }}
       _hover={{
         boxShadow: 'small',
         '.cap-card-primaryInfo a': { textDecoration: 'underline' },

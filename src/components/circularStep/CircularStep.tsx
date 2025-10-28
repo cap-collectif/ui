@@ -29,6 +29,7 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
       icon = CapUIIcon.ThumbUp,
       className,
       progress = 0,
+      sx,
     },
     ref,
   ) => {
@@ -71,7 +72,7 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
         width={config.SIZE[variantSize]}
         height={config.SIZE[variantSize]}
         position="relative"
-        sx={styles()}
+        sx={{ ...styles(), ...sx }}
         className={cn(className)}
       >
         {!!icon && (
