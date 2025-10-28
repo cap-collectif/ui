@@ -508,6 +508,65 @@ const circularStepColors = (theme: CapUITheme) => ({
   },
 })
 
+const radioColors = (theme: CapUITheme) => ({
+  radio: {
+    default: {
+      border: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.light,
+        active: theme.colors.primary.base,
+      },
+      icon: {
+        default: theme.colors.primary.base,
+        disable: theme.colors.gray.light,
+      },
+      background: {
+        default: theme.colors.white,
+        disable: theme.colors.gray.background,
+      },
+    },
+  },
+})
+
+const checkboxColors = (theme: CapUITheme) => ({
+  checkbox: {
+    default: {
+      border: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.light,
+        active: theme.colors.primary.base,
+        invalid: theme.colors.danger.dark,
+      },
+      icon: {
+        default: theme.colors.white,
+        invalid: theme.colors.danger.base,
+      },
+      background: {
+        default: theme.colors.white,
+        disable: theme.colors.gray.background,
+        active: theme.colors.primary.base,
+        invalid: theme.colors.danger.lighter,
+      },
+    },
+  },
+})
+
+const switchColors = (theme: CapUITheme) => ({
+  switch: {
+    default: {
+      icon: {
+        default: theme.colors.white,
+      },
+      background: {
+        default: theme.colors.gray.base,
+        disable: theme.colors.gray.lighter,
+        active: theme.colors.primary.base,
+        activeDisable: theme.colors.primary.light,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -524,6 +583,9 @@ const getColors = (theme: CapUITheme) => ({
   ...popoverColors(theme),
   ...circularStepColors(theme),
   ...listCardColors(theme),
+  ...radioColors(theme),
+  ...checkboxColors(theme),
+  ...switchColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
