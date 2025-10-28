@@ -99,6 +99,7 @@ export enum CapUIIcon {
   DuplicateO = 'DUPLICATE_O',
   Resend = 'RESEND',
   Share = 'SHARE',
+  ShareLink = 'SHARE_LINK',
   ShareO = 'SHARE_O',
   Shield = 'SHIELD',
   ShieldO = 'SHIELD_O',
