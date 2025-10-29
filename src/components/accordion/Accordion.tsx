@@ -60,10 +60,10 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
 
   const variants: Record<CapUIAccordionColorType, { spacing: string }> = {
     default: {
-      spacing: 'lg',
+      spacing: 'md',
     },
     white: {
-      spacing: 'lg',
+      spacing: 'md',
     },
   }
 
