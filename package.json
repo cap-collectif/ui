@@ -75,7 +75,7 @@
     "@types/styled-system": "^5.1.11",
     "@types/styled-system__css": "^5.0.15",
     "@types/styled-system__should-forward-prop": "^5.1.2",
-    "@types/styled-system__theme-get": "^5.0.1",
+    "@types/styled-system__theme-get": "^5.0.4",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
     "eslint": "^7.2.8",
