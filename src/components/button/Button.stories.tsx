@@ -1,5 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 
+import { SPACING } from '../../styles/theme'
+import { Box } from '../box'
 import { CapUIIcon } from '../icon'
 import Button, { ButtonProps } from './Button'
 
@@ -30,7 +32,26 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<ButtonProps> = args => <Button {...args} />
+const Template: Story<ButtonProps> = args => (
+  <Box
+    backgroundColor={'neutral-gray.lighter'}
+    width={'50vw'}
+    height={'100%'}
+    m={'auto'}
+    p={'5%'}
+    display={'flex'}
+    flexDirection={'column'}
+    justifyContent={'center'}
+    alignItems={'center'}
+    gap={SPACING.md}
+  >
+    <Button {...args} variantSize="small" />
+    <Button {...args} variantSize="medium" />
+    <Button {...args} variantSize="big" />
+    <Button {...args} leftIcon={CapUIIcon.Add} />
+    <Button {...args} rightIcon={CapUIIcon.Add} />
+  </Box>
+)
 
 export const Primary = Template.bind({})
 Primary.args = { variant: 'primary' }
@@ -43,9 +64,6 @@ Tertiary.args = { variant: 'tertiary' }
 
 export const Link = Template.bind({})
 Link.args = { variant: 'link' }
-
-export const WithIcon = Template.bind({})
-WithIcon.args = { leftIcon: CapUIIcon.Add }
 
 export const Loading = Template.bind({})
 Loading.args = { isLoading: true }
