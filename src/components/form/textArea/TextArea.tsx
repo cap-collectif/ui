@@ -7,7 +7,7 @@ import { pxToRem } from '../../../styles/modules/mixins'
 import type { PolymorphicBoxProps } from '../../box/Box'
 import { Flex } from '../../layout'
 import { Text } from '../../typography'
-import { CapInputSize } from '../enums'
+import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import S, { InputInner } from '../style'
 
@@ -15,6 +15,7 @@ export interface TextAreaProps extends PolymorphicBoxProps<'textarea'> {
   readonly isDisabled?: boolean
   readonly isInvalid?: boolean
   readonly variantSize?: CapInputSize
+  readonly variantColor?: InputVariantColor
   readonly resize?:
     | 'none'
     | 'both'
@@ -40,6 +41,7 @@ export const TextArea: React.FC<TextAreaProps> = React.forwardRef<
         {...inputProps}
         sx={{ ...S(colors, inputProps.variantColor), resize }}
         variant={inputProps.variantSize}
+        variantColor={inputProps.variantColor}
         ref={ref}
         as="textarea"
         className={cn('cap-textarea', className)}

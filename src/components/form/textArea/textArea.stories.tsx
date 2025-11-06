@@ -22,6 +22,7 @@ const meta: Meta = {
   component: TextArea,
   args: {
     variantSize: 'sm',
+    variantColor: 'default',
     placeholder: 'Placeholder...',
     errorMessage: 'Error info.',
     isRequired: true,
@@ -29,6 +30,7 @@ const meta: Meta = {
   },
   argTypes: {
     variantSize: { control: 'select', options: ['sm', 'md'] },
+    variantColor: { control: 'radio', options: ['default', 'hierarchy'] },
     maxLength: { control: 'number' },
   },
   parameters: {
