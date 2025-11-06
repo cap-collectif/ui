@@ -11,6 +11,21 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.6
+
+`2025-11-06`
+
+- 🆕 Add variantColor to `textarea` inputs [#575](https://github.com/cap-collectif/ui/pull/575)
+- 🆕 Upgrade dependencies [#573](https://github.com/cap-collectif/ui/pull/573)
+- 🛠 Improve stories [#574](https://github.com/cap-collectif/ui/pull/574)
+- 🆕 Upgrade dependencies [#572](https://github.com/cap-collectif/ui/pull/572)
+- 🆕 Upgrade dependencies [#571](https://github.com/cap-collectif/ui/pull/571)
+- 🆕 Upgrade dependencies [#568](https://github.com/cap-collectif/ui/pull/568)
+- 🆕 Upgrade dependencies [#569](https://github.com/cap-collectif/ui/pull/569)
+- 🛠 Remove unused `.mdx` files [#560](https://github.com/cap-collectif/ui/pull/560)
+- 🆕 Upgrade dependencies [#567](https://github.com/cap-collectif/ui/pull/567)
+- 🆕 Enhance Radio/CheckBox/Switch accessibility [#540](https://github.com/cap-collectif/ui/pull/540)
+
 ## 6.0.5
 
 `2025-10-28`
