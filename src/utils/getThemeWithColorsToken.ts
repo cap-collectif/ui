@@ -631,6 +631,7 @@ const modalColors = (theme: CapUITheme) => ({
       background: theme.colors.white,
       border: theme.colors.gray.lighter,
       icon: theme.colors.gray.dark,
+      overlay: `${theme.colors.black}32`,
       step: {
         background: theme.colors.primary.lighter,
         progress: theme.colors.primary.base,
