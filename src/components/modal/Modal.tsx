@@ -139,9 +139,8 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const isMobile = useIsMobile()
   const isControlled = controlledShow !== undefined
 
-  const dialogStore = isControlled
-    ? useDialogStore({ open: controlledShow })
-    : useDialogStore()
+  const dialogStore = useDialogStore({ open: controlledShow })
+
   const show = useStoreState(
     dialogStore,
     (state: DialogStoreState) => state.open,
@@ -159,7 +158,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   React.useEffect(() => {
     if (show) onOpen?.()
     else onClose?.()
-  }, [show])
+  }, [show, onOpen, onClose])
 
   const context = React.useMemo<ModalContextType>(
     () => ({
