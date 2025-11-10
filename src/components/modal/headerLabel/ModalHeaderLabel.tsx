@@ -14,7 +14,7 @@ const ModalHeaderLabel: React.FC<ModalHeaderLabelProps> = ({
   ...rest
 }) => (
   <Text
-    as="span"
+    as="h2"
     uppercase
     color="text.tertiary"
     className={cn('cap-modal__header--label')}

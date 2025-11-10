@@ -1,4 +1,5 @@
 import {
+  Dialog,
   DialogDisclosure,
   DialogStoreState,
   useDialogStore,
@@ -10,6 +11,7 @@ import styled, { IStyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
+import { Box } from '../box'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { ModalContextType } from './Modal.context'
 import { Provider } from './Modal.context'
@@ -17,7 +19,6 @@ import { ModalBody } from './body/ModalBody'
 import { CapUIModalSize } from './enums'
 import ModalFooter from './footer/ModalFooter'
 import ModalHeader from './header/ModalHeader'
-import { Overlay, StyledDialog } from './modalStyles'
 
 export type RenderProps = (props: ModalContextType) => React.ReactNode
 
@@ -183,49 +184,76 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
           }
         />
       )}
-      <StyledDialog
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledby}
-        open={forceModalDialogToFalse ? false : alwaysOpenInPortal}
-        store={dialogStore}
-        portal={false}
-        hideOnInteractOutside={hideOnClickOutside}
-        hideOnEscape={hideOnEsc}
-        preventBodyScroll={preventBodyScroll}
+      <Box
+        sx={{
+          '[data-dialog]': {
+            '&[data-enter]': {
+              opacity: '1 !important',
+
+              '.cap-modal': {
+                transform: 'translateY(0)!important',
+              },
+            },
+          },
+        }}
       >
-        <Overlay
-          bg={noBackdrop ? 'transparent' : 'rgba(39,43,43,0.32)'}
-          overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
-          ref={containerRef}
-          onClick={(e: MouseEvent) => {
-            if (e.target === containerRef.current && hideOnClickOutside) {
-              dialogStore.hide()
-            }
-          }}
-          className="cap-modal__overlay"
-          zIndex={zIndex || 'overlay'}
-          isSidePanel={
-            size === CapUIModalSize.SidePanel ||
-            size === CapUIModalSize.Fullscreen
-          }
+        <Dialog
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+          open={forceModalDialogToFalse ? false : alwaysOpenInPortal}
+          store={dialogStore}
+          portal={false}
+          hideOnInteractOutside={hideOnClickOutside}
+          hideOnEscape={hideOnEsc}
+          preventBodyScroll={preventBodyScroll}
+          style={{ opacity: 0, transition: 'all 0.2s' }}
         >
-          <ModalInner
+          <Flex
+            bg={noBackdrop ? 'transparent' : 'modal.default.overlay'}
+            overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
+            ref={containerRef}
+            onClick={(e: React.MouseEvent) => {
+              if (e.target === containerRef.current && hideOnClickOutside) {
+                dialogStore.hide()
+              }
+            }}
+            className="cap-modal__overlay"
+            zIndex={zIndex || 'overlay'}
+            align={
+              size === CapUIModalSize.SidePanel ||
+              size === CapUIModalSize.Fullscreen
+                ? 'end'
+                : 'center'
+            }
+            position="fixed"
+            left={0}
+            right={0}
+            bottom={0}
+            top={0}
             direction="column"
-            justify="space-between"
-            overflow={scrollBehavior === 'inside' ? 'auto' : undefined}
-            className={cn('cap-modal', className)}
-            size={isMobile ? null : size}
-            isMobile={isMobile}
-            fullSizeOnMobile={fullSizeOnMobile}
-            bg="modal.default.background"
-            borderRadius="modal"
-            zIndex="modal"
-            {...props}
           >
-            {typeof children === 'function' ? children(context) : children}
-          </ModalInner>
-        </Overlay>
-      </StyledDialog>
+            <ModalInner
+              direction="column"
+              justify="space-between"
+              overflow={scrollBehavior === 'inside' ? 'auto' : undefined}
+              className={cn('cap-modal', className)}
+              size={isMobile ? null : size}
+              isMobile={isMobile}
+              fullSizeOnMobile={fullSizeOnMobile}
+              bg="modal.default.background"
+              borderRadius="modal"
+              zIndex="modal"
+              sx={{
+                transition: 'all 0.2s',
+                transform: 'translateY(-30px)',
+              }}
+              {...props}
+            >
+              {typeof children === 'function' ? children(context) : children}
+            </ModalInner>
+          </Flex>
+        </Dialog>
+      </Box>
     </Provider>
   )
 }
