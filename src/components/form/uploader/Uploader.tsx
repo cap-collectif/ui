@@ -104,6 +104,7 @@ const Uploader: React.FC<UploaderProps> = ({
   className,
   onDropRejected,
   onRemove,
+  variantColor,
   ...props
 }) => {
   const { colors } = useTheme()
@@ -287,13 +288,13 @@ const Uploader: React.FC<UploaderProps> = ({
         circle={circle}
         size={size}
         colors={colors}
-        variantColor={props.variantColor}
+        variantColor={variantColor}
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
       >
         <input {...getInputProps()} />
         {getContent()}
         {!multiple && showThumbnail && !isImageUploader && thumb && (
-          <ThumbContainer>
+          <ThumbContainer variantColor={variantColor}>
             <FileThumbnail size={size} circle={circle}>
               <Icon
                 size={CapUIIconSize.Xl}
@@ -320,7 +321,7 @@ const Uploader: React.FC<UploaderProps> = ({
           </ThumbContainer>
         )}
         {!multiple && showThumbnail && isImageUploader && thumb && (
-          <ThumbContainer>
+          <ThumbContainer variantColor={variantColor}>
             <Thumbnail size={size} circle={circle} src={thumb} alt="" />
             <ThumbnailControls size={size} circle={circle}>
               <ButtonQuickAction

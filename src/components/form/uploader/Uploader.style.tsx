@@ -143,12 +143,16 @@ export const UploaderContainer = styled(Flex)<{
   }};
   width: 100%;
 `
-export const ThumbContainer = styled(Flex)`
+export const ThumbContainer = styled(Flex)<{
+  variantColor?: InputVariantColor
+}>`
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: ${props =>
-    props.theme?.colors?.uploader.background.complete};
+    props.variantColor === 'default'
+      ? props.theme?.colors?.uploader.background.complete
+      : props.theme?.colors?.uploader.background.hierarchy};
   box-shadow: inset 0px -1px 0px 0px ${props => props.theme?.colors?.uploader.border.default};
   &:hover {
     box-shadow: unset;
