@@ -413,6 +413,7 @@ const uploaderColors = (theme: CapUITheme) => ({
   uploader: {
     background: {
       default: theme.colors.gray.background,
+      hierarchy: theme.colors.white,
       hover: theme.colors.gray.white,
       drag: theme.colors.blue[100],
       loading: theme.colors.gray.white,

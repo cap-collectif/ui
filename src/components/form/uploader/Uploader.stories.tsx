@@ -32,13 +32,18 @@ const meta: Meta = {
   title: 'Library/Form/Uploader',
   component: Uploader,
   argTypes: {
-    size: { options: Object.values(UPLOADER_SIZE) as string[] },
+    size: {
+      control: 'select',
+      options: Object.values(UPLOADER_SIZE) as string[],
+    },
+    variantColor: { control: 'radio', options: ['default', 'hierarchy'] },
   },
   args: {
     className: 'cap-uploader',
     errorMessage: 'Error info.',
     size: UPLOADER_SIZE.LG,
     circle: false,
+    variantColor: 'default',
     wording: {
       uploaderPrompt: 'Déposer ou sélectionner des fichiers',
       uploaderLoadingPrompt: 'Importation en cours...',
@@ -460,6 +465,7 @@ DefaultWithValue.args = {
     type: 'image/jpeg',
   },
 }
+
 export const MediumWithValue: Story<UploaderProps> = ({
   onDrop,
   className,
@@ -825,7 +831,7 @@ export const MultipleWithValue: Story<UploaderProps> = ({
       <FormErrorMessage>
         <InfoMessage variant="danger">
           <InfoMessage.Title>
-            ⛔️ Les fichiers suivants n’ont pas pu être importés :
+            Les fichiers suivants n’ont pas pu être importés :
           </InfoMessage.Title>
           {errors.map(error => (
             <InfoMessage.Content color="red.900" key={error}>

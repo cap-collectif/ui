@@ -15,6 +15,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout'
 import { Spinner } from '../../spinner'
 import { Text } from '../../typography'
+import { InputVariantColor } from '../enums'
 import Illustration from './Illustration'
 import {
   Container,
@@ -57,6 +58,7 @@ export interface UploaderProps
   readonly size?: UPLOADER_SIZE
   readonly value?: FileInfo | Array<FileInfo>
   readonly circle?: boolean
+  readonly variantColor?: InputVariantColor
   readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[]
   readonly minResolution?: Size
   readonly multiple?: boolean
@@ -285,6 +287,7 @@ const Uploader: React.FC<UploaderProps> = ({
         circle={circle}
         size={size}
         colors={colors}
+        variantColor={props.variantColor}
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
       >
         <input {...getInputProps()} />
