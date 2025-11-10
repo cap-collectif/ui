@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.7
+
+`2025-11-10`
+
+- 💄 Add variantColor to `Uploader` [#578](https://github.com/cap-collectif/ui/pull/578)
+- 🆕 Add new icons [#577](https://github.com/cap-collectif/ui/pull/577)
+
 ## 6.0.6
 
 `2025-11-06`
