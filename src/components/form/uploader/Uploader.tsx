@@ -15,6 +15,7 @@ import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout'
 import { Spinner } from '../../spinner'
 import { Text } from '../../typography'
+import { InputVariantColor } from '../enums'
 import Illustration from './Illustration'
 import {
   Container,
@@ -57,6 +58,7 @@ export interface UploaderProps
   readonly size?: UPLOADER_SIZE
   readonly value?: FileInfo | Array<FileInfo>
   readonly circle?: boolean
+  readonly variantColor?: InputVariantColor
   readonly format?: 'image/*' | 'audio/*' | 'video/*' | string | string[]
   readonly minResolution?: Size
   readonly multiple?: boolean
@@ -102,6 +104,7 @@ const Uploader: React.FC<UploaderProps> = ({
   className,
   onDropRejected,
   onRemove,
+  variantColor,
   ...props
 }) => {
   const { colors } = useTheme()
@@ -285,12 +288,13 @@ const Uploader: React.FC<UploaderProps> = ({
         circle={circle}
         size={size}
         colors={colors}
+        variantColor={variantColor}
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
       >
         <input {...getInputProps()} />
         {getContent()}
         {!multiple && showThumbnail && !isImageUploader && thumb && (
-          <ThumbContainer>
+          <ThumbContainer variantColor={variantColor}>
             <FileThumbnail size={size} circle={circle}>
               <Icon
                 size={CapUIIconSize.Xl}
@@ -317,7 +321,7 @@ const Uploader: React.FC<UploaderProps> = ({
           </ThumbContainer>
         )}
         {!multiple && showThumbnail && isImageUploader && thumb && (
-          <ThumbContainer>
+          <ThumbContainer variantColor={variantColor}>
             <Thumbnail size={size} circle={circle} src={thumb} alt="" />
             <ThumbnailControls size={size} circle={circle}>
               <ButtonQuickAction

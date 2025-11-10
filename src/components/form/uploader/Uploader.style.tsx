@@ -5,6 +5,7 @@ import colors, { Colors } from '../../../styles/modules/colors'
 import { pxToRem } from '../../../styles/modules/mixins'
 import { ExtendedColors } from '../../../utils/getThemeWithColorsToken'
 import { Flex } from '../../layout'
+import { InputVariantColor } from '../enums'
 
 export enum UPLOADER_SIZE {
   SM = 'sm', // 184px
@@ -18,6 +19,7 @@ export const Container = styled(Flex)<{
   drag: boolean
   colors: ExtendedColors & Colors
   isFullWidth?: boolean
+  variantColor?: InputVariantColor
 }>`
   height: ${pxToRem(184)};
   min-width: ${props => {
@@ -46,7 +48,10 @@ export const Container = styled(Flex)<{
   }};
   width: 100%;
   overflow: hidden;
-  background-color: ${props => props.colors?.uploader.background.default};
+  background-color: ${props =>
+    props.variantColor === 'default'
+      ? props.colors?.uploader.background.default
+      : props.colors?.uploader.background.hierarchy};
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
@@ -138,12 +143,16 @@ export const UploaderContainer = styled(Flex)<{
   }};
   width: 100%;
 `
-export const ThumbContainer = styled(Flex)`
+export const ThumbContainer = styled(Flex)<{
+  variantColor?: InputVariantColor
+}>`
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: ${props =>
-    props.theme?.colors?.uploader.background.complete};
+    props.variantColor === 'default'
+      ? props.theme?.colors?.uploader.background.complete
+      : props.theme?.colors?.uploader.background.hierarchy};
   box-shadow: inset 0px -1px 0px 0px ${props => props.theme?.colors?.uploader.border.default};
   &:hover {
     box-shadow: unset;
