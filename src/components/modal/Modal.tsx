@@ -141,7 +141,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
 
   const dialogStore = useDialogStore({ open: controlledShow })
 
-  const show = useStoreState(
+  const modalShow = useStoreState(
     dialogStore,
     (state: DialogStoreState) => state.open,
   )
@@ -156,20 +156,20 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   }, [isControlled, controlledShow, dialogStore])
 
   React.useEffect(() => {
-    if (show) onOpen?.()
+    if (modalShow) onOpen?.()
     else onClose?.()
-  }, [show, onOpen, onClose])
+  }, [modalShow])
 
   const context = React.useMemo<ModalContextType>(
     () => ({
       hide: dialogStore.hide,
       show: dialogStore.show,
       toggle: dialogStore.toggle,
-      visible: show,
+      visible: controlledShow ?? false,
       fullSizeOnMobile,
       hideCloseButton,
     }),
-    [dialogStore, hideCloseButton, fullSizeOnMobile, show],
+    [dialogStore, hideCloseButton, fullSizeOnMobile],
   )
 
   return (
