@@ -9,7 +9,9 @@ import * as React from 'react'
 
 import { Flex, FlexProps } from '../../layout/Flex'
 import Text from '../../typography/Text'
+import { useAccordion } from '../Accordion.context'
 import { useAccordionItem } from '../item/AccordionItem.context'
+import { CapUIAccordionSizeType } from '../types'
 
 type AccordionPanelProps = FlexProps & {
   children: React.ReactNode
@@ -27,13 +29,29 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
   ...props
 }) => {
   const { open, id } = useAccordionItem()
+  const { color, size } = useAccordion()
+
+  const sizes: Record<
+    CapUIAccordionSizeType,
+    { pb: string; px: string; ml: string }
+  > = {
+    md: {
+      pb: 'lg',
+      px: 'lg',
+      ml: 'xl',
+    },
+    sm: {
+      pb: 'xs',
+      px: 'xs',
+      ml: 'xl',
+    },
+  }
 
   return (
     <AnimatePresence exitBeforeEnter>
       {open && (
         <ContainerAnimate
           direction="column"
-          px={8}
           initial="collapsed"
           animate="open"
           exit="collapsed"
@@ -42,14 +60,15 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
             collapsed: { opacity: 0, height: 0 },
           }}
           transition={{ duration: 0.2, ease: 'easeInOut' }}
+          role="region"
           aria-labelledby={`accordion-button-${id}`}
           id={`accordion-panel-${id}`}
-          role="group"
+          {...sizes[size]}
           className={cn('cap-accordion__panel', className)}
           {...props}
         >
           {typeof children === 'string' ? (
-            <Text color="gray.900">{children}</Text>
+            <Text color={`accordion.${color}.textContent`}>{children}</Text>
           ) : (
             <>{children}</>
           )}

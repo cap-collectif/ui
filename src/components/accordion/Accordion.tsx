@@ -4,9 +4,9 @@ import { Flex, FlexProps } from '../layout/Flex'
 import { AccordionContext, AccordionContextType } from './Accordion.context'
 import { getAccordion, getDefaultAccordion } from './Accordion.utils'
 import AccordionButton from './button/AccordionButton'
-import { CapUIAccordionColor, CapUIAccordionSize } from './enums'
 import AccordionItem from './item/AccordionItem'
 import AccordionPanel from './panel/AccordionPanel'
+import { CapUIAccordionColorType } from './types'
 
 type SubComponents = {
   Item: typeof AccordionItem
@@ -15,19 +15,21 @@ type SubComponents = {
 }
 
 export interface AccordionProps extends FlexProps {
-  readonly children: React.ReactNodeArray | React.ReactNode
+  readonly children: React.ReactNode | React.ReactNode[]
   readonly allowMultiple?: AccordionContextType['allowMultiple']
   readonly defaultAccordion?: AccordionContextType['defaultAccordion']
   readonly size?: AccordionContextType['size']
   readonly color?: AccordionContextType['color']
+  readonly disabled?: AccordionContextType['disabled']
 }
 
 export const Accordion: React.FC<AccordionProps> & SubComponents = ({
   children,
   allowMultiple,
   defaultAccordion,
-  size = CapUIAccordionSize.Md,
-  color = CapUIAccordionColor.White,
+  size = 'md',
+  color = 'default',
+  disabled = false,
   ...props
 }) => {
   const [accordions, updateAccordions] = React.useState(
@@ -43,6 +45,7 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
         updateAccordions(getAccordion(id, accordions, allowMultiple)),
       size,
       color,
+      disabled,
     }),
     [
       defaultAccordion,
@@ -51,19 +54,17 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
       updateAccordions,
       size,
       color,
+      disabled,
     ],
   )
 
-  const variants: Record<CapUIAccordionColor, { spacing: number }> = {
-    'white': {
-      spacing: 4
+  const variants: Record<CapUIAccordionColorType, { spacing: string }> = {
+    default: {
+      spacing: 'md',
     },
-    'gray': {
-      spacing: 4
+    white: {
+      spacing: 'md',
     },
-    'transparent': {
-      spacing: 0
-    }
   }
 
   return (
