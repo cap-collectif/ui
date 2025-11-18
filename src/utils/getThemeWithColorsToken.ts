@@ -568,6 +568,55 @@ const switchColors = (theme: CapUITheme) => ({
   },
 })
 
+const accordionColors = (theme: CapUITheme) => ({
+  accordion: {
+    default: {
+      border: {
+        default: theme.colors['neutral-gray'].lighter,
+        active: theme.colors.primary.light,
+        disable: theme.colors['neutral-gray'].lighter,
+      },
+      background: {
+        default: theme.colors.gray.background,
+        active: theme.colors.primary.background,
+        disable: theme.colors.gray.background,
+      },
+      icon: {
+        default: theme.colors.gray.base,
+        active: theme.colors.primary.base,
+        disable: theme.colors.gray.light,
+      },
+      text: {
+        default: textColors(theme).text.secondary,
+        active: textColors(theme).text.secondary,
+        disable: textColors(theme).text.disable,
+      },
+      textContent: textColors(theme).text.primary,
+    },
+    white: {
+      border: {
+        default: theme.colors.transparent,
+        active: theme.colors.transparent,
+      },
+      background: {
+        default: theme.colors.white,
+        active: theme.colors.white,
+      },
+      icon: {
+        default: theme.colors.gray.base,
+        active: theme.colors.primary.base,
+        disable: theme.colors.gray.light,
+      },
+      text: {
+        default: textColors(theme).text.secondary,
+        active: textColors(theme).text.secondary,
+        disable: textColors(theme).text.disable,
+      },
+      textContent: textColors(theme).text.primary,
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -587,6 +636,7 @@ const getColors = (theme: CapUITheme) => ({
   ...radioColors(theme),
   ...checkboxColors(theme),
   ...switchColors(theme),
+  ...accordionColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
