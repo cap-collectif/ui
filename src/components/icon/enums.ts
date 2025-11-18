@@ -175,6 +175,14 @@ export enum CapUIIcon {
   Instagram = 'INSTAGRAM',
   Vimeo = 'VIMEO',
   HourglassO = 'HOURGLASS_O',
+  BallotBox = 'BALLOT_BOX',
+  HandHoldingHeart = 'HAND_HOLDING_HEART',
+  HandVoting = 'HAND_VOTING',
+  MenuArrowUp = 'MENU_ARROW_UP',
+  MoneyBag = 'MONEY_BAG',
+  MoneyPiggy = 'MONEY_PIGGY',
+  RatingStar = 'RATING_STAR',
+  ShoppingBasketHeart = 'SHOPPING_BASKET_HEART',
 }
 
 export enum CapUIIconSize {
