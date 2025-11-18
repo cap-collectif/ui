@@ -24,11 +24,24 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
 
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
-  const toggle = React.useCallback(() => {
-    if (disabled) return
+  const toggle = React.useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const target = e.target as HTMLElement
+      // Ignore click on <button>, <a>, ... inside of it
+      if (
+        ['button', 'a', 'input'].includes(target.tagName.toLowerCase()) ||
+        target.closest('label') ||
+        target.closest('button') ||
+        target.closest('a')
+      ) {
+        return
+      }
+      if (disabled) return
 
-    toggleOpen()
-  }, [disabled, toggleOpen])
+      toggleOpen()
+    },
+    [disabled, toggleOpen],
+  )
 
   const sizes: Record<
     CapUIAccordionSizeType,

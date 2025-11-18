@@ -18,15 +18,34 @@ const Template: Story<AccordionProps> = args => (
   <>
     <Accordion {...args}>
       <Accordion.Item id="volet-default">
-        <Accordion.Button>Ouvert par défaut</Accordion.Button>
+        <Accordion.Button>
+          Ouvert par défaut
+          <label style={{ marginLeft: 'auto' }}>
+            <input type="checkbox" />
+            <span>action</span>
+          </label>
+        </Accordion.Button>
         <Accordion.Panel>Contenu du volet ouvert</Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item id="volet-1">
-        <Accordion.Button>Volet 1</Accordion.Button>
+        <Accordion.Button>
+          Volet 1
+          <button
+            style={{ marginLeft: 'auto' }}
+            onClick={() => alert('test click')}
+          >
+            <span>clique</span>
+          </button>
+        </Accordion.Button>
         <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item id="volet-2">
-        <Accordion.Button>Volet 2</Accordion.Button>
+        <Accordion.Button>
+          Volet 2
+          <a style={{ marginLeft: 'auto' }} href="#">
+            lien
+          </a>
+        </Accordion.Button>
         <Accordion.Panel>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
           aspernatur aut blanditiis cum deleniti, deserunt dolorem dolores earum
