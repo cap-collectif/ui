@@ -11,6 +11,14 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.8
+
+`2025-11-21`
+
+- 🆕 Add new icons [#583](https://github.com/cap-collectif/ui/pull/583) && [#581](https://github.com/cap-collectif/ui/pull/581)
+- 🆕 CI Chromatic build improvment [#580](https://github.com/cap-collectif/ui/pull/580)
+- 🆕 Upgrade dependencies [#580](https://github.com/cap-collectif/ui/pull/580)
+
 ## 6.0.7
 
 `2025-11-10`
