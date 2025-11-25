@@ -30,15 +30,29 @@ export const EntityPlaceholder: React.FC<EntityPlaceholderProps> = ({
       style={{ aspectRatio: '3 / 2' }}
       {...props}
     >
-      <PlaceholderBackground color={color} position="absolute" />
       {icon ? (
-        <Icon
-          color="white"
-          name={icon}
-          size={CapUIIconSize.Xxl}
-          sx={{ scale }}
+        <Flex
+          justify="center"
+          align="center"
+          backgroundColor={color}
+          width="100%"
+          height="100%"
+        >
+          <Icon
+            color="white"
+            name={icon}
+            size={CapUIIconSize.Xxl}
+            sx={{ scale }}
+          />
+        </Flex>
+      ) : (
+        <PlaceholderBackground
+          color={color}
+          width="100%"
+          height="auto"
+          position="absolute"
         />
-      ) : null}
+      )}
     </Flex>
   )
 }

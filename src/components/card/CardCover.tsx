@@ -53,7 +53,7 @@ export const CardCoverImage: React.FC<
 
 export const CardCoverPlaceholder: React.FC<
   FlexProps & { color?: string; icon?: CapUIIcon }
-> = ({ className, color = 'neutral-gray.base', icon, ...props }) => {
+> = ({ className, color = 'neutral-gray.100', icon, ...props }) => {
   const { size, format, isArchived } = React.useContext(CardContext)
   const smallScale = format === 'horizontal' ? '1' : '2'
   return (
