@@ -4,7 +4,7 @@ import * as React from 'react'
 import { BoxProps } from '../../box'
 import { Box } from '../../box/Box'
 import { useAccordion } from '../Accordion.context'
-import { CapUIAccordionColor } from '../enums'
+import { CapUIAccordionColorType } from '../types'
 import { AccordionItemContext } from './AccordionItem.context'
 
 export type AccordionItemProps = BoxProps & {
@@ -18,58 +18,52 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   className,
   ...props
 }) => {
-  const { updateAccordions, accordions, color } = useAccordion()
+  const detailRef = React.useRef<HTMLDetailsElement>(null)
+  const { updateAccordions, accordions, color, size, disabled, allowMultiple } =
+    useAccordion()
   const isOpen = accordions[id]
+
+  const styleState = disabled ? 'disable' : isOpen ? 'active' : 'default'
 
   const context = React.useMemo(
     () => ({
       open: isOpen,
       toggleOpen: () => updateAccordions(id),
       id,
+      styleState,
     }),
-    [isOpen, id, updateAccordions],
+    [isOpen, id, updateAccordions, styleState],
   )
 
-  const variants: Record<
-    CapUIAccordionColor,
-    { bg: string; bgOpen: string; border: string; pbOpen: number }
-  > = {
+  const borders: Record<CapUIAccordionColorType, { border: string }> = {
     white: {
-      bg: 'white',
-      bgOpen: 'white',
       border: 'none',
-      pbOpen: 6,
     },
-    gray: {
-      bg: 'gray.100',
-      bgOpen: 'primary.background',
+    default: {
       border: 'normal',
-      pbOpen: 6,
-    },
-    transparent: {
-      bg: 'transparent',
-      bgOpen: 'transparent',
-      border: 'none',
-      pbOpen: 4,
     },
   }
+
+  React.useEffect(() => {
+    if (detailRef.current && isOpen) detailRef.current.open = true
+  }, [])
 
   return (
     <AccordionItemContext.Provider value={context}>
       <Box
+        ref={detailRef}
         id={id}
-        bg={isOpen ? variants[color].bgOpen : variants[color].bg}
+        name={!allowMultiple ? `accordion-${color}-${size}` : id}
+        as={'details'}
+        bg={`accordion.${color}.background.${styleState}`}
         className={cn('cap-accordion__item', className)}
         borderRadius="accordion"
-        border={variants[color].border}
-        borderColor={isOpen ? 'primary.base' : 'gray.200'}
+        border={borders[color].border}
+        borderColor={`accordion.${color}.border.${styleState}`}
         _hover={{
-          borderColor: 'gray.300',
+          borderColor: `accordion.${color}.border.active`,
         }}
-        _disabled={{
-          opacity: 0.5,
-        }}
-        pb={isOpen ? variants[color].pbOpen : 0}
+        sx={{ pointerEvents: disabled ? 'none' : 'initial' }}
         {...props}
       >
         {children}
