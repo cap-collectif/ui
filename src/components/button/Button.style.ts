@@ -133,7 +133,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.default.icon.default',
       },
-      p: 0,
 
       '&:hover': {
         color: 'button.tertiary.default.text.hover',
@@ -234,7 +233,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
       },
-      p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
       fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
@@ -267,7 +265,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.danger.icon.default',
       },
-      p: 0,
 
       '&:hover': {
         color: 'button.tertiary.danger.text.hover',
@@ -367,7 +364,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',
       },
-      p: 0,
       textTransform: alternative ? 'uppercase' : 'initial',
       fontSize: alternative ? CapUIFontSize.Caption : CapUIFontSize.BodyRegular,
       fontWeight: alternative ? CapUIFontWeight.Bold : CapUIFontWeight.Semibold,
@@ -400,7 +396,6 @@ const styles = (alternative: boolean) => ({
       '.cap-icon.cap-button-icon': {
         color: 'button.tertiary.hierarchy.icon.default',
       },
-      p: 0,
 
       '&:hover': {
         color: 'button.tertiary.hierarchy.text.hover',

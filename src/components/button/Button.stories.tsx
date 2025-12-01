@@ -1,3 +1,4 @@
+import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import { SPACING } from '../../styles/theme'
@@ -32,9 +33,9 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<ButtonProps> = args => (
+const Template: Story<ButtonProps & { backgroundColor?: string }> = ({ backgroundColor = 'neutral-gray.lighter', ...args }) => (
   <Box
-    backgroundColor={'neutral-gray.lighter'}
+    backgroundColor={backgroundColor}
     width={'50vw'}
     height={'100%'}
     m={'auto'}
@@ -45,11 +46,20 @@ const Template: Story<ButtonProps> = args => (
     alignItems={'center'}
     gap={SPACING.md}
   >
-    <Button {...args} variantSize="small" />
-    <Button {...args} variantSize="medium" />
-    <Button {...args} variantSize="big" />
-    <Button {...args} leftIcon={CapUIIcon.Add} />
-    <Button {...args} rightIcon={CapUIIcon.Add} />
+    <Button {...args} variantSize="small" variantColor="primary" />
+    <Button {...args} variantSize="medium" variantColor="primary" />
+    <Button {...args} variantSize="big" variantColor="primary" />
+
+    <Button {...args} variantSize="small" variantColor="danger" />
+    <Button {...args} variantSize="medium" variantColor="danger" />
+    <Button {...args} variantSize="big" variantColor="danger" />
+
+    <Button {...args} variantSize="small" variantColor="hierarchy" />
+    <Button {...args} variantSize="medium" variantColor="hierarchy" />
+    <Button {...args} variantSize="big" variantColor="hierarchy" />
+
+    <Button {...args} leftIcon={CapUIIcon.Add} variantColor="primary" />
+    <Button {...args} rightIcon={CapUIIcon.Add} variantColor="danger" />
   </Box>
 )
 
@@ -66,4 +76,4 @@ export const Link = Template.bind({})
 Link.args = { variant: 'link' }
 
 export const Loading = Template.bind({})
-Loading.args = { isLoading: true }
+Loading.args = { isLoading: true, backgroundColor: 'white' }
