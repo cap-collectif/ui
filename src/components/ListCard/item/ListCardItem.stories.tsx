@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react'
-import * as React from 'react'
 
 import { ListCard } from '../'
 import { ButtonGroup } from '../../buttonGroup'
@@ -19,50 +18,107 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ListCardItemProps> = () => (
-  <ListCard.Item draggable>
-    <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-  </ListCard.Item>
-)
-
-export const WithType: Story<ListCardItemProps> = args => (
-  <ListCard.Item {...args}>
-    <Flex direction="column">
-      <ListCard.Item.Type>Step</ListCard.Item.Type>
+export const Default: Story<ListCardItemProps> = args => (
+  <Flex direction="column" gap="sm">
+    {/* Draggable */}
+    <ListCard.Item draggable>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-    </Flex>
-  </ListCard.Item>
+    </ListCard.Item>
+
+    {/* With type */}
+    <ListCard.Item {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+    </ListCard.Item>
+
+    {/* With Switch */}
+    <ListCard.Item as="label" htmlFor="hello-world" {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+
+      <Switch id="hello-world" />
+    </ListCard.Item>
+
+    {/* With ButtonGroup */}
+    <ListCard.Item {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+
+      <ButtonGroup>
+        <ButtonQuickAction
+          variantColor="primary"
+          icon={CapUIIcon.Pencil}
+          label="Éditer"
+        />
+        <ButtonQuickAction
+          variantColor="danger"
+          icon={CapUIIcon.Trash}
+          label="Éditer"
+        />
+      </ButtonGroup>
+    </ListCard.Item>
+
+    {/* SubItem */}
+    <ListCard.SubItem>Hello World</ListCard.SubItem>
+  </Flex>
 )
 
-export const WithSwitch: Story<ListCardItemProps> = args => (
-  <ListCard.Item as="label" htmlFor="hello-world" {...args}>
-    <Flex direction="column">
-      <ListCard.Item.Type>Step</ListCard.Item.Type>
+export const Hierarchy: Story<ListCardItemProps> = args => (
+  <Flex direction="column" gap="sm" padding="md">
+    {/* Draggable */}
+    <ListCard.Item draggable>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-    </Flex>
+    </ListCard.Item>
 
-    <Switch id="hello-world" />
-  </ListCard.Item>
+    {/* With type */}
+    <ListCard.Item {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+    </ListCard.Item>
+
+    {/* With Switch */}
+    <ListCard.Item as="label" htmlFor="hello-world" {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+
+      <Switch id="hello-world" />
+    </ListCard.Item>
+
+    {/* With ButtonGroup */}
+    <ListCard.Item {...args}>
+      <Flex direction="column">
+        <ListCard.Item.Type>Step</ListCard.Item.Type>
+        <ListCard.Item.Label>Hello world</ListCard.Item.Label>
+      </Flex>
+
+      <ButtonGroup>
+        <ButtonQuickAction
+          variantColor="primary"
+          icon={CapUIIcon.Pencil}
+          label="Éditer"
+        />
+        <ButtonQuickAction
+          variantColor="danger"
+          icon={CapUIIcon.Trash}
+          label="Éditer"
+        />
+      </ButtonGroup>
+    </ListCard.Item>
+
+    {/* SubItem */}
+    <ListCard.SubItem>Hello World</ListCard.SubItem>
+  </Flex>
 )
-
-export const WithButtonGroup: Story<ListCardItemProps> = args => (
-  <ListCard.Item {...args}>
-    <Flex direction="column">
-      <ListCard.Item.Type>Step</ListCard.Item.Type>
-      <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-    </Flex>
-
-    <ButtonGroup>
-      <ButtonQuickAction
-        variantColor="primary"
-        icon={CapUIIcon.Pencil}
-        label="Éditer"
-      />
-      <ButtonQuickAction
-        variantColor="danger"
-        icon={CapUIIcon.Trash}
-        label="Éditer"
-      />
-    </ButtonGroup>
-  </ListCard.Item>
-)
+Hierarchy.args = {
+  variantColor: 'hierarchy',
+}

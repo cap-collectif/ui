@@ -467,6 +467,14 @@ const listCardColors = (theme: CapUITheme) => ({
       border: theme.colors.gray.lighter,
       icon: theme.colors.gray.base,
     },
+    hierarchy: {
+      background: {
+        default: theme.colors.white,
+        hover: theme.colors.gray.background,
+      },
+      border: theme.colors.gray.lighter,
+      icon: theme.colors.gray.base,
+    },
   },
 })
 
