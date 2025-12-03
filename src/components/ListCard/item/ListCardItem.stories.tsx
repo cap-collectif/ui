@@ -21,7 +21,7 @@ export default meta
 export const Default: Story<ListCardItemProps> = args => (
   <Flex direction="column" gap="sm">
     {/* Draggable */}
-    <ListCard.Item draggable>
+    <ListCard.Item draggable {...args}>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
     </ListCard.Item>
 
@@ -72,7 +72,7 @@ export const Default: Story<ListCardItemProps> = args => (
 export const Hierarchy: Story<ListCardItemProps> = args => (
   <Flex direction="column" gap="sm" padding="md">
     {/* Draggable */}
-    <ListCard.Item draggable>
+    <ListCard.Item draggable {...args}>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
     </ListCard.Item>
 

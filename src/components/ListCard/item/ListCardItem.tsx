@@ -41,6 +41,8 @@ const ListCardItemInner: React.FC<ListCardItemProps> = ({
 const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
   children,
   draggable = false,
+  variantColor,
+  sx,
   ...rest
 }) => {
   if (draggable) {
@@ -61,11 +63,17 @@ const ListCardItem: React.FC<ListCardItemProps> & SubComponents = ({
           color="listCard.default.icon"
           className="list-card-item-drag-handle"
         />
-        <ListCardItemInner>{children}</ListCardItemInner>
+        <ListCardItemInner sx={sx} variantColor={variantColor}>
+          {children}
+        </ListCardItemInner>
       </Flex>
     )
   }
-  return <ListCardItemInner {...rest}>{children}</ListCardItemInner>
+  return (
+    <ListCardItemInner sx={sx} variantColor={variantColor} {...rest}>
+      {children}
+    </ListCardItemInner>
+  )
 }
 
 ListCardItem.Label = ListCardItemLabel
