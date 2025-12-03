@@ -183,8 +183,9 @@ export enum CapUIIcon {
   MoneyPiggy = 'MONEY_PIGGY',
   RatingStar = 'RATING_STAR',
   ShoppingBasketHeart = 'SHOPPING_BASKET_HEART',
-  Grid = 'GRID',
-  Filter = 'FILTER',
+  Grid = 'Grid',
+  CaretUpO = 'CARET_UP_O',
+  CaretDownO = 'CARET_DOWN_O',
 }
 
 export enum CapUIIconSize {

@@ -1,15 +1,14 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontSize, CapUIFontWeight } from '../../../styles'
+import { CapUIFontSize } from '../../../styles'
 import { PolymorphicBoxProps } from '../../box/Box'
 import { CapUIIcon, CapUIIconSize, Icon } from '../../icon'
 import { Flex } from '../../layout'
-import { headingStyles } from '../../typography'
 import Text from '../../typography/Text'
 import { useAccordion } from '../Accordion.context'
-import { CapUIAccordionColor, CapUIAccordionSize } from '../enums'
 import { useAccordionItem } from '../item/AccordionItem.context'
+import { CapUIAccordionSizeType } from '../types'
 
 type AccordionButtonProps = PolymorphicBoxProps<'button'> & {
   children: React.ReactNode
@@ -17,85 +16,74 @@ type AccordionButtonProps = PolymorphicBoxProps<'button'> & {
 
 const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
-  disabled,
   className,
   ...props
 }) => {
-  const { toggleOpen, open, id } = useAccordionItem()
-  const { color, size } = useAccordion()
+  const { toggleOpen, open, id, styleState } = useAccordionItem()
+  const { color, size, disabled } = useAccordion()
 
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
-  const toggle = React.useCallback(() => {
-    if (disabled) return
+  const toggle = React.useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const target = e.target as HTMLElement
+      // Ignore click on <button>, <a>, ... inside of it
+      if (
+        ['button', 'a', 'input'].includes(target.tagName.toLowerCase()) ||
+        target.closest('label') ||
+        target.closest('button') ||
+        target.closest('a')
+      ) {
+        return
+      }
+      if (disabled) return
 
-    toggleOpen()
-  }, [disabled, toggleOpen])
+      toggleOpen()
+    },
+    [disabled, toggleOpen],
+  )
 
-  const variants: Record<
-    CapUIAccordionColor,
-    { fontWeight: CapUIFontWeight; color: string; px: number; pb: number }
+  const sizes: Record<
+    CapUIAccordionSizeType,
+    { padding: string; fontSize: CapUIFontSize }
   > = {
-    white: {
-      fontWeight: CapUIFontWeight.Bold,
-      color: 'primary.darker',
-      px: 6,
-      pb: 6,
+    sm: {
+      padding: 'xs',
+      fontSize: CapUIFontSize.BodyRegular,
     },
-    gray: {
-      fontWeight: CapUIFontWeight.Normal,
-      color: 'gray.900',
-      px: 6,
-      pb: 6,
-    },
-    transparent: {
-      fontWeight: CapUIFontWeight.Normal,
-      color: 'gray.900',
-      px: 0,
-      pb: 4,
+    md: {
+      padding: 'lg',
+      fontSize: CapUIFontSize.Headline,
     },
   }
 
   return (
     <Flex
-      as="button"
-      type="button"
+      as="summary"
       ref={buttonRef}
       disabled={disabled}
       onClick={toggle}
       align="center"
-      px={variants[color].px}
-      py={variants[color].pb}
-      pb={open && size === CapUIAccordionSize.Sm ? 4 : variants[color].pb}
       width="100%"
-      fontWeight={CapUIFontWeight.Normal}
       className={cn('cap-accordion__button', className)}
       id={`accordion-button-${id}`}
+      color={`accordion.${color}.text.${styleState}`}
       aria-expanded={open}
       aria-disabled={disabled}
       aria-controls={`accordion-panel-${id}`}
+      role="button"
+      {...sizes[size]}
+      sx={{ cursor: 'pointer' }}
       {...props}
     >
       <Icon
         name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
         size={CapUIIconSize.Md}
         mr={2}
-        color={open ? 'primary.base' : 'gray.500'}
+        color={`accordion.${color}.icon.${styleState}`}
       />
 
-      {typeof children === 'string' ? (
-        <Text
-          color={variants[color].color}
-          {...(size === CapUIAccordionSize.Sm
-            ? { fontSize: CapUIFontSize.BodyRegular }
-            : headingStyles.h4)}
-          fontWeight={variants[color].fontWeight}
-        >
-          {children}
-        </Text>
-      ) : (
-        <>{children}</>
-      )}
+      {typeof children === 'string' ? <Text>{children}</Text> : <>{children}</>}
     </Flex>
   )
 }
