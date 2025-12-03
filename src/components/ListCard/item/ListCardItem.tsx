@@ -6,9 +6,12 @@ import ListCardItemLabel from './ListCardItemLabel'
 import { styleListCardItem } from './ListCardItemStyle'
 import ListCardItemType from './ListCardItemType'
 
+export type ListCardItemVariant = 'default' | 'hierarchy'
+
 export interface ListCardItemProps extends FlexProps {
   readonly htmlFor?: string
   readonly draggable?: boolean
+  readonly variantColor?: ListCardItemVariant
 }
 
 type SubComponents = {
@@ -19,6 +22,7 @@ type SubComponents = {
 const ListCardItemInner: React.FC<ListCardItemProps> = ({
   children,
   sx,
+  variantColor = 'default',
   ...rest
 }) => (
   <Flex
@@ -27,7 +31,7 @@ const ListCardItemInner: React.FC<ListCardItemProps> = ({
     align="center"
     justify="space-between"
     width="100%"
-    sx={{ ...styleListCardItem(), ...sx }}
+    sx={{ ...styleListCardItem(variantColor), ...sx }}
     {...rest}
   >
     {children}
