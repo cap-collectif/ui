@@ -19,7 +19,7 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<ListCardItemProps> = args => (
-  <Flex direction="column" gap={'sm'}>
+  <Flex direction="column" gap="sm">
     {/* Draggable */}
     <ListCard.Item draggable>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
@@ -63,20 +63,15 @@ export const Default: Story<ListCardItemProps> = args => (
         />
       </ButtonGroup>
     </ListCard.Item>
+
+    {/* SubItem */}
+    <ListCard.SubItem>Hello World</ListCard.SubItem>
   </Flex>
 )
 
 export const Hierarchy: Story<ListCardItemProps> = args => (
-  <Flex
-    direction="column"
-    gap={'sm'}
-    // backgroundColor={'neutral-gray.200'}
-    padding={'md'}
-  >
+  <Flex direction="column" gap="sm" padding="md">
     {/* Draggable */}
-    <ListCard.Item draggable>
-      <ListCard.Item.Label>Hello world</ListCard.Item.Label>
-    </ListCard.Item>
     <ListCard.Item draggable>
       <ListCard.Item.Label>Hello world</ListCard.Item.Label>
     </ListCard.Item>
