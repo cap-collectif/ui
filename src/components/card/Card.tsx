@@ -10,6 +10,7 @@ export type CardProps = FlexProps & {
   format?: 'horizontal' | 'vertical'
   forcedSize?: CardSize
   isArchived?: boolean
+  hasButton?: boolean
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   format = 'vertical',
   isArchived = false,
   forcedSize,
+  hasButton,
   sx,
   ...props
 }) => {
@@ -43,15 +45,20 @@ export const Card: React.FC<CardProps> = ({
       maxWidth={maxWidth}
       minWidth={minWidth}
       width="100%"
-      sx={{ '.cap-card-primaryInfo a': { textDecoration: 'none' }, ...sx }}
+      sx={{
+        '.cap-card-primaryInfo a': {
+          textDecoration: 'none',
+          '&:hover': { textDecoration: 'underline' },
+        },
+        ...sx,
+      }}
       _hover={{
         boxShadow: 'small',
-        '.cap-card-primaryInfo a': { textDecoration: 'underline' },
       }}
       {...props}
       className={cn('cap-card', className)}
     >
-      <CardContext.Provider value={{ format, size, isArchived }}>
+      <CardContext.Provider value={{ format, size, isArchived, hasButton }}>
         {children}
       </CardContext.Provider>
     </Flex>

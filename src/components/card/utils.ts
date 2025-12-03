@@ -8,10 +8,12 @@ export const CardContext = createContext<{
   format: 'horizontal' | 'vertical'
   size: CardSize
   isArchived: boolean
+  hasButton?: boolean
 }>({
   format: 'vertical',
   size: 'M',
   isArchived: false,
+  hasButton: false,
 })
 
 export const getSize = (format: 'horizontal' | 'vertical', width: number) => {

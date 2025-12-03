@@ -32,7 +32,7 @@ export const CardContent: React.FC<
   rel,
   ...props
 }) => {
-  const { format, size } = React.useContext(CardContext)
+  const { format, size, hasButton } = React.useContext(CardContext)
   const isHorizontal = format === 'horizontal'
 
   const sizes = {
@@ -82,16 +82,20 @@ export const CardContent: React.FC<
               color="text.primary"
               target={target}
               rel={rel}
-              sx={{
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0,
-                },
-              }}
+              sx={
+                !hasButton
+                  ? {
+                      '&:before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
+                      },
+                    }
+                  : null
+              }
             >
               {primaryInfo}
             </Box>

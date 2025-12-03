@@ -11,6 +11,15 @@ import {
   CapUIProvider,
   CapUISpotIcon,
   CapUISpotIconSize,
+  Card,
+  CardContent,
+  CardCover,
+  CardCoverPlaceholder,
+  CardStatusTag,
+  CardTag,
+  CardTagLabel,
+  CardTagLeftIcon,
+  CardTagList,
   Checkbox,
   ColorPicker,
   Flex,
@@ -170,6 +179,41 @@ export const Default: Story<Props> = ({ primary }) => {
             </Box>
           </Box>
         </Flex>
+        <Box mt={4}>
+          <Card>
+            <CardCover>
+              <CardCoverPlaceholder />
+              <CardStatusTag variantColor="success">
+                <CardTagLeftIcon name={CapUIIcon.CommentO} />
+                <CardTagLabel>Inscription Ouverte</CardTagLabel>
+              </CardStatusTag>
+            </CardCover>
+            <CardContent
+              primaryInfo="Primary info"
+              secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
+              href="https://monsuperprojet.com"
+              target="_blank"
+            >
+              <CardTagList>
+                <CardTag srOnlyText="contributions">
+                  <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
+                  <CardTagLabel>623.5 K</CardTagLabel>
+                </CardTag>
+                <CardTag srOnlyText="commentaires">
+                  <CardTagLeftIcon name={CapUIIcon.BubbleO} />
+                  <CardTagLabel>7 000</CardTagLabel>
+                </CardTag>
+                <CardTag
+                  srOnlyText="participants"
+                  tooltipLabel="Ca fait beaucoup de participants wow"
+                >
+                  <CardTagLeftIcon name={CapUIIcon.UserO} />
+                  <CardTagLabel>1.5M</CardTagLabel>
+                </CardTag>
+              </CardTagList>
+            </CardContent>
+          </Card>
+        </Box>
       </CapUIProvider>
     </>
   )
