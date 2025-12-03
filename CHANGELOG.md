@@ -11,6 +11,17 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.9
+
+`2025-12-03`
+
+- 💄 New `ListCard` variant [#595](https://github.com/cap-collectif/ui/pull/595)
+- 🆕 Add new icons [#594](https://github.com/cap-collectif/ui/pull/594)
+- 💄 Fix button style [#593](https://github.com/cap-collectif/ui/pull/593)
+- 🐛 Remove unnecessary classname on Popover [#587](https://github.com/cap-collectif/ui/pull/587)
+- 💄 New `Card` variant [586](https://github.com/cap-collectif/ui/pull/586)
+- 🆕 Add new icons [585](https://github.com/cap-collectif/ui/pull/585)
+
 ## 6.0.8
 
 `2025-11-21`
