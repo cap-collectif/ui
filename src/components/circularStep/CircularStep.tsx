@@ -56,7 +56,6 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
       },
     }
 
-    /* Calculate the percentage */
     const dashOffset = React.useCallback(
       () =>
         config.CIRCLE_DASHARRAY[variantSize] -
@@ -71,6 +70,8 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
         align="center"
         width={config.SIZE[variantSize]}
         height={config.SIZE[variantSize]}
+        minWidth={config.SIZE.small}
+        minHeight={config.SIZE.small}
         position="relative"
         sx={{ ...styles(), ...sx }}
         className={cn(className)}
@@ -105,10 +106,11 @@ const CircularStep: React.FC<CircularStepProps> = React.forwardRef<
             cy="50"
             r={config.CIRCLE_RADIUS[variantSize]}
             id="progress-circle"
-            strokeWidth={config.CIRCLE_STROKE_WIDTH[variantSize]}
             fill="none"
+            strokeWidth={config.CIRCLE_STROKE_WIDTH[variantSize]}
             strokeDasharray={config.CIRCLE_DASHARRAY[variantSize]}
             strokeDashoffset={dashOffset()}
+            stroke-linecap="round"
             transform="rotate(-90 50 50)"
           />
         </Box>
