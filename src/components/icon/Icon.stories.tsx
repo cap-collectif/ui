@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import { useState } from 'react'
 
 import * as Icons from '../../assets/icons'
+import { Box } from '../box'
+import { Input } from '../form/input'
 import { Flex, Grid } from '../layout'
 import { Text } from '../typography'
 import { Icon } from './'
@@ -38,16 +40,36 @@ const meta: Meta<Args> = {
 
 export default meta
 
-export const Default: Story<Args> = ({ color }) => (
-  <Grid gridGap={6} autoFit>
-    {listIconName.map(icon => (
-      <Flex key={icon} direction="column" align="center">
-        <Icon name={icon} size={CapUIIconSize.Lg} color={color} />
-        <Text>{icon}</Text>
+export const Default: Story<Args> = ({ color }) => {
+  const [search, setSearch] = useState('')
+
+  const filteredIcons = listIconName.filter(icon =>
+    icon.toLowerCase().includes(search.toLowerCase()),
+  )
+
+  return (
+    <>
+      <Box mb={4}>
+        <Input
+          type="text"
+          placeholder="Rechercher une icône..."
+          value={search}
+          onChange={e => setSearch((e.target as HTMLInputElement).value)}
+          width={320}
+          maxWidth="100%"
+        />
+      </Box>
+      <Flex gridGap={6} flexWrap="wrap">
+        {filteredIcons.map(icon => (
+          <Flex key={icon} direction="column" align="center">
+            <Icon name={icon} size={CapUIIconSize.Lg} color={color} />
+            <Text>{icon}</Text>
+          </Flex>
+        ))}
       </Flex>
-    ))}
-  </Grid>
-)
+    </>
+  )
+}
 
 export const WithSize: Story<Args> = ({ color }) => (
   <Grid gridGap={6} templateColumns={['1fr 1fr 1fr 1fr']}>

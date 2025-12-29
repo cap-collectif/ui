@@ -187,6 +187,8 @@ export enum CapUIIcon {
   Filter = 'FILTER',
   CaretUpO = 'CARET_UP_O',
   CaretDownO = 'CARET_DOWN_O',
+  Expand = 'EXPAND',
+  Shrink = 'SHRINK',
 }
 
 export enum CapUIIconSize {
