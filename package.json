@@ -17,7 +17,7 @@
     "build": "rm -fr dist ; rollup --config",
     "ts:check": "tsc --noEmit",
     "lint": "eslint src --ext .ts --ext .tsx",
-    "prepare": "run-s husky:install build",
+    "prepare": "husky install || true && run-s build",
     "size-limit:build": "NODE_OPTIONS=--openssl-legacy-provider yarn install --ignore-scripts && NODE_OPTIONS=--openssl-legacy-provider yarn run build",
     "size": "NODE_OPTIONS=--openssl-legacy-provider size-limit",
     "analyze": "NODE_OPTIONS=--openssl-legacy-provider size-limit --why",
