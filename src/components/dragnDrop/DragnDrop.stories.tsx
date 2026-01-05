@@ -1,10 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
-import { DropResult } from 'react-beautiful-dnd'
 
 import { ListCard } from '../ListCard'
 import { Tag } from '../tag'
-import DragnDrop, { DragnDropProps } from './DragnDrop'
+import DragnDrop, { DragnDropProps, DropResult } from './DragnDrop'
 
 const meta: Meta<DragnDropProps> = {
   title: 'Library/DragnDrop',
@@ -55,13 +54,7 @@ export const Default: Story<DragnDropProps> = () => {
   }
   return (
     <DragnDrop onDragEnd={onDragEnd}>
-      <DragnDrop.List
-        droppableId="list"
-        borderRadius="8px"
-        overflow="hidden"
-        border="normal"
-        borderColor="gray.200"
-      >
+      <DragnDrop.List droppableId="list" overflow="hidden">
         {vals.map((val, index) => (
           <DragnDrop.Item draggableId={val.id} index={index} key={val.id}>
             <ListCard.Item draggable>
