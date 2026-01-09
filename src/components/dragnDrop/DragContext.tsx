@@ -4,7 +4,7 @@ export interface DragState {
   draggedIndex: number | null
   draggedHeight: number | null
   itemHeights: Map<number, number>
-  closestEdge: 'top' | 'bottom' | null
+  closestEdge: 'top' | 'bottom' | 'left' | 'right' | null
   targetIndex: number | null
 }
 
@@ -12,7 +12,7 @@ export interface DragContextValue extends DragState {
   registerItem: (index: number, height: number) => void
   setDraggedIndex: (index: number | null) => void
   setDraggedHeight: (height: number | null) => void
-  setClosestEdge: (edge: 'top' | 'bottom' | null) => void
+  setClosestEdge: (edge: 'top' | 'bottom' | 'left' | 'right' | null) => void
   setTargetIndex: (index: number | null) => void
 }
 
