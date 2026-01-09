@@ -68,7 +68,7 @@
     "@types/body-scroll-lock": "^3.1.0",
     "@types/react": "^18",
     "@types/react-color": "^3.0.6",
-    "@types/react-dates": "^21.8.3",
+    "@types/react-dates": "^21.8.6",
     "@types/react-dom": "^18",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-infinite-scroller": "^1.2.2",
