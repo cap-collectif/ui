@@ -1,10 +1,11 @@
-import * as React from 'react'
-import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
 import { extractClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge'
+import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
+import * as React from 'react'
+
 import type { BoxProps } from '../box'
+import { DragContext } from './DragContext'
 import DragnDropItem from './item/DragnDropItem'
 import DragnDropList from './list/DragnDropList'
-import { DragContext } from './DragContext'
 
 export interface DropResult {
   source: {
@@ -19,7 +20,8 @@ export interface DropResult {
   } | null
 }
 
-export interface DragnDropProps extends Omit<BoxProps, 'children' | 'onDragEnd' | 'onDragStart'> {
+export interface DragnDropProps
+  extends Omit<BoxProps, 'children' | 'onDragEnd' | 'onDragStart'> {
   children?: React.ReactNode
   onDragEnd?: (result: DropResult) => void
 }
@@ -33,7 +35,8 @@ const DragnDrop: DragnDropComponent = ({ children, onDragEnd }) => {
   const [draggedIndex, setDraggedIndex] = React.useState<number | null>(null)
   const [draggedHeight, setDraggedHeight] = React.useState<number | null>(null)
   const [targetIndex, setTargetIndex] = React.useState<number | null>(null)
-  const [closestEdge, setClosestEdge] = React.useState<'top' | 'bottom' | null>(null)
+  const [closestEdge, setClosestEdge] =
+    React.useState<'top' | 'bottom' | 'right' | 'left' | null>(null)
   const itemHeightsRef = React.useRef<Map<number, number>>(new Map())
 
   const registerItem = React.useCallback((index: number, height: number) => {
@@ -107,23 +110,24 @@ const DragnDrop: DragnDropComponent = ({ children, onDragEnd }) => {
     })
   }, [onDragEnd])
 
-  const contextValue = React.useMemo(() => ({
-    draggedIndex,
-    draggedHeight,
-    itemHeights: itemHeightsRef.current,
-    closestEdge,
-    targetIndex,
-    registerItem,
-    setDraggedIndex,
-    setDraggedHeight,
-    setClosestEdge,
-    setTargetIndex,
-  }), [draggedIndex, draggedHeight, closestEdge, targetIndex, registerItem])
+  const contextValue = React.useMemo(
+    () => ({
+      draggedIndex,
+      draggedHeight,
+      itemHeights: itemHeightsRef.current,
+      closestEdge,
+      targetIndex,
+      registerItem,
+      setDraggedIndex,
+      setDraggedHeight,
+      setClosestEdge,
+      setTargetIndex,
+    }),
+    [draggedIndex, draggedHeight, closestEdge, targetIndex, registerItem],
+  )
 
   return (
-    <DragContext.Provider value={contextValue}>
-      {children}
-    </DragContext.Provider>
+    <DragContext.Provider value={contextValue}>{children}</DragContext.Provider>
   )
 }
 
