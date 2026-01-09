@@ -104,7 +104,7 @@ const Uploader: React.FC<UploaderProps> = ({
   className,
   onDropRejected,
   onRemove,
-  variantColor,
+  variantColor = 'default',
   ...props
 }) => {
   const { colors } = useTheme()
