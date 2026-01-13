@@ -19,8 +19,14 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   ...props
 }) => {
   const detailRef = React.useRef<HTMLDetailsElement>(null)
-  const { updateAccordions, accordions, color, size, disabled, allowMultiple } =
-    useAccordion()
+  const {
+    updateAccordions,
+    accordions,
+    color,
+    accordionId,
+    disabled,
+    allowMultiple,
+  } = useAccordion()
   const isOpen = accordions[id]
 
   const styleState = disabled ? 'disable' : isOpen ? 'active' : 'default'
@@ -53,7 +59,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
       <Box
         ref={detailRef}
         id={id}
-        name={!allowMultiple ? `accordion-${color}-${size}` : id}
+        name={!allowMultiple ? `accordion-${accordionId}` : id}
         as={'details'}
         bg={`accordion.${color}.background.${styleState}`}
         className={cn('cap-accordion__item', className)}
