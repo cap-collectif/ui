@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-import { CapUIFontSize } from '../../styles'
+import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { SPACING } from '../../styles/theme'
 import { TagVariantColor, VariantSize, VariantType } from './Tag'
 
@@ -19,6 +19,7 @@ export const STYLES: StylesProps = {
       px: 'xs',
       py: 'xxs',
       fontSize: CapUIFontSize.BodySmall,
+      lineHeight: CapUILineHeight.S,
       fontWeight: 400,
       paddingRight: '15%',
     },
@@ -26,6 +27,7 @@ export const STYLES: StylesProps = {
       px: 'xs',
       py: 'xs',
       fontSize: CapUIFontSize.BodyRegular,
+      lineHeight: CapUILineHeight.M,
       fontWeight: 400,
       paddingRight: '15%',
     },

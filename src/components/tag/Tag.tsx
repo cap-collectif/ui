@@ -63,6 +63,7 @@ const TagInner: React.FC<TagInnerProps> = ({
       py={STYLES[variantType][variantSize].py}
       fontSize={STYLES[variantType][variantSize].fontSize}
       fontWeight={STYLES[variantType][variantSize].fontWeight}
+      lineHeight={STYLES[variantType][variantSize].lineHeight}
       as={as}
       {...rest}
     >
