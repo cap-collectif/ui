@@ -14,6 +14,7 @@ export type AccordionContextType = {
   size: CapUIAccordionSizeType
   color: CapUIAccordionColorType
   disabled: boolean
+  accordionId: string
 }
 
 export const AccordionContext = React.createContext<AccordionContextType>({
@@ -24,6 +25,7 @@ export const AccordionContext = React.createContext<AccordionContextType>({
   size: 'md',
   color: 'default',
   disabled: false,
+  accordionId: '',
 })
 
 export const useAccordion = (): AccordionContextType => {

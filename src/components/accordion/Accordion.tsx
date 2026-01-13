@@ -36,6 +36,8 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
     getDefaultAccordion(children, defaultAccordion),
   )
 
+  const accordionId = React.useId()
+
   const context = React.useMemo(
     () => ({
       defaultAccordion,
@@ -46,6 +48,7 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
       size,
       color,
       disabled,
+      accordionId,
     }),
     [
       defaultAccordion,
