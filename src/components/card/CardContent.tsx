@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { CapUIFontSize, CapUILineHeight } from '../../styles'
 import { Box } from '../box'
 import { CapUIIcon } from '../icon'
 import { Flex, FlexProps } from '../layout'
@@ -10,7 +9,12 @@ import { SROnly } from '../sronly'
 import { Tag, TagProps } from '../tag'
 import { TagLabelProps } from '../tag/label/TagLabel'
 import { TagLeftIconProps } from '../tag/leftIcon/TagLeftIcon'
-import { CardContext, getPrimaryInfoSize } from './utils'
+import {
+  CONTENT_STYLES,
+  PRIMARY_TEXT_STYLES,
+  SECONDARY_TEXT_STYLES,
+} from './Card.style'
+import { CardContext } from './utils'
 
 export const CardContent: React.FC<
   FlexProps & {
@@ -32,38 +36,22 @@ export const CardContent: React.FC<
   rel,
   ...props
 }) => {
-  const { format, size, hasButton } = React.useContext(CardContext)
-  const isHorizontal = format === 'horizontal'
+  const { format, variantSize, hasButton } = React.useContext(CardContext)
 
-  const sizes = {
-    S: {
-      justifyContent: null,
-      alignSelf: null,
-      px: isHorizontal ? 0 : 'md',
-      py: isHorizontal ? 0 : 'md',
-    },
-    M: {
-      justifyContent: isHorizontal ? 'center' : null,
-      alignSelf: null,
-      px: 'md',
-      py: isHorizontal ? 'md' : 'lg',
-    },
-    L: {
-      justifyContent: isHorizontal ? 'space-between' : null,
-      alignSelf: isHorizontal ? 'stretch' : null,
-      px: 'md',
-      py: isHorizontal ? 'md' : 'lg',
-    },
-  }
-  const isSmall = size === 'S'
+  const contentStyles = CONTENT_STYLES[format][variantSize]
+  const primaryStyles = PRIMARY_TEXT_STYLES[format][variantSize]
+  const secondaryStyles = SECONDARY_TEXT_STYLES[format][variantSize]
 
   return (
     <Flex
       flexDirection="column"
       gap="md"
-      {...sizes[size]}
-      {...props}
+      px={contentStyles.px}
+      py={contentStyles.py}
+      justifyContent={contentStyles.justifyContent}
+      alignSelf={contentStyles.alignSelf}
       className={cn('cap-card-content', className)}
+      {...props}
     >
       <Flex flexDirection="column" gap="xxs" sx={{ wordBreak: 'break-word' }}>
         <Box
@@ -71,8 +59,8 @@ export const CardContent: React.FC<
           as={primaryInfoTag}
           fontWeight="semibold"
           color="text.primary"
-          fontSize={getPrimaryInfoSize(size, format)}
-          lineHeight={size === 'L' ? CapUILineHeight.L : CapUILineHeight.M}
+          fontSize={primaryStyles.fontSize}
+          lineHeight={primaryStyles.lineHeight}
         >
           {href ? (
             <Box
@@ -94,7 +82,7 @@ export const CardContent: React.FC<
                         left: 0,
                       },
                     }
-                  : null
+                  : undefined
               }
             >
               {primaryInfo}
@@ -103,19 +91,15 @@ export const CardContent: React.FC<
             primaryInfo
           )}
         </Box>
-        {secondaryInfo && !(isHorizontal && isSmall) ? (
+        {secondaryInfo && !secondaryStyles.hidden && (
           <Box
             color="text.secondary"
-            lineHeight={CapUILineHeight.M}
-            fontSize={
-              isSmall && !isHorizontal
-                ? CapUIFontSize.BodyRegular
-                : CapUIFontSize.BodyLarge
-            }
+            fontSize={secondaryStyles.fontSize}
+            lineHeight={secondaryStyles.lineHeight}
           >
             {secondaryInfo}
           </Box>
-        ) : null}
+        )}
       </Flex>
       {children}
     </Flex>
@@ -123,17 +107,23 @@ export const CardContent: React.FC<
 }
 
 export const CardTagList: React.FC<FlexProps> = props => {
-  const { format, size } = React.useContext(CardContext)
+  const { format, variantSize } = React.useContext(CardContext)
+  const isSmallHorizontal = variantSize === 'small' && format === 'horizontal'
 
-  const gap = size === 'S' && format === 'horizontal' ? null : 'md'
-
-  return <Flex gap={gap} alignItems="center" flexWrap="wrap" {...props} />
+  return (
+    <Flex
+      gap={isSmallHorizontal ? undefined : 'md'}
+      alignItems="center"
+      flexWrap="wrap"
+      {...props}
+    />
+  )
 }
 
 export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
-  const { format, size, isArchived } = React.useContext(CardContext)
+  const { format, variantSize, isArchived } = React.useContext(CardContext)
 
-  if (size === 'S' && format === 'horizontal') return null
+  if (variantSize === 'small' && format === 'horizontal') return null
 
   return (
     <Tag
@@ -149,14 +139,12 @@ export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
 
 export const CardTag: React.FC<
   Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText?: string }
-> = ({ children, srOnlyText, ...props }) => {
-  return (
-    <Tag variantColor="infoGray" transparent {...props}>
-      {children}
-      {srOnlyText ? <SROnly> {srOnlyText}</SROnly> : null}
-    </Tag>
-  )
-}
+> = ({ children, srOnlyText, ...props }) => (
+  <Tag variantColor="infoGray" transparent {...props}>
+    {children}
+    {srOnlyText && <SROnly> {srOnlyText}</SROnly>}
+  </Tag>
+)
 
 export const CardTagLabel: React.FC<TagLabelProps> = props => (
   <Tag.Label {...props} />
@@ -165,9 +153,9 @@ export const CardTagLabel: React.FC<TagLabelProps> = props => (
 export const CardRestricted: React.FC<
   Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText: string }
 > = ({ srOnlyText, ...props }) => {
-  const { format, size } = React.useContext(CardContext)
+  const { format, variantSize } = React.useContext(CardContext)
 
-  if (size === 'S' && format === 'horizontal') return null
+  if (variantSize === 'small' && format === 'horizontal') return null
 
   return (
     <Tag

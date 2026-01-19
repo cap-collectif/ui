@@ -4,11 +4,18 @@ import * as React from 'react'
 import useResizeObserver from '../../hooks/useResizeObserver'
 import { pxToRem } from '../../styles/modules/mixins'
 import { Flex, FlexProps } from '../layout'
-import { CardContext, CardSize, getSize } from './utils'
+import { CARD_STYLES } from './Card.style'
+import {
+  CardContext,
+  CardFormat,
+  CardVariantSize,
+  getCardSize,
+  getCardVariantSize,
+} from './utils'
 
 export type CardProps = FlexProps & {
-  format?: 'horizontal' | 'vertical'
-  forcedSize?: CardSize
+  format?: CardFormat
+  variantSize?: CardVariantSize
   isArchived?: boolean
   hasButton?: boolean
 }
@@ -17,33 +24,35 @@ export const Card: React.FC<CardProps> = ({
   children,
   className,
   format = 'vertical',
+  variantSize,
   isArchived = false,
-  forcedSize,
   hasButton,
+  _hover,
   sx,
   ...props
 }) => {
   const [ref, rect] = useResizeObserver()
   const width = rect?.width || 400
-  const flexDirection = format === 'horizontal' ? 'row' : 'column'
-  const alignItems = format === 'horizontal' ? 'center' : null
-  const size = forcedSize || getSize(format, width)
-  const internalPadding = size === 'S' && format === 'horizontal' ? 'xs' : 'md'
-  const maxWidth = pxToRem(format === 'horizontal' ? 1232 : 604)
-  const minWidth = pxToRem(format === 'horizontal' ? 0 : 290)
+
+  const size = getCardSize(format, width, variantSize)
+  const resolvedVariantSize = getCardVariantSize(format, width, variantSize)
+  const styles = CARD_STYLES[format][resolvedVariantSize]
+
+  const isHorizontal = format === 'horizontal'
 
   return (
     <Flex
       ref={ref}
+      className={cn('cap-card', className)}
       position="relative"
-      flexDirection={flexDirection}
-      alignItems={alignItems}
-      gap={format === 'vertical' ? undefined : size === 'S' ? 'xs' : 'lg'}
-      p={internalPadding}
+      flexDirection={isHorizontal ? 'row' : 'column'}
+      alignItems={isHorizontal ? 'center' : undefined}
+      gap={styles.gap}
+      p={styles.p}
       borderRadius="xs"
       backgroundColor="card.default.background"
-      maxWidth={maxWidth}
-      minWidth={minWidth}
+      maxWidth={pxToRem(styles.maxWidth)}
+      minWidth={pxToRem(styles.minWidth)}
       width="100%"
       sx={{
         '.cap-card-primaryInfo a': {
@@ -52,13 +61,18 @@ export const Card: React.FC<CardProps> = ({
         },
         ...sx,
       }}
-      _hover={{
-        boxShadow: 'small',
-      }}
+      _hover={{ boxShadow: 'small', _hover }}
       {...props}
-      className={cn('cap-card', className)}
     >
-      <CardContext.Provider value={{ format, size, isArchived, hasButton }}>
+      <CardContext.Provider
+        value={{
+          format,
+          size,
+          variantSize: resolvedVariantSize,
+          isArchived,
+          hasButton,
+        }}
+      >
         {children}
       </CardContext.Provider>
     </Flex>
