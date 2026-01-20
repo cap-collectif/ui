@@ -49,7 +49,9 @@ export const Card: React.FC<CardProps> = ({
       borderRadius="xs"
       backgroundColor="card.default.background"
       maxWidth={variantSize ? pxToRem(styles.maxWidth) : 'none'}
-      minWidth={variantSize ? pxToRem(styles.minWidth) : 'none'}
+      minWidth={variantSize ? pxToRem(styles.minWidth) : 'inherit'}
+      height={variantSize && styles.height ? pxToRem(styles.height) : 'inherit'}
+      boxShadow="none"
       width="100%"
       sx={{
         '.cap-card-primaryInfo a': {
@@ -58,7 +60,7 @@ export const Card: React.FC<CardProps> = ({
         },
         ...sx,
       }}
-      _hover={{ boxShadow: 'small', _hover }}
+      _hover={{ boxShadow: 'small', ..._hover }}
       {...props}
     >
       <CardContext.Provider

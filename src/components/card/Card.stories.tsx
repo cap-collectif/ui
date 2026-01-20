@@ -248,6 +248,29 @@ export const Layouts: Story<CardProps> = args => {
         fontSize={CapUIFontSize.DisplaySmall}
         fontWeight={CapUIFontWeight.Semibold}
       >
+        VariantSized layout vertical
+      </Box>
+      <Grid
+        gap="lg"
+        templateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+      >
+        <Cards {...args} variantSize="medium" />
+      </Grid>
+      <Box
+        as="h2"
+        fontSize={CapUIFontSize.DisplaySmall}
+        fontWeight={CapUIFontWeight.Semibold}
+      >
+        VariantSized layout horizontal
+      </Box>
+      <Flex gap="md" flexDirection="column">
+        <Cards {...args} variantSize="medium" format="horizontal" />
+      </Flex>
+      <Box
+        as="h2"
+        fontSize={CapUIFontSize.DisplaySmall}
+        fontWeight={CapUIFontWeight.Semibold}
+      >
         Grid layout
       </Box>
       <Grid

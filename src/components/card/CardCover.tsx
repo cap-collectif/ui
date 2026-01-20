@@ -1,16 +1,15 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { Box } from '../box'
+import { Box, BoxProps } from '../box'
 import { EntityPlaceholder } from '../entityPlaceholder'
 import { CapUIIcon } from '../icon'
-import { Flex, FlexProps } from '../layout'
 import { CardContext } from './utils'
 
 const defaultSizes = `(max-width: 320px) 320px,(max-width: 640px) 640px,(max-width: 960px) 960px,(max-width: 1280px) 960px,(max-width: 2560px) 960px,`
 
 export const CardCoverImage: React.FC<
-  FlexProps & {
+  BoxProps & {
     src?: string
     alt?: string
     sizes?: string
@@ -37,11 +36,12 @@ export const CardCoverImage: React.FC<
       alt={alt}
       loading={loading}
       width="100%"
+      height="100%"
       borderRadius="xxs"
       sizes={sizes}
       style={{
-        objectFit: 'cover',
         aspectRatio: '3 / 2',
+        objectFit: 'cover',
         filter: isArchived ? 'grayscale(1)' : undefined,
         opacity: isArchived ? '50%' : undefined,
       }}
@@ -51,7 +51,7 @@ export const CardCoverImage: React.FC<
 }
 
 export const CardCoverPlaceholder: React.FC<
-  FlexProps & { color?: string; icon?: CapUIIcon }
+  BoxProps & { color?: string; icon?: CapUIIcon }
 > = ({ className, color = 'neutral-gray.100', icon, ...props }) => {
   const { variantSize, format, isArchived } = React.useContext(CardContext)
   const smallScale = format === 'horizontal' ? '1' : '2'
@@ -59,6 +59,7 @@ export const CardCoverPlaceholder: React.FC<
     <EntityPlaceholder
       color={isArchived ? 'neutral-gray.base' : color}
       icon={icon}
+      height="100%"
       scale={
         variantSize === 'large'
           ? '4'
@@ -66,31 +67,32 @@ export const CardCoverPlaceholder: React.FC<
           ? '3'
           : smallScale
       }
+      sx={{ aspectRatio: format === 'horizontal' ? 'inherit' : '3 / 2' }}
       {...props}
     />
   )
 }
 
-export const CardCover: React.FC<FlexProps> = ({
+export const CardCover: React.FC<BoxProps> = ({
   children,
   className,
   ...props
 }) => {
   const { format } = React.useContext(CardContext)
 
+  const isHorizontal = format === 'horizontal'
+
   return (
-    <Flex
-      flex="none"
+    <Box
       position="relative"
       borderRadius="xxs"
-      border="1px solid"
-      borderColor="card.default.border"
+      height={isHorizontal ? '100%' : undefined}
+      width={isHorizontal ? '100%' : '100%'}
+      maxWidth={isHorizontal ? '30%' : undefined}
       className={cn('cap-card-cover', className)}
-      width="100%"
-      maxWidth={format === 'horizontal' ? '30%' : null}
       {...props}
     >
       {children}
-    </Flex>
+    </Box>
   )
 }

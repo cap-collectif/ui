@@ -3,9 +3,10 @@ import { CardFormat, CardVariantSize } from './utils'
 
 type CardStyleProps = {
   p: string
-  gap?: string
   maxWidth: number
   minWidth: number
+  height?: number
+  gap?: string
 }
 
 type ContentStyleProps = {
@@ -29,9 +30,9 @@ export const CARD_STYLES: {
     large: { p: 'md', maxWidth: 604, minWidth: 290 },
   },
   horizontal: {
-    small: { p: 'xs', gap: 'xs', maxWidth: 320, minWidth: 0 },
-    medium: { p: 'md', gap: 'lg', maxWidth: 800, minWidth: 0 },
-    large: { p: 'md', gap: 'lg', maxWidth: 1232, minWidth: 0 },
+    small: { p: 'xs', gap: 'xs', maxWidth: 1232, minWidth: 0, height: 82 },
+    medium: { p: 'md', gap: 'lg', maxWidth: 1232, minWidth: 0, height: 224 },
+    large: { p: 'md', gap: 'lg', maxWidth: 1232, minWidth: 0, height: 416 },
   },
 }
 
