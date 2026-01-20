@@ -25,26 +25,19 @@ export const EntityPlaceholder: React.FC<EntityPlaceholderProps> = ({
       overflow="hidden"
       alignItems="center"
       justifyContent="center"
-      className={cn('cap-card-cover-placeholder', className)}
+      backgroundColor={color}
       width="100%"
-      style={{ aspectRatio: '3 / 2' }}
+      height="100%"
+      className={cn('cap-card-cover-placeholder', className)}
       {...props}
     >
       {icon ? (
-        <Flex
-          justify="center"
-          align="center"
-          backgroundColor={color}
-          width="100%"
-          height="100%"
-        >
-          <Icon
-            color="white"
-            name={icon}
-            size={CapUIIconSize.Xxl}
-            sx={{ scale }}
-          />
-        </Flex>
+        <Icon
+          color="white"
+          name={icon}
+          size={CapUIIconSize.Xl}
+          sx={{ scale }}
+        />
       ) : (
         <PlaceholderBackground
           color={color}

@@ -1,41 +1,37 @@
 import { createContext } from 'react'
 
-import { CapUIFontSize } from '../../styles'
+export type CardVariantSize = 'small' | 'medium' | 'large'
+export type CardFormat = 'horizontal' | 'vertical'
 
-export type CardSize = 'M' | 'S' | 'L'
+const BREAKPOINTS = {
+  vertical: { small: 395, medium: 604 },
+  horizontal: { small: 800, medium: 1232 },
+} as const
 
 export const CardContext = createContext<{
-  format: 'horizontal' | 'vertical'
-  size: CardSize
+  format: CardFormat
+  variantSize: CardVariantSize
   isArchived: boolean
   hasButton?: boolean
 }>({
   format: 'vertical',
-  size: 'M',
+  variantSize: 'medium',
   isArchived: false,
   hasButton: false,
 })
 
-export const getSize = (format: 'horizontal' | 'vertical', width: number) => {
-  if (format === 'vertical') {
-    if (width < 395) return 'S'
-    if (width < 604) return 'M'
-    return 'L'
-  }
-  if (width < 800) return 'S'
-  if (width < 1232) return 'M'
-  return 'L'
+const getAutoSize = (format: CardFormat, width: number): CardVariantSize => {
+  const bp = BREAKPOINTS[format]
+  if (width < bp.small) return 'small'
+  if (width < bp.medium) return 'medium'
+  return 'large'
 }
 
-export const getPrimaryInfoSize = (
-  size: CardSize,
-  format: 'horizontal' | 'vertical',
-) => {
-  return size === 'L'
-    ? CapUIFontSize.DisplaySmall
-    : size === 'M'
-    ? CapUIFontSize.Headline
-    : format === 'horizontal'
-    ? CapUIFontSize.BodyRegular
-    : CapUIFontSize.BodyLarge
+export const getCardVariantSize = (
+  format: CardFormat,
+  width: number,
+  variantSize?: CardVariantSize,
+): CardVariantSize => {
+  if (variantSize) return variantSize
+  return getAutoSize(format, width)
 }
