@@ -93,14 +93,15 @@ export const tint = (
       `Invalid input color format. "${inputColor}" should be rgb(a) or hex. It will fallback to "${baseColor}"`,
     )
   }
-  let isRGBformat = baseColor.length > 9 || baseColor.includes('rgb(')
-  isRGBformat = reformat ? !isRGBformat : isRGBformat
+  // Commented because is was unused but keeping it for future reference
+  // let isRGBformat = baseColor.length > 9 || baseColor.includes('rgb(')
+  // isRGBformat = reformat ? !isRGBformat : isRGBformat
 
-  if (toColor) {
-    const isToColorRgbFormat =
-      (toColor && toColor?.length > 9) || toColor?.includes('rgb(')
-    isRGBformat = reformat ? !isToColorRgbFormat : isToColorRgbFormat
-  }
+  // if (toColor) {
+  //   const isToColorRgbFormat =
+  //     (toColor && toColor?.length > 9) || toColor?.includes('rgb(')
+  //   isRGBformat = reformat ? !isToColorRgbFormat : isToColorRgbFormat
+  // }
   const formattedBaseColor = toColorObject(baseColor)
   const isNegativeRatio = clampedRatio < 0
   const toColorDefault = isNegativeRatio ? black : white
