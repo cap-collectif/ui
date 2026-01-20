@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import { pxToRem } from '../../styles/modules/mixins'
 import { Box } from '../box'
 import { EntityPlaceholder } from '../entityPlaceholder'
 import { CapUIIcon } from '../icon'
@@ -54,13 +53,19 @@ export const CardCoverImage: React.FC<
 export const CardCoverPlaceholder: React.FC<
   FlexProps & { color?: string; icon?: CapUIIcon }
 > = ({ className, color = 'neutral-gray.100', icon, ...props }) => {
-  const { size, format, isArchived } = React.useContext(CardContext)
+  const { variantSize, format, isArchived } = React.useContext(CardContext)
   const smallScale = format === 'horizontal' ? '1' : '2'
   return (
     <EntityPlaceholder
       color={isArchived ? 'neutral-gray.base' : color}
       icon={icon}
-      scale={size === 'L' ? '4' : size === 'M' ? '3' : smallScale}
+      scale={
+        variantSize === 'large'
+          ? '4'
+          : variantSize === 'medium'
+          ? '3'
+          : smallScale
+      }
       {...props}
     />
   )
@@ -71,9 +76,7 @@ export const CardCover: React.FC<FlexProps> = ({
   className,
   ...props
 }) => {
-  const { size, format } = React.useContext(CardContext)
-
-  const width = pxToRem(size === 'S' ? 100 : size === 'M' ? 288 : 576)
+  const { format } = React.useContext(CardContext)
 
   return (
     <Flex
@@ -83,7 +86,8 @@ export const CardCover: React.FC<FlexProps> = ({
       border="1px solid"
       borderColor="card.default.border"
       className={cn('cap-card-cover', className)}
-      width={format === 'horizontal' ? width : null}
+      width="100%"
+      maxWidth={format === 'horizontal' ? '30%' : null}
       {...props}
     >
       {children}

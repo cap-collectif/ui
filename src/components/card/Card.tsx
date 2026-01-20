@@ -9,7 +9,6 @@ import {
   CardContext,
   CardFormat,
   CardVariantSize,
-  getCardSize,
   getCardVariantSize,
 } from './utils'
 
@@ -33,8 +32,6 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const [ref, rect] = useResizeObserver()
   const width = rect?.width || 400
-
-  const size = getCardSize(format, width, variantSize)
   const resolvedVariantSize = getCardVariantSize(format, width, variantSize)
   const styles = CARD_STYLES[format][resolvedVariantSize]
 
@@ -51,8 +48,8 @@ export const Card: React.FC<CardProps> = ({
       p={styles.p}
       borderRadius="xs"
       backgroundColor="card.default.background"
-      maxWidth={pxToRem(styles.maxWidth)}
-      minWidth={pxToRem(styles.minWidth)}
+      maxWidth={variantSize ? pxToRem(styles.maxWidth) : 'none'}
+      minWidth={variantSize ? pxToRem(styles.minWidth) : 'none'}
       width="100%"
       sx={{
         '.cap-card-primaryInfo a': {
@@ -67,7 +64,6 @@ export const Card: React.FC<CardProps> = ({
       <CardContext.Provider
         value={{
           format,
-          size,
           variantSize: resolvedVariantSize,
           isArchived,
           hasButton,

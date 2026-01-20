@@ -43,6 +43,58 @@ const meta: Meta<CardProps> = {
 
 export default meta
 
+const longText = `Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C'est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d'Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`
+
+const defaultCard = (
+  args: CardProps,
+  options?: { hasButton?: boolean; longText?: boolean },
+) => (
+  <Card {...args} hasButton={options?.hasButton}>
+    <CardCover>
+      <CardCoverImage src={largeThumbnail} />
+      <CardStatusTag variantColor="success">
+        <CardTagLeftIcon name={CapUIIcon.CommentO} />
+        <CardTagLabel>Inscription Ouverte</CardTagLabel>
+      </CardStatusTag>
+    </CardCover>
+    <CardContent
+      primaryInfo="Primary info"
+      secondaryInfo={
+        options?.longText
+          ? longText
+          : `Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres.`
+      }
+      href="https://monsuperprojet.com"
+      target="_blank"
+    >
+      {options?.hasButton && (
+        <Box>
+          <Button position="relative" zIndex={1}>
+            Like me
+          </Button>
+        </Box>
+      )}
+      <CardTagList>
+        <CardTag srOnlyText="contributions">
+          <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
+          <CardTagLabel>623.5 K</CardTagLabel>
+        </CardTag>
+        <CardTag srOnlyText="commentaires">
+          <CardTagLeftIcon name={CapUIIcon.BubbleO} />
+          <CardTagLabel>7 000</CardTagLabel>
+        </CardTag>
+        <CardTag
+          srOnlyText="participants"
+          tooltipLabel="Ca fait beaucoup de participants wow"
+        >
+          <CardTagLeftIcon name={CapUIIcon.UserO} />
+          <CardTagLabel>1.5M</CardTagLabel>
+        </CardTag>
+      </CardTagList>
+    </CardContent>
+  </Card>
+)
+
 export const Default: Story<CardProps> = args => (
   <Flex gap="md" flexDirection="column">
     <Box
@@ -53,223 +105,25 @@ export const Default: Story<CardProps> = args => (
       Default
     </Box>
     <Flex gap="md">
-      <Card {...args} variantSize="large">
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
-      <Card {...args} variantSize="large" hasButton>
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <Box>
-            <Button position="relative" zIndex={1}>
-              Like me
-            </Button>
-          </Box>
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
+      {defaultCard({ ...args, variantSize: 'large' }, { longText: true })}
+      {defaultCard(
+        { ...args, variantSize: 'large' },
+        { hasButton: true, longText: false },
+      )}
     </Flex>
     <Flex gap="md">
-      <Card {...args} variantSize="medium">
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
-      <Card {...args} variantSize="medium" hasButton>
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <Box>
-            <Button position="relative" zIndex={1}>
-              Like me
-            </Button>
-          </Box>
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
+      {defaultCard({ ...args, variantSize: 'medium' }, { longText: true })}
+      {defaultCard(
+        { ...args, variantSize: 'medium' },
+        { hasButton: true, longText: false },
+      )}
     </Flex>
     <Flex gap="md">
-      <Card {...args} variantSize="small">
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
-      <Card {...args} variantSize="small" hasButton>
-        <CardCover>
-          <CardCoverImage src={largeThumbnail} />
-          <CardStatusTag variantColor="success">
-            <CardTagLeftIcon name={CapUIIcon.CommentO} />
-            <CardTagLabel>Inscription Ouverte</CardTagLabel>
-          </CardStatusTag>
-        </CardCover>
-        <CardContent
-          primaryInfo="Primary info"
-          secondaryInfo={`Le Parc de Plaisance a besoin de se réinventer pour mieux répondre aux attentes des habitantes et habitants et devenir un véritable lieu de rencontres. C’est pourquoi, dans le cadre du Projet global Nouveau Plaisance, Nantes Métropole et la ville d’Orvault lancent une démarche de dialogue citoyen, où chaque voix compte. Ce projet se nourrit des idées, des expériences et des rêves des habitantes et habitants pour créer un parc plus adapté, plus vivant, plus accessible.`}
-          href="https://monsuperprojet.com"
-          target="_blank"
-        >
-          <Box>
-            <Button position="relative" zIndex={1}>
-              Like me
-            </Button>
-          </Box>
-          <CardTagList>
-            <CardTag srOnlyText="contributions">
-              <CardTagLeftIcon name={CapUIIcon.ThumbUpO} />
-              <CardTagLabel>623.5 K</CardTagLabel>
-            </CardTag>
-            <CardTag srOnlyText="commentaires">
-              <CardTagLeftIcon name={CapUIIcon.BubbleO} />
-              <CardTagLabel>7 000</CardTagLabel>
-            </CardTag>
-            <CardTag
-              srOnlyText="participants"
-              tooltipLabel="Ca fait beaucoup de participants wow"
-            >
-              <CardTagLeftIcon name={CapUIIcon.UserO} />
-              <CardTagLabel>1.5M</CardTagLabel>
-            </CardTag>
-          </CardTagList>
-        </CardContent>
-      </Card>
+      {defaultCard({ ...args, variantSize: 'small' }, { longText: true })}
+      {defaultCard(
+        { ...args, variantSize: 'small' },
+        { hasButton: true, longText: false },
+      )}
     </Flex>
     <Box
       as="h2"

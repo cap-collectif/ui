@@ -140,7 +140,7 @@ export const CardStatusTag: React.FC<Omit<TagProps, 'onRemove'>> = props => {
 export const CardTag: React.FC<
   Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText?: string }
 > = ({ children, srOnlyText, ...props }) => (
-  <Tag variantColor="infoGray" transparent {...props}>
+  <Tag variantColor="infoGray" transparent padding={0} {...props}>
     {children}
     {srOnlyText && <SROnly> {srOnlyText}</SROnly>}
   </Tag>
