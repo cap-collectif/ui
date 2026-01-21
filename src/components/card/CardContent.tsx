@@ -57,10 +57,10 @@ export const CardContent: React.FC<
         <Box
           className="cap-card-primaryInfo"
           as={primaryInfoTag}
-          fontWeight="semibold"
           color="text.primary"
           fontSize={primaryStyles.fontSize}
           lineHeight={primaryStyles.lineHeight}
+          fontWeight={primaryStyles.fontWeight}
         >
           {href ? (
             <Box
