@@ -1,4 +1,4 @@
-import { CapUIFontSize, CapUILineHeight } from '../../styles'
+import { CapUIFontSize, CapUIFontWeight, CapUILineHeight } from '../../styles'
 import { CardFormat, CardVariantSize } from './utils'
 
 type CardStyleProps = {
@@ -17,8 +17,9 @@ type ContentStyleProps = {
 }
 
 type TextStyleProps = {
-  fontSize: string
-  lineHeight: string
+  fontSize: CapUIFontSize
+  lineHeight: CapUILineHeight
+  fontWeight?: CapUIFontWeight
 }
 
 export const CARD_STYLES: {
@@ -85,22 +86,37 @@ export const PRIMARY_TEXT_STYLES: {
   [format in CardFormat]: { [size in CardVariantSize]: TextStyleProps }
 } = {
   vertical: {
-    small: { fontSize: CapUIFontSize.BodyLarge, lineHeight: CapUILineHeight.M },
-    medium: { fontSize: CapUIFontSize.Headline, lineHeight: CapUILineHeight.M },
+    small: {
+      fontSize: CapUIFontSize.BodyLarge,
+      lineHeight: CapUILineHeight.M,
+      fontWeight: CapUIFontWeight.Semibold,
+    },
+    medium: {
+      fontSize: CapUIFontSize.Headline,
+      lineHeight: CapUILineHeight.M,
+      fontWeight: CapUIFontWeight.Semibold,
+    },
     large: {
       fontSize: CapUIFontSize.DisplaySmall,
       lineHeight: CapUILineHeight.L,
+      fontWeight: CapUIFontWeight.Normal,
     },
   },
   horizontal: {
     small: {
       fontSize: CapUIFontSize.BodyRegular,
       lineHeight: CapUILineHeight.M,
+      fontWeight: CapUIFontWeight.Semibold,
     },
-    medium: { fontSize: CapUIFontSize.Headline, lineHeight: CapUILineHeight.M },
+    medium: {
+      fontSize: CapUIFontSize.Headline,
+      lineHeight: CapUILineHeight.M,
+      fontWeight: CapUIFontWeight.Semibold,
+    },
     large: {
       fontSize: CapUIFontSize.DisplaySmall,
       lineHeight: CapUILineHeight.L,
+      fontWeight: CapUIFontWeight.Normal,
     },
   },
 }
