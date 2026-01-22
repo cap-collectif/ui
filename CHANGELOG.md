@@ -11,6 +11,20 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.10
+
+`2026-01-22`
+
+- 💄 `CircularStep` component fix & improvement [#599](https://github.com/cap-collectif/ui/pull/599) &[#610](https://github.com/cap-collectif/ui/pull/610)
+- 🆕 Add new icons [#600](https://github.com/cap-collectif/ui/pull/600)
+- 🛠 Drag & drop lib replacement [#601](https://github.com/cap-collectif/ui/pull/601)
+- 🆕 Upgrade dependencies [#592](https://github.com/cap-collectif/ui/pull/592) & [#591](https://github.com/cap-collectif/ui/pull/592)
+- 💄 `Uploader` improvement [#604](https://github.com/cap-collectif/ui/pull/604)
+- 💄 `Tag` improvement [#605](https://github.com/cap-collectif/ui/pull/605)
+- 💄 `Accordion` improvement [#606](https://github.com/cap-collectif/ui/pull/606)
+- 💄 `Card` improvement [#608](https://github.com/cap-collectif/ui/pull/608) & [#609](https://github.com/cap-collectif/ui/pull/609)
+
+
 ## 6.0.9
 
 `2025-12-03`
@@ -26,7 +40,7 @@ To better understand the changelog, here are some legends we use:
 
 `2025-11-21`
 
-- 🆕 Add new icons [#583](https://github.com/cap-collectif/ui/pull/583) && [#581](https://github.com/cap-collectif/ui/pull/581)
+- 🆕 Add new icons [#583](https://github.com/cap-collectif/ui/pull/583) & [#581](https://github.com/cap-collectif/ui/pull/581)
 - 🆕 CI Chromatic build improvment [#580](https://github.com/cap-collectif/ui/pull/580)
 - 🆕 Upgrade dependencies [#580](https://github.com/cap-collectif/ui/pull/580)
 
