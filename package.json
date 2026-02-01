@@ -123,7 +123,7 @@
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "deepmerge": "^4.3.1",
     "framer-motion": "^4.1.17",
     "input-otp": "^1.2.4",
