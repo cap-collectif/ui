@@ -90,7 +90,7 @@ const Template: Story<AccordionProps> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  defaultAccordion: 'volet-default',
+  defaultAccordion: ['volet-default'],
   allowMultiple: true,
 }
 

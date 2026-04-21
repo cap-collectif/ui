@@ -18,7 +18,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   className,
   ...props
 }) => {
-  const detailRef = React.useRef<HTMLDetailsElement>(null)
   const {
     updateAccordions,
     accordions,
@@ -50,15 +49,11 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     },
   }
 
-  React.useEffect(() => {
-    if (detailRef.current && isOpen) detailRef.current.open = true
-  }, [])
-
   return (
     <AccordionItemContext.Provider value={context}>
       <Box
-        ref={detailRef}
         id={id}
+        open={isOpen}
         name={!allowMultiple ? `accordion-${accordionId}` : id}
         as={'details'}
         bg={`accordion.${color}.background.${styleState}`}
