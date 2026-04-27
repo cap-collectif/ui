@@ -135,3 +135,35 @@ VariantWhite.parameters = {
     default: 'undefined',
   },
 }
+
+export const IconRight: Story<AccordionProps> = args => (
+  <>
+    <Accordion {...args}>
+      <Accordion.Item id="volet-1">
+        <Accordion.Button>Volet 1</Accordion.Button>
+        <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item id="volet-2">
+        <Accordion.Button>Volet 2</Accordion.Button>
+        <Accordion.Panel>Contenu du volet 2</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item id="volet-3">
+        <Accordion.Button>Volet 3</Accordion.Button>
+        <Accordion.Panel>Contenu du volet 3</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+    <Accordion {...args} mt={8} size="sm">
+      <Accordion.Item id="volet-sm-1">
+        <Accordion.Button>Volet 1</Accordion.Button>
+        <Accordion.Panel>Contenu du volet 1</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item id="volet-sm-2">
+        <Accordion.Button>Volet 2</Accordion.Button>
+        <Accordion.Panel>Contenu du volet 2</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  </>
+)
+IconRight.args = {
+  iconPosition: 'right',
+}

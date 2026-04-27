@@ -20,7 +20,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   ...props
 }) => {
   const { toggleOpen, open, id, styleState } = useAccordionItem()
-  const { color, size, disabled } = useAccordion()
+  const { color, size, disabled, iconPosition } = useAccordion()
 
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
@@ -76,14 +76,25 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
       sx={{ cursor: 'pointer' }}
       {...props}
     >
-      <Icon
-        name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
-        size={CapUIIconSize.Md}
-        mr={2}
-        color={`accordion.${color}.icon.${styleState}`}
-      />
+      {iconPosition === 'left' && (
+        <Icon
+          name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
+          size={CapUIIconSize.Md}
+          mr={2}
+          color={`accordion.${color}.icon.${styleState}`}
+        />
+      )}
 
       {typeof children === 'string' ? <Text>{children}</Text> : <>{children}</>}
+
+      {iconPosition === 'right' && (
+        <Icon
+          name={open ? CapUIIcon.ArrowDown : CapUIIcon.ArrowRight}
+          size={CapUIIconSize.Md}
+          ml="auto"
+          color={`accordion.${color}.icon.${styleState}`}
+        />
+      )}
     </Flex>
   )
 }

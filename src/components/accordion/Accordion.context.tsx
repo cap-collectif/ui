@@ -1,6 +1,10 @@
 import * as React from 'react'
 
-import { CapUIAccordionSizeType, CapUIAccordionColorType } from './types'
+import {
+  CapUIAccordionSizeType,
+  CapUIAccordionColorType,
+  CapUIAccordionIconPositionType,
+} from './types'
 
 export type Accordions = {
   [key: string]: boolean
@@ -15,6 +19,7 @@ export type AccordionContextType = {
   color: CapUIAccordionColorType
   disabled: boolean
   accordionId: string
+  iconPosition: CapUIAccordionIconPositionType
 }
 
 export const AccordionContext = React.createContext<AccordionContextType>({
@@ -26,6 +31,7 @@ export const AccordionContext = React.createContext<AccordionContextType>({
   color: 'default',
   disabled: false,
   accordionId: '',
+  iconPosition: 'left',
 })
 
 export const useAccordion = (): AccordionContextType => {
