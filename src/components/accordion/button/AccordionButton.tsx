@@ -26,6 +26,7 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
 
   const toggle = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      e.preventDefault()
       const target = e.target as HTMLElement
       // Ignore click on <button>, <a>, ... inside of it
       if (
