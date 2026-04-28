@@ -11,6 +11,16 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+
+## 6.0.11
+
+`2026-04-28`
+
+- 🐛 `Accordion` fix opening in some edge cases [#617](https://github.com/cap-collectif/ui/pull/617)
+- 🆕 `Accordion` allow choosing toggle icon side [#617](https://github.com/cap-collectif/ui/pull/617)
+- 🆕 Add new icon `multi-user` [#617](https://github.com/cap-collectif/ui/pull/617)
+
+
 ## 6.0.10
 
 `2026-01-22`
