@@ -9,3 +9,10 @@ export const CapUIAccordionColor = {
   white: 'white',
 } as const
 export type CapUIAccordionColorType = keyof typeof CapUIAccordionColor
+
+export const CapUIAccordionIconPosition = {
+  left: 'left',
+  right: 'right',
+} as const
+export type CapUIAccordionIconPositionType =
+  keyof typeof CapUIAccordionIconPosition

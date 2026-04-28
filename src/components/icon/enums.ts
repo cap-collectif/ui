@@ -189,6 +189,7 @@ export enum CapUIIcon {
   CaretDownO = 'CARET_DOWN_O',
   Expand = 'EXPAND',
   Shrink = 'SHRINK',
+  MultiUser = 'MULTI_USER',
 }
 
 export enum CapUIIconSize {

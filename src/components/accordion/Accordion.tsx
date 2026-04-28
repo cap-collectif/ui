@@ -21,6 +21,7 @@ export interface AccordionProps extends FlexProps {
   readonly size?: AccordionContextType['size']
   readonly color?: AccordionContextType['color']
   readonly disabled?: AccordionContextType['disabled']
+  readonly iconPosition?: AccordionContextType['iconPosition']
 }
 
 export const Accordion: React.FC<AccordionProps> & SubComponents = ({
@@ -30,6 +31,7 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
   size = 'md',
   color = 'default',
   disabled = false,
+  iconPosition = 'left',
   ...props
 }) => {
   const [accordions, updateAccordions] = React.useState(
@@ -49,6 +51,7 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
       color,
       disabled,
       accordionId,
+      iconPosition,
     }),
     [
       defaultAccordion,
@@ -58,6 +61,7 @@ export const Accordion: React.FC<AccordionProps> & SubComponents = ({
       size,
       color,
       disabled,
+      iconPosition,
     ],
   )
 
