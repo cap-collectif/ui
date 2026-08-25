@@ -138,6 +138,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
 }: ModalProps) => {
   const isMobile = useIsMobile()
   const isControlled = controlledShow !== undefined
+  const firstMount = React.useRef(true)
 
   const dialogStore = useDialogStore({ open: controlledShow })
 
@@ -156,8 +157,12 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   }, [isControlled, controlledShow, dialogStore])
 
   React.useEffect(() => {
-    if (modalShow) onOpen?.()
-    else onClose?.()
+    if (modalShow) {
+      onOpen?.()
+      firstMount.current = false
+    } else if (!firstMount.current) {
+      onClose?.()
+    }
   }, [modalShow])
 
   const context = React.useMemo<ModalContextType>(
@@ -165,11 +170,11 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
       hide: dialogStore.hide,
       show: dialogStore.show,
       toggle: dialogStore.toggle,
-      visible: controlledShow ?? false,
+      visible: modalShow,
       fullSizeOnMobile,
       hideCloseButton,
     }),
-    [dialogStore, hideCloseButton, fullSizeOnMobile],
+    [dialogStore, fullSizeOnMobile, hideCloseButton, modalShow],
   )
 
   return (
@@ -199,12 +204,19 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         <Dialog
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledby}
-          open={forceModalDialogToFalse ? false : alwaysOpenInPortal}
           store={dialogStore}
           portal={false}
+          modal={
+            forceModalDialogToFalse
+              ? false
+              : alwaysOpenInPortal
+              ? true
+              : !isMobile
+          }
           hideOnInteractOutside={hideOnClickOutside}
           hideOnEscape={hideOnEsc}
           preventBodyScroll={preventBodyScroll}
+          unmountOnHide
           style={{ opacity: 0, transition: 'all 0.2s' }}
         >
           <Flex
