@@ -7,11 +7,10 @@ import {
 } from '@ariakit/react'
 import cn from 'classnames'
 import * as React from 'react'
-import styled, { IStyledComponent } from 'styled-components'
+import styled, { createGlobalStyle, IStyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
-import { Box } from '../box'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { ModalContextType } from './Modal.context'
 import { Provider } from './Modal.context'
@@ -113,6 +112,16 @@ const ModalInner = styled(Flex)
   }),
 ) as IStyledComponent<any, any>
 
+const ModalAnimation = createGlobalStyle`
+  .cap-modal-dialog[data-enter] {
+    opacity: 1 !important;
+  }
+
+  .cap-modal-dialog[data-enter] .cap-modal {
+    transform: translateY(0) !important;
+  }
+`
+
 export const Modal: React.FC<ModalProps> & SubComponents = ({
   children,
   disclosure,
@@ -179,6 +188,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
 
   return (
     <Provider context={context}>
+      <ModalAnimation />
       {disclosure && (
         <DialogDisclosure
           store={dialogStore}
@@ -188,37 +198,25 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
           }
         />
       )}
-      <Box
-        sx={{
-          '[data-dialog]': {
-            '&[data-enter]': {
-              opacity: '1 !important',
-
-              '.cap-modal': {
-                transform: 'translateY(0)!important',
-              },
-            },
-          },
-        }}
+      <Dialog
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        className="cap-modal-dialog"
+        store={dialogStore}
+        portal={alwaysOpenInPortal}
+        modal={
+          forceModalDialogToFalse
+            ? false
+            : alwaysOpenInPortal
+            ? true
+            : !isMobile
+        }
+        hideOnInteractOutside={hideOnClickOutside}
+        hideOnEscape={hideOnEsc}
+        preventBodyScroll={preventBodyScroll}
+        unmountOnHide
+        style={{ opacity: 0, transition: 'all 0.2s' }}
       >
-        <Dialog
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledby}
-          store={dialogStore}
-          portal={alwaysOpenInPortal}
-          modal={
-            forceModalDialogToFalse
-              ? false
-              : alwaysOpenInPortal
-              ? true
-              : !isMobile
-          }
-          hideOnInteractOutside={hideOnClickOutside}
-          hideOnEscape={hideOnEsc}
-          preventBodyScroll={preventBodyScroll}
-          unmountOnHide
-          style={{ opacity: 0, transition: 'all 0.2s' }}
-        >
           <Flex
             bg={noBackdrop ? 'transparent' : 'modal.default.overlay'}
             overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
@@ -263,8 +261,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
               {typeof children === 'function' ? children(context) : children}
             </ModalInner>
           </Flex>
-        </Dialog>
-      </Box>
+      </Dialog>
     </Provider>
   )
 }
