@@ -205,7 +205,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledby}
           store={dialogStore}
-          portal={false}
+          portal={alwaysOpenInPortal}
           modal={
             forceModalDialogToFalse
               ? false
