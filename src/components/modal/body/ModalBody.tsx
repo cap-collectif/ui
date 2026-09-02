@@ -14,8 +14,8 @@ export const ModalBody = ({ children, className, ...rest }: ModalBodyProps) => {
   return (
     <Flex
       as="div"
-      p={isMobile ? 4 : 6}
-      pt={isMobile ? 0 : 6}
+      p={isMobile ? 'md' : 'lg'}
+      pt={isMobile ? 0 : 'lg'}
       height="100%"
       direction="column"
       className={cn('cap-modal__body', className)}

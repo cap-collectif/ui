@@ -51,21 +51,20 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
       if (isHeading && !hasLabel)
         // @ts-ignore cloning with custom props
         return React.cloneElement(child, { id: MODAL_TITLE_ARIA_DESCRIBED_BY })
-      // @ts-ignore cloning with custom props
-      if (isHeading && hasLabel) return React.cloneElement(child, { as: 'h3' })
     }
     return child
   })
 
   return (
     <Flex
-      px={isMobile ? 4 : 6}
-      py={4}
+      px={isMobile ? 'md' : 'lg'}
+      py="md"
+      gap="lg"
       align="center"
       justify="space-between"
       borderBottom="normal"
       boxShadow={isMobile && fullSizeOnMobile ? 'small' : 'none'}
-      borderColor={isMobile ? 'transparent' : 'gray.200'}
+      borderColor={isMobile ? 'transparent' : 'modal.default.border'}
       className={cn('cap-modal__header', className)}
       flexShrink={0}
       borderBottomLeftRadius={
@@ -79,11 +78,10 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
       <Flex
         direction="column"
         flex={1}
-        spacing={2}
         sx={{
           'h1, h2:not(.cap-modal__header--label), h3, h4, h5, h6': {
             ...headingStyles.h4,
-            color: 'primary.darker',
+            color: 'text.secondary',
             fontWeight: CapUIFontWeight.Semibold,
             fontFamily: CapUIFontFamily.Body,
           },
@@ -98,7 +96,7 @@ const ModalHeader: React.FC<ModalHeaderProps> & SubComponents = ({
           ref={ref}
           onClick={hide}
           aria-describedby={MODAL_TITLE_ARIA_DESCRIBED_BY}
-          color="gray.500"
+          color="modal.default.icon"
         >
           <Icon
             name={CapUIIcon.CrossO}

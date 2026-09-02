@@ -46,7 +46,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> & SubComponents = ({
         setDirection(DIRECTION.RIGHT)
       },
     }),
-    [currentStep, direction, children],
+    [currentStep, direction, children, smoothWorkflow],
   )
 
   const handleOnClose = () => {
