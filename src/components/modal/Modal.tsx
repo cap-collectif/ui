@@ -11,6 +11,7 @@ import styled, { createGlobalStyle, IStyledComponent } from 'styled-components'
 import { variant as variantStyle } from 'styled-system'
 
 import { useIsMobile } from '../../hooks/useDeviceDetect'
+import { ZINDEX } from '../../styles/theme'
 import { Flex, FlexProps } from '../layout/Flex'
 import type { ModalContextType } from './Modal.context'
 import { Provider } from './Modal.context'
@@ -148,6 +149,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
   const isMobile = useIsMobile()
   const isControlled = controlledShow !== undefined
   const firstMount = React.useRef(true)
+  const dialogZIndex = typeof zIndex === 'number' ? zIndex : ZINDEX.overlay
 
   const dialogStore = useDialogStore({ open: controlledShow })
 
@@ -203,7 +205,7 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         aria-labelledby={ariaLabelledby}
         className="cap-modal-dialog"
         store={dialogStore}
-        portal={alwaysOpenInPortal}
+        portal={alwaysOpenInPortal ?? false}
         modal={
           forceModalDialogToFalse
             ? false
@@ -215,7 +217,12 @@ export const Modal: React.FC<ModalProps> & SubComponents = ({
         hideOnEscape={hideOnEsc}
         preventBodyScroll={preventBodyScroll}
         unmountOnHide
-        style={{ opacity: 0, transition: 'all 0.2s' }}
+        style={{
+          opacity: 0,
+          transition: 'all 0.2s',
+          position: 'relative',
+          zIndex: dialogZIndex,
+        }}
       >
           <Flex
             bg={noBackdrop ? 'transparent' : 'modal.default.overlay'}
