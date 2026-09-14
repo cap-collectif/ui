@@ -11,6 +11,11 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.0.12
+
+`2026-09-14`
+
+- 🛠 Update `Modal` and `MultiStepModal` with Design System tokens and Ariakit [#555](https://github.com/cap-collectif/ui/pull/555)
 
 ## 6.0.11
 
