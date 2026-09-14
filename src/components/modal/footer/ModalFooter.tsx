@@ -29,8 +29,8 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
     <Flex
       as="footer"
       position="relative"
-      px={isMobile ? 4 : 6}
-      py={4}
+      px={isMobile ? 'md' : 'lg'}
+      py="md"
       sx={
         isMobile
           ? {
@@ -44,7 +44,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       align="center"
       justify={isMobile ? 'space-around' : 'flex-end'}
       borderTop={isMobile ? 'none' : 'normal'}
-      borderColor="gray.200"
+      borderColor="modal.default.border"
       boxShadow={isMobile && fullSizeOnMobile ? 'small' : 'none'}
       borderTopLeftRadius={
         isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
@@ -52,7 +52,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       borderTopRightRadius={
         isMobile && fullSizeOnMobile ? CapUIRadius.Popover : 'unset'
       }
-      spacing={6}
+      spacing="lg"
       flexShrink={0}
       className={cn('cap-modal__footer', className)}
       {...rest}
@@ -60,7 +60,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
       {!isMobile && info && (
         <Button
           position="absolute"
-          left={6}
+          left="lg"
           as="a"
           target="_blank"
           href={info.url}

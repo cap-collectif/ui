@@ -15,7 +15,6 @@ const MultiStepModalHeader: React.FC<MultiStepModalHeaderProps> &
   return (
     <ModalHeader position="relative" border="none" {...rest}>
       {children}
-
       <MultiStepModalProgressBar />
     </ModalHeader>
   )

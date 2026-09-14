@@ -625,6 +625,21 @@ const accordionColors = (theme: CapUITheme) => ({
   },
 })
 
+const modalColors = (theme: CapUITheme) => ({
+  modal: {
+    default: {
+      background: theme.colors.white,
+      border: theme.colors.gray.lighter,
+      icon: theme.colors.gray.dark,
+      overlay: `${theme.colors.black}32`,
+      step: {
+        background: theme.colors.primary.lighter,
+        progress: theme.colors.primary.base,
+      },
+    },
+  },
+})
+
 const getColors = (theme: CapUITheme) => ({
   ...buttonColors(theme),
   ...toastColors(theme),
@@ -645,6 +660,7 @@ const getColors = (theme: CapUITheme) => ({
   ...checkboxColors(theme),
   ...switchColors(theme),
   ...accordionColors(theme),
+  ...modalColors(theme),
 })
 
 export type ExtendedColors = ReturnType<typeof getColors>
