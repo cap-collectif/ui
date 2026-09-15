@@ -11,6 +11,12 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 6.1.0
+
+`2026-09-15`
+
+- 🛠 Remove Reakit from the project and migrate `Tabs` to Ariakit [#620](https://github.com/cap-collectif/ui/pull/620)
+
 ## 6.0.12
 
 `2026-09-14`
