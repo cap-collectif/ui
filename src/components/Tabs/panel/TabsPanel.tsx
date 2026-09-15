@@ -1,5 +1,5 @@
+import { TabPanel as BaseTabPanel } from '@ariakit/react'
 import * as React from 'react'
-import { TabPanel as BaseTabPanel } from 'reakit/Tab'
 
 import { Box, BoxProps } from '../../box'
 import { useTabs } from '../Tabs.context'
@@ -11,12 +11,11 @@ const TabsPanel: React.FC<TabsPanelprops> = ({ children, ...props }) => {
 
   return (
     <BaseTabPanel
-      as={Box}
-      p={6}
-      {...tabs}
+      render={
+        <Box p={6} {...props} style={!children ? { display: 'none' } : undefined} />
+      }
+      store={tabs}
       tabIndex={undefined}
-      {...props}
-      style={!children ? { display: 'none' } : undefined}
     >
       {children}
     </BaseTabPanel>
