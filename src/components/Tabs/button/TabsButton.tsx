@@ -1,6 +1,10 @@
+import {
+  Tab as BaseTab,
+  TabProps as BaseTabProps,
+  useStoreState,
+} from '@ariakit/react'
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
 import styled from 'styled-components'
 
 import {
@@ -25,46 +29,55 @@ const TabsButton: React.FC<TabsButtonProps> = ({
   ...props
 }) => {
   const { tabs } = useTabs()
-  const [id, setId] = React.useState<string | undefined>(undefined)
-  const $tab = React.useRef<HTMLElement>()
-  React.useEffect(() => {
-    if ($tab.current) {
-      setId($tab.current.id)
-    }
-  }, [])
+  const generatedId = React.useId()
+  const id = props.id ?? generatedId
 
-  const currentTab = tabs.currentId
-  const currentTabPanel = tabs.panels.find(
-    panel => panel.groupId === currentTab,
+  const currentTabId = useStoreState(tabs, 'selectedId')
+  const panels = useStoreState(tabs.panels, 'items')
+  const currentTabPanel = panels.find(
+    panel => panel.tabId === currentTabId,
   )
-  const currentTabIsEmpty = currentTabPanel?.ref.current?.lastChild === null
+  const currentTabIsEmpty = currentTabPanel?.element?.lastChild === null
 
   return (
     <BaseTab
-      as={Radio}
-      ref={$tab}
-      checked={id === tabs.currentId}
-      {...tabs}
-      position="relative"
-      labelSx={{
-        cursor: 'pointer',
-        transition: 'box-shadow 0.2s, opacity 0.2s',
-        width: '100%',
-        px: 4,
-        py: 2,
-        justifyContent: 'center !important',
-        backgroundColor: id === tabs.currentId ? '#F7F7F8' : 'transparent',
-        borderTopLeftRadius:
-          id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
-        borderTopRightRadius:
-          id === tabs.currentId ? CapUIRadius.Accordion : CapUIRadius.Normal,
-        borderBottomLeftRadius: currentTabIsEmpty ? CapUIRadius.Accordion : 0,
-        borderBottomRightRadius: currentTabIsEmpty ? CapUIRadius.Accordion : 0,
-        ...labelSx,
-      }}
-      className="tab__button"
-      isDisabled={props.disabled}
-      {...props}
+      render={
+        <Radio
+          id={id}
+          checked={id === currentTabId}
+          position="relative"
+          labelSx={{
+            cursor: 'pointer',
+            transition: 'box-shadow 0.2s, opacity 0.2s',
+            width: '100%',
+            px: 4,
+            py: 2,
+            justifyContent: 'center !important',
+            backgroundColor:
+              id === currentTabId ? '#F7F7F8' : 'transparent',
+            borderTopLeftRadius:
+              id === currentTabId
+                ? CapUIRadius.Accordion
+                : CapUIRadius.Normal,
+            borderTopRightRadius:
+              id === currentTabId
+                ? CapUIRadius.Accordion
+                : CapUIRadius.Normal,
+            borderBottomLeftRadius: currentTabIsEmpty
+              ? CapUIRadius.Accordion
+              : 0,
+            borderBottomRightRadius: currentTabIsEmpty
+              ? CapUIRadius.Accordion
+              : 0,
+            ...labelSx,
+          }}
+          className="tab__button"
+          isDisabled={props.disabled}
+          {...props}
+        />
+      }
+      id={id}
+      store={tabs}
     >
       <Box
         as="span"
@@ -76,7 +89,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({
       >
         {children}
       </Box>
-      {id === tabs.currentId && (
+      {id === currentTabId && (
         <BorderBox
           layoutId="tabs-border-box"
           className="tab--border-box"

@@ -1,6 +1,6 @@
+import { TabStoreProps, useStoreState, useTabStore } from '@ariakit/react'
 import * as React from 'react'
 import { Flex } from '../layout'
-import { TabInitialState, useTabState } from 'reakit/Tab'
 
 import TabsButton from './button/TabsButton'
 import TabsButtonList from './buttonList/TabsButtonList'
@@ -17,8 +17,8 @@ type SubComponents = {
   PanelList: typeof TabsPanelList
 }
 export interface TabsProps
-  extends Pick<TabInitialState, 'selectedId'>,
-    Omit<BoxProps, 'onChange'> {
+  extends Omit<BoxProps, 'onChange'> {
+  readonly selectedId?: TabStoreProps['defaultSelectedId']
   readonly onChange?: (tabId: string) => void
 }
 const Tabs: React.FC<TabsProps> & SubComponents = ({
@@ -27,15 +27,16 @@ const Tabs: React.FC<TabsProps> & SubComponents = ({
   onChange,
   ...props
 }) => {
-  const tabs = useTabState({
-    selectedId,
+  const tabs = useTabStore({
+    defaultSelectedId: selectedId,
   })
+  const selectedTabId = useStoreState(tabs, 'selectedId')
   const context = React.useMemo<TabsContextType>(() => ({ tabs }), [tabs])
   React.useEffect(() => {
-    if (tabs.selectedId) {
-      onChange?.(tabs.selectedId)
+    if (selectedTabId) {
+      onChange?.(selectedTabId)
     }
-  }, [tabs.selectedId, onChange])
+  }, [selectedTabId, onChange])
   return (
     <TabsContext.Provider value={context}>
       <Flex direction="column" {...props}>

@@ -1,12 +1,8 @@
+import type { TabStore } from '@ariakit/react'
 import * as React from 'react'
-import { useTabState } from 'reakit/Tab'
-
-export type Tabs = {
-  [key: string]: boolean
-}
 
 export type TabsContextType = {
-  tabs: ReturnType<typeof useTabState>
+  tabs: TabStore
 }
 
 export const TabsContext =
