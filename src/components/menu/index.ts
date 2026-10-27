@@ -1,3 +1,7 @@
 export { Menu } from './Menu'
 export type { MenuProps } from './Menu'
 export type { MenuValue } from './Menu.context'
+export type { MenuItemProps } from './item/MenuItem'
+export type { MenuListProps } from './list/MenuList'
+export type { MenuOptionGroupProps } from './optionGroup/MenuOptionGroup'
+export type { MenuOptionItemProps } from './optionItem/MenuOptionItem'

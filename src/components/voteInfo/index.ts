@@ -1,2 +1,5 @@
 export { default as VoteInfo } from './VoteInfo'
 export type {VoteInfoProps} from './VoteInfo'
+export type { VoteInfoBodyProps } from './VoteInfo.body'
+export type { VoteInfoHeaderProps } from './VoteInfo.header'
+export type { VoteInfoHeaderLabelProps } from './VoteInfo.header.label'
