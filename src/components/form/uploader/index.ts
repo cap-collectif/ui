@@ -3,3 +3,7 @@ export type { UploaderProps, FileInfo } from './Uploader'
 export { default as FileList } from './FileList'
 export type { FileListProps } from './FileList'
 export { UPLOADER_SIZE } from './Uploader.style'
+export type {
+  Size as UploaderSize,
+  WordingType as UploaderWording,
+} from './Uploader'

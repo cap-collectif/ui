@@ -1,2 +1,6 @@
 export { default as Tabs } from './Tabs'
 export type { TabsProps } from './Tabs'
+export type { TabsButtonProps } from './button/TabsButton'
+export type { TabsButtonListProps } from './buttonList/TabsButtonList'
+export type { TabsPanelprops as TabsPanelProps } from './panel/TabsPanel'
+export type { TabsPanelListProps } from './panelList/TabsPanelList'

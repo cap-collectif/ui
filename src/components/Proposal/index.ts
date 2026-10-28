@@ -1,2 +1,8 @@
 export { default as Proposal } from './Proposal'
 export type { ProposalProps } from './Proposal'
+export type { ProposalHeaderProps } from './Proposal.Header'
+export type { ProposalHeaderAuthorProps } from './Proposal.Header.Author'
+export type { ProposalBodyProps } from './Proposal.Body'
+export type { ProposalFooterProps } from './Proposal.Footer'
+export type { ProposalCoverProps } from './Proposal.Cover'
+export type { ProposalContentProps } from './Proposal.Content'

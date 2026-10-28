@@ -1,2 +1,7 @@
 export { default as DragnDrop } from './DragnDrop'
 export type { DragnDropProps } from './DragnDrop'
+export type { DropResult } from './DragnDrop'
+export type { DragnDropItemProps } from './item/DragnDropItem'
+export type { DragnDropListProps } from './list/DragnDropList'
+export { useDragContext } from './DragContext'
+export type { DragState, DragContextValue } from './DragContext'
