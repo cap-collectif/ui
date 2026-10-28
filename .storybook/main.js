@@ -130,6 +130,14 @@ module.exports = {
         if (EXLUDED_DOCGEN_PROPS.includes(prop.name)) {
           return false
         }
+        // `htmlFor` inherited from Box; keep it on components that declare their own
+        if (
+          prop.name === 'htmlFor' &&
+          prop.parent &&
+          prop.parent.name === 'AppForm'
+        ) {
+          return false
+        }
         if (
           prop.parent &&
           prop.parent.fileName &&
