@@ -57,16 +57,16 @@ const TableProvider = ({
 
   const context: Context = React.useMemo(() => {
     const rowsEntries = Object.keys(state.rows)
+    const selectedRows = rowsEntries.filter(rowId => state.rows[rowId] === true)
+    const hasAnyRowsChecked = selectedRows.length > 0
 
     return {
-      hasAnyRowsChecked: rowsEntries.some(rowId => state.rows[rowId] === true),
+      hasAnyRowsChecked,
       hasAllRowsChecked:
         rowsEntries.length > 0 && rowsEntries.every(rowId => state.rows[rowId]),
       hasIndeterminateState:
-        context &&
-        context.hasAnyRowsChecked &&
-        context.selectedRows.length < rowsEntries.length,
-      selectedRows: rowsEntries.filter(rowId => state.rows[rowId] === true),
+        hasAnyRowsChecked && selectedRows.length < rowsEntries.length,
+      selectedRows,
       rowsCount: rowsEntries.length,
       isRowChecked: (rowId: string) => {
         return rowId in state.rows && state.rows[rowId] === true
