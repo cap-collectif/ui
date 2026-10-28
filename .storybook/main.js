@@ -55,8 +55,12 @@ const EXLUDED_DOCGEN_PROPS = [
 const ALLOWED_DOCGEN_NODE_MODULES = []
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+  docs: {
+    autodocs: true,
   },
   babel: async options => ({
     ...options,
@@ -116,7 +120,7 @@ module.exports = {
   ],
   typescript: {
     check: true,
-    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop, component) => {
