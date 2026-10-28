@@ -110,15 +110,8 @@ module.exports = {
   },
   stories: ['../src/**/*.stories.@(ts|tsx|js|jsx)'],
   addons: [
-    '@storybook/addon-viewport',
     '@storybook/addon-storysource',
     '@storybook/addon-links',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        configureJSX: true,
-      },
-    },
     '@storybook/addon-essentials',
   ],
   typescript: {
