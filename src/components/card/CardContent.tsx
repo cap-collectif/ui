@@ -2,7 +2,7 @@ import cn from 'classnames'
 import * as React from 'react'
 
 import { Box } from '../box'
-import { CapUIIcon } from '../icon'
+import { CapUIIcon, CapUIIconSize } from '../icon'
 import { Flex, FlexProps } from '../layout'
 import { LinkProps } from '../link'
 import { SROnly } from '../sronly'
@@ -150,23 +150,54 @@ export const CardTagLabel: React.FC<TagLabelProps> = props => (
   <Tag.Label {...props} />
 )
 
+export type CardRestrictedIcon = CapUIIcon.Lock | CapUIIcon.EyeClose
+export type CardRestrictedVariant = 'default' | 'square'
+
+// Square variant: larger square badge with a light background
+const SQUARE_VARIANT_PROPS = {
+  width: 8,
+  height: 8,
+  px: 0,
+  py: 0,
+  justifyContent: 'center',
+  borderRadius: 'xxs',
+}
+
 export const CardRestricted: React.FC<
-  Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText: string }
-> = ({ srOnlyText, ...props }) => {
+  Omit<TagProps, 'onRemove' | 'variantColor'> & {
+    srOnlyText: string
+    icon?: CardRestrictedIcon
+    variant?: CardRestrictedVariant
+  }
+> = ({
+  srOnlyText,
+  icon = CapUIIcon.Lock,
+  variant = 'default',
+  sx,
+  ...props
+}) => {
   const { format, variantSize } = React.useContext(CardContext)
 
   if (variantSize === 'small' && format === 'horizontal') return null
 
+  const isSquare = variant === 'square'
+
   return (
     <Tag
+      {...(isSquare ? SQUARE_VARIANT_PROPS : {})}
       {...props}
+      sx={isSquare ? { bg: 'neutral-gray.100', ...sx } : sx}
       variantColor="infoGray"
       position="absolute"
       top="xs"
       right="xs"
       zIndex={1}
     >
-      <Tag.LeftIcon name={CapUIIcon.Lock} m={0} />
+      <Tag.LeftIcon
+        name={icon}
+        m={0}
+        size={isSquare ? CapUIIconSize.Md : CapUIIconSize.Sm}
+      />
       <SROnly> {srOnlyText}</SROnly>
     </Tag>
   )

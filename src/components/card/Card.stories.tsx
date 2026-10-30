@@ -236,6 +236,24 @@ const Cards = ({ crop, ...args }: any) => (
         />
       </Card>
     ) : null}
+    {!crop ? (
+      <Card {...args}>
+        <CardCover>
+          <CardCoverImage src={thumbnail} />
+          <CardRestricted
+            icon={CapUIIcon.EyeClose}
+            variant="square"
+            srOnlyText="Visible uniquement par vous et l'administrateur"
+            tooltipLabel="Visible uniquement par vous et l'administrateur"
+          />
+        </CardCover>
+        <CardContent
+          primaryInfo="Proposition privée"
+          href="https://monsuperprojet.com"
+          target="_blank"
+        />
+      </Card>
+    ) : null}
   </>
 )
 

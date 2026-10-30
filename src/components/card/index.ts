@@ -11,5 +11,6 @@ export {
 } from './CardContent'
 export { CardContext } from './utils'
 export type { CardFormat, CardVariantSize } from './utils'
+export type { CardRestrictedIcon, CardRestrictedVariant } from './CardContent'
 
 export type { CardProps } from './Card'
