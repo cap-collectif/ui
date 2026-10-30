@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { Button } from '../button'
-import { Icon, CapUIIcon } from '../icon'
+import { CapUIIcon, Icon } from '../icon'
 import { Flex } from '../layout'
 import { Link } from '../link'
 import TabBar, { TabBarProps } from './TabBar'
@@ -41,7 +41,7 @@ const Template: StoryFn<TabBarProps> = () => {
 
 export const Default = Template.bind({})
 
-export const WithLink: StoryFn<TabBarProps> = () => {
+export const WithSideContent: StoryFn<TabBarProps> = () => {
   return (
     <TabBar
       defaultTab="agui"
