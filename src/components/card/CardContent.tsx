@@ -150,9 +150,14 @@ export const CardTagLabel: React.FC<TagLabelProps> = props => (
   <Tag.Label {...props} />
 )
 
+export type CardRestrictedIcon = CapUIIcon.Lock | CapUIIcon.EyeClose
+
 export const CardRestricted: React.FC<
-  Omit<TagProps, 'onRemove' | 'variantColor'> & { srOnlyText: string }
-> = ({ srOnlyText, ...props }) => {
+  Omit<TagProps, 'onRemove' | 'variantColor'> & {
+    srOnlyText: string
+    icon?: CardRestrictedIcon
+  }
+> = ({ srOnlyText, icon = CapUIIcon.Lock, ...props }) => {
   const { format, variantSize } = React.useContext(CardContext)
 
   if (variantSize === 'small' && format === 'horizontal') return null
@@ -166,7 +171,7 @@ export const CardRestricted: React.FC<
       right="xs"
       zIndex={1}
     >
-      <Tag.LeftIcon name={CapUIIcon.Lock} m={0} />
+      <Tag.LeftIcon name={icon} m={0} />
       <SROnly> {srOnlyText}</SROnly>
     </Tag>
   )
