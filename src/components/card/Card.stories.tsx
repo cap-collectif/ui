@@ -242,6 +242,7 @@ const Cards = ({ crop, ...args }: any) => (
           <CardCoverImage src={thumbnail} />
           <CardRestricted
             icon={CapUIIcon.EyeClose}
+            variant="square"
             srOnlyText="Visible uniquement par vous et l'administrateur"
             tooltipLabel="Visible uniquement par vous et l'administrateur"
           />
