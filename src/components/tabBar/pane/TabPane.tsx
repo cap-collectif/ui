@@ -1,20 +1,35 @@
 import React from 'react'
 
-import { Box, BoxProps } from '../../box'
-import { TabHeaderProps } from '../TabHeader'
+import { Flex, FlexProps } from '../../layout'
 
-export type TabPaneProps = Omit<
-  TabHeaderProps,
-  'onClick' | 'onKeyDown' | 'isActive'
-> & {
+export type TabPaneProps = Omit<FlexProps, 'id' | 'title'> & {
+  id: string
+  title: React.ReactNode
+  count?: number
+  href?: string
+  target?: string
+  rel?: string
+  disabled?: boolean
   children?: React.ReactNode
 }
 
-export const TabPane: React.FC<TabPaneProps & BoxProps> = ({
+export const TabPane: React.FC<TabPaneProps> = ({
   children,
+  title,
+  count,
+  href,
+  target,
+  rel,
+  disabled,
+  hidden,
+  display,
   ...rest
 }) => {
-  return <Box {...rest}>{children}</Box>
+  return (
+    <Flex {...rest} hidden={hidden} display={hidden ? 'none' : display}>
+      {children}
+    </Flex>
+  )
 }
 
 TabPane.displayName = 'TabPane'
