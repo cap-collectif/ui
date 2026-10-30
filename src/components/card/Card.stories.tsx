@@ -27,9 +27,11 @@ const meta: Meta<CardProps> = {
   title: 'Library/Card',
   component: Card,
   args: { format: 'vertical' },
+  globals: {
+    backgrounds: { value: 'light' },
+  },
   parameters: {
     controls: { expanded: true },
-    backgrounds: { default: 'light' },
   },
   argTypes: {
     format: { control: 'select', options: ['horizontal', 'vertical'] },

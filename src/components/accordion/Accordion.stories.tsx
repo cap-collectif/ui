@@ -6,8 +6,10 @@ import { Accordion, AccordionProps } from './'
 const meta: Meta = {
   title: 'Library/Accordion',
   component: Accordion,
+  globals: {
+    backgrounds: { value: 'light' },
+  },
   parameters: {
-    backgrounds: { default: 'light' },
     controls: { expanded: true },
   },
 }
@@ -136,9 +138,7 @@ VariantWhite.args = {
   color: 'white',
 }
 VariantWhite.parameters = {
-  backgrounds: {
-    default: 'undefined',
-  },
+  backgrounds: { disable: true },
 }
 
 export const IconRight: StoryFn<AccordionProps> = args => (

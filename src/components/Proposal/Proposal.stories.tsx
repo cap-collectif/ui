@@ -13,9 +13,11 @@ import Proposal from './Proposal'
 const meta: Meta = {
   title: 'Library/Proposal',
   component: Proposal,
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
   parameters: {
     controls: { expanded: true },
-    backgrounds: { default: 'dark' },
   },
 }
 
