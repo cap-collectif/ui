@@ -2,59 +2,85 @@ import * as React from 'react'
 
 import { CapUIFontSize, CapUIFontWeight, CapUIRadius } from '../../styles'
 import { Box } from '../box'
+import type { TabPaneProps } from './pane/TabPane'
 
-export type TabHeaderProps = {
-  title: string
+export type TabHeaderProps = Pick<
+  TabPaneProps,
+  'title' | 'count' | 'href' | 'target' | 'rel' | 'disabled'
+> & {
   id: string
-  href?: string
+  panelId?: string
+  tabIndex?: number
   onClick: () => void
-  onKeyDown: (event: React.KeyboardEvent) => void | undefined
   isActive: boolean
-  count?: number
-  children?: React.ReactNode
 }
 
 const TabHeader: React.FC<TabHeaderProps> = ({
   title,
+  id,
+  panelId,
   href,
+  target,
+  rel,
+  disabled,
+  tabIndex,
   onClick,
-  onKeyDown,
   isActive,
   count,
-  ...props
 }) => {
   const isLink = !!href
 
+  const elementProps = isLink
+    ? {
+        href: disabled ? undefined : href,
+        target,
+        rel,
+        'aria-disabled': disabled || undefined,
+      }
+    : {
+        type: 'button',
+        role: 'tab',
+        'aria-selected': isActive,
+        'aria-controls': panelId,
+        tabIndex,
+        disabled,
+        onClick,
+      }
+
   return (
     <Box
-      as={isLink ? 'a' : 'span'}
-      // @ts-expect-error - span won't take href as a prop
-      href={isLink ? href : undefined}
+      as={isLink ? 'a' : 'button'}
+      {...elementProps}
+      id={id}
       fontSize={CapUIFontSize.Caption}
       fontWeight={CapUIFontWeight.Bold}
-      color={isActive ? 'primary.base' : 'gray.700'}
-      borderBottomColor={isActive ? 'primary.base' : 'transparent'}
       display="flex"
       justifyContent="center"
       alignItems="center"
       height="100%"
       sx={{
-        textTransform: 'uppercase',
-        cursor: 'pointer',
+        background: 'none',
+        border: 'none',
+        borderBottom: '2px solid',
+        borderBottomColor: isActive ? 'primary.base' : 'transparent',
+        padding: 0,
+        margin: 0,
         boxSizing: 'border-box',
-        borderBottom: '2px solid transparent',
-        '&:hover': {
+        fontFamily: 'inherit',
+        lineHeight: 'inherit',
+        letterSpacing: 'inherit',
+        textDecoration: 'none',
+        textTransform: 'uppercase',
+        color: disabled ? 'gray.500' : isActive ? 'primary.base' : 'gray.700',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        '&:hover:not(:disabled,[aria-disabled="true"])': {
           color: 'primary.base',
         },
-        '&:hover .tabHeaderCount': {
+        '&:hover:not(:disabled,[aria-disabled="true"]) .tabHeaderCount': {
           color: 'primary.base',
           backgroundColor: 'primary.lighter',
         },
       }}
-      onClick={isLink ? undefined : onClick}
-      onKeyDown={isLink ? undefined : onKeyDown}
-      tabIndex={0}
-      {...props}
     >
       {title}
       {count !== undefined && (

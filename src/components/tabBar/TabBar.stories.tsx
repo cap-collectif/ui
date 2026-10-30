@@ -41,7 +41,7 @@ const Template: Story<TabBarProps> = () => {
 
 export const Default = Template.bind({})
 
-export const WithLink: Story<TabBarProps> = () => {
+export const WithSideContent: Story<TabBarProps> = () => {
   return (
     <TabBar
       defaultTab="agui"
