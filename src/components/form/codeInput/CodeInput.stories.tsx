@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import {
@@ -47,9 +47,9 @@ const meta: Meta = {
 }
 
 export default meta
-export const Default: Story<CodeInputProps> = args => <CodeInput {...args} />
+export const Default: StoryFn<CodeInputProps> = args => <CodeInput {...args} />
 
-export const WithLabel: Story<Args> = ({
+export const WithLabel: StoryFn<Args> = ({
   errorMessage,
   value: storybookValue,
   onComplete,
@@ -77,7 +77,7 @@ export const WithLabel: Story<Args> = ({
   )
 }
 
-export const Disabled: Story<Args> = ({
+export const Disabled: StoryFn<Args> = ({
   errorMessage,
   value: storybookValue,
   onComplete,
@@ -106,7 +106,7 @@ export const Disabled: Story<Args> = ({
 Disabled.args = {
   isDisabled: true,
 }
-export const WithError: Story<Args> = ({
+export const WithError: StoryFn<Args> = ({
   errorMessage,
   value: storybookValue,
   onComplete,
@@ -137,7 +137,7 @@ WithError.args = {
   isInvalid: true,
 }
 
-export const Verified: Story<Args> = ({
+export const Verified: StoryFn<Args> = ({
   errorMessage,
   value,
   onComplete,
@@ -180,7 +180,7 @@ Verified.args = {
   value: '123456',
 }
 
-export const WithinModal: Story<Args> = ({
+export const WithinModal: StoryFn<Args> = ({
   errorMessage,
   isDisabled,
   isRequired,
@@ -295,7 +295,7 @@ WithinModal.args = {
   correctValue: '123456',
 }
 
-export const Mobile: Story<Args> = ({
+export const Mobile: StoryFn<Args> = ({
   errorMessage,
   value,
   onComplete,

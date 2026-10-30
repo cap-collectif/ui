@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { Flex } from '../layout'
 import { Popover, PopoverProps } from './'
@@ -19,7 +19,7 @@ const meta: Meta<PopoverProps> = {
 
 export default meta
 
-export const Default: Story<PopoverProps> = args => (
+export const Default: StoryFn<PopoverProps> = args => (
   <Popover {...args} disclosure={<span>Open popover</span>}>
     <Popover.Header>Lorem ipsum</Popover.Header>
     <Popover.Body>
@@ -29,7 +29,7 @@ export const Default: Story<PopoverProps> = args => (
   </Popover>
 )
 
-export const WithFooter: Story<PopoverProps> = args => (
+export const WithFooter: StoryFn<PopoverProps> = args => (
   <Popover {...args} disclosure={<span>Open popover</span>}>
     <Popover.Header>Lorem ipsum</Popover.Header>
     <Popover.Body>
@@ -39,7 +39,7 @@ export const WithFooter: Story<PopoverProps> = args => (
     <Popover.Footer>Lorem ipsum</Popover.Footer>
   </Popover>
 )
-export const WithBodyScroll: Story<PopoverProps> = args => (
+export const WithBodyScroll: StoryFn<PopoverProps> = args => (
   <Flex height={800}>
     <Popover
       options={{ modal: true }}

@@ -59,13 +59,6 @@ module.exports = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
-  babel: async options => ({
-    ...options,
-    plugins: [...options.plugins],
-  }),
   webpackFinal: async config => {
     const fileLoaderRule = config.module.rules.find(rule => {
       return !Array.isArray(rule.test) && rule.test.test('.svg')
@@ -117,6 +110,7 @@ module.exports = {
     '@storybook/addon-storysource',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-webpack5-compiler-babel',
   ],
   typescript: {
     check: true,

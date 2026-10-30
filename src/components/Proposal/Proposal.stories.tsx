@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ProposalProps> = args => {
+export const Default: StoryFn<ProposalProps> = args => {
   const [points, setPoints] = React.useState(3)
   const [votes, setVotes] = React.useState(101)
 

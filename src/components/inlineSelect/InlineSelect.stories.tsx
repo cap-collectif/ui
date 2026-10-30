@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import InlineSelect, { InlineSelectProps } from './InlineSelect'
@@ -14,7 +14,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<InlineSelectProps> = () => {
+export const Default: StoryFn<InlineSelectProps> = () => {
   const [item, setItem] = React.useState('item2')
 
   return (

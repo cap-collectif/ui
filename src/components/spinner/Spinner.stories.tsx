@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { CapUIIconSize } from '../icon'
@@ -22,7 +22,7 @@ const meta: Meta<SpinnerProps> = {
 
 export default meta
 
-export const Default: Story<SpinnerProps> = ({ color }) => (
+export const Default: StoryFn<SpinnerProps> = ({ color }) => (
   <Flex align="center" gap={2} wrap="wrap">
     {sizes.map((size, i) => (
       <Spinner size={size} key={i} color={color} />
@@ -37,7 +37,7 @@ Default.argTypes = {
   },
 }
 
-export const WithinAContainer: Story<SpinnerProps> = args => (
+export const WithinAContainer: StoryFn<SpinnerProps> = args => (
   <Flex
     width={100}
     height={100}

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { ListCard, ListCardProps } from './'
 
@@ -12,7 +12,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ListCardProps> = args => (
+export const Default: StoryFn<ListCardProps> = args => (
   <>
     <ListCard {...args}>
       <ListCard.Item>

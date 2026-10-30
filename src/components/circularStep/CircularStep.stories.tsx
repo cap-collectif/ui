@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { CapUIFontSize, CapUIFontWeight } from '../../styles'
 import { Box } from '../box'
@@ -20,7 +20,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<CircularStepProps> = args => (
+export const Default: StoryFn<CircularStepProps> = args => (
   <>
     <Box
       as="h2"

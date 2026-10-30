@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../box'
@@ -25,7 +25,7 @@ const meta: Meta<TagProps> = {
 
 export default meta
 
-export const Default: Story<TagProps> = args => (
+export const Default: StoryFn<TagProps> = args => (
   <Flex gap={4}>
     <Box>
       <Box>
@@ -114,7 +114,7 @@ export const Default: Story<TagProps> = args => (
   </Flex>
 )
 
-export const Badge: Story<TagProps> = args => (
+export const Badge: StoryFn<TagProps> = args => (
   <>
     <Box>
       <Tag variantType="badge" {...args}>
@@ -129,7 +129,7 @@ export const Badge: Story<TagProps> = args => (
   </>
 )
 
-export const asButton: Story<TagProps> = args => (
+export const asButton: StoryFn<TagProps> = args => (
   <Box>
     <Box>
       <Tag as={'button'} {...args} onClick={() => alert('Une alert')}>
@@ -150,14 +150,14 @@ export const asButton: Story<TagProps> = args => (
   </Box>
 )
 
-export const WithIcon: Story<TagProps> = args => (
+export const WithIcon: StoryFn<TagProps> = args => (
   <Tag {...args}>
     <Tag.LeftIcon name={CapUIIcon.Check} />
     <Tag.Label>Bonjour</Tag.Label>
   </Tag>
 )
 
-export const WithCloseButton: Story<TagProps> = args => (
+export const WithCloseButton: StoryFn<TagProps> = args => (
   <Tag {...args}>
     <Tag.LeftIcon name={CapUIIcon.Check} />
     <Tag.Label>Bonjour</Tag.Label>
@@ -170,14 +170,14 @@ WithCloseButton.args = {
   },
 }
 
-export const WithAvatar: Story<TagProps> = args => (
+export const WithAvatar: StoryFn<TagProps> = args => (
   <Tag {...args}>
     <Tag.Avatar name="Dan Abramov" src="https://bit.ly/dan-abramov" />
     <Tag.Label>Bonjour</Tag.Label>
   </Tag>
 )
 
-export const Grouped: Story<TagProps> = args => (
+export const Grouped: StoryFn<TagProps> = args => (
   <Flex>
     <Tag
       {...args}

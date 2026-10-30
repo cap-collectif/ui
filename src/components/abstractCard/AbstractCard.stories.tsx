@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Text } from '../typography'
@@ -15,7 +15,7 @@ const meta: Meta<AbstractCardProps> = {
 
 export default meta
 
-export const Default: Story<AbstractCardProps> = args => (
+export const Default: StoryFn<AbstractCardProps> = args => (
   <AbstractCard {...args}>
     <Text>Card</Text>
   </AbstractCard>

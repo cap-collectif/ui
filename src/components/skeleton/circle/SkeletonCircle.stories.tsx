@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { SkeletonCircle, SkeletonCircleProps } from './SkeletonCircle'
@@ -16,6 +16,6 @@ const meta: Meta<SkeletonCircleProps> = {
 
 export default meta
 
-export const Default: Story<SkeletonCircleProps> = args => (
+export const Default: StoryFn<SkeletonCircleProps> = args => (
   <SkeletonCircle {...args} size="50px" />
 )

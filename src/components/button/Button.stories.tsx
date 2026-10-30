@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { SPACING } from '../../styles/theme'
 import { Box } from '../box'
@@ -33,7 +33,7 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<ButtonProps & { backgroundColor?: string }> = ({ backgroundColor = 'neutral-gray.lighter', ...args }) => (
+const Template: StoryFn<ButtonProps & { backgroundColor?: string }> = ({ backgroundColor = 'neutral-gray.lighter', ...args }) => (
   <Box
     backgroundColor={backgroundColor}
     width={'50vw'}

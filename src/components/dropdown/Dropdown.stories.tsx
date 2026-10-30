@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import Dropdown, { DropDownProps } from './Dropdown'
@@ -29,7 +29,7 @@ const meta: Meta = {
 }
 
 export default meta
-export const Default: Story<DropDownProps> = args => (
+export const Default: StoryFn<DropDownProps> = args => (
   <Dropdown {...args}>
     {options.map(option => (
       <Dropdown.Item key={option.value}>{option.label}</Dropdown.Item>

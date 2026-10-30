@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { ButtonGroup } from '../buttonGroup'
 import { CapUIIcon, CapUIIconSize } from '../icon'
@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ButtonQuickActionProps> = args => (
+export const Default: StoryFn<ButtonQuickActionProps> = args => (
   <ButtonQuickAction {...args} />
 )
 Default.args = {
@@ -26,7 +26,7 @@ Default.args = {
   icon: CapUIIcon.Pencil,
 }
 
-export const AllSizes: Story<ButtonQuickActionProps> = args => (
+export const AllSizes: StoryFn<ButtonQuickActionProps> = args => (
   <Flex>
     <ButtonQuickAction {...args.sm} />
     <ButtonQuickAction {...args.md} />
@@ -54,7 +54,7 @@ AllSizes.args = {
   },
 }
 
-export const Group: Story<ButtonQuickActionProps> = args => {
+export const Group: StoryFn<ButtonQuickActionProps> = args => {
   return (
     <ButtonGroup>
       <ButtonQuickAction {...args.edit} />
@@ -87,7 +87,7 @@ Group.args = {
   },
 }
 
-export const AsLink: Story<ButtonQuickActionProps> = args => (
+export const AsLink: StoryFn<ButtonQuickActionProps> = args => (
   <ButtonQuickAction {...args} href="#" />
 )
 
@@ -99,7 +99,7 @@ AsLink.args = {
   size: CapUIIconSize.Lg,
 }
 
-export const Disabled: Story<ButtonQuickActionProps> = args => (
+export const Disabled: StoryFn<ButtonQuickActionProps> = args => (
   <ButtonQuickAction {...args} />
 )
 Disabled.args = {

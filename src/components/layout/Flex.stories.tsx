@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Text } from '../typography'
@@ -14,7 +14,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<FlexProps> = () => (
+export const Default: StoryFn<FlexProps> = () => (
   <Flex spacing={4} p={4} bg="gray.100" align="center">
     <Text>Hello</Text>
     <Text>Everybody</Text>

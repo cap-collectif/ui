@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
@@ -27,24 +27,24 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<CheckboxProps> = args => (
+export const Default: StoryFn<CheckboxProps> = args => (
   <Checkbox {...args} id="checkbox" />
 )
 
-export const WithText: Story<CheckboxProps> = args => (
+export const WithText: StoryFn<CheckboxProps> = args => (
   <Checkbox {...args} id="checkbox">
     Check me
   </Checkbox>
 )
 
-export const WithLabel: Story<Args> = args => (
+export const WithLabel: StoryFn<Args> = args => (
   <FormControl {...args}>
     <FormLabel label="User selection" />
     <Checkbox id="checkbox">Check me</Checkbox>
   </FormControl>
 )
 
-export const WithGuideline: Story<Args> = args => (
+export const WithGuideline: StoryFn<Args> = args => (
   <FormControl {...args}>
     <FormLabel label="User selection" />
     <FormGuideline>Guideline</FormGuideline>
@@ -52,7 +52,7 @@ export const WithGuideline: Story<Args> = args => (
   </FormControl>
 )
 
-export const WithAnErrorMessage: Story<Args> = ({ errorMessage, ...args }) => (
+export const WithAnErrorMessage: StoryFn<Args> = ({ errorMessage, ...args }) => (
   <FormControl {...args}>
     <Checkbox id="checkbox">Check me</Checkbox>
     <FormErrorMessage ml={7} mt={0}>
@@ -65,7 +65,7 @@ WithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const WithAnErrorMessageChecked: Story<Args> = ({
+export const WithAnErrorMessageChecked: StoryFn<Args> = ({
   errorMessage,
   ...args
 }) => (
@@ -83,7 +83,7 @@ WithAnErrorMessageChecked.args = {
   isInvalid: true,
 }
 
-export const Disabled: Story<Args> = () => (
+export const Disabled: StoryFn<Args> = () => (
   <>
     <Checkbox isDisabled id="checkbox">
       Check me

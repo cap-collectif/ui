@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import RankButton, { RankButtonProps } from './RankButton'
@@ -16,7 +16,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<RankButtonProps> = args => {
+export const Default: StoryFn<RankButtonProps> = args => {
   const [points, setPoints] = React.useState(3)
 
   return (
@@ -32,7 +32,7 @@ export const Default: Story<RankButtonProps> = args => {
     ></RankButton>
   )
 }
-export const Disabled: Story<RankButtonProps> = args => {
+export const Disabled: StoryFn<RankButtonProps> = args => {
   const [points, setPoints] = React.useState(3)
 
   return (

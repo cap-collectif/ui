@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../../box/Box'
@@ -35,11 +35,11 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<Args> = args => {
+export const Default: StoryFn<Args> = args => {
   const [value, setValue] = React.useState<string | null>('#32a852')
   return <ColorPicker {...args} value={value} onChange={setValue} />
 }
-export const TwitterVariant: Story<Args> = args => {
+export const TwitterVariant: StoryFn<Args> = args => {
   const [value, setValue] = React.useState<string | null>('#32a852')
   return (
     <ColorPicker
@@ -51,12 +51,12 @@ export const TwitterVariant: Story<Args> = args => {
   )
 }
 
-export const WithOpacity: Story<Args> = args => {
+export const WithOpacity: StoryFn<Args> = args => {
   const [value, setValue] = React.useState<string | null>('#32a85277')
   return <ColorPicker {...args} value={value} onChange={setValue} withOpacity />
 }
 
-export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
+export const Disabled: StoryFn<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState<string | null>('#32a852')
   return (
     <FormControl {...args}>
@@ -68,7 +68,7 @@ Disabled.args = {
   isDisabled: true,
 }
 
-export const WithLabel: Story<Args> = args => {
+export const WithLabel: StoryFn<Args> = args => {
   const [value, setValue] = React.useState<string | null>('#32a85277')
   return (
     <FormControl {...args}>
@@ -84,7 +84,7 @@ export const WithLabel: Story<Args> = args => {
   )
 }
 
-export const WithErrorMessage: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithErrorMessage: StoryFn<Args> = ({ errorMessage, ...args }) => {
   const [value, setValue] = React.useState<string | null>('#32a85277')
   return (
     <FormControl {...args}>

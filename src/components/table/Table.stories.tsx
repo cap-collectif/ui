@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { Box } from '../box'
@@ -45,7 +45,7 @@ const meta: Meta<TableProps> = {
 
 export default meta
 
-const Template: Story<TableProps> = args => (
+const Template: StoryFn<TableProps> = args => (
   <Table
     {...args}
     actionBar={({ selectedRows }) => (
@@ -189,7 +189,7 @@ const Template: Story<TableProps> = args => (
   </Table>
 )
 
-const EmptyTemplate: Story<TableProps> = args => (
+const EmptyTemplate: StoryFn<TableProps> = args => (
   <Table
     {...args}
     actionBar={({ selectedRows }) => (
@@ -223,7 +223,7 @@ const EmptyTemplate: Story<TableProps> = args => (
   </Table>
 )
 
-const FilterableTemplate: Story<TableProps> = args => {
+const FilterableTemplate: StoryFn<TableProps> = args => {
   const [selectedCountry, setSelectedCountry] = React.useState('all')
 
   const data = [

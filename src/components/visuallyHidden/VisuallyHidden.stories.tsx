@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { CapUIIcon, CapUIIconSize, Icon } from '../icon'
@@ -17,7 +17,7 @@ const meta: Meta<VisuallyHiddenProps> = {
 
 export default meta
 
-export const Default: Story<VisuallyHiddenProps> = args => (
+export const Default: StoryFn<VisuallyHiddenProps> = args => (
   <button type="button">
     <VisuallyHidden {...args}>I'm hidden</VisuallyHidden>
     <Icon name={CapUIIcon.PinO} size={CapUIIconSize.Xxl} />

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { Tag } from '../tag'
 import { Text } from '../typography'
@@ -14,20 +14,20 @@ const meta: Meta<InfoMessageProps> = {
 
 export default meta
 
-export const Default: Story<InfoMessageProps> = args => (
+export const Default: StoryFn<InfoMessageProps> = args => (
   <InfoMessage {...args}>
     <InfoMessage.Title>Ceci est un titre</InfoMessage.Title>
     <InfoMessage.Content>Hello</InfoMessage.Content>
   </InfoMessage>
 )
 
-export const WithIcon: Story<InfoMessageProps> = args => (
+export const WithIcon: StoryFn<InfoMessageProps> = args => (
   <InfoMessage {...args}>
     <InfoMessage.Title withIcon>Ceci est un titre</InfoMessage.Title>
   </InfoMessage>
 )
 
-export const WithHTMLInTitle: Story<InfoMessageProps> = args => (
+export const WithHTMLInTitle: StoryFn<InfoMessageProps> = args => (
   <InfoMessage {...args}>
     <InfoMessage.Title gap={3}>
       <Tag variantColor="info">

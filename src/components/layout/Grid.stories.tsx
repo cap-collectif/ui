@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Text } from '../typography'
@@ -68,7 +68,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid bg="gray.100" p={4} templateColumns={['1fr', '1fr 1fr 1fr']}>
     <Text p={4} bg="gray.200">
       Hello
@@ -86,7 +86,7 @@ Default.parameters = {
   controls: { disable: true },
 }
 
-export const WithAutoFitFill: Story<{ mode: 'fit' | 'fill' }> = ({
+export const WithAutoFitFill: StoryFn<{ mode: 'fit' | 'fill' }> = ({
   mode = 'fill',
 }) => (
   <Grid

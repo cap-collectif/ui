@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontSize, CapUIFontWeight } from '../../styles'
@@ -16,7 +16,7 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<VoteButtonProps> = () => {
+export const Default: StoryFn<VoteButtonProps> = () => {
   const [votes, setVotes] = React.useState(101)
   return (
     <VoteButton
@@ -30,7 +30,7 @@ export const Default: Story<VoteButtonProps> = () => {
     </VoteButton>
   )
 }
-export const Active: Story<VoteButtonProps> = () => (
+export const Active: StoryFn<VoteButtonProps> = () => (
   <VoteButton active>
     <Flex direction="column" align="flex-start">
       <Text fontWeight={CapUIFontWeight.Semibold}>101 Votes</Text>
@@ -38,7 +38,7 @@ export const Active: Story<VoteButtonProps> = () => (
     </Flex>
   </VoteButton>
 )
-export const Disabled: Story<VoteButtonProps> = args => (
+export const Disabled: StoryFn<VoteButtonProps> = args => (
   <VoteButton disabled {...args}>
     <Flex direction="column" align="flex-start">
       <Text
@@ -54,7 +54,7 @@ export const Disabled: Story<VoteButtonProps> = args => (
   </VoteButton>
 )
 
-export const AvecSeuil: Story<VoteButtonProps> = args => {
+export const AvecSeuil: StoryFn<VoteButtonProps> = args => {
   const [votes, setVotes] = React.useState(101)
   const maxVotes = 200
   return (

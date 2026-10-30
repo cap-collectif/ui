@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../box/Box'
@@ -24,7 +24,7 @@ const meta: Meta<TabsProps> = {
 
 export default meta
 
-export const Default: Story<TabsProps> = args => {
+export const Default: StoryFn<TabsProps> = args => {
   const [value, setValue] = React.useState('')
 
   return (
@@ -123,7 +123,7 @@ export const Default: Story<TabsProps> = args => {
   )
 }
 
-export const withDisabledTab: Story<TabsProps> = args => {
+export const withDisabledTab: StoryFn<TabsProps> = args => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [value, setValue] = React.useState('')
 
@@ -223,7 +223,7 @@ export const withDisabledTab: Story<TabsProps> = args => {
   )
 }
 
-export const withEmptyContent: Story<TabsProps> = args => {
+export const withEmptyContent: StoryFn<TabsProps> = args => {
   return (
     <Flex
       direction="column"

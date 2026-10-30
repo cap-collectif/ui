@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { Button } from '../button'
@@ -18,7 +18,7 @@ const meta: Meta<TabBarProps> = {
 }
 
 export default meta
-const Template: Story<TabBarProps> = () => {
+const Template: StoryFn<TabBarProps> = () => {
   return (
     <TabBar defaultTab="agui">
       <TabPane id="agui" title="agui">
@@ -41,7 +41,7 @@ const Template: Story<TabBarProps> = () => {
 
 export const Default = Template.bind({})
 
-export const WithLink: Story<TabBarProps> = () => {
+export const WithLink: StoryFn<TabBarProps> = () => {
   return (
     <TabBar
       defaultTab="agui"

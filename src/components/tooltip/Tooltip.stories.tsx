@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Tooltip, TooltipProps } from '.'
@@ -23,7 +23,7 @@ const meta: Meta<TooltipProps> = {
 
 export default meta
 
-export const Default: Story<TooltipProps> = args => (
+export const Default: StoryFn<TooltipProps> = args => (
   <Flex gap="32px" direction="column" width={'1500px'} alignItems="flex-start">
     <Tooltip {...args}>
       <Text fontWeight="bold">Basic tooltip</Text>

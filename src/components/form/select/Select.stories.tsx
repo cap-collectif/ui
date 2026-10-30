@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIIcon, Icon } from '../../icon'
@@ -66,7 +66,7 @@ const colourOptions = [
   { value: 'silver', label: 'Silver' },
 ]
 
-export const Default: Story<Args> = ({
+export const Default: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -86,7 +86,7 @@ export const Default: Story<Args> = ({
   </FormControl>
 )
 
-export const Clearable: Story<Args> = ({
+export const Clearable: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -107,7 +107,7 @@ export const Clearable: Story<Args> = ({
   </FormControl>
 )
 
-export const DefaultWithGuideline: Story<Args> = ({
+export const DefaultWithGuideline: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -127,7 +127,7 @@ export const DefaultWithGuideline: Story<Args> = ({
   </FormControl>
 )
 
-export const Multi: Story<Args> = ({
+export const Multi: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -148,7 +148,7 @@ export const Multi: Story<Args> = ({
   </FormControl>
 )
 
-export const MultiWithGuideline: Story<Args> = ({
+export const MultiWithGuideline: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -189,7 +189,7 @@ type SelectValue = {
   label: string
 }
 
-export const Creatable: Story<Args> = ({
+export const Creatable: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -220,7 +220,7 @@ export const Creatable: Story<Args> = ({
   )
 }
 
-export const CreatableWithGuideline: Story<Args> = ({
+export const CreatableWithGuideline: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -251,7 +251,7 @@ export const CreatableWithGuideline: Story<Args> = ({
   )
 }
 
-export const CreatableMulti: Story<Args> = ({
+export const CreatableMulti: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -293,7 +293,7 @@ const promiseOptions = (inputValue: string) =>
     }, 1000)
   })
 
-export const Async: Story<Args> = ({
+export const Async: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
@@ -313,7 +313,7 @@ export const Async: Story<Args> = ({
   </FormControl>
 )
 
-export const AsyncCreatable: Story<Args> = ({
+export const AsyncCreatable: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,

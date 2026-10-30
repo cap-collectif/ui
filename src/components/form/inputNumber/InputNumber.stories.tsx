@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapInputSize } from '../enums'
@@ -33,11 +33,11 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<InputNumberProps> = args => (
+export const Default: StoryFn<InputNumberProps> = args => (
   <InputNumber {...args} />
 )
 
-export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithError: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} isInvalid width="300px">
       <InputNumber placeholder="6" />
@@ -46,7 +46,7 @@ export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const WithLabel: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithLabel: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} width="300px">
       <FormLabel label="Label" />
@@ -56,7 +56,7 @@ export const WithLabel: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const WithLabelError: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithLabelError: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} isInvalid width="300px">
       <FormLabel label="Label" />
@@ -66,7 +66,7 @@ export const WithLabelError: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const WithGuideline: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithGuideline: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} width="300px">
       <FormLabel label="Label" />
@@ -77,7 +77,7 @@ export const WithGuideline: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const WithGuidelineError: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithGuidelineError: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} isInvalid width="300px">
       <FormLabel label="Label" />
@@ -88,7 +88,7 @@ export const WithGuidelineError: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const Disabled: Story<Args> = ({ errorMessage, ...args }) => {
+export const Disabled: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} isDisabled width="300px">
       <InputNumber placeholder="6" />
@@ -96,7 +96,7 @@ export const Disabled: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const MediumSize: Story<Args> = ({ errorMessage, ...args }) => {
+export const MediumSize: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args} variantSize={CapInputSize.Md} width="300px">
       <InputNumber placeholder="6" />
@@ -104,7 +104,7 @@ export const MediumSize: Story<Args> = ({ errorMessage, ...args }) => {
   )
 }
 
-export const WithInputNumberProperties: Story<Args> = ({
+export const WithInputNumberProperties: StoryFn<Args> = ({
   errorMessage,
   ...args
 }) => {

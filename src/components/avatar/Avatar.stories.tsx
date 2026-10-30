@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Flex } from '../layout'
@@ -18,9 +18,9 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<AvatarProps> = args => <Avatar {...args} />
+export const Default: StoryFn<AvatarProps> = args => <Avatar {...args} />
 
-export const AllSizes: Story = args => (
+export const AllSizes: StoryFn = args => (
   <Flex>
     <Avatar {...args.xs} />
     <Avatar {...args.sm} />

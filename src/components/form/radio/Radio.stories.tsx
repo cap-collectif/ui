@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import FormControl from '../formControl/FormControl'
@@ -28,22 +28,22 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<RadioProps> = args => <Radio {...args} id="radio" />
+export const Default: StoryFn<RadioProps> = args => <Radio {...args} id="radio" />
 
-export const WithText: Story<RadioProps> = args => (
+export const WithText: StoryFn<RadioProps> = args => (
   <Radio {...args} id="radio">
     Check me
   </Radio>
 )
 
-export const WithLabel: Story<Args> = args => (
+export const WithLabel: StoryFn<Args> = args => (
   <FormControl {...args}>
     <FormLabel label="User selection" />
     <Radio id="radio">Check me</Radio>
   </FormControl>
 )
 
-export const WithGuideline: Story<Args> = args => (
+export const WithGuideline: StoryFn<Args> = args => (
   <FormControl {...args}>
     <FormLabel label="User selection" />
     <FormGuideline>Guideline</FormGuideline>
@@ -51,7 +51,7 @@ export const WithGuideline: Story<Args> = args => (
   </FormControl>
 )
 
-export const WithAnErrorMessage: Story<Args> = ({ errorMessage, ...args }) => (
+export const WithAnErrorMessage: StoryFn<Args> = ({ errorMessage, ...args }) => (
   <FormControl {...args}>
     <Radio id="radio">Check me</Radio>
     <FormErrorMessage ml={7} mt={0}>
@@ -64,7 +64,7 @@ WithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const WithAnErrorMessageChecked: Story<Args> = ({
+export const WithAnErrorMessageChecked: StoryFn<Args> = ({
   errorMessage,
   ...args
 }) => (
@@ -82,7 +82,7 @@ WithAnErrorMessageChecked.args = {
   isInvalid: true,
 }
 
-export const Disabled: Story<Args> = () => (
+export const Disabled: StoryFn<Args> = () => (
   <>
     <Radio isDisabled id="radio">
       Check me
