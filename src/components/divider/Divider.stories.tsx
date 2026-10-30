@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
@@ -21,11 +21,11 @@ const meta: Meta<DividerProps> = {
 
 export default meta
 
-export const Default: Story<DividerProps> = args => (
+export const Default: StoryFn<DividerProps> = args => (
   <Divider {...args}>DEFAULT DIVIDER</Divider>
 )
 
-export const ChildrenHasOwnStyles: Story<DividerProps> = args => (
+export const ChildrenHasOwnStyles: StoryFn<DividerProps> = args => (
   <Divider {...args}>
     <Text fontWeight={CapUIFontWeight.Semibold} color={'red.600'}>
       I have my own styles
@@ -33,7 +33,7 @@ export const ChildrenHasOwnStyles: Story<DividerProps> = args => (
   </Divider>
 )
 
-export const WithHtmlContent: Story<DividerProps> = args => (
+export const WithHtmlContent: StoryFn<DividerProps> = args => (
   <Divider {...args}>
     <Flex justifyContent={'center'} gap={2}>
       <Icon name={CapUIIcon.Heart} color={'primary.base'} />
@@ -47,7 +47,7 @@ export const WithHtmlContent: Story<DividerProps> = args => (
   </Divider>
 )
 
-export const WithSiblings: Story<DividerProps> = args => (
+export const WithSiblings: StoryFn<DividerProps> = args => (
   <Flex direction={'column'}>
     <FormLabel label={"What's your favourite animal?"} />
     <FormGuideline>

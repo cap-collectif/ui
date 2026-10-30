@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 
 import * as Icons from '../../assets/icons'
@@ -40,7 +40,7 @@ const meta: Meta<Args> = {
 
 export default meta
 
-export const Default: Story<Args> = ({ color }) => {
+export const Default: StoryFn<Args> = ({ color }) => {
   const [search, setSearch] = useState('')
 
   const filteredIcons = listIconName.filter(icon =>
@@ -71,7 +71,7 @@ export const Default: Story<Args> = ({ color }) => {
   )
 }
 
-export const WithSize: Story<Args> = ({ color }) => (
+export const WithSize: StoryFn<Args> = ({ color }) => (
   <Grid gridGap={6} templateColumns={['1fr 1fr 1fr 1fr']}>
     {listIconName.map(icon => (
       <Flex key={icon} borderRadius="normal" direction="column">

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import Avatar from '../avatar/Avatar'
 import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
@@ -16,7 +16,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<AvatarGroupProps> = args => (
+export const Default: StoryFn<AvatarGroupProps> = args => (
   <AvatarGroup {...args}>
     <Avatar
       name="Mikasa Estucasa"

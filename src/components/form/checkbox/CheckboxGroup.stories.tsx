@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import FormControl from '../formControl/FormControl'
@@ -28,7 +28,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<Args> = args => (
+export const Default: StoryFn<Args> = args => (
   <FormControl {...args} width="500px">
     <FormLabel label="User selection" />
     <CheckboxGroup>
@@ -44,7 +44,7 @@ export const Default: Story<Args> = args => (
   </FormControl>
 )
 
-export const GroupWithAnErrorMessage: Story<Args> = ({
+export const GroupWithAnErrorMessage: StoryFn<Args> = ({
   errorMessage,
   ...args
 }) => (
@@ -64,7 +64,7 @@ GroupWithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const GroupWithBasicForm: Story<Args> = ({ errorMessage, ...args }) => {
+export const GroupWithBasicForm: StoryFn<Args> = ({ errorMessage, ...args }) => {
   const [formState, setFormState] = React.useState([
     { id: 'checkbox1', label: 'Checkbox1', checked: false },
     { id: 'checkbox2', label: 'Checkbox2', checked: true },

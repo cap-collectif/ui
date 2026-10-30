@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
@@ -32,7 +32,7 @@ const meta: Meta<ModalProps> = {
 
 export default meta
 
-export const Default: Story<ModalProps> = args => (
+export const Default: StoryFn<ModalProps> = args => (
   <Modal {...args} ariaLabelledby="modal-title">
     {({ hide }) => (
       <>
@@ -67,7 +67,7 @@ export const Default: Story<ModalProps> = args => (
     )}
   </Modal>
 )
-export const Mobile: Story<ModalProps> = args => (
+export const Mobile: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -133,7 +133,7 @@ Mobile.parameters = {
     defaultViewport: 'mobile1',
   },
 }
-export const MobileFullPage: Story<ModalProps> = args => (
+export const MobileFullPage: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -173,7 +173,7 @@ MobileFullPage.parameters = {
     defaultViewport: 'mobile1',
   },
 }
-export const WithLabel: Story<ModalProps> = args => (
+export const WithLabel: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -195,7 +195,7 @@ export const WithLabel: Story<ModalProps> = args => (
   </Modal>
 )
 
-export const WithLotOfContent: Story<ModalProps> = args => (
+export const WithLotOfContent: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -252,7 +252,7 @@ export const WithLotOfContent: Story<ModalProps> = args => (
   </Modal>
 )
 
-export const allowBodyScroll: Story<ModalProps> = args => (
+export const allowBodyScroll: StoryFn<ModalProps> = args => (
   <Flex width="60%" direction="column" margin="0px auto">
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad
@@ -357,7 +357,7 @@ export const allowBodyScroll: Story<ModalProps> = args => (
 allowBodyScroll.storyName = 'allow body scroll'
 allowBodyScroll.args = { preventBodyScroll: false, size: CapUIModalSize.Md }
 
-export const keepOnClickOutside: Story<ModalProps> = args => (
+export const keepOnClickOutside: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -390,7 +390,7 @@ export const keepOnClickOutside: Story<ModalProps> = args => (
 keepOnClickOutside.storyName = 'keep on click outside'
 keepOnClickOutside.args = { hideOnClickOutside: false }
 
-export const DoNotHideOnEsc: Story<ModalProps> = args => (
+export const DoNotHideOnEsc: StoryFn<ModalProps> = args => (
   <Modal {...args}>
     {({ hide }) => (
       <>
@@ -432,7 +432,7 @@ const options = [
   { value: 'mail6', label: 'mail6@cap-collectif.com' },
 ]
 
-export const WithSelectOverflow: Story<ModalProps> = args => (
+export const WithSelectOverflow: StoryFn<ModalProps> = args => (
   <>
     <Modal {...args}>
       {({ hide }) => (
@@ -468,7 +468,7 @@ export const WithSelectOverflow: Story<ModalProps> = args => (
 )
 WithSelectOverflow.storyName = 'With Select Overflow'
 
-export const ControlledModal: Story<ModalProps> = args => {
+export const ControlledModal: StoryFn<ModalProps> = args => {
   const [show, setShow] = React.useState(false)
 
   return (
@@ -500,7 +500,7 @@ export const ControlledModal: Story<ModalProps> = args => {
 ControlledModal.args = { disclosure: undefined }
 ControlledModal.storyName = 'Controlled Modal'
 
-export const SidePanelModal: Story<ModalProps> = args => {
+export const SidePanelModal: StoryFn<ModalProps> = args => {
   return (
     <Modal {...args} size={CapUIModalSize.SidePanel}>
       <Modal.Header>

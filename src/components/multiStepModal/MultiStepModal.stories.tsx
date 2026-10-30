@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapUIFontSize } from '../../styles'
@@ -164,7 +164,7 @@ const ModalThree: React.FC = () => {
   )
 }
 
-export const Default: Story<MultiStepModalProps> = () => (
+export const Default: StoryFn<MultiStepModalProps> = () => (
   <MultiStepModal
     ariaLabel="Multi step modal"
     disclosure={
@@ -205,7 +205,7 @@ const ModalConditionalOne: React.FC<{ setDisplayStep: () => void }> = ({
   )
 }
 
-export const ConditionalStep: Story<MultiStepModalProps> = () => {
+export const ConditionalStep: StoryFn<MultiStepModalProps> = () => {
   const [displayStep, setDisplayStep] = React.useState(true)
 
   return (
@@ -330,7 +330,7 @@ const Step = ({
   )
 }
 
-export const FullScreen: Story<MultiStepModalProps> = () => {
+export const FullScreen: StoryFn<MultiStepModalProps> = () => {
   const [show, setShow] = React.useState(false)
 
   return (

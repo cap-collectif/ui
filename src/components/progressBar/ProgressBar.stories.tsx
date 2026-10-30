@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Flex } from '../layout'
@@ -23,13 +23,13 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<Args> = ({ ...args }) => (
+export const Default: StoryFn<Args> = ({ ...args }) => (
   <Flex width="200px">
     <ProgressBar {...args} />
   </Flex>
 )
 
-export const oneStep: Story<Args> = ({ ...args }) => (
+export const oneStep: StoryFn<Args> = ({ ...args }) => (
   <Flex width="200px">
     <ProgressBar {...args} />
   </Flex>

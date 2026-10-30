@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import {
@@ -52,7 +52,7 @@ type Props = {
   primary: string
 }
 
-export const Default: Story<Props> = ({ primary }) => {
+export const Default: StoryFn<Props> = ({ primary }) => {
   const CustomTheme = {
     ...capuiTheme,
     fonts: {

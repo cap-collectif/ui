@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import Button from '../button/Button'
 import { Flex } from '../layout/Flex'
@@ -25,7 +25,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ToastProps> = args => (
+export const Default: StoryFn<ToastProps> = args => (
   <Flex direction={['column', 'row']} gridGap={2} wrap="wrap">
     <Button
       variant="primary"
@@ -138,7 +138,7 @@ export const Default: Story<ToastProps> = args => (
   </Flex>
 )
 
-export const WithLink: Story<ToastProps> = () => (
+export const WithLink: StoryFn<ToastProps> = () => (
   <Flex direction={['column', 'row']} gridGap={2} wrap="wrap">
     <Button
       variant="primary"
@@ -208,7 +208,7 @@ export const WithLink: Story<ToastProps> = () => (
   </Flex>
 )
 
-export const WithPosition: Story<ToastProps> = () => (
+export const WithPosition: StoryFn<ToastProps> = () => (
   <Flex direction={['column', 'row']} gridGap={2} wrap="wrap">
     <Button
       variant="primary"

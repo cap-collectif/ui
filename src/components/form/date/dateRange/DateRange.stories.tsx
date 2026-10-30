@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../../../box/Box'
@@ -44,7 +44,7 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<DateRangeProps> = args => {
+export const Default: StoryFn<DateRangeProps> = args => {
   const [value, onChange] = React.useState<DateRangeValueType>({
     startDate: null,
     endDate: null,
@@ -59,7 +59,7 @@ export const Default: Story<DateRangeProps> = args => {
     />
   )
 }
-export const Disabled: Story<DateRangeProps> = args => {
+export const Disabled: StoryFn<DateRangeProps> = args => {
   const [value, onChange] = React.useState<DateRangeValueType>({
     startDate: null,
     endDate: null,
@@ -78,7 +78,7 @@ Disabled.args = {
   isDisabled: true,
 }
 
-export const WithError: Story<DateRangeProps> = ({
+export const WithError: StoryFn<DateRangeProps> = ({
   errorMessage,
   onChange: storybookOnChange,
   value: storybookValue,
@@ -111,7 +111,7 @@ WithError.args = {
   errorMessage: 'Error info.',
 }
 
-export const WithLabel: Story<DateRangeProps> = ({
+export const WithLabel: StoryFn<DateRangeProps> = ({
   errorMessage,
   variantSize,
   onChange: storybookOnChange,
@@ -147,7 +147,7 @@ export const WithLabel: Story<DateRangeProps> = ({
   )
 }
 
-export const WithStartDateInThePast: Story<DateRangeProps> = ({
+export const WithStartDateInThePast: StoryFn<DateRangeProps> = ({
   errorMessage,
   variantSize,
   onChange: storybookOnChange,
@@ -184,7 +184,7 @@ export const WithStartDateInThePast: Story<DateRangeProps> = ({
   )
 }
 
-export const WithGuideline: Story<DateRangeProps> = ({
+export const WithGuideline: StoryFn<DateRangeProps> = ({
   errorMessage,
   placeholder,
   onChange: storybookOnChange,

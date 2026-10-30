@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
 
 import { Switch, SwitchProps } from './Switch'
 
@@ -12,28 +12,28 @@ const meta: Meta<SwitchProps> = {
 
 export default meta
 
-export const Default: Story = args => <Switch {...args} id="switch-1" />
+export const Default: StoryFn = args => <Switch {...args} id="switch-1" />
 
-export const Checked: Story = args => <Switch {...args} id="switch-1" checked />
+export const Checked: StoryFn = args => <Switch {...args} id="switch-1" checked />
 
-export const WithLabel: Story = args => (
+export const WithLabel: StoryFn = args => (
   <Switch {...args} id="switch-1">
     Toggle
   </Switch>
 )
 
-export const WithLabelLeft: Story = args => (
+export const WithLabelLeft: StoryFn = args => (
   <Switch {...args} id="switch-1" direction="row-reverse">
     Toggle
   </Switch>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Switch isDisabled id="switch-1">
     Toggle
   </Switch>
 )
 
-export const DisabledChecked: Story = () => (
+export const DisabledChecked: StoryFn = () => (
   <Switch isDisabled id="switch-1" checked />
 )

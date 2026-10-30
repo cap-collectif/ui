@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Avatar } from '../avatar'
@@ -29,7 +29,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<MenuProps> = args => (
+export const Default: StoryFn<MenuProps> = args => (
   <Menu {...args}>
     <Menu.List>
       <Menu.Item onClick={() => alert('Hello')}>Button</Menu.Item>
@@ -48,7 +48,7 @@ export const Default: Story<MenuProps> = args => (
   </Menu>
 )
 
-export const WithOptionGroup: Story<MenuProps> = args => {
+export const WithOptionGroup: StoryFn<MenuProps> = args => {
   const [sorting, setSorting] = React.useState<string>('asc')
   const [filters, setFilters] = React.useState<string[]>(['blue'])
 
@@ -110,7 +110,7 @@ export const WithOptionGroup: Story<MenuProps> = args => {
   )
 }
 
-export const WithSelectOption: Story<MenuProps> = args => {
+export const WithSelectOption: StoryFn<MenuProps> = args => {
   const languages = [
     {
       value: 'fr-FR',

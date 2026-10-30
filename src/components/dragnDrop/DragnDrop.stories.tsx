@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { ListCard } from '../ListCard'
@@ -37,7 +37,7 @@ const reorder = (
 
   return result
 }
-export const Default: Story<DragnDropProps> = () => {
+export const Default: StoryFn<DragnDropProps> = () => {
   const [vals, setVals] = React.useState(initial)
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -67,7 +67,7 @@ export const Default: Story<DragnDropProps> = () => {
   )
 }
 
-export const withTags: Story<DragnDropProps> = () => {
+export const withTags: StoryFn<DragnDropProps> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [vals, setVals] = React.useState(initial)
   const onDragEnd = (result: DropResult) => {

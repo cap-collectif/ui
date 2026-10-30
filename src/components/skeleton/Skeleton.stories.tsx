@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { Flex } from '../layout/Flex'
 import { Skeleton, SkeletonProps } from './'
@@ -32,6 +32,6 @@ const meta: Meta<SkeletonProps> = {
 
 export default meta
 
-export const Default: Story<SkeletonProps> = args => (
+export const Default: StoryFn<SkeletonProps> = args => (
   <Skeleton {...args}>Hi, I am the child</Skeleton>
 )

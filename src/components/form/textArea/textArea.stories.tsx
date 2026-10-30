@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapInputSize } from '../enums'
@@ -40,7 +40,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<TextAreaProps> = args => {
+export const Default: StoryFn<TextAreaProps> = args => {
   const [value, setValue] = React.useState('toto')
   return (
     <TextArea
@@ -53,7 +53,7 @@ export const Default: Story<TextAreaProps> = args => {
   )
 }
 
-export const WithAnErrorMessage: Story<Args> = ({
+export const WithAnErrorMessage: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -68,7 +68,7 @@ WithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const WithFixedWidthAndMaxLength: Story<Args> = ({
+export const WithFixedWidthAndMaxLength: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -94,7 +94,7 @@ WithFixedWidthAndMaxLength.args = {
   errorMessage: "Je suis un message d'erreur somme toute assez long",
 }
 
-export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
+export const Disabled: StoryFn<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} isDisabled width="500px">
@@ -110,7 +110,7 @@ export const Disabled: Story<Args> = ({ placeholder, ...args }) => {
   )
 }
 
-export const WithLabel: Story<Args> = ({ placeholder, ...args }) => {
+export const WithLabel: StoryFn<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} width="500px">
@@ -128,7 +128,7 @@ export const WithLabel: Story<Args> = ({ placeholder, ...args }) => {
   )
 }
 
-export const WithLabelDisabled: Story<Args> = ({ placeholder, ...args }) => {
+export const WithLabelDisabled: StoryFn<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} isDisabled width="500px">
@@ -145,7 +145,7 @@ export const WithLabelDisabled: Story<Args> = ({ placeholder, ...args }) => {
   )
 }
 
-export const WithGuideline: Story<Args> = ({ placeholder, ...args }) => {
+export const WithGuideline: StoryFn<Args> = ({ placeholder, ...args }) => {
   const [value, setValue] = React.useState('')
   return (
     <FormControl {...args} width="500px">
@@ -163,7 +163,7 @@ export const WithGuideline: Story<Args> = ({ placeholder, ...args }) => {
   )
 }
 
-export const WithGuidelineDisabled: Story<Args> = ({
+export const WithGuidelineDisabled: StoryFn<Args> = ({
   placeholder,
   ...args
 }) => {

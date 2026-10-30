@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { Box } from '../../box'
@@ -17,7 +17,7 @@ const meta: Meta<SkeletonTextProps> = {
 
 export default meta
 
-export const Default: Story<SkeletonTextProps> = args => (
+export const Default: StoryFn<SkeletonTextProps> = args => (
   <Box width="100%">
     <SkeletonText {...args} height="50px" />
   </Box>

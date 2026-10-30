@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { CapInputSize } from '../enums'
@@ -38,18 +38,18 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<Args> = args => {
+export const Default: StoryFn<Args> = args => {
   return <HourInput {...args} />
 }
 
-export const Disabled: Story<Args> = args => {
+export const Disabled: StoryFn<Args> = args => {
   return <HourInput {...args} />
 }
 Disabled.args = {
   isDisabled: true,
 }
 
-export const WithError: Story<Args> = ({ errorMessage, ...args }) => {
+export const WithError: StoryFn<Args> = ({ errorMessage, ...args }) => {
   return (
     <FormControl {...args}>
       <HourInput {...args} />

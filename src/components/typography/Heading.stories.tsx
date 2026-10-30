@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { CapUIFontWeight } from '../../styles'
 import { Flex } from '../layout/Flex'
@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<HeadingProps> = args => (
+export const Default: StoryFn<HeadingProps> = args => (
   <Flex direction="column">
     <Heading {...args} as="h1">
       Title 1

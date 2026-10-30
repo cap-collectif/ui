@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import Button from '../../button/Button'
@@ -38,7 +38,7 @@ const colourOptions = [
   { value: 'silver', label: 'Silver' },
 ]
 
-export const Default: Story<InputGroupProps> = args => {
+export const Default: StoryFn<InputGroupProps> = args => {
   const [dateRangeExample, setDateRangeExample] = React.useState<
     DateRangeValueType
   >({
@@ -178,7 +178,7 @@ export const Default: Story<InputGroupProps> = args => {
     </Flex>
   )
 }
-export const WithError: Story<InputGroupProps> = args => {
+export const WithError: StoryFn<InputGroupProps> = args => {
   const [dateRangeExample, setDateRangeExample] = React.useState<
     DateRangeValueType
   >({

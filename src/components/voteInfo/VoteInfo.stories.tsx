@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../box'
@@ -17,7 +17,7 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<VoteInfoProps> = ({ ...args }) => (
+export const Default: StoryFn<VoteInfoProps> = ({ ...args }) => (
   <Flex width="100%" height="100%" justify="center" align="center" mt={6}>
     <VoteInfo {...args}>
       <VoteInfo.Header infoLabel="Label d'info">
@@ -33,7 +33,7 @@ export const Default: Story<VoteInfoProps> = ({ ...args }) => (
     </VoteInfo>
   </Flex>
 )
-export const OutOfBudget: Story<VoteInfoProps> = ({ ...args }) => (
+export const OutOfBudget: StoryFn<VoteInfoProps> = ({ ...args }) => (
   <Flex width="100%" height="100%" justify="center" align="center">
     <VoteInfo {...args}>
       <VoteInfo.Header infoLabel="Label d'info">

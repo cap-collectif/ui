@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { ListCard } from '../'
 import { ButtonGroup } from '../../buttonGroup'
@@ -18,7 +18,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<ListCardItemProps> = args => (
+export const Default: StoryFn<ListCardItemProps> = args => (
   <Flex direction="column" gap="sm">
     {/* Draggable */}
     <ListCard.Item draggable {...args}>
@@ -69,7 +69,7 @@ export const Default: Story<ListCardItemProps> = args => (
   </Flex>
 )
 
-export const Hierarchy: Story<ListCardItemProps> = args => (
+export const Hierarchy: StoryFn<ListCardItemProps> = args => (
   <Flex direction="column" gap="sm" padding="md">
     {/* Draggable */}
     <ListCard.Item draggable {...args}>

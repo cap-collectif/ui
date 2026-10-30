@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Button } from '../button'
@@ -38,7 +38,7 @@ const colourOptions = [
 
 export default meta
 
-export const Default: Story<Args> = ({ ...args }) => (
+export const Default: StoryFn<Args> = ({ ...args }) => (
   <>
     <FormLabel label="Label" mb={1} />
     <Search
@@ -50,7 +50,7 @@ export const Default: Story<Args> = ({ ...args }) => (
   </>
 )
 
-export const Loading: Story<Args> = ({ ...args }) => (
+export const Loading: StoryFn<Args> = ({ ...args }) => (
   <>
     <FormLabel label="Label" mb={1} />
     <Search
@@ -63,7 +63,7 @@ export const Loading: Story<Args> = ({ ...args }) => (
   </>
 )
 
-export const Disabled: Story<Args> = ({ ...args }) => (
+export const Disabled: StoryFn<Args> = ({ ...args }) => (
   <>
     <FormControl isDisabled>
       <FormLabel label="Label" mb={1} />
@@ -72,7 +72,7 @@ export const Disabled: Story<Args> = ({ ...args }) => (
   </>
 )
 
-export const Controlled: Story<Args> = () => {
+export const Controlled: StoryFn<Args> = () => {
   const [value, setValue] = React.useState('')
 
   return (
@@ -93,7 +93,7 @@ const promiseOptions = () =>
     }, 1000)
   })
 
-export const WithSuggestions: Story<Args> = ({ ...args }) => (
+export const WithSuggestions: StoryFn<Args> = ({ ...args }) => (
   <>
     <FormLabel label="Label" mb={1} />
     <Search
@@ -107,7 +107,7 @@ export const WithSuggestions: Story<Args> = ({ ...args }) => (
   </>
 )
 
-export const AsField: Story<Args> = ({ ...args }) => (
+export const AsField: StoryFn<Args> = ({ ...args }) => (
   <FormControl>
     <FormLabel label="Label" mb={1} />
     <Search

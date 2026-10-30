@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 import { DropEvent, ErrorCode, FileRejection } from 'react-dropzone'
 
@@ -71,7 +71,7 @@ const meta: Meta = {
 }
 export default meta
 
-export const Default: Story<UploaderProps> = ({
+export const Default: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -145,7 +145,7 @@ export const Default: Story<UploaderProps> = ({
     />
   </FormControl>
 )
-export const Medium: Story<UploaderProps> = ({
+export const Medium: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -222,7 +222,7 @@ export const Medium: Story<UploaderProps> = ({
 Medium.args = {
   size: UPLOADER_SIZE.MD,
 }
-export const Small: Story<UploaderProps> = ({
+export const Small: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -299,7 +299,7 @@ export const Small: Story<UploaderProps> = ({
 Small.args = {
   size: UPLOADER_SIZE.SM,
 }
-export const Circle: Story<UploaderProps> = ({
+export const Circle: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -378,7 +378,7 @@ Circle.args = {
   circle: true,
 }
 
-export const DefaultWithValue: Story<UploaderProps> = ({
+export const DefaultWithValue: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -466,7 +466,7 @@ DefaultWithValue.args = {
   },
 }
 
-export const MediumWithValue: Story<UploaderProps> = ({
+export const MediumWithValue: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -553,7 +553,7 @@ MediumWithValue.args = {
     type: 'image/jpeg',
   },
 }
-export const SmallWithValue: Story<UploaderProps> = ({
+export const SmallWithValue: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -640,7 +640,7 @@ SmallWithValue.args = {
     type: 'image/jpeg',
   },
 }
-export const CircleWithValue: Story<UploaderProps> = ({
+export const CircleWithValue: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -728,7 +728,7 @@ CircleWithValue.args = {
     type: 'image/jpeg',
   },
 }
-export const MultipleWithValue: Story<UploaderProps> = ({
+export const MultipleWithValue: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -889,7 +889,7 @@ MultipleWithValue.args = {
   ],
 }
 
-export const UniqueWithError: Story<UploaderProps> = ({
+export const UniqueWithError: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -1017,7 +1017,7 @@ UniqueWithError.args = {
   maxSize: 1048576,
 }
 
-export const MultipleWithErrors: Story<UploaderProps> = ({
+export const MultipleWithErrors: StoryFn<UploaderProps> = ({
   onDrop,
   className,
   value,
@@ -1140,7 +1140,7 @@ MultipleWithErrors.args = {
   multiple: true,
   maxSize: 1048576,
 }
-export const UniqueWithWarning: Story<UploaderProps> = ({
+export const UniqueWithWarning: StoryFn<UploaderProps> = ({
   onDrop: externalOnDrop,
   className,
   value,
@@ -1360,7 +1360,7 @@ UniqueWithWarning.args = {
   },
 }
 
-export const FullWidth: Story<ModalProps> = args => (
+export const FullWidth: StoryFn<ModalProps> = args => (
   <Modal {...args} ariaLabelledby="modal-title" size={CapUIModalSize.Xl}>
     {({ hide }) => (
       <>

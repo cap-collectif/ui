@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Box } from '../../box/Box'
@@ -45,13 +45,13 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<InputProps> = args => (
+export const Default: StoryFn<InputProps> = args => (
   <FormControl {...args}>
     <Input placeholder={args.placeholder} />
   </FormControl>
 )
 
-export const Disabled: Story<InputProps> = args => (
+export const Disabled: StoryFn<InputProps> = args => (
   <FormControl {...args}>
     <FormLabel htmlFor="name" label="Label" />
     <Input name="name" placeholder={args.placeholder} value="John Doe" />
@@ -59,7 +59,7 @@ export const Disabled: Story<InputProps> = args => (
 )
 Disabled.args = { isDisabled: true }
 
-export const Readonly: Story<InputProps> = args => (
+export const Readonly: StoryFn<InputProps> = args => (
   <FormControl {...args}>
     <FormLabel htmlFor="name" label="Label" />
     <Input name="name" placeholder={args.placeholder} value="John Doe" />
@@ -67,7 +67,7 @@ export const Readonly: Story<InputProps> = args => (
 )
 Readonly.args = { isReadonly: true }
 
-export const WithAnErrorMessage: Story<Args> = ({
+export const WithAnErrorMessage: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -82,7 +82,7 @@ WithAnErrorMessage.args = {
   isInvalid: true,
 }
 
-export const WithFixedWidthAndLabel: Story<Args> = ({
+export const WithFixedWidthAndLabel: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   variantSize,
@@ -110,7 +110,7 @@ WithFixedWidthAndLabel.args = {
   errorMessage: 'Error info. ceci est une erreur aïe alors bon ! La width !',
 }
 
-export const WithGuideline: Story<Args> = ({
+export const WithGuideline: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   ...args
@@ -127,7 +127,7 @@ export const WithGuideline: Story<Args> = ({
   </FormControl>
 )
 
-export const WithSimpleFormErrorHandling: Story<Args> = ({
+export const WithSimpleFormErrorHandling: StoryFn<Args> = ({
   placeholder,
   ...args
 }) => {
@@ -146,7 +146,7 @@ export const WithSimpleFormErrorHandling: Story<Args> = ({
   )
 }
 
-export const WithOnClickActionsExample: Story<Args> = ({
+export const WithOnClickActionsExample: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   ...args

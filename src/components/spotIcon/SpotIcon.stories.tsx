@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import * as SpotIcons from '../../assets/spotIcons'
 import { Flex, Grid } from '../layout'
@@ -19,7 +19,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid gridGap={6} autoFit>
     {listIconName.map(icon => (
       <Flex key={icon} direction="column" align="center">
@@ -30,7 +30,7 @@ export const Default: Story = () => (
   </Grid>
 )
 
-export const WithSize: Story = () => (
+export const WithSize: StoryFn = () => (
   <Grid gridGap={6} templateColumns={['1fr 1fr 1fr 1fr']}>
     {listIconName.map(icon => (
       <Flex key={icon} borderRadius="normal" direction="column">

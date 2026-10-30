@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { Button } from '../../button'
 import { CapUIIcon } from '../../icon'
@@ -31,7 +31,7 @@ const meta: Meta<ConfirmModalProps> = {
 }
 export default meta
 
-export const Default: Story<ConfirmModalProps> = args => (
+export const Default: StoryFn<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
     <Modal
       ariaLabel={args.ariaLabel}
@@ -107,7 +107,7 @@ export const Default: Story<ConfirmModalProps> = args => (
   </Flex>
 )
 
-export const withPromisesCallbacks: Story<ConfirmModalProps> = args => (
+export const withPromisesCallbacks: StoryFn<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
     <Modal
       ariaLabel={args.ariaLabel}
@@ -182,7 +182,7 @@ export const withPromisesCallbacks: Story<ConfirmModalProps> = args => (
   </Flex>
 )
 
-export const Mobile: Story<ConfirmModalProps> = args => (
+export const Mobile: StoryFn<ConfirmModalProps> = args => (
   <Flex gridGap={2} wrap="wrap" align="center">
     <Modal
       ariaLabel={args.ariaLabel}

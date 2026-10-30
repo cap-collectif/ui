@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { Accordion, AccordionProps } from './'
@@ -14,7 +14,7 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<AccordionProps> = args => (
+const Template: StoryFn<AccordionProps> = args => (
   <>
     <Accordion {...args}>
       <Accordion.Item id="volet-default">
@@ -94,7 +94,7 @@ Default.args = {
   allowMultiple: true,
 }
 
-export const Disable: Story<AccordionProps> = args => (
+export const Disable: StoryFn<AccordionProps> = args => (
   <>
     <Accordion {...args}>
       <Accordion.Item id="volet-1">
@@ -136,7 +136,7 @@ VariantWhite.parameters = {
   },
 }
 
-export const IconRight: Story<AccordionProps> = args => (
+export const IconRight: StoryFn<AccordionProps> = args => (
   <>
     <Accordion {...args}>
       <Accordion.Item id="volet-1">

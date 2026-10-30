@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { largeThumbnail, thumbnail } from '../../assets/images'
 import { useIsMobile } from '../../hooks/useDeviceDetect'
@@ -95,7 +95,7 @@ const defaultCard = (
   </Card>
 )
 
-export const Default: Story<CardProps> = args => (
+export const Default: StoryFn<CardProps> = args => (
   <Flex gap="md" flexDirection="column">
     <Box
       as="h2"
@@ -239,7 +239,7 @@ const Cards = ({ crop, ...args }: any) => (
   </>
 )
 
-export const Layouts: Story<CardProps> = args => {
+export const Layouts: StoryFn<CardProps> = args => {
   const isMobile = useIsMobile()
   return (
     <Flex gap="md" flexDirection="column">

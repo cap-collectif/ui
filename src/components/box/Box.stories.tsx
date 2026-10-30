@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import Box, { BoxProps } from './Box'
 
@@ -12,7 +12,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default: Story<BoxProps> = () => (
+export const Default: StoryFn<BoxProps> = () => (
   <Box p={4} bg={['red.300', 'aqua.200']}>
     <p>Welcome to CapUI</p>
   </Box>
