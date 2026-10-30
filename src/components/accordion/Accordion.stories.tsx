@@ -42,7 +42,12 @@ const Template: StoryFn<AccordionProps> = args => (
       <Accordion.Item id="volet-2">
         <Accordion.Button>
           Volet 2
-          <a style={{ marginLeft: 'auto' }} href="#">
+          <a
+            style={{ marginLeft: 'auto' }}
+            href="https://www.cap-collectif.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             lien
           </a>
         </Accordion.Button>
