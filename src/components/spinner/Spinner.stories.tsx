@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import React from 'react'
 
 import { CapUIIconSize } from '../icon'
@@ -8,7 +8,7 @@ import { Spinner } from './'
 
 const sizes = Object.values(CapUIIconSize)
 
-const meta: Meta<SpinnerProps> = {
+const meta: Meta<typeof Spinner> = {
   title: 'Library/Spinner',
   component: Spinner,
   args: {

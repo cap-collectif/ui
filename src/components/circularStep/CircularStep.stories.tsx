@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import { CapUIFontSize, CapUIFontWeight } from '../../styles'
 import { Box } from '../box'

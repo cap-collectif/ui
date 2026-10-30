@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import { useState } from 'react'
 
 import * as Icons from '../../assets/icons'
@@ -16,7 +16,7 @@ type Args = {
 const listIconName = Object.keys(Icons).sort() as CapUIIcon[]
 const listIconSize = Object.values(CapUIIconSize).reverse()
 
-const meta: Meta<Args> = {
+const meta: Meta<typeof Icon> = {
   title: 'Library/Icon',
   component: Icon,
   args: {

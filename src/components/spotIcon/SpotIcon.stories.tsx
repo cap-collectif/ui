@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import * as SpotIcons from '../../assets/spotIcons'
 import { Flex, Grid } from '../layout'

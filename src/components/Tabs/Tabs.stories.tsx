@@ -1,5 +1,6 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import * as React from 'react'
+import { fn } from 'storybook/test'
 
 import { Box } from '../box/Box'
 import { CapInputSize, FormControl, RadioGroup } from '../form'
@@ -13,6 +14,8 @@ import { Tabs, TabsProps } from './'
 const meta: Meta<TabsProps> = {
   title: 'Library/Tabs',
   component: Tabs,
+  // Tabs calls onChange on mount: an implicit action would be flagged during rendering
+  args: { onChange: fn() },
   argTypes: {
     children: { control: { disable: true }, table: { disable: true } },
   },
