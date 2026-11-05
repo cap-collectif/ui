@@ -9,14 +9,15 @@ import { Box } from '../../box'
 import { CapInputSize, InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
-import { MultiValue, Control } from './Select'
+import { Control, MultiValue } from './Select'
 
 export interface AsyncCreatableSelectProps<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
+  Group extends GroupBase<Option> = GroupBase<Option>
 > extends AsyncProps<Option, IsMulti, Group> {
   isDisabled?: boolean
+  isReadonly?: boolean
   variantSize?: CapInputSize
   variantColor?: InputVariantColor
   width?: string | number
@@ -32,13 +33,14 @@ export interface AsyncCreatableSelectProps<
 export function AsyncCreatableSelect<
   Option,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
+  Group extends GroupBase<Option> = GroupBase<Option>
 >({
   className,
   width,
   ...props
 }: AsyncCreatableSelectProps<Option, IsMulti, Group>) {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const isReadonly = !!inputProps.readOnly
   const { colors } = useTheme()
 
   return (
@@ -48,15 +50,20 @@ export function AsyncCreatableSelect<
           colors,
           inputProps.variantSize,
           inputProps.variantColor,
+          false,
+          isReadonly,
         )}
         className={cn('cap-async-creatable-select', className)}
         classNamePrefix="cap-async-creatable-select"
-        isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         {...props}
+        isDisabled={inputProps.disabled || isReadonly}
+        // readonly does not exist for select components, but we want matching styles if within form inputs that are readonly.
+        // @ts-ignore custom prop forwarded to selectProps
+        isReadonly={isReadonly}
       />
     </Box>
   )
