@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import * as React from 'react'
 
 import { CapUIFontWeight } from '../../styles'
@@ -13,9 +13,11 @@ import Proposal from './Proposal'
 const meta: Meta = {
   title: 'Library/Proposal',
   component: Proposal,
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
   parameters: {
     controls: { expanded: true },
-    backgrounds: { default: 'dark' },
   },
 }
 

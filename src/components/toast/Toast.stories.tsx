@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import Button from '../button/Button'
 import { Flex } from '../layout/Flex'

@@ -107,9 +107,8 @@ module.exports = {
   },
   stories: ['../src/**/*.stories.@(ts|tsx|js|jsx)'],
   addons: [
-    '@storybook/addon-storysource',
+    '@storybook/addon-docs',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
     '@storybook/addon-webpack5-compiler-babel',
   ],
   typescript: {

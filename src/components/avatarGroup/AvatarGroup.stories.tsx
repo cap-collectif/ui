@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import Avatar from '../avatar/Avatar'
 import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'

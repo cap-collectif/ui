@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import { largeThumbnail, thumbnail } from '../../assets/images'
 import { useIsMobile } from '../../hooks/useDeviceDetect'
@@ -27,9 +27,11 @@ const meta: Meta<CardProps> = {
   title: 'Library/Card',
   component: Card,
   args: { format: 'vertical' },
+  globals: {
+    backgrounds: { value: 'light' },
+  },
   parameters: {
     controls: { expanded: true },
-    backgrounds: { default: 'light' },
   },
   argTypes: {
     format: { control: 'select', options: ['horizontal', 'vertical'] },
