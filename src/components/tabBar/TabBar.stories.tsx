@@ -22,7 +22,8 @@ const meta: Meta<TabBarProps> = {
 export default meta
 const Template: StoryFn<TabBarProps> = args => {
   return (
-    <TabBar aria-label="Équipe" {...args} defaultTab="agui">
+    // `key`: remount when `defaultTab` changes, it is only read on mount
+    <TabBar aria-label="Équipe" key={args.defaultTab} {...args}>
       <TabPane id="agui" title="agui">
         <Flex m={4}>Lili présidente</Flex>
       </TabPane>
@@ -37,6 +38,9 @@ const Template: StoryFn<TabBarProps> = args => {
       >
         <Flex m={4}>Pianiste de l'équipe</Flex>
       </TabPane>
+      <TabPane id="disabled" title="Onglet désactivé" disabled>
+        <Flex m={4}>Jamais affiché</Flex>
+      </TabPane>
       <TabPane
         id="capco"
         title="Onglet avec redirection"
@@ -46,7 +50,28 @@ const Template: StoryFn<TabBarProps> = args => {
   )
 }
 
+const tabIds = ['agui', 'myriam', 'alex']
+
 export const Default = Template.bind({})
+Default.args = {
+  defaultTab: 'agui',
+  activationMode: 'automatic',
+  keepMounted: false,
+}
+Default.argTypes = {
+  defaultTab: { control: 'select', options: tabIds },
+  // Controlled mode: the selection only follows this control, clicks are
+  // reported in the Actions panel through `onChange`
+  selectedTab: {
+    control: 'select',
+    options: ['(uncontrolled)', ...tabIds],
+    mapping: { '(uncontrolled)': undefined },
+  },
+  activationMode: {
+    control: 'inline-radio',
+    options: ['automatic', 'manual'],
+  },
+}
 
 export const WithSideContent: StoryFn<TabBarProps> = args => {
   return (
