@@ -9,6 +9,7 @@ import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
+import Input from '../input/Input'
 import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
@@ -105,6 +106,36 @@ export const Clearable: StoryFn<Args> = ({
     />
     <FormErrorMessage>{errorMessage}</FormErrorMessage>
   </FormControl>
+)
+
+export const Readonly: StoryFn<Args> = ({ errorMessage, ...args }) => (
+  <Flex direction="column" gap="md">
+    <FormControl {...args} isReadonly width="500px">
+      <FormLabel label="Champ texte en lecture seule :" />
+      <Input value="Valeur" width="280px" readOnly />
+    </FormControl>
+    <FormControl {...args} isReadonly width="500px">
+      <FormLabel label="Choisissez une couleur :" />
+      <Select
+        width="280px"
+        options={colourOptions}
+        defaultValue={colourOptions[0]}
+        inputId="color"
+        isClearable
+      />
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+    </FormControl>
+    <FormControl {...args} isReadonly width="500px">
+      <FormLabel label="Choisissez DES couleurs :" />
+      <Select
+        width="280px"
+        options={colourOptions}
+        defaultValue={[colourOptions[0], colourOptions[1]]}
+        inputId="colors"
+        isMulti
+      />
+    </FormControl>
+  </Flex>
 )
 
 export const DefaultWithGuideline: StoryFn<Args> = ({

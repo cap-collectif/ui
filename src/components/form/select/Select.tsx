@@ -18,6 +18,7 @@ import MultiValueTag from './MultiValueTag'
 
 export interface SelectProps extends Omit<Props, 'onChange'> {
   isDisabled?: boolean
+  isReadonly?: boolean
   variantSize?: CapInputSize
   width?: string | number
   onChange?: (newValue: any) => void
@@ -42,6 +43,8 @@ export function MultiValue<
       // @ts-ignore fix tag stuff
       isInvalid={props.selectProps['aria-invalid'] || false}
       isDisabled={isDisabled}
+      // @ts-ignore custom prop forwarded to selectProps
+      isReadonly={props.selectProps.isReadonly || false}
       removeProps={removeProps}
       label={props.data.label}
     />
@@ -59,8 +62,15 @@ export function Control<
     deleteButtonAriaLabel,
     value,
     isDisabled, // @ts-ignore need to rework this once back in main repo
-    variantColor,
+    variantColor, // @ts-ignore need to rework this once back in main repo
+    isReadonly,
   } = props.selectProps
+
+  const iconColor = isReadonly
+    ? `input.${variantColor}.icon.readonly`
+    : isDisabled
+      ? 'text.disable'
+      : `input.${variantColor}.icon.selected`
 
   return (
     <components.Control {...props}>
@@ -68,7 +78,7 @@ export function Control<
       {isLoading && <Spinner mr={2} color="primary.base" />}
       {!isLoading && (
         <>
-          {isClearable && value ? (
+          {isClearable && value && !isReadonly ? (
             <Box
               as="button"
               type="button"
@@ -81,11 +91,7 @@ export function Control<
               <Icon
                 name={CapUIIcon.Cross}
                 size={CapUIIconSize.Md}
-                color={
-                  isDisabled
-                    ? 'text.disable'
-                    : `input.${variantColor}.icon.selected`
-                }
+                color={iconColor}
                 _hover={{ color: 'red.500' }}
                 aria-hidden
                 focusable={false}
@@ -94,14 +100,10 @@ export function Control<
           ) : null}
           <Icon
             mr={3}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: isDisabled ? 'default' : 'pointer' }}
             name={CapUIIcon.ArrowDown}
             size={CapUIIconSize.Sm}
-            color={
-              isDisabled
-                ? 'text.disable'
-                : `input.${variantColor}.icon.selected`
-            }
+            color={iconColor}
           />
         </>
       )}
@@ -115,6 +117,7 @@ export const Select: React.FC<SelectProps> = ({
   ...props
 }) => {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const isReadonly = !!inputProps.readOnly
   const { colors } = useTheme()
   const [currentIndex, setCurrentIndex] = React.useState<number>(0)
 
@@ -162,10 +165,11 @@ export const Select: React.FC<SelectProps> = ({
           colors,
           inputProps.variantSize,
           inputProps.variantColor,
+          false,
+          isReadonly,
         )}
         className={cn('cap-select', className)}
         classNamePrefix="cap-select"
-        isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
@@ -174,6 +178,9 @@ export const Select: React.FC<SelectProps> = ({
         onKeyDown={handleKeyDown}
         variantColor={inputProps.variantColor}
         {...props}
+        isDisabled={inputProps.disabled || isReadonly}
+        // @ts-ignore custom prop forwarded to selectProps
+        isReadonly={isReadonly}
       />
     </Box>
   )

@@ -159,42 +159,35 @@ export function reactSelectStyle<
   variantSize: CapInputSize,
   variantColor: InputVariantColor,
   isSearch?: boolean,
+  isReadonly?: boolean,
 ): StylesConfig<Option, IsMulti, Group> {
   return {
-    control: (base, { isFocused, hasValue, isDisabled }) => ({
-      ...base,
-      minHeight: 'unset',
-      border: 'none',
-      borderRadius: 'none',
-      borderTopLeftRadius: SPACING.xxs,
-      borderTopRightRadius: SPACING.xxs,
-      background:
-        colors.input[variantColor].background[
-          isFocused ? 'selected' : 'default'
-        ],
-      boxShadow: `inset 0px -1px 0px 0px ${
-        colors.input[variantColor].border[
-          isFocused
-            ? 'selected'
-            : isDisabled
+    control: (base, { isFocused, hasValue, isDisabled }) => {
+      const borderState = isReadonly
+        ? 'readonly'
+        : isFocused
+          ? 'selected'
+          : isDisabled
             ? 'disable'
             : hasValue
-            ? 'default'
-            : 'placeholder'
-        ]
-      }`,
-      borderColor: `${
-        colors.input[variantColor].border[
-          isFocused
-            ? 'selected'
-            : isDisabled
-            ? 'disable'
-            : hasValue
-            ? 'default'
-            : 'placeholder'
-        ]
-      } !important`,
-    }),
+              ? 'default'
+              : 'placeholder'
+
+      return {
+        ...base,
+        minHeight: 'unset',
+        border: 'none',
+        borderRadius: 'none',
+        borderTopLeftRadius: SPACING.xxs,
+        borderTopRightRadius: SPACING.xxs,
+        background:
+          colors.input[variantColor].background[
+            isReadonly ? 'readonly' : isFocused ? 'selected' : 'default'
+          ],
+        boxShadow: `inset 0px -1px 0px 0px ${colors.input[variantColor].border[borderState]}`,
+        borderColor: `${colors.input[variantColor].border[borderState]} !important`,
+      }
+    },
     valueContainer: (base, { isMulti, hasValue }) => ({
       ...base,
       paddingLeft: SPACING[isSearch ? 'xxs' : 'sm'],
@@ -207,7 +200,7 @@ export function reactSelectStyle<
       ...base,
       margin: 0,
       whiteSpace: 'nowrap',
-      color: colors.text[isDisabled ? 'disable' : 'tertiary'],
+      color: colors.text[isDisabled && !isReadonly ? 'disable' : 'tertiary'],
       lineHeight: LINE_HEIGHTS.M,
       fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
     }),
@@ -235,7 +228,7 @@ export function reactSelectStyle<
       margin: 0,
       fontSize: FONT_SIZES[variantSize === 'sm' ? 'BodyRegular' : 'BodyLarge'],
       lineHeight: LINE_HEIGHTS.M,
-      color: colors.text[isDisabled ? 'disable' : 'primary'],
+      color: colors.text[isDisabled && !isReadonly ? 'disable' : 'primary'],
     }),
     indicatorSeparator: () => ({
       display: 'none',

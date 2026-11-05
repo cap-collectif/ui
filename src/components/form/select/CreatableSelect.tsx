@@ -8,7 +8,7 @@ import { InputVariantColor } from '../enums'
 import { useFormControl } from '../formControl'
 import { reactSelectStyle } from '../style'
 import { SelectProps } from './'
-import { MultiValue, Control } from './Select'
+import { Control, MultiValue } from './Select'
 
 export interface CreatableSelectProps extends SelectProps {
   formatCreateLabel?: (userInput: string) => React.ReactNode
@@ -22,6 +22,7 @@ export function CreatableSelect({
   ...props
 }: CreatableSelectProps) {
   const inputProps = useFormControl<HTMLInputElement>(props)
+  const isReadonly = !!inputProps.readOnly
   const { colors } = useTheme()
 
   return (
@@ -32,15 +33,20 @@ export function CreatableSelect({
           colors,
           inputProps.variantSize,
           inputProps.variantColor,
+          false,
+          isReadonly,
         )}
         className={cn('cap-creatable-select', className)}
         classNamePrefix="cap-creatable-select"
-        isDisabled={inputProps.disabled}
         aria-invalid={inputProps['aria-invalid']}
         components={{ MultiValue, Control }}
         maxMenuHeight={210}
         menuPortalTarget={document?.body}
         {...props}
+        isDisabled={inputProps.disabled || isReadonly}
+        // readonly does not exist for select components, but we want matching styles if within form inputs that are readonly.
+        // @ts-ignore custom prop forwarded to selectProps
+        isReadonly={isReadonly}
       />
     </Box>
   )

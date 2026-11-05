@@ -5,6 +5,7 @@ import { Tag } from '../../tag'
 export type MultiValueTagProps = {
   isInvalid: boolean
   isDisabled: boolean
+  isReadonly?: boolean
   removeProps: { onClick?: React.MouseEventHandler<HTMLDivElement> | undefined }
   label: string
 }
@@ -12,15 +13,24 @@ export type MultiValueTagProps = {
 const MultiValueTag: React.FC<MultiValueTagProps> = ({
   isInvalid,
   isDisabled,
+  isReadonly = false,
   removeProps,
   label,
 }) => {
   return (
     <Tag
-      variantColor={isDisabled ? 'infoGray' : isInvalid ? 'danger' : 'info'}
+      variantColor={
+        isReadonly
+          ? 'info'
+          : isDisabled
+            ? 'infoGray'
+            : isInvalid
+              ? 'danger'
+              : 'info'
+      }
       mr={'xxs'}
       mt={'xxs'}
-      onRemove={removeProps.onClick}
+      onRemove={isReadonly ? undefined : removeProps.onClick}
       tabIndex={-1}
     >
       <Tag.Label>{label}</Tag.Label>
