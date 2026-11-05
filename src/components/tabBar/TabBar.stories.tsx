@@ -22,14 +22,19 @@ const meta: Meta<TabBarProps> = {
 export default meta
 const Template: StoryFn<TabBarProps> = args => {
   return (
-    <TabBar {...args} defaultTab="agui">
+    <TabBar aria-label="Équipe" {...args} defaultTab="agui">
       <TabPane id="agui" title="agui">
         <Flex m={4}>Lili présidente</Flex>
       </TabPane>
       <TabPane id="myriam" title="myriam">
         <Flex m={4}>Cheffe pâtissière végane</Flex>
       </TabPane>
-      <TabPane id="alex" title="alex" count={666}>
+      <TabPane
+        id="alex"
+        title="alex"
+        count={666}
+        countLabel="666 notifications"
+      >
         <Flex m={4}>Pianiste de l'équipe</Flex>
       </TabPane>
       <TabPane
@@ -46,6 +51,7 @@ export const Default = Template.bind({})
 export const WithSideContent: StoryFn<TabBarProps> = args => {
   return (
     <TabBar
+      aria-label="Équipe"
       {...args}
       defaultTab="agui"
       sideContent={
@@ -71,7 +77,12 @@ export const WithSideContent: StoryFn<TabBarProps> = args => {
       <TabPane id="myriam" title="myriam">
         <Flex m={4}>Cheffe pâtissière végane</Flex>
       </TabPane>
-      <TabPane id="alex" title="alex" count={666}>
+      <TabPane
+        id="alex"
+        title="alex"
+        count={666}
+        countLabel="666 notifications"
+      >
         <Flex m={4}>Pianiste de l'équipe</Flex>
       </TabPane>
       <TabPane

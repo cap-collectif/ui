@@ -4,6 +4,11 @@ export type TabPaneProps = {
   id: string
   title: React.ReactNode
   count?: number
+  /**
+   * Text read by screen readers instead of the bare `count`, to give it a
+   * meaning (e.g. "3 contributions").
+   */
+  countLabel?: string
   /** Renders the header as a link (outside of the tablist) instead of a tab. */
   href?: string
   target?: string

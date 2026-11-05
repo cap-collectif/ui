@@ -2,11 +2,12 @@ import * as React from 'react'
 
 import { CapUIFontSize, CapUIFontWeight, CapUIRadius } from '../../styles'
 import { Box } from '../box'
+import { VisuallyHidden } from '../visuallyHidden'
 import type { TabPaneProps } from './pane/TabPane'
 
 export type TabHeaderProps = Pick<
   TabPaneProps,
-  'title' | 'count' | 'href' | 'target' | 'rel' | 'disabled'
+  'title' | 'count' | 'countLabel' | 'href' | 'target' | 'rel' | 'disabled'
 > &
   Omit<React.HTMLAttributes<HTMLElement>, 'title'> & {
     isActive?: boolean
@@ -18,7 +19,17 @@ export type TabHeaderProps = Pick<
  */
 const TabHeader = React.forwardRef<HTMLElement, TabHeaderProps>(
   (
-    { title, href, target, rel, disabled, isActive = false, count, ...props },
+    {
+      title,
+      href,
+      target,
+      rel,
+      disabled,
+      isActive = false,
+      count,
+      countLabel,
+      ...props
+    },
     ref,
   ) => {
     const isLink = !!href
@@ -28,6 +39,8 @@ const TabHeader = React.forwardRef<HTMLElement, TabHeaderProps>(
           href: disabled ? undefined : href,
           target,
           rel,
+          // Without href, an <a> is no longer a link for assistive technologies
+          role: disabled ? 'link' : undefined,
           'aria-disabled': disabled || undefined,
         }
       : { type: 'button' as const, disabled }
@@ -59,7 +72,7 @@ const TabHeader = React.forwardRef<HTMLElement, TabHeaderProps>(
             : {
                 color: 'primary.base',
                 '& .tabHeaderCount': {
-                  color: 'primary.base',
+                  color: 'primary.dark',
                   backgroundColor: 'primary.lighter',
                 },
               }
@@ -79,15 +92,19 @@ const TabHeader = React.forwardRef<HTMLElement, TabHeaderProps>(
             as="span"
             className="tabHeaderCount"
             bg={isActive ? 'primary.lighter' : 'neutral-gray.150'}
-            color={isActive ? 'primary.base' : 'neutral-gray.500'}
+            color={isActive ? 'primary.dark' : 'neutral-gray.700'}
             px={1}
             borderRadius={CapUIRadius.Normal}
             fontWeight={CapUIFontWeight.Semibold}
             fontSize={CapUIFontSize.BodySmall}
             marginLeft={1}
+            aria-hidden={countLabel ? true : undefined}
           >
             {count}
           </Box>
+        )}
+        {count !== undefined && countLabel && (
+          <VisuallyHidden>{` (${countLabel})`}</VisuallyHidden>
         )}
       </Box>
     )

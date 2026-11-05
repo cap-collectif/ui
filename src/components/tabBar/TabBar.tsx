@@ -9,12 +9,18 @@ import TabPane, { TabPaneProps } from './pane/TabPane'
 
 export type TabBarProps = Omit<BoxProps, 'onChange'> & {
   children:
-    | React.ReactElement<TabPaneProps>[]
-    | React.ReactElement<TabPaneProps>
+    React.ReactElement<TabPaneProps>[] | React.ReactElement<TabPaneProps>
   /** Initially selected tab (uncontrolled). Defaults to the first selectable tab. */
   defaultTab?: string
-  /** Selected tab (controlled). Use with `onChange`. */
+  /**
+   * Selected tab (controlled). Use with `onChange`. If it doesn't match a
+   * selectable tab, the first one is displayed without calling `onChange`.
+   */
   selectedTab?: string
+  /** Accessible name of the tab list (e.g. "Project sections"). */
+  'aria-label'?: string
+  /** Id of the element naming the tab list. */
+  'aria-labelledby'?: string
   onChange?: (tabId: string) => void
   sideContent?: React.ReactNode
   /** Keep inactive panes mounted (hidden) to preserve their state. */
@@ -45,6 +51,8 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
   sideContent,
   keepMounted = false,
   activationMode = 'automatic',
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   ...props
 }) => {
   const baseId = React.useId()
@@ -85,10 +93,12 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
     rtl: isRtl,
   })
 
-  React.useLayoutEffect(() => {
+  // Only affects arrow keys, so no need for a layout effect (warns on SSR)
+  const hasTabs = tabPanes.length > 0
+  React.useEffect(() => {
     if (!tablistRef.current) return
     setIsRtl(getComputedStyle(tablistRef.current).direction === 'rtl')
-  }, [])
+  }, [hasTabs])
 
   if (!panes.length) return null
 
@@ -109,9 +119,11 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         {...props}
       >
         <Flex gap={6} height={'inherit'}>
-          {tabPanes.length > 0 && (
+          {hasTabs && (
             <TabList
               store={tabs}
+              aria-label={ariaLabel}
+              aria-labelledby={ariaLabelledBy}
               render={
                 <Flex
                   as="ul"
@@ -125,7 +137,7 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
               }
             >
               {tabPanes.map(pane => {
-                const { id, title, count, disabled } = pane.props
+                const { id, title, count, countLabel, disabled } = pane.props
 
                 return (
                   <Box as="li" role="presentation" key={id} height="100%">
@@ -140,6 +152,7 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
                         <TabHeader
                           title={title}
                           count={count}
+                          countLabel={countLabel}
                           disabled={disabled}
                           isActive={id === currentTab}
                         />
@@ -153,13 +166,23 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
 
           {/* Links are not tabs: they live outside the tablist */}
           {linkPanes.map(pane => {
-            const { id, title, count, href, target, rel, disabled } = pane.props
+            const {
+              id,
+              title,
+              count,
+              countLabel,
+              href,
+              target,
+              rel,
+              disabled,
+            } = pane.props
 
             return (
               <TabHeader
                 key={id}
                 title={title}
                 count={count}
+                countLabel={countLabel}
                 href={href}
                 target={target}
                 rel={rel}
