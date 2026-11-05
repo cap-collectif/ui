@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
+import { Divider } from '../../divider'
 import { CapUIIcon, Icon } from '../../icon'
 import { Flex } from '../../layout/Flex'
 import { Text } from '../../typography'
@@ -9,7 +10,6 @@ import FormControl from '../formControl/FormControl'
 import FormErrorMessage from '../formErrorMessage/FormErrorMessage'
 import { FormGuideline } from '../formGuideline'
 import FormLabel from '../formLabel/FormLabel'
-import Input from '../input/Input'
 import AsyncCreatableSelect from './AsyncCreatableSelect'
 import AsyncSelect from './AsyncSelect'
 import CreatableSelect from './CreatableSelect'
@@ -67,137 +67,22 @@ const colourOptions = [
   { value: 'silver', label: 'Silver' },
 ]
 
-export const Default: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => (
-  <FormControl {...args} width="500px">
-    <FormLabel label="Choisissez une couleur :" />
-    <Select
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      width="280px"
-      options={colourOptions}
-      defaultValue={colourOptions[0]}
-      inputId="color"
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
-
-export const Clearable: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => (
-  <FormControl {...args} width="500px">
-    <FormLabel label="Choisissez une couleur :" />
-    <Select
-      isClearable
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      width="280px"
-      options={colourOptions}
-      defaultValue={colourOptions[0]}
-      inputId="color"
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
-
-export const Readonly: StoryFn<Args> = ({ errorMessage, ...args }) => (
-  <Flex direction="column" gap="md">
-    <FormControl {...args} isReadonly width="500px">
-      <FormLabel label="Champ texte en lecture seule :" />
-      <Input value="Valeur" width="280px" readOnly />
-    </FormControl>
-    <FormControl {...args} isReadonly width="500px">
-      <FormLabel label="Choisissez une couleur :" />
-      <Select
-        width="280px"
-        options={colourOptions}
-        defaultValue={colourOptions[0]}
-        inputId="color"
-        isClearable
-      />
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </FormControl>
-    <FormControl {...args} isReadonly width="500px">
-      <FormLabel label="Choisissez DES couleurs :" />
-      <Select
-        width="280px"
-        options={colourOptions}
-        defaultValue={[colourOptions[0], colourOptions[1]]}
-        inputId="colors"
-        isMulti
-      />
-    </FormControl>
+const StorySection: React.FC<{
+  title: string
+  children: React.ReactNode
+}> = ({ title, children }) => (
+  <Flex direction="column" gap="md" width="100%">
+    <Divider width="100%">{title}</Divider>
+    {children}
   </Flex>
 )
 
-export const DefaultWithGuideline: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
+const StoryContainer: React.FC<{ children: React.ReactNode }> = ({
+  children,
 }) => (
-  <FormControl {...args}>
-    <FormLabel label="Choisissez une couleur :" />
-    <FormGuideline>Mais choisissez bien !</FormGuideline>
-    <Select
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      options={colourOptions}
-      defaultValue={colourOptions[0]}
-      inputId="color"
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
-
-export const Multi: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => (
-  <FormControl {...args} width="500px">
-    <FormLabel label="Choisissez DES couleurs :" />
-    <Select
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      width="280px"
-      options={colourOptions}
-      defaultValue={colourOptions[0]}
-      inputId="color"
-      isMulti
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
-)
-
-export const MultiWithGuideline: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => (
-  <FormControl {...args}>
-    <FormLabel label="Choisissez DES couleurs :" />
-    <FormGuideline>Mais choisissez les bien !</FormGuideline>
-    <Select
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      options={colourOptions}
-      defaultValue={colourOptions[0]}
-      inputId="color"
-      isMulti
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
+  <Flex direction="column" gap="xl" maxWidth="600px">
+    {children}
+  </Flex>
 )
 
 const formatCreateLabel = (userInput: string) => (
@@ -220,99 +105,6 @@ type SelectValue = {
   label: string
 }
 
-export const Creatable: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => {
-  const [value, setValue] = React.useState<SelectValue | null>(null)
-  return (
-    <FormControl {...args} width="500px">
-      <FormLabel label="Choisissez ou créez une adresse mail :" />
-      <CreatableSelect
-        menuIsOpen={menuIsOpen}
-        placeholder={placeholder}
-        options={mailOptions}
-        inputId="color"
-        width="280px"
-        formatCreateLabel={formatCreateLabel}
-        value={value}
-        onChange={(newValue: { value: string; label: string }) =>
-          setValue(newValue)
-        }
-        onCreateOption={(newValue: string) => {
-          mailOptions.push({ value: newValue, label: newValue })
-          setValue({ value: newValue, label: newValue })
-        }}
-      />
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </FormControl>
-  )
-}
-
-export const CreatableWithGuideline: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => {
-  const [value, setValue] = React.useState<SelectValue | null>(null)
-  return (
-    <FormControl {...args} width="500px">
-      <FormLabel label="Choisissez ou créez une adresse mail :" />
-      <FormGuideline>Pas de vérification sur un storybook</FormGuideline>
-      <CreatableSelect
-        menuIsOpen={menuIsOpen}
-        placeholder={placeholder}
-        options={mailOptions}
-        inputId="color"
-        formatCreateLabel={formatCreateLabel}
-        value={value}
-        onChange={(newValue: { value: string; label: string }) =>
-          setValue(newValue)
-        }
-        onCreateOption={(newValue: string) => {
-          mailOptions.push({ value: newValue, label: newValue })
-          setValue({ value: newValue, label: newValue })
-        }}
-      />
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </FormControl>
-  )
-}
-
-export const CreatableMulti: StoryFn<Args> = ({
-  errorMessage,
-  placeholder,
-  menuIsOpen,
-  ...args
-}) => {
-  const [value, setValue] = React.useState<Array<SelectValue> | null>(null)
-  return (
-    <FormControl {...args} width="500px">
-      <FormLabel label="Choisissez ou créez des adresses mail :" />
-      <CreatableSelect
-        menuIsOpen={menuIsOpen}
-        placeholder={placeholder}
-        options={mailOptions}
-        inputId="color"
-        isMulti
-        value={value}
-        onChange={newValue => setValue(newValue)}
-        onCreateOption={(newValue: string) => {
-          const newOption = { value: newValue, label: newValue }
-          mailOptions.push(newOption)
-          if (value && newOption) setValue([...value, newOption])
-          else setValue([newOption])
-        }}
-        formatCreateLabel={formatCreateLabel}
-      />
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </FormControl>
-  )
-}
-
 const promiseOptions = (inputValue: string) =>
   new Promise(resolve => {
     setTimeout(() => {
@@ -324,54 +116,271 @@ const promiseOptions = (inputValue: string) =>
     }, 1000)
   })
 
-export const Async: StoryFn<Args> = ({
+export const Default: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
   ...args
 }) => (
-  <FormControl {...args} width="280px">
-    <FormLabel label="Async quoi :" />
-    <AsyncSelect
-      menuIsOpen={menuIsOpen}
-      placeholder={placeholder}
-      loadOptions={promiseOptions}
-      defaultOptions
-      cacheOptions
-      inputId="color"
-    />
-    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-  </FormControl>
+  <StoryContainer>
+    <StorySection title="Default">
+      <FormControl {...args} width="500px">
+        <FormLabel label="Choisissez une couleur :" />
+        <Select
+          menuIsOpen={menuIsOpen}
+          placeholder={placeholder}
+          width="280px"
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="color-default"
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+
+    <StorySection title="Clearable">
+      <FormControl {...args} width="500px">
+        <FormLabel label="Choisissez une couleur :" />
+        <Select
+          isClearable
+          menuIsOpen={menuIsOpen}
+          placeholder={placeholder}
+          width="280px"
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="color-clearable"
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+
+    <StorySection title="With guideline">
+      <FormControl {...args} width="500px">
+        <FormLabel label="Choisissez une couleur :" />
+        <FormGuideline>Mais choisissez bien !</FormGuideline>
+        <Select
+          width="280px"
+          menuIsOpen={menuIsOpen}
+          placeholder={placeholder}
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="color-guideline"
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+  </StoryContainer>
 )
 
-export const AsyncCreatable: StoryFn<Args> = ({
+export const Multi: StoryFn<Args> = ({
+  errorMessage,
+  placeholder,
+  menuIsOpen,
+  ...args
+}) => (
+  <StoryContainer>
+    <StorySection title="Multi">
+      <FormControl {...args} width="500px">
+        <FormLabel label="Choisissez DES couleurs :" />
+        <Select
+          menuIsOpen={menuIsOpen}
+          placeholder={placeholder}
+          width="280px"
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="colors-multi"
+          isMulti
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+
+    <StorySection title="Multi with guideline">
+      <FormControl {...args} width="500px">
+        <FormLabel label="Choisissez DES couleurs :" />
+        <FormGuideline>Mais choisissez les bien !</FormGuideline>
+        <Select
+          width="280px"
+          menuIsOpen={menuIsOpen}
+          placeholder={placeholder}
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="colors-multi-guideline"
+          isMulti
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+  </StoryContainer>
+)
+
+export const Readonly: StoryFn<Args> = ({ errorMessage, ...args }) => (
+  <StoryContainer>
+    <StorySection title="Select with readonly styles">
+      <FormControl {...args} isReadonly width="500px">
+        <FormLabel label="Choisissez une couleur :" />
+        <Select
+          width="280px"
+          options={colourOptions}
+          defaultValue={colourOptions[0]}
+          inputId="color-readonly"
+          isClearable
+        />
+        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      </FormControl>
+    </StorySection>
+
+    <StorySection title="Multi with readonly styles">
+      <FormControl {...args} isReadonly width="500px">
+        <FormLabel label="Choisissez DES couleurs :" />
+        <Select
+          width="280px"
+          options={colourOptions}
+          defaultValue={[colourOptions[0], colourOptions[1]]}
+          inputId="colors-readonly"
+          isMulti
+        />
+      </FormControl>
+    </StorySection>
+  </StoryContainer>
+)
+
+export const Creatable: StoryFn<Args> = ({
   errorMessage,
   placeholder,
   menuIsOpen,
   ...args
 }) => {
   const [value, setValue] = React.useState<SelectValue | null>(null)
+  const [
+    guidelineValue,
+    setGuidelineValue,
+  ] = React.useState<SelectValue | null>(null)
+  const [multiValue, setMultiValue] = React.useState<Array<SelectValue> | null>(
+    null,
+  )
+
   return (
-    <FormControl {...args} width="280px">
-      <FormLabel label="Async et creatable :" />
-      <FormGuideline>Complex af</FormGuideline>
-      <AsyncCreatableSelect
-        menuIsOpen={menuIsOpen}
-        placeholder={placeholder}
-        loadOptions={promiseOptions}
-        defaultOptions
-        inputId="color"
-        formatCreateLabel={formatCreateLabel}
-        value={value}
-        onChange={(newValue: { value: string; label: string }) =>
-          setValue(newValue)
-        }
-        onCreateOption={(newValue: string) => {
-          colourOptions.push({ value: newValue, label: newValue })
-          setValue({ value: newValue, label: newValue })
-        }}
-      />
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </FormControl>
+    <StoryContainer>
+      <StorySection title="Creatable">
+        <FormControl {...args} width="500px">
+          <FormLabel label="Choisissez ou créez une adresse mail :" />
+          <CreatableSelect
+            menuIsOpen={menuIsOpen}
+            placeholder={placeholder}
+            options={mailOptions}
+            inputId="mail-creatable"
+            width="280px"
+            formatCreateLabel={formatCreateLabel}
+            value={value}
+            onChange={(newValue: SelectValue) => setValue(newValue)}
+            onCreateOption={(newValue: string) => {
+              mailOptions.push({ value: newValue, label: newValue })
+              setValue({ value: newValue, label: newValue })
+            }}
+          />
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        </FormControl>
+      </StorySection>
+
+      <StorySection title="Creatable with guideline">
+        <FormControl {...args} width="500px">
+          <FormLabel label="Choisissez ou créez une adresse mail :" />
+          <FormGuideline>Pas de vérification sur un storybook</FormGuideline>
+          <CreatableSelect
+            width="280px"
+            menuIsOpen={menuIsOpen}
+            placeholder={placeholder}
+            options={mailOptions}
+            inputId="mail-creatable-guideline"
+            formatCreateLabel={formatCreateLabel}
+            value={guidelineValue}
+            onChange={(newValue: SelectValue) => setGuidelineValue(newValue)}
+            onCreateOption={(newValue: string) => {
+              mailOptions.push({ value: newValue, label: newValue })
+              setGuidelineValue({ value: newValue, label: newValue })
+            }}
+          />
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        </FormControl>
+      </StorySection>
+
+      <StorySection title="Creatable multi">
+        <FormControl {...args} width="500px">
+          <FormLabel label="Choisissez ou créez des adresses mail :" />
+          <CreatableSelect
+            width="280px"
+            menuIsOpen={menuIsOpen}
+            placeholder={placeholder}
+            options={mailOptions}
+            inputId="mail-creatable-multi"
+            isMulti
+            value={multiValue}
+            onChange={newValue => setMultiValue(newValue)}
+            onCreateOption={(newValue: string) => {
+              const newOption = { value: newValue, label: newValue }
+              mailOptions.push(newOption)
+              if (multiValue && newOption)
+                setMultiValue([...multiValue, newOption])
+              else setMultiValue([newOption])
+            }}
+            formatCreateLabel={formatCreateLabel}
+          />
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        </FormControl>
+      </StorySection>
+    </StoryContainer>
+  )
+}
+
+export const Async: StoryFn<Args> = ({
+  errorMessage,
+  placeholder,
+  menuIsOpen,
+  ...args
+}) => {
+  const [value, setValue] = React.useState<SelectValue | null>(null)
+
+  return (
+    <StoryContainer>
+      <StorySection title="Async">
+        <FormControl {...args} width="500px">
+          <FormLabel label="Async quoi :" />
+          <AsyncSelect
+            width="280px"
+            menuIsOpen={menuIsOpen}
+            placeholder={placeholder}
+            loadOptions={promiseOptions}
+            defaultOptions
+            cacheOptions
+            inputId="color-async"
+          />
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        </FormControl>
+      </StorySection>
+
+      <StorySection title="Async creatable">
+        <FormControl {...args} width="500px">
+          <FormLabel label="Async et creatable :" />
+          <FormGuideline>Complex af</FormGuideline>
+          <AsyncCreatableSelect
+            width="280px"
+            menuIsOpen={menuIsOpen}
+            placeholder={placeholder}
+            loadOptions={promiseOptions}
+            defaultOptions
+            inputId="color-async-creatable"
+            formatCreateLabel={formatCreateLabel}
+            value={value}
+            onChange={(newValue: SelectValue) => setValue(newValue)}
+            onCreateOption={(newValue: string) => {
+              colourOptions.push({ value: newValue, label: newValue })
+              setValue({ value: newValue, label: newValue })
+            }}
+          />
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        </FormControl>
+      </StorySection>
+    </StoryContainer>
   )
 }
