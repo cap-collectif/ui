@@ -1,3 +1,4 @@
+import { Tab, TabList, TabPanel, useTabStore } from '@ariakit/react'
 import * as React from 'react'
 
 import { pxToRem } from '../../styles/modules/mixins'
@@ -26,6 +27,16 @@ type SubComponents = {
   Pane: typeof TabPane
 }
 
+const isSelectable = (pane: React.ReactElement<TabPaneProps>) =>
+  !pane.props.href && !pane.props.disabled
+
+// Whitespace would break the space-separated IDREFs (aria-controls, aria-labelledby)
+const toDomSafeId = (id: string) => id.trim().replace(/\s+/g, '-')
+
+// Let browser shortcuts (Alt+Arrow, Cmd/Ctrl+Home…) through
+const hasNoModifier = (event: React.KeyboardEvent) =>
+  !event.altKey && !event.ctrlKey && !event.metaKey
+
 const TabBar: React.FC<TabBarProps> & SubComponents = ({
   children,
   defaultTab,
@@ -38,61 +49,48 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
 }) => {
   const baseId = React.useId()
   const tablistRef = React.useRef<HTMLUListElement>(null)
+  const [isRtl, setIsRtl] = React.useState(false)
+
   const panes = React.Children.toArray(
     children,
   ) as React.ReactElement<TabPaneProps>[]
+  const tabPanes = panes.filter(pane => !pane.props.href)
+  const linkPanes = panes.filter(pane => !!pane.props.href)
+  const selectableTabIds = panes.filter(isSelectable).map(pane => pane.props.id)
 
-  const [uncontrolledTab, setUncontrolledTab] = React.useState<
-    string | undefined
-  >(
-    () =>
-      defaultTab ??
-      panes.find(pane => !pane.props.href && !pane.props.disabled)?.props.id,
-  )
+  const [uncontrolledTab, setUncontrolledTab] = React.useState(defaultTab)
   const isControlled = selectedTab !== undefined
-  const currentTab = isControlled ? selectedTab : uncontrolledTab
-
-  if (!panes.length) return null
-
-  const getTabId = (id: string) => `${baseId}-tab-${id}`
-  const getPanelId = (id: string) => `${baseId}-panel-${id}`
-
-  const selectTab = (tabId: string) => {
-    if (tabId === currentTab) return
-    if (!isControlled) setUncontrolledTab(tabId)
-    onChange?.(tabId)
-  }
-
-  // Roving tabindex: only one tab is reachable with Tab, arrow keys move between tabs
-  const selectableTabIds = panes
-    .filter(pane => !pane.props.href && !pane.props.disabled)
-    .map(pane => pane.props.id)
-  const focusableTabId =
-    currentTab && selectableTabIds.includes(currentTab)
-      ? currentTab
+  const requestedTab = isControlled ? selectedTab : uncontrolledTab
+  // Fall back to the first selectable tab when none is requested, or when the
+  // requested one is missing (panes loaded later, removed, disabled…)
+  const currentTab =
+    requestedTab !== undefined && selectableTabIds.includes(requestedTab)
+      ? requestedTab
       : selectableTabIds[0]
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLUListElement>) => {
-    const tabs = Array.from(
-      tablistRef.current?.querySelectorAll<HTMLButtonElement>(
-        '[role="tab"]:not(:disabled)',
-      ) ?? [],
-    )
-    const index = tabs.indexOf(event.target as HTMLButtonElement)
-    if (index === -1) return
+  const getTabDomId = (id: string) => `${baseId}-tab-${toDomSafeId(id)}`
+  const paneIdByTabDomId = new Map(
+    tabPanes.map(pane => [getTabDomId(pane.props.id), pane.props.id]),
+  )
 
-    const nextTab = {
-      ArrowRight: tabs[(index + 1) % tabs.length],
-      ArrowLeft: tabs[(index - 1 + tabs.length) % tabs.length],
-      Home: tabs[0],
-      End: tabs[tabs.length - 1],
-    }[event.key]
-    if (!nextTab) return
+  const tabs = useTabStore({
+    selectedId: currentTab !== undefined ? getTabDomId(currentTab) : null,
+    setSelectedId: tabDomId => {
+      const tabId = tabDomId ? paneIdByTabDomId.get(tabDomId) : undefined
+      if (tabId === undefined || tabId === currentTab) return
+      if (!isControlled) setUncontrolledTab(tabId)
+      onChange?.(tabId)
+    },
+    selectOnMove: activationMode === 'automatic',
+    rtl: isRtl,
+  })
 
-    event.preventDefault()
-    nextTab.focus()
-    if (activationMode === 'automatic') nextTab.click()
-  }
+  React.useLayoutEffect(() => {
+    if (!tablistRef.current) return
+    setIsRtl(getComputedStyle(tablistRef.current).direction === 'rtl')
+  }, [])
+
+  if (!panes.length) return null
 
   return (
     <>
@@ -110,41 +108,63 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
         paddingX={6}
         {...props}
       >
-        <Flex
-          as="ul"
-          role="tablist"
-          ref={tablistRef}
-          onKeyDown={handleKeyDown}
-          gap={6}
-          height={'inherit'}
-          m={0}
-          p={0}
-          sx={{ listStyle: 'none' }}
-        >
-          {panes.map(pane => {
-            const { id, href } = pane.props
-            const isActive = id === currentTab
+        <Flex gap={6} height={'inherit'}>
+          {tabPanes.length > 0 && (
+            <TabList
+              store={tabs}
+              render={
+                <Flex
+                  as="ul"
+                  ref={tablistRef}
+                  gap={6}
+                  height={'inherit'}
+                  m={0}
+                  p={0}
+                  sx={{ listStyle: 'none' }}
+                />
+              }
+            >
+              {tabPanes.map(pane => {
+                const { id, title, count, disabled } = pane.props
+
+                return (
+                  <Box as="li" role="presentation" key={id} height="100%">
+                    <Tab
+                      id={getTabDomId(id)}
+                      store={tabs}
+                      disabled={disabled}
+                      // Disabled tabs are skipped by the arrow keys
+                      accessibleWhenDisabled={false}
+                      moveOnKeyPress={hasNoModifier}
+                      render={
+                        <TabHeader
+                          title={title}
+                          count={count}
+                          disabled={disabled}
+                          isActive={id === currentTab}
+                        />
+                      }
+                    />
+                  </Box>
+                )
+              })}
+            </TabList>
+          )}
+
+          {/* Links are not tabs: they live outside the tablist */}
+          {linkPanes.map(pane => {
+            const { id, title, count, href, target, rel, disabled } = pane.props
 
             return (
-              <Box as="li" role="presentation" key={id} height="100%">
-                <TabHeader
-                  id={getTabId(id)}
-                  panelId={
-                    !href && (isActive || keepMounted)
-                      ? getPanelId(id)
-                      : undefined
-                  }
-                  title={pane.props.title}
-                  count={pane.props.count}
-                  href={href}
-                  target={pane.props.target}
-                  rel={pane.props.rel}
-                  disabled={pane.props.disabled}
-                  isActive={isActive}
-                  tabIndex={id === focusableTabId ? 0 : -1}
-                  onClick={() => selectTab(id)}
-                />
-              </Box>
+              <TabHeader
+                key={id}
+                title={title}
+                count={count}
+                href={href}
+                target={target}
+                rel={rel}
+                disabled={disabled}
+              />
             )
           })}
         </Flex>
@@ -155,20 +175,17 @@ const TabBar: React.FC<TabBarProps> & SubComponents = ({
           </Flex>
         )}
       </Flex>
-      {panes.map(pane => {
-        const { id, href } = pane.props
-        const isActive = id === currentTab
-
-        if (href || (!isActive && !keepMounted)) return null
-
-        return React.cloneElement(pane, {
-          key: id,
-          id: getPanelId(id),
-          role: 'tabpanel',
-          'aria-labelledby': getTabId(id),
-          hidden: !isActive,
-        })
-      })}
+      {tabPanes.map(pane => (
+        <TabPanel
+          key={pane.props.id}
+          tabId={getTabDomId(pane.props.id)}
+          store={tabs}
+          unmountOnHide={!keepMounted}
+          render={<Flex />}
+        >
+          {pane.props.children}
+        </TabPanel>
+      ))}
     </>
   )
 }

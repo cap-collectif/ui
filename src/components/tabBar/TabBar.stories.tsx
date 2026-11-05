@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
+import { fn } from '@storybook/test'
 import React from 'react'
 
 import { Button } from '../button'
@@ -11,6 +12,7 @@ import TabPane from './pane/TabPane'
 const meta: Meta<TabBarProps> = {
   title: 'Library/TabBar',
   component: TabBar,
+  args: { onChange: fn() },
   parameters: {
     layout: 'top',
     controls: { expanded: true },
@@ -18,9 +20,9 @@ const meta: Meta<TabBarProps> = {
 }
 
 export default meta
-const Template: StoryFn<TabBarProps> = () => {
+const Template: StoryFn<TabBarProps> = args => {
   return (
-    <TabBar defaultTab="agui">
+    <TabBar {...args} defaultTab="agui">
       <TabPane id="agui" title="agui">
         <Flex m={4}>Lili présidente</Flex>
       </TabPane>
@@ -41,9 +43,10 @@ const Template: StoryFn<TabBarProps> = () => {
 
 export const Default = Template.bind({})
 
-export const WithSideContent: StoryFn<TabBarProps> = () => {
+export const WithSideContent: StoryFn<TabBarProps> = args => {
   return (
     <TabBar
+      {...args}
       defaultTab="agui"
       sideContent={
         <>

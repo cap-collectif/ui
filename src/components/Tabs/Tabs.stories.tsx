@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
+import { fn } from '@storybook/test'
 import * as React from 'react'
 
 import { Box } from '../box/Box'
@@ -13,6 +14,7 @@ import { Tabs, TabsProps } from './'
 const meta: Meta<TabsProps> = {
   title: 'Library/Tabs',
   component: Tabs,
+  args: { onChange: fn() },
   argTypes: {
     children: { control: { disable: true }, table: { disable: true } },
   },

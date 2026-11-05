@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { Flex, FlexProps } from '../../layout'
-
-export type TabPaneProps = Omit<FlexProps, 'id' | 'title'> & {
+export type TabPaneProps = {
   id: string
   title: React.ReactNode
   count?: number
+  /** Renders the header as a link (outside of the tablist) instead of a tab. */
   href?: string
   target?: string
   rel?: string
@@ -13,24 +12,11 @@ export type TabPaneProps = Omit<FlexProps, 'id' | 'title'> & {
   children?: React.ReactNode
 }
 
-export const TabPane: React.FC<TabPaneProps> = ({
-  children,
-  title,
-  count,
-  href,
-  target,
-  rel,
-  disabled,
-  hidden,
-  display,
-  ...rest
-}) => {
-  return (
-    <Flex {...rest} hidden={hidden} display={hidden ? 'none' : display}>
-      {children}
-    </Flex>
-  )
-}
+/**
+ * Describes a tab of a `TabBar`. Its props are read by `TabBar`, which renders
+ * the header and the panel itself.
+ */
+export const TabPane: React.FC<TabPaneProps> = ({ children }) => <>{children}</>
 
 TabPane.displayName = 'TabPane'
 
