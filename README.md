@@ -51,5 +51,7 @@ The browser will launch automatically to http://localhost:6006
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request 😊
 
+To publish a new version, follow the [release process](RELEASE.md).
+
 ## 📄 License
 [License](https://github.com/cap-collectif/ui/blob/master/LICENSE)
