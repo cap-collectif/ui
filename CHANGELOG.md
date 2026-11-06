@@ -11,6 +11,21 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 7.0.0
+
+`2026-11-06`
+
+- 💥 `TabBar` rebuilt on Ariakit: improved accessibility, fixed `onChange` and added controlled mode. `TabHeaderProps` is no longer exported [#629](https://github.com/cap-collectif/ui/pull/629)
+- 🆕 Add readonly styles to `Select` [#638](https://github.com/cap-collectif/ui/pull/638)
+- 🆕 Add a variant to `RestrictedCard` [#630](https://github.com/cap-collectif/ui/pull/630)
+- 🐛 `Table` show indeterminate state on select-all checkbox [#628](https://github.com/cap-collectif/ui/pull/628)
+- 🐛 Add white background to X logo [#626](https://github.com/cap-collectif/ui/pull/626)
+- 🛠 Add missing exports and remove mdx files [#622](https://github.com/cap-collectif/ui/pull/622)
+- 🛠 Upgrade Storybook from v6.5 to v8 [#627](https://github.com/cap-collectif/ui/pull/627) & [#631](https://github.com/cap-collectif/ui/pull/631)
+- 🛠 Remove unused Storybook addons and bump Chromatic to v18 [#625](https://github.com/cap-collectif/ui/pull/625)
+- 🛠 Upgrade Node to 22 in CI and bump GitHub actions [#624](https://github.com/cap-collectif/ui/pull/624)
+- 🛠 Bump dependencies (`classnames`, `@svgr/webpack`) and remove orphaned deps from `yarn.lock` [#616](https://github.com/cap-collectif/ui/pull/616), [#612](https://github.com/cap-collectif/ui/pull/612) & [#623](https://github.com/cap-collectif/ui/pull/623)
+
 ## 6.1.0
 
 `2026-09-15`
