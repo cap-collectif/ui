@@ -88,9 +88,11 @@ Change only the `version` field:
 
 ```sh
 git add CHANGELOG.md package.json
-git commit -m "chore: release 7.0.0"
+git commit -m "7.0.0"
 git push -u origin 7.0.0
 ```
+
+The commit title is the version number only, e.g. `7.0.0`. This is the one exception to Conventional Commits in this repo: don't write `chore: release 7.0.0`. Once the PR is merged, the release commit on `master` reads `7.0.0 (#639)`, like the previous releases.
 
 Open a pull request against `master`:
 
@@ -122,3 +124,4 @@ Done by a maintainer once the PR is merged on `master`:
 - Don't commit, push, open the PR, tag or publish unless you were explicitly asked to. Tagging and publishing are irreversible: always leave them to a maintainer.
 - If the version bump is ambiguous (e.g. a possibly breaking change), state your reasoning and let a human confirm before creating the branch.
 - Don't modify any file other than `CHANGELOG.md` and `package.json` in a release PR.
+- The release commit and PR titles are the bare version number (`7.0.0`), not a Conventional Commit.
