@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 7.0.1
+
+`2026-11-20`
+
+- 🐛 `Select` menu no longer appears behind the `TextEditor` placeholder when not portaled [#641](https://github.com/cap-collectif/ui/pull/641)
+- 🛠 Document the release process [#640](https://github.com/cap-collectif/ui/pull/640)
+
 ## 7.0.0
 
 `2026-11-06`
