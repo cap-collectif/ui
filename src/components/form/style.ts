@@ -254,6 +254,13 @@ export function reactSelectStyle<
       color: colors.gray[false ? '500' : '700'],
       display: isSearch ? 'none' : 'flex',
     }),
+    // react-select defaults the menu to `z-index: 1`, which lets any later
+    // positioned sibling (e.g. Jodit's `.jodit-placeholder`) paint over it
+    // when the menu is not portaled.
+    menu: base => ({
+      ...base,
+      zIndex: ZINDEX.select,
+    }),
     menuPortal: base => ({
       ...base,
       zIndex: ZINDEX.selectPortal,
