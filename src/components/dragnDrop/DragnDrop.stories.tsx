@@ -2,6 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import * as React from 'react'
 
 import { ListCard } from '../ListCard'
+import { Flex } from '../layout'
 import { Tag } from '../tag'
 import DragnDrop, { DragnDropProps, DropResult } from './DragnDrop'
 
@@ -92,6 +93,54 @@ export const withTags: StoryFn<DragnDropProps> = () => {
           </DragnDrop.Item>
         ))}
       </DragnDrop.List>
+    </DragnDrop>
+  )
+}
+
+export const BetweenLists: StoryFn<DragnDropProps> = () => {
+  const [lists, setLists] = React.useState<Record<string, typeof initial>>({
+    available: initial.slice(0, 3),
+    ranked: [],
+  })
+
+  const onDragEnd = ({ source, destination }: DropResult) => {
+    const from = source.droppableId
+    const to = destination?.droppableId
+    if (!destination || !from || !to) return
+
+    setLists(current => {
+      const sourceItems = [...current[from]]
+      const [item] = sourceItems.splice(source.index, 1)
+      const destinationItems = from === to ? sourceItems : [...current[to]]
+      destinationItems.splice(destination.index, 0, item)
+      return { ...current, [from]: sourceItems, [to]: destinationItems }
+    })
+  }
+
+  return (
+    <DragnDrop onDragEnd={onDragEnd}>
+      <Flex gap={4}>
+        {Object.entries(lists).map(([id, items]) => (
+          <DragnDrop.List
+            key={id}
+            droppableId={id}
+            minHeight="200px"
+            width="50%"
+            p={2}
+            border="1px solid"
+            borderColor="gray.300"
+          >
+            {id === 'available' ? 'Available' : 'Ranked'}
+            {items.map((item, index) => (
+              <DragnDrop.Item key={item.id} draggableId={item.id} index={index}>
+                <ListCard.Item draggable>
+                  <ListCard.Item.Label>{item.content}</ListCard.Item.Label>
+                </ListCard.Item>
+              </DragnDrop.Item>
+            ))}
+          </DragnDrop.List>
+        ))}
+      </Flex>
     </DragnDrop>
   )
 }
