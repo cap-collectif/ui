@@ -3,7 +3,7 @@ import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/ad
 import * as React from 'react'
 
 import type { BoxProps } from '../box'
-import { DragContext } from './DragContext'
+import { DragContext, DragListContext } from './DragContext'
 import DragnDropItem from './item/DragnDropItem'
 import DragnDropList from './list/DragnDropList'
 
@@ -14,6 +14,7 @@ export interface DropResult {
     droppableId?: string
   }
   destination: {
+    /** The targeted item ID, or an empty string when dropping on the list itself. */
     draggableId: string
     index: number
     droppableId?: string
@@ -32,11 +33,15 @@ type DragnDropComponent = React.FC<DragnDropProps> & {
 }
 
 const DragnDrop: DragnDropComponent = ({ children, onDragEnd }) => {
+  const [instanceId] = React.useState(() => Symbol('DragnDrop'))
+  const [draggedDroppableId, setDraggedDroppableId] = React.useState<string>()
+  const [targetDroppableId, setTargetDroppableId] = React.useState<string>()
   const [draggedIndex, setDraggedIndex] = React.useState<number | null>(null)
   const [draggedHeight, setDraggedHeight] = React.useState<number | null>(null)
   const [targetIndex, setTargetIndex] = React.useState<number | null>(null)
-  const [closestEdge, setClosestEdge] =
-    React.useState<'top' | 'bottom' | 'right' | 'left' | null>(null)
+  const [closestEdge, setClosestEdge] = React.useState<
+    'top' | 'bottom' | 'right' | 'left' | null
+  >(null)
   const itemHeightsRef = React.useRef<Map<number, number>>(new Map())
 
   const registerItem = React.useCallback((index: number, height: number) => {
@@ -45,73 +50,72 @@ const DragnDrop: DragnDropComponent = ({ children, onDragEnd }) => {
 
   React.useEffect(() => {
     return monitorForElements({
+      canMonitor: ({ source }) => source.data.instanceId === instanceId,
       onDragStart: ({ source }) => {
-        const index = source.data.index as number
-        setDraggedIndex(index)
-        setDraggedHeight(itemHeightsRef.current.get(index) || null)
+        setDraggedIndex(source.data.index as number)
+        setDraggedDroppableId(source.data.droppableId as string | undefined)
+        setDraggedHeight(source.element.offsetHeight)
       },
       onDrag: ({ location }) => {
-        const target = location.current.dropTargets[0]
-        if (target) {
-          const idx = target.data.index as number
-          const edge = extractClosestEdge(target.data)
-          setTargetIndex(idx)
-          setClosestEdge(edge)
-        }
+        const target = location.current.dropTargets.find(
+          ({ data }) => data.instanceId === instanceId,
+        )
+        setTargetIndex(target ? (target.data.index as number) : null)
+        setTargetDroppableId(target?.data.droppableId as string | undefined)
+        setClosestEdge(target ? extractClosestEdge(target.data) : null)
       },
       onDrop: ({ source, location }) => {
-        const destination = location.current.dropTargets[0]
+        const target = location.current.dropTargets.find(
+          ({ data }) => data.instanceId === instanceId,
+        )
 
         setDraggedIndex(null)
+        setDraggedDroppableId(undefined)
         setDraggedHeight(null)
         setTargetIndex(null)
+        setTargetDroppableId(undefined)
         setClosestEdge(null)
 
-        if (!destination) {
-          onDragEnd?.({
-            source: {
-              draggableId: source.data.draggableId as string,
-              index: source.data.index as number,
-            },
-            destination: null,
-          })
+        const origin = {
+          draggableId: source.data.draggableId as string,
+          index: source.data.index as number,
+          droppableId: source.data.droppableId as string | undefined,
+        }
+
+        if (!target) {
+          onDragEnd?.({ source: origin, destination: null })
           return
         }
 
-        const sourceIndex = source.data.index as number
-        const targetIdx = destination.data.index as number
-        const edge = extractClosestEdge(destination.data)
-
-        // Calculate where the item will be inserted
-        const insertAt = edge === 'bottom' ? targetIdx + 1 : targetIdx
-
-        // Convert insertion point to final index after removal
-        let destinationIndex: number
-        if (sourceIndex < insertAt) {
-          // Item was before insertion point, so after removal, index shifts down by 1
-          destinationIndex = insertAt - 1
-        } else {
-          // Item was at or after insertion point, no shift needed
-          destinationIndex = insertAt
-        }
+        const droppableId = target.data.droppableId as string | undefined
+        const targetIndex = target.data.index as number
+        const insertAt =
+          extractClosestEdge(target.data) === 'bottom'
+            ? targetIndex + 1
+            : targetIndex
+        // Removing the item shifts the insertion point only within its source list.
+        const index =
+          droppableId === origin.droppableId && origin.index < insertAt
+            ? insertAt - 1
+            : insertAt
 
         onDragEnd?.({
-          source: {
-            draggableId: source.data.draggableId as string,
-            index: sourceIndex,
-          },
+          source: origin,
           destination: {
-            draggableId: destination.data.draggableId as string,
-            index: destinationIndex,
-            droppableId: destination.data.droppableId as string | undefined,
+            draggableId: target.data.draggableId as string,
+            index,
+            droppableId,
           },
         })
       },
     })
-  }, [onDragEnd])
+  }, [instanceId, onDragEnd])
 
   const contextValue = React.useMemo(
     () => ({
+      instanceId,
+      draggedDroppableId,
+      targetDroppableId,
       draggedIndex,
       draggedHeight,
       itemHeights: itemHeightsRef.current,
@@ -123,11 +127,24 @@ const DragnDrop: DragnDropComponent = ({ children, onDragEnd }) => {
       setClosestEdge,
       setTargetIndex,
     }),
-    [draggedIndex, draggedHeight, closestEdge, targetIndex, registerItem],
+    [
+      instanceId,
+      draggedDroppableId,
+      targetDroppableId,
+      draggedIndex,
+      draggedHeight,
+      closestEdge,
+      targetIndex,
+      registerItem,
+    ],
   )
 
   return (
-    <DragContext.Provider value={contextValue}>{children}</DragContext.Provider>
+    <DragContext.Provider value={contextValue}>
+      <DragListContext.Provider value={null}>
+        {children}
+      </DragListContext.Provider>
+    </DragContext.Provider>
   )
 }
 

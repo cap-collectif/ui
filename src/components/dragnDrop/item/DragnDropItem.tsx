@@ -5,7 +5,7 @@ import {
 } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine'
 import { attachClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge'
-import { useDragContext } from '../DragContext'
+import { DragListContext, useDragContext } from '../DragContext'
 
 export interface DragnDropItemProps {
   draggableId: string
@@ -20,7 +20,12 @@ const DragnDropItem: React.FC<DragnDropItemProps> = ({
 }) => {
   const ref = React.useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = React.useState(false)
+  const list = React.useContext(DragListContext)
+  const droppableId = list?.droppableId
   const {
+    instanceId,
+    draggedDroppableId,
+    targetDroppableId,
     draggedIndex,
     draggedHeight,
     targetIndex,
@@ -31,39 +36,45 @@ const DragnDropItem: React.FC<DragnDropItemProps> = ({
   // Register item height
   React.useEffect(() => {
     const element = ref.current
-    if (element) {
-      registerItem(index, element.offsetHeight)
-    }
-  }, [index, registerItem])
+    if (!element) return
+
+    registerItem(index, element.offsetHeight)
+    return list?.registerIndex(element, index)
+  }, [index, list, registerItem])
 
   React.useEffect(() => {
     const element = ref.current
     if (!element) return
 
+    const data = { instanceId, draggableId, index, droppableId }
     return combine(
       draggable({
         element,
-        getInitialData: () => ({ draggableId, index }),
+        getInitialData: () => data,
         onDragStart: () => setIsDragging(true),
         onDrop: () => setIsDragging(false),
       }),
       dropTargetForElements({
         element,
-        getData: ({ input, element: el }) => {
-          const data = { draggableId, index }
-          return attachClosestEdge(data, {
+        canDrop: ({ source }) => source.data.instanceId === instanceId,
+        getData: ({ input }) =>
+          attachClosestEdge(data, {
             input,
-            element: el,
+            element,
             allowedEdges: ['top', 'bottom'],
-          })
-        },
-        getIsSticky: () => true,
+          }),
       }),
     )
-  }, [draggableId, index])
+  }, [draggableId, droppableId, index, instanceId])
 
   const getTransform = (): string => {
-    if (draggedIndex === null || targetIndex === null || draggedHeight === null) {
+    if (
+      draggedIndex === null ||
+      targetIndex === null ||
+      draggedHeight === null ||
+      draggedDroppableId !== droppableId ||
+      targetDroppableId !== droppableId
+    ) {
       return 'none'
     }
 
@@ -101,7 +112,10 @@ const DragnDropItem: React.FC<DragnDropItemProps> = ({
         opacity: isDragging ? 0.4 : 1,
         cursor: 'grab',
         transform: getTransform(),
-        transition: draggedIndex !== null ? 'transform 200ms cubic-bezier(0.2, 0, 0, 1)' : 'none',
+        transition:
+          draggedIndex !== null
+            ? 'transform 200ms cubic-bezier(0.2, 0, 0, 1)'
+            : 'none',
       }}
     >
       {children}

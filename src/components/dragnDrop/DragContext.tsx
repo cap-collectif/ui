@@ -16,7 +16,13 @@ export interface DragContextValue extends DragState {
   setTargetIndex: (index: number | null) => void
 }
 
-export const DragContext = React.createContext<DragContextValue>({
+export const DragContext = React.createContext<
+  DragContextValue & {
+    instanceId?: symbol
+    draggedDroppableId?: string
+    targetDroppableId?: string
+  }
+>({
   draggedIndex: null,
   draggedHeight: null,
   itemHeights: new Map(),
@@ -30,3 +36,8 @@ export const DragContext = React.createContext<DragContextValue>({
 })
 
 export const useDragContext = () => React.useContext(DragContext)
+
+export const DragListContext = React.createContext<{
+  droppableId: string
+  registerIndex: (element: HTMLElement, index: number) => () => void
+} | null>(null)
