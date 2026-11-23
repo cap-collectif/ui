@@ -11,6 +11,13 @@ To better understand the changelog, here are some legends we use:
 - 🛠 Refactor
 - 💄 Style
 
+## 7.0.2
+
+`2026-11-23`
+
+- 🐛 `DragnDrop` restores drops between lists, including empty lists [#644](https://github.com/cap-collectif/ui/pull/644)
+- 🛠 Clarify that release commits use the bare version number [#643](https://github.com/cap-collectif/ui/pull/643)
+
 ## 7.0.1
 
 `2026-11-20`
